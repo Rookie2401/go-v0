@@ -1208,8 +1208,8 @@
   },
   {
    "text": "저는 밥을 먹었습니다.",
-   "summary": "저는=저²/PRON 밥을=밥/NOUN 먹었습니다=먹다/VERB",
-   "sha256": "1c53795277474c93706d7642e3ab035d6e3aa288030b611905f84873e52eb268"
+   "summary": "저는=저/PRON 밥을=밥/NOUN 먹었습니다=먹다/VERB",
+   "sha256": "0c25d4270ad0ccf6f373877ae0e1abd183cd05a69205ea9daff29e96b29a73fd"
   },
   {
    "text": "선생님이 책을 읽으셨습니다.",
@@ -1224,7 +1224,7 @@
   {
    "text": "학교에서 친구에게만 말했어요.",
    "summary": "학교에서=학교/NOUN 친구에게만=친구/NOUN 말했어요=말하다/VERB",
-   "sha256": "fae4d1cbfe4887befbbb5e983c7021fa6bcfabd1b3c95b571ba4daef63d23351"
+   "sha256": "23eea6941129511b15ada32220dad32f1a5f7999b8974f13dd31b4ac2459ab22"
   },
   {
    "text": "음악을 들어요.",
@@ -1238,8 +1238,8 @@
   },
   {
    "text": "저는 길을 몰라요.",
-   "summary": "저는=저²/PRON 길을=길/NOUN 몰라요=모르다/VERB",
-   "sha256": "94e75d05c8d35f90f994e6c90fa4d5caab887b41bb2dccc0fae94d116d5b235f"
+   "summary": "저는=저/PRON 길을=길/NOUN 몰라요=모르다/VERB",
+   "sha256": "8540650a159cfd839e94a8bdb8e9fee7a67827e2c6e6b19883b34fdb1032f574"
   },
   {
    "text": "옷이 하얘요.",
@@ -1248,8 +1248,8 @@
   },
   {
    "text": "저는 의사가 돼요.",
-   "summary": "저는=저²/PRON 의사가=의사/NOUN 돼요=되다/VERB",
-   "sha256": "e2a3252eed23989bb107a5ae94dfe1b5b0086bab66f253edd101bf0fbd81ee22"
+   "summary": "저는=저/PRON 의사가=의사/NOUN 돼요=되다/VERB",
+   "sha256": "e3f780e1a09dc87936a0bd2b70399f29d7c9513442a50a8c229f6483f14e9bae"
   },
   {
    "text": "이 책은 좋습니다.",
@@ -1268,18 +1268,18 @@
   },
   {
    "text": "내일 갈 수 있어요.",
-   "summary": "내일=내일/ADV 갈=가다/VERB 수=수¹/NOUN 있어요=있다/ADJ",
-   "sha256": "1c3ce14685eea5f1d503bcde67f4a1bc56ae03cdf77b87e5772659b15e8215ae"
+   "summary": "내일=내일/NOUN 갈=가다/VERB 수=수¹/NOUN 있어요=있다/ADJ",
+   "sha256": "96bffffd1ce4c0f8b0e098b89700a15db8b441494addf8de13f7f1a54733562b"
   },
   {
    "text": "어제 가지 않았어요.",
    "summary": "어제=어제/NOUN 가지=가다/VERB 않았어요=않다/AUX",
-   "sha256": "a9403d4b53f6c2f8822b504fb9364b942e415081d0c6189d414ca87a97ae5f5d"
+   "sha256": "d969591a7d68d614a88811a3131f20d771b7eac9e63b4e2736425149a0ce96ff"
   },
   {
    "text": "저는 학생입니다.",
-   "summary": "저는=저²/PRON 학생입니다=학생/NOUN",
-   "sha256": "6a075119215370ae97680c1f012f9cfae25d6518013876cda3298896d3fff08d"
+   "summary": "저는=저/PRON 학생입니다=학생/NOUN",
+   "sha256": "686c9d83d47f484016b7ef49ea2ac84298e68ee18ddf3dc7e809e8d90fa4be86"
   },
   {
    "text": "방에 책이 있어요.",

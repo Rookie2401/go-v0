@@ -227,8 +227,10 @@ describe.skipIf(!SHARDS_PRESENT)('C. the card before the stem lexicon\'s shards 
   });
 
   // FAULT (a core word's meaning changes when shards load): 발표했습니다 reads "announcement; presentation (+ 하다: to do)" with the core alone and "to give a presentation"
-  // once the shards are in: the compiled core (src/adapters/korean/generated/core.ts) and the shard rows (scripts/ko-build-lexicon.mts) carry different first glosses for
-  // the same entry, so the card's meaning depends on what has loaded. (Both are uncommitted work of other sessions today; they may only be out of step until the build is re-run.)
+  // once the shards are in: the compiled core holds the noun 발표 but not the derived verb 발표하다, which only a shard holds, so with the core alone the word is read as noun + 하다 and the card
+  // shows the noun's gloss with the light verb's; once the shard is in, the verb's own entry and gloss. The lemma, class and form line are the same in both states (the test above);
+  // only the meaning line changes. Checked again on the pack's final code (2026-11-25): this one word of the page's sixty still differs. Left as a stated limit: the core would
+  // have to hold every 하다 verb of every noun it holds.
   it.fails('the meaning of a core word is the same before and after the shards load', async () => {
     uninstallKoreanLexicon('kaikki-ko-lexicon'); koClearAnalysisCache();
     const words = CORE_WORDS();

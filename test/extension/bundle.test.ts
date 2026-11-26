@@ -48,7 +48,10 @@ describe.skipIf(!have)('the built extension', () => {
     // lexicon set, and shows a homonym's headword without its number (lemma-display.ts). Measured 600,498 bytes = 586.4 KB (583.8 KB on master
     // a822b1ab, built the same day). The Korean shard loader's stem rules are NOT here: lexicon/prepare.ts takes the factory from the analyser
     // chunk (a static import had cost another 4.2 KB on every page).
-    expect(sizes.get('content.js')!, 'content.js').toBeLessThanOrEqual(588 * KB);
+    // 2026-11-25, the pack's final code: 588 -> 589 KB. Since the line above the content script also waits for a language's lexicon before the
+    // first scan where the pack asks for it (lexicon/prepare.ts, Korean only), tells the card when a word's entry is undecided or its lexicon
+    // has not loaded (parser/cardModel.ts), and takes an entry's label off a gloss (lemma-display.ts). Measured 602,499 bytes = 588.4 KB.
+    expect(sizes.get('content.js')!, 'content.js').toBeLessThanOrEqual(589 * KB);
     // Hindi reading must resolve in the offline Repository too. Its real analyser adds
     // about 460 KB to the former Albanian-only worker; classic workers cannot import
     // the page's analyser chunk. Keep an explicit ceiling rather than dropping analysis.
@@ -76,7 +79,7 @@ describe.skipIf(!have)('the built extension', () => {
     // 2026-11-25: 1,270 -> 1,315 KB for Korean, as for Russian and French before it: the worker holds what the popup card and the setup page
     // ask it for: the pack manifest with its honest limits, the plain explanation of every feature value the analyser writes (speech levels,
     // connectives, the 58 particle families), of 35 constructions, and the orientation. Measured 1,342,801 bytes = 1,311.3 KB (1,263.2 KB on
-    // master a822b1ab, built the same day). No Korean analyser, lexicon or Hangul table is in the worker: they are in analysers/ko.js (558 KB).
+    // master a822b1ab, built the same day). No Korean analyser, lexicon or Hangul table is in the worker: they are in analysers/ko.js (558 KB then; 609,722 bytes = 595.4 KB in the pack's final code, where background.js measured 1,342,910 bytes).
     expect(sizes.get('background.js')!, 'background.js').toBeLessThanOrEqual(1315 * KB);
     // 2026-10-21: 650 -> 760 KB; the GoTell redesign (aec73a36) and the GoListen playback refactor (9aae9cb0) brought app.js to 723 KB
     // (measured with the Biblia card of the reader screen, 0.8 KB, reverted). A ceiling again, not a target.
@@ -90,7 +93,11 @@ describe.skipIf(!have)('the built extension', () => {
     // 2026-11-19 (French pack, after merging master 22be2d7e): 840 -> 880 KB. The same French text reaches the setup page (manifest,
     // construction explanations, orientation: 37.6 KB on 985c742b). Measured 896,583 bytes = 875.6 KB on the merged tree.
     // 2026-11-19 (release/ru-fr, both packs on master 3d92b264): 880 -> 910 KB. app.js measured 926,340 bytes = 904.6 KB with Russian and French (setup page built with GOLEARN_APP_DICT=sq,ru,fr).
-    if (sizes.has('app/app.js')) expect(sizes.get('app/app.js')!, 'app/app.js').toBeLessThanOrEqual(910 * KB);
+    // 2026-11-25: 910 -> 962 KB for Korean, as for Russian and French before it: the setup page shows each language's manifest, the plain
+    // explanation of its features and constructions (packs/ko-grammar.ts) and its orientation (tutorial/ko.ts); no Korean analyser, lexicon or
+    // dictionary code is in app.js (checked on the build). Measured 982,295 bytes = 959.3 KB (setup page built with GOLEARN_APP_DICT=sq,ru,fr,ko;
+    // 929,736 bytes = 907.9 KB on master a822b1ab, built the same day with sq,ru,fr).
+    if (sizes.has('app/app.js')) expect(sizes.get('app/app.js')!, 'app/app.js').toBeLessThanOrEqual(962 * KB);
     for (const id of ['sq', 'es', 'de', 'hi', 'th', 'nb', 'nn', 'ru', 'fr', 'ko']) expect(sizes.has(`analysers/${id}.js`), `analysers/${id}.js`).toBe(true);
   });
 

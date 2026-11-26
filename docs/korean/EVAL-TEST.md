@@ -55,27 +55,35 @@ For comparison, the development part on the same code: 90.77 % strict, 93.98 % l
 
 ## After the run (dated note, 2026-11-25)
 
-The independent linguistic audit's list of faults reached the builders only after the run above had been made. So the measured
-code (`93a3a31c`) still held these analysis faults, found on the audit's own blind sentences and not on this treebank:
+The run above was made before the independent linguistic audit's later sections and the common-word sweep had reached the
+builders. So the measured code (`93a3a31c`) still held these analysis faults, none of them found on this treebank:
 
 - an unlisted personal name was read as a confirmed verb once the full lexicon was loaded (박지성이 as 박다 …);
 - 목자시니 and 의사시다 were read as a noun with a suffix, not as the honorific copula;
 - some verbs' bare -아/어 forms were read as nouns (불 켜! 여기 서!);
-- 공부를 한 사람 read 한 as the numeral.
+- 공부를 한 사람 read 한 as the numeral;
+- a bare 내 was read as 내 "inside" where a reader takes 나 with the possessive;
+- a common noun with a particle was read as a form of a look-alike verb (물을 as 묻다, 가게도 as 가다): a whole class, brought
+  in by the second round of morphology work and so present in the measured code. The common-word sweep
+  (`docs/korean/SWEEP.md`) found it.
 
-They were fixed afterwards (commits `6dfc31dc` to `ccaad140`, where the analyser was frozen), from the audit's sentences only. One of
-those fixes itself broke something for a few hours (bare 배 and 차 read as verbs) and was corrected in `ccaad140` before the freeze. The test part was NOT run again:
-it is run once. What the fixes did to the DEVELOPMENT part, the only comparison that is fair to make:
+All were fixed afterwards (commits `6dfc31dc` to `cbb9d428`, where the analyser was frozen), from the audit's sentences, the
+sweep's table and the development part only. Two of the fix rounds each broke something for a few hours (bare 배 and 차 read
+as verbs; bare 먹는 read as 먹 "ink") and were corrected before the freeze. The test part was NOT run again: it is run once,
+and the figures at the top of this file are the measured code's, not the final code's. What the fixes did to the DEVELOPMENT
+part, the only comparison that is fair to make:
 
-| Development part, adapter mode | Measured code | Frozen code (`ccaad140`) |
+| Development part, adapter mode | Measured code (`93a3a31c`) | Final code (`cbb9d428`) |
 |---|---|---|
-| Right dictionary word, strict / lenient | 90.77 % / 93.98 % | 90.79 % / 93.99 % |
-| Forms not in train, strict / lenient | 86.16 % / 89.79 % | 86.20 % / 89.83 % |
-| Part of speech | 87.35 % | 87.38 % |
-| Chain exact | 89.29 % | 89.32 % |
+| Right dictionary word, strict / lenient | 90.77 % / 93.98 % | 90.99 % / 94.19 % |
+| Forms not in train, strict / lenient | 86.16 % / 89.79 % | 86.39 % / 90.00 % |
+| Part of speech | 87.35 % | 87.56 % |
+| Chain exact | 89.29 % | 89.51 % |
 | Unconfirmed | 13.66 % | 13.67 % |
-| Confident and wrong | 4.93 % | 4.93 % |
+| Confident and wrong | 4.93 % | 4.73 % |
 
-So on this kind of text the fixes change almost nothing (they concern names, commands and Bible forms, which the treebank
-barely has), and the held-out figures above stand as a fair description of the code as it lands, within a few hundredths of a point.
-One choice costs a few 어절 against the treebank: a bare 내 is read as 나 with the possessive, where the treebank has 내.
+So on this kind of text the final code is about two tenths of a point better than the measured code on every line but the
+unconfirmed one, and the held-out figures above are a fair, slightly low, description of the code as it lands. They are NOT a
+measurement of it: nobody may quote 91.58 % as the final code's figure without saying it was measured four rounds of fixes earlier.
+The treebank barely holds what most of the fixes concern (names, commands, Bible forms, a learner's first nouns with a particle),
+so the real difference for a learner's text is larger than this table shows and is measured only by the sweep's table.

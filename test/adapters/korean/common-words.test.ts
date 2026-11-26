@@ -33,7 +33,7 @@ type One = { lemma: string; pos: string; means: string | string[]; undecided?: b
 type Want = One | { anyOf: One[] };
 interface Entry { w: string; bare: Want; s: Array<{ t: string; at: string; want: Want; shardsOnly?: boolean }>; note?: string; shardsOnly?: boolean }
 interface Block { blk: string; t: string; chk: Array<{ at: string; want: Want; shardsOnly?: boolean }> }
-interface TwoSided { w: string; s: Array<{ side: 'noun' | 'pred' | 'whole'; t: string; at: string; want: Array<{ lemma: string; pos: string }> }>; note?: string }
+interface TwoSided { w: string; bare?: 'undecided' | 'noun' | 'pred' | 'whole'; bareCore?: 'undecided' | 'noun' | 'pred' | 'whole'; counts?: Record<string, string>; s: Array<{ side: 'noun' | 'pred' | 'whole'; t: string; at: string; want: Array<{ lemma: string; pos: string }>; shardsOnly?: boolean }>; note?: string }
 interface Table { known: string[]; frameKnown: string[]; twoSidedKnown: string[]; entries: Entry[]; blocks: Block[]; frameNouns: Array<[string, string, number]>; twoSided: TwoSided[] }
 
 const TABLE = JSON.parse(fs.readFileSync(path.resolve(__dirname, 'common-words.table.json'), 'utf8')) as Table;
@@ -109,8 +109,9 @@ function frameOk(c: AnalysisCandidate | undefined, noun: string, classes: string
 // ───────────────────────────── block T: two-sided surfaces ─────────────────────────────
 // A written form that is both noun + particle and a predicate form (or a whole listed word). Each sentence names its side; the first
 // reading must be that side's word (lemma and part of speech; the noun side also with a particle in its chain; the homonym is not
-// checked). The bare token decides nothing: it is right when the first reading is not creditable (below 0.5 or unconfirmed) or when the
-// creditable readings hold two sides; one confident side alone is a "confident single guess" and counts as wrong.
+// checked). The bare token: when two sides each have a word the lexicon counts it decides nothing, and it is right when the first reading
+// is not creditable (below 0.5 or unconfirmed) or when the creditable readings hold two sides (one confident side alone is a "confident
+// single guess", wrong); when only one side's word is counted (달을: the rival 닫다² is uncounted), that side read confidently is right.
 const PRED_POS = new Set(['VERB', 'ADJ', 'AUX']);
 const NOM_POS = new Set(['NOUN', 'PRON', 'PROPN', 'NUM', 'CLF', 'ADV']);
 const creditable = (c: AnalysisCandidate): boolean => !c.unconfirmed && c.confidence >= 0.5;
@@ -124,8 +125,9 @@ function sideOf(c: AnalysisCandidate, e: TwoSided): string | undefined {
   if (koBareLemma(c.lemma) === e.w) return 'whole';
   return hostsParticle(c) ? 'noun' : undefined;
 }
-const tMatch = (c: AnalysisCandidate | undefined, side: string, want: Array<{ lemma: string; pos: string }>): boolean =>
-  !!c && !c.unconfirmed && !!c.lemma && want.some((w) => w.lemma === koBareLemma(c.lemma!) && w.pos === c.pos) && (side !== 'noun' || hostsParticle(c));
+/** The noun side needs the particle in the chain, except where the surface is the noun itself (산 위에, 가게 앞에서, 운전할 줄). */
+const tMatch = (c: AnalysisCandidate | undefined, side: string, want: Array<{ lemma: string; pos: string }>, surface: string): boolean =>
+  !!c && !c.unconfirmed && !!c.lemma && want.some((w) => w.lemma === koBareLemma(c.lemma!) && w.pos === c.pos) && (side !== 'noun' || koBareLemma(c.lemma) === surface || hostsParticle(c));
 
 export interface CheckResult { id: string; kind: 'entry' | 'block' | 'frame' | 'frameSkip' | 'T'; w: string; where: string; want: string; got: string; second: string; context?: string; ok: boolean }
 
@@ -135,11 +137,17 @@ function runAll(state: 'core' | 'shards'): CheckResult[] {
   for (const e of TABLE.twoSided ?? []) {
     const cs = koAnalyzeToken(e.w);
     const sides = new Set(cs.filter(creditable).map((c) => sideOf(c, e) ?? `other:${c.lemma}/${c.pos}`));
-    const okBare = !cs[0] || !creditable(cs[0]) || [...sides].filter((s) => !s.startsWith('other')).length >= 2;
-    push({ idBase: `T|${e.w}|bare`, kind: 'T', w: e.w, where: 'undecided bare', want: 'undecided', got: showGot(cs[0]), second: showGot(cs[1]), context: [...sides].join(' '), ok: okBare });
+    // undecided only when two sides each have a counted word (e.bare, derived from the lexicon counts when the table is built);
+    // otherwise the counted side, read confidently, is right
+    const expect = (state === 'core' ? e.bareCore ?? e.bare : e.bare) ?? 'undecided';
+    const okBare = expect === 'undecided'
+      ? !cs[0] || !creditable(cs[0]) || [...sides].filter((s) => !s.startsWith('other')).length >= 2
+      : !!cs[0] && creditable(cs[0]) && sideOf(cs[0], e) === expect;
+    push({ idBase: `T|${e.w}|bare`, kind: 'T', w: e.w, where: `${expect === 'undecided' ? 'undecided' : `${expect}-side`} bare`, want: expect, got: showGot(cs[0]), second: showGot(cs[1]), context: [...sides].join(' '), ok: okBare });
     e.s.forEach((s, k) => {
+      if (state === 'core' && s.shardsOnly) return;
       const r = sentenceReading(s.t, s.at);
-      push({ idBase: `T|${e.w}|s${k}`, kind: 'T', w: e.w, where: `${s.side} ${s.t}`, want: s.want.map((w) => `${w.lemma}/${w.pos}`).join(' or '), got: showGot(r.top), second: showGot(r.second), context: r.top?.notes?.context ? String(r.top.notes.context) : undefined, ok: tMatch(r.top, s.side, s.want) });
+      push({ idBase: `T|${e.w}|s${k}`, kind: 'T', w: e.w, where: `${s.side} ${s.t}`, want: s.want.map((w) => `${w.lemma}/${w.pos}`).join(' or '), got: showGot(r.top), second: showGot(r.second), context: r.top?.notes?.context ? String(r.top.notes.context) : undefined, ok: tMatch(r.top, s.side, s.want, s.at) });
     });
   }
   if (process.env.KO_SWEEP_ONLY === 'T') return out;

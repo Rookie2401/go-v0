@@ -106,7 +106,7 @@ describe('live updates in the app', () => {
     svc.push();
     // the languages are listed on the Account page (2026-11-18: the home only names the one being reviewed)
     let names: string[] = [];
-    await until(async () => { names = (await accountLanguages(rig)).map((l) => l.name); return names.length === 2; }, 'the new language on the Account page');
+    await until(async () => { names = (await accountLanguages(rig)).map((l) => l.name); return names.length === 2; }, 'the new language on the Languages tab');
     expect(names).toHaveLength(2);
     expect(names.join('|')).toMatch(/Albanian.*German|German.*Albanian/);
   });

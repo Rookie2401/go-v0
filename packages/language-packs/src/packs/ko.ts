@@ -90,7 +90,7 @@ export function koreanManifest(): PackManifest {
       'there is no audio of its own: a Korean device voice, if the browser has one, is synthetic practice only; pronunciation help is written, from rules and from the dictionary’s own respelling where it has one;',
       'no Bible text is bundled with the pack; Scripture is met on pages and in other apps, and the literary and archaic endings of Korean Bible translations are named as such and given no conversational reading;',
       'a compound the lexicon does not list is shown as built from its parts and marked unconfirmed (예산안 as 예산 + 안), a root such as 복잡 is never a word alone, and numerals are composed (사만 is 40,000);',
-      'On a treebank of 1990s written prose (UD Korean-Kaist, the held-out test part, run once) the first reading named the right dictionary word for 92 % of words, and for 87 % of written forms the word counts had never met; speech, web text and Bible prose are not measured and may score lower, and no Korean speaker has reviewed the pack.',
+      'On a treebank of 1990s written prose (UD Korean-Kaist, the held-out test part, run once, on a build five rounds of fixes older than this one) the first reading named the right dictionary word for 92 % of words, and for 87 % of written forms the word counts had never met; on this pack’s own table of the commonest words in short sentences, 82 of 2,343 first readings (3.5 %) are still wrong or left undecided, and each is listed in the pack’s records; speech, web text and Bible prose are not measured and may score lower, and no Korean speaker has reviewed the pack.',
       'nothing has been reviewed by a native speaker, a Korean teacher or a linguist.',
     ],
     extraProvenance: [

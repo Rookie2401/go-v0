@@ -382,6 +382,68 @@ auxiliary after a connective form (-고 있다, -아/어 보다: 보다 stays "t
 듣다 / 들다 and the other irregular–regular look-alikes by their objects, the copula after a noun, a particle token
 after a Latin or digit token.
 
+## The last round (2026-11-25): rules added before the freeze
+
+The owner allowed one last round on the first-month words of the common-word sweep that had a confident wrong first
+reading, and on the auditor's clause-first blocker. Its rules: fix rules, not words; where a sentence cannot decide, an
+UNDECIDED result (both sides creditable, or a homonym set's undecided reading) is acceptable and a confident wrong
+reading is not. The analyser is frozen after it (`eb3830f2`). What each word came to is in `docs/korean/SWEEP.md`.
+
+**Token level (`analyze.ts`).**
+
+- *Counter + particle with no numeral.* A counter + particle(s) on a token alone has no numeral before it. A common
+  noun of the same spelling and particles, counted above the faint level (more than 2), reads first; the counter stays
+  a live, creditable rival, so the sentence layer's numeral + counter frame can still raise it (개가 is the dog; 두 개도
+  the counter). 번 and 년 are untouched: counter and noun are one word there.
+- *Surname + particle.* A one-syllable surname + particle(s), with no given name or title, is the weaker reading beside
+  a common noun of the same spelling counted above the faint level: the noun reads first (김에). The surname stays live
+  only when its count is at least the noun's; a rarer surname is no rival (길을 keeps 0.92).
+- Checked and left: a whole listed word of two syllables or more reads first and the shorter noun + core particle of
+  the same letters is always kept second and creditable (주가, 주도, 자의, 역사가); verb + connective + particle against
+  a counted noun + particle is ordered by the counts with both creditable (가게도, 가지만, 사고도); a Sino-Korean numeral
+  + case particle and a counted noun of that spelling are both creditable (백을, 천으로); a predicate's adnominal
+  against noun + core particle: the commoner side first, the other creditable (남을, 입을, 주는).
+
+**Sentence level (`sentence.ts`).**
+
+- *Position alone decides nothing.* Where a noun + 은/는/을/를 and a predicate's adnominal of the same spelling stand
+  first in their clause before a nominal, the token layer's order (the counts) stands and the other reading stays
+  creditable: 우는 아이를, 노는 아이들이, 먹을 물을, 먹을 곳에 가요, 입을 옷으로, 실을 바늘에 꿰었어요 are all this
+  shape. (The earlier rule "first in its clause with a nominal after it: the noun" read 우 "right side" and 먹
+  "inkstick" there, and is removed.) One shape still decides: an object needs a predicate that takes one. A noun + 을/를
+  directly before a noun is the adnominal of the VERB of the same spelling when another object follows at once
+  (신을 신발을 샀어요) or when the clause's first final predicate after it is an adjective or 있다 / 없다
+  (물을 사람이 없다, 입을 옷이 없어요). The lexicon holds no valency, so no rule can tell 실을 바늘에 꿰었어요 from
+  먹을 곳에 가요: both are undecided.
+- *Place nouns.* A bare noun directly before a noun of place (위, 아래, 앞, 옆, 안, 밖, 끝, 속, 밑, 근처, 쪽, 가운데,
+  너머), with nothing before it that a verb could govern, is that place's owner, not an adnominal (산 위에, 줄 끝에).
+  After an argument the adnominal stands (학교에 간 뒤에); the time nouns after an adnominal (뒤, 후, 다음, 전, 사이) are
+  not in the list.
+- *Three nominal shapes.* X도 Y도, two different words side by side, each with a noun + 도 reading, is a pair of
+  nominals (해도 달도); the same word twice is the verb repeated (가도 가도). X도 directly before a final 있다 / 없다 is
+  a nominal: no connective form takes 도 before the existence verb (가게도 있어요). After a determiner that is not a
+  number a whole adverb loses to a noun + particle of the same letters (이 실은).
+- *Kept-open readings.* When the sentence has chosen the adnominal and no cue chooses the verb, the other verb's
+  adnominal is set aside at 0.45 only by the pack's rare-rival test: the chosen verb is at least four times commoner by
+  the lexicon's counts AND the other is counted under 30. That closes 갈다 (14) beside 가다 and 줄다 (20) beside 주다.
+  Otherwise the other verb stays creditable, marked `notes.undecidedBy`: 사다 (52) beside 살다 (382) leaves 어제 산 옷
+  undecided. A cue that chose a verb still sets the other aside: an object for 사다, a place name in 에 / 에서 for 살다,
+  the look-alike cues of 갈다.
+- *Counters.* A composed Sino-Korean numeral (이십, 삼백) opens the numeral + counter frame. Where the counter is a
+  homonym set, Sino-Korean numerals and digits pick the entry that is a unit of time (분 minute, 주 week); native
+  numerals pick the person entry (세 분); 몇 and 여러 leave the undecided reading.
+- *아니면.* After a bare nominal or adverb, with no 이/가 complement and a word after it (지금 아니면 내일), the copula
+  comes first and the conjunction stays creditable beside it; after N이/가 it is the copula alone. The treebank writes
+  every 아니면 as the copula, which is why the conjunction is not first.
+- *만에.* 만에 / 만이다 directly after a unit or noun of time is the bound noun 만 "after (an interval)", this
+  product's own entry 91 (십 년 만에); 만 before a unit stays the numeral (만 원).
+- *A numeral is not modified.* A Sino-Korean numeral carrying its own case particle, after a non-numeral determiner or
+  an adnominal, loses to the noun of the same spelling and particle (새 백을, 부드러운 천으로); not when a counter or
+  money unit follows (새 천 원짜리). Native numerals are left alone.
+
+**What the round could not fix by a rule** (a main entry's other meaning needs a word cue): 선과 악 (goodness),
+위가 아파요 (stomach), 창을 들고 (spear), 손을 꼭 잡았어요 (tightly), 아이가 많이 컸어요 (크다 as a verb).
+
 ## Constructions (`korean/constructions.ts`, `detectPatterns`)
 
 Keys (each `syntax:ko:<key>`): `ko-progressive` -고 있다, `ko-resultative` -아/어 있다, `ko-want` -고 싶다,

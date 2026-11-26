@@ -67,23 +67,23 @@ builders. So the measured code (`93a3a31c`) still held these analysis faults, no
   in by the second round of morphology work and so present in the measured code. The common-word sweep
   (`docs/korean/SWEEP.md`) found it.
 
-All were fixed afterwards (commits `6dfc31dc` to `cbb9d428`, where the analyser was frozen), from the audit's sentences, the
+All were fixed afterwards (commits `6dfc31dc` to `eb3830f2`, where the analyser was frozen), from the audit's sentences, the
 sweep's table and the development part only. Two of the fix rounds each broke something for a few hours (bare 배 and 차 read
 as verbs; bare 먹는 read as 먹 "ink") and were corrected before the freeze. The test part was NOT run again: it is run once,
 and the figures at the top of this file are the measured code's, not the final code's. What the fixes did to the DEVELOPMENT
 part, the only comparison that is fair to make:
 
-| Development part, adapter mode | Measured code (`93a3a31c`) | Final code (`cbb9d428`) |
+| Development part, adapter mode | Measured code (`93a3a31c`) | Final code (`eb3830f2`) |
 |---|---|---|
-| Right dictionary word, strict / lenient | 90.77 % / 93.98 % | 90.99 % / 94.19 % |
+| Right dictionary word, strict / lenient | 90.77 % / 93.98 % | 91.00 % / 94.20 % |
 | Forms not in train, strict / lenient | 86.16 % / 89.79 % | 86.39 % / 90.00 % |
-| Part of speech | 87.35 % | 87.56 % |
+| Part of speech | 87.35 % | 87.57 % |
 | Chain exact | 89.29 % | 89.51 % |
 | Unconfirmed | 13.66 % | 13.67 % |
 | Confident and wrong | 4.93 % | 4.73 % |
 
 So on this kind of text the final code is about two tenths of a point better than the measured code on every line but the
 unconfirmed one, and the held-out figures above are a fair, slightly low, description of the code as it lands. They are NOT a
-measurement of it: nobody may quote 91.58 % as the final code's figure without saying it was measured four rounds of fixes earlier.
+measurement of it: nobody may quote 91.58 % as the final code's figure without saying it was measured five rounds of fixes earlier (the last of them the owner's round on the first-month words, `docs/korean/SWEEP.md`).
 The treebank barely holds what most of the fixes concern (names, commands, Bible forms, a learner's first nouns with a particle),
 so the real difference for a learner's text is larger than this table shows and is measured only by the sweep's table.

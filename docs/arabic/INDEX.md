@@ -13,6 +13,8 @@ Lemma string convention: `arHeadForm` of `arabic/text.ts`.
 | lemma entries / form pages (of which "ar-verb form" pages) / lemma entries that also hold form-of senses | 27,090 / 50,698 (41,350) / 2,982 |
 | pages that are only alternative spellings (alt-of) | 1,021 |
 | participle entries (verb class in the extract, head "active / passive participle of X"; made ADJ with VerbForm=Part, Voice, Of=verb) / of those with Of | 14 / 10 |
+| lemma glosses changed by the clean-gloss rule (batch 6; counted before the reviewed choices) | 13,288 |
+| reviewed gloss choices (gloss-choices.json): lexemes that took one / lexemes where no sense matched (keeping the default) | 336 / 7: أَنَا|PRON, زَهْرَة|NOUN, زَوْج|NOUN, فَقِير|ADJ, قَرْيَة|NOUN, مَتَى|ADP, وَاحِد|PRON |
 | lemma ids by part of speech | NOUN 12,758, VERB 7,366, ADJ 3,814, PROPN 2,357, ADV 366, ADP 113, INTJ 90, CONJ 80, NUM 53, PRON 44, PART 42, DET 6 |
 | lemma ids (with at least one row) | 27,089 (25,301) |
 | head + POS pairs with more than one entry (extra ids `|2`, `|3` … ordered by etymology number, then first gloss) | 787 (927 extra ids) |
@@ -43,17 +45,17 @@ Lemma string convention: `arHeadForm` of `arabic/text.ts`.
 | Reg=Cla (every sense Classical, archaic or obsolete) / Reg=Msa (every sense Modern) — lemma entries | 812 / 4 |
 | roots (the ar-root / ar-rootbox template, else the root category of the senses; malformed templates ignored: 0) | NOUN 4,688/12,758 (36.7 %), VERB 4,745/7,366 (64.4 %), ADJ 1,464/3,814 (38.4 %), PROPN 217/2,357 (9.2 %), ADV 55/366 (15.0 %), ADP 28/113 (24.8 %), INTJ 11/90 (12.2 %), CONJ 7/80 (8.8 %), NUM 11/53 (20.8 %), PRON 0/44 (0.0 %), PART 3/42 (7.1 %), DET 0/6 (0.0 %) |
 | shards | 179 (prefixes of up to 3 letters; limit 1,500,000 bytes of JSON) |
-| shard bytes | 7.94 MB gzip, 39.9 MB plain |
-| largest shard | `ب` 1.00 MB plain, 0.20 MB gzip (largest gzip: `ب` 0.20 MB) |
+| shard bytes | 7.92 MB gzip, 39.9 MB plain |
+| largest shard | `ب` 0.99 MB plain, 0.20 MB gzip (largest gzip: `ب` 0.20 MB) |
 | merging experiment (upper bound of rows storable once: same key, lemma, labels but case, vowels but the last letter's) | 259,144 rows, 5,109,289 bytes of JSON |
 | core rows | seen (seen = a chosen lemma's rows under keys that occur in ar_50k and under its own written form; all = every row) |
-| core keys: completed (the missing lexemes' rows added; at most 8 rows and 3 lexemes) / flagged `partial` (the full index has lexemes the core lacks) / share of ar_50k running words on flagged keys | 893 / 1,023 / 18.88 % |
+| core keys: completed (the missing lexemes' rows added; at most 8 rows and 3 lexemes) / flagged `partial` (the full index has lexemes the core lacks) / share of ar_50k running words on flagged keys | 893 / 1,025 / 18.88 % |
 | closed-class clitic entries kept out of the word keys (tatweel at an edge, or one bare letter: بِـ, ـهَا, وَ, أَ …) | 27: وَ (CONJ), وَ (ADP), بِـ (ADP), تَ (ADP), أَ (PART), سَـ (PART), فَـ (CONJ), كَـ (ADP), ـكَ (PRON), ـكِ (PRON), لِـ (ADP), لَـ (ADP), لِـ (CONJ), لِـ (PART), لَـ (PART), ـهُ (PRON), هَـ (PART), ـهُمْ (PRON), ـهُنّ (PRON), ـهُمَا (PRON), ـنَا (PRON), آ (PART), ـهَا (PRON), ـكُمْ (PRON), ـكُنَّ (PRON), ـكُمَا (PRON), ـني (PRON) |
 | lemma entries with no table at all / of those with a row under their written form (the source's canonical row, code `canonical…`) | 2,520 / 2,015 (without: 505, of which multi-word heads 505) |
 | adjective lemmas with a feminine row (any origin) / of all adjective lemma ids; "feminine … of X" form pages of adjectives resolved (rows new, the rest already in the adjective's table) | 3,538 / 3,814; 930 (49 new) |
 | core ranking | marginal (own = weight of a lemma's own keys per byte; marginal = frequency of the keys it adds to those already covered, per byte) |
-| core | 1731 lemmas (255 of closed classes, 2 seeded), 2686 keys, 13237 rows, 499,647 bytes of JSON (budget 500,000) |
-| core token coverage on ar_50k (running words whose key is a core key) | 56.27 % of 149,102,962 (clitic forms are not keys) |
+| core | 1734 lemmas (255 of closed classes, 2 seeded), 2693 keys, 13277 rows, 499,883 bytes of JSON (budget 500,000) |
+| core token coverage on ar_50k (running words whose key is a core key) | 56.30 % of 149,102,962 (clitic forms are not keys) |
 | identity checks accepted through a numbered sibling of the main id / through the loose fold | 2 / 2 (counted apart from the clean ones above) |
 | lexeme preferences (--identities): candidate loser/winner pairs / dropped as one lexeme (same head, same part-of-speech group) / dropped as both directions (b) / dropped as balanced (c) / closed-class loser to open winner dropped (d) | 1,904 / 75 / 7 / 110 / 2 |
 | reviewed preferences (preferences-reviewed.json) merged / derived pairs they overrode / pairs removed by its balanced list / lexemes not in the index (skipped); derived pairs before the merge | 93 / 0 / 0 / 0; 1,293 |
@@ -70,8 +72,8 @@ Share of ar_50k running words by the number of lemma ids their key has in this i
 ## Core budget projections (not stored)
 
 - 350,000 bytes: 695 lemmas, tokenCoverage 0.5261
-- 500,000 bytes: 913 lemmas, tokenCoverage 0.5627
-- 800,000 bytes: 1362 lemmas, tokenCoverage 0.6029
+- 500,000 bytes: 915 lemmas, tokenCoverage 0.563
+- 800,000 bytes: 1364 lemmas, tokenCoverage 0.6031
 
 ## Register and period labels found on senses (counts of senses)
 

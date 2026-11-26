@@ -1,0 +1,1146 @@
+{
+ "_about": "Reviewed choice of the sense that leads a lexeme's one-line gloss in the index (scripts/ar-build-index.mts): for a listed \"<vocalized head>|<POS>\" the gloss is the first source sense (over all entries of that head and part of speech) whose gloss holds one of the keywords as a whole word; the gloss TEXT stays the source's. Seeded from the curated beginner list of scripts/alphabet-sprint/ar.mts (keywords confirmed against the extract) and the lead's additions. The dictionary's sense list is not changed.",
+ "choices": {
+  "آخِر|ADJ": [
+   "last",
+   "other"
+  ],
+  "أَب|NOUN": [
+   "father"
+  ],
+  "أَبَدًا|ADV": [
+   "never",
+   "ever",
+   "forever"
+  ],
+  "أَبْيَض|ADJ": [
+   "white"
+  ],
+  "أَحَبَّ|VERB": [
+   "love",
+   "like"
+  ],
+  "أَحْمَر|ADJ": [
+   "red"
+  ],
+  "أَخ|NOUN": [
+   "brother"
+  ],
+  "أَخَذَ|VERB": [
+   "take"
+  ],
+  "أَخْضَر|ADJ": [
+   "green"
+  ],
+  "أَرَادَ|VERB": [
+   "want"
+  ],
+  "أَرْبَعَة|NUM": [
+   "four"
+  ],
+  "أَرْض|NOUN": [
+   "earth",
+   "land",
+   "ground"
+  ],
+  "أَزْرَق|ADJ": [
+   "blue"
+  ],
+  "أَسْوَد|ADJ": [
+   "black"
+  ],
+  "أَصْبَحَ|VERB": [
+   "become"
+  ],
+  "أَصْفَر|ADJ": [
+   "yellow"
+  ],
+  "أَعْطَى|VERB": [
+   "give"
+  ],
+  "أَغْلَقَ|VERB": [
+   "close"
+  ],
+  "أَكَلَ|VERB": [
+   "eat"
+  ],
+  "أَلْف|NUM": [
+   "thousand"
+  ],
+  "أَمْر|NOUN": [
+   "matter",
+   "order"
+  ],
+  "أَمْس|NOUN": [
+   "yesterday"
+  ],
+  "أَنَا|PRON": [
+   "I"
+  ],
+  "أَنَّ|CONJ": [
+   "that"
+  ],
+  "أَنْتَ|PRON": [
+   "you"
+  ],
+  "أَنْتِ|PRON": [
+   "you"
+  ],
+  "أَنْف|NOUN": [
+   "nose"
+  ],
+  "أَهْل|NOUN": [
+   "family",
+   "people"
+  ],
+  "أَوَّل|ADJ": [
+   "first"
+  ],
+  "أَوْ|CONJ": [
+   "disjunction"
+  ],
+  "أَيْضًا|ADV": [
+   "also",
+   "too"
+  ],
+  "أَيْنَ|ADV": [
+   "where"
+  ],
+  "أُخْت|NOUN": [
+   "sister"
+  ],
+  "أُذُن|NOUN": [
+   "ear"
+  ],
+  "أُسْبُوع|NOUN": [
+   "week"
+  ],
+  "أُمّ|NOUN": [
+   "mother"
+  ],
+  "إِذَا|CONJ": [
+   "if",
+   "when"
+  ],
+  "إِلَى|ADP": [
+   "to",
+   "toward"
+  ],
+  "إِنَّ|PART": [
+   "indeed",
+   "that"
+  ],
+  "إِنْسَان|NOUN": [
+   "human",
+   "person",
+   "man"
+  ],
+  "اِبْن|NOUN": [
+   "son"
+  ],
+  "اِثْنَان|NUM": [
+   "two"
+  ],
+  "اِسْتَطَاعَ|VERB": [
+   "able",
+   "can"
+  ],
+  "اِسْم|NOUN": [
+   "name"
+  ],
+  "اِشْتَرَى|VERB": [
+   "buy"
+  ],
+  "اِعْتَبَرَ|VERB": [
+   "consider"
+  ],
+  "اِمْرَأَة|NOUN": [
+   "woman"
+  ],
+  "اِنْتَظَرَ|VERB": [
+   "wait"
+  ],
+  "بَاب|NOUN": [
+   "door",
+   "gate"
+  ],
+  "بَارِد|ADJ": [
+   "cold"
+  ],
+  "بَاعَ|VERB": [
+   "sell"
+  ],
+  "بَحْث|NOUN": [
+   "research",
+   "search",
+   "discussion"
+  ],
+  "بَحْر|NOUN": [
+   "sea"
+  ],
+  "بَدَأَ|VERB": [
+   "begin",
+   "start"
+  ],
+  "بَرْد|NOUN": [
+   "cold"
+  ],
+  "بَطِيء|ADJ": [
+   "slow"
+  ],
+  "بَعِيد|ADJ": [
+   "far",
+   "distant"
+  ],
+  "بَعْدَ|ADP": [
+   "after"
+  ],
+  "بَعْض|PART": [
+   "some",
+   "part"
+  ],
+  "بَقِيَ|VERB": [
+   "remain",
+   "stay"
+  ],
+  "بَكَى|VERB": [
+   "cry",
+   "weep"
+  ],
+  "بَلَد|NOUN": [
+   "country"
+  ],
+  "بَلَغَ|VERB": [
+   "reach",
+   "arrive"
+  ],
+  "بَيْت|NOUN": [
+   "house"
+  ],
+  "بَيْنَ|ADP": [
+   "between"
+  ],
+  "بِنْت|NOUN": [
+   "girl",
+   "daughter"
+  ],
+  "تَافِه|ADJ": [
+   "trivial",
+   "insignificant"
+  ],
+  "تَرَكَ|VERB": [
+   "leave"
+  ],
+  "تَعَلَّمَ|VERB": [
+   "learn"
+  ],
+  "تَكَلَّمَ|VERB": [
+   "talk",
+   "speak"
+  ],
+  "تُفَّاح|NOUN": [
+   "apple"
+  ],
+  "تِسْعَة|NUM": [
+   "nine"
+  ],
+  "ثَقِيل|ADJ": [
+   "heavy"
+  ],
+  "ثَلَاثَة|NUM": [
+   "three"
+  ],
+  "ثَلْج|NOUN": [
+   "snow"
+  ],
+  "ثَمَن|NOUN": [
+   "price"
+  ],
+  "ثُمَّ|CONJ": [
+   "then"
+  ],
+  "جَاءَ|VERB": [
+   "come"
+  ],
+  "جَامِعَة|NOUN": [
+   "university"
+  ],
+  "جَبَل|NOUN": [
+   "mountain"
+  ],
+  "جَدَّة|NOUN": [
+   "grandmother"
+  ],
+  "جَدِيد|ADJ": [
+   "new"
+  ],
+  "جَدّ|NOUN": [
+   "grandfather"
+  ],
+  "جَعَلَ|VERB": [
+   "make"
+  ],
+  "جَلَسَ|VERB": [
+   "sit"
+  ],
+  "جَمِيل|ADJ": [
+   "beautiful"
+  ],
+  "جَوَاب|NOUN": [
+   "answer"
+  ],
+  "جَيِّد|ADJ": [
+   "good"
+  ],
+  "جِدًّا|ADV": [
+   "very"
+  ],
+  "جِسْم|NOUN": [
+   "body"
+  ],
+  "حَارّ|ADJ": [
+   "hot"
+  ],
+  "حَال|NOUN": [
+   "state",
+   "condition"
+  ],
+  "حَاوَلَ|VERB": [
+   "try"
+  ],
+  "حَتَّى|ADP": [
+   "until"
+  ],
+  "حَدَثَ|VERB": [
+   "happen"
+  ],
+  "حَرْب|NOUN": [
+   "war"
+  ],
+  "حَزِين|ADJ": [
+   "sad"
+  ],
+  "حَسَن|ADJ": [
+   "good",
+   "fine",
+   "beautiful"
+  ],
+  "حَسَنًا|ADV": [
+   "well",
+   "fine",
+   "good"
+  ],
+  "حَضَرَ|VERB": [
+   "attend",
+   "come"
+  ],
+  "حَفِظَ|VERB": [
+   "memorize",
+   "keep",
+   "preserve"
+  ],
+  "حَقِيقَة|NOUN": [
+   "truth",
+   "reality"
+  ],
+  "حَقّ|NOUN": [
+   "right",
+   "truth"
+  ],
+  "حَكَمَ|VERB": [
+   "rule",
+   "govern"
+  ],
+  "حَمَلَ|VERB": [
+   "carry"
+  ],
+  "حَيَاة|NOUN": [
+   "life"
+  ],
+  "حَيَوَان|NOUN": [
+   "animal"
+  ],
+  "حَيّ|ADJ": [
+   "alive",
+   "living"
+  ],
+  "حُبّ|NOUN": [
+   "love"
+  ],
+  "حُرّ|ADJ": [
+   "free"
+  ],
+  "حُكُومَة|NOUN": [
+   "government"
+  ],
+  "حِصَان|NOUN": [
+   "horse"
+  ],
+  "حِكْمَة|NOUN": [
+   "wisdom"
+  ],
+  "خَافَ|VERB": [
+   "fear",
+   "be afraid"
+  ],
+  "خَرَجَ|VERB": [
+   "go out",
+   "exit"
+  ],
+  "خَفِيف|ADJ": [
+   "light"
+  ],
+  "خَمْسَة|NUM": [
+   "five"
+  ],
+  "خُبْز|NOUN": [
+   "bread"
+  ],
+  "دَائِمًا|ADV": [
+   "always"
+  ],
+  "دَار|NOUN": [
+   "house",
+   "home"
+  ],
+  "دَخَلَ|VERB": [
+   "enter"
+  ],
+  "دَرَسَ|VERB": [
+   "study"
+  ],
+  "دَرْس|NOUN": [
+   "lesson"
+  ],
+  "دَم|NOUN": [
+   "blood"
+  ],
+  "دَوْلَة|NOUN": [
+   "state",
+   "country"
+  ],
+  "ذَكَرَ|VERB": [
+   "mention"
+  ],
+  "ذَكِيّ|ADJ": [
+   "intelligent",
+   "clever"
+  ],
+  "ذَهَبَ|VERB": [
+   "go"
+  ],
+  "ذٰلِكَ|PRON": [
+   "that"
+  ],
+  "رَأَى|VERB": [
+   "see"
+  ],
+  "رَأْس|NOUN": [
+   "head"
+  ],
+  "رَئِيس|NOUN": [
+   "president",
+   "head"
+  ],
+  "رَائِع|ADJ": [
+   "wonderful",
+   "great",
+   "excellent"
+  ],
+  "رَجَعَ|VERB": [
+   "return"
+  ],
+  "رَجُل|NOUN": [
+   "man"
+  ],
+  "رَسَمَ|VERB": [
+   "draw"
+  ],
+  "رَكِبَ|VERB": [
+   "ride"
+  ],
+  "رِسَالَة|NOUN": [
+   "letter",
+   "message"
+  ],
+  "رِيح|NOUN": [
+   "wind"
+  ],
+  "زَارَ|VERB": [
+   "visit"
+  ],
+  "زَهْرَة|NOUN": [
+   "flower"
+  ],
+  "زَوْج|NOUN": [
+   "husband"
+  ],
+  "زَوْجَة|NOUN": [
+   "wife"
+  ],
+  "سَأَلَ|VERB": [
+   "ask"
+  ],
+  "سَاعَة|NOUN": [
+   "hour",
+   "watch",
+   "clock"
+  ],
+  "سَاعَدَ|VERB": [
+   "help"
+  ],
+  "سَافَرَ|VERB": [
+   "travel"
+  ],
+  "سَبْعَة|NUM": [
+   "seven"
+  ],
+  "سَرِيع|ADJ": [
+   "fast",
+   "quick"
+  ],
+  "سَعِيد|ADJ": [
+   "happy"
+  ],
+  "سَفِيه|ADJ": [
+   "foolish"
+  ],
+  "سَلَام|NOUN": [
+   "peace"
+  ],
+  "سَمَاء|NOUN": [
+   "sky"
+  ],
+  "سَمَحَ|VERB": [
+   "allow",
+   "permit"
+  ],
+  "سَمَك|NOUN": [
+   "fish"
+  ],
+  "سَمِعَ|VERB": [
+   "hear"
+  ],
+  "سَنَة|NOUN": [
+   "year"
+  ],
+  "سَهْل|ADJ": [
+   "easy"
+  ],
+  "سَيَّارَة|NOUN": [
+   "car"
+  ],
+  "سَيِّئ|ADJ": [
+   "bad"
+  ],
+  "سُؤَال|NOUN": [
+   "question"
+  ],
+  "سُكَّر|NOUN": [
+   "sugar"
+  ],
+  "سُوق|NOUN": [
+   "market"
+  ],
+  "سِتَّة|NUM": [
+   "six"
+  ],
+  "شَارِع|NOUN": [
+   "street"
+  ],
+  "شَاي|NOUN": [
+   "tea"
+  ],
+  "شَبِيه|ADJ": [
+   "similar",
+   "like"
+  ],
+  "شَجَرَة|NOUN": [
+   "tree"
+  ],
+  "شَرِبَ|VERB": [
+   "drink"
+  ],
+  "شَعَرَ|VERB": [
+   "feel"
+  ],
+  "شَعْب|NOUN": [
+   "people",
+   "nation"
+  ],
+  "شَعْر|NOUN": [
+   "hair"
+  ],
+  "شَكَرَ|VERB": [
+   "thank"
+  ],
+  "شَمْس|NOUN": [
+   "sun"
+  ],
+  "شَهْر|NOUN": [
+   "month"
+  ],
+  "شُجَاع|ADJ": [
+   "brave"
+  ],
+  "صَامَ|VERB": [
+   "fast"
+  ],
+  "صَبَاح|NOUN": [
+   "morning"
+  ],
+  "صَبَغَ|VERB": [
+   "dye"
+  ],
+  "صَبْر|NOUN": [
+   "patience"
+  ],
+  "صَحِيح|ADJ": [
+   "correct",
+   "true",
+   "right"
+  ],
+  "صَدِيق|NOUN": [
+   "friend"
+  ],
+  "صَعْب|ADJ": [
+   "difficult",
+   "hard"
+  ],
+  "صَغِير|ADJ": [
+   "small",
+   "little"
+  ],
+  "صَلَّى|VERB": [
+   "pray"
+  ],
+  "صُورَة|NOUN": [
+   "picture",
+   "image"
+  ],
+  "ضَحِكَ|VERB": [
+   "laugh"
+  ],
+  "ضَرَبَ|VERB": [
+   "hit",
+   "strike"
+  ],
+  "ضَعِيف|ADJ": [
+   "weak"
+  ],
+  "ضَيِّق|ADJ": [
+   "narrow"
+  ],
+  "طَائِر|NOUN": [
+   "bird"
+  ],
+  "طَائِرَة|NOUN": [
+   "airplane",
+   "aircraft"
+  ],
+  "طَالِب|NOUN": [
+   "student"
+  ],
+  "طَبَخَ|VERB": [
+   "cook"
+  ],
+  "طَبِيب|NOUN": [
+   "doctor"
+  ],
+  "طَرِيق|NOUN": [
+   "road",
+   "way"
+  ],
+  "طَعَام|NOUN": [
+   "food"
+  ],
+  "طَلَبَ|VERB": [
+   "ask",
+   "request"
+  ],
+  "طَوِيل|ADJ": [
+   "long",
+   "tall"
+  ],
+  "طِفْل|NOUN": [
+   "child"
+  ],
+  "ظَلَام|NOUN": [
+   "darkness"
+  ],
+  "ظَهَرَ|VERB": [
+   "appear"
+  ],
+  "عَائِلَة|NOUN": [
+   "family"
+  ],
+  "عَاشَ|VERB": [
+   "live"
+  ],
+  "عَالَم|NOUN": [
+   "world"
+  ],
+  "عَام|NOUN": [
+   "year"
+  ],
+  "عَبَدَ|VERB": [
+   "worship"
+  ],
+  "عَدْل|NOUN": [
+   "justice"
+  ],
+  "عَرَفَ|VERB": [
+   "know"
+  ],
+  "عَسَل|NOUN": [
+   "honey"
+  ],
+  "عَشَرَة|NUM": [
+   "ten"
+  ],
+  "عَظِيم|ADJ": [
+   "great",
+   "mighty"
+  ],
+  "عَلَم|NOUN": [
+   "flag",
+   "banner"
+  ],
+  "عَلَى|ADP": [
+   "on"
+  ],
+  "عَلَّمَ|VERB": [
+   "teach"
+  ],
+  "عَلِمَ|VERB": [
+   "know"
+  ],
+  "عَمَل|NOUN": [
+   "work"
+  ],
+  "عَمِلَ|VERB": [
+   "work",
+   "do"
+  ],
+  "عَنْ|ADP": [
+   "about",
+   "concerning"
+  ],
+  "عَيْن|NOUN": [
+   "eye"
+  ],
+  "عِلْم|NOUN": [
+   "knowledge",
+   "science"
+  ],
+  "عِنْدَ|ADP": [
+   "at",
+   "near",
+   "with"
+  ],
+  "غَدًا|ADV": [
+   "tomorrow"
+  ],
+  "غَرِيب|ADJ": [
+   "strange"
+  ],
+  "غَسَلَ|VERB": [
+   "wash"
+  ],
+  "غَنَّى|VERB": [
+   "sing"
+  ],
+  "غَنِيّ|ADJ": [
+   "rich"
+  ],
+  "غَيْر|PART": [
+   "other",
+   "not"
+  ],
+  "غُرْفَة|NOUN": [
+   "room"
+  ],
+  "فَتَحَ|VERB": [
+   "open"
+  ],
+  "فَعَلَ|VERB": [
+   "do"
+  ],
+  "فَقَطْ|ADV": [
+   "only"
+  ],
+  "فَقِير|ADJ": [
+   "poor"
+  ],
+  "فَقِيه|NOUN": [
+   "jurist"
+  ],
+  "فَكَّرَ|VERB": [
+   "think"
+  ],
+  "فَم|NOUN": [
+   "mouth"
+  ],
+  "فَهِمَ|VERB": [
+   "understand"
+  ],
+  "فِكْرَة|NOUN": [
+   "idea"
+  ],
+  "فِي|ADP": [
+   "in"
+  ],
+  "قَاضٍ|NOUN": [
+   "judge"
+  ],
+  "قَالَ|VERB": [
+   "say"
+  ],
+  "قَامَ|VERB": [
+   "rise",
+   "get up",
+   "stand"
+  ],
+  "قَبْل|PART": [
+   "before",
+   "previously"
+  ],
+  "قَدَم|NOUN": [
+   "foot"
+  ],
+  "قَدِيم|ADJ": [
+   "old",
+   "ancient"
+  ],
+  "قَرَأَ|VERB": [
+   "read"
+  ],
+  "قَرِيب|ADJ": [
+   "near",
+   "close"
+  ],
+  "قَرْيَة|NOUN": [
+   "village"
+  ],
+  "قَصِير|ADJ": [
+   "short"
+  ],
+  "قَلَم|NOUN": [
+   "pen"
+  ],
+  "قَلِيل|ADJ": [
+   "few",
+   "little"
+  ],
+  "قَلْب|NOUN": [
+   "heart"
+  ],
+  "قَمَر|NOUN": [
+   "moon"
+  ],
+  "قَهْوَة|NOUN": [
+   "coffee"
+  ],
+  "قَوِيّ|ADJ": [
+   "strong"
+  ],
+  "قِطَار|NOUN": [
+   "train"
+  ],
+  "قِطَّة|NOUN": [
+   "cat"
+  ],
+  "كَانَ|VERB": [
+   "be"
+  ],
+  "كَبِير|ADJ": [
+   "big",
+   "large"
+  ],
+  "كَتَبَ|VERB": [
+   "write"
+  ],
+  "كَثِير|ADJ": [
+   "many",
+   "much",
+   "a lot"
+  ],
+  "كَرِيم|ADJ": [
+   "generous"
+  ],
+  "كَلِمَة|NOUN": [
+   "word"
+  ],
+  "كَلْب|NOUN": [
+   "dog"
+  ],
+  "كَنِيسَة|NOUN": [
+   "church"
+  ],
+  "كَيْفَ|ADV": [
+   "how"
+  ],
+  "كُلّ|PART": [
+   "all",
+   "every",
+   "each"
+  ],
+  "كِتَاب|NOUN": [
+   "book"
+  ],
+  "لَا|PART": [
+   "no",
+   "not"
+  ],
+  "لَبَن|NOUN": [
+   "milk"
+  ],
+  "لَبِسَ|VERB": [
+   "wear"
+  ],
+  "لَحْم|NOUN": [
+   "meat"
+  ],
+  "لَذِيذ|ADJ": [
+   "delicious",
+   "tasty"
+  ],
+  "لَعِبَ|VERB": [
+   "play"
+  ],
+  "لَمْ|PART": [
+   "not"
+  ],
+  "لَنْ|ADV": [
+   "not"
+  ],
+  "لَوْن|NOUN": [
+   "color",
+   "colour"
+  ],
+  "لَيْل|NOUN": [
+   "night"
+  ],
+  "لَيْلَة|NOUN": [
+   "night"
+  ],
+  "لُغَة|NOUN": [
+   "language"
+  ],
+  "لِأَنَّ|CONJ": [
+   "because"
+  ],
+  "لِمَاذَا|ADV": [
+   "why"
+  ],
+  "لٰكِنْ|CONJ": [
+   "but"
+  ],
+  "مَا|PRON": [
+   "what"
+  ],
+  "مَاء|NOUN": [
+   "water"
+  ],
+  "مَاتَ|VERB": [
+   "die"
+  ],
+  "مَاذَا|PRON": [
+   "what"
+  ],
+  "مَال|NOUN": [
+   "money",
+   "wealth"
+  ],
+  "مَتَى|ADP": [
+   "when"
+  ],
+  "مَدِينَة|NOUN": [
+   "city"
+  ],
+  "مَدْرَسَة|NOUN": [
+   "school"
+  ],
+  "مَرِيض|ADJ": [
+   "sick",
+   "ill"
+  ],
+  "مَسَاء|NOUN": [
+   "evening"
+  ],
+  "مَشَى|VERB": [
+   "walk"
+  ],
+  "مَطَار|NOUN": [
+   "airport"
+  ],
+  "مَطَر|NOUN": [
+   "rain"
+  ],
+  "مَطْبَخ|NOUN": [
+   "kitchen"
+  ],
+  "مَعًا|ADV": [
+   "together"
+  ],
+  "مَعَ|ADP": [
+   "with"
+  ],
+  "مَعْرِفَة|NOUN": [
+   "knowledge"
+  ],
+  "مَكْتَب|NOUN": [
+   "office",
+   "desk"
+  ],
+  "مَكْتَبَة|NOUN": [
+   "library"
+  ],
+  "مَلَكَ|VERB": [
+   "own",
+   "possess"
+  ],
+  "مَلِك|NOUN": [
+   "king"
+  ],
+  "مَنْ|PRON": [
+   "who"
+  ],
+  "مَوْت|NOUN": [
+   "death"
+  ],
+  "مُعَلِّم|NOUN": [
+   "teacher"
+  ],
+  "مُمْكِن|ADJ": [
+   "possible"
+  ],
+  "مُهِمّ|ADJ": [
+   "important"
+  ],
+  "مِلْح|NOUN": [
+   "salt"
+  ],
+  "مِنْ|ADP": [
+   "from"
+  ],
+  "نَار|NOUN": [
+   "fire"
+  ],
+  "نَاس|NOUN": [
+   "people"
+  ],
+  "نَافِذَة|NOUN": [
+   "window"
+  ],
+  "نَامَ|VERB": [
+   "sleep"
+  ],
+  "نَجَحَ|VERB": [
+   "succeed"
+  ],
+  "نَجْم|NOUN": [
+   "star"
+  ],
+  "نَحْن|PART": [
+   "we"
+  ],
+  "نَزِيه|ADJ": [
+   "honest",
+   "upright"
+  ],
+  "نَسِيَ|VERB": [
+   "forget"
+  ],
+  "نَظَرَ|VERB": [
+   "look"
+  ],
+  "نَظِيف|ADJ": [
+   "clean"
+  ],
+  "نَعَمْ|ADV": [
+   "yes"
+  ],
+  "نَفْس|NOUN": [
+   "self",
+   "soul"
+  ],
+  "نَهَار|NOUN": [
+   "day"
+  ],
+  "نَهْر|NOUN": [
+   "river"
+  ],
+  "نُور|NOUN": [
+   "light"
+  ],
+  "هَلْ|PART": [
+   "question"
+  ],
+  "هُدًى|NOUN": [
+   "guidance"
+  ],
+  "هُمْ|PRON": [
+   "they"
+  ],
+  "هُنَا|ADV": [
+   "here"
+  ],
+  "هُنَاكَ|ADV": [
+   "there"
+  ],
+  "هُوَ|PRON": [
+   "he"
+  ],
+  "هِيَ|PRON": [
+   "she"
+  ],
+  "هٰذَا|PRON": [
+   "this"
+  ],
+  "وَاحِد|PRON": [
+   "one"
+  ],
+  "وَاسِع|ADJ": [
+   "wide",
+   "spacious"
+  ],
+  "وَجَدَ|VERB": [
+   "find"
+  ],
+  "وَجْه|NOUN": [
+   "face"
+  ],
+  "وَرَقَة|NOUN": [
+   "paper",
+   "sheet",
+   "leaf"
+  ],
+  "وَصَلَ|VERB": [
+   "arrive"
+  ],
+  "وَضَعَ|VERB": [
+   "put"
+  ],
+  "وَطَن|NOUN": [
+   "homeland"
+  ],
+  "وَقَفَ|VERB": [
+   "stand"
+  ],
+  "وَقْت|NOUN": [
+   "time"
+  ],
+  "وَلَد|NOUN": [
+   "boy",
+   "child",
+   "son"
+  ],
+  "يَد|NOUN": [
+   "hand"
+  ],
+  "يَوْم|NOUN": [
+   "day"
+  ]
+ }
+}

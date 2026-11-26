@@ -14,7 +14,7 @@ Lemma string convention: `arHeadForm` of `arabic/text.ts`.
 | pages that are only alternative spellings (alt-of) | 1,021 |
 | participle entries (verb class in the extract, head "active / passive participle of X"; made ADJ with VerbForm=Part, Voice, Of=verb) / of those with Of | 14 / 10 |
 | lemma glosses changed by the clean-gloss rule (batch 6; counted before the reviewed choices) | 13,202 |
-| gloss trust class (Sense= in lex): Rev (a reviewed choice matched) / One (a single real sense) / Lab (the lead stands after labelled senses) / Ord (the source's order, unreviewed): over all lemma ids with rows / over the 2,000 highest-count lexemes (leads) | 1243 / 15224 / 120 / 8714; 1123 / 704 / 1 / 172 |
+| gloss trust class (Sense= in lex): Rev (a reviewed choice matched) / One (a single real sense) / Lab (the lead stands after labelled senses) / Ord (the source's order, unreviewed): over all lemma ids with rows / over the 2,000 highest-count lexemes (leads) | 1243 / 15224 / 120 / 8714; 1128 / 702 / 1 / 169 |
 | lexemes with homonym siblings (Homonyms=N on each id, Lead=Yes on the lead) / glosses that differ from the batch-6 choice because of the sense labels | 787 / 172 |
 | reviewed gloss choices (gloss-choices.json): lexemes that took one / lexemes where no sense matched (keeping the default) | 1,243 / 7: أَنَا|PRON, زَهْرَة|NOUN, زَوْج|NOUN, فَقِير|ADJ, قَرْيَة|NOUN, مَتَى|ADP, وَاحِد|PRON |
 | lemma ids by part of speech | NOUN 12,758, VERB 7,366, ADJ 3,814, PROPN 2,357, ADV 366, ADP 113, INTJ 90, CONJ 80, NUM 53, PRON 44, PART 42, DET 6 |
@@ -56,7 +56,7 @@ Lemma string convention: `arHeadForm` of `arabic/text.ts`.
 | lemma entries with no table at all / of those with a row under their written form (the source's canonical row, code `canonical…`) | 2,520 / 2,015 (without: 505, of which multi-word heads 505) |
 | adjective lemmas with a feminine row (any origin) / of all adjective lemma ids; "feminine … of X" form pages of adjectives resolved (rows new, the rest already in the adjective's table) | 3,538 / 3,814; 930 (49 new) |
 | core ranking | marginal (own = weight of a lemma's own keys per byte; marginal = frequency of the keys it adds to those already covered, per byte) |
-| core | 1676 lemmas (255 of closed classes, 2 seeded), 2597 keys, 12771 rows, 499,523 bytes of JSON (budget 500,000) |
+| core | 1676 lemmas (255 of closed classes, 2 seeded), 2597 keys, 12771 rows, 499,514 bytes of JSON (budget 500,000) |
 | core token coverage on ar_50k (running words whose key is a core key) | 55.94 % of 149,102,962 (clitic forms are not keys) |
 | identity checks accepted through a numbered sibling of the main id / through the loose fold | 2 / 2 (counted apart from the clean ones above) |
 | lexeme preferences (--identities): candidate loser/winner pairs / dropped as one lexeme (same head, same part-of-speech group) / dropped as both directions (b) / dropped as balanced (c) / closed-class loser to open winner dropped (d) | 1,905 / 75 / 7 / 110 / 2 |

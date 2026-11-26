@@ -6,10 +6,8 @@
  "cases": {
   "o17-muallimat": "lemma: expected مُعَلِّمَة, got مُعَلِّم  <- مُعَلِّم|NOUN|0.9",
   "o25-raahu": "root: expected ر ء ي, ab ent  <- رَأَى|VERB|0.85; رَأْي|NOUN|0.45; رَأْي|NOUN|0.45",
-  "o30-fsyktbwnha": "undecided (confidence 0.45) where the form decide   <- كَتَبَ|VERB|0.45; أَكْتَبَ|VERB|0.45; كَتَّبَ|VERB|0.45",
   "o32-allama": "root: expected ع ل م, ab ent  <- عَلَّمَ|VERB|0.9",
   "o34-alam": "undecided (confidence 0.45) where the form decide  ; root: expected ع ل م, ab ent  <- عَلَم|NOUN|0.45; عَالَم|NOUN|0.45",
-  "w-form-I": "undecided (confidence 0.45) where the form decide   <- ذَهَبَ|VERB|0.45; ذَهَب|NOUN|0.45",
   "w-form-IX": "A pect: expected Perf, ab ent ; Per on: expected 3, got 2,3  <- اِحْمَرَّ|VERB|0.9",
   "w-defective-imperfect": "Mood: expected Ind, got Ind,Sub  <- رَمَى|VERB|0.9",
   "w-geminate-perfect": "root: expected م د د, ab ent ; note .rootCla : expected geminate, got undefined  <- مَدَّ|VERB|0.6; مَدّ|NOUN|0.45",

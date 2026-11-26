@@ -1,16 +1,81 @@
 {
  "_about": "Reviewed by the pack's builder (machine-drafted, not by an Arabist): for each bare perfect spelling, which verb form a reader of Modern Standard prose meets far more often when Form I and Form II are spelled alike. 'balanced' pairs are never decided.",
  "prefer": {
+  "أَجْلَسَ|VERB": [
+   "جَلَسَ|VERB"
+  ],
+  "أَجْمَعَ|VERB": [
+   "جَمَعَ|VERB"
+  ],
+  "أَحْفَظَ|VERB": [
+   "حَفِظَ|VERB"
+  ],
+  "أَحْكَمَ|VERB": [
+   "حَكَمَ|VERB",
+   "حَكُمَ|VERB"
+  ],
   "أَخَّذَ|VERB": [
    "أَخَذَ|VERB"
+  ],
+  "أَخْلَقَ|VERB": [
+   "خَلَقَ|VERB",
+   "خَلُقَ|VERB",
+   "خَلِقَ|VERB"
+  ],
+  "أَذْكَرَ|VERB": [
+   "ذَكَرَ|VERB"
+  ],
+  "أَذْهَبَ|VERB": [
+   "ذَهَبَ|VERB"
+  ],
+  "أَزْرَعَ|VERB": [
+   "زَرَعَ|VERB"
+  ],
+  "أَسْمَعَ|VERB": [
+   "سَمِعَ|VERB"
+  ],
+  "أَشْرَبَ|VERB": [
+   "شَرِبَ|VERB"
+  ],
+  "أَضْرَبَ|VERB": [
+   "ضَرَبَ|VERB",
+   "ضَرُبَ|VERB",
+   "ضَرِبَ|VERB"
+  ],
+  "أَطْلَبَ|VERB": [
+   "طَلَبَ|VERB"
+  ],
+  "أَعْمَلَ|VERB": [
+   "عَمِلَ|VERB"
+  ],
+  "أَفْهَمَ|VERB": [
+   "فَهِمَ|VERB"
+  ],
+  "أَقْتَلَ|VERB": [
+   "قَتَلَ|VERB"
   ],
   "أَكَّلَ|VERB": [
    "أَكَلَ|VERB",
    "أَكِلَ|VERB"
   ],
+  "أَكْتَبَ|VERB": [
+   "كَتَبَ|VERB"
+  ],
+  "أَكْشَفَ|VERB": [
+   "كَشَفَ|VERB"
+  ],
+  "أَلْعَبَ|VERB": [
+   "لَعِبَ|VERB"
+  ],
   "أَمَّرَ|VERB": [
    "أَمَرَ|VERB",
    "أَمِرَ|VERB"
+  ],
+  "أَمْرَضَ|VERB": [
+   "مَرِضَ|VERB"
+  ],
+  "أَنْشَرَ|VERB": [
+   "نَشَرَ|VERB"
   ],
   "بَلَّغَ|VERB": [
    "بَلَغَ|VERB"
@@ -89,6 +154,9 @@
    "رَكَبَ|VERB",
    "رَكِبَ|VERB"
   ],
+  "زَيَّدَ|VERB": [
+   "زَادَ|VERB"
+  ],
   "سَبَّحَ|VERB": [
    "سَبَحَ|VERB"
   ],
@@ -100,6 +168,10 @@
   ],
   "سَمَّعَ|VERB": [
    "سَمِعَ|VERB"
+  ],
+  "سَيَّرَ|VERB": [
+   "سَارَ|VERB",
+   "سَارَّ|VERB"
   ],
   "شَرَّبَ|VERB": [
    "شَرِبَ|VERB"
@@ -118,6 +190,9 @@
   ],
   "صَنَّعَ|VERB": [
    "صَنَعَ|VERB"
+  ],
+  "صَيَّرَ|VERB": [
+   "صَارَ|VERB"
   ],
   "ضَحَّكَ|VERB": [
    "ضَحِكَ|VERB"
@@ -190,6 +265,9 @@
   "قَطَّعَ|VERB": [
    "قَطَعَ|VERB"
   ],
+  "قَوَّلَ|VERB": [
+   "قَالَ|VERB"
+  ],
   "كَتَّبَ|VERB": [
    "كَتَبَ|VERB"
   ],
@@ -221,6 +299,9 @@
   "مَلَّكَ|VERB": [
    "مَلَكَ|VERB"
   ],
+  "مَوَّتَ|VERB": [
+   "مَاتَ|VERB"
+  ],
   "نَزَّلَ|VERB": [
    "نَزَلَ|VERB"
   ],
@@ -235,6 +316,9 @@
   ],
   "نَقَّلَ|VERB": [
    "نَقَلَ|VERB"
+  ],
+  "نَوَّمَ|VERB": [
+   "نَامَ|VERB"
   ],
   "هَبَّطَ|VERB": [
    "هَبَطَ|VERB"

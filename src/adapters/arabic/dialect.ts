@@ -28,7 +28,7 @@ function add(variety: ArDialect, strong: boolean, words: string): void {
 }
 
 // the first list to name a word gives its variety
-add('egyptian', true, 'مش عايز عايزه عايزة عايزين عاوز عاوزة عاوزين دلوقتي دلوقت ازاي إزاي إزيك ازيك بتاع بتاعت بتاعة بتوع كده كدا ايوه أيوه لسه لسا برضه برضو مفيش ايوا');
+add('egyptian', true, 'احنا إحنا النهارده النهاردة نهارده مش عايز عايزه عايزة عايزين عاوز عاوزة عاوزين دلوقتي دلوقت ازاي إزاي إزيك ازيك بتاع بتاعت بتاعة بتوع كده كدا ايوه أيوه لسه لسا برضه برضو مفيش ايوا');
 add('egyptian', false, 'فين ليه ايه مين ده دي دا اوي');
 add('levantine', true, 'شو هلق هلأ كتير منيح هيك هيدا هيدي هيدول كيفك');
 add('levantine', false, 'بدي بدك بدنا بدها بدو بدكم ليش وين عم هاد هاي');
@@ -67,7 +67,10 @@ export function arDialectSignals(tokens: readonly RawToken[], opts: ArDialectOpt
   words.forEach((t, wi) => {
     at = tokens.indexOf(t);
     const k = norm(t.surface);
-    const m = MARKERS.get(k);
+    // spoken-variety words are written bare: a marker that carries printed vowels or a shadda (مَشَّ "he sucked") is the Standard word it spells
+    if (/[ً-ْٰ]/.test(t.surface)) return;
+    // a conjunction written onto the marker (وعايز، فمش) is still the marker
+    const m = MARKERS.get(k) ?? (/^[وف]/.test(k) ? MARKERS.get(k.slice(1)) : undefined);
     if (m) { push(t.surface, k, m); return; }
     // the Egyptian negation ما … ـش: a ما and, within three words, a verb-like word ending in ش (ما كتبتش), or one written word (ماعرفتش)
     if (/^ما\S{3,}ش$/.test(k) && k.length >= 7) push(t.surface, k, { variety: 'egyptian', strong: false });

@@ -44,6 +44,8 @@ export interface Behind { sentence: string; surface: string; gold?: GoldToken }
 export interface Card {
   unitId: string; kind: 'lemma' | 'form'; head: string; pos?: string; decision: string;
   glosses: string[]; behind: Behind[];
+  /** the answers GoReview accepts for the meaning (acceptedMeanings of the card's facts) */
+  accepted: string[];
   /** what is wrong with it, if anything (empty = nothing found) */
   problems: string[];
   /** 'unchecked' when no gold token stands behind it */
@@ -186,6 +188,7 @@ export async function runDeckAudit(texts: AuditText[], opts: RunOptions = {}): P
   const provider = factsFor('ar', api)!;
   const runtime = createPackRuntime(packFor('ar')!, { fetch: files, baseUrl: 'http://assets.local/' });
   const cards: Card[] = [];
+  const acceptedOf = new Map<string, string[]>();
   for (const o of admitted) {
     const kind = o.unitId.startsWith('lemma:ar:') ? 'lemma' : 'form';
     const { head, pos } = kind === 'lemma' ? parseLemmaId(o.unitId) : { head: o.unitId.slice('form:ar:'.length), pos: undefined };
@@ -225,12 +228,21 @@ export async function runDeckAudit(texts: AuditText[], opts: RunOptions = {}): P
       const cand0 = arAdapter.analyze(arAdapter.tokenize(head)).find((a) => a.token.isWord)?.candidates.find((c) => c.lemma === head && c.pos === pos);
       // the card leads with the reading's own gloss (a hand gloss of the closed table included)
       if (cand0?.gloss && glosses[0] !== cand0.gloss) problems.push(`the card leads with "${glosses[0]}", not with the reading's gloss "${cand0.gloss}"`);
-      // no answer comes from a sibling entry of the same headword, and none is a truncated alternative
+      // ONE source entry: for a head with several source entries (Homonyms) every accepted answer is an alternative of the lead gloss or of ONE dictionary record
       const accepted = acceptedMeanings(facts);
-      const sibling = String(cand0?.notes?.homonymMeanings ?? '').replace(/^[^:]*:\s*/u, '').split(/\s*[;|]\s*/u).map((x) => x.trim().toLowerCase()).filter(Boolean);
-      for (const a of accepted) if (sibling.includes(a.toLowerCase())) problems.push(`an accepted answer "${a}" belongs to another entry of the headword`);
+      acceptedOf.set(o.unitId, accepted);
+      if (Number(cand0?.notes?.homonyms) > 1) {
+        const norm = (t: string): string => t.toLowerCase().replace(/\([^)]*\)|\[[^\]]*\]/gu, ' ').replace(/\s+/gu, ' ').trim().replace(/[.]$/u, '');
+        const alts = (t: string): string[] => [norm(t), ...t.split(/[;,]/u).map(norm)].filter(Boolean);
+        const lead = new Set(alts(cand0?.gloss ?? ''));
+        let records: Array<{ s?: Array<{ g: string }> }> = [];
+        try { records = ((await runtime.entry(head, pos))?.records ?? []) as typeof records; } catch { records = []; }
+        const fits = (rec?: Set<string>): boolean => accepted.every((x) => lead.has(norm(x)) || rec?.has(norm(x)));
+        const oneRecord = records.some((r) => fits(new Set((r.s ?? []).flatMap((x) => alts(x.g)))));
+        if (!(fits() || oneRecord)) problems.push(`accepted answers of a headword with several entries come from more than one entry: ${accepted.join(' | ')}`);
+      }
     }
-    cards.push({ unitId: o.unitId, kind, head, ...(pos ? { pos } : {}), decision: o.decision, glosses, behind: b, problems, checked: b.some((x) => x.gold?.lemma || x.gold?.meaning) });
+    cards.push({ unitId: o.unitId, kind, accepted: acceptedOf.get(o.unitId) ?? [], head, ...(pos ? { pos } : {}), decision: o.decision, glosses, behind: b, problems, checked: b.some((x) => x.gold?.lemma || x.gold?.meaning) });
   }
 
   // 5. what was held back, by distinct word (an Arabic written key), and why

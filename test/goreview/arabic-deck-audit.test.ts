@@ -44,7 +44,7 @@ const show = (label: string, r: AuditResult): void => {
  * gloss is reviewed the entry must be deleted (the second assertion fails when a listed card is no longer a finding).
  */
 const OPEN_MEANING_FINDINGS: string[] = [];
-const isMeaning = (p: string): boolean => /leading meaning|does not begin|is labelled|numbered merge|leads with|another entry/u.test(p);
+const isMeaning = (p: string): boolean => /leading meaning|does not begin|is labelled|numbered merge|leads with|another entry|more than one entry/u.test(p);
 
 describe.skipIf(!shardsPresent())('the Arabic deck audit: real path, today\'s rules', () => {
   let r: AuditResult;
@@ -132,4 +132,18 @@ describe.skipIf(!shardsPresent())('the two kinds of hold, proved through the rea
     expect(admitted.length, 'at least one of the reviewed lemmas becomes a card').toBeGreaterThan(0);
     expect(admitted.every((c) => c.kind === 'lemma')).toBe(true);
   }, 900_000);
+});
+
+describe.skipIf(!shardsPresent())('a headword with several source entries: قَالَ', () => {
+  it('shows and accepts the "to say" entry only: its own senses are true answers, the nap entry never is', async () => {
+    const r = await runDeckAudit([{ id: 'qala', text: '\u0642\u064E\u0627\u0644\u064E' }]);
+    const card = r.cards.find((c) => c.unitId.startsWith('lemma:ar:\u0642\u064E\u0627\u0644\u064E:VERB'));
+    expect(card, 'قَالَ is admitted: a reviewed lead, one entry chosen by meaning').toBeDefined();
+    expect(card!.glosses[0]).toBe('to say');
+    // the printout of the audit's item 1: "to advocate, to propound, to root, to stand up for, to support" is a sense of the SAY record itself (root ق و ل), so these are true answers
+    for (const a of ['to say', 'to advocate', 'to propound', 'to root', 'to support']) expect(card!.accepted, a).toContain(a);
+    // the nap entry (root ق ي ل) is another word: none of its senses is an answer
+    for (const a of ['to nap', 'To nap', 'to nap.', 'to do something at noon', 'to cancel a contract or a promise']) expect(card!.accepted.map((x) => x.toLowerCase()), a).not.toContain(a.toLowerCase());
+    expect(card!.problems).toEqual([]);
+  }, 600_000);
 });

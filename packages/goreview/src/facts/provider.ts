@@ -72,7 +72,7 @@ export const SQ_CONSTRUCTION_PATTERNS: ConstructionPattern[] = [
 export interface FactsProviderDeps {
   /** The Repository lookup (`RepositoryApi.unit` adapted, or a fake): undefined when the Repository does not know the unit. */
   unit(unitId: string): Promise<RepositoryUnit | undefined>;
-  pack: { manifest: PackManifest; runtime: { gloss(lemma: string, pos?: string, forms?: readonly string[]): Promise<GlossResult | undefined> }; attestedFormLemma?(form: string): Promise<AttestedFormLemma | undefined> };
+  pack: { manifest: PackManifest; runtime: { gloss(lemma: string, pos?: string, forms?: readonly string[]): Promise<GlossResult | undefined>; entry?(lemma: string, pos?: string): Promise<{ records: ReadonlyArray<unknown> } | undefined> }; attestedFormLemma?(form: string): Promise<AttestedFormLemma | undefined> };
   /** Monotonic count of failed pack dictionary asset fetches; used to distinguish missing data from transient source faults. */
   sourceFailureCount?(): number;
   adapter: FactsAdapter;
@@ -469,11 +469,23 @@ export function createFactsProvider(deps: FactsProviderDeps): FactsProvider & { 
     const { examples, readings } = collect((o) => lemmaMatches(o, lemma, pos));
     const lexGloss = read.cand && !read.cand.unconfirmed && read.cand.gloss ? [read.cand.gloss] : [];
     const g = await glossesOf(lemma, pos, lexGloss);
-    // a language held to the deck rule: the dictionary senses of ANOTHER entry that shares the headword (the analyser names them in notes.homonymMeanings,
-    // "another word spelled the same: To nap") are not answers for this card: the meaning shown and the senses of THIS entry are
-    if (holdsDeck(lang) && read.cand?.notes?.homonymMeanings) {
-      const other = String(read.cand.notes.homonymMeanings).replace(/^[^:]*:\s*/u, '').split(/\s*[;|]\s*/u).map((x) => x.trim().toLowerCase()).filter(Boolean);
-      g.glosses = g.glosses.filter((gl, i) => i < g.lexiconCount || !other.some((o) => gl.trim().toLowerCase().startsWith(o)));
+    // A language held to the deck rule: the meanings shown and accepted come from ONE source entry, the one the unit names. When the head + part of speech has
+    // several source entries (the analyser says so: notes.homonyms), the dictionary records under the key cannot be told apart by their vocalized head, so they are
+    // told apart by MEANING: only the record that has a sense containing the lead gloss (the index's one-line gloss) supplies dictionary senses; if none or several
+    // do, the card shows and accepts the lead gloss alone. notes.homonymMeanings ("another word spelled the same: To nap") is shown elsewhere and is never an answer.
+    if (holdsDeck(lang) && Number(read.cand?.notes?.homonyms) > 1 && read.cand?.gloss) {
+      const strip = (t: string): string => t.toLowerCase().replace(/\([^)]*\)|\[[^\]]*\]/gu, ' ');
+      const content = (t: string): string[] => [...new Set(strip(t).split(/[^a-z]+/u).filter((w) => w && !['to', 'a', 'the'].includes(w)))];
+      const lead = content(read.cand.gloss);
+      let chosen: string[] = [];
+      try {
+        const e = await pack.runtime.entry?.(lemma, pos);
+        const ofPos = ((e?.records ?? []) as Array<{ p?: string; s?: Array<{ g: string }> }>).filter((r) => !pos || !r.p || r.p === pos);
+        const matching = ofPos.map((r) => (r.s ?? []).map((x) => x.g)).filter((gs) => lead.length > 0 && gs.some((x) => { const w = new Set(content(x)); return lead.every((c) => w.has(c)); }));
+        if (matching.length === 1) chosen = matching[0];
+      } catch { chosen = []; }
+      const have = new Set(g.glosses.slice(0, g.lexiconCount).map((x) => x.trim().toLowerCase()));
+      g.glosses = [...g.glosses.slice(0, g.lexiconCount), ...chosen.filter((x) => x && !have.has(x.trim().toLowerCase()))];
     }
     const constructionIds = [...new Set(forms.map((f) => f.constructionId).filter((c): c is string => !!c))];
     const group: FormGroup = { lemma, ...(pos ? { pos } : {}), forms };

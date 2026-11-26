@@ -274,6 +274,18 @@ describe('the account screen', () => {
     expect([...document.querySelector('.screen')!.children].map((c) => c.id || c.className.split(' ')[0] || c.tagName.toLowerCase())).toEqual(['acct-hero', 'acct-tiles', 'forgot', 'email-links-note', 'muted']);
   });
 
+  it('another reader built on this screen says its own name where Biblia\u2019s would stand, and nothing else changes', () => {
+    document.body.replaceChildren(renderAccountScreen({ doc: document, account, topbar: topbar(), done: done as unknown as () => void, app: { name: 'Euclid' } }));
+    expect(q('.screen h1').textContent).toBe('Euclid');
+    expect(q('#account-welcome > summary').textContent).toBe('Welcome to Euclid');
+    expect(q('#account-welcome').textContent).toMatch(/^Welcome to EuclidEuclid records what you read with GoLearn/);
+    expect(q('#account-welcome').textContent).toMatch(/Without an account Euclid is a reader only/);
+    expect(q('#account-new-name').closest('label')!.textContent).toMatch(/GoLearn, GoReview and Euclid\./);
+    expect(document.body.textContent).not.toContain('Biblia');
+    mount(); // Biblia itself passes nothing
+    expect(q('.screen h1').textContent).toBe('Biblia');
+  });
+
   it('says the same days of grace as GoReview, whose guided deletion it follows', () => {
     expect(GRACE_DAYS).toBe(REVIEW_GRACE_DAYS);
   });

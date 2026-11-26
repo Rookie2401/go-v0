@@ -170,6 +170,8 @@ export interface AccountScreenDeps {
   /** The top bar the other views carry. */
   topbar: HTMLElement;
   syncStatus?: HTMLElement;
+  /** The reader this screen is shown in, when it is not Biblia (Euclid's Elements is built on this screen): its name stands where Biblia's would. */
+  app?: { name: string };
   /** Where to go once the learner is signed in. */
   done(): void;
 }
@@ -191,6 +193,7 @@ export const GRACE_DAYS = 14;
  */
 export function renderAccountScreen(d: AccountScreenDeps): HTMLElement {
   const { doc, account } = d;
+  const appName = d.app?.name.trim() || 'Biblia';
   const h = (tag: string, attrs: Record<string, string | undefined> = {}, ...children: Child[]): HTMLElement => {
     const el = doc.createElement(tag);
     for (const [k, v] of Object.entries(attrs)) if (v !== undefined) el.setAttribute(k, v);
@@ -351,7 +354,7 @@ export function renderAccountScreen(d: AccountScreenDeps): HTMLElement {
       download.disabled = false;
       if (!active()) return;
       if (!r.ok) { say(out, explainAccountFailure(r), 'error'); return; }
-      const filename = `biblia-data-${new Date().toISOString().slice(0, 10)}.json`;
+      const filename = `${appName.toLowerCase().replace(/[^a-z0-9]+/g, '-')}-data-${new Date().toISOString().slice(0, 10)}.json`;
       try {
         const url = URL.createObjectURL(new Blob([r.data], { type: 'application/json' }));
         const a = h('a', { href: url, download: filename });
@@ -428,7 +431,7 @@ export function renderAccountScreen(d: AccountScreenDeps): HTMLElement {
   const form = h('form', { id: 'account-form', class: 'acct-tile acct-signin', novalidate: '', 'aria-labelledby': 'account-form-h' },
     h('p', { class: 'acct-kicker' }, 'Your account'),
     h('h2', { class: 'acct-title', id: 'account-form-h' }, 'Sign in'),
-    field('Your name', newName, 'For a new account only: the name shown on your account in GoLearn, GoReview and Biblia.'),
+    field('Your name', newName, `For a new account only: the name shown on your account in GoLearn, GoReview and ${appName}.`),
     field('Email', email),
     field('Password', password, `A new password needs at least ${MIN_PASSWORD} characters. It is sent to the service and nowhere else; it is never kept here.`),
     h('div', { class: 'acct-actions' }, signInBtn, createBtn),
@@ -511,14 +514,14 @@ export function renderAccountScreen(d: AccountScreenDeps): HTMLElement {
   });
 
   // no Service address field: the address is config.json's and nothing on the page changes it (2026-10-28; the field existed 2026-10-25 to 28)
-  const head = hero('Welcome', 'Biblia');
+  const head = hero('Welcome', appName);
   screen.append(
     head.el,
     h('div', { class: 'acct-tiles' },
       form,
-      fold('', 'account-welcome', 'Welcome to Biblia',
-        h('p', {}, 'Biblia records what you read with GoLearn on the same account. Sign in with the account you use in GoLearn: what you look up and mark here is kept in it, GoReview and the GoLearn extension see it too, and the words you have met anywhere are marked on the page by how well you know them.'),
-        h('p', { class: 'muted' }, 'Without an account Biblia is a reader only: every word can be looked up, but nothing is recorded and nothing is marked.'))),
+      fold('', 'account-welcome', `Welcome to ${appName}`,
+        h('p', {}, `${appName} records what you read with GoLearn on the same account. Sign in with the account you use in GoLearn: what you look up and mark here is kept in it, GoReview and the GoLearn extension see it too, and the words you have met anywhere are marked on the page by how well you know them.`),
+        h('p', { class: 'muted' }, `Without an account ${appName} is a reader only: every word can be looked up, but nothing is recorded and nothing is marked.`))),
     forgot,
     h('p', { class: 'muted', id: 'email-links-note' }, 'Links in confirmation and password-reset emails open GoLearn setup.'),
     legal);

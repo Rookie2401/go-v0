@@ -241,7 +241,17 @@ describe('a word neither the analyser nor the dictionary has', () => {
     expect(t.dictionary).toBe('asked');
     expect(asked.every(([, l]) => l === lang)).toBe(true);
     expect(asked.flatMap(([f]) => f).sort()).toEqual(t.words.map((w) => w.word[0].slice(`form:${lang}:`.length)).sort());
-    for (const { word } of t.words) expect(word).toEqual([word[0], `lemma:${lang}:zz:NOUN`]);
+    // Arabic: the dictionary files words under a key without vowels, so no lemma id is made from it (a second, unvocalized id for the word): the form stays a form
+    for (const { word } of t.words) expect(word).toEqual(lang === 'ar' ? [word[0]] : [word[0], `lemma:${lang}:zz:NOUN`]);
+  });
+
+  it('ar: a dictionary-confirmed word never gets an unvocalized lemma id (أسبوع, مدرسة, كتاب), whatever the dictionary returns', async () => {
+    const confirmForms = async (forms: string[]): Promise<ConfirmFormsReply | undefined> => ({ ok: true, forms: Object.fromEntries(forms.map((f) => [f, [f, 'NOUN'] as [string, string]])) });
+    const t = await build('ar', ['أسبوع', 'مدرسة', 'كتاب'].map((w) => `${w} ${w}`), { confirmForms });
+    const ids = t.words.flatMap((w) => w.word as unknown as string[]);
+    // no id of the shape lemma:ar:<letters with no vowel mark>:POS appears for a word whose index lemma has vowels
+    const bare = ids.filter((id) => /^lemma:ar:[^:]+:[A-Z]+$/u.test(id) && !/[ً-ْٰ]/u.test(id.split(':')[2]));
+    expect(bare.filter((id) => ['أسبوع', 'مدرسة', 'كتاب'].includes(id.split(':')[2]))).toEqual([]);
   });
 
   it('a lemma with no part of speech is carried without one', async () => {

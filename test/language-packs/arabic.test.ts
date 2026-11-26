@@ -101,7 +101,7 @@ describe('the Arabic validation cases are what the analyser really reads, with i
   it('states the three honest outcomes: a sure reading, readings that compete, and no reading at all', () => {
     const statuses = new Set(AR_VALIDATION.map((c) => c.expect.status ?? (c.expect.readings === 'none' ? 'none' : 'unstated')));
     expect(statuses.has('high-confidence')).toBe(true);
-    expect(statuses.has('conflicted')).toBe(true);
+    expect(statuses.has('requires-review')).toBe(true); // the deck gate (src/adapters/arabic/deck.ts) marks what GoReview must not drill; a competing reading is held back the same way
     expect(statuses.has('none')).toBe(true);
   });
 
@@ -109,7 +109,7 @@ describe('the Arabic validation cases are what the analyser really reads, with i
     const practice = AR_TUTORIAL.steps.find((s) => s.id === 'practice-lookup')!.practice!;
     const mine = AR_VALIDATION.find((c) => c.surface === practice.target && c.sentence === practice.sentence);
     expect(mine, 'the practice sentence is a validation sentence').toBeDefined();
-    expect(mine!.expect.status).toBe('high-confidence');
+    expect(mine!.expect.status).toBe('requires-review'); // read with confidence, but its leading meaning is not yet a reviewed one (deck gate rule sense-unreviewed)
   });
 });
 

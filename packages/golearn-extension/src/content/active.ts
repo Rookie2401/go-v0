@@ -438,7 +438,8 @@ export class ActiveMode {
           const row = reply.forms[id.slice(prefix.length)];
           const lemma = Array.isArray(row) && typeof row[0] === 'string' && row[0] ? row[0] : undefined;
           const pos = Array.isArray(row) && typeof row[1] === 'string' && /^[A-Za-z]{1,8}$/.test(row[1]) ? row[1] : undefined;
-          const lemmaId = lemma ? `lemma:${languageId}:${lemma}${pos ? ':' + pos : ''}` : undefined;
+          // a dictionary with bare (vowelless) keys makes no lemma id: the word is confirmed under its own form id (see `bareDictionaryHeads`)
+          const lemmaId = lemma ? (this.d.adapterOf(languageId)?.bareDictionaryHeads ? id : `lemma:${languageId}:${lemma}${pos ? ':' + pos : ''}`) : undefined;
           if (lemmaId && isUnitId(lemmaId)) this.confirmed.set(id, lemmaId);
           else if (!reply.reason) this.confirmed.set(id, null); // the index answered and does not have the word
         }

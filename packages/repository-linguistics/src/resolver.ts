@@ -149,19 +149,28 @@ function sentenceKeyOf(exactText: string): string {
 export const analysisIdOf = (formId: string, sentenceKey: string | undefined, analyzerId: string): string =>
   `analysis:${formId}@${sentenceKey ?? 'none'}@${analyzerId}`;
 
+/**
+ * Languages whose bare form is NEVER a review item (the owner's deck rule, Arabic 2026-11-25): a form recorded with no analysis is `requires-review`, not
+ * `provisional`, so the engine's eligibility refuses it and GoReview cannot pick a lexeme for it from the bare key. The word stays readable on the GoLearn card.
+ * Must agree with DECK_HELD_LANGUAGES in packages/goreview/src/facts/deck-holds.ts.
+ */
+const BARE_FORM_HELD: Readonly<Record<string, string>> = { ar: 'only the form is recorded: its reading is not decided here, and a bare form is not drilled' };
+
 function genericResolution(input: ResolveInput, note: string): Resolution {
   const lang = input.languageId || 'und';
   const surface = (input.surface ?? '').normalize('NFC').trim();
   const pack = genericPack(lang);
   const formId = unitIds.form(lang, surface.toLowerCase() || '(empty)');
+  const held = Object.prototype.hasOwnProperty.call(BARE_FORM_HELD, lang) ? BARE_FORM_HELD[lang] : undefined;
   const provenance: UnitProvenance = withValidation({ source: 'parser', ref: 'generic', confidence: 0.1 }, input.validation ?? genericValidation(lang));
   const unit: LinguisticUnit = {
     unitId: formId, kind: 'form', languageId: lang, label: surface || '(empty)', packId: pack.packId, packVersion: pack.version,
-    provenance, status: 'provisional', createdAt: input.now,
+    provenance, status: held ? 'requires-review' : 'provisional', createdAt: input.now,
   };
   const analysis: FormAnalysis = {
     analysisId: analysisIdOf(formId, undefined, pack.analyzerId), formId, languageId: lang,
-    candidates: [{ confidence: 0.1, provenance }], chosen: 0, status: 'provisional',
+    candidates: [{ confidence: 0.1, provenance, ...(held ? { reviewStatus: 'requires-review' as const } : {}) }], chosen: 0, status: held ? 'requires-review' : 'provisional',
+    ...(held ? { reason: held } : {}),
     analyzerId: pack.analyzerId, packId: pack.packId, packVersion: pack.version, createdAt: input.now,
     // a bare form states no lemma, pos, features or sense: every field is unknown (the parser only recorded the surface)
     fieldStates: contextualFieldStates(fieldStatesFor({ readings: [], now: input.now, ...(input.fieldEvidence ?? {}) })),

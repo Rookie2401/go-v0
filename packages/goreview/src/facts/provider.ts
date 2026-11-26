@@ -24,6 +24,7 @@ import { projectWordAnalysis } from '../../../../src/core/word-analysis';
 import { answerVariants } from '../../../../src/core/english-verb';
 import { greekWordAnalysis } from '../../../../src/adapters/greek/word-analysis';
 import type { ExampleSentence, FactsProvider, UnitFacts } from '../types';
+import { FORM_HELD_REASON, holdsDeck } from './deck-holds';
 import type { ExampleReading, FeatureDef, FormGroup, FormInfo, ReviewFacts } from './review-facts';
 
 // ───────────────────────────── dependencies ─────────────────────────────
@@ -459,7 +460,11 @@ export function createFactsProvider(deps: FactsProviderDeps): FactsProvider & { 
     if (!rec && !read.cand) return undefined;
     // a lemma competes only with readings of OTHER words: its own inflected readings (Nom,Acc vs Acc …) are not a conflict about the lemma
     const rivals = read.all.filter((c) => c !== read.cand && (c.lemma !== read.cand!.lemma || c.pos !== read.cand!.pos));
-    const unit = rec?.unit ?? synth('lexeme', unitId, lemma, statusOf(read.cand!, [read.cand!, ...rivals]), sourceOf(read.cand), read.cand!.confidence, pos ? { pos } : {});
+    const marked = holdsDeck(lang) && read.cand?.notes?.reviewStatus === 'requires-review';
+    const unit0 = rec?.unit ?? synth('lexeme', unitId, lemma, statusOf(read.cand!, [read.cand!, ...rivals]), sourceOf(read.cand), read.cand!.confidence, pos ? { pos } : {});
+    // a language held to the deck rule: the adapter's mark wins over a stored status, and an unmarked reading is provisional at most (an experimental pack)
+    const unit: LinguisticUnit = !holdsDeck(lang) ? unit0 : marked ? { ...unit0, status: 'requires-review' }
+      : rankOf(unit0.status) > rankOf('provisional') && unit0.status !== 'verified' ? { ...unit0, status: 'provisional' } : unit0;
     const forms = formsOfLemma(lemma, pos);
     const { examples, readings } = collect((o) => lemmaMatches(o, lemma, pos));
     const lexGloss = read.cand && !read.cand.unconfirmed && read.cand.gloss ? [read.cand.gloss] : [];
@@ -759,6 +764,21 @@ export function createFactsProvider(deps: FactsProviderDeps): FactsProvider & { 
     };
   }
 
+  /** A bare form of a language held to the deck rule: facts that say  and name nothing (no lemma, no meaning, no example). */
+  function heldFormFacts(unitId: string, rec: RepositoryUnit | undefined): ReviewFacts {
+    const label = rec?.unit.label || unitId.slice(`form:${lang}:`.length);
+    let reason = FORM_HELD_REASON;
+    try {
+      const top = adapter.analyze(adapter.tokenize(label), deps.varietyId ? { varietyId: deps.varietyId } : undefined).find((a) => a.token.isWord)?.candidates[0];
+      const why = top?.notes?.reviewReason;
+      reason = typeof why === 'string' && why ? `${why}; ${FORM_HELD_REASON}` : top ? `undecided: ${FORM_HELD_REASON}` : `no reading in the word list: ${FORM_HELD_REASON}`;
+    } catch { /* the generic reason stands */ }
+    const unit = { ...(rec?.unit ?? synth('form', unitId, label, 'requires-review', 'parser', 0)), status: 'requires-review' as const };
+    return { unit, relations: rec?.relations ?? [], analyses: rec?.analyses ?? [], status: 'requires-review', glosses: [], constructionIds: [], featureExplanations: {},
+      siblingForms: [], exampleSentences: [], pronunciationNotes: [], lexicalRecognition: { status: 'withheld', reason }, ...(rec ? {} : { derivedFromPack: true }),
+      source: unit.provenance.source, lemmaInWordList: false, lexiconGlossCount: 0, formGroups: [], alternativeReadings: [] };
+  }
+
   return {
     /** Asks the Repository for these units in a few calls; the `factsFor` calls that follow use that answer. A no-op when the lookup cannot batch. */
     async prime(unitIds) { try { await (deps.unit as UnitLookup).prime?.(unitIds); } catch { /* factsFor asks one by one */ } },
@@ -771,6 +791,7 @@ export function createFactsProvider(deps: FactsProviderDeps): FactsProvider & { 
         try { rec = await deps.unit(unitId); } catch { rec = undefined; }
         if (rec && rec.unit.unitId !== unitId) rec = undefined;
         if (unitId.startsWith('lemma:')) return await lemmaFacts(unitId, rec);
+        if (unitId.startsWith('form:') && holdsDeck(lang)) return heldFormFacts(unitId, rec);
         if (unitId.startsWith('form:')) return await formFacts(unitId, rec);
         if (unitId.startsWith('morph:')) return await constructionFacts(unitId, rec);
         if (unitId.startsWith('phrase:')) return await phraseFacts(unitId, rec);

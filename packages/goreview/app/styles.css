@@ -1340,3 +1340,8 @@ img, svg, video, canvas { max-width: 100%; }
   font: 600 .95rem/1.3 var(--serif); text-decoration: underline; text-underline-offset: .23em;
 }
 .account-page #acct-sessions .btn:hover:not(:disabled) { color: var(--ink); background: color-mix(in srgb, var(--accent) 8%, transparent); }
+
+/* Arabic: EVERY element that carries an Arabic lang (the card front and back, list rows, the Sprint cards, the answer) takes the naskh stack and room for the vowel marks.
+   The doubled attribute raises the specificity above the card rules (.flashcard-back .reference, .stimulus ...) without !important. */
+body [lang|='ar'][lang] { font-family: 'Noto Naskh Arabic', 'Amiri', 'Scheherazade New', 'Traditional Arabic', 'Arabic Typesetting', 'Geeza Pro', 'Al Bayan', 'Times New Roman', 'Noto Sans', Georgia, serif; line-height: 1.9; }
+body .stimulus[lang|='ar'][lang], body .flashcard-face .stimulus[lang|='ar'][lang], body .flashcard-back .reference [lang|='ar'][lang] { line-height: 2; padding-block: .1em; overflow: visible; }

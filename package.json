@@ -38,6 +38,7 @@
     "ru:eval": "vite-node --config scripts/vite.config.ts scripts/ru-eval-ud.mts",
     "ar:build-index": "vite-node --config scripts/vite.config.ts scripts/ar-build-index.mts --",
     "ar:eval": "vite-node --config scripts/vite.config.ts scripts/ar-eval.mts --",
+    "ar:deck-limits": "vite-node --config scripts/vite.config.ts scripts/ar-deck-limits.mts --",
     "el:shard-ancient": "vite-node --config scripts/vite.config.ts scripts/lexicon-shard.mts --set el/ancient",
     "el:shard-modern": "vite-node --config scripts/vite.config.ts scripts/lexicon-shard.mts --set el/modern",
     "he:shard-biblical": "vite-node --config scripts/vite.config.ts scripts/lexicon-shard.mts --set he/biblical",

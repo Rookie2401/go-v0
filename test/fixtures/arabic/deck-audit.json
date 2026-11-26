@@ -1,0 +1,2517 @@
+{
+ "_about": "DECK-AUDIT text for the Arabic pack. MACHINE-WRITTEN and MACHINE-ANNOTATED by an AI model (Claude), NOT a human gold standard: the sentences are original Modern Standard Arabic prose in three registers (news, encyclopedia, narrative), written for this test, NOT taken from any corpus and NOT from test/fixtures/arabic/msa-dev*.json; each token carries a gold vocalized lemma and part of speech where the annotator was sure (null otherwise) and a short English meaning (alternatives separated by /). FROZEN on 2026-11-25 before the deck gate was measured on it. Used by test/goreview/arabic-deck-audit.test.ts; never tune the analyser on it. The annotator may be wrong: a mismatch is reported, then judged by hand.",
+ "frozen": "2026-11-25",
+ "wordCount": 367,
+ "sentences": [
+  {
+   "id": "d01",
+   "register": "news",
+   "text": "أعلنت وزارة الصحة أمس عن افتتاح مستشفى جديد في المدينة.",
+   "tokens": [
+    {
+     "surface": "أعلنت",
+     "lemma": "أَعْلَنَ",
+     "pos": "VERB",
+     "meaning": "announce/declare"
+    },
+    {
+     "surface": "وزارة",
+     "lemma": "وِزَارَة",
+     "pos": "NOUN",
+     "meaning": "ministry"
+    },
+    {
+     "surface": "الصحة",
+     "lemma": "صِحَّة",
+     "pos": "NOUN",
+     "meaning": "health"
+    },
+    {
+     "surface": "أمس",
+     "lemma": "أَمْسِ",
+     "pos": "ADV",
+     "meaning": "yesterday"
+    },
+    {
+     "surface": "عن",
+     "lemma": "عَنْ",
+     "pos": "ADP",
+     "meaning": "about/from/of"
+    },
+    {
+     "surface": "افتتاح",
+     "lemma": "اِفْتِتَاح",
+     "pos": "NOUN",
+     "meaning": "opening"
+    },
+    {
+     "surface": "مستشفى",
+     "lemma": "مُسْتَشْفًى",
+     "pos": "NOUN",
+     "meaning": "hospital"
+    },
+    {
+     "surface": "جديد",
+     "lemma": "جَدِيد",
+     "pos": "ADJ",
+     "meaning": "new"
+    },
+    {
+     "surface": "في",
+     "lemma": "فِي",
+     "pos": "ADP",
+     "meaning": "in"
+    },
+    {
+     "surface": "المدينة",
+     "lemma": "مَدِينَة",
+     "pos": "NOUN",
+     "meaning": "city/town"
+    }
+   ]
+  },
+  {
+   "id": "d02",
+   "register": "news",
+   "text": "قال الرئيس إن الحكومة ستقدم مساعدات كبيرة للمزارعين هذا العام.",
+   "tokens": [
+    {
+     "surface": "قال",
+     "lemma": "قَالَ",
+     "pos": "VERB",
+     "meaning": "say"
+    },
+    {
+     "surface": "الرئيس",
+     "lemma": "رَئِيس",
+     "pos": "NOUN",
+     "meaning": "president/chief/head"
+    },
+    {
+     "surface": "إن",
+     "lemma": null,
+     "pos": null,
+     "meaning": null
+    },
+    {
+     "surface": "الحكومة",
+     "lemma": "حُكُومَة",
+     "pos": "NOUN",
+     "meaning": "government"
+    },
+    {
+     "surface": "ستقدم",
+     "lemma": "قَدَّمَ",
+     "pos": "VERB",
+     "meaning": "present/offer/provide"
+    },
+    {
+     "surface": "مساعدات",
+     "lemma": "مُسَاعَدَة",
+     "pos": "NOUN",
+     "meaning": "help/aid/assistance"
+    },
+    {
+     "surface": "كبيرة",
+     "lemma": "كَبِير",
+     "pos": "ADJ",
+     "meaning": "big/large/great"
+    },
+    {
+     "surface": "للمزارعين",
+     "lemma": "مُزَارِع",
+     "pos": "NOUN",
+     "meaning": "farmer"
+    },
+    {
+     "surface": "هذا",
+     "lemma": "هٰذَا",
+     "pos": "PRON",
+     "meaning": "this"
+    },
+    {
+     "surface": "العام",
+     "lemma": "عَام",
+     "pos": "NOUN",
+     "meaning": "year"
+    }
+   ]
+  },
+  {
+   "id": "d03",
+   "register": "news",
+   "text": "ارتفعت أسعار النفط الأسواق العالمية بسبب انخفاض الإنتاج.",
+   "tokens": [
+    {
+     "surface": "ارتفعت",
+     "lemma": "اِرْتَفَعَ",
+     "pos": "VERB",
+     "meaning": "rise/go up/increase"
+    },
+    {
+     "surface": "أسعار",
+     "lemma": "سِعْر",
+     "pos": "NOUN",
+     "meaning": "price/rate"
+    },
+    {
+     "surface": "النفط",
+     "lemma": "نِفْط",
+     "pos": "NOUN",
+     "meaning": "oil/petroleum"
+    },
+    {
+     "surface": "الأسواق",
+     "lemma": "سُوق",
+     "pos": "NOUN",
+     "meaning": "market"
+    },
+    {
+     "surface": "العالمية",
+     "lemma": "عَالَمِيّ",
+     "pos": "ADJ",
+     "meaning": "world/global/international"
+    },
+    {
+     "surface": "بسبب",
+     "lemma": null,
+     "pos": null,
+     "meaning": null
+    },
+    {
+     "surface": "انخفاض",
+     "lemma": "اِنْخِفَاض",
+     "pos": "NOUN",
+     "meaning": "decrease/drop/decline/lowering"
+    },
+    {
+     "surface": "الإنتاج",
+     "lemma": "إِنْتَاج",
+     "pos": "NOUN",
+     "meaning": "production/output"
+    }
+   ]
+  },
+  {
+   "id": "d04",
+   "register": "news",
+   "text": "يشارك آلاف الطلاب في المؤتمر الذي ينظمه اتحاد الجامعات.",
+   "tokens": [
+    {
+     "surface": "يشارك",
+     "lemma": "شَارَكَ",
+     "pos": "VERB",
+     "meaning": "participate/take part/share"
+    },
+    {
+     "surface": "آلاف",
+     "lemma": "أَلْف",
+     "pos": "NOUN",
+     "meaning": "thousand"
+    },
+    {
+     "surface": "الطلاب",
+     "lemma": "طَالِب",
+     "pos": "NOUN",
+     "meaning": "student/seeker"
+    },
+    {
+     "surface": "في",
+     "lemma": "فِي",
+     "pos": "ADP",
+     "meaning": "in"
+    },
+    {
+     "surface": "المؤتمر",
+     "lemma": "مُؤْتَمَر",
+     "pos": "NOUN",
+     "meaning": "conference/congress"
+    },
+    {
+     "surface": "الذي",
+     "lemma": "اَلَّذِي",
+     "pos": "PRON",
+     "meaning": "who/which/that"
+    },
+    {
+     "surface": "ينظمه",
+     "lemma": "نَظَّمَ",
+     "pos": "VERB",
+     "meaning": "organize/arrange/regulate"
+    },
+    {
+     "surface": "اتحاد",
+     "lemma": "اِتِّحَاد",
+     "pos": "NOUN",
+     "meaning": "union/unity/federation"
+    },
+    {
+     "surface": "الجامعات",
+     "lemma": "جَامِعَة",
+     "pos": "NOUN",
+     "meaning": "university"
+    }
+   ]
+  },
+  {
+   "id": "d05",
+   "register": "news",
+   "text": "وصل الوفد إلى العاصمة صباح اليوم لإجراء محادثات مع الوزير.",
+   "tokens": [
+    {
+     "surface": "وصل",
+     "lemma": "وَصَلَ",
+     "pos": "VERB",
+     "meaning": "arrive/reach"
+    },
+    {
+     "surface": "الوفد",
+     "lemma": "وَفْد",
+     "pos": "NOUN",
+     "meaning": "delegation"
+    },
+    {
+     "surface": "إلى",
+     "lemma": "إِلَى",
+     "pos": "ADP",
+     "meaning": "to/toward"
+    },
+    {
+     "surface": "العاصمة",
+     "lemma": "عَاصِمَة",
+     "pos": "NOUN",
+     "meaning": "capital"
+    },
+    {
+     "surface": "صباح",
+     "lemma": "صَبَاح",
+     "pos": "NOUN",
+     "meaning": "morning"
+    },
+    {
+     "surface": "اليوم",
+     "lemma": "يَوْم",
+     "pos": "NOUN",
+     "meaning": "day/today"
+    },
+    {
+     "surface": "لإجراء",
+     "lemma": null,
+     "pos": null,
+     "meaning": null
+    },
+    {
+     "surface": "محادثات",
+     "lemma": "مُحَادَثَة",
+     "pos": "NOUN",
+     "meaning": "talk/conversation/discussion"
+    },
+    {
+     "surface": "مع",
+     "lemma": "مَعَ",
+     "pos": "ADP",
+     "meaning": "with"
+    },
+    {
+     "surface": "الوزير",
+     "lemma": "وَزِير",
+     "pos": "NOUN",
+     "meaning": "minister"
+    }
+   ]
+  },
+  {
+   "id": "d06",
+   "register": "news",
+   "text": "تتوقع الشركة أن تزداد الأرباح خلال السنة القادمة.",
+   "tokens": [
+    {
+     "surface": "تتوقع",
+     "lemma": "تَوَقَّعَ",
+     "pos": "VERB",
+     "meaning": "expect/anticipate"
+    },
+    {
+     "surface": "الشركة",
+     "lemma": "شَرِكَة",
+     "pos": "NOUN",
+     "meaning": "company/firm/partnership"
+    },
+    {
+     "surface": "أن",
+     "lemma": null,
+     "pos": null,
+     "meaning": null
+    },
+    {
+     "surface": "تزداد",
+     "lemma": "اِزْدَادَ",
+     "pos": "VERB",
+     "meaning": "increase/grow/rise"
+    },
+    {
+     "surface": "الأرباح",
+     "lemma": "رِبْح",
+     "pos": "NOUN",
+     "meaning": "profit/gain"
+    },
+    {
+     "surface": "خلال",
+     "lemma": "خِلَالَ",
+     "pos": "ADP",
+     "meaning": "during/through"
+    },
+    {
+     "surface": "السنة",
+     "lemma": "سَنَة",
+     "pos": "NOUN",
+     "meaning": "year"
+    },
+    {
+     "surface": "القادمة",
+     "lemma": "قَادِم",
+     "pos": "ADJ",
+     "meaning": "coming/next/upcoming"
+    }
+   ]
+  },
+  {
+   "id": "d07",
+   "register": "news",
+   "text": "أكد المتحدث باسم الوزارة أن الاجتماع سيعقد الأسبوع المقبل في العاصمة.",
+   "tokens": [
+    {
+     "surface": "أكد",
+     "lemma": "أَكَّدَ",
+     "pos": "VERB",
+     "meaning": "confirm/affirm/assert/emphasize"
+    },
+    {
+     "surface": "المتحدث",
+     "lemma": null,
+     "pos": null,
+     "meaning": null
+    },
+    {
+     "surface": "باسم",
+     "lemma": "اِسْم",
+     "pos": "NOUN",
+     "meaning": "name"
+    },
+    {
+     "surface": "الوزارة",
+     "lemma": "وِزَارَة",
+     "pos": "NOUN",
+     "meaning": "ministry"
+    },
+    {
+     "surface": "أن",
+     "lemma": null,
+     "pos": null,
+     "meaning": null
+    },
+    {
+     "surface": "الاجتماع",
+     "lemma": "اِجْتِمَاع",
+     "pos": "NOUN",
+     "meaning": "meeting/gathering/assembly"
+    },
+    {
+     "surface": "سيعقد",
+     "lemma": "عَقَدَ",
+     "pos": "VERB",
+     "meaning": "hold/tie/conclude/knot"
+    },
+    {
+     "surface": "الأسبوع",
+     "lemma": "أُسْبُوع",
+     "pos": "NOUN",
+     "meaning": "week"
+    },
+    {
+     "surface": "المقبل",
+     "lemma": "مُقْبِل",
+     "pos": "ADJ",
+     "meaning": "coming/next/approaching"
+    },
+    {
+     "surface": "في",
+     "lemma": "فِي",
+     "pos": "ADP",
+     "meaning": "in"
+    },
+    {
+     "surface": "العاصمة",
+     "lemma": "عَاصِمَة",
+     "pos": "NOUN",
+     "meaning": "capital"
+    }
+   ]
+  },
+  {
+   "id": "d08",
+   "register": "news",
+   "text": "تواجه المدينة مشكلة كبيرة في مياه الشرب منذ سنوات.",
+   "tokens": [
+    {
+     "surface": "تواجه",
+     "lemma": "وَاجَهَ",
+     "pos": "VERB",
+     "meaning": "face/confront/meet"
+    },
+    {
+     "surface": "المدينة",
+     "lemma": "مَدِينَة",
+     "pos": "NOUN",
+     "meaning": "city/town"
+    },
+    {
+     "surface": "مشكلة",
+     "lemma": "مُشْكِلَة",
+     "pos": "NOUN",
+     "meaning": "problem"
+    },
+    {
+     "surface": "كبيرة",
+     "lemma": "كَبِير",
+     "pos": "ADJ",
+     "meaning": "big/large/great"
+    },
+    {
+     "surface": "في",
+     "lemma": "فِي",
+     "pos": "ADP",
+     "meaning": "in"
+    },
+    {
+     "surface": "مياه",
+     "lemma": "مَاء",
+     "pos": "NOUN",
+     "meaning": "water"
+    },
+    {
+     "surface": "الشرب",
+     "lemma": "شُرْب",
+     "pos": "NOUN",
+     "meaning": "drinking/drink"
+    },
+    {
+     "surface": "منذ",
+     "lemma": "مُنْذُ",
+     "pos": "ADP",
+     "meaning": "since/ago"
+    },
+    {
+     "surface": "سنوات",
+     "lemma": "سَنَة",
+     "pos": "NOUN",
+     "meaning": "year"
+    }
+   ]
+  },
+  {
+   "id": "d09",
+   "register": "news",
+   "text": "يعمل المهندسون على بناء جسر جديد فوق النهر.",
+   "tokens": [
+    {
+     "surface": "يعمل",
+     "lemma": "عَمِلَ",
+     "pos": "VERB",
+     "meaning": "work/do/make"
+    },
+    {
+     "surface": "المهندسون",
+     "lemma": null,
+     "pos": null,
+     "meaning": null
+    },
+    {
+     "surface": "على",
+     "lemma": "عَلَى",
+     "pos": "ADP",
+     "meaning": "on/upon/over"
+    },
+    {
+     "surface": "بناء",
+     "lemma": "بِنَاء",
+     "pos": "NOUN",
+     "meaning": "building/construction"
+    },
+    {
+     "surface": "جسر",
+     "lemma": "جِسْر",
+     "pos": "NOUN",
+     "meaning": "bridge"
+    },
+    {
+     "surface": "جديد",
+     "lemma": "جَدِيد",
+     "pos": "ADJ",
+     "meaning": "new"
+    },
+    {
+     "surface": "فوق",
+     "lemma": "فَوْقَ",
+     "pos": "ADP",
+     "meaning": "above/over/on"
+    },
+    {
+     "surface": "النهر",
+     "lemma": "نَهْر",
+     "pos": "NOUN",
+     "meaning": "river"
+    }
+   ]
+  },
+  {
+   "id": "d10",
+   "register": "encyclopedia",
+   "text": "نهر النيل هو أطول أنهار العالم ويمر بعدة دول في أفريقيا.",
+   "tokens": [
+    {
+     "surface": "نهر",
+     "lemma": "نَهْر",
+     "pos": "NOUN",
+     "meaning": "river"
+    },
+    {
+     "surface": "النيل",
+     "lemma": null,
+     "pos": null,
+     "meaning": null
+    },
+    {
+     "surface": "هو",
+     "lemma": "هُوَ",
+     "pos": "PRON",
+     "meaning": "he/it"
+    },
+    {
+     "surface": "أطول",
+     "lemma": null,
+     "pos": null,
+     "meaning": null
+    },
+    {
+     "surface": "أنهار",
+     "lemma": "نَهْر",
+     "pos": "NOUN",
+     "meaning": "river"
+    },
+    {
+     "surface": "العالم",
+     "lemma": "عَالَم",
+     "pos": "NOUN",
+     "meaning": "world/universe"
+    },
+    {
+     "surface": "ويمر",
+     "lemma": "مَرَّ",
+     "pos": "VERB",
+     "meaning": "pass/go by"
+    },
+    {
+     "surface": "بعدة",
+     "lemma": null,
+     "pos": null,
+     "meaning": null
+    },
+    {
+     "surface": "دول",
+     "lemma": "دَوْلَة",
+     "pos": "NOUN",
+     "meaning": "state/country/nation"
+    },
+    {
+     "surface": "في",
+     "lemma": "فِي",
+     "pos": "ADP",
+     "meaning": "in"
+    },
+    {
+     "surface": "أفريقيا",
+     "lemma": null,
+     "pos": null,
+     "meaning": null
+    }
+   ]
+  },
+  {
+   "id": "d11",
+   "register": "encyclopedia",
+   "text": "تقع مدينة القاهرة على الضفة الشرقية للنهر وهي عاصمة مصر.",
+   "tokens": [
+    {
+     "surface": "تقع",
+     "lemma": "وَقَعَ",
+     "pos": "VERB",
+     "meaning": "fall/occur/be located/happen"
+    },
+    {
+     "surface": "مدينة",
+     "lemma": "مَدِينَة",
+     "pos": "NOUN",
+     "meaning": "city/town"
+    },
+    {
+     "surface": "القاهرة",
+     "lemma": null,
+     "pos": null,
+     "meaning": null
+    },
+    {
+     "surface": "على",
+     "lemma": "عَلَى",
+     "pos": "ADP",
+     "meaning": "on/upon/over"
+    },
+    {
+     "surface": "الضفة",
+     "lemma": "ضِفَّة",
+     "pos": "NOUN",
+     "meaning": "bank/shore/side"
+    },
+    {
+     "surface": "الشرقية",
+     "lemma": "شَرْقِيّ",
+     "pos": "ADJ",
+     "meaning": "east/eastern/oriental"
+    },
+    {
+     "surface": "للنهر",
+     "lemma": "نَهْر",
+     "pos": "NOUN",
+     "meaning": "river"
+    },
+    {
+     "surface": "وهي",
+     "lemma": "هِيَ",
+     "pos": "PRON",
+     "meaning": "she/it"
+    },
+    {
+     "surface": "عاصمة",
+     "lemma": "عَاصِمَة",
+     "pos": "NOUN",
+     "meaning": "capital"
+    },
+    {
+     "surface": "مصر",
+     "lemma": null,
+     "pos": null,
+     "meaning": null
+    }
+   ]
+  },
+  {
+   "id": "d12",
+   "register": "encyclopedia",
+   "text": "يتكون الماء من عنصرين هما الهيدروجين والأكسجين.",
+   "tokens": [
+    {
+     "surface": "يتكون",
+     "lemma": "تَكَوَّنَ",
+     "pos": "VERB",
+     "meaning": "consist/form/be formed/be composed"
+    },
+    {
+     "surface": "الماء",
+     "lemma": "مَاء",
+     "pos": "NOUN",
+     "meaning": "water"
+    },
+    {
+     "surface": "من",
+     "lemma": "مِنْ",
+     "pos": "ADP",
+     "meaning": "from/of"
+    },
+    {
+     "surface": "عنصرين",
+     "lemma": "عُنْصُر",
+     "pos": "NOUN",
+     "meaning": "element"
+    },
+    {
+     "surface": "هما",
+     "lemma": "هُمَا",
+     "pos": "PRON",
+     "meaning": "they/both/two"
+    },
+    {
+     "surface": "الهيدروجين",
+     "lemma": null,
+     "pos": null,
+     "meaning": null
+    },
+    {
+     "surface": "والأكسجين",
+     "lemma": null,
+     "pos": null,
+     "meaning": null
+    }
+   ]
+  },
+  {
+   "id": "d13",
+   "register": "encyclopedia",
+   "text": "تعتبر اللغة العربية من أكثر اللغات انتشارا في العالم.",
+   "tokens": [
+    {
+     "surface": "تعتبر",
+     "lemma": "اِعْتَبَرَ",
+     "pos": "VERB",
+     "meaning": "consider/regard/deem"
+    },
+    {
+     "surface": "اللغة",
+     "lemma": "لُغَة",
+     "pos": "NOUN",
+     "meaning": "language"
+    },
+    {
+     "surface": "العربية",
+     "lemma": "عَرَبِيّ",
+     "pos": "ADJ",
+     "meaning": "arab/arabic"
+    },
+    {
+     "surface": "من",
+     "lemma": "مِنْ",
+     "pos": "ADP",
+     "meaning": "from/of"
+    },
+    {
+     "surface": "أكثر",
+     "lemma": null,
+     "pos": null,
+     "meaning": null
+    },
+    {
+     "surface": "اللغات",
+     "lemma": "لُغَة",
+     "pos": "NOUN",
+     "meaning": "language"
+    },
+    {
+     "surface": "انتشارا",
+     "lemma": "اِنْتِشَار",
+     "pos": "NOUN",
+     "meaning": "spread/spreading/dissemination"
+    },
+    {
+     "surface": "في",
+     "lemma": "فِي",
+     "pos": "ADP",
+     "meaning": "in"
+    },
+    {
+     "surface": "العالم",
+     "lemma": "عَالَم",
+     "pos": "NOUN",
+     "meaning": "world/universe"
+    }
+   ]
+  },
+  {
+   "id": "d14",
+   "register": "encyclopedia",
+   "text": "بدأت الحضارة الإسلامية في القرن السابع الميلادي وازدهرت في بغداد.",
+   "tokens": [
+    {
+     "surface": "بدأت",
+     "lemma": "بَدَأَ",
+     "pos": "VERB",
+     "meaning": "begin/start"
+    },
+    {
+     "surface": "الحضارة",
+     "lemma": "حَضَارَة",
+     "pos": "NOUN",
+     "meaning": "civilization/culture"
+    },
+    {
+     "surface": "الإسلامية",
+     "lemma": "إِسْلَامِيّ",
+     "pos": "ADJ",
+     "meaning": "islamic/muslim"
+    },
+    {
+     "surface": "في",
+     "lemma": "فِي",
+     "pos": "ADP",
+     "meaning": "in"
+    },
+    {
+     "surface": "القرن",
+     "lemma": "قَرْن",
+     "pos": "NOUN",
+     "meaning": "century/horn"
+    },
+    {
+     "surface": "السابع",
+     "lemma": "سَابِع",
+     "pos": "ADJ",
+     "meaning": "seventh"
+    },
+    {
+     "surface": "الميلادي",
+     "lemma": null,
+     "pos": null,
+     "meaning": null
+    },
+    {
+     "surface": "وازدهرت",
+     "lemma": "اِزْدَهَرَ",
+     "pos": "VERB",
+     "meaning": "flourish/prosper/thrive/bloom"
+    },
+    {
+     "surface": "في",
+     "lemma": "فِي",
+     "pos": "ADP",
+     "meaning": "in"
+    },
+    {
+     "surface": "بغداد",
+     "lemma": null,
+     "pos": null,
+     "meaning": null
+    }
+   ]
+  },
+  {
+   "id": "d15",
+   "register": "encyclopedia",
+   "text": "تحتوي الجامعة على مكتبة كبيرة تضم ملايين الكتب.",
+   "tokens": [
+    {
+     "surface": "تحتوي",
+     "lemma": "اِحْتَوَى",
+     "pos": "VERB",
+     "meaning": "contain/include/comprise"
+    },
+    {
+     "surface": "الجامعة",
+     "lemma": "جَامِعَة",
+     "pos": "NOUN",
+     "meaning": "university"
+    },
+    {
+     "surface": "على",
+     "lemma": "عَلَى",
+     "pos": "ADP",
+     "meaning": "on/upon/over"
+    },
+    {
+     "surface": "مكتبة",
+     "lemma": "مَكْتَبَة",
+     "pos": "NOUN",
+     "meaning": "library/bookshop/bookstore"
+    },
+    {
+     "surface": "كبيرة",
+     "lemma": "كَبِير",
+     "pos": "ADJ",
+     "meaning": "big/large/great"
+    },
+    {
+     "surface": "تضم",
+     "lemma": "ضَمَّ",
+     "pos": "VERB",
+     "meaning": "include/join/comprise/annex/embrace"
+    },
+    {
+     "surface": "ملايين",
+     "lemma": "مِلْيُون",
+     "pos": "NOUN",
+     "meaning": "million"
+    },
+    {
+     "surface": "الكتب",
+     "lemma": "كِتَاب",
+     "pos": "NOUN",
+     "meaning": "book"
+    }
+   ]
+  },
+  {
+   "id": "d16",
+   "register": "encyclopedia",
+   "text": "يعيش معظم السكان في المدن الكبرى قرب الساحل.",
+   "tokens": [
+    {
+     "surface": "يعيش",
+     "lemma": "عَاشَ",
+     "pos": "VERB",
+     "meaning": "live/exist"
+    },
+    {
+     "surface": "معظم",
+     "lemma": "مُعْظَم",
+     "pos": "NOUN",
+     "meaning": "most/majority/bulk"
+    },
+    {
+     "surface": "السكان",
+     "lemma": null,
+     "pos": null,
+     "meaning": null
+    },
+    {
+     "surface": "في",
+     "lemma": "فِي",
+     "pos": "ADP",
+     "meaning": "in"
+    },
+    {
+     "surface": "المدن",
+     "lemma": "مَدِينَة",
+     "pos": "NOUN",
+     "meaning": "city/town"
+    },
+    {
+     "surface": "الكبرى",
+     "lemma": null,
+     "pos": null,
+     "meaning": null
+    },
+    {
+     "surface": "قرب",
+     "lemma": null,
+     "pos": null,
+     "meaning": null
+    },
+    {
+     "surface": "الساحل",
+     "lemma": "سَاحِل",
+     "pos": "NOUN",
+     "meaning": "coast/shore/coastal"
+    }
+   ]
+  },
+  {
+   "id": "d17",
+   "register": "encyclopedia",
+   "text": "تبلغ مساحة الصحراء ملايين الكيلومترات المربعة.",
+   "tokens": [
+    {
+     "surface": "تبلغ",
+     "lemma": "بَلَغَ",
+     "pos": "VERB",
+     "meaning": "reach/attain/amount/arrive"
+    },
+    {
+     "surface": "مساحة",
+     "lemma": "مِسَاحَة",
+     "pos": "NOUN",
+     "meaning": "area/surface/space"
+    },
+    {
+     "surface": "الصحراء",
+     "lemma": "صَحْرَاء",
+     "pos": "NOUN",
+     "meaning": "desert"
+    },
+    {
+     "surface": "ملايين",
+     "lemma": "مِلْيُون",
+     "pos": "NOUN",
+     "meaning": "million"
+    },
+    {
+     "surface": "الكيلومترات",
+     "lemma": null,
+     "pos": null,
+     "meaning": null
+    },
+    {
+     "surface": "المربعة",
+     "lemma": null,
+     "pos": null,
+     "meaning": null
+    }
+   ]
+  },
+  {
+   "id": "d18",
+   "register": "encyclopedia",
+   "text": "يدرس الطلاب التاريخ والجغرافيا والرياضيات في السنة الأولى.",
+   "tokens": [
+    {
+     "surface": "يدرس",
+     "lemma": "دَرَسَ",
+     "pos": "VERB",
+     "meaning": "study/learn/teach"
+    },
+    {
+     "surface": "الطلاب",
+     "lemma": "طَالِب",
+     "pos": "NOUN",
+     "meaning": "student/seeker"
+    },
+    {
+     "surface": "التاريخ",
+     "lemma": "تَارِيخ",
+     "pos": "NOUN",
+     "meaning": "history/date"
+    },
+    {
+     "surface": "والجغرافيا",
+     "lemma": null,
+     "pos": null,
+     "meaning": null
+    },
+    {
+     "surface": "والرياضيات",
+     "lemma": null,
+     "pos": null,
+     "meaning": null
+    },
+    {
+     "surface": "في",
+     "lemma": "فِي",
+     "pos": "ADP",
+     "meaning": "in"
+    },
+    {
+     "surface": "السنة",
+     "lemma": "سَنَة",
+     "pos": "NOUN",
+     "meaning": "year"
+    },
+    {
+     "surface": "الأولى",
+     "lemma": null,
+     "pos": null,
+     "meaning": null
+    }
+   ]
+  },
+  {
+   "id": "d19",
+   "register": "encyclopedia",
+   "text": "يؤدي هذا الطريق إلى القرية القديمة قرب النهر.",
+   "tokens": [
+    {
+     "surface": "يؤدي",
+     "lemma": "أَدَّى",
+     "pos": "VERB",
+     "meaning": "lead/perform/carry out/fulfil/pay"
+    },
+    {
+     "surface": "هذا",
+     "lemma": "هٰذَا",
+     "pos": "PRON",
+     "meaning": "this"
+    },
+    {
+     "surface": "الطريق",
+     "lemma": "طَرِيق",
+     "pos": "NOUN",
+     "meaning": "road/way/path"
+    },
+    {
+     "surface": "إلى",
+     "lemma": "إِلَى",
+     "pos": "ADP",
+     "meaning": "to/toward"
+    },
+    {
+     "surface": "القرية",
+     "lemma": "قَرْيَة",
+     "pos": "NOUN",
+     "meaning": "village"
+    },
+    {
+     "surface": "القديمة",
+     "lemma": "قَدِيم",
+     "pos": "ADJ",
+     "meaning": "old/ancient"
+    },
+    {
+     "surface": "قرب",
+     "lemma": null,
+     "pos": null,
+     "meaning": null
+    },
+    {
+     "surface": "النهر",
+     "lemma": "نَهْر",
+     "pos": "NOUN",
+     "meaning": "river"
+    }
+   ]
+  },
+  {
+   "id": "d20",
+   "register": "narrative",
+   "text": "استيقظ الولد مبكرا وذهب إلى المدرسة مع أخيه الصغير.",
+   "tokens": [
+    {
+     "surface": "استيقظ",
+     "lemma": "اِسْتَيْقَظَ",
+     "pos": "VERB",
+     "meaning": "wake/awake/wake up"
+    },
+    {
+     "surface": "الولد",
+     "lemma": "وَلَد",
+     "pos": "NOUN",
+     "meaning": "boy/child/son"
+    },
+    {
+     "surface": "مبكرا",
+     "lemma": null,
+     "pos": null,
+     "meaning": null
+    },
+    {
+     "surface": "وذهب",
+     "lemma": "ذَهَبَ",
+     "pos": "VERB",
+     "meaning": "go/leave/depart"
+    },
+    {
+     "surface": "إلى",
+     "lemma": "إِلَى",
+     "pos": "ADP",
+     "meaning": "to/toward"
+    },
+    {
+     "surface": "المدرسة",
+     "lemma": "مَدْرَسَة",
+     "pos": "NOUN",
+     "meaning": "school"
+    },
+    {
+     "surface": "مع",
+     "lemma": "مَعَ",
+     "pos": "ADP",
+     "meaning": "with"
+    },
+    {
+     "surface": "أخيه",
+     "lemma": "أَخ",
+     "pos": "NOUN",
+     "meaning": "brother"
+    },
+    {
+     "surface": "الصغير",
+     "lemma": "صَغِير",
+     "pos": "ADJ",
+     "meaning": "small/little/young"
+    }
+   ]
+  },
+  {
+   "id": "d21",
+   "register": "narrative",
+   "text": "كانت الشمس مشرقة والسماء صافية فشعر بالسعادة.",
+   "tokens": [
+    {
+     "surface": "كانت",
+     "lemma": "كَانَ",
+     "pos": "VERB",
+     "meaning": "be/was/exist"
+    },
+    {
+     "surface": "الشمس",
+     "lemma": "شَمْس",
+     "pos": "NOUN",
+     "meaning": "sun"
+    },
+    {
+     "surface": "مشرقة",
+     "lemma": null,
+     "pos": null,
+     "meaning": null
+    },
+    {
+     "surface": "والسماء",
+     "lemma": "سَمَاء",
+     "pos": "NOUN",
+     "meaning": "sky/heaven"
+    },
+    {
+     "surface": "صافية",
+     "lemma": null,
+     "pos": null,
+     "meaning": null
+    },
+    {
+     "surface": "فشعر",
+     "lemma": "شَعَرَ",
+     "pos": "VERB",
+     "meaning": "feel/sense/perceive/notice"
+    },
+    {
+     "surface": "بالسعادة",
+     "lemma": "سَعَادَة",
+     "pos": "NOUN",
+     "meaning": "happiness/joy/bliss"
+    }
+   ]
+  },
+  {
+   "id": "d22",
+   "register": "narrative",
+   "text": "جلست الأم في المطبخ وأعدت الطعام لأولادها.",
+   "tokens": [
+    {
+     "surface": "جلست",
+     "lemma": "جَلَسَ",
+     "pos": "VERB",
+     "meaning": "sit"
+    },
+    {
+     "surface": "الأم",
+     "lemma": "أُمّ",
+     "pos": "NOUN",
+     "meaning": "mother"
+    },
+    {
+     "surface": "في",
+     "lemma": "فِي",
+     "pos": "ADP",
+     "meaning": "in"
+    },
+    {
+     "surface": "المطبخ",
+     "lemma": "مَطْبَخ",
+     "pos": "NOUN",
+     "meaning": "kitchen"
+    },
+    {
+     "surface": "وأعدت",
+     "lemma": "أَعَدَّ",
+     "pos": "VERB",
+     "meaning": "prepare/make ready"
+    },
+    {
+     "surface": "الطعام",
+     "lemma": "طَعَام",
+     "pos": "NOUN",
+     "meaning": "food/meal"
+    },
+    {
+     "surface": "لأولادها",
+     "lemma": "وَلَد",
+     "pos": "NOUN",
+     "meaning": "boy/child/son"
+    }
+   ]
+  },
+  {
+   "id": "d23",
+   "register": "narrative",
+   "text": "سأل الرجل العجوز الطفل عن اسمه فأجاب بصوت خافت.",
+   "tokens": [
+    {
+     "surface": "سأل",
+     "lemma": "سَأَلَ",
+     "pos": "VERB",
+     "meaning": "ask/question"
+    },
+    {
+     "surface": "الرجل",
+     "lemma": "رَجُل",
+     "pos": "NOUN",
+     "meaning": "man"
+    },
+    {
+     "surface": "العجوز",
+     "lemma": "عَجُوز",
+     "pos": "NOUN",
+     "meaning": "old/elderly/old woman/old man"
+    },
+    {
+     "surface": "الطفل",
+     "lemma": "طِفْل",
+     "pos": "NOUN",
+     "meaning": "child/infant/baby"
+    },
+    {
+     "surface": "عن",
+     "lemma": "عَنْ",
+     "pos": "ADP",
+     "meaning": "about/from/of"
+    },
+    {
+     "surface": "اسمه",
+     "lemma": "اِسْم",
+     "pos": "NOUN",
+     "meaning": "name/noun"
+    },
+    {
+     "surface": "فأجاب",
+     "lemma": "أَجَابَ",
+     "pos": "VERB",
+     "meaning": "answer/reply/respond"
+    },
+    {
+     "surface": "بصوت",
+     "lemma": "صَوْت",
+     "pos": "NOUN",
+     "meaning": "voice/sound/vote"
+    },
+    {
+     "surface": "خافت",
+     "lemma": null,
+     "pos": null,
+     "meaning": null
+    }
+   ]
+  },
+  {
+   "id": "d24",
+   "register": "narrative",
+   "text": "مشى الصديقان في الحديقة وتحدثا عن الرحلة القادمة.",
+   "tokens": [
+    {
+     "surface": "مشى",
+     "lemma": "مَشَى",
+     "pos": "VERB",
+     "meaning": "walk/go"
+    },
+    {
+     "surface": "الصديقان",
+     "lemma": "صَدِيق",
+     "pos": "NOUN",
+     "meaning": "friend"
+    },
+    {
+     "surface": "في",
+     "lemma": "فِي",
+     "pos": "ADP",
+     "meaning": "in"
+    },
+    {
+     "surface": "الحديقة",
+     "lemma": "حَدِيقَة",
+     "pos": "NOUN",
+     "meaning": "garden/park"
+    },
+    {
+     "surface": "وتحدثا",
+     "lemma": null,
+     "pos": null,
+     "meaning": null
+    },
+    {
+     "surface": "عن",
+     "lemma": "عَنْ",
+     "pos": "ADP",
+     "meaning": "about/from/of"
+    },
+    {
+     "surface": "الرحلة",
+     "lemma": "رِحْلَة",
+     "pos": "NOUN",
+     "meaning": "trip/journey/flight"
+    },
+    {
+     "surface": "القادمة",
+     "lemma": "قَادِم",
+     "pos": "ADJ",
+     "meaning": "coming/next/upcoming"
+    }
+   ]
+  },
+  {
+   "id": "d25",
+   "register": "narrative",
+   "text": "فتحت الفتاة الباب فرأت قطة صغيرة تحت الشجرة.",
+   "tokens": [
+    {
+     "surface": "فتحت",
+     "lemma": "فَتَحَ",
+     "pos": "VERB",
+     "meaning": "open/conquer"
+    },
+    {
+     "surface": "الفتاة",
+     "lemma": "فَتَاة",
+     "pos": "NOUN",
+     "meaning": "girl/young woman"
+    },
+    {
+     "surface": "الباب",
+     "lemma": "بَاب",
+     "pos": "NOUN",
+     "meaning": "door/gate/chapter"
+    },
+    {
+     "surface": "فرأت",
+     "lemma": "رَأَى",
+     "pos": "VERB",
+     "meaning": "see/think/consider"
+    },
+    {
+     "surface": "قطة",
+     "lemma": "قِطَّة",
+     "pos": "NOUN",
+     "meaning": "cat"
+    },
+    {
+     "surface": "صغيرة",
+     "lemma": "صَغِير",
+     "pos": "ADJ",
+     "meaning": "small/little/young"
+    },
+    {
+     "surface": "تحت",
+     "lemma": "تَحْتَ",
+     "pos": "ADP",
+     "meaning": "under/below/beneath"
+    },
+    {
+     "surface": "الشجرة",
+     "lemma": "شَجَرَة",
+     "pos": "NOUN",
+     "meaning": "tree"
+    }
+   ]
+  },
+  {
+   "id": "d26",
+   "register": "narrative",
+   "text": "في المساء عاد الأب من العمل حاملا هدية لابنته.",
+   "tokens": [
+    {
+     "surface": "في",
+     "lemma": "فِي",
+     "pos": "ADP",
+     "meaning": "in"
+    },
+    {
+     "surface": "المساء",
+     "lemma": "مَسَاء",
+     "pos": "NOUN",
+     "meaning": "evening"
+    },
+    {
+     "surface": "عاد",
+     "lemma": "عَادَ",
+     "pos": "VERB",
+     "meaning": "return/come back/go back"
+    },
+    {
+     "surface": "الأب",
+     "lemma": "أَب",
+     "pos": "NOUN",
+     "meaning": "father"
+    },
+    {
+     "surface": "من",
+     "lemma": "مِنْ",
+     "pos": "ADP",
+     "meaning": "from/of"
+    },
+    {
+     "surface": "العمل",
+     "lemma": "عَمَل",
+     "pos": "NOUN",
+     "meaning": "work/job/action/deed"
+    },
+    {
+     "surface": "حاملا",
+     "lemma": null,
+     "pos": null,
+     "meaning": null
+    },
+    {
+     "surface": "هدية",
+     "lemma": "هَدِيَّة",
+     "pos": "NOUN",
+     "meaning": "gift/present"
+    },
+    {
+     "surface": "لابنته",
+     "lemma": "اِبْنَة",
+     "pos": "NOUN",
+     "meaning": "daughter"
+    }
+   ]
+  },
+  {
+   "id": "d27",
+   "register": "narrative",
+   "text": "كتب التلميذ رسالة طويلة إلى جدته في القرية.",
+   "tokens": [
+    {
+     "surface": "كتب",
+     "lemma": "كَتَبَ",
+     "pos": "VERB",
+     "meaning": "write"
+    },
+    {
+     "surface": "التلميذ",
+     "lemma": "تِلْمِيذ",
+     "pos": "NOUN",
+     "meaning": "pupil/student/disciple"
+    },
+    {
+     "surface": "رسالة",
+     "lemma": "رِسَالَة",
+     "pos": "NOUN",
+     "meaning": "letter/message/mission"
+    },
+    {
+     "surface": "طويلة",
+     "lemma": "طَوِيل",
+     "pos": "ADJ",
+     "meaning": "long/tall"
+    },
+    {
+     "surface": "إلى",
+     "lemma": "إِلَى",
+     "pos": "ADP",
+     "meaning": "to/toward"
+    },
+    {
+     "surface": "جدته",
+     "lemma": "جَدَّة",
+     "pos": "NOUN",
+     "meaning": "grandmother"
+    },
+    {
+     "surface": "في",
+     "lemma": "فِي",
+     "pos": "ADP",
+     "meaning": "in"
+    },
+    {
+     "surface": "القرية",
+     "lemma": "قَرْيَة",
+     "pos": "NOUN",
+     "meaning": "village"
+    }
+   ]
+  },
+  {
+   "id": "d28",
+   "register": "narrative",
+   "text": "لم يعرف أحد أين ذهب الرجل بعد تلك الليلة.",
+   "tokens": [
+    {
+     "surface": "لم",
+     "lemma": "لَمْ",
+     "pos": "PART",
+     "meaning": "not"
+    },
+    {
+     "surface": "يعرف",
+     "lemma": "عَرَفَ",
+     "pos": "VERB",
+     "meaning": "know/recognize"
+    },
+    {
+     "surface": "أحد",
+     "lemma": "أَحَد",
+     "pos": "NOUN",
+     "meaning": "one/someone/anyone"
+    },
+    {
+     "surface": "أين",
+     "lemma": "أَيْنَ",
+     "pos": "ADV",
+     "meaning": "where"
+    },
+    {
+     "surface": "ذهب",
+     "lemma": "ذَهَبَ",
+     "pos": "VERB",
+     "meaning": "go/leave/depart"
+    },
+    {
+     "surface": "الرجل",
+     "lemma": "رَجُل",
+     "pos": "NOUN",
+     "meaning": "man"
+    },
+    {
+     "surface": "بعد",
+     "lemma": "بَعْدَ",
+     "pos": "ADP",
+     "meaning": "after/behind"
+    },
+    {
+     "surface": "تلك",
+     "lemma": "تِلْكَ",
+     "pos": "PRON",
+     "meaning": "that"
+    },
+    {
+     "surface": "الليلة",
+     "lemma": "لَيْلَة",
+     "pos": "NOUN",
+     "meaning": "night"
+    }
+   ]
+  },
+  {
+   "id": "d29",
+   "register": "narrative",
+   "text": "وقف الجندي أمام البوابة وانتظر وصول القائد.",
+   "tokens": [
+    {
+     "surface": "وقف",
+     "lemma": "وَقَفَ",
+     "pos": "VERB",
+     "meaning": "stand/stop/halt"
+    },
+    {
+     "surface": "الجندي",
+     "lemma": "جُنْدِيّ",
+     "pos": "NOUN",
+     "meaning": "soldier"
+    },
+    {
+     "surface": "أمام",
+     "lemma": "أَمَامَ",
+     "pos": "ADP",
+     "meaning": "in front of/before/ahead"
+    },
+    {
+     "surface": "البوابة",
+     "lemma": "بَوَّابَة",
+     "pos": "NOUN",
+     "meaning": "gate/portal/door"
+    },
+    {
+     "surface": "وانتظر",
+     "lemma": "اِنْتَظَرَ",
+     "pos": "VERB",
+     "meaning": "wait/await/expect"
+    },
+    {
+     "surface": "وصول",
+     "lemma": "وُصُول",
+     "pos": "NOUN",
+     "meaning": "arrival/reaching/access"
+    },
+    {
+     "surface": "القائد",
+     "lemma": "قَائِد",
+     "pos": "NOUN",
+     "meaning": "leader/commander/driver"
+    }
+   ]
+  },
+  {
+   "id": "d30",
+   "register": "narrative",
+   "text": "ضحك الأطفال كثيرا عندما رأوا الحيوان الغريب في الحديقة.",
+   "tokens": [
+    {
+     "surface": "ضحك",
+     "lemma": "ضَحِكَ",
+     "pos": "VERB",
+     "meaning": "laugh"
+    },
+    {
+     "surface": "الأطفال",
+     "lemma": "طِفْل",
+     "pos": "NOUN",
+     "meaning": "child/infant/baby"
+    },
+    {
+     "surface": "كثيرا",
+     "lemma": null,
+     "pos": null,
+     "meaning": null
+    },
+    {
+     "surface": "عندما",
+     "lemma": "عِنْدَمَا",
+     "pos": "CONJ",
+     "meaning": "when/whenever"
+    },
+    {
+     "surface": "رأوا",
+     "lemma": "رَأَى",
+     "pos": "VERB",
+     "meaning": "see/think/consider"
+    },
+    {
+     "surface": "الحيوان",
+     "lemma": "حَيَوَان",
+     "pos": "NOUN",
+     "meaning": "animal"
+    },
+    {
+     "surface": "الغريب",
+     "lemma": "غَرِيب",
+     "pos": "ADJ",
+     "meaning": "strange/foreign/odd/stranger"
+    },
+    {
+     "surface": "في",
+     "lemma": "فِي",
+     "pos": "ADP",
+     "meaning": "in"
+    },
+    {
+     "surface": "الحديقة",
+     "lemma": "حَدِيقَة",
+     "pos": "NOUN",
+     "meaning": "garden/park"
+    }
+   ]
+  },
+  {
+   "id": "d31",
+   "register": "narrative",
+   "text": "يحب الناس السفر في الصيف لزيارة أقاربهم.",
+   "tokens": [
+    {
+     "surface": "يحب",
+     "lemma": "أَحَبَّ",
+     "pos": "VERB",
+     "meaning": "love/like"
+    },
+    {
+     "surface": "الناس",
+     "lemma": "نَاس",
+     "pos": "NOUN",
+     "meaning": "people/men"
+    },
+    {
+     "surface": "السفر",
+     "lemma": "سَفَر",
+     "pos": "NOUN",
+     "meaning": "travel/journey/trip"
+    },
+    {
+     "surface": "في",
+     "lemma": "فِي",
+     "pos": "ADP",
+     "meaning": "in"
+    },
+    {
+     "surface": "الصيف",
+     "lemma": "صَيْف",
+     "pos": "NOUN",
+     "meaning": "summer"
+    },
+    {
+     "surface": "لزيارة",
+     "lemma": "زِيَارَة",
+     "pos": "NOUN",
+     "meaning": "visit"
+    },
+    {
+     "surface": "أقاربهم",
+     "lemma": null,
+     "pos": null,
+     "meaning": null
+    }
+   ]
+  },
+  {
+   "id": "d32",
+   "register": "narrative",
+   "text": "تصدر الصحيفة كل صباح وتنشر أخبار البلاد والعالم.",
+   "tokens": [
+    {
+     "surface": "تصدر",
+     "lemma": "صَدَرَ",
+     "pos": "VERB",
+     "meaning": "issue/emerge/come out/appear"
+    },
+    {
+     "surface": "الصحيفة",
+     "lemma": "صَحِيفَة",
+     "pos": "NOUN",
+     "meaning": "newspaper/paper/page"
+    },
+    {
+     "surface": "كل",
+     "lemma": null,
+     "pos": null,
+     "meaning": null
+    },
+    {
+     "surface": "صباح",
+     "lemma": "صَبَاح",
+     "pos": "NOUN",
+     "meaning": "morning"
+    },
+    {
+     "surface": "وتنشر",
+     "lemma": "نَشَرَ",
+     "pos": "VERB",
+     "meaning": "publish/spread/issue"
+    },
+    {
+     "surface": "أخبار",
+     "lemma": "خَبَر",
+     "pos": "NOUN",
+     "meaning": "news/report/story"
+    },
+    {
+     "surface": "البلاد",
+     "lemma": "بَلَد",
+     "pos": "NOUN",
+     "meaning": "country/land/town"
+    },
+    {
+     "surface": "والعالم",
+     "lemma": "عَالَم",
+     "pos": "NOUN",
+     "meaning": "world/universe"
+    }
+   ]
+  },
+  {
+   "id": "d33",
+   "register": "narrative",
+   "text": "قرأ المعلم القصة بصوت عال فاستمع الجميع باهتمام.",
+   "tokens": [
+    {
+     "surface": "قرأ",
+     "lemma": "قَرَأَ",
+     "pos": "VERB",
+     "meaning": "read/recite"
+    },
+    {
+     "surface": "المعلم",
+     "lemma": null,
+     "pos": null,
+     "meaning": null
+    },
+    {
+     "surface": "القصة",
+     "lemma": "قِصَّة",
+     "pos": "NOUN",
+     "meaning": "story/tale"
+    },
+    {
+     "surface": "بصوت",
+     "lemma": "صَوْت",
+     "pos": "NOUN",
+     "meaning": "voice/sound/vote"
+    },
+    {
+     "surface": "عال",
+     "lemma": null,
+     "pos": null,
+     "meaning": null
+    },
+    {
+     "surface": "فاستمع",
+     "lemma": "اِسْتَمَعَ",
+     "pos": "VERB",
+     "meaning": "listen/hear"
+    },
+    {
+     "surface": "الجميع",
+     "lemma": "جَمِيع",
+     "pos": "NOUN",
+     "meaning": "all/everyone/whole"
+    },
+    {
+     "surface": "باهتمام",
+     "lemma": "اِهْتِمَام",
+     "pos": "NOUN",
+     "meaning": "interest/attention/concern"
+    }
+   ]
+  },
+  {
+   "id": "d34",
+   "register": "narrative",
+   "text": "أصبح الطقس بارداً في الشتاء وتساقطت الثلوج على الجبال.",
+   "tokens": [
+    {
+     "surface": "أصبح",
+     "lemma": "أَصْبَحَ",
+     "pos": "VERB",
+     "meaning": "become/get/be"
+    },
+    {
+     "surface": "الطقس",
+     "lemma": "طَقْس",
+     "pos": "NOUN",
+     "meaning": "weather/climate"
+    },
+    {
+     "surface": "بارداً",
+     "lemma": "بَارِد",
+     "pos": "ADJ",
+     "meaning": "cold/cool"
+    },
+    {
+     "surface": "في",
+     "lemma": "فِي",
+     "pos": "ADP",
+     "meaning": "in"
+    },
+    {
+     "surface": "الشتاء",
+     "lemma": "شِتَاء",
+     "pos": "NOUN",
+     "meaning": "winter/rain"
+    },
+    {
+     "surface": "وتساقطت",
+     "lemma": null,
+     "pos": null,
+     "meaning": null
+    },
+    {
+     "surface": "الثلوج",
+     "lemma": "ثَلْج",
+     "pos": "NOUN",
+     "meaning": "snow/ice"
+    },
+    {
+     "surface": "على",
+     "lemma": "عَلَى",
+     "pos": "ADP",
+     "meaning": "on/upon/over"
+    },
+    {
+     "surface": "الجبال",
+     "lemma": "جَبَل",
+     "pos": "NOUN",
+     "meaning": "mountain/hill"
+    }
+   ]
+  },
+  {
+   "id": "d35",
+   "register": "news",
+   "text": "زار الملك المدينة والتقى بالمواطنين في الساحة الرئيسية.",
+   "tokens": [
+    {
+     "surface": "زار",
+     "lemma": "زَارَ",
+     "pos": "VERB",
+     "meaning": "visit"
+    },
+    {
+     "surface": "الملك",
+     "lemma": "مَلِك",
+     "pos": "NOUN",
+     "meaning": "king"
+    },
+    {
+     "surface": "المدينة",
+     "lemma": "مَدِينَة",
+     "pos": "NOUN",
+     "meaning": "city/town"
+    },
+    {
+     "surface": "والتقى",
+     "lemma": "اِلْتَقَى",
+     "pos": "VERB",
+     "meaning": "meet"
+    },
+    {
+     "surface": "بالمواطنين",
+     "lemma": null,
+     "pos": null,
+     "meaning": null
+    },
+    {
+     "surface": "في",
+     "lemma": "فِي",
+     "pos": "ADP",
+     "meaning": "in"
+    },
+    {
+     "surface": "الساحة",
+     "lemma": "سَاحَة",
+     "pos": "NOUN",
+     "meaning": "square/yard/courtyard/field"
+    },
+    {
+     "surface": "الرئيسية",
+     "lemma": null,
+     "pos": null,
+     "meaning": null
+    }
+   ]
+  },
+  {
+   "id": "d36",
+   "register": "news",
+   "text": "أعلن الفريق فوزه في المباراة النهائية أمام الجمهور.",
+   "tokens": [
+    {
+     "surface": "أعلن",
+     "lemma": "أَعْلَنَ",
+     "pos": "VERB",
+     "meaning": "announce/declare"
+    },
+    {
+     "surface": "الفريق",
+     "lemma": "فَرِيق",
+     "pos": "NOUN",
+     "meaning": "team/group"
+    },
+    {
+     "surface": "فوزه",
+     "lemma": "فَوْز",
+     "pos": "NOUN",
+     "meaning": "victory/win/success"
+    },
+    {
+     "surface": "في",
+     "lemma": "فِي",
+     "pos": "ADP",
+     "meaning": "in"
+    },
+    {
+     "surface": "المباراة",
+     "lemma": "مُبَارَاة",
+     "pos": "NOUN",
+     "meaning": "match/game/contest"
+    },
+    {
+     "surface": "النهائية",
+     "lemma": "نِهَائِيّ",
+     "pos": "ADJ",
+     "meaning": "final/last/ultimate"
+    },
+    {
+     "surface": "أمام",
+     "lemma": "أَمَامَ",
+     "pos": "ADP",
+     "meaning": "in front of/before/ahead"
+    },
+    {
+     "surface": "الجمهور",
+     "lemma": "جُمْهُور",
+     "pos": "NOUN",
+     "meaning": "public/audience/crowd"
+    }
+   ]
+  },
+  {
+   "id": "d37",
+   "register": "encyclopedia",
+   "text": "يبلغ عدد سكان البلاد نحو عشرة ملايين نسمة.",
+   "tokens": [
+    {
+     "surface": "يبلغ",
+     "lemma": "بَلَغَ",
+     "pos": "VERB",
+     "meaning": "reach/attain/amount/arrive"
+    },
+    {
+     "surface": "عدد",
+     "lemma": "عَدَد",
+     "pos": "NOUN",
+     "meaning": "number"
+    },
+    {
+     "surface": "سكان",
+     "lemma": null,
+     "pos": null,
+     "meaning": null
+    },
+    {
+     "surface": "البلاد",
+     "lemma": "بَلَد",
+     "pos": "NOUN",
+     "meaning": "country/land/town"
+    },
+    {
+     "surface": "نحو",
+     "lemma": "نَحْو",
+     "pos": "NOUN",
+     "meaning": "about/toward/grammar/approximately"
+    },
+    {
+     "surface": "عشرة",
+     "lemma": "عَشَرَة",
+     "pos": "NUM",
+     "meaning": "ten"
+    },
+    {
+     "surface": "ملايين",
+     "lemma": "مِلْيُون",
+     "pos": "NOUN",
+     "meaning": "million"
+    },
+    {
+     "surface": "نسمة",
+     "lemma": "نَسَمَة",
+     "pos": "NOUN",
+     "meaning": "person/soul/breath"
+    }
+   ]
+  },
+  {
+   "id": "d38",
+   "register": "encyclopedia",
+   "text": "تنتج المصانع كميات كبيرة من الحديد والصلب.",
+   "tokens": [
+    {
+     "surface": "تنتج",
+     "lemma": "أَنْتَجَ",
+     "pos": "VERB",
+     "meaning": "produce/manufacture"
+    },
+    {
+     "surface": "المصانع",
+     "lemma": "مَصْنَع",
+     "pos": "NOUN",
+     "meaning": "factory/plant"
+    },
+    {
+     "surface": "كميات",
+     "lemma": "كَمِّيَّة",
+     "pos": "NOUN",
+     "meaning": "quantity/amount"
+    },
+    {
+     "surface": "كبيرة",
+     "lemma": "كَبِير",
+     "pos": "ADJ",
+     "meaning": "big/large/great"
+    },
+    {
+     "surface": "من",
+     "lemma": "مِنْ",
+     "pos": "ADP",
+     "meaning": "from/of"
+    },
+    {
+     "surface": "الحديد",
+     "lemma": "حَدِيد",
+     "pos": "NOUN",
+     "meaning": "iron"
+    },
+    {
+     "surface": "والصلب",
+     "lemma": "صُلْب",
+     "pos": "NOUN",
+     "meaning": "steel/hard/solid"
+    }
+   ]
+  },
+  {
+   "id": "d39",
+   "register": "narrative",
+   "text": "غضب الرجل عندما سمع الخبر وخرج من البيت.",
+   "tokens": [
+    {
+     "surface": "غضب",
+     "lemma": "غَضِبَ",
+     "pos": "VERB",
+     "meaning": "be angry/get angry"
+    },
+    {
+     "surface": "الرجل",
+     "lemma": "رَجُل",
+     "pos": "NOUN",
+     "meaning": "man"
+    },
+    {
+     "surface": "عندما",
+     "lemma": "عِنْدَمَا",
+     "pos": "CONJ",
+     "meaning": "when/whenever"
+    },
+    {
+     "surface": "سمع",
+     "lemma": "سَمِعَ",
+     "pos": "VERB",
+     "meaning": "hear/listen"
+    },
+    {
+     "surface": "الخبر",
+     "lemma": "خَبَر",
+     "pos": "NOUN",
+     "meaning": "news/report/story"
+    },
+    {
+     "surface": "وخرج",
+     "lemma": "خَرَجَ",
+     "pos": "VERB",
+     "meaning": "go out/exit/leave/come out"
+    },
+    {
+     "surface": "من",
+     "lemma": "مِنْ",
+     "pos": "ADP",
+     "meaning": "from/of"
+    },
+    {
+     "surface": "البيت",
+     "lemma": "بَيْت",
+     "pos": "NOUN",
+     "meaning": "house/home/verse"
+    }
+   ]
+  },
+  {
+   "id": "d40",
+   "register": "narrative",
+   "text": "حملت الفتاة حقيبتها الثقيلة وسارت نحو المحطة.",
+   "tokens": [
+    {
+     "surface": "حملت",
+     "lemma": "حَمَلَ",
+     "pos": "VERB",
+     "meaning": "carry/bear/take/bring"
+    },
+    {
+     "surface": "الفتاة",
+     "lemma": "فَتَاة",
+     "pos": "NOUN",
+     "meaning": "girl/young woman"
+    },
+    {
+     "surface": "حقيبتها",
+     "lemma": "حَقِيبَة",
+     "pos": "NOUN",
+     "meaning": "bag/suitcase/briefcase"
+    },
+    {
+     "surface": "الثقيلة",
+     "lemma": "ثَقِيل",
+     "pos": "ADJ",
+     "meaning": "heavy"
+    },
+    {
+     "surface": "وسارت",
+     "lemma": "سَارَ",
+     "pos": "VERB",
+     "meaning": "walk/go/travel/move"
+    },
+    {
+     "surface": "نحو",
+     "lemma": "نَحْو",
+     "pos": "NOUN",
+     "meaning": "about/toward/grammar/approximately"
+    },
+    {
+     "surface": "المحطة",
+     "lemma": "مَحَطَّة",
+     "pos": "NOUN",
+     "meaning": "station/stop"
+    }
+   ]
+  },
+  {
+   "id": "d41",
+   "register": "narrative",
+   "text": "نام الطفل بسرعة لأنه كان متعبا جدا.",
+   "tokens": [
+    {
+     "surface": "نام",
+     "lemma": "نَامَ",
+     "pos": "VERB",
+     "meaning": "sleep"
+    },
+    {
+     "surface": "الطفل",
+     "lemma": "طِفْل",
+     "pos": "NOUN",
+     "meaning": "child/infant/baby"
+    },
+    {
+     "surface": "بسرعة",
+     "lemma": "سُرْعَة",
+     "pos": "NOUN",
+     "meaning": "speed/quickness/haste"
+    },
+    {
+     "surface": "لأنه",
+     "lemma": null,
+     "pos": null,
+     "meaning": null
+    },
+    {
+     "surface": "كان",
+     "lemma": "كَانَ",
+     "pos": "VERB",
+     "meaning": "be/was/exist"
+    },
+    {
+     "surface": "متعبا",
+     "lemma": null,
+     "pos": null,
+     "meaning": null
+    },
+    {
+     "surface": "جدا",
+     "lemma": null,
+     "pos": null,
+     "meaning": null
+    }
+   ]
+  },
+  {
+   "id": "d42",
+   "register": "narrative",
+   "text": "أحبت الجدة حفيدها كثيرا وأعطته كتابا قديما.",
+   "tokens": [
+    {
+     "surface": "أحبت",
+     "lemma": "أَحَبَّ",
+     "pos": "VERB",
+     "meaning": "love/like"
+    },
+    {
+     "surface": "الجدة",
+     "lemma": "جَدَّة",
+     "pos": "NOUN",
+     "meaning": "grandmother"
+    },
+    {
+     "surface": "حفيدها",
+     "lemma": "حَفِيد",
+     "pos": "NOUN",
+     "meaning": "grandson/grandchild"
+    },
+    {
+     "surface": "كثيرا",
+     "lemma": null,
+     "pos": null,
+     "meaning": null
+    },
+    {
+     "surface": "وأعطته",
+     "lemma": "أَعْطَى",
+     "pos": "VERB",
+     "meaning": "give/grant"
+    },
+    {
+     "surface": "كتابا",
+     "lemma": "كِتَاب",
+     "pos": "NOUN",
+     "meaning": "book"
+    },
+    {
+     "surface": "قديما",
+     "lemma": "قَدِيم",
+     "pos": "ADJ",
+     "meaning": "old/ancient"
+    }
+   ]
+  },
+  {
+   "id": "d43",
+   "register": "narrative",
+   "text": "هبت الرياح القوية على البحر فعاد الصيادون إلى الشاطئ.",
+   "tokens": [
+    {
+     "surface": "هبت",
+     "lemma": "هَبَّ",
+     "pos": "VERB",
+     "meaning": "blow/rise/get up/wake"
+    },
+    {
+     "surface": "الرياح",
+     "lemma": "رِيح",
+     "pos": "NOUN",
+     "meaning": "wind/breeze/smell"
+    },
+    {
+     "surface": "القوية",
+     "lemma": "قَوِيّ",
+     "pos": "ADJ",
+     "meaning": "strong/powerful"
+    },
+    {
+     "surface": "على",
+     "lemma": "عَلَى",
+     "pos": "ADP",
+     "meaning": "on/upon/over"
+    },
+    {
+     "surface": "البحر",
+     "lemma": "بَحْر",
+     "pos": "NOUN",
+     "meaning": "sea"
+    },
+    {
+     "surface": "فعاد",
+     "lemma": "عَادَ",
+     "pos": "VERB",
+     "meaning": "return/come back/go back"
+    },
+    {
+     "surface": "الصيادون",
+     "lemma": "صَيَّاد",
+     "pos": "NOUN",
+     "meaning": "fisherman/hunter"
+    },
+    {
+     "surface": "إلى",
+     "lemma": "إِلَى",
+     "pos": "ADP",
+     "meaning": "to/toward"
+    },
+    {
+     "surface": "الشاطئ",
+     "lemma": "شَاطِئ",
+     "pos": "NOUN",
+     "meaning": "shore/beach/coast"
+    }
+   ]
+  },
+  {
+   "id": "d44",
+   "register": "narrative",
+   "text": "أرسل الأستاذ الطلاب إلى المكتبة ليبحثوا عن المعلومات.",
+   "tokens": [
+    {
+     "surface": "أرسل",
+     "lemma": "أَرْسَلَ",
+     "pos": "VERB",
+     "meaning": "send/dispatch"
+    },
+    {
+     "surface": "الأستاذ",
+     "lemma": "أُسْتَاذ",
+     "pos": "NOUN",
+     "meaning": "professor/teacher/master"
+    },
+    {
+     "surface": "الطلاب",
+     "lemma": "طَالِب",
+     "pos": "NOUN",
+     "meaning": "student/seeker"
+    },
+    {
+     "surface": "إلى",
+     "lemma": "إِلَى",
+     "pos": "ADP",
+     "meaning": "to/toward"
+    },
+    {
+     "surface": "المكتبة",
+     "lemma": "مَكْتَبَة",
+     "pos": "NOUN",
+     "meaning": "library/bookshop/bookstore"
+    },
+    {
+     "surface": "ليبحثوا",
+     "lemma": "بَحَثَ",
+     "pos": "VERB",
+     "meaning": "search/research/examine/discuss"
+    },
+    {
+     "surface": "عن",
+     "lemma": "عَنْ",
+     "pos": "ADP",
+     "meaning": "about/from/of"
+    },
+    {
+     "surface": "المعلومات",
+     "lemma": "مَعْلُومَات",
+     "pos": "NOUN",
+     "meaning": "information/data"
+    }
+   ]
+  }
+ ]
+}

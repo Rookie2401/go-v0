@@ -6,6 +6,7 @@ import type { AppContext } from '../context';
 import { append, button, clear, field, h, langProps, p, setStatus, statusLine } from '../dom';
 import { itemMarked } from '../events';
 import { languageName } from '../format';
+import { vocabLabel } from '../deckModel';
 import type { View } from './view';
 
 const LEVELS: Array<KnowledgeLevel | 'all'> = ['all', 'new', 'seen', 'recognized', 'familiar', 'known', 'automatic'];
@@ -120,7 +121,7 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
 
   function itemRow(item: VocabularyItem): HTMLElement {
     const unitId = item.knowledge.unitId;
-    const title = item.unit?.label || unitId;
+    const title = vocabLabel(item.unit?.label, unitId); // a unit the worker could not register (no analyser there) has no label: the word inside its id, never the id
     const kind = item.unit?.kind ?? unitId.split(':', 1)[0];
     const kindLabel = UNIT_KIND_LABEL[kind] ?? kind;
     const variants = [...new Set(item.surfaceForms.filter((x) => x && x !== title))].slice(0, 25);

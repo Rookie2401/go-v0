@@ -276,6 +276,12 @@ export interface LanguageAdapter {
    * dictionary's senses after it, the sense equal to the gloss not repeated. Absent (false) for every other language: their order is the dictionary's.
    */
   leadWithReadingGloss?: boolean;
+  /**
+   * True when the dictionary files its words under a key without the vowels (Arabic: أسبوع for أُسْبُوع). A lemma id minted from that key would be a SECOND id
+   * for the word ("lemma:ar:أسبوع:NOUN" beside the analyser's "lemma:ar:أُسْبُوع:NOUN") and would split its record, so for such a language a dictionary-
+   * confirmed form stays a FORM unit: no lemma id is made from the dictionary's key. Only the analyser's own reading supplies the vocalized lemma.
+   */
+  bareDictionaryHeads?: boolean;
   headMatches?(lemma: string, head: { vocalized?: string; romanization?: string }, pos?: PartOfSpeech): boolean | undefined;
   /** A plain-words line for a feature bundle ("first person plural, imperfect subjunctive"), for the word sheet. */
   describeMorph?(morph: Record<string, string>, pos?: PartOfSpeech): string;

@@ -238,6 +238,8 @@ const READ_CARD = `function () {
     translit: tx(card.querySelector('[data-row="transliteration"]')),
     rows: [...card.querySelectorAll('[data-row]')].map((r) => r.dataset.row + ': ' + tx(r)).slice(0, 60),
     segs: [...card.querySelectorAll('[data-row="form-components"] .seg')].map((s) => [tx(s.firstElementChild), tx(s.querySelector('.role'))]),
+    segsDir: card.querySelector('[data-row="form-components"]')?.getAttribute('dir') ?? null,
+    segLefts: [...card.querySelectorAll('[data-row="form-components"] .seg')].map((s) => Math.round(s.getBoundingClientRect().left)),
     root: tx(card.querySelector('[data-row="form-root"]')),
     headings: [...card.querySelectorAll('h3, h4')].map(tx),
     layers: Object.fromEntries([...card.querySelectorAll('[data-layer]')].map((l) => [l.dataset.layer, (tx(l) ?? '').slice(0, 1500)])),
@@ -493,6 +495,12 @@ async function main() {
     step('C2', 'lemma on each card is the one expected (hand-written expectation)', mism.length === 0 ? 'PASS' : 'FAIL', { checked: W.filter((w) => w[3]).length, mismatches: mism });
     const pm = report.cards.filter((x) => x.partsExpected && !x.partsOk).map((x) => ({ word: x.label, expected: x.partsExpected, got: x.partsGot }));
     step('C3', 'attached words listed as parts (وبالكتاب, فسيكتبونها)', pm.length === 0 ? 'PASS' : 'FAIL', { mismatches: pm, got: Object.fromEntries(report.cards.filter((x) => x.partsExpected).map((x) => [x.label, x.partsGot])) });
+    const cardOf = (label) => report.cards.find((x) => x.set === 'prose' && x.label === label)?.card;
+    const rootRows = ['كتب (s4)', 'الكتاب', 'يكتبون'].map((l) => ({ word: l, root: cardOf(l)?.root, rows: (cardOf(l)?.rows ?? []).filter((r) => /root/i.test(r)).slice(0, 2) }));
+    step('C5', 'a root line "ك ت ب" on the cards of كتب / الكتاب / يكتبون', rootRows.every((r) => /ك\s*ت\s*ب/.test(r.root ?? '')) ? 'PASS' : 'FAIL', { rootRows });
+    const pcard = cardOf('وبالكتاب');
+    const lefts = pcard?.segLefts ?? [];
+    step('C6', 'the parts list of وبالكتاب reads right to left: و is the rightmost part', pcard?.segsDir === 'rtl' && /^و/.test(pcard?.segs?.[0]?.[0] ?? '') && (lefts.every((x) => x === 0) || lefts[0] > lefts[lefts.length - 1]) ? 'PASS' : 'FAIL', { dir: pcard?.segsDir, segs: pcard?.segs, lefts });
     const undec = report.cards.filter((x) => x.set === 'prose' && x.undecided).map((x) => x.label);
     const mets = report.cards.filter((x) => x.set === 'prose').map((x) => x.metrics).filter(Boolean);
     const clip = mets.filter((m) => m.clipped?.length || m.outside?.length).length;
@@ -531,6 +539,7 @@ async function main() {
     const stillUndecided = vc.filter((x) => x.undecided).map((x) => x.label);
     report.shots = { ...report.shots, vocalized: await B.shot(vp.s, 'D-vocalized-card') };
     step('D1', 'vocalized.html: vowels select the reading (lemma of each word)', mism.length === 0 ? 'PASS' : 'FAIL', { checked: V.length, mismatches: mism, stillUndecided });
+    step('D3', 'vocalized.html: the card state of each vocalized word. `undecided` is read from the CARD TEXT (it says several readings / undecided / guess), not from the analyser; the readings the card listed are recorded', 'INFO', vc.map((x) => ({ word: x.label, lemma: x.card?.lemma, cardSaysUndecided: !!x.undecided, otherReadings: ((x.card?.text ?? '').match(/Other possible readings:.{0,260}/i) ?? [])[0] ?? null, notes: ((x.card?.text ?? '').match(/(\d+ \w+ possible[^.]*\.)/) ?? [])[0] ?? null })));
     step('D2', 'vocalized.html: the morphology says passive / imperative / both persons / form X / construct', morphFail.length === 0 ? 'PASS' : 'FAIL', { failures: morphFail });
     await B.close(vp.t);
   }
@@ -657,7 +666,7 @@ async function main() {
       const by = byParaOf(all);
       report.shots = { ...report.shots, [`G-${name}`]: await B.shot(pg.s, `G-${name}`) };
       const lk = {};
-      for (const [lab, target] of lks) { const r = await lookup(pg, target, { deeper: false, inject: false, metrics: false }); lk[lab] = { ...cardLine(r), reply: r.reply, text: r.card?.text?.slice(0, 260), undecided: undecidedOf(r.card), err: r.error }; }
+      for (const [lab, target] of lks) { const r = await lookup(pg, target, { deeper: false, inject: false, metrics: false }); lk[lab] = { ...cardLine(r), reply: r.reply, text: r.card?.text?.slice(0, 260), fullText: r.card?.text?.slice(0, 1400), notes: (r.card?.rows ?? []).filter((x) => /note|dialect|variety/i.test(x)).slice(0, 4), undecided: undecidedOf(r.card), err: r.error }; }
       gr[name] = { state: st?.activeState && { languages: st.activeState.languages, scanned: st.activeState.scanned, marked: st.activeState.marked, skipped: st.activeState.skipped, reason: st.activeState.reason, confirmed: st.activeState.confirmed, unconfirmed: st.activeState.unconfirmed }, ranges: all.length, by, lookups: lk };
       console.log('  page', name, JSON.stringify({ ranges: all.length, by: Object.keys(by), langs: st?.activeState?.languages }).slice(0, 300));
       await B.close(pg.t);
@@ -673,6 +682,11 @@ async function main() {
     const digits = Object.values(mb).flat().filter((w) => /^[0-9٠-٩]+\(/.test(w));
     const latin = Object.values(mb).flat().filter((w) => /^[A-Za-z]+\(/.test(w) && !english.includes(w));
     step('G5', 'mixed.html: only the Arabic paragraph and the Arabic word are read; English untouched; dialect line flagged or uncredited; digits are not words', (mb['m-ar']?.length ?? 0) > 0 && english.length === 0 && digits.length === 0 ? 'PASS' : 'FAIL', { underlinedArabicPara: mb['m-ar'], underlinedWordInEnglish: mb['m-word'], underlinedDialect: mb['m-dial'] ?? [], underlinedEnglish: english, digitsMarked: digits, latinMarkedInArabic: latin, lookups: gr.mixed?.lookups, state: gr.mixed?.state });
+    const mlk = gr.mixed?.lookups ?? {};
+    const wordClick = mlk['كتاب (m-word)'];
+    step('G6', 'mixed.html: a click on كتاب inside the English sentence is read as Arabic', wordClick?.language === 'ar' && !!wordClick?.lemma ? 'PASS' : 'FAIL', { lookup: wordClick });
+    const dialClicks = ['مش (m-dial)', 'عايز (m-dial)'].map((k) => ({ k, text: (mlk[k]?.fullText ?? mlk[k]?.text ?? '').slice(0, 1400), language: mlk[k]?.language }));
+    step('G7', 'mixed.html: a click on a word of the dialect line says it looks like spoken Arabic (Egyptian) and is not analysed', dialClicks.some((d) => /looks like spoken Arabic/i.test(d.text)) ? 'PASS' : 'FAIL', { dialClicks });
   }
 
   // ═════════ I. signed in, GoReview, Alphabet Sprint ═════════
@@ -748,9 +762,9 @@ async function main() {
       const frontNow = front;
       const reveal = await B.evalIn(rv.s, `(() => { const b = document.getElementById('reveal') ?? document.getElementById('flip-card') ?? [...document.querySelectorAll('button')].find((x) => /show answer|reveal|flip/i.test(x.textContent)); if (!b) return { err: 'no reveal', buttons: [...document.querySelectorAll('button')].map((x) => (x.id || '') + ':' + x.textContent.trim().slice(0, 30)).slice(0, 15) }; b.click(); return { clicked: b.id || b.textContent.trim() }; })()`);
       await sleep(1000);
-      const back = await B.evalIn(rv.s, `(() => ({ answer: document.getElementById('revealed-answer')?.innerText.trim(), text: (document.getElementById('session')?.innerText ?? document.body.innerText).replace(/\\s+/g, ' ').slice(0, 700), grades: [...document.querySelectorAll('.grade')].map((g) => g.dataset.grade) }))()`);
+      const back = await B.evalIn(rv.s, `(() => ({ bdi: [...document.querySelectorAll('#revealed-answer bdi[lang=ar]')].map((b) => b.textContent), answerTag: (document.getElementById('revealed-answer')?.closest('[dir]')?.getAttribute('dir')) ?? null, answer: document.getElementById('revealed-answer')?.innerText.trim(), text: (document.getElementById('session')?.innerText ?? document.body.innerText).replace(/\\s+/g, ' ').slice(0, 700), grades: [...document.querySelectorAll('.grade')].map((g) => g.dataset.grade) }))()`);
       if (k === 0) report.shots.sprintBack0 = await B.shot(rv.s, 'I-sprint-0-back');
-      sprint.push({ n: k + 1, front: frontNow.stimulus, instruction: frontNow.instruction, lang: frontNow.lang, dir: frontNow.dir, dirAttr: frontNow.dirAttr, font: frontNow.ff, fontSize: frontNow.fs, reveal, back: back?.answer, backText: back?.text, grades: back?.grades });
+      sprint.push({ n: k + 1, front: frontNow.stimulus, instruction: frontNow.instruction, lang: frontNow.lang, dir: frontNow.dir, dirAttr: frontNow.dirAttr, font: frontNow.ff, fontSize: frontNow.fs, reveal, back: back?.answer, backText: back?.text, bdi: back?.bdi, answerDir: back?.answerTag, grades: back?.grades });
       const grade = await B.evalIn(rv.s, `(() => { const g = document.querySelector('.grade[data-grade="good"]'); if (!g) return { err: 'no good' }; g.click(); return { clicked: true }; })()`);
       await sleep(2200);
       front = await B.evalIn(rv.s, readFront);
@@ -761,13 +775,20 @@ async function main() {
     report.goreview = { langPage, langs, chose, arabicOptionCount: arCount, vocab, decks, startSprint, sprint };
     // a vocabulary card: save the marked word and read its card
     const langRows = langPage?.rows ?? [];
-    step('I2', 'GoReview shows Arabic once in its language list; the marked Arabic words appear in the vocabulary', (arCount === 1 || (langPage?.selects ?? []).some((o) => o.filter((x) => /Arabic|العربية/.test(x)).length === 1) || langRows.length === 1) && /مدين|مدرس/.test(vocab?.text ?? '') ? 'PASS' : 'FAIL', { options: langs?.options, arabicOptionCount: arCount, languagesPage: langPage, chose, vocabText: vocab?.text?.slice(0, 600), arabicNodes: vocab?.arabicNodes?.slice(0, 6) });
+    step('I2', 'GoReview shows Arabic once in its language list; the marked Arabic words appear in the vocabulary', ((langPage?.text ?? '').match(/Arabic \(العربية\)/g) ?? []).length === 1 && /\p{Script=Arabic}/u.test(vocab?.text ?? '') ? 'PASS' : 'FAIL', { options: langs?.options, arabicOptionCount: arCount, languagesPage: langPage, chose, vocabText: vocab?.text?.slice(0, 600), arabicNodes: vocab?.arabicNodes?.slice(0, 6) });
     step('I3', 'Alphabet deck / Sprint offers Arabic and shows its first cards (fronts and backs, rtl, letter shapes)', sprint.length >= 6 ? 'PASS' : sprint.length ? 'PARTIAL' : 'FAIL', { tiles: decks?.tiles, started: startSprint, sprint: sprint.map((s) => ({ n: s.n, front: s.front, back: s.back ?? s.backText?.slice(0, 160), dir: s.dir, lang: s.lang, font: s.font })) });
+    const sp6 = sprint.slice(0, 6);
+    const arRun = /[\u0600-\u06FF][\u0600-\u06FF\u0640\u064B-\u065F\s]*[\u0600-\u06FF\u064B-\u065F]|[\u0600-\u06FF]/g;
+    const sepsOk = sp6.map((x) => { const t = x.back ?? ''; const outside = (x.bdi ?? []).reduce((acc, b) => acc.replace(b, ''), t); return { n: x.n, front: x.front, back: t.slice(0, 200), bdi: x.bdi, answerDir: x.answerDir, arabicOutsideBdi: (outside.match(arRun) ?? []), separators: (t.match(/ · | — /g) ?? []).length }; });
+    step('I6', "the Sprint's first cards (the plan's first session is five: ل, sukūn, fatḥa, ي, لَيْل): each Arabic run in a back sits in its own <bdi lang=ar>, so the separators keep their logical order; fronts and backs recorded", sp6.length >= 5 && sepsOk.every((x) => x.arabicOutsideBdi.length === 0) ? 'PASS' : 'FAIL', { cards: sepsOk });
+    step('I7', "GoReview's card front takes the Arabic font stack (computed family starts with Noto Naskh Arabic)", sp6.length && sp6.every((x) => /Noto Naskh Arabic/.test(x.font ?? '')) ? 'PASS' : 'FAIL', { fonts: sp6.map((x) => [x.front, x.font, x.fontSize]) });
     await B.close(rv.t);
     // a saved vocabulary card: front rtl with vowels (the marked words saved for review)
     const rv2 = await B.open(`chrome-extension://${id}/review/index.html#/vocabulary`, 'goreview-vocab');
     await sleep(6000);
     const saved = await B.evalIn(rv2.s, `(async () => { const bs = [...document.querySelectorAll('button')].filter((x) => /Save for GoReview/.test(x.textContent)); const out = { buttons: bs.length }; if (bs[0]) { out.row = (bs[0].closest('li, tr, article') ?? bs[0].parentElement).innerText.replace(/\\s+/g, ' ').slice(0, 200); bs[0].click(); await new Promise((r) => setTimeout(r, 2500)); } location.hash = '#/review'; await new Promise((r) => setTimeout(r, 5000)); const b = document.getElementById('start-session'); out.start = b ? b.textContent.trim() : null; if (b) b.click(); for (let i = 0; i < 30; i++) { await new Promise((r) => setTimeout(r, 500)); if (document.getElementById('stimulus')) break; } const st = document.getElementById('stimulus'); const cs = st && getComputedStyle(st); out.front = st ? { text: st.innerText.trim(), dir: cs.direction, lang: st.closest('[lang]')?.getAttribute('lang'), dirAttr: st.closest('[dir]')?.getAttribute('dir'), ff: cs.fontFamily.slice(0, 60), hasVowels: /[\\u064B-\\u0652]/.test(st.innerText) } : null; out.page = document.body.innerText.replace(/\\s+/g, ' ').slice(0, 500); return out; })()`, 60000);
+    const titles = await B.evalIn(rv2.s, `(async () => { location.hash = '#/vocabulary'; await new Promise((r) => setTimeout(r, 4000)); return [...document.querySelectorAll('article.vocabulary-item h3, li.vocab-item .vocab-word')].map((e) => e.textContent.trim()); })()`, 30000);
+    step('I5', 'GoReview vocabulary rows: no title is a unit id, none begins "lemma:" or "form:"', Array.isArray(titles) && titles.length > 0 && titles.every((t) => !/^(lemma|form):/.test(t)) ? 'PASS' : 'FAIL', { titles: Array.isArray(titles) ? titles.slice(0, 30) : titles });
     report.goreview.savedCard = saved;
     report.shots.goreviewCard = await B.shot(rv2.s, 'I-goreview-arabic-card');
     step('I4', 'an Arabic review card is shown right-to-left with its vowels', saved?.front && saved.front.dir === 'rtl' ? 'PASS' : saved?.front ? 'FAIL' : 'NOT RUN', saved);

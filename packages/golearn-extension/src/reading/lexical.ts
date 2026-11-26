@@ -129,7 +129,8 @@ export async function buildLexicalTable(o: BuildOptions): Promise<LexicalTable> 
             const hit = reply.forms[f];
             const lemma = Array.isArray(hit) && typeof hit[0] === 'string' && hit[0] ? hit[0] : undefined;
             const pos = Array.isArray(hit) && typeof hit[1] === 'string' && /^[A-Za-z]{1,8}$/.test(hit[1]) ? hit[1] : undefined;
-            const lemmaId = lemma ? `lemma:${o.languageId}:${lemma}${pos ? ':' + pos : ''}` : undefined;
+            // a language whose dictionary keys have no vowels (Arabic) mints no lemma id from them: the form stays a form unit (see `bareDictionaryHeads`)
+            const lemmaId = lemma && !o.adapter.bareDictionaryHeads ? `lemma:${o.languageId}:${lemma}${pos ? ':' + pos : ''}` : undefined;
             if (lemmaId && isUnitId(lemmaId)) for (const r of byForm.get(f) ?? []) r.readings = [lemmaId];
           }
           if (reply.reason) { dictionary = reply.reason === 'no-pack' || reply.reason === 'no-index' ? 'no-index' : 'unavailable'; break; }

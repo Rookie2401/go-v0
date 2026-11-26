@@ -31,6 +31,7 @@ import { installArabicIndex, lookupArabicForm } from './arabic/index-store';
 import { AR_CORE } from './arabic/generated/core';
 import { arIdentityCounts } from './arabic/identities';
 import { arAnalyze, arRefine } from './arabic/sentence';
+import { arMarkForDeck } from './arabic/deck';
 import { detectArPatterns } from './arabic/constructions';
 import { detectArPhrases } from './arabic/phrases';
 import { arSyntax } from './arabic/syntax';
@@ -134,8 +135,8 @@ export const arAdapter: LanguageAdapter = {
   normalize: arKey,
   searchNormalize: arSearchNormalize,
 
-  analyze: (tokens: RawToken[], opts) => arAnalyze(tokens, opts),
-  refine: (tokens, analyzed, analyzers, given) => arRefine(tokens, analyzed, analyzers, given),
+  analyze: (tokens: RawToken[], opts) => arMarkForDeck(tokens, arAnalyze(tokens, opts)),
+  refine: (tokens, analyzed, analyzers, given) => arMarkForDeck(tokens, arRefine(tokens, analyzed, analyzers, given)),
 
   detectPhrases: (tokens, analyses) => detectArPhrases(tokens, analyses),
   detectPatterns: (tokens, analyses) => detectArPatterns(tokens, analyses),
@@ -174,4 +175,5 @@ export const arAdapter: LanguageAdapter = {
    */
   headMatches: (lemma, head, pos) => headMatchesLemma(lemma, head, pos),
   leadWithReadingGloss: true,
+  bareDictionaryHeads: true,
 };

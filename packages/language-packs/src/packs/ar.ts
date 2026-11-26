@@ -41,28 +41,30 @@ const THIS = 'هذا كتاب جديد على الطاولة.';
 const KNOWS = 'هو لا يعرف أين ذهبت أمي مع أخيها.';
 const ILL = 'لم يذهب إلى المدرسة لأنه مريض.';
 const WAS = 'كان الرجل في الغرفة مع ابنه.';
+// 2026-11-25 (deck gate, src/adapters/arabic/deck.ts): a reading the deck must not drill is marked requires-review on the candidate and `statusOf` reads that mark,
+// so a case whose word the gate holds back (core alone: no shard loaded, or a leading meaning nobody has reviewed) expects `requires-review`.
 export const AR_VALIDATION: ValidationCase[] = [
   // the orientation's practice lookup (tutorial/ar.ts): a vowelled perfect verb of form I, the lemma is its own citation form
-  { id: 'v-kataba', surface: 'كَتَبَ', sentence: WROTE, expect: { lemma: 'كَتَبَ', pos: 'VERB', features: { Voice: 'Act', Aspect: 'Perf', Person: '3', Gender: 'Masc', Number: 'Sing', VerbForm: 'Fin', Form: 'I' }, status: 'high-confidence' } },
-  { id: 'v-dhahaba', surface: 'ذَهَبَ', sentence: WENT, expect: { lemma: 'ذَهَبَ', pos: 'VERB', features: { Aspect: 'Perf', Person: '3', Number: 'Sing', Form: 'I' }, status: 'provisional' } },
-  { id: 'v-ila', surface: 'إِلَى', sentence: WENT, expect: { lemma: 'إِلَى', pos: 'ADP', status: 'provisional' } },
+  { id: 'v-kataba', surface: 'كَتَبَ', sentence: WROTE, expect: { lemma: 'كَتَبَ', pos: 'VERB', features: { Voice: 'Act', Aspect: 'Perf', Person: '3', Gender: 'Masc', Number: 'Sing', VerbForm: 'Fin', Form: 'I' }, status: 'requires-review' } },
+  { id: 'v-dhahaba', surface: 'ذَهَبَ', sentence: WENT, expect: { lemma: 'ذَهَبَ', pos: 'VERB', features: { Aspect: 'Perf', Person: '3', Number: 'Sing', Form: 'I' }, status: 'requires-review' } },
+  { id: 'v-ila', surface: 'إِلَى', sentence: WENT, expect: { lemma: 'إِلَى', pos: 'ADP', status: 'requires-review' } },
   // printed without vowels: the verb of the sentence is قَالَ (he said)
-  { id: 'v-qala', surface: 'قال', sentence: SAID, expect: { lemma: 'قَالَ', pos: 'VERB', features: { Aspect: 'Perf', Person: '3', Gender: 'Masc', Number: 'Sing' }, status: 'provisional' } },
+  { id: 'v-qala', surface: 'قال', sentence: SAID, expect: { lemma: 'قَالَ', pos: 'VERB', features: { Aspect: 'Perf', Person: '3', Gender: 'Masc', Number: 'Sing' }, status: 'requires-review' } },
   // رَجُل (man) and رِجْل (foot) are written alike: both stay, the card shows both
-  { id: 'v-rajul', surface: 'الرجل', sentence: SAID, expect: { lemma: 'رَجُل', pos: 'NOUN', features: { Definite: 'Def', Number: 'Sing', Gender: 'Masc' }, status: 'conflicted' } },
+  { id: 'v-rajul', surface: 'الرجل', sentence: SAID, expect: { lemma: 'رَجُل', pos: 'NOUN', features: { Definite: 'Def', Number: 'Sing', Gender: 'Masc' }, status: 'requires-review' } },
   { id: 'v-fi', surface: 'في', sentence: SAID, expect: { lemma: 'فِي', pos: 'ADP', status: 'provisional' } },
-  { id: 'v-bayt', surface: 'البيت', sentence: SAID, expect: { lemma: 'بَيْت', pos: 'NOUN', features: { Definite: 'Def', Number: 'Sing', Gender: 'Masc' }, status: 'provisional' } },
+  { id: 'v-bayt', surface: 'البيت', sentence: SAID, expect: { lemma: 'بَيْت', pos: 'NOUN', features: { Definite: 'Def', Number: 'Sing', Gender: 'Masc' }, status: 'requires-review' } },
   // a demonstrative and an adjective the core states alone; a noun that is also a proper name with the article (كِتَاب or الْكِتَاب) is only provisional
-  { id: 'v-hadha', surface: 'هذا', sentence: THIS, expect: { lemma: 'هٰذَا', pos: 'PRON', features: { Gender: 'Masc', Number: 'Sing' }, status: 'high-confidence' } },
-  { id: 'v-kitab', surface: 'كتاب', sentence: THIS, expect: { lemma: 'كِتَاب', pos: 'NOUN', features: { Number: 'Sing', Gender: 'Masc' }, status: 'provisional' } },
-  { id: 'v-jadid', surface: 'جديد', sentence: THIS, expect: { lemma: 'جَدِيد', pos: 'ADJ', features: { Gender: 'Masc', Number: 'Sing' }, status: 'high-confidence' } },
-  { id: 'v-ala', surface: 'على', sentence: THIS, expect: { lemma: 'عَلَى', pos: 'ADP', status: 'provisional' } },
+  { id: 'v-hadha', surface: 'هذا', sentence: THIS, expect: { lemma: 'هٰذَا', pos: 'PRON', features: { Gender: 'Masc', Number: 'Sing' }, status: 'requires-review' } },
+  { id: 'v-kitab', surface: 'كتاب', sentence: THIS, expect: { lemma: 'كِتَاب', pos: 'NOUN', features: { Number: 'Sing', Gender: 'Masc' }, status: 'requires-review' } },
+  { id: 'v-jadid', surface: 'جديد', sentence: THIS, expect: { lemma: 'جَدِيد', pos: 'ADJ', features: { Gender: 'Masc', Number: 'Sing' }, status: 'requires-review' } },
+  { id: 'v-ala', surface: 'على', sentence: THIS, expect: { lemma: 'عَلَى', pos: 'ADP', status: 'requires-review' } },
   // a negative particle the core states alone, an adverb, and a verb written without its vowels that stays open (يَعْرِفُ is indicative, subjunctive or jussive by its last vowel)
   { id: 'v-la', surface: 'لا', sentence: KNOWS, expect: { lemma: 'لَا', pos: 'PART', status: 'high-confidence' } },
-  { id: 'v-ayna', surface: 'أين', sentence: KNOWS, expect: { lemma: 'أَيْنَ', pos: 'ADV', status: 'provisional' } },
-  { id: 'v-yarif', surface: 'يعرف', sentence: KNOWS, expect: { lemma: 'عَرَفَ', pos: 'VERB', features: { Aspect: 'Imp', Person: '3', Gender: 'Masc', Number: 'Sing', Form: 'I' }, status: 'conflicted' } },
-  { id: 'v-mariid', surface: 'مريض', sentence: ILL, expect: { lemma: 'مَرِيض', pos: 'ADJ', features: { Gender: 'Masc' }, status: 'high-confidence' } },
-  { id: 'v-kana', surface: 'كان', sentence: WAS, expect: { lemma: 'كَانَ', pos: 'VERB', features: { Aspect: 'Perf', Person: '3', Gender: 'Masc', Number: 'Sing' }, status: 'provisional' } },
+  { id: 'v-ayna', surface: 'أين', sentence: KNOWS, expect: { lemma: 'أَيْنَ', pos: 'ADV', status: 'requires-review' } },
+  { id: 'v-yarif', surface: 'يعرف', sentence: KNOWS, expect: { lemma: 'عَرَفَ', pos: 'VERB', features: { Aspect: 'Imp', Person: '3', Gender: 'Masc', Number: 'Sing', Form: 'I' }, status: 'requires-review' } },
+  { id: 'v-mariid', surface: 'مريض', sentence: ILL, expect: { lemma: 'مَرِيض', pos: 'ADJ', features: { Gender: 'Masc' }, status: 'requires-review' } },
+  { id: 'v-kana', surface: 'كان', sentence: WAS, expect: { lemma: 'كَانَ', pos: 'VERB', features: { Aspect: 'Perf', Person: '3', Gender: 'Masc', Number: 'Sing' }, status: 'requires-review' } },
   // the core's limit, stated: a real word outside it has no reading until its shard has loaded
   { id: 'v-core-limit', surface: 'الْوَلَدُ', sentence: WROTE, expect: { readings: 'none' } },
   { id: 'v-core-limit-bare', surface: 'المدرسة', sentence: ILL, expect: { readings: 'none' } },

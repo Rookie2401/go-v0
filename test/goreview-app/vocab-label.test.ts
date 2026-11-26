@@ -12,3 +12,12 @@ describe('the word a vocabulary row shows', () => {
     expect(vocabLabel('book: a thing', 'lemma:en:x:NOUN')).toBe('book: a thing');
   });
 });
+
+describe('the vocabulary screen', () => {
+  it('titles a unit with no label by the word inside its id (Arabic: with its vowels), never by the id', async () => {
+    const fs = await import('node:fs');
+    const src = fs.readFileSync(new URL('../../packages/goreview/app/screens/vocabulary.ts', import.meta.url), 'utf8');
+    expect(src).toMatch(/const title = vocabLabel\(item\.unit\?\.label, unitId\)/);
+    expect(src).not.toMatch(/item\.unit\?\.label \|\| unitId/);
+  });
+});

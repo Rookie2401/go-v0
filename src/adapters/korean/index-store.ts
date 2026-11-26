@@ -50,7 +50,7 @@ export interface KoLexEntry {
   related?: string;
   /** The lexicon holds, or the source's entry names, the verb or adjective X하다 built on this noun: the analyser may read X + 하고 as that predicate. */
   hada?: true;
-  /** The source gives this entry two or more different senses and nothing hand-written decides the first meaning: the review gate does not drill it outside the reviewed core. Never read by the analysis. */
+  /** The first meaning of this entry is unchecked or doubtful: the review gate does not drill it outside the reviewed core. Never read by the analysis. */
   multi?: true;
   /** Conjugation class of a predicate. Absent: the source gives no conjugation table for it (the analyser then tries what the stem's shape allows and says so). */
   irr?: KoIrregular;

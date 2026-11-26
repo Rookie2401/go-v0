@@ -770,6 +770,15 @@
     {"lemma":"떡","pos":"NOUN","state":"main","main":1,"why":"rice cake; other: an adverb-like \"wide\" filed as a noun"},
     {"lemma":"영어","pos":"NOUN","state":"main","main":1,"why":"the English language; other: prison (literary)"},
     {"lemma":"파","pos":"NOUN","state":"main","main":1,"why":"spring onion; others: an entry with no gloss, the note fa"},
-    {"lemma":"지구","pos":"NOUN","state":"main","main":91,"why":"the Earth (this product's own entry 91: the source files the Earth only as a proper noun); other: district"}
+    {"lemma":"지구","pos":"NOUN","state":"main","main":91,"why":"the Earth (this product's own entry 91: the source files the Earth only as a proper noun); other: district"},
+    {"lemma":"계승","pos":"NOUN","state":"main","main":91,"why":"succession is what the spelling means in ordinary prose; the source's entry is a rare word (this product's own entry 91)"},
+    {"lemma":"곡","pos":"NOUN","state":"main","main":91,"why":"tune is what the spelling means in ordinary prose; the source's entry is a rare word (this product's own entry 91)"},
+    {"lemma":"대비","pos":"NOUN","state":"main","main":91,"why":"preparation is what the spelling means in ordinary prose; the source's entry is a rare word (this product's own entry 91)"},
+    {"lemma":"부각","pos":"NOUN","state":"main","main":91,"why":"standing out is what the spelling means in ordinary prose; the source's entry is a rare word (this product's own entry 91)"},
+    {"lemma":"사조","pos":"NOUN","state":"main","main":91,"why":"trend of thought is what the spelling means in ordinary prose; the source's entry is a rare word (this product's own entry 91)"},
+    {"lemma":"저하","pos":"NOUN","state":"main","main":91,"why":"decline is what the spelling means in ordinary prose; the source's entry is a rare word (this product's own entry 91)"},
+    {"lemma":"주목","pos":"NOUN","state":"main","main":91,"why":"attention is what the spelling means in ordinary prose; the source's entry is a rare word (this product's own entry 91)"},
+    {"lemma":"추리","pos":"NOUN","state":"main","main":91,"why":"reasoning is what the spelling means in ordinary prose; the source's entry is a rare word (this product's own entry 91)"},
+    {"lemma":"지상","pos":"NOUN","state":"main","main":91,"why":"the ground is what the spelling means in ordinary prose; the source's entry is a rare word (this product's own entry 91)"}
   ]
 }

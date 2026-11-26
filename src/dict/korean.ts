@@ -104,6 +104,28 @@ export function koSenseIsForm(s: KoRawSense): boolean {
 }
 
 /** The first gloss cut at its first top-level "," or ";" (inside brackets stay), a leading parenthesised label removed, at most 80 characters. */
+/** The cut of a gloss as it was before the dangling-article and list rule (used only to count what the rule changes). */
+export function koShortGlossOld(g: string): string {
+  let t = g.trim().replace(/:$/, '');
+  for (;;) { const m = /^\([^)]*\)\s*/.exec(t); if (!m || m[0].length >= t.length) break; t = t.slice(m[0].length); }
+  let depth = 0; let cut = t.length;
+  for (let i = 0; i < t.length; i++) { const ch = t[i]; if (ch === '(' || ch === '[') depth++; else if (ch === ')' || ch === ']') depth = Math.max(0, depth - 1); else if ((ch === ',' || ch === ';') && depth === 0) { cut = i; break; } }
+  let s = t.slice(0, cut).trim();
+  if (s.length > 80) { const sp = s.lastIndexOf(' ', 79); s = `${s.slice(0, sp > 20 ? sp : 79).trim()}…`; }
+  return s;
+}
+
+const REGION_TOKENS = new Set(['pyongan', 'hwanghae', 'gangwon', 'hamgyong', 'yukjin', 'yanbian', 'jeolla', 'chungcheong', 'gyeongsang', 'gyeonggi', 'jeju', 'seoul', 'russia', 'north', 'south', 'korean', 'dialect', 'dialectal', 'and', 'standard', 'koryo-mar']);
+/** A gloss that is only a list of regions and "form of X (rom, “meaning”)": the meaning with its relation ("where (dialectal form of 어디)"), never the region. */
+export function koRegionGloss(raw: string): string | undefined {
+  const m = /^(.*?)\s+(?:form|spelling|variant) of\s+(\S+)\s*(?:\(([^)]*)\))?/i.exec(raw);
+  if (!m) return undefined;
+  const toks = m[1].toLowerCase().split(/[\s,]+/).filter(Boolean);
+  if (!toks.length || !toks.every((t) => REGION_TOKENS.has(t)) || !toks.some((t) => t !== 'and')) return undefined;
+  const q = /[“"]([^”"]+)[”"]/.exec(m[3] ?? '');
+  return q ? `${q[1]} (dialectal form of ${m[2]})` : `dialectal form of ${m[2]}`;
+}
+
 export function koShortGloss(g: string): string {
   let t = g.trim().replace(/:$/, '');
   for (;;) { const m = /^\([^)]*\)\s*/.exec(t); if (!m || m[0].length >= t.length) break; t = t.slice(m[0].length); }
@@ -113,7 +135,14 @@ export function koShortGloss(g: string): string {
     const ch = t[i];
     if (ch === '(' || ch === '[') depth++;
     else if (ch === ')' || ch === ']') depth = Math.max(0, depth - 1);
-    else if ((ch === ',' || ch === ';') && depth === 0) { cut = i; break; }
+    else if ((ch === ',' || ch === ';') && depth === 0) {
+      const head = t.slice(0, i).trim();
+      const rest = t.slice(i + 1).trim();
+      // an article and one word ("a concerned, involved or interested party") is not yet a meaning; neither is a list that ends in "and X" / "or X"
+      if (ch === ',' && /^(?:a|an|the)\s+\S+$/i.test(head) && !/^(?:a|an|the)\s/i.test(rest)) continue;
+      if (ch === ',' && /^[^;()[\]]{1,70}$/.test(t) && /,\s+(?:and|or)\s+[^,;]+$/.test(t)) { cut = t.length; break; }
+      cut = i; break;
+    }
   }
   let s = t.slice(0, cut).trim();
   if (s.length > 80) { const sp = s.lastIndexOf(' ', 79); s = `${s.slice(0, sp > 20 ? sp : 79).trim()}…`; }
@@ -185,18 +214,22 @@ const SEE_RE = /^(?:see|for the verb|for the)\b/i;
  * parent headers first). A "See the entry at …" sense is never a gloss; a "synonym of X" sense is returned as `xref` (the build resolves it
  * to X's own gloss) when no other sense gives a gloss.
  */
-export function koEntryGloss(senses: readonly KoRawSense[]): { gloss?: string; xref?: string } {
+export function koEntryGloss(senses: readonly KoRawSense[]): { gloss?: string; xref?: string; quote?: string; rule?: 'region' | 'comma'; old?: string } {
   let xref: string | undefined;
+  let quote: string | undefined;
   for (const s of senses) {
     if (koSenseIsForm(s) || !s.glosses.length) continue;
     const raw = s.glosses[s.glosses.length - 1];
     const y = XSYN_RE.exec(raw);
-    if (y) { xref ??= y[1]; continue; }
+    if (y) { xref ??= y[1]; quote ??= /[“"]([^”"]+)[”"]/.exec(raw)?.[1]; continue; }
     if (SEE_RE.test(raw)) continue;
+    const region = koRegionGloss(raw);
+    if (region) return { gloss: koShortGloss(region), rule: 'region' };
     const g = koShortGloss(raw);
-    if (g) return { gloss: g };
+    const quoted = /[“"]([^”"]+)[”"]/.exec(raw)?.[1];
+    if (g) return { gloss: g, ...(quoted ? { quote: quoted } : {}), ...(g !== koShortGlossOld(raw) ? { rule: 'comma' as const, old: koShortGlossOld(raw) } : {}) };
   }
-  return xref ? { xref } : {};
+  return xref ? { xref, ...(quote ? { quote } : {}) } : {};
 }
 
 // ───────────────────────────── conjugation class ─────────────────────────────
@@ -452,7 +485,7 @@ export interface KoOverride { lemma: string; pos: string; hom?: number; gloss: s
 export interface KoSupplement { lemma: string; tag: string; hom?: number; gloss: string; hanja?: string; irr?: string; clf?: boolean; pron?: string; bound?: boolean; voice?: 'Pass' | 'Caus'; base?: string; why?: string }
 /** A reviewed line of docs/korean/voice-decisions.json: a verb the source's set relates to a base IS its passive or causative (voice), or is not (null). */
 export interface KoVoiceDecision { lemma: string; hom?: number; voice: 'Pass' | 'Caus' | null; base: string; own?: boolean; why?: string }
-export interface KoDocs { decisions?: { sets: KoDecision[] }; overrides?: { entries: KoOverride[] }; supplement?: { entries: KoSupplement[] }; registry?: { entries: KoRegistryRecord[] }; coreExtra?: { lemmas: string[] }; voiceDecisions?: { verbs: KoVoiceDecision[] } }
+export interface KoDocs { decisions?: { sets: KoDecision[] }; overrides?: { entries: KoOverride[] }; supplement?: { entries: KoSupplement[] }; registry?: { entries: KoRegistryRecord[] }; coreExtra?: { lemmas: string[] }; voiceDecisions?: { verbs: KoVoiceDecision[] }; meaningReviewed?: { entries: Array<[string, string, number]> }; meaningHeld?: { entries: Array<{ lemma: string; pos: string; hom: number; why: string }> } }
 
 /** docs/korean/core-extra.json: { lemmas: [...] }, the spellings the compiled core must hold; a malformed file fails the build. */
 export function koCheckCoreExtra(x: unknown): { lemmas: string[] } | undefined {
@@ -465,7 +498,7 @@ export function koCheckCoreExtra(x: unknown): { lemmas: string[] } | undefined {
 /** docs/korean/homonym-decisions.json and docs/korean/gloss-overrides.json, hand-written by the review; absent files are fine. */
 export function koLoadDocs(dir = process.env.KO_DOCS_DIR ?? 'docs/korean'): KoDocs {
   const read = <T,>(f: string): T | undefined => (fs.existsSync(`${dir}/${f}`) ? (JSON.parse(fs.readFileSync(`${dir}/${f}`, 'utf8')) as T) : undefined);
-  return { decisions: read('homonym-decisions.json'), overrides: read('gloss-overrides.json'), supplement: read('lexicon-supplement.json'), registry: read('homonyms.json'), coreExtra: koCheckCoreExtra(read<unknown>('core-extra.json')), voiceDecisions: read('voice-decisions.json') };
+  return { decisions: read('homonym-decisions.json'), overrides: read('gloss-overrides.json'), supplement: read('lexicon-supplement.json'), registry: read('homonyms.json'), coreExtra: koCheckCoreExtra(read<unknown>('core-extra.json')), voiceDecisions: read('voice-decisions.json'), meaningReviewed: read('meaning-reviewed.json'), meaningHeld: read('meaning-held.json') };
 }
 
 // ───────────────────────────── building the rows ─────────────────────────────
@@ -488,6 +521,10 @@ export interface KoRow extends KoLexEntry {
   liveKeys?: string[];
   /** A reviewed override or an own gloss decides the first meaning. */
   decided?: true;
+  /** The gloss as it was cut before the dangling-article and list rule: a frozen assigned number is found by it, so the rule moves no number. */
+  fpGloss?: string;
+  /** The meaning the source quotes inside a cross-reference gloss (“sulfuric acid”): the fallback when the named word is not a row. */
+  quote?: string;
   /** Derived and related headwords the source lists for the entry. */
   relWords?: string[];
   /** A verb the source's set relates this one to (see KoLexEntry.related). */
@@ -533,6 +570,12 @@ export interface KoReport {
   xrefResolved: number;
   xrefEmpty: number;
   glossOverrides: number;
+  regionGlosses: number;
+  commaGlosses: number;
+  quoteGlosses: number;
+  multiHeld: number;
+  multiNoGloss: number;
+  multiCleared: number;
   multi: number;
   doedaGlosses: string[];
   counterNouns: string[];
@@ -580,7 +623,7 @@ const normGlossKey = (g: string | undefined): string => (g ?? '').toLowerCase().
 export function koBuildRows(raws: readonly KoRaw[], docs: KoDocs = {}): { rows: KoRow[]; report: KoReport } {
   const report: KoReport = {
     read: raws.length, kept: 0, keptByPos: {}, skipped: {}, skippedByTag: {}, merges: 0, mergedSameEtym: [], assignedRows: [], mergedSameWord: [], orderSets: [], irrDisagree: [], noTable: 0, noClass: [], byShape: 0,
-    voiceBoth: [], voicePairs: [], mixedDependent: 0, maj: [], majFirstOnly: [], sets: [], contractionPos: [], contractionKept: [], contractionFused: [], xrefResolved: 0, xrefEmpty: 0, glossOverrides: 0, multi: 0, doedaGlosses: [], counterNouns: [], sentenceGlosses: 0, haGained: 0, haOther: [], relatedPairs: [], voiceDecided: 0, hada: { total: 0, listedOnly: [] }, voiceUndecided: [], actionNouns: {}, xrefStart: {}, tableDisagree: [], politeDropped: [], politeKept: [], rootsKept: 0, rootsAsNoun: [], bound: [], supplement: [], glossOwn: [],
+    voiceBoth: [], voicePairs: [], mixedDependent: 0, maj: [], majFirstOnly: [], sets: [], contractionPos: [], contractionKept: [], contractionFused: [], xrefResolved: 0, xrefEmpty: 0, glossOverrides: 0, regionGlosses: 0, commaGlosses: 0, quoteGlosses: 0, multiHeld: 0, multiNoGloss: 0, multiCleared: 0, multi: 0, doedaGlosses: [], counterNouns: [], sentenceGlosses: 0, haGained: 0, haOther: [], relatedPairs: [], voiceDecided: 0, hada: { total: 0, listedOnly: [] }, voiceUndecided: [], actionNouns: {}, xrefStart: {}, tableDisagree: [], politeDropped: [], politeKept: [], rootsKept: 0, rootsAsNoun: [], bound: [], supplement: [], glossOwn: [],
   };
   const ev = koSuffixEvidence(raws);
   // the passive and causative verbs that a base verb's ko-verb-set names
@@ -610,7 +653,7 @@ export function koBuildRows(raws: readonly KoRaw[], docs: KoDocs = {}): { rows: 
       if (g) row.gloss = g; else row.xref = c.contraction;
     } else {
       const g = koEntryGloss(r.senses);
-      if (g.gloss) { const sg = koSentenceGloss(g.gloss); if (sg) { row.gloss = sg; report.sentenceGlosses++; } else row.gloss = g.gloss; } else if (g.xref) row.xref = koKey(g.xref);
+      if (g.gloss) { const sg = koSentenceGloss(g.gloss); if (sg) { row.gloss = sg; report.sentenceGlosses++; } else row.gloss = g.gloss; if (g.rule === 'region') report.regionGlosses++; if (g.rule === 'comma') { report.commaGlosses++; row.fpGloss = g.old; } if (g.quote) row.quote = g.quote; } else if (g.xref) { row.xref = koKey(g.xref); if (g.quote) row.quote = g.quote; }
     }
     const hanja = r.hanjaForms[0] ?? r.hanjaArg;
     if (hanja && /[㐀-鿿豈-﫿\u{20000}-\u{2ffff}]/u.test(hanja)) row.hanja = hanja;
@@ -823,7 +866,7 @@ export function koBuildRows(raws: readonly KoRaw[], docs: KoDocs = {}): { rows: 
     added.forEach((r, i) => { if (r.base && !rows.some((x) => x.lemma === r.base && (x.tag === 'VV' || x.tag === 'VA'))) throw new Error(`lexicon-supplement.json (${r.lemma}): base ${r.base} is not a row of the lexicon`); void i; });
   }
   // pass D: homonym numbers (the source's, else assigned from 50 and frozen by fingerprint in the registry)
-  for (const r of rows) r.fp = JSON.stringify([r.hanja ?? '', normGlossKey(r.gloss ?? r.xref), r.tag, r.clf ? 1 : 0]);
+  for (const r of rows) r.fp = JSON.stringify([r.hanja ?? '', normGlossKey(r.fpGloss ?? r.gloss ?? r.xref), r.tag, r.clf ? 1 : 0]);
   const frozenRecs = new Map<string, number>();
   const reservedBySet = new Map<string, number[]>();
   for (const rec of docs.registry?.entries ?? []) {
@@ -904,27 +947,8 @@ export function koBuildRows(raws: readonly KoRaw[], docs: KoDocs = {}): { rows: 
       if (r.gloss || !r.xref) { delete r.xref; continue; }
       const cand = (byLemma.get(r.xref) ?? []).filter((t) => t !== r && t.gloss && !t.xref);
       const t = cand.find((x) => koSharedPos(x) === koSharedPos(r)) ?? cand[0];
-      if (t) { r.gloss = koShortGloss(`= ${t.lemma}: ${t.gloss}`); report.xrefResolved++; } else report.xrefEmpty++;
+      if (t) { r.gloss = koShortGloss(`= ${t.lemma}: ${t.gloss}`); report.xrefResolved++; } else if (r.quote) { r.gloss = koShortGloss(`${r.quote} (synonym of ${r.xref})`); report.quoteGlosses++; } else report.xrefEmpty++;
       delete r.xref;
-    }
-    // a gloss that still begins with a cross-reference pattern is never shown: "Root of X" becomes X's gloss without the predicate wording, else nothing
-    const XREF_START = /^(Root of|Combining form of|Only used in|Used only in)\b/i;
-    const plain = (g: string): string => g.replace(/^= [^:]+: /, '').replace(/^to be\s+/i, '').replace(/^to\s+/i, '').trim();
-    for (const r of rows) {
-      const m = r.gloss ? XREF_START.exec(r.gloss) : null;
-      if (!m || r.own) continue;
-      const kind = m[1].toLowerCase().replace(/ of$/, '');
-      const key = `${kind}|${r.tag}`;
-      const names = [...(r.gloss ?? '').matchAll(/[가-힣]+/g)].map((x) => koKey(x[0]));
-      let resolved: string | undefined;
-      if (/^root/i.test(m[1]) || /^combining/i.test(m[1])) {
-        for (const nm of names) {
-          const t = (byLemma.get(nm) ?? []).find((x) => x !== r && x.gloss && !XREF_START.test(x.gloss) && (x.tag === 'VV' || x.tag === 'VA' || /^root/i.test(m[1]) === false));
-          if (t) { resolved = /^root/i.test(m[1]) ? plain(t.gloss!) : koShortGloss(`= ${t.lemma}: ${t.gloss}`); break; }
-        }
-      }
-      report.xrefStart[key] = report.xrefStart[key] ?? { resolved: 0, empty: 0 };
-      if (resolved) { r.gloss = koShortGloss(resolved); report.xrefStart[key].resolved++; } else { delete r.gloss; report.xrefStart[key].empty++; }
     }
     // a …되다 verb is worded as a verb: the source often glosses it with a participle or an adjective ("independent", "(to be) reported")
     for (const r of rows) {
@@ -945,6 +969,26 @@ export function koBuildRows(raws: readonly KoRaw[], docs: KoDocs = {}): { rows: 
       if (o.own) hits[0].ownText = o.gloss;
       if (o.own) { hits[0].glossOwn = true; report.glossOwn.push({ lemma: o.lemma, pos: o.pos, hom: o.hom ?? 0, gloss: o.gloss }); } else delete hits[0].glossOwn;
     });
+    // a gloss that still begins with a cross-reference pattern is never shown: "Root of X" becomes X's gloss without the predicate wording, else nothing
+    const XREF_START = /^(Root of|Combining form of|Only used in|Used only in)\b/i;
+    const plain = (g: string): string => g.replace(/^= [^:]+: /, '').replace(/^to be\s+/i, '').replace(/^to\s+/i, '').trim();
+    for (const r of rows) {
+      const m = r.gloss ? XREF_START.exec(r.gloss) : null;
+      if (!m || r.own) continue;
+      const kind = m[1].toLowerCase().replace(/ of$/, '');
+      const key = `${kind}|${r.tag}`;
+      const names = [...(r.gloss ?? '').replace(/\([^)]*\)/g, '').matchAll(/[가-힣]+/g)].map((x) => koKey(x[0]));
+      let resolved: string | undefined;
+      if (/^root/i.test(m[1]) || /^combining/i.test(m[1])) {
+        for (const nm of names) {
+          const t = (byLemma.get(nm) ?? []).find((x) => x !== r && x.gloss && !XREF_START.test(x.gloss) && (x.tag === 'VV' || x.tag === 'VA' || /^root/i.test(m[1]) === false));
+          if (t) { resolved = /^root/i.test(m[1]) ? plain(t.gloss!) : koShortGloss(`= ${t.lemma}: ${t.gloss}`); break; }
+        }
+      }
+      if (!resolved && r.quote && /^root/i.test(m[1])) { resolved = plain(r.quote); report.quoteGlosses++; }
+      report.xrefStart[key] = report.xrefStart[key] ?? { resolved: 0, empty: 0 };
+      if (resolved) { r.gloss = koShortGloss(resolved); report.xrefStart[key].resolved++; } else { delete r.gloss; report.xrefStart[key].empty++; }
+    }
   }
   // hada: a noun or root on which the verb or adjective X하다 is built (the lexicon holds it, or the entry's own derived terms list it)
   {
@@ -957,7 +1001,21 @@ export function koBuildRows(raws: readonly KoRaw[], docs: KoDocs = {}): { rows: 
     }
   }
   // multi: the source gives the entry two or more really different senses and nothing hand-written decides the first meaning
-  for (const r of rows) if (!r.decided && !r.glossOwn && !r.own && koDistinctSenses(r.liveKeys ?? []) >= 2) { r.multi = true; report.multi++; }
+  // The first meaning of an entry is "unchecked or doubtful" (multi) when it has several really different senses and nothing decides it, when it is held
+  // (docs/korean/meaning-held.json) or when the source gives it no gloss; a model review (docs/korean/meaning-reviewed.json) clears the first kind, never the others.
+  {
+    const rk = (r: KoRow): string => `${r.lemma}|${koSharedPos(r) ?? r.tag}|${r.hom ?? 0}`;
+    const reviewed = new Set((docs.meaningReviewed?.entries ?? []).map((e) => e.join('|')));
+    const held = new Set((docs.meaningHeld?.entries ?? []).map((e) => `${e.lemma}|${e.pos}|${e.hom}`));
+    for (const r of rows) {
+      const open = !r.decided && !r.glossOwn && !r.own && koDistinctSenses(r.liveKeys ?? []) >= 2;
+      if (held.has(rk(r))) { r.multi = true; report.multiHeld++; }
+      else if (!r.gloss && !r.own) { r.multi = true; report.multiNoGloss++; }
+      else if (open && reviewed.has(rk(r))) report.multiCleared++;
+      else if (open) r.multi = true;
+      if (r.multi) report.multi++;
+    }
+  }
   report.kept = rows.length;
   return { rows, report };
 }

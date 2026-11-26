@@ -215,6 +215,7 @@ const extraLacking = [...extraSet].filter((l) => !lexLemmas.has(l));
 const membersFile = 'docs/korean/core-members.json';
 const members = fs.existsSync(membersFile) ? new Set((JSON.parse(fs.readFileSync(membersFile, 'utf8')) as { members: Array<[string, string, number, number]> }).members.map(([l, t, c, h]) => koCoreMemberKey({ lemma: l, tag: t, clf: c, hom: h }))) : undefined;
 let coreMissing: string[] = [];
+let coreRenumbered = 0;
 const core = (() => {
   if (!members) return koSelectCore(lexEntries, CORE_BUDGET - 3300, extraSet);
   const m = koCoreFromMembers(lexEntries, members);
@@ -229,7 +230,10 @@ if (fs.existsSync(CORE_OUT)) {
   const prevRows: string[] = [];
   if (a0 >= 0) for (const line of prev.slice(prev.indexOf('\n', a0) + 1, prev.indexOf('\n];', a0)).split('\n')) { const t = line.trim().replace(/,$/, ''); if (t.startsWith('[')) { const r = JSON.parse(t) as Array<string | number>; prevRows.push(koCoreMemberKey({ lemma: String(r[0]), tag: String(r[1]), clf: Number(r[2]) & 1, hom: Number(r[3]) || 0 })); } }
   const now = new Set(core.chosen.map(koCoreMemberKey));
-  const dropped = prevRows.filter((k) => !now.has(k));
+  // an entry that only took a number (a supplement row joined its spelling, so it is no longer alone) is the same entry, renumbered in core-members.json: not a drop
+  const nowWord = new Set(core.chosen.map((e) => `${e.lemma}\u0000${e.tag}\u0000${e.clf ? 1 : 0}`));
+  const dropped = prevRows.filter((k) => !now.has(k) && !nowWord.has(k.split('\u0000').slice(0, 3).join('\u0000')));
+  coreRenumbered = prevRows.filter((k) => !now.has(k)).length - dropped.length;
   if (dropped.length && !flags.has('accept-core-drops')) { console.error(`the rebuilt core would drop ${dropped.length} entries the previous core held: ${dropped.slice(0, 20).map((k) => k.split(String.fromCharCode(0)).join(' ')).join(', ')}${dropped.length > 20 ? ', …' : ''} (pass --accept-core-drops after a decision)`); process.exit(1); }
 }
 const coreRows = [...core.chosen].sort((a, b) => cmp(a.lemma, b.lemma) || cmp(a.tag, b.tag) || (a.hom ?? 0) - (b.hom ?? 0));
@@ -544,6 +548,8 @@ A row has a voice (and its base) when the entry itself says so in a sense (a glo
 
 - rows with no gloss: ${fmt(noGloss)}
 - a …되다 verb whose source gloss is a participle or an adjective is worded as a verb (to be reported, to become independent): ${report.doedaGlosses.length}; examples: ${report.doedaGlosses.slice(0, 12).join('; ')}
+- glosses fixed by a rule (rows changed): region-only gloss to the meaning with its relation ("where (dialectal form of 어디)"): ${report.regionGlosses}; a cut at a comma that left "a concerned" or split a list ("clothing, food, and shelter"): ${report.commaGlosses}; a root or synonym gloss resolved to the meaning the source quotes when the named word is not a row: ${report.quoteGlosses}
+- the first-meaning flag (multi): ${report.multi} rows; held by docs/korean/meaning-held.json: ${report.multiHeld}; no gloss at all: ${report.multiNoGloss}; cleared by the model review (docs/korean/meaning-reviewed.json): ${report.multiCleared}
 - a cross-reference is never a gloss: "See the entry at …" senses are skipped; a "synonym of X" sense is resolved to X's own gloss, marked "= X: …" (${fmt(report.xrefResolved)} resolved), else the gloss is left empty (${fmt(report.xrefEmpty)})
 - glosses that began with a cross-reference pattern (Root of, Combining form of, Only used in, Used only in), resolved to the named word's own gloss or left empty, by pattern and class: ${Object.entries(report.xrefStart).sort((a, b) => cmp(a[0], b[0])).map(([k, v]) => `${k} ${v.resolved} resolved / ${v.empty} empty`).join('; ') || '(none)'}
 - glosses written as a sentence ("To be untied."), normalised for the short line (first letter lower-case unless it opens a name, no final stop): ${report.sentenceGlosses}
@@ -593,7 +599,7 @@ ${extraLacking.join(', ') || '(none)'}
 | shard bytes | ${(gzTotal / 1e6).toFixed(2)} MB gzip, ${(plainTotal / 1e6).toFixed(1)} MB plain |
 | largest shard | \`${largest.prefix}\` ${(largest.plain / 1e6).toFixed(2)} MB plain, ${(largest.gz / 1e6).toFixed(2)} MB gzip |
 | core entries | ${fmt(coreRows.length)} in ${fmt(coreSetCount)} sets (${fmt(coreHanjaKeys)} also under a Hanja key); closed classes ${[...KO_CLOSED_TAGS].join(' ')} and IC with a count ≥ 1 whole, then open classes by descending count; a set goes in whole or not at all |
-| core membership | frozen: exactly the ${fmt(core.chosen.length)} entries of docs/korean/core-members.json (the core of commit 7ae1d540), whatever their glosses cost; no entry of the previous core may drop (the build fails otherwise); members no longer in the lexicon: ${coreMissing.length}${coreMissing.length ? ' (' + coreMissing.join(', ') + ')' : ''}; core-extra spellings not in the frozen set: ${[...extraSet].filter((l) => !core.chosen.some((e) => e.lemma === l)).length} |
+| core membership | frozen: exactly the ${fmt(core.chosen.length)} entries of docs/korean/core-members.json (the core of commit 7ae1d540), whatever their glosses cost; no entry of the previous core may drop (the build fails otherwise); entries renumbered since the previous core (a supplement row joined their spelling): ${coreRenumbered}; members no longer in the lexicon: ${coreMissing.length}${coreMissing.length ? ' (' + coreMissing.join(', ') + ')' : ''}; core-extra spellings not in the frozen set: ${[...extraSet].filter((l) => !core.chosen.some((e) => e.lemma === l)).length} |
 | core bytes | ${fmt(core.bytes)} of rows, the file at most ${fmt(CORE_BUDGET)} bytes; rows forced (frozen membership or core-extra.json): ${fmt(core.forcedRows)}; every field of a shard row is in the core row, \`pron\` included |
 | running words in the core | ${pct(coreTokens, kaistTotal)} of the ${fmt(kaistTotal)} counted morphemes of the classes the lexicon builds (${pct(coreTokens, lexTokens)} of the ${fmt(lexTokens)} the lexicon covers) have their headword in the core |
 `;

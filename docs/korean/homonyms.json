@@ -1235,7 +1235,7 @@
    "hom": 2,
    "set": "other",
    "by": "decision",
-   "gloss": "Pyongan"
+   "gloss": "potato (dialectal form of 감자)"
   },
   {
    "lemma": "갑",
@@ -2099,6 +2099,7 @@
    "hom": 2,
    "set": "other",
    "by": "only-current",
+   "gloss": "to support",
    "irr": "Ha"
   },
   {
@@ -3146,6 +3147,27 @@
    "hanja": "桂林"
   },
   {
+   "lemma": "계승",
+   "tag": "NNG",
+   "hom": 50,
+   "assigned": true,
+   "fp": "[\"階乘\",\"a factorial\",\"NNG\",0]",
+   "set": "other",
+   "by": "decision",
+   "gloss": "a factorial",
+   "hanja": "階乘"
+  },
+  {
+   "lemma": "계승",
+   "tag": "NNG",
+   "hom": 91,
+   "set": "main",
+   "by": "decision",
+   "own": true,
+   "gloss": "succession, inheritance (carrying on)",
+   "hanja": "繼承"
+  },
+  {
    "lemma": "계피",
    "tag": "NNG",
    "hom": 1,
@@ -4056,6 +4078,25 @@
    "hanja": "高趣"
   },
   {
+   "lemma": "곡",
+   "tag": "NNG",
+   "hom": 1,
+   "set": "other",
+   "by": "decision",
+   "gloss": "valley",
+   "hanja": "谷"
+  },
+  {
+   "lemma": "곡",
+   "tag": "NNG",
+   "hom": 91,
+   "set": "main",
+   "by": "decision",
+   "own": true,
+   "gloss": "tune, piece of music",
+   "hanja": "曲"
+  },
+  {
    "lemma": "곤",
    "tag": "NNG",
    "hom": 1,
@@ -4386,7 +4427,7 @@
    "hom": 1,
    "set": "balanced",
    "by": "default",
-   "gloss": "a tribute",
+   "gloss": "a tribute, tithe",
    "hanja": "貢物"
   },
   {
@@ -4812,7 +4853,7 @@
    "hom": 1,
    "set": "balanced",
    "by": "decision",
-   "gloss": "the air",
+   "gloss": "the air, midair",
    "hanja": "空中"
   },
   {
@@ -4963,6 +5004,7 @@
    "hom": 1,
    "set": "balanced",
    "by": "default",
+   "gloss": "empty",
    "hanja": "空豁"
   },
   {
@@ -4971,6 +5013,7 @@
    "hom": 2,
    "set": "balanced",
    "by": "default",
+   "gloss": "spacious",
    "hanja": "空闊"
   },
   {
@@ -5458,7 +5501,7 @@
    "hom": 2,
    "set": "main",
    "by": "only-current",
-   "gloss": "Seoul"
+   "gloss": "crab (dialectal form of 게)"
   },
   {
    "lemma": "괴다",
@@ -6002,7 +6045,7 @@
    "hom": 1,
    "set": "main",
    "by": "only-current",
-   "gloss": "roasted food"
+   "gloss": "roasted food, usually meat, offal, seafood, or occasionally vegetables"
   },
   {
    "lemma": "구이",
@@ -7006,7 +7049,7 @@
    "hom": 2,
    "set": "balanced",
    "by": "default",
-   "gloss": "A geun",
+   "gloss": "A geun, catty",
    "hanja": "斤"
   },
   {
@@ -7111,7 +7154,7 @@
    "hom": 2,
    "set": "balanced",
    "by": "default",
-   "gloss": "A lyrebird",
+   "gloss": "a lyrebird, especially the superb lyrebird",
    "hanja": "琴鳥"
   },
   {
@@ -7299,7 +7342,7 @@
    "hom": 1,
    "set": "balanced",
    "by": "decision",
-   "gloss": "engine",
+   "gloss": "agency",
    "hanja": "機關"
   },
   {
@@ -7494,7 +7537,7 @@
    "hom": 1,
    "set": "balanced",
    "by": "decision",
-   "gloss": "an article",
+   "gloss": "an article, such as in a newspaper or magazine",
    "hanja": "記事"
   },
   {
@@ -8044,7 +8087,7 @@
    "hom": 2,
    "set": "balanced",
    "by": "default",
-   "gloss": "Chungcheong",
+   "gloss": "dialectal form of 간장",
    "hanja": "—醬"
   },
   {
@@ -8102,7 +8145,7 @@
    "hom": 2,
    "set": "balanced",
    "by": "default",
-   "gloss": "Gyeongsang"
+   "gloss": "shell"
   },
   {
    "lemma": "깍대기",
@@ -8347,7 +8390,7 @@
    "hom": 1,
    "set": "balanced",
    "by": "decision",
-   "gloss": "to fold",
+   "gloss": "to insert, to put in; to hold between",
    "irr": "R"
   },
   {
@@ -8356,7 +8399,7 @@
    "hom": 2,
    "set": "balanced",
    "by": "decision",
-   "gloss": "to shroud",
+   "gloss": "to wear, to put on (glasses, gloves, rings)",
    "irr": "R"
   },
   {
@@ -8740,7 +8783,7 @@
    "hom": 2,
    "set": "balanced",
    "by": "default",
-   "gloss": "Gyeongsang"
+   "gloss": "later (dialectal form of 나중)"
   },
   {
    "lemma": "낭창",
@@ -8967,7 +9010,7 @@
    "hom": 7,
    "set": "balanced",
    "by": "decision",
-   "gloss": "a surname",
+   "gloss": "a surname, No, Ro, Noh, and Roh",
    "hanja": "盧"
   },
   {
@@ -8976,7 +9019,7 @@
    "hom": 8,
    "set": "balanced",
    "by": "decision",
-   "gloss": "a surname",
+   "gloss": "a surname, No, Ro, Noh, and Roh",
    "hanja": "魯"
   },
   {
@@ -9092,7 +9135,7 @@
    "hom": 1,
    "set": "main",
    "by": "decision",
-   "gloss": "to glare (at)",
+   "gloss": "to aim (at), to seek",
    "irr": "R"
   },
   {
@@ -9162,7 +9205,7 @@
    "hom": 3,
    "set": "main",
    "by": "decision",
-   "gloss": "labour management",
+   "gloss": "labour and management (capital and labour)",
    "hanja": "勞使"
   },
   {
@@ -9673,7 +9716,7 @@
    "hom": 2,
    "set": "balanced",
    "by": "default",
-   "gloss": "Gangwon",
+   "gloss": "to be surprised (dialectal form of 놀라다)",
    "irr": "R"
   },
   {
@@ -9690,7 +9733,7 @@
    "hom": 2,
    "set": "balanced",
    "by": "default",
-   "gloss": "Gyeongsang"
+   "gloss": "other person"
   },
   {
    "lemma": "농담",
@@ -10680,7 +10723,7 @@
    "hom": 1,
    "set": "balanced",
    "by": "decision",
-   "gloss": "justice",
+   "gloss": "this, that, something already mentioned",
    "hanja": "當"
   },
   {
@@ -10884,7 +10927,7 @@
    "hom": 4,
    "set": "balanced",
    "by": "decision",
-   "gloss": "pair",
+   "gloss": "versus, vs.",
    "hanja": "對"
   },
   {
@@ -11105,7 +11148,7 @@
    "hom": 3,
    "set": "balanced",
    "by": "decision",
-   "gloss": "= 대기: air",
+   "gloss": "waiting, standing by (待機)",
    "hanja": "待期"
   },
   {
@@ -11414,6 +11457,26 @@
    "set": "balanced",
    "by": "default",
    "hanja": "大夫"
+  },
+  {
+   "lemma": "대비",
+   "tag": "NNG",
+   "hom": 50,
+   "assigned": true,
+   "fp": "[\"大妃\",\"a queen dowager\",\"NNG\",0]",
+   "set": "other",
+   "by": "decision",
+   "gloss": "a queen dowager",
+   "hanja": "大妃"
+  },
+  {
+   "lemma": "대비",
+   "tag": "NNG",
+   "hom": 91,
+   "set": "main",
+   "by": "decision",
+   "own": true,
+   "gloss": "preparation, provision (against something); contrast"
   },
   {
    "lemma": "대비하다",
@@ -12390,7 +12453,7 @@
    "hom": 5,
    "set": "balanced",
    "by": "default",
-   "gloss": "Gyeongsang"
+   "gloss": "rock (dialectal form of 돌)"
   },
   {
    "lemma": "독해",
@@ -12495,7 +12558,7 @@
    "hom": 1,
    "set": "balanced",
    "by": "decision",
-   "gloss": "ridgepole",
+   "gloss": "large building",
    "hanja": "棟"
   },
   {
@@ -13331,7 +13394,7 @@
    "hom": 2,
    "set": "balanced",
    "by": "default",
-   "gloss": "a northerner"
+   "gloss": "a northerner, especially a local of the historical Pyongan and Hamgyong regions."
   },
   {
    "lemma": "따르다",
@@ -14078,7 +14141,7 @@
    "fp": "[\"\",\"a yard\",\"NNG\",0]",
    "set": "balanced",
    "by": "decision",
-   "gloss": "A yard"
+   "gloss": "a yard, plaza, or courtyard"
   },
   {
    "lemma": "마력",
@@ -14243,7 +14306,7 @@
    "hom": 3,
    "set": "balanced",
    "by": "decision",
-   "gloss": "indicates that an action is expected"
+   "gloss": "indicates that an action is expected, reasonable, or justified"
   },
   {
    "lemma": "만",
@@ -14888,7 +14951,7 @@
    "hom": 1,
    "set": "balanced",
    "by": "default",
-   "gloss": "blood vein",
+   "gloss": "pulse",
    "hanja": "脈"
   },
   {
@@ -15320,7 +15383,7 @@
    "hom": 1,
    "set": "balanced",
    "by": "default",
-   "gloss": "protrusion"
+   "gloss": "corner"
   },
   {
    "lemma": "모",
@@ -15345,7 +15408,7 @@
    "hom": 4,
    "set": "balanced",
    "by": "default",
-   "gloss": "a grave",
+   "gloss": "a grave, tomb",
    "hanja": "墓"
   },
   {
@@ -16656,7 +16719,7 @@
    "hom": 1,
    "set": "balanced",
    "by": "default",
-   "gloss": "a bite"
+   "gloss": "a bite, biting"
   },
   {
    "lemma": "묾",
@@ -17057,7 +17120,7 @@
    "hom": 3,
    "set": "balanced",
    "by": "default",
-   "gloss": "the knowledge",
+   "gloss": "the knowledge, wisdom, or intelligence of the people",
    "hanja": "民智"
   },
   {
@@ -17235,7 +17298,7 @@
    "hom": 1,
    "set": "balanced",
    "by": "decision",
-   "gloss": "to hang paper",
+   "gloss": "to apply, spread, put on (cream, medicine, etc.)",
    "irr": "Reu"
   },
   {
@@ -17396,7 +17459,7 @@
    "hom": 1,
    "set": "balanced",
    "by": "default",
-   "gloss": "something breaking into pieces"
+   "gloss": "something breaking into pieces, or the manner thereof"
   },
   {
    "lemma": "박살",
@@ -18072,7 +18135,7 @@
    "hom": 1,
    "set": "balanced",
    "by": "default",
-   "gloss": "Gangwon"
+   "gloss": "dry field"
   },
   {
    "lemma": "밧",
@@ -18410,7 +18473,7 @@
    "hom": 2,
    "set": "balanced",
    "by": "default",
-   "gloss": "to talk absurdly",
+   "gloss": "to talk absurdly, ridiculously, or far-fetched",
    "irr": "Ha"
   },
   {
@@ -18929,7 +18992,7 @@
    "hom": 2,
    "set": "main",
    "by": "only-current",
-   "gloss": "a Burberry coat"
+   "gloss": "a Burberry coat, or a similar raincoat"
   },
   {
    "lemma": "버썩",
@@ -18969,7 +19032,7 @@
    "hom": 1,
    "set": "balanced",
    "by": "decision",
-   "gloss": "any kind of bee"
+   "gloss": "any kind of bee, wasp, or hornet"
   },
   {
    "lemma": "벌",
@@ -19749,7 +19812,7 @@
    "hom": 1,
    "set": "balanced",
    "by": "decision",
-   "gloss": "reward",
+   "gloss": "pay, wage",
    "hanja": "報酬"
   },
   {
@@ -19758,7 +19821,7 @@
    "hom": 2,
    "set": "balanced",
    "by": "decision",
-   "gloss": "conservation",
+   "gloss": "conservatism (political)",
    "hanja": "保守"
   },
   {
@@ -19926,7 +19989,7 @@
    "hom": 6,
    "set": "other",
    "by": "decision",
-   "gloss": "Gangwon"
+   "gloss": "kitchen (dialectal form of 부엌)"
   },
   {
    "lemma": "복리",
@@ -19961,6 +20024,7 @@
    "hom": 2,
    "set": "balanced",
    "by": "default",
+   "gloss": "petiole of a bee or ant (synonym of 배자루마디)",
    "hanja": "腹柄"
   },
   {
@@ -20279,12 +20343,32 @@
    "hanja": "富"
   },
   {
+   "lemma": "부각",
+   "tag": "NNG",
+   "hom": 50,
+   "assigned": true,
+   "fp": "[\"\",\"bugak fried kombu\",\"NNG\",0]",
+   "set": "other",
+   "by": "decision",
+   "gloss": "bugak (fried kombu)"
+  },
+  {
+   "lemma": "부각",
+   "tag": "NNG",
+   "hom": 91,
+   "set": "main",
+   "by": "decision",
+   "own": true,
+   "gloss": "standing out, prominence (as in 부각되다)",
+   "hanja": "浮刻"
+  },
+  {
    "lemma": "부녀자",
    "tag": "NNG",
    "hom": 1,
    "set": "balanced",
    "by": "default",
-   "gloss": "a woman",
+   "gloss": "a woman, women",
    "hanja": "婦女子"
   },
   {
@@ -20390,7 +20474,7 @@
    "hom": 1,
    "set": "main",
    "by": "decision",
-   "gloss": "to make (horse, cattle) work",
+   "gloss": "to make a show of, to act (stubborn, greedy, etc.); to play (tricks)",
    "irr": "R"
   },
   {
@@ -20469,7 +20553,7 @@
    "hom": 3,
    "set": "balanced",
    "by": "default",
-   "gloss": "Chungcheong"
+   "gloss": "kitchen (dialectal form of 부엌)"
   },
   {
    "lemma": "부석부석",
@@ -20517,7 +20601,7 @@
    "hom": 2,
    "set": "balanced",
    "by": "default",
-   "gloss": "rapidly"
+   "gloss": "rapidly, suddenly, and significantly"
   },
   {
    "lemma": "부썩부썩",
@@ -20533,7 +20617,7 @@
    "hom": 2,
    "set": "balanced",
    "by": "default",
-   "gloss": "repeatedly rapidly"
+   "gloss": "repeatedly rapidly, suddenly, and significantly"
   },
   {
    "lemma": "부양하다",
@@ -21218,7 +21302,7 @@
    "hom": 2,
    "set": "other",
    "by": "decision",
-   "gloss": "Gangwon",
+   "gloss": "to earn money (dialectal form of 벌다)",
    "irr": "R"
   },
   {
@@ -22398,7 +22482,7 @@
    "hom": 1,
    "set": "main",
    "by": "decision",
-   "gloss": "precedent",
+   "gloss": "example",
    "hanja": "事例"
   },
   {
@@ -23288,6 +23372,27 @@
    "hanja": "射精"
   },
   {
+   "lemma": "사조",
+   "tag": "NNG",
+   "hom": 50,
+   "assigned": true,
+   "fp": "[\"詞藻\",\"flowery language\",\"NNG\",0]",
+   "set": "other",
+   "by": "decision",
+   "gloss": "flowery language",
+   "hanja": "詞藻"
+  },
+  {
+   "lemma": "사조",
+   "tag": "NNG",
+   "hom": 91,
+   "set": "main",
+   "by": "decision",
+   "own": true,
+   "gloss": "trend of thought, intellectual current",
+   "hanja": "思潮"
+  },
+  {
    "lemma": "사족",
    "tag": "NNG",
    "hom": 1,
@@ -23669,6 +23774,7 @@
    "hom": 11,
    "set": "balanced",
    "by": "default",
+   "gloss": "paper flowers the king gave to his courtiers at dinner (synonym of 어사화)",
    "hanja": "賜花"
   },
   {
@@ -23961,6 +24067,7 @@
    "hom": 3,
    "set": "balanced",
    "by": "default",
+   "gloss": "mountain flower (synonym of 산꽃)",
    "hanja": "山花"
   },
   {
@@ -24124,7 +24231,7 @@
    "hom": 1,
    "set": "balanced",
    "by": "default",
-   "gloss": "Buddha",
+   "gloss": "the three sages (e.g. Buddha, Jesus and Confucius)",
    "hanja": "三聖"
   },
   {
@@ -25112,7 +25219,7 @@
    "hom": 3,
    "set": "balanced",
    "by": "default",
-   "gloss": "a group"
+   "gloss": "a group, bunch"
   },
   {
    "lemma": "서리",
@@ -27247,7 +27354,7 @@
    "hom": 6,
    "set": "balanced",
    "by": "default",
-   "gloss": "a target"
+   "gloss": "a target, especially one constructed by suspending a large piece of cloth…"
   },
   {
    "lemma": "솔",
@@ -27932,7 +28039,7 @@
    "hom": 1,
    "set": "balanced",
    "by": "default",
-   "gloss": "collection",
+   "gloss": "handling",
    "hanja": "收拾"
   },
   {
@@ -28010,7 +28117,7 @@
    "hom": 1,
    "set": "other",
    "by": "decision",
-   "gloss": "planet Mercury",
+   "gloss": "Wednesday",
    "hanja": "水曜"
   },
   {
@@ -30701,7 +30808,7 @@
    "hom": 2,
    "set": "balanced",
    "by": "default",
-   "gloss": "a singer"
+   "gloss": "a singer, especially of popular or Western music"
   },
   {
    "lemma": "싱크",
@@ -31572,7 +31679,7 @@
    "hom": 1,
    "set": "balanced",
    "by": "decision",
-   "gloss": "guy"
+   "gloss": "child, kid (colloquial form of 아이)"
   },
   {
    "lemma": "애",
@@ -31835,7 +31942,7 @@
    "hom": 3,
    "set": "other",
    "by": "decision",
-   "gloss": "a yak",
+   "gloss": "yak (a notched bamboo flute used in Confucian ritual music)",
    "hanja": "籥"
   },
   {
@@ -32800,7 +32907,7 @@
    "hom": 1,
    "set": "balanced",
    "by": "default",
-   "gloss": "a long"
+   "gloss": "a long, pointed tooth"
   },
   {
    "lemma": "엄니",
@@ -32808,7 +32915,7 @@
    "hom": 2,
    "set": "balanced",
    "by": "default",
-   "gloss": "Jeolla dialect"
+   "gloss": "mother (dialectal form of 어머니)"
   },
   {
    "lemma": "업",
@@ -33958,7 +34065,7 @@
    "hom": 1,
    "set": "main",
    "by": "decision",
-   "gloss": "strong wind",
+   "gloss": "craze, fever, fad",
    "hanja": "烈風"
   },
   {
@@ -34871,6 +34978,7 @@
    "hom": 3,
    "set": "balanced",
    "by": "default",
+   "gloss": "fifth column (synonym of 제5열)",
    "hanja": "五列"
   },
   {
@@ -34994,7 +35102,7 @@
    "hom": 2,
    "set": "balanced",
    "by": "default",
-   "gloss": "a thread"
+   "gloss": "a thread, strand"
   },
   {
    "lemma": "올",
@@ -35394,6 +35502,7 @@
    "hom": 7,
    "set": "balanced",
    "by": "default",
+   "gloss": "Emperor Yao",
    "hanja": "堯"
   },
   {
@@ -36178,7 +36287,8 @@
    "tag": "NNG",
    "hom": 2,
    "set": "other",
-   "by": "only-current"
+   "by": "only-current",
+   "gloss": "marriage articles"
   },
   {
    "lemma": "웃옷",
@@ -36661,7 +36771,7 @@
    "hom": 2,
    "set": "other",
    "by": "decision",
-   "gloss": "a family or genus",
+   "gloss": "type; kind; sort",
    "hanja": "類"
   },
   {
@@ -36876,6 +36986,7 @@
    "hom": 4,
    "set": "balanced",
    "by": "default",
+   "gloss": "sulfuric acid (synonym of 황산)",
    "hanja": "硫酸"
   },
   {
@@ -36884,6 +36995,7 @@
    "hom": 5,
    "set": "balanced",
    "by": "default",
+   "gloss": "oleic acid (synonym of 올레산)",
    "hanja": "油酸"
   },
   {
@@ -36910,6 +37022,7 @@
    "hom": 8,
    "set": "balanced",
    "by": "default",
+   "gloss": "miscalculation (synonym of 오산)",
    "hanja": "謬算"
   },
   {
@@ -38549,7 +38662,7 @@
    "hom": 1,
    "set": "balanced",
    "by": "default",
-   "gloss": "replanting",
+   "gloss": "transplantation (of organs)",
    "hanja": "移植"
   },
   {
@@ -40650,7 +40763,7 @@
    "hom": 1,
    "set": "balanced",
    "by": "decision",
-   "gloss": "sauce",
+   "gloss": "soy sauce; fermented soybean condiment (also sauces generally)",
    "hanja": "醬"
   },
   {
@@ -40686,7 +40799,7 @@
    "hom": 7,
    "set": "balanced",
    "by": "decision",
-   "gloss": "emblem",
+   "gloss": "chapter (of a book, etc.)",
    "hanja": "章"
   },
   {
@@ -40695,7 +40808,7 @@
    "hom": 6,
    "set": "balanced",
    "by": "decision",
-   "gloss": "a surname",
+   "gloss": "a surname, commonly transliterated as Jang and Chang",
    "hanja": "張"
   },
   {
@@ -40704,7 +40817,7 @@
    "hom": 7,
    "set": "balanced",
    "by": "decision",
-   "gloss": "a surname",
+   "gloss": "a surname, commonly transliterated as Jang and Chang",
    "hanja": "章"
   },
   {
@@ -40713,7 +40826,7 @@
    "hom": 8,
    "set": "balanced",
    "by": "decision",
-   "gloss": "a surname",
+   "gloss": "a surname, commonly transliterated as Jang and Chang",
    "hanja": "莊"
   },
   {
@@ -41761,6 +41874,27 @@
    "hanja": "低地"
   },
   {
+   "lemma": "저하",
+   "tag": "NNG",
+   "hom": 50,
+   "assigned": true,
+   "fp": "[\"邸下\",\"crown prince\",\"NNG\",0]",
+   "set": "other",
+   "by": "decision",
+   "gloss": "crown prince",
+   "hanja": "邸下"
+  },
+  {
+   "lemma": "저하",
+   "tag": "NNG",
+   "hom": 91,
+   "set": "main",
+   "by": "decision",
+   "own": true,
+   "gloss": "decline, drop, deterioration (in level or quality)",
+   "hanja": "低下"
+  },
+  {
    "lemma": "저해",
    "tag": "NNG",
    "hom": 1,
@@ -42082,7 +42216,7 @@
    "hom": 3,
    "set": "balanced",
    "by": "default",
-   "gloss": "a surname",
+   "gloss": "a surname, commonly transliterated as Jeon",
    "hanja": "田"
   },
   {
@@ -42091,7 +42225,7 @@
    "hom": 4,
    "set": "balanced",
    "by": "default",
-   "gloss": "a surname",
+   "gloss": "a surname, commonly transliterated as Jeon",
    "hanja": "全"
   },
   {
@@ -42100,7 +42234,7 @@
    "hom": 5,
    "set": "balanced",
    "by": "default",
-   "gloss": "a surname",
+   "gloss": "a surname, commonly transliterated as Jeon",
    "hanja": "錢"
   },
   {
@@ -42163,7 +42297,7 @@
    "hom": 2,
    "set": "other",
    "by": "decision",
-   "gloss": "electrical engineering",
+   "gloss": "electrical engineering, or the electrical industry",
    "hanja": "電工"
   },
   {
@@ -42234,7 +42368,7 @@
    "hom": 5,
    "set": "other",
    "by": "decision",
-   "gloss": "a difficult",
+   "gloss": "a difficult, battling situation",
    "hanja": "戰國"
   },
   {
@@ -43293,7 +43427,7 @@
    "hom": 1,
    "set": "balanced",
    "by": "decision",
-   "gloss": "a verse",
+   "gloss": "a verse, passage",
    "hanja": "節"
   },
   {
@@ -43522,7 +43656,7 @@
    "hom": 5,
    "set": "other",
    "by": "decision",
-   "gloss": "the fourth of the ten heavenly stems",
+   "gloss": "a surname (Jeong, Jung, Chung)",
    "hanja": "丁"
   },
   {
@@ -44762,7 +44896,7 @@
    "hom": 1,
    "set": "balanced",
    "by": "decision",
-   "gloss": "a piece"
+   "gloss": "a piece, scrap"
   },
   {
    "lemma": "조각",
@@ -45919,6 +46053,27 @@
    "hanja": "註記／注記"
   },
   {
+   "lemma": "주목",
+   "tag": "NNG",
+   "hom": 50,
+   "assigned": true,
+   "fp": "[\"朱木\",\"japanese yew\",\"NNG\",0]",
+   "set": "other",
+   "by": "decision",
+   "gloss": "Japanese yew",
+   "hanja": "朱木"
+  },
+  {
+   "lemma": "주목",
+   "tag": "NNG",
+   "hom": 91,
+   "set": "main",
+   "by": "decision",
+   "own": true,
+   "gloss": "attention, notice",
+   "hanja": "注目"
+  },
+  {
    "lemma": "주부",
    "tag": "NNG",
    "hom": 1,
@@ -46701,7 +46856,8 @@
    "tag": "XSN",
    "hom": 3,
    "set": "balanced",
-   "by": "default"
+   "by": "default",
+   "gloss": "ending in -는지/-은지/-ㄹ지: whether, I wonder (indirect question)"
   },
   {
    "lemma": "지각",
@@ -46987,7 +47143,7 @@
    "hom": 1,
    "set": "main",
    "by": "decision",
-   "gloss": "to stir",
+   "gloss": "to yell, to shout, to scream",
    "irr": "Reu"
   },
   {
@@ -47138,6 +47294,27 @@
    "by": "default",
    "gloss": "branch office",
    "hanja": "支社"
+  },
+  {
+   "lemma": "지상",
+   "tag": "NNG",
+   "hom": 50,
+   "assigned": true,
+   "fp": "[\"紙上\",\"paper\",\"NNG\",0]",
+   "set": "other",
+   "by": "decision",
+   "gloss": "paper",
+   "hanja": "紙上"
+  },
+  {
+   "lemma": "지상",
+   "tag": "NNG",
+   "hom": 91,
+   "set": "main",
+   "by": "decision",
+   "own": true,
+   "gloss": "the ground, above ground; this world",
+   "hanja": "地上"
   },
   {
    "lemma": "지성",
@@ -47634,7 +47811,7 @@
    "hom": 1,
    "set": "balanced",
    "by": "decision",
-   "gloss": "jeans"
+   "gloss": "jeans, or jean fabric"
   },
   {
    "lemma": "진",
@@ -47668,7 +47845,7 @@
    "hom": 3,
    "set": "balanced",
    "by": "default",
-   "gloss": "an old",
+   "gloss": "an old, hackneyed story",
    "hanja": "陳談"
   },
   {
@@ -48527,7 +48704,8 @@
    "tag": "XPN",
    "hom": 1,
    "set": "balanced",
-   "by": "default"
+   "by": "default",
+   "gloss": "glutinous, sticky (prefix, e.g. 찰떡)"
   },
   {
    "lemma": "찰",
@@ -48553,7 +48731,7 @@
    "hom": 2,
    "set": "balanced",
    "by": "decision",
-   "gloss": "break"
+   "gloss": "occasion, time (as in \"was just about to\"); intention"
   },
   {
    "lemma": "참호",
@@ -48656,7 +48834,7 @@
    "hom": 1,
    "set": "balanced",
    "by": "decision",
-   "gloss": "a whip"
+   "gloss": "a club; a cue; a racket"
   },
   {
    "lemma": "채",
@@ -49230,7 +49408,7 @@
    "hom": 2,
    "set": "balanced",
    "by": "default",
-   "gloss": "a galaxy",
+   "gloss": "a galaxy, (especially) the Milky Way",
    "hanja": "天河"
   },
   {
@@ -49646,7 +49824,7 @@
    "hom": 1,
    "set": "balanced",
    "by": "default",
-   "gloss": "physical body",
+   "gloss": "pretending, as if (dependent noun)",
    "hanja": "體"
   },
   {
@@ -50252,6 +50430,26 @@
    "set": "balanced",
    "by": "default",
    "gloss": "awl"
+  },
+  {
+   "lemma": "추리",
+   "tag": "NNG",
+   "hom": 50,
+   "assigned": true,
+   "fp": "[\"\",\"plum\",\"NNG\",0]",
+   "set": "other",
+   "by": "decision",
+   "gloss": "plum"
+  },
+  {
+   "lemma": "추리",
+   "tag": "NNG",
+   "hom": 91,
+   "set": "main",
+   "by": "decision",
+   "own": true,
+   "gloss": "reasoning, deduction (as in detective stories)",
+   "hanja": "推理"
   },
   {
    "lemma": "추파",
@@ -50954,7 +51152,7 @@
    "hom": 1,
    "set": "balanced",
    "by": "default",
-   "gloss": "A coronavirus"
+   "gloss": "A coronavirus, especially SARS-CoV-2"
   },
   {
    "lemma": "코로나",
@@ -51443,14 +51641,16 @@
    "tag": "NNG",
    "hom": 1,
    "set": "balanced",
-   "by": "default"
+   "by": "default",
+   "gloss": "tablet computer (synonym of 태블릿 컴퓨터)"
   },
   {
    "lemma": "태블릿",
    "tag": "NNG",
    "hom": 2,
    "set": "balanced",
-   "by": "default"
+   "by": "default",
+   "gloss": "graphics tablet (synonym of 타블렛)"
   },
   {
    "lemma": "태아",
@@ -51635,6 +51835,7 @@
    "hom": 4,
    "set": "balanced",
    "by": "default",
+   "gloss": "spittoon (synonym of 타구)",
    "hanja": "吐器"
   },
   {
@@ -52331,7 +52532,7 @@
    "hom": 2,
    "set": "balanced",
    "by": "default",
-   "gloss": "= 벌: any kind of bee"
+   "gloss": "= 벌: any kind of bee, wasp, or hornet"
   },
   {
    "lemma": "펄",
@@ -53101,7 +53302,7 @@
    "hom": 1,
    "set": "balanced",
    "by": "default",
-   "gloss": "a phone"
+   "gloss": "a phone, most commonly a cell phone"
   },
   {
    "lemma": "폰",
@@ -53126,7 +53327,7 @@
    "hom": 2,
    "set": "balanced",
    "by": "decision",
-   "gloss": "table",
+   "gloss": "table, diagram, or graph",
    "hanja": "表"
   },
   {
@@ -53153,7 +53354,7 @@
    "hom": 1,
    "set": "main",
    "by": "decision",
-   "gloss": "expression",
+   "gloss": "indication, display, marking",
    "hanja": "表示"
   },
   {
@@ -53267,7 +53468,7 @@
    "hom": 2,
    "set": "balanced",
    "by": "default",
-   "gloss": "pallidly"
+   "gloss": "pallidly, bloatedly, and coarsely"
   },
   {
    "lemma": "풀",
@@ -53374,7 +53575,7 @@
    "hom": 5,
    "set": "balanced",
    "by": "default",
-   "gloss": "a surname",
+   "gloss": "a surname, with the major clan located in Linqu County",
    "hanja": "馮"
   },
   {
@@ -54515,6 +54716,26 @@
    "irr": "R"
   },
   {
+   "lemma": "해체",
+   "tag": "NNG",
+   "hom": 50,
+   "assigned": true,
+   "fp": "[\"\",\"the informal\",\"NNG\",0]",
+   "set": "balanced",
+   "by": "default",
+   "gloss": "the informal, non-polite speech level in Korean"
+  },
+  {
+   "lemma": "해체",
+   "tag": "NNG",
+   "hom": 91,
+   "set": "balanced",
+   "by": "default",
+   "own": true,
+   "gloss": "dismantling, breaking up, disbanding",
+   "hanja": "解體"
+  },
+  {
    "lemma": "해태",
    "tag": "NNG",
    "hom": 1,
@@ -54822,7 +55043,7 @@
    "hom": 1,
    "set": "balanced",
    "by": "default",
-   "gloss": "Gyeongsang",
+   "gloss": "to rinse away",
    "irr": "R"
   },
   {
@@ -56063,7 +56284,8 @@
    "tag": "NNG",
    "hom": 4,
    "set": "balanced",
-   "by": "default"
+   "by": "default",
+   "gloss": "roundworm (synonym of 회충)"
   },
   {
    "lemma": "회",

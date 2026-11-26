@@ -2,7 +2,7 @@
  * Languages: the home of the application, where every first run ends up (redesigned 2026-11-11, docs/golearn/DESIGN-SYSTEM.md).
  * The top of the page says where the learner stands, once: the language they read in and what to do with it (or, on a first run, what
  * to do first), whether their progress is on this device only or synced to their account, and the way out to another app, GoReview
- * (“Review your words” and, beside it, the quiet “My words” for its vocabulary list; in the extension). Then the languages themselves: YOUR LANGUAGES and ADD A LANGUAGE (screens/language.ts).
+ * (“Review your words” and, beside it, the quiet “My words” for its vocabulary list; in the extension). Then the languages themselves: YOUR LANGUAGES and MORE LANGUAGES, each language a tile that lists its tracks, as in GoReview (screens/language.ts).
  * Nothing waits behind a closed section: the page's purpose is on the page. The guide to hearing the words is its own page under
  * Settings (Audio). The foot holds two quiet links: Help, and “How GoLearn reads pages”.
  */

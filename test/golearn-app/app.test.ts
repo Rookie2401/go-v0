@@ -161,9 +161,9 @@ describe('the router and the shell', () => {
     expect(rig.q('#to-review').hidden).toBe(false);
     expect(rig.q<HTMLAnchorElement>('#my-vocabulary').getAttribute('href')).toBe('../review/index.html#/vocabulary'); // GoReview's list of the learner's words
     expect(rig.q('#open-review').classList.contains('primary')).toBe(false); // a way out to another app is not this page's main action
-    // the downloaded language stands under Your languages, the rest under Add a language
+    // the downloaded language stands under Your languages, the rest under More languages (GoReview's heading, 2026-11-26)
     expect(rig.q('#my-languages h2').textContent).toBe('Your languages');
-    expect(rig.q('#more-languages h2').textContent).toBe('Add a language');
+    expect(rig.q('#more-languages h2').textContent).toBe('More languages');
     const order = [...rig.q('#language-cards').children].map((li) => li.id || li.getAttribute('data-language'));
     expect(order.slice(0, 3)).toEqual(['my-languages', 'sq', 'more-languages']);
     expect(rig.root.querySelector('a[href="#/tutorial"], a[href="#/account"], a[href="#/language"], a[href="#/pack"], a[href="#/welcome"], a[href="#/home"]')).toBeNull();

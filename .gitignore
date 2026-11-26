@@ -54,3 +54,7 @@ packages/biblia/dist-th/
 packages/biblia/dist-de/
 packages/biblia/dist-es/
 packages/biblia/dist-standalone-*/
+
+# Chrome Web Store package (scripts/extension-store-package.mjs)
+packages/golearn-extension/dist-store/
+packages/golearn-extension/store/

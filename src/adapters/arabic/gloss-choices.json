@@ -583,6 +583,9 @@
   "شُجَاع|ADJ": [
    "brave"
   ],
+  "شُرْطَة|NOUN": [
+   "police"
+  ],
   "صَامَ|VERB": [
    "fast"
   ],
@@ -801,6 +804,9 @@
    "get up",
    "stand"
   ],
+  "قَانُون|NOUN": [
+   "law"
+  ],
   "قَبْل|PART": [
    "before",
    "previously"
@@ -1014,6 +1020,9 @@
   ],
   "مُمْكِن|ADJ": [
    "possible"
+  ],
+  "مُهَنْدِس|NOUN": [
+   "engineer"
   ],
   "مُهِمّ|ADJ": [
    "important"

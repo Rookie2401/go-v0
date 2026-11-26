@@ -169,7 +169,7 @@ details > summary:hover { color: var(--ink); }
 .reasons { margin: .3rem 0 .3rem 1.2rem; padding: 0; color: var(--muted); }
 
 /* target-language text: the same serif, slightly larger; the Noto faces cover scripts EB Garamond does not; bidirectional text isolated */
-.target-text { unicode-bidi: plaintext; font-family: 'EB Garamond', 'Iowan Old Style', 'Palatino Linotype', 'Noto Sans Devanagari', 'Noto Sans Thai', 'Noto Naskh Arabic', 'Amiri', 'Noto Sans', Georgia, serif; font-size: 1.06em; }
+.target-text { unicode-bidi: plaintext; font-family: 'EB Garamond', 'Iowan Old Style', 'Palatino Linotype', 'Noto Sans Devanagari', 'Noto Sans Thai', 'Noto Naskh Arabic', 'Amiri', 'Scheherazade New', 'Traditional Arabic', 'Arabic Typesetting', 'Geeza Pro', 'Al Bayan', 'Times New Roman', 'Noto Sans', Georgia, serif; font-size: 1.06em; }
 /* Arabic: room above and below for the vowel marks */
 .target-text[lang|='ar'] { line-height: 1.9; }
 .stimulus { font-size: clamp(1.7rem, 5vw, 2.3rem); line-height: 1.25; margin: .6rem 0; }

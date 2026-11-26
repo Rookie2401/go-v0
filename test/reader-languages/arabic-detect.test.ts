@@ -216,3 +216,30 @@ describe('GoLearn Active: which blocks of a page are Arabic', () => {
     expect([...plan.byLanguage.keys()]).toEqual(['ar']);
   });
 });
+
+describe('one Arabic word clicked inside an English sentence', () => {
+  const resolve = createLanguageResolver({ adapters: { ar: arAdapter, sq: sqAdapter } });
+  const english = 'She said the word كِتَاب means book in the lesson we had on Monday afternoon at school.';
+  const evidence = { installed: ['ar'], sample: english, teamDefault: 'ar', documentLanguage: { languageId: 'en', source: 'html-lang' as const, confidence: 0.9 } };
+
+  it('a click on it is read as Arabic when Arabic is the learner’s language, whatever the English page declares', () => {
+    const r = resolve({ ...evidence, surface: 'كِتَاب' });
+    expect(r).toMatchObject({ languageId: 'ar' });
+    expect(r.reasons.join(' ')).toMatch(/click/);
+    expect(resolve({ ...evidence, surface: 'كتاب' }).languageId).toBe('ar');
+  });
+
+  it('is not read when the word has a letter Arabic lacks, when the learner reads another language, or when no word was clicked', () => {
+    expect(resolve({ ...evidence, surface: 'گرگان' }).languageId).toBeUndefined();
+    expect(resolve({ ...evidence, surface: 'پاکستان' }).languageId).toBeUndefined();
+    expect(resolve({ ...evidence, teamDefault: 'sq', installed: ['ar', 'sq'], surface: 'كِتَاب' }).languageId).not.toBe('ar');
+    expect(resolve({ ...evidence, surface: 'book' }).languageId).toBeUndefined();
+    expect(resolve(evidence).languageId).toBeUndefined();
+  });
+
+  it('GoLearn Active leaves the lone word alone: a block of English is not Arabic, so nothing is underlined', () => {
+    document.body.innerHTML = `<p id="p">${english}</p>`;
+    const plan = planPage([document.getElementById('p')!.firstChild as Text], { installed: ['ar'], adapterOf: () => arAdapter });
+    expect(plan.byLanguage.size).toBe(0);
+  });
+});

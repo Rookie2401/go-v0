@@ -12,6 +12,7 @@
 import type { AnalyzedToken, DictionaryEntry, LanguageAdapter, RawToken, Span } from '../../../src/core';
 import { createFetchLexiconSource, createFullRecordSource } from '../../../src/dict';
 import type { FullRecord, ShardCacheOptions } from '../../../src/dict';
+import { leadWithGloss } from '../../../src/core/word-analysis';
 import { runCase, type CaseResult } from './analysis';
 import { builtInAdapter } from './builtins';
 import { validateManifest, type PackManifest } from './manifest';
@@ -232,6 +233,15 @@ export function createPackRuntime(manifest: PackManifest, deps: PackRuntimeDeps)
           }
         }
         if (!senses.length) return undefined;
+        // a language whose reading gloss is a reviewed choice of the leading sense (Arabic) shows it first and the dictionary's order after it
+        const adapter = analyzer().adapter;
+        if (adapter?.leadWithReadingGloss) {
+          try {
+            const head = (via ? via.lemma : lemma);
+            const cand = adapter.analyze(adapter.tokenize(head).filter((t) => t.isWord).slice(0, 1))[0]?.candidates.find((c) => c.lemma === head && c.gloss && !c.unconfirmed);
+            if (cand?.gloss) senses = leadWithGloss(cand.gloss, senses, (g) => ({ gloss: g, pos: pos ?? senses[0]?.pos ?? 'X' }));
+          } catch { /* the dictionary's own order stands */ }
+        }
         const info = await src.info();
         if (!info) return undefined;
         try { const f = await src.frequency?.(via ? via.lemma : lemma); if (f) rank = f.rank; } catch { /* no frequency: the rank above, if any, stands */ }

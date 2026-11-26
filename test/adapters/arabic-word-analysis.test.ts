@@ -67,3 +67,14 @@ describe('arabicWordAnalysis', () => {
     expect(a.formAnalysis?.components.map((c) => c.role)).toEqual(['and', 'stem', 'him / it']);
   });
 });
+
+describe('the root comes in with the reading', () => {
+  it('uses input.root and holds no index of its own', async () => {
+    const { arabicWordAnalysis } = await import('../../src/adapters/arabic/word-analysis');
+    const base = { surface: 'كَتَبَ', lemma: 'كَتَبَ', pos: 'VERB', morph: { Form: 'I', Aspect: 'Perf', Person: '3', Number: 'Sing', Gender: 'Masc' } };
+    expect(arabicWordAnalysis({ ...base, root: 'ك ت ب' }).formAnalysis?.root).toBe('ك ت ب');
+    expect(arabicWordAnalysis(base).formAnalysis?.root).toBeUndefined();
+    const fs = await import('node:fs');
+    expect(fs.readFileSync(new URL('../../src/adapters/arabic/word-analysis.ts', import.meta.url), 'utf8')).not.toMatch(/index-store'/);
+  });
+});

@@ -14,12 +14,11 @@
  * Person alone and pair it with the wrong gender, and would show the first as if it were decided. Here the cells are named from the
  * syncretisms Arabic really has (`arVerbCells`) and the form's English says all of them: "she writes / you (m.) write".
  *
- * The root is the SOURCE's (the index row of the lemma: text.ts, index-store.ts); nothing is derived from letters. A lemma the
- * installed index does not hold shows no root. Machine-drafted; not reviewed by a native speaker or an Arabist.
+ * The root is the SOURCE's (the index row of the lemma: text.ts, index-store.ts); nothing is derived from letters. A reading
+ * with no root in its notes shows none. Machine-drafted; not reviewed by a native speaker or an Arabist.
  */
 import { candidateWordAnalysis, type CandidateMeaningInput, type CandidateWordPart, type WordAnalysis, type WordFormAnalysis, type WordFormComponent } from '../../core/word-analysis';
 import { realizeFromCitation, type VerbShape } from '../../core/english-verb';
-import { lookupArabicLemma } from './index-store';
 import { rootRadicals } from './text';
 
 export type ArabicWordAnalysisInput = Omit<CandidateMeaningInput, 'language'>;
@@ -128,8 +127,9 @@ const FORM_NAMES: Record<string, string> = {
 /** The expanded analysis: the source's root, the verb form, the word's parts. Undefined when there is nothing to add. */
 export function arabicFormAnalysis(input: ArabicWordAnalysisInput, inflected: boolean): WordFormAnalysis | undefined {
   const morph = input.morph ?? {};
-  const row = input.lemma ? lookupArabicLemma(`${input.lemma}|${input.pos ?? ''}`) ?? (['VERB', 'NOUN', 'ADJ'] as const).map((p) => lookupArabicLemma(`${input.lemma}|${p}`)).find(Boolean) : undefined;
-  const radicals = rootRadicals(row?.[5]);
+  // the root arrives with the reading (`notes.root`, the analyser's own index row): this module holds no index of its own, so the extension's
+  // content script does not link one, and the reading of the chunk that holds the index is the one that supplies it
+  const radicals = rootRadicals(input.root);
   const components: WordFormComponent[] = (input.parts ?? []).map((p) => ({ text: p.text, role: p.role ?? 'part' }));
   const lines: WordFormAnalysis['lines'] = [];
   const form = single(morph.Form);

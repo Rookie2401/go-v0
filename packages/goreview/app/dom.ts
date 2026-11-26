@@ -83,6 +83,27 @@ export const directionOf = (languageId: string): 'ltr' | 'rtl' => (RTL.has(langu
 export const langProps = (languageTag: string | undefined): Props =>
   languageTag ? { lang: languageTag, dir: directionOf(languageTag), class: 'target-text' } : {};
 
+/**
+ * A string that MIXES English and Arabic (a Sprint card's back: "alif: ā ... · بَاب — door, gate · joins the letter before it (ـا) but ..."):
+ * every run of Arabic letters, with the spaces and marks inside it, becomes `<bdi lang="ar" dir="rtl">`, so the Arabic is isolated and the
+ * separators, dashes and brackets around it keep their logical order. The rest stays text in the element's own (left-to-right) direction.
+ */
+const TATWEEL = String.fromCharCode(0x640);
+const ARABIC_RUN = new RegExp(String.raw`[\p{Script=Arabic}${TATWEEL}](?:[\p{Script=Arabic}${TATWEEL}\p{M}\s]*[\p{Script=Arabic}${TATWEEL}\p{M}])?`, 'gu');
+export function isolateArabic(text: string): Child[] {
+  const out: Child[] = [];
+  let last = 0;
+  for (const m of text.matchAll(ARABIC_RUN)) {
+    const at = m.index ?? 0;
+    if (at > last) out.push(text.slice(last, at));
+    out.push(h('bdi', { lang: 'ar', dir: 'rtl', class: 'target-text' }, m[0]));
+    last = at + m[0].length;
+  }
+  if (!out.length) return [text];
+  if (last < text.length) out.push(text.slice(last));
+  return out;
+}
+
 const escapeRe = (w: string): string => w.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 
 /**

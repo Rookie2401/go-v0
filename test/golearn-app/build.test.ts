@@ -50,7 +50,8 @@ describe.skipIf(!has('dist/app/app.js'))('the options-page build (dist/app)', ()
     // 2026-11-19: 840 -> 910 KB with test/extension/bundle.test.ts, for the Russian and French packs (release/ru-fr): their manifests,
     // construction explanations, validation cases and tutorials reach the setup page as every pack's do. Measured 913,357 characters
     // (926,340 bytes) on master 3d92b264 with both packs merged.
-    expect(code.length).toBeLessThan(910 * 1024);
+    // 2026-11-25: 910 -> 931 KB with test/extension/bundle.test.ts, for the Arabic pack (its manifest, explanations, validation cases and orientation). Measured 953,190 characters.
+    expect(code.length).toBeLessThan(931 * 1024);
   });
 
   it('carries the dictionary the installer fetches, and nothing of a planned language', () => {

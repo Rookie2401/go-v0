@@ -453,3 +453,15 @@ describe('Arabic sprint: registration', () => {
     expect(kinds.has('cluster')).toBe(false);
   });
 });
+
+describe('Arabic Sprint with the learner’s own pages', () => {
+  // the commonest letters of an Arabic page: ا ل ي م و ن ب ر (counts as GoReview leaves them for the language)
+  const pageCounts = new Map<string, number>([['ا', 90], ['ل', 80], ['ي', 60], ['م', 50], ['و', 40], ['ن', 35], ['ب', 30], ['ر', 20]]);
+  it('the first session still teaches a mark and a real word: page counts steer only after a first word can be read', () => {
+    const plan = planSprint({ profile: AR_PROFILE, knowledge: scriptKnowledge(AR_PROFILE, []), cards: [], now: NOW, size: 10, pageCounts });
+    const kinds = plan.cards.map((c) => c.kind);
+    expect(kinds).toContain('word');
+    const marks = plan.cards.filter((c) => c.kind === 'character').filter((c) => AR_PROFILE.units.find((u) => c.unitId.endsWith(`:${u.key}`))?.kind === 'mark');
+    expect(marks.length, 'a vowel mark or sukun among the first cards').toBeGreaterThan(0);
+  });
+});

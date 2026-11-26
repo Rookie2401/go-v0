@@ -70,7 +70,11 @@ function utility(profile: ScriptProfile, words: readonly WordDeps[], ready: Read
 }
 
 /** The next units to teach, in the order to introduce them. */
-export function selectNextUnits(profile: ScriptProfile, opts: SelectOptions, words: readonly WordDeps[] = wordDependencies(profile)): string[] {
+export function selectNextUnits(profile: ScriptProfile, options: SelectOptions, words: readonly WordDeps[] = wordDependencies(profile)): string[] {
+  // The learner's pages weigh in only once the learner can read a first word. Before that, the frequent letters of a page (ا ل ي م) would be taught
+  // bare, with no vowel mark and no word to read them in (an Arabic first session of four letter cards): the profile's own opening, the units that
+  // unlock the first real word, comes first, and the page's counts choose among the letters after it.
+  const opts: SelectOptions = profile.pagesAfterFirstWord && options.pageCounts && !words.some(({ deps }) => decodableWith(deps, options.ready)) ? { ...options, pageCounts: undefined } : options;
   const order = new Map(profile.units.map((u, i) => [u.key, i] as const));
   const candidates = profile.units.filter((u) => !u.familiar && !opts.ready.has(u.key) && !(opts.exclude?.has(u.key))).map((u) => u.key);
   const chosen: string[] = [];

@@ -260,3 +260,25 @@ describe.skipIf(!fs.existsSync(DICT))('the pack runtime over the real Arabic dic
     expect(all!.records.length).toBeGreaterThan(3);
   });
 });
+
+describe.skipIf(!fs.existsSync(DICT))('the reading’s gloss leads the dictionary’s senses (leadWithReadingGloss)', () => {
+  it('رَأَى: the reading’s gloss comes first and is not repeated; other languages keep the dictionary’s order', async () => {
+    const rt = createPackRuntime(ar, { fetch: diskFetch(), baseUrl: BASE, adapter: arAdapter });
+    const g = await rt.gloss('رَأَى', 'VERB');
+    const glosses = g!.senses.map((s) => s.gloss);
+    const reading = arAdapter.analyze(arAdapter.tokenize('رَأَى').slice(0, 1))[0].candidates.find((c) => c.lemma === 'رَأَى' && c.gloss)?.gloss;
+    if (reading) {
+      expect(glosses[0]).toBe(reading);
+      expect(glosses.filter((x) => x.toLowerCase() === reading.toLowerCase())).toHaveLength(1);
+    }
+    expect(glosses.length).toBeGreaterThan(1);
+  });
+
+  it('leadWithGloss puts the gloss first, drops its twin, and does nothing without a gloss', async () => {
+    const { leadWithGloss } = await import('../../src/core/word-analysis');
+    const senses = [{ gloss: 'to deem true' }, { gloss: 'to dream' }, { gloss: 'to see' }];
+    expect(leadWithGloss('to see', senses, (gloss) => ({ gloss })).map((s) => s.gloss)).toEqual(['to see', 'to deem true', 'to dream']);
+    expect(leadWithGloss(undefined, senses, (gloss) => ({ gloss }))).toEqual(senses);
+    expect(arAdapter.leadWithReadingGloss).toBe(true);
+  });
+});

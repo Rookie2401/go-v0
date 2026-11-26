@@ -39,7 +39,7 @@ import type { LanguageAdapter } from '../../../../src/core';
 import type { LanguageEvidence, LanguageResolution, ResolveLanguage } from '../contract/language';
 import { parserAdapter } from '../parser';
 import { notRussianCyrillic } from './cyrillic';
-import { ARABIC_MIN_HITS, ARABIC_MIN_SHARE, arabicFunctionShare, notArabicScript } from './arabic';
+import { ARABIC_MIN_HITS, ARABIC_MIN_SHARE, arabicFunctionShare, arabicShare, notArabicScript } from './arabic';
 
 export type { LanguageEvidence, LanguageResolution, ResolveLanguage } from '../contract/language';
 
@@ -485,6 +485,16 @@ export function createLanguageResolver(options: ResolverOptions = {}): ResolveLa
       reasons.push('no sample was given to detect a language from');
     }
 
+    // 4b. an Arabic word clicked in a text of another language (one Arabic word in an English sentence): the learner chose Arabic and asked about
+    //     this word, and nothing in it is a letter Arabic lacks, so a CLICK reads it as Arabic. Nothing automatic follows from it: the page is not
+    //     Arabic, so GoLearn Active does not underline a lone word (pageLanguages decides that per block).
+    if (evidence.surface && evidence.teamDefault && installed.has('ar') && (() => { const m = mapLanguageTag(evidence.teamDefault!); return m.kind === 'pack' && m.languageId === 'ar'; })()) {
+      const w = evidence.surface;
+      if (arabicShare(w) >= 0.5 && !notArabicScript(w, 0) && /\p{Script=Arabic}/u.test(w)) {
+        const m = mapLanguageTag(evidence.teamDefault);
+        return { languageId: 'ar', ...(m.kind === 'pack' && m.varietyId ? { varietyId: m.varietyId } : {}), confidence: TEAM_DEFAULT_CONFIDENCE, basis: 'team-default', reasons: [...reasons, 'the learner reads Arabic, and the selected word is in the Arabic script with no letter of another language of it: a click on it is read as Arabic (the page itself is not claimed to be Arabic)'] };
+      }
+    }
     // 5. team default — not when the page or book reliably declares a language no pack covers, UNLESS the text around the
     //    selection is plainly compatible with the learner's chosen language (a mislabelled page: an Albanian site declaring "en")
     if (declaredNoPack) {

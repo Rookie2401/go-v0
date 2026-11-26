@@ -95,6 +95,10 @@ export interface CandidateMeaningInput {
   /** Reference ids (a verse: "GAL.5.14"); `labelReference` turns one into a label and a source. */
   references?: string[];
   contextualMeaning?: WordMeaning;
+  /** The lemma's root as the SOURCE gives it (Arabic: "ك ت ب"), carried by the reading's notes so the word analysis needs no index of its own. No other language sets it. */
+  root?: string;
+  /** The class of the root (sound, hollow, doubled ...), where the analyser names one. */
+  rootClass?: string;
 }
 /** The English of the reading's form from its citation and features, or undefined when it cannot be written. */
 export type MeaningRealizer = (lemma: string | undefined, pos: string | undefined, morph: Readonly<Record<string, string>>, lemmaGloss: string | undefined) => string | undefined;
@@ -200,4 +204,15 @@ export function projectWordAnalysis(input: WordAnalysisInput = {}): WordAnalysis
     confidence: confidence(input.confidence),
     ambiguity: [...(input.ambiguity ?? [])],
   };
+}
+
+/**
+ * The senses of a dictionary entry with the reading's own gloss first (see `LanguageAdapter.leadWithReadingGloss`): the gloss leads, the senses
+ * follow in their order, and a sense that says the same as the gloss is not repeated. Unchanged when there is no gloss.
+ */
+export function leadWithGloss<T extends { gloss: string }>(gloss: string | undefined, senses: readonly T[], lead: (g: string) => T): T[] {
+  const g = (gloss ?? '').trim();
+  if (!g) return [...senses];
+  const norm = (x: string): string => x.normalize('NFC').toLowerCase().replace(/[s.;,]+$/u, '').trim();
+  return [lead(g), ...senses.filter((x) => norm(x.gloss) !== norm(g))];
 }

@@ -120,7 +120,7 @@ const CSS = `
 .card .word[dir="rtl"] { text-align: left; }
 /* Arabic: a naskh face, with room above and below for the vowel marks. No web font is downloaded: the stack names faces a system may have. The headword
    (a larger size, and more room for a shadda under a kasra) and every Arabic run in the card; an English gloss beside Arabic keeps its own order (isolate, above). */
-.card [lang|="ar"] { font-family: "Noto Naskh Arabic", "Amiri", "Scheherazade New", "Traditional Arabic", serif; line-height: 1.8; }
+.card [lang|="ar"] { font-family: "Noto Naskh Arabic", "Amiri", "Scheherazade New", "Traditional Arabic", "Arabic Typesetting", "Geeza Pro", "Al Bayan", "Times New Roman", serif; line-height: 1.8; }
 .card .word[lang|="ar"] { line-height: 2; }
 /* The lookup card, in the look of Biblia's word card (the dark Western Canon theme): paper, hairline rules, tracked small kickers, gold accent.
    Tokens are Biblia's (src/index.css): paper #16130f, raised #1e1a15, ink #d9cfbe, ink-soft #a89c86, ink-faint #7d7059 (borders and decoration only: it is
@@ -707,7 +707,8 @@ export function createCardUI(options: CardUIOptions = {}): CardUI {
     const box = h('div', { class: 'more', 'data-row': 'form-analysis' }, h('h4', {}, 'How this form is built'));
     if (f.root) box.append(h('div', { class: 'row', 'data-row': 'form-root' }, h('span', { class: 'k' }, 'root'), h('span', { class: 'v' }, h('span', { lang: m.languageId }, f.root), f.rootMeaning ? `: ${f.rootMeaning}` : '')));
     if (f.components.length) {
-      const line = h('div', { class: 'segs', role: 'group', 'data-row': 'form-components', 'aria-label': `Parts of the word: ${f.components.map((c) => `${c.text}: ${c.role}`).join('; ')}` });
+      // Arabic parts read from right to left, as the word does: و + ب + ال + كتاب with و rightmost (the card itself stays left to right)
+      const line = h('div', { class: 'segs', ...(m.languageId === 'ar' ? { dir: 'rtl' } : {}), role: 'group', 'data-row': 'form-components', 'aria-label': `Parts of the word: ${f.components.map((c) => `${c.text}: ${c.role}`).join('; ')}` });
       for (const c of f.components) line.append(h('span', { class: 'seg', title: c.role }, h('span', { lang: m.languageId }, c.text), h('span', { class: 'role', 'aria-hidden': 'true' }, c.role)));
       box.append(line);
     }

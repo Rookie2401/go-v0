@@ -390,7 +390,7 @@ function withExamples(units: readonly ScriptUnit[]): ScriptUnit[] {
 }
 
 export const AR_PROFILE: ScriptProfile = {
-  languageId: 'ar', scriptId: 'Arab', rtl: true, firstBatch: 4, laterBatch: 3,
+  languageId: 'ar', scriptId: 'Arab', rtl: true, firstBatch: 4, laterBatch: 3, pagesAfterFirstWord: true,
   units: withExamples(BASE),
   words: WORDS, phrases: PHRASES,
   confusions: [

@@ -270,6 +270,12 @@ export interface LanguageAdapter {
    * vowels, or the record has no head to compare). A caller keeps only the records that answer true, and ALL of them when none does.
    * Absent for every language but those that need it.
    */
+  /**
+   * True when the analyser's one-line gloss of a lemma is a REVIEWED choice of its leading sense, and the dictionary's own sense order is historical
+   * (Arabic رَأَى: "to deem true, to dream, to see" in the source, "to see" in the reading). A card or deck then shows the reading's gloss first and the
+   * dictionary's senses after it, the sense equal to the gloss not repeated. Absent (false) for every other language: their order is the dictionary's.
+   */
+  leadWithReadingGloss?: boolean;
   headMatches?(lemma: string, head: { vocalized?: string; romanization?: string }, pos?: PartOfSpeech): boolean | undefined;
   /** A plain-words line for a feature bundle ("first person plural, imperfect subjunctive"), for the word sheet. */
   describeMorph?(morph: Record<string, string>, pos?: PartOfSpeech): string;

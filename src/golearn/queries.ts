@@ -212,6 +212,7 @@ export async function tokenSupport(ctx: Ctx, userId: string, tokenId: string, le
     morph: analysis?.morph, source: analysis?.sourceInfo?.label, confidence: analysis?.confidence,
     alternatives: (analysis?.alternatives ?? []).map((a) => ({ lemma: a.lemmaId?.split(':').slice(2, -1).join(':'), pos: a.pos, morph: a.morph, confidence: a.confidence })),
     sentence: own?.text, references: own?.verseRefs ?? [],
+    ...(typeof analysis?.notes?.root === 'string' ? { root: analysis.notes.root } : {}), ...(typeof analysis?.notes?.rootClass === 'string' ? { rootClass: analysis.notes.rootClass } : {}),
     ...(analysis?.gloss ? { contextualMeaning: { text: analysis.gloss, source: analysis.sourceInfo?.label ?? 'authored context', confidence: analysis.confidence } } : {}) });
   const primaryMeaning = support.wordAnalysis.contextualMeaning?.text ?? support.wordAnalysis.inflectedMeaning?.text ?? support.wordAnalysis.lexicalMeaning?.text;
   if (primaryMeaning) support.gloss = primaryMeaning;

@@ -18,7 +18,7 @@ import type { Grading, Response, SessionPlan } from '../../src/types';
 import type { PlaybackHandle, PronunciationResult } from '../../../golisten/src/contracts';
 import type { AppContext } from '../context';
 import { explainFailure } from '../config';
-import { append, button, clear, embedTarget, field, h, langProps, p, setStatus, statusLine } from '../dom';
+import { type Child, append, button, clear, embedTarget, field, h, isolateArabic, langProps, p, setStatus, statusLine } from '../dom';
 import {
   answerInTarget, DIMENSION_LABEL, FAMILY_LABEL, forecastRecording, isAudioExercise, itemLabel, OUTCOME_LABEL, RATING_LABEL, unitLabel, withheldReason,
 } from '../format';
@@ -631,6 +631,11 @@ class Controller {
     await this.submit(this.base({ typed }));
   }
 
+  /** The answer's text; for Arabic, an English answer that quotes Arabic (a Sprint or alphabet back) has its Arabic runs isolated so the separators keep their order. */
+  private answerChildren(family: Parameters<typeof answerInTarget>[0], text: string): Child[] {
+    return !answerInTarget(family) && /^ar(-|$)/iu.test(this.tag ?? '') ? isolateArabic(text) : [text];
+  }
+
   /** Self-graded items: the reference answer appears, then the four grades. */
   private reveal(): void {
     if (this.stage !== 'prompt' || !this.presented || this.revealed) return;
@@ -638,7 +643,7 @@ class Controller {
     const { exercise } = this.presented;
     const flashcard = this.isFlashcard();
     const reference = h('p', { class: 'reference' }, h('span', { class: 'sr' }, 'Answer: '),
-      h('span', { ...(answerInTarget(exercise.family) ? langProps(this.tag) : {}), id: 'revealed-answer' }, exercise.answerKey.accepted[0] ?? ''));
+      h('span', { ...(answerInTarget(exercise.family) ? langProps(this.tag) : {}), id: 'revealed-answer' }, ...this.answerChildren(exercise.family, exercise.answerKey.accepted[0] ?? ''))); 
     if (flashcard) {
       const face = this.root.querySelector('#flip-card');
       const word = face?.querySelector('#stimulus');

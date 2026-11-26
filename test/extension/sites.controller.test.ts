@@ -150,6 +150,7 @@ describe('the language-resolution hook', () => {
     const { sample, ...rest } = seen[0];
     expect(rest).toEqual({
       documentLanguage: { languageId: 'sq', source: 'html-lang', confidence: 0.8 },
+      surface: 'shtëpinë', // the word clicked, so a click on one word in the learner's own script can be read in the learner's language (resolve.ts, 4b)
       teamDefault: 'sq',
       installed: ['sq', 'es'],
     });

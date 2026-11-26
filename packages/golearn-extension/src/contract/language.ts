@@ -17,6 +17,8 @@ export interface LanguageEvidence {
   documentLanguage?: { languageId: string; source: 'html-lang' | 'meta' | 'og-locale' | 'element-lang' | 'url'; confidence: number; /** The full declared tag (`es-HN`), when it carries more than the language, so the resolver can set the variety. */ tag?: string };
   /** The selected surface (never the context sentence), for detection by script or word list. */
   sample?: string;
+  /** The word or words the learner clicked, as printed (not the context): lets a click on one word in the learner's own script be read in the learner's language. */
+  surface?: string;
   /** The language of the learner's enrolment (or the team's default), when there is one. */
   teamDefault?: string;
   /** The languages this build can analyse. */

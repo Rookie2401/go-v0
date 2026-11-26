@@ -76,6 +76,8 @@ export interface ScriptProfile {
   rtl?: boolean;
   /** How many new units a first sprint introduces (4–6 for an alphabet; fewer for a complex script). */
   firstBatch: number;
+  /** True for a script whose letters are not readable without marks (a pointed abjad): the learner's page counts steer the choice only once a first word can be read. */
+  pagesAfterFirstWord?: boolean;
   /** How many new units a later sprint introduces at most. */
   laterBatch: number;
   units: readonly ScriptUnit[];

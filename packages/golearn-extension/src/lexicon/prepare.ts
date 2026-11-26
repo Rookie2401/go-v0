@@ -12,7 +12,6 @@ import type { ShardLoader, ShardSource } from '../../../../src/adapters/shared/s
 import { createGreekShardLoader } from '../../../../src/adapters/greek/shards';
 import { createHebrewShardLoader } from '../../../../src/adapters/hebrew/shards';
 import { createRussianShardLoader } from '../../../../src/adapters/russian/shards';
-import { createArabicShardLoader } from '../../../../src/adapters/arabic/shards';
 import type { UrlLoaderApi } from '../analysers/urlLoader';
 import { analyserExtras, getAnalyser } from '../parser/registry';
 
@@ -42,7 +41,7 @@ export function createLexiconPreparer(chromeApi: UrlLoaderApi | undefined, fetch
     let p = loaders.get(set);
     if (!p) {
       // the analyser chunk's own factory installs into the chunk's index store; the src factories serve only an analyser registered from src (tests)
-      const make = analyserExtras(set.slice(0, 2))?.createShardLoader ?? (set.startsWith('el/') ? createGreekShardLoader : set.startsWith('ru/') ? createRussianShardLoader : set.startsWith('ar/') ? createArabicShardLoader : createHebrewShardLoader);
+      const make = analyserExtras(set.slice(0, 2))?.createShardLoader ?? (set.startsWith('el/') ? createGreekShardLoader : set.startsWith('ru/') ? createRussianShardLoader : createHebrewShardLoader);
       // the content script logs nothing (test/audit/security.bundle.test.ts): a missing set is remembered here and shows on the card as "not loaded"
       p = make(source, { base: set, maxLoaded }).then((l) => l as ShardLoader, () => { unavailable.add(set); return undefined; });
       loaders.set(set, p);

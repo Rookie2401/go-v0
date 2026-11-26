@@ -146,7 +146,7 @@ export const arAdapter: LanguageAdapter = {
   speechNormalize: (text, opts) => arSpeechNormalize(text, opts),
 
   // a naskh face first: the letter shapes the Alphabet Sprint describes are naskh shapes; room above and below for the vowel marks
-  display: { wordSeparator: ' ', showBoundariesOnHighlight: false, fontFamily: '"Noto Naskh Arabic", "Amiri", "Scheherazade New", "Traditional Arabic", serif', lineHeight: 2 },
+  display: { wordSeparator: ' ', showBoundariesOnHighlight: false, fontFamily: '"Noto Naskh Arabic", "Amiri", "Scheherazade New", "Traditional Arabic", "Arabic Typesetting", "Geeza Pro", "Al Bayan", "Times New Roman", serif', lineHeight: 2 },
 
   checkProduction: (tokens, analyses, sentence) => checkArProduction(tokens, analyses, sentence),
 
@@ -173,4 +173,5 @@ export const arAdapter: LanguageAdapter = {
    * so the VOWELS of the two are compared (ʕilm: i; ʕalam: a-a; ʕalima: a-i-a). A lemma printed without vowels cannot be told apart: undefined.
    */
   headMatches: (lemma, head, pos) => headMatchesLemma(lemma, head, pos),
+  leadWithReadingGloss: true,
 };

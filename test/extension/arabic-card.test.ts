@@ -4,7 +4,10 @@
  * isolated (unicode-bidi) so an English gloss beside Arabic and the parts of a word do not reorder. jsdom has no layout and no font, so this tests
  * what the card PRODUCES: the markup (dir, lang, class) and the style sheet's rules; the look is for a real browser.
  */
-import { afterEach, beforeEach, describe, expect, it } from 'vitest';
+import fs from 'node:fs';
+import path from 'node:path';
+import { afterEach, beforeAll, beforeEach, describe, expect, it } from 'vitest';
+import { createArabicShardLoader } from '../../src/adapters/arabic/shards';
 import { createCardUI, type CardUI } from '../../packages/golearn-extension/src/popup/card';
 import { clearAnalysers, parseSelection } from '../../packages/golearn-extension/src/parser';
 import type { CardModel } from '../../packages/golearn-extension/src/parser';
@@ -52,7 +55,7 @@ describe('the Arabic card', () => {
     // every Arabic run: a naskh stack and a line height of at least 1.8, so a shadda under a kasra is not clipped
     const run = /\.card \[lang\|="ar"\]\s*\{([^}]*)\}/.exec(css);
     expect(run, 'a rule for [lang|=ar]').not.toBeNull();
-    expect(run![1]).toMatch(/font-family:\s*"Noto Naskh Arabic", "Amiri", "Scheherazade New", "Traditional Arabic", serif/);
+    expect(run![1]).toMatch(/font-family:\s*"Noto Naskh Arabic", "Amiri", "Scheherazade New", "Traditional Arabic", "Arabic Typesetting", "Geeza Pro", "Al Bayan", "Times New Roman", serif/);
     expect(Number(/line-height:\s*([\d.]+)/.exec(run![1])![1])).toBeGreaterThanOrEqual(1.8);
     // the headword: line-height 2
     const head = /\.card \.word\[lang\|="ar"\]\s*\{([^}]*)\}/.exec(css);
@@ -89,6 +92,55 @@ describe('the Arabic card', () => {
     ui.show(m, anchor);
     const root = ui.root()!;
     for (const part of root.querySelectorAll('.seg [lang]')) expect(part.getAttribute('lang')).toBe('ar');
+    // the parts list is right to left like the word: its first part (the conjunction و) is its rightmost, while the card stays left to right
+    const segs = root.querySelector('[data-row="form-components"]');
+    if (segs) { expect(segs.getAttribute('dir')).toBe('rtl'); expect(segs.firstElementChild!.querySelector('[lang]')!.textContent).toMatch(/^و/); }
+    expect(root.querySelector('.card')!.getAttribute('dir') ?? 'ltr').toBe('ltr');
     expect(root.querySelector('.word')!.getAttribute('lang')).toBe('ar');
+  });
+});
+
+const LEXICON = path.resolve(__dirname, '../../public/lexicon/ar/standard');
+describe.skipIf(!fs.existsSync(path.join(LEXICON, 'manifest.json')))('the root line of the Arabic card', () => {
+  // the roots are the source's: they live in the form index, which the extension loads in shards beside the analyser
+  beforeAll(async () => {
+    const loader = await createArabicShardLoader({ fetchJson: async (p) => JSON.parse(fs.readFileSync(p, 'utf8')), fetchBytes: async (p) => new Uint8Array(fs.readFileSync(p)) }, { base: LEXICON, maxLoaded: 400 });
+    await loader.ensure(['كتب', 'كتاب', 'مكتبه', 'المكتبه', 'لا']);
+  });
+
+  const rootOf = (sentence: string, surface: string): string | undefined => {
+    const start = sentence.indexOf(surface);
+    const m = parseSelection({ surface, languageId: 'ar', context: { kind: 'sentence', confidence: 0.9, sentence, selStart: start, selEnd: start + surface.length, direction: 'rtl' } as never });
+    return m.wordAnalysis?.formAnalysis?.root;
+  };
+
+  it('comes with the reading, not from an index the card’s module holds: كَتَبَ, كِتَاب and مَكْتَبَة show Root ك ت ب', () => {
+    expect(rootOf('كَتَبَ الْوَلَدُ الدَّرْسَ.', 'كَتَبَ')).toBe('ك ت ب');
+    expect(rootOf('هذا كِتَاب جَدِيد.', 'كِتَاب')).toBe('ك ت ب');
+    expect(rootOf('ذَهَبَ إِلَى الْمَكْتَبَةِ.', 'الْمَكْتَبَةِ')).toBe('ك ت ب');
+  });
+
+  it('shows no root for a lemma that has none, and the card says Root only when there is one', () => {
+    expect(rootOf('لَا يَكْتُبُ الْوَلَدُ.', 'لَا')).toBeUndefined();
+    const m = parseSelection({ surface: 'كَتَبَ', languageId: 'ar', context: { kind: 'sentence', confidence: 0.9, sentence: 'كَتَبَ الْوَلَدُ الدَّرْسَ.', selStart: 0, selEnd: 6, direction: 'rtl' } as never });
+    ui.show(m, anchor);
+    expect(ui.root()!.textContent).toMatch(/ك ت ب/);
+  });
+});
+
+describe('a click on a dialect sentence', () => {
+  it('says in plain words that it looks like spoken Arabic and is not analysed, naming the dialect', () => {
+    const sentence = 'ازيك يا صاحبي عامل ايه النهاردة دلوقتي';
+    const surface = 'دلوقتي';
+    const start = sentence.indexOf(surface);
+    const m = parseSelection({ surface, languageId: 'ar', context: { kind: 'sentence', confidence: 0.9, sentence, selStart: start, selEnd: start + surface.length, direction: 'rtl' } as never });
+    expect(m.notes.join(' ')).toMatch(/This sentence looks like spoken Arabic \(Egyptian\), which GoLearn does not analyse: no reading is given\./);
+    ui.show(m, anchor);
+    expect(ui.root()!.textContent).toMatch(/looks like spoken Arabic \(Egyptian\)/);
+  });
+
+  it('says nothing of the kind about a Standard Arabic sentence', () => {
+    const m = parse('كَتَبَ');
+    expect(m.notes.join(' ')).not.toMatch(/spoken Arabic/);
   });
 });

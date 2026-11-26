@@ -44,11 +44,11 @@ describe.skipIf(!have)('the built extension', () => {
     // Belarusian, Bulgarian and Serbian text (language/cyrillic.ts, the Cyrillic branches of language/resolve.ts and active/pageLanguages.ts)
     // and loads the Russian form index's shards before a lookup (russian/shards.ts with its text helpers). content.js measured 581.4 KB
     // (575.5 KB on master 22be2d7e, which this branch has merged in).
-    // 2026-11-25 (Arabic pack): 585 -> 605 KB. The Arabic script is shared by Persian, Urdu, Pashto, Kurdish and Uyghur, so the content script tells Arabic
+    // 2026-11-25 (Arabic pack): 585 -> 599 KB (fix batch 1: 605 -> 599 once the root came with the reading and the content script stopped linking the form index). The Arabic script is shared by Persian, Urdu, Pashto, Kurdish and Uyghur, so the content script tells Arabic
     // from them by the printed letters and the commonest Arabic function words (language/arabic.ts, the Arabic branches of language/resolve.ts and
     // active/pageLanguages.ts, with arabic/text.ts for the letters) and loads the Arabic form index's shards before a lookup (arabic/shards.ts with its
-    // clitic rules). Measured by `npm run ext:build`: content.js 618,659 bytes = 604.2 KB (597,766 bytes = 583.8 KB at the same tree without the pack).
-    expect(sizes.get('content.js')!, 'content.js').toBeLessThanOrEqual(605 * KB);
+    // clitic rules). Measured by `npm run ext:build`: content.js 612,501 bytes = 598.1 KB (597,766 bytes = 583.8 KB at the same tree without the pack; 618,659 before the fix).
+    expect(sizes.get('content.js')!, 'content.js').toBeLessThanOrEqual(599 * KB);
     // Hindi reading must resolve in the offline Repository too. Its real analyser adds
     // about 460 KB to the former Albanian-only worker; classic workers cannot import
     // the page's analyser chunk. Keep an explicit ceiling rather than dropping analysis.
@@ -73,11 +73,11 @@ describe.skipIf(!have)('the built extension', () => {
     // (about 12 KB). Measured 1,263,600 bytes = 1,234.0 KB on the merged tree (1,195.8 KB on 22be2d7e). No French analyser, word list or
     // lemma list is in the worker.
     // 2026-11-19 (release/ru-fr, both packs on master 3d92b264): 1,240 -> 1,270 KB. background.js measured 1,291,753 bytes = 1,261.5 KB with Russian and French.
-    // 2026-11-25 (Arabic pack): 1,270 -> 1,295 KB. Like every pack the worker holds the manifest with its thirteen feature and 27 pattern explanations,
+    // 2026-11-25 (Arabic pack): 1,270 -> 1,294 KB. Like every pack the worker holds the manifest with its thirteen feature and 27 pattern explanations,
     // the validation cases and the orientation, and the Arabic voice registry; the adapter registry reaches arabic/text.ts for the headword check
     // (`headMatches`) and the language ladder for the letters. No Arabic analyser, core or word list is in the worker. Measured by `npm run ext:build`:
-    // background.js 1,324,066 bytes = 1,293.0 KB (1,293,470 bytes = 1,263.1 KB at the same tree without the pack).
-    expect(sizes.get('background.js')!, 'background.js').toBeLessThanOrEqual(1295 * KB);
+    // background.js 1,324,503 bytes = 1,293.5 KB (1,293,470 bytes = 1,263.1 KB at the same tree without the pack).
+    expect(sizes.get('background.js')!, 'background.js').toBeLessThanOrEqual(1294 * KB);
     // 2026-10-21: 650 -> 760 KB; the GoTell redesign (aec73a36) and the GoListen playback refactor (9aae9cb0) brought app.js to 723 KB
     // (measured with the Biblia card of the reader screen, 0.8 KB, reverted). A ceiling again, not a target.
     // 2026-11-08: 760 -> 800 KB; master's build already measured 779 KB.
@@ -90,7 +90,7 @@ describe.skipIf(!have)('the built extension', () => {
     // 2026-11-19 (French pack, after merging master 22be2d7e): 840 -> 880 KB. The same French text reaches the setup page (manifest,
     // construction explanations, orientation: 37.6 KB on 985c742b). Measured 896,583 bytes = 875.6 KB on the merged tree.
     // 2026-11-19 (release/ru-fr, both packs on master 3d92b264): 880 -> 910 KB. app.js measured 926,340 bytes = 904.6 KB with Russian and French (setup page built with GOLEARN_APP_DICT=sq,ru,fr).
-    if (sizes.has('app/app.js')) expect(sizes.get('app/app.js')!, 'app/app.js').toBeLessThanOrEqual(910 * KB);
+    if (sizes.has('app/app.js')) expect(sizes.get('app/app.js')!, 'app/app.js').toBeLessThanOrEqual(947 * KB); // 2026-11-25: 910 -> 947 KB for the Arabic pack's manifest (thirteen feature and 27 pattern explanations), validation cases and orientation, like every pack's. Measured: app.js 969,426 bytes = 946.7 KB (setup page built by the extension build test)
     for (const id of ['sq', 'es', 'de', 'hi', 'th', 'nb', 'nn', 'ru', 'fr', 'ar']) expect(sizes.has(`analysers/${id}.js`), `analysers/${id}.js`).toBe(true);
   });
 

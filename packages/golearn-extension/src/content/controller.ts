@@ -34,6 +34,7 @@ import { unitIds } from '../../../repository-contract/src';
 import type { ContentServices, EventSink, MetricSink } from './services';
 import type { GoEvent } from '../../../repository-contract/src';
 import type { LanguageAdapter, PartOfSpeech } from '../../../../src/core';
+import { leadWithGloss } from '../../../../src/core/word-analysis';
 import { buildParadigm, etymologyOf, formRomanOf, headTest, pickRecord, pronunciationOf, relationsOf, segmentationsOf, selectedCellKeys, sensesOf, structureOf, type LexicalRecord } from './enrich';
 import type { TranslationRequest, TranslationResult } from '../translation/provider';
 
@@ -562,7 +563,7 @@ export class LookupController {
               const paradigm = card.lemma && card.pos ? buildParadigm(adapter, languageId, card.lemma, card.pos as PartOfSpeech, record, hint) : undefined;
               const selected = selectedCellKeys(adapter, paradigm, hint.features, card.surface);
               this.d.ui.update({ ...gather(reply.sources), enrichment: {
-                state: 'ready', paradigm, selected, ...(segmentations ? { segmentations } : {}), etymology: etymologyOf(record), structure: structureOf(record, adapter, card.lemma ?? card.surface.trim(), card.pos, card.surface, hint.features, { languageId }), pronunciation: pronunciationOf(record, card.pronunciation), formRoman: formRomanOf(record), relations: relationsOf(record), senses: sensesOf(record),
+                state: 'ready', paradigm, selected, ...(segmentations ? { segmentations } : {}), etymology: etymologyOf(record), structure: structureOf(record, adapter, card.lemma ?? card.surface.trim(), card.pos, card.surface, hint.features, { languageId }), pronunciation: pronunciationOf(record, card.pronunciation), formRoman: formRomanOf(record), relations: relationsOf(record), senses: leadSenses(adapter, card.gloss, sensesOf(record)),
                 ...(reply.attribution ? { attribution: reply.attribution } : {}), ...(reply.reason && !reply.found ? { message: reply.message ?? reply.reason } : {}),
               } });
             }).catch(() => { if (live()) this.d.ui.update({ enrichment: { state: 'unavailable', message: 'The dictionary could not be asked for the full entry.' } }); }),
@@ -693,6 +694,7 @@ export class LookupController {
       ...declared,
       ...(override ? { override } : {}),
       sample: sampleAround(sel),
+      surface: sel.surface,
       teamDefault: status?.languageId ?? 'sq',
       installed: [...installed],
     };
@@ -908,4 +910,9 @@ export function profileViewFrom(card: CardModel, reply: ProfileReply | undefined
 function saveFailureWords(why: string): string {
   const w = why.replace(/\s+/g, ' ').replace(/[.\s]+$/, '').trim();
   return (w.length > 90 ? `${w.slice(0, 89)}…` : w) || 'unknown reason';
+}
+
+/** The dictionary senses of the card, led by the reading's own gloss for a language that says its gloss is a reviewed choice (`leadWithReadingGloss`). */
+function leadSenses<T extends { gloss: string; tags: string[]; examples: string[] }>(adapter: { leadWithReadingGloss?: boolean } | undefined, gloss: string | undefined, senses: T[]): T[] {
+  return adapter?.leadWithReadingGloss ? leadWithGloss(gloss, senses, (g) => ({ gloss: g, tags: [], examples: [] }) as unknown as T) : senses;
 }

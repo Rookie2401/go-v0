@@ -191,6 +191,7 @@ export function parseSelection(input: ParseInput): CardModel {
       // every language: the form's own English where the features and the citation support one (a verb's person, tense, mood and voice), else the lemma meaning
       wordAnalysis = wordAnalysisFor({ language: L.lang, surface: tokens[i].surface, lemma: c.lemma, pos: c.pos, lemmaGloss: c.unconfirmed ? undefined : c.gloss,
         morph: c.morph, source: c.sourceId ? L.adapter.sources?.[c.sourceId]?.label : undefined, confidence: c.confidence, parts: c.parts,
+        ...(typeof c.notes?.root === 'string' ? { root: c.notes.root } : {}), ...(typeof c.notes?.rootClass === 'string' ? { rootClass: c.notes.rootClass } : {}),
         alternatives: analyses[i].candidates.slice(1).map((x) => ({ lemma: x.lemma, pos: x.pos, morph: x.morph, confidence: x.confidence })),
         sentence: kind === 'sentence' ? text : undefined, sentenceConfidence: context.confidence, references: ctx.references });
       const resolvedMeaning = wordAnalysis.contextualMeaning?.text ?? wordAnalysis.inflectedMeaning?.text ?? wordAnalysis.lexicalMeaning?.text;
@@ -218,6 +219,11 @@ export function parseSelection(input: ParseInput): CardModel {
       if (typeof c.notes?.disputed === 'string') notes.push(`Sources disagree: ${c.notes.disputed}`);
       if (c.unit && c.unit.pieces.length > 1) notes.push(`Part of a unit with the neighbouring word: "${c.unit.display}".`);
       if (c.orthography) notes.push(`Spelling differs from today's standard (${c.orthography.modern}).`);
+      // an analyser that recognises a sentence as a spoken dialect (Arabic) says so in plain words, instead of leaving a card with an unexplained gap
+      if (c.notes?.variety === 'dialect?') {
+        const d = typeof c.notes.dialect === 'string' ? c.notes.dialect.replace(/^unknown-dialect$/, '').replace(/^./, (x) => x.toUpperCase()) : '';
+        notes.push(`This sentence looks like spoken ${L.name}${d ? ` (${d})` : ''}, which GoLearn does not analyse: no reading is given.`);
+      }
       if (c.varieties?.length) notes.push(`Variety: ${c.varieties.join(', ')}.`); // the codes, as before; a period's plain-words label is on the period line
       // a language with period varieties: the period the analyser read the sentence in, and the word across the periods ("Variants")
       // a period variety, or a heritage language read beside the language (Biblical Aramaic inside a Hebrew text)

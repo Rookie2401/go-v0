@@ -1,8 +1,21 @@
 # Arabic pack: what the system already had, and what Arabic had to fit (audit of master a822b1ab, 2026-11-25)
 
-Made before any Arabic code was written, by reading how the Russian (`ba606b70`) and French (`b087f000`) packs were registered and how
-Hebrew and Greek handle what Arabic shares with them. It decided the design in [PLAN.md](PLAN.md). Nothing here is Arabic-specific
-invention: each point names the existing mechanism Arabic reuses.
+**When this was written, and what it rests on.** A read-only audit of master ran at the start of the work, on 2026-11-25, while the
+first Arabic file (the text views) was being drafted and before the index, the analyser or any registration existed. It read how the
+Russian (`ba606b70`) and French (`b087f000`) packs were registered and how Hebrew and Greek handle what Arabic shares with them; its
+findings decided the design in [PLAN.md](PLAN.md). THIS DOCUMENT was written afterwards, the same evening, from that audit's report
+and from what the build then showed. So:
+
+- found by the audit before the code: the table "What was reused as it stood"; the registration checklist; the constraints; and, in
+  the list of gaps, the PROBLEM in items 1, 3, 4, 5, 6, 8 and 9 (a key without vowels, cuts with no source boundaries, no root field,
+  merged homographs under one dictionary key, the one-pack-per-script rule, the marks `lexicalFamilyKey` strips, the unused
+  `display.fontFamily`);
+- learned during the build, and written here after the fact: the SCALE of item 2 (the independent auditor measured it on the first
+  plan and it changed the design), item 7 (seen when the analyser first produced a union), and the SOLUTION named in every item
+  (`headMatches`, the reviewed list and preferences, the page-language rule, the word-analysis cells), each of which was designed
+  and built after the audit, not specified by it.
+
+Nothing here is Arabic-specific invention: each point names the existing mechanism Arabic reuses or the one hook it adds.
 
 ## What was reused as it stood
 

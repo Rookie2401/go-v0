@@ -2,7 +2,7 @@
  "_about": "Regression cases that fail with the recorded analyser and index. A RATCHET: a case not listed must pass; a listed case must still fail, so a fix forces the entry to be removed. Re-record with --write-open after an analyser change. Cases are never deleted or weakened.",
  "analyser": "adapter",
  "index": "full",
- "date": "2026-11-25",
+ "date": "2026-11-26",
  "cases": {
   "o17-muallimat": "lemma: expected مُعَلِّمَة, got مُعَلِّم  <- مُعَلِّم|NOUN|0.9",
   "o25-raahu": "root: expected ر ء ي, ab ent  <- رَأَى|VERB|0.85; رَأْي|NOUN|0.45; رَأْي|NOUN|0.45",

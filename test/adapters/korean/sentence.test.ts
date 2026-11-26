@@ -285,7 +285,8 @@ describe.skipIf(!HAVE_SHARDS)('with every shard installed', () => {
     });
     it('batch 3: 한 before any counter reading is "one" (운동장을 한 바퀴), even after an object', () => {
       expect(readIn('운동장을 한 바퀴 돌았어요.', '한').top.pos).toBe('NUM');
-      cueOrOrder('운동장을 한 바퀴 돌았어요.', '바퀴', (c) => c.pos === 'CLF');
+      // batch 11: in the numeral + counter frame the counter reading is raised even from below the floor (koPromote's third exception)
+      expect(readIn('운동장을 한 바퀴 돌았어요.', '바퀴').top.pos).toBe('CLF');
       expect(readIn('숙제를 한 학생이 왔어요.', '한').top.lemma).toBe('하다');
     });
     it('batch 3: after an adnominal, the bound noun (죄 지은 자를: "one who", 믿는 이는: "person")', () => {
@@ -346,6 +347,59 @@ for (const state of ['core', 'shards'] as const) {
     // the lexicon's round eighteen added the counter 곡 (曲): it now counts
     it('WW3: 노래를 한 곡 불렀어요 → 한 "one"', () => {
       expect(readIn('노래를 한 곡 불렀어요.', '한').top.pos).toBe('NUM');
+    });
+    describe('batch 11: the numeral + counter frame raises both readings, from below the floor if need be', () => {
+      const lemmaOf = (c: AnalysisCandidate) => (c.lemma ?? '').replace(/[⁰¹²³⁴-⁹]+$/u, '');
+      const isNumeral = (c: AnalysisCandidate) => c.pos === 'NUM' || (c.pos === 'DET' && /^(one|two|three|four|five|six|seven|eight|nine|ten)\b/u.test(c.gloss ?? ''));
+      const isCounter = (c: AnalysisCandidate) => c.pos === 'CLF' || (c.pos === 'NOUN' && /storey|floor|hour|day|month|minute|year|counter|bottle|glass|cup/u.test(c.gloss ?? ''));
+      for (const [s, num, clf] of [
+        ['팔 층에 살아요.', '팔', '층에'], ['팔 년 동안 살았어요.', '팔', '년'], ['구 층으로 가요.', '구', '층으로'], ['구 개월 걸렸어요.', '구', '개월'],
+        ['커피 한 잔 주세요.', '한', '잔'], ['맥주 두 병 주세요.', '두', '병'], ['두 시간 걸려요.', '두', '시간'], ['세 시에 만나요.', '세', '시에'],
+        ['네 명이 왔어요.', '네', '명이'], ['이 층에 있어요.', '이', '층에'], ['삼 일 동안 있었어요.', '삼', '일'], ['육 개월 걸렸어요.', '육', '개월'], ['십 분 기다렸어요.', '십', '분'],
+      ] as const) {
+        it(`${s}: ${num} is the numeral and ${clf} the counter`, () => {
+          const n = readIn(s, num), c = readIn(s, clf);
+          expect(isNumeral(n.top), `${num}: ${n.top.lemma} ${n.top.pos} ${n.top.gloss}`).toBe(true);
+          expect(isCounter(c.top), `${clf}: ${c.top.lemma} ${c.top.pos} ${c.top.gloss}`).toBe(true);
+          expect(n.top.confidence).toBeGreaterThanOrEqual(0.5);
+          expect(c.top.confidence).toBeGreaterThanOrEqual(0.5);
+          expect(orderProblems(n.analyses)).toEqual([]);
+        });
+      }
+      // outside the frame nothing is raised: the arm, the former market, the cup, the illness, time, work, "this person", 세 들다 "rent"
+      for (const [s, w, ok] of [
+        ['팔이 아파요.', '팔이', (c: AnalysisCandidate) => c.pos === 'NOUN' && /\barm\b/u.test(c.gloss ?? '')],
+        ['구 시장에 갔어요.', '구', (c: AnalysisCandidate) => c.pos === 'DET' && /former/u.test(c.gloss ?? '')],
+        ['잔을 들었어요.', '잔을', (c: AnalysisCandidate) => c.pos === 'NOUN' && /cup/u.test(c.gloss ?? '')],
+        ['병이 났어요.', '병이', (c: AnalysisCandidate) => c.pos === 'NOUN' && lemmaOf(c) === '병'],
+        ['시간이 없어요.', '시간이', (c: AnalysisCandidate) => c.pos === 'NOUN' && /\btime\b/u.test(c.gloss ?? '')],
+        ['일이 많아요.', '일이', (c: AnalysisCandidate) => c.pos === 'NOUN' && /\bwork\b/u.test(c.gloss ?? '')],
+        ['이 사람은 누구예요?', '이', (c: AnalysisCandidate) => c.pos === 'DET' && /\bthis\b/u.test(c.gloss ?? '')],
+        ['세 들어 살아요.', '세', () => true],
+        // found on the way: 이 일 is "this work" (two days is 이틀), 한 일 "the work done" (일 "day" counts with Sino-Korean numerals only)
+        ['이 일은 정말 어려워요.', '일은', (c: AnalysisCandidate) => c.pos === 'NOUN' && /\bwork\b/u.test(c.gloss ?? '')],
+        ['안양에서 한 일을 보았다.', '일을', (c: AnalysisCandidate) => c.pos === 'NOUN' && !/^day$/u.test(c.gloss ?? '')],
+      ] as const) {
+        it(`${s}: ${w} is not read as a numeral or counter frame`, () => {
+          const r = readIn(s, w);
+          expect(ok(r.top), `${w}: ${r.top.lemma} ${r.top.pos} ${r.top.gloss}`).toBe(true);
+          expect(r.top.pos).not.toBe('CLF');
+          for (const a of r.analyses) for (const c of a.candidates) expect(ctx(c), `${s} ${a.token.surface}`).not.toMatch(/is a counter|Before the counter/u);
+        });
+      }
+    });
+    describe('batch 10: which verb an adnominal is, composed numerals, 달 after a numeral', () => {
+      const lemmaOf = (c: AnalysisCandidate) => (c.lemma ?? '').replace(/[⁰¹²³⁴-⁹]+$/u, '');
+      for (const [s, w, lemma] of [
+        ['옷을 사는 것을 좋아해요.', '사는', '사다'], ['책을 산 사람이에요.', '산', '사다'], ['시장에서 과일을 사는 사람', '사는', '사다'], ['서울에 사는 사람이에요.', '사는', '살다'],
+        ['칼을 가는 사람이에요.', '가는', '갈다'], ['밭을 갈 때가 됐어요.', '갈', '갈다'], ['전구를 갈 시간이에요.', '갈', '갈다'], ['학교에 가는 길이에요.', '가는', '가다'],
+      ] as const) it(`${s}: ${w} is ${lemma}`, () => cueOrOrder(s, w, (c) => lemmaOf(c) === lemma && c.morph.VerbForm === 'Adn'));
+      for (const [s, w] of [['백만 원이 있어요.', '백만'], ['이십만 명이 왔어요.', '이십만'], ['삼만 개를 만들었어요.', '삼만'], ['오십만 원을 냈어요.', '오십만']] as const) {
+        it(`${s}: ${w} is the composed numeral`, () => cueOrOrder(s, w, (c) => lemmaOf(c) === w && !c.morph.Particle));
+      }
+      for (const [s, w] of [['한 달 동안 있었어요.', '달'], ['세 달이 지났어요.', '달이'], ['두 달 동안 일했어요.', '달'], ['몇 달이 지났어요.', '달이']] as const) {
+        it(`${s}: ${w} is the noun "month", never 달다`, () => { const t = readIn(s, w).top; expect(t.pos).toBe('NOUN'); expect(lemmaOf(t)).toBe('달'); });
+      }
     });
     describe('batch 9: a one-word sentence keeps the token order; a reading below the floor is never raised', () => {
       const WORDS = ['먹는', '읽는', '가는', '하는', '사는', '주는', '보는', '오는', '있는', '없는', '좋은', '작은', '큰', '많은', '같은', '먹을', '갈', '할', '볼'];

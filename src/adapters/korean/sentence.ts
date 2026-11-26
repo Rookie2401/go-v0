@@ -39,6 +39,27 @@ const SET_ASIDE = 0.2;
 const SUPERSEDED_MAX = 0.45;
 const r2 = (x: number): number => Math.round(x * 100) / 100;
 
+/**
+ * After the look-alike cues: a reading a rule kept open for them (the other verb's adnominal) and none of them chose is superseded too, so
+ * a decided word leaves one creditable reading (batch 5's credit rule).
+ */
+function closeKeptOpen(s: KoSentence): void {
+  for (let i = 0; i < s.n; i++) {
+    const cs = s.cands[i];
+    if (!cs?.length) continue;
+    for (const c of cs) {
+      if (!c.notes?.keptOpen) continue;
+      const { keptOpen: _k, ...rest } = c.notes;
+      c.notes = rest;
+      if (c === cs[0]) continue;
+      const v = r2(Math.min(c.confidence, SUPERSEDED_MAX, cs[0].confidence - SET_ASIDE));
+      if (v < c.confidence) c.confidence = Math.max(0.01, v);
+      c.notes = { ...c.notes, credit: 'set aside by the sentence' };
+    }
+    koStrictlyFalling(cs);
+  }
+}
+
 /** Strictly falling confidences down the list (the card takes the highest: the first must be it). */
 export function koStrictlyFalling(cands: Cand[]): void {
   for (let k = 1; k < cands.length; k++) {
@@ -138,7 +159,7 @@ const glossOf = (c: Cand): string => c.gloss ?? '';
  * lowers the readings the rule excludes. Returns true when the rule acted. The undecided reading of a homonym set is "another lemma" of
  * its numbered readings (it is the bare headword), so choosing a numbered reading sets the undecided one aside.
  */
-export function koPromote(s: KoSentence, i: number, want: (c: Cand) => boolean, reason: string, setAside?: (c: Cand, chosen: Cand) => boolean): boolean {
+export function koPromote(s: KoSentence, i: number, want: (c: Cand) => boolean, reason: string, setAside?: (c: Cand, chosen: Cand) => boolean, keepOpen?: (c: Cand) => boolean, counterFrame = false): boolean {
   const cs = s.cands[i];
   if (!cs?.length) return false;
   const k = cs.findIndex((c) => want(c) && !c.unconfirmed);
@@ -152,7 +173,10 @@ export function koPromote(s: KoSentence, i: number, want: (c: Cand) => boolean, 
     const live = chosen.confidence >= 0.5 && !chosen.notes?.credit && !chosen.notes?.rare;
     // the same word: a live reading of this spelling and class stands for it (the undecided 물다 for 물다¹ "bite", 이 for 이³ "tooth")
     const sameWord = cs.some((c) => c !== chosen && bare(c) === bare(chosen) && c.pos === chosen.pos && c.confidence >= 0.5 && !c.notes?.credit && !c.unconfirmed);
-    if (!live && !isAuxReading(chosen) && !sameWord) return false;
+    // the THIRD exception (batch 11), `counterFrame`, used by the counter rule alone: in a numeral + counter frame (팔 층, 커피 한 잔, 맥주 두 병)
+    // the numeral reading of the first token and the counter reading of the second may be raised from below the floor, together or not at
+    // all: the frame decides, and both readings are listed closed-class rows, not guesses
+    if (!live && !isAuxReading(chosen) && !sameWord && !(counterFrame && (isFrameCounter(chosen) || isNumeralReading(chosen)))) return false;
   }
   const aside = setAside ?? ((c: Cand, ch: Cand) => c.lemma !== ch.lemma || c.pos !== ch.pos);
   const top = Math.max(...cs.map((c) => c.confidence));
@@ -164,7 +188,9 @@ export function koPromote(s: KoSentence, i: number, want: (c: Cand) => boolean, 
   // every rule here decides for a sure reason: what it supersedes is no longer a live rival and goes below the credit line (0.5), so the
   // product credits the chosen reading alone; the other analyses of the chosen word itself (kept) go there too, in their own order
   const kept = others.filter((c) => !lowered.includes(c));
+  // `keepOpen`: readings the rule does not decide against, left as they are for a later rule (the other verb's adnominal: 사다 / 살다)
   for (const c of [...kept, ...lowered]) {
+    if (keepOpen?.(c)) { c.notes = { ...(c.notes ?? {}), keptOpen: 'yes' }; continue; }
     const v = r2(Math.min(c.confidence, SUPERSEDED_MAX, chosen.confidence - SET_ASIDE));
     if (v < c.confidence) c.confidence = Math.max(0.01, v);
     c.notes = { ...(c.notes ?? {}), credit: 'set aside by the sentence' };
@@ -204,9 +230,30 @@ function isCounterReading(c: Cand): boolean {
   if (c.unconfirmed) return false;
   if (c.pos === 'CLF') return true;
   // only spellings that count, filed as nouns: a gloss alone is not enough (말³ "a unit of volume" is no counter in 한 말은)
-  if (c.pos !== 'NOUN' || c.notes?.homonym === 'undecided' || !NOUN_FILED_COUNTERS.has(bare(c))) return false;
+  if (c.pos !== 'NOUN' || c.notes?.homonym === 'undecided') return false;
+  if (!NOUN_FILED_COUNTERS.has(bare(c))) return false;
   return /\bcounter\b|\bunit of\b|\bmeasure word\b|^(a )?(piece|pair)\b|^hour \(time\)|^storey\b|^floor\b|^week\b/iu.test(c.gloss ?? '');
 }
+/**
+ * Nouns that count or measure after a number, each with the meaning of its counting entry (batch 11): 잔 a cup, 병 a bottle, 시간 hours, 달 a
+ * month, 일 a day, 초 a second; a numbered entry of the right meaning, never the undecided reading.
+ */
+const UNIT_NOUNS: Readonly<Record<string, RegExp>> = {
+  잔: /\bcup\b|\bglass\b/u, 병: /\bbottle\b/u, 시간: /\bhours?\b/u, 달: /\bmonth\b/u, 일: /\bday\b/u, 초: /unit of time|\bsecond\b/u,
+  년: /\byear\b/u, 월: /\bmonth\b/u, 분: /\bminute\b/u, 번: /\btimes?\b|\bnumber\b/u, 개월: /\bmonth/u, 주: /\bweek\b/u, 살: /\bage\b|\byears? old\b/u,
+};
+/**
+ * A counter reading for the numeral + counter frame alone (ruleCounters and koPromote's third exception): a counter reading, or a noun of
+ * UNIT_NOUNS in its counting meaning. The other rules keep to isCounterReading (일 "day" is no counter for them: 떠나는 일일 수도).
+ */
+function isFrameCounter(c: Cand): boolean {
+  if (isCounterReading(c)) return true;
+  if (c.unconfirmed || c.pos !== 'NOUN' || c.notes?.homonym === 'undecided') return false;
+  const unit = UNIT_NOUNS[bare(c)];
+  return !!unit && unit.test(c.gloss ?? '');
+}
+/** Units said only with the Sino-Korean numerals: after a native numeral they are not counters (한 일을 is "the work that was done"). */
+const SINO_ONLY_UNITS = new Set(['일', '년', '월', '초']);
 /** A numeral reading: the class NUM, or a determiner the dictionary glosses as a number (네 "four (of something)", 두, 세 …). */
 const NUMBER_WORDS = /^(one|two|three|four|five|six|seven|eight|nine|ten|twenty)\b/u;
 function isNumeralReading(c: Cand): boolean {
@@ -306,6 +353,36 @@ function hanIsDid(s: KoSentence, p: number, i: number): boolean {
   return true;
 }
 
+/**
+ * A composed numeral before a unit or counter (백만 원, 이십만 명, 삼만 개): the numeral, over numeral + 만 "only" (백 + 만), which is
+ * possible only when no unit follows (사만 "only four"). The composed reading must be a live rival (koPromote's rule).
+ */
+function ruleComposedNumeral(s: KoSentence): void {
+  for (let i = 0; i < s.n; i++) {
+    if (!s.isWord(i)) continue;
+    const cs = s.cands[i];
+    const top = cs[0];
+    if (!top || top.pos !== 'NUM' || lastParticle(top) !== 'only') continue;
+    const whole = cs.find((c) => isNumeralReading(c) && !particlesOf(c).length && bare(c) === s.key(i));
+    const nx = s.next(i);
+    if (!whole || nx < 0) continue;
+    const unit = s.cands[nx].some(isCounterReading) || ['원', '달러', '엔', '위안', '유로'].includes(bare(s.top(nx)));
+    if (unit) koPromote(s, i, (c) => c === whole, `${s.surface(i)} before the unit ${s.surface(nx)} is the number ${s.surface(i)}, not a number + 만 "only".`, (c) => c !== whole && lastParticle(c) === 'only');
+  }
+}
+
+/** 달 after a native numeral, digits or 몇 (한 달, 세 달, 두 달 동안, 몇 달): the noun "month" (the lexicon's 달 is "moon; month"), never 달다. */
+function ruleMonth(s: KoSentence): void {
+  for (let i = 1; i < s.n; i++) {
+    if (!s.isWord(i) || !s.key(i).startsWith('달')) continue;
+    const p = s.prev(i);
+    if (p < 0) continue;
+    const k = s.key(p);
+    if (!(s.isDigits(p) || TRIGGER_NATIVE.has(k) || k === '몇' || k === '여러')) continue;
+    koPromote(s, i, (c) => c.pos === 'NOUN' && bare(c) === '달' && /\bmonth\b/u.test(glossOf(c)), `${s.surface(i)} after the number ${s.surface(p)}: 달 "month".`, (c) => isPredicate(c));
+  }
+}
+
 function ruleCounters(s: KoSentence): void {
   for (let i = 0; i < s.n; i++) {
     if (!s.isWord(i)) continue;
@@ -322,15 +399,26 @@ function ruleCounters(s: KoSentence): void {
     const digits = s.isDigits(p);
     const pk = s.key(p);
     const numWord = s.isWord(p) && s.cands[p].some((c) => isNumeralReading(c) && !c.unconfirmed && (c.parts?.length ?? 1) <= 1);
-    if (!digits && !numWord) continue;
-    const clf = s.cands[i].find(isCounterReading);
+    // 몇 / 여러 / 수 (several) before a counter count too, with no numeral reading of their own to raise
+    const quantity = s.isWord(p) && (QUANTITY_WORDS.has(pk) || pk === '수');
+    if (!digits && !numWord && !quantity) continue;
+    // the counter class first where the lexicon lists one (잔 CLF "a glass of" over the noun "cup", 시간 CLF "hours" over "time")
+    const clf = s.cands[i].find((c) => c.pos === 'CLF' && isCounterReading(c)) ?? s.cands[i].find(isFrameCounter);
     if (!clf) continue;
     const counter = bare(clf);
+    if (!digits && TRIGGER_NATIVE.has(pk) && SINO_ONLY_UNITS.has(counter)) continue;
+    // the frame may raise a counter reading from below the floor only where it is the same cut as a live reading of the word (잔 CLF
+    // under the noun 잔, 시간 CLF under 시간 "time"), never another cut (15 세기: 세 + 기 under 세기 "century"), a plural (한 사람들은: counters
+    // take no 들) or a pronoun's spelling (한 우리); otherwise the rule stays with live readings, as before
+    const liveRead = (c: Cand) => c.confidence >= 0.5 && !c.notes?.credit && !c.notes?.rare && !c.unconfirmed;
+    const frame = liveRead(clf) || (s.cands[i].some((c) => c !== clf && liveRead(c) && bare(c) === counter)
+      && !s.surface(i).startsWith(`${counter}들`) && !s.cands[i].some((c) => c.pos === 'PRON' && liveRead(c)));
     // a numeral WORD decides only where it is not also an everyday other word before this counter: 이 개 is "this dog" (Sino-Korean 이
     // does not count things), 너 is "you"; a Sino-Korean numeral counts only with a Sino-Korean counter (삼 년, 오 분)
-    if (!digits && !(TRIGGER_NATIVE.has(pk) || (TRIGGER_SINO.has(pk) && SINO_COUNTERS.has(counter)))) continue;
+    if (!digits && !quantity && !(TRIGGER_NATIVE.has(pk) || (TRIGGER_SINO.has(pk) && SINO_COUNTERS.has(counter)))) continue;
     // 주 "week" counts after a Sino-Korean numeral (삼 주); after 이 only before 동안 / 간 (이 주 동안: two weeks; 이 주에 is "this week")
-    if (counter === '주' && pk === '이' && !(s.next(i) >= 0 && ['동안', '간'].includes(bare(s.top(s.next(i)))))) continue;
+    // and 일 "day" likewise (이 일은 is "this work"; two days is 이틀)
+    if ((counter === '주' || counter === '일') && pk === '이' &&!(s.next(i) >= 0 && ['동안', '간'].includes(bare(s.top(s.next(i)))))) continue;
     if (!digits && pk === '한' && hanIsDid(s, p, i)) {
       // 공부를 한 사람: 하다 + -(으)ㄴ "that did"; the word after it is the ordinary noun the clause describes
       koPromote(s, i, (c) => c.pos !== 'CLF' && isNominal(c) && !c.unconfirmed && bare(c) === counter, `After 한 "that did" (${s.surface(p - 1 >= 0 ? p - 1 : p)} is its object), ${s.surface(i)} is the noun it describes, not a counter.`, (c) => c.pos === 'CLF');
@@ -345,14 +433,15 @@ function ruleCounters(s: KoSentence): void {
       const k = s.key(p);
       which = KO_NATIVE_NUMERALS.has(k) ? ` ${before} is a native Korean numeral.` : KO_SINO_NUMERALS.has(k) ? ` ${before} is a Sino-Korean numeral.` : '';
     }
-    koPromote(s, i, (c) => c === clf, `After the number ${before}: ${counter} is a counter.${which}`, (c) => c.pos !== 'CLF');
+    // the numeral + counter frame: both readings raised together, from below the floor if need be (koPromote's third exception)
+    koPromote(s, i, (c) => c === clf, `After the number ${before}: ${counter} is a counter.${which}`, frame ? (c) => c !== clf : (c) => c.pos !== 'CLF', undefined, frame);
     const first = s.cands[i][0];
     if (first === clf && which && s.mayMark(i)) first.notes = { ...first.notes, numeral: which.trim() };
     // the numeral word itself: its NUM reading (세 명 "three", not 세다; 한 개 "one", not 하다 + -ㄴ)
     if (numWord) {
       const k = s.key(p);
       const kind = KO_NATIVE_NUMERALS.has(k) ? 'native Korean numeral' : KO_SINO_NUMERALS.has(k) ? 'Sino-Korean numeral' : 'numeral';
-      if (koPromote(s, p, (c) => isNumeralReading(c) && (c.parts?.length ?? 1) <= 1, `Before the counter ${s.surface(i)}: ${before} is a number (${kind}).`, (c) => !isNumeralReading(c)) && s.mayMark(p)) {
+      if (koPromote(s, p, (c) => isNumeralReading(c) && (c.parts?.length ?? 1) <= 1, `Before the counter ${s.surface(i)}: ${before} is a number (${kind}).`, (c) => !isNumeralReading(c), undefined, frame) && s.mayMark(p)) {
         s.cands[p][0].notes = { ...s.cands[p][0].notes, numeral: kind };
       }
     }
@@ -876,7 +965,8 @@ function ruleAdnominalOrNoun(s: KoSentence): void {
     // (first word of its clause, a nominal after it: 식은 밥을 against 새는 하늘을 is the same shape with opposite answers, so the token order
     // stands there; no tie-breaker is invented)
     if (plainNominalNext && pronounOk && strong) {
-      koPromote(s, i, (c) => c === adn, `${s.surface(i)} between ${s.surface(pv)} and the noun ${s.surface(nx)}: the adnominal of ${bare(adn)} (it describes ${s.surface(nx)}).`, (c) => c !== adn && !(isPredicate(c) && isAdn(c) && bare(c) === bare(adn)));
+      koPromote(s, i, (c) => c === adn, `${s.surface(i)} between ${s.surface(pv)} and the noun ${s.surface(nx)}: the adnominal of ${bare(adn)} (it describes ${s.surface(nx)}).`, (c) => c !== adn && !(isPredicate(c) && isAdn(c)), (c) => isPredicate(c) && isAdn(c) && c.pos !== 'AUX' && c.confidence >= 0.5);
+      // (the OTHER adnominal readings are not set aside: which verb it is (사다 / 살다, 가다 / 갈다) is the look-alike cues' to decide next)
       continue;
     }
     if (pronoun || top !== adn || bareNoun) continue;
@@ -1019,6 +1109,9 @@ export const KO_LOOKALIKE_RULES: readonly LookalikeRule[] = [
   { pick: '걷다', meaning: /\bwalk\b/u, among: ['걸다'], says: 'to walk', cue: objectIs(['길', '거리', '산길', '오솔길', '해변']) },
   { pick: '물다', meaning: /\bbite\b/u, among: ['묻다'], says: 'to bite', cue: (s, i) => { const w = subjectBefore(s, i, ['개', '고양이', '모기', '뱀', '벌레', '강아지']); return w ? `with the subject ${w}` : undefined; } },
   { pick: '묻다', meaning: /\bask\b/u, among: ['물다'], says: 'to ask', cue: objectIs(['길', '이름', '값', '나이', '이유', '안부', '질문', '의견']) },
+  { pick: '갈다', meaning: /\bgrind\b/u, among: ['가다'], says: 'to grind, sharpen', cue: objectIs(['칼', '이', '커피', '콩', '먹', '칼날', '도끼', '마늘']) },
+  { pick: '갈다', meaning: /\bsow\b|\bplough\b|\bplow\b|\btill\b/u, among: ['가다'], says: 'to plough, till', cue: objectIs(['밭', '논', '땅']) },
+  { pick: '갈다', meaning: /\bchange\b|\breplace\b/u, among: ['가다'], says: 'to change, replace', cue: objectIs(['전구', '타이어', '기저귀', '배터리', '건전지']) },
   { pick: '사다', among: ['살다'], says: 'to buy (살다 "to live" takes no object but 삶 / 인생)', cue: anyObject(['삶', '인생', '생활', '일생', '세월']) },
   { pick: '쓰다', meaning: /\bbitter\b/u, among: ['쓰다'], says: 'to be bitter', cue: (s, i) => { const t = subjBeforeLemma(s, i, ['커피', '약', '맛', '한약', '차', '술']); return t ? `with the subject ${t} (a taste)` : undefined; } },
   { pick: '날다', meaning: /\bfly\b/u, among: ['나다'], says: 'to fly', cue: (s, i) => { const p = s.prev(i); const k = p >= 0 ? s.key(p) : ''; return ['높이', '낮게', '하늘을', '하늘에', '하늘로', '멀리'].includes(k) ? `after ${k}` : undefined; } },
@@ -1182,6 +1275,8 @@ export function koOrderSentences(tokens: RawToken[], base: Cand[][], frozen: Rea
       continue;
     }
     ruleCopula(s);
+    ruleComposedNumeral(s);
+    ruleMonth(s);
     ruleCounters(s);
     ruleBareWords(s);
     ruleFused(s);
@@ -1195,6 +1290,7 @@ export function koOrderSentences(tokens: RawToken[], base: Cand[][], frozen: Rea
     ruleAfterAdnominal(s);
     ruleLookalikes(s);
     ruleDeulleo(s);
+    closeKeptOpen(s);
     ruleHomonyms(s);
     ruleFinality(s);
     ruleDeterminers(s);

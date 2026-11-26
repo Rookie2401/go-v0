@@ -1,11 +1,13 @@
 // @vitest-environment jsdom
 /**
  * The standalone Biblia's account (packages/biblia/src/account.ts): the service (sign in, create account, forgot password, sign out, a kept
- * session confirmed or ended by GET /me) over a fake `fetch` that imitates the Repository's account routes, and the screen at #/account. No network.
+ * session confirmed or ended by GET /me) over a fake `fetch` that imitates the Repository's account routes, and the screen at #/account, which is in
+ * GoReview's look since 2026-11-25 (the owner): a hero with no photograph, then warm tiles with no outline. No network.
  * The password is only ever in the request body: these tests check it is in no storage, no status line and no field after a submit.
  */
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
-import { createAccountService, renderAccountScreen, renderLegalScreen, type AccountService } from '../../packages/biblia/src/account';
+import { GRACE_DAYS, createAccountService, renderAccountScreen, renderLegalScreen, type AccountService } from '../../packages/biblia/src/account';
+import { GRACE_DAYS as REVIEW_GRACE_DAYS } from '../../packages/goreview/app/screens/accountSecurity';
 import { SESSION_KEY, DEVICE_KEY } from '../../packages/biblia/src/session';
 
 const SERVICE = 'https://repo.example.org';
@@ -227,7 +229,7 @@ describe('the account screen', () => {
     expect(q<HTMLInputElement>('#account-email').type).toBe('email');
     expect(q<HTMLInputElement>('#account-password').type).toBe('password');
     expect(q('#account-signin').textContent).toBe('Sign in');
-    expect(q('#account-create').textContent).toBe('Create account');
+    expect(q('#account-create').textContent).toBe('Create an account');
     expect(q('#forgot summary').textContent).toBe('Forgot password?');
     expect([...document.querySelectorAll('.legal-links a')].map((a) => [a.textContent, a.getAttribute('href')])).toEqual([['Terms', '#/terms'], ['Privacy Policy', '#/privacy']]); // GoReview's order: Terms · Privacy Policy (drafts)
   });
@@ -240,34 +242,81 @@ describe('the account screen', () => {
     expect(order.indexOf('email-links-note')).toBe(order.indexOf('forgot') + 1);
   });
 
-  it('is GoReview\'s sign-in design: the title with its rule, a WELCOME card, a SIGN IN card with EMAIL / PASSWORD labels, the gold Sign in, the forgot disclosure, the email-links note and the drafts line', () => {
+  it('is in GoReview\'s look: the hero (WELCOME between its rules, Biblia), the YOUR ACCOUNT / Sign in tile with single-line fields and the gold pill, the closed welcome tile, the forgot link, the email-links note and the drafts line', () => {
     mount();
-    expect(q('.screen > h1').textContent).toBe('Sign in');
-    expect([...document.querySelectorAll('.screen > section.card > h2, .screen > form.card > h2')].map((h) => h.textContent)).toEqual(['Welcome to Biblia', 'Sign in']);
+    // the hero: a kicker and the title; no photograph (the owner, 2026-11-25)
+    expect([...q('.acct-hero').children].map((c) => [c.tagName, c.textContent])).toEqual([['P', 'Welcome'], ['H1', 'Biblia']]);
+    expect(document.querySelector('.acct-hero img, [data-home-photo], .home-photo-credit')).toBeNull();
+    // warm tiles with no outline: nothing on the page is a boxed card or a boxed button
+    expect(document.querySelector('.screen .card, .screen .btn')).toBeNull();
+    expect([...document.querySelectorAll('.acct-tiles > *')].map((n) => n.id)).toEqual(['account-form', 'account-welcome']);
+    expect(q('#account-form').classList.contains('acct-tile')).toBe(true);
+    expect(q('#account-form > .acct-kicker').textContent).toBe('Your account');
+    expect(q('#account-form > h2').textContent).toBe('Sign in');
+    // labelled inputs: the caption sits in a label with the control (CSS shows it in tracked capitals over a single line)
+    expect([...document.querySelectorAll('#account-form label.field > .cap')].map((c) => c.textContent)).toEqual(['Your name', 'Email', 'Password']);
+    expect(q('#account-new-name').closest('label')!.textContent).toMatch(/For a new account only/);
+    expect(q('#account-email').closest('label')!.textContent).toContain('Email');
+    expect(q('#account-password').closest('label')!.textContent).toMatch(/at least 10 characters/);
+    expect(q('#account-signin').classList.contains('acct-pill')).toBe(true); // the gold pill
+    expect(q('#account-create').classList.contains('acct-link')).toBe(true); // the other way on is a link
+    // what the account is for, in a closed tile
+    expect(q('#account-welcome').tagName).toBe('DETAILS');
+    expect(q<HTMLDetailsElement>('#account-welcome').open).toBe(false);
+    expect(q('#account-welcome > summary').textContent).toBe('Welcome to Biblia');
     expect(q('#account-welcome').textContent).toMatch(/records what you read with GoLearn on the same account/);
     expect(q('#account-welcome').textContent).toMatch(/reader only/);
-    // labelled inputs: the caption sits in a label with the control (CSS shows it in tracked capitals)
-    expect([...document.querySelectorAll('#account-form label.field > .cap')].map((c) => c.textContent)).toEqual(['Email', 'Password']);
-    expect(q('#account-email').closest('label')!.textContent).toContain('Email');
-    expect(q('#account-signin').classList.contains('primary')).toBe(true); // the gold button
-    expect(q('#account-create').classList.contains('primary')).toBe(false);
     expect(q('#forgot').tagName).toBe('DETAILS');
-    expect(q('#forgot').classList.contains('card')).toBe(true);
+    expect(q('#forgot').classList.contains('card')).toBe(false);
     expect(q('#email-links-note').textContent).toBe('Links in confirmation and password-reset emails open GoLearn setup.');
     expect(q('.legal-links').textContent).toBe('Terms · Privacy Policy (drafts)');
-    // the order of the page: welcome, sign in, forgot, the note, the drafts
-    expect([...document.querySelector('.screen')!.children].map((c) => c.id || c.className.split(' ')[0] || c.tagName.toLowerCase())).toEqual(['h1', 'account-welcome', 'account-form', 'forgot', 'email-links-note', 'muted']);
+    // the order of the page: the hero, the tiles, forgot, the note, the drafts
+    expect([...document.querySelector('.screen')!.children].map((c) => c.id || c.className.split(' ')[0] || c.tagName.toLowerCase())).toEqual(['acct-hero', 'acct-tiles', 'forgot', 'email-links-note', 'muted']);
+  });
+
+  it('another reader built on this screen says its own name where Biblia\u2019s would stand, and nothing else changes', () => {
+    document.body.replaceChildren(renderAccountScreen({ doc: document, account, topbar: topbar(), done: done as unknown as () => void, app: { name: 'Euclid' } }));
+    expect(q('.screen h1').textContent).toBe('Euclid');
+    expect(q('#account-welcome > summary').textContent).toBe('Welcome to Euclid');
+    expect(q('#account-welcome').textContent).toMatch(/^Welcome to EuclidEuclid records what you read with GoLearn/);
+    expect(q('#account-welcome').textContent).toMatch(/Without an account Euclid is a reader only/);
+    expect(q('#account-new-name').closest('label')!.textContent).toMatch(/GoLearn, GoReview and Euclid\./);
+    expect(document.body.textContent).not.toContain('Biblia');
+    mount(); // Biblia itself passes nothing
+    expect(q('.screen h1').textContent).toBe('Biblia');
+  });
+
+  it('says the same days of grace as GoReview, whose guided deletion it follows', () => {
+    expect(GRACE_DAYS).toBe(REVIEW_GRACE_DAYS);
+  });
+
+  it('signed in with a sync notice: it sits in its own THIS DEVICE tile, between the facts and the actions', async () => {
+    await account.signIn('ana@example.org', PASSWORD);
+    const syncStatus = document.createElement('aside');
+    syncStatus.className = 'sync-status';
+    syncStatus.textContent = 'Uploads complete';
+    document.body.replaceChildren(renderAccountScreen({ doc: document, account, topbar: topbar(), syncStatus, done: done as unknown as () => void }));
+    await flush();
+    expect([...document.querySelectorAll('.acct-tiles > :not([hidden]):not(.status)')].map((n) => n.id || n.className.split(' ').pop())).toEqual(['account-signed-in', 'account-device', 'account-actions', 'account-devices']);
+    expect(q('#account-device > .acct-kicker').textContent).toBe('This device');
+    expect(q('#account-device .sync-status')).toBe(syncStatus);
   });
 
   it('shows the signed-in profile, actions, and a closed device list', async () => {
     await account.signIn('ana@example.org', PASSWORD);
     mount();
     await flush();
-    expect(q('.screen > h1').textContent).toBe('Account');
+    expect(q('.acct-hero__kicker').textContent).toBe('Your account');
+    expect(q('.screen h1').textContent).toBe('Account'); // the name, once there is one
     expect(q('#account-name').textContent).toBe('No name yet');
     expect(q('#account-name-edit').textContent).toBe('Add a name');
     expect(q('#account-who').textContent).toBe('ana@example.org');
     expect([...document.querySelectorAll('.account-tile__title')].map((title) => title.textContent)).toEqual(['Sign out', 'Download my data', 'Delete account']);
+    expect([...document.querySelectorAll('.account-tile__caption')].map((c) => c.textContent)).toEqual(['Your reading stays on your account', 'Everything held about you, as one file', `Erased after ${GRACE_DAYS} days; you can cancel until then`]);
+    // warm tiles with no outline, no boxed cards; no sync tile without a sync notice
+    expect(document.querySelector('.screen .card, .screen .btn')).toBeNull();
+    expect([...document.querySelectorAll('.acct-tiles > :not([hidden]):not(.status)')].map((n) => n.id || n.className.split(' ').pop())).toEqual(['account-signed-in', 'account-actions', 'account-devices']);
+    expect(q('.account-devices > summary').textContent).toBe('Devices signed in');
     expect(q<HTMLDetailsElement>('.account-devices').open).toBe(false);
     expect(svc.count('GET', '/me/sessions')).toBe(0);
     q<HTMLDetailsElement>('.account-devices').open = true;
@@ -287,6 +336,7 @@ describe('the account screen', () => {
     await flush();
     expect(svc.displayName).toBe('Ana Walker');
     expect(q('#account-name').textContent).toBe('Ana Walker');
+    expect(q('.screen h1').textContent).toBe('Ana Walker'); // the hero carries the name
     expect(q('#account-name-edit').textContent).toBe('Edit');
     expect(document.activeElement).toBe(q('#account-name-edit'));
   });
@@ -316,7 +366,13 @@ describe('the account screen', () => {
     await account.signIn(svc.email, PASSWORD);
     mount();
     await flush();
+    expect(q<HTMLElement>('#account-deletion-notice').hidden).toBe(true);
     q<HTMLButtonElement>('#account-delete').click();
+    expect(svc.count('DELETE', '/me')).toBe(0);
+    // the guided deletion: GoReview's three steps, then the password
+    expect([...document.querySelectorAll('#account-deletion .acct-steps > li > strong')].map((x) => x.textContent!.trim())).toEqual(['Nothing happens today.', `To get it back within the ${GRACE_DAYS} days:`, `After the ${GRACE_DAYS} days:`]);
+    q('#account-deletion').dispatchEvent(new Event('submit', { cancelable: true }));
+    expect(q('#account-deletion .status').textContent).toBe('Enter your password to confirm.');
     expect(svc.count('DELETE', '/me')).toBe(0);
     const input = q<HTMLInputElement>('#account-delete-password');
     input.value = PASSWORD;
@@ -325,6 +381,8 @@ describe('the account screen', () => {
     await flush();
     expect(svc.scheduledPurgeAt).toBeDefined();
     expect(q('.account-pending').textContent).toMatch(/scheduled for deletion/);
+    expect(q<HTMLElement>('#account-deletion-notice').hidden).toBe(false);
+    expect(document.querySelector('.acct-tiles')!.firstElementChild!.id).toBe('account-deletion-notice'); // the first tile while it is pending
     mount();
     await flush();
     q<HTMLButtonElement>('#account-cancel-deletion').click();
@@ -381,9 +439,16 @@ describe('the account screen', () => {
     await flush();
     expect(q('.status').textContent).toMatch(/at least 10 characters/);
     expect(svc.calls).toHaveLength(0);
+    // a new account carries a name, as it does when made in GoReview
     fill('new@example.org', PASSWORD);
     q<HTMLButtonElement>('#account-create').click();
     await flush();
+    expect(q('.status').textContent).toBe('Enter your name.');
+    expect(svc.calls).toHaveLength(0);
+    q<HTMLInputElement>('#account-new-name').value = '  Nia New  ';
+    q<HTMLButtonElement>('#account-create').click();
+    await flush();
+    expect(svc.calls[0]).toMatchObject({ method: 'POST', path: '/accounts', body: { email: 'new@example.org', displayName: 'Nia New' } });
     expect(q('.status').textContent).toBe('Account created and signed in as new@example.org. Check your email: a link to confirm new@example.org is on its way.');
     expect(account.state()).toEqual({ signedIn: true, email: 'new@example.org' });
     expect(done).not.toHaveBeenCalled(); // the learner reads the line first
@@ -394,6 +459,7 @@ describe('the account screen', () => {
     svc.verificationSent = false;
     mount();
     fill('new@example.org', PASSWORD);
+    q<HTMLInputElement>('#account-new-name').value = 'Nia New';
     q<HTMLButtonElement>('#account-create').click();
     await flush();
     expect(q('.status').textContent).toMatch(/confirmation email could not be sent/);

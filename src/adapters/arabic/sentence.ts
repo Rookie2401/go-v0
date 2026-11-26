@@ -99,7 +99,7 @@ const WINDOW_DECIDES = { verbSubjectObject: true, subjectVerbPrep: true, verbSub
 const possessed = (c: Cand): boolean => !!c.parts?.some((q) => q.kind === 'suffix' && /possessive/.test(q.role ?? ''));
 
 /** What the sentence layer lowers an excluded reading to: below the 0.5 that credits a lexeme. */
-const EXCLUDED = 0.4;
+const EXCLUDED = 0.35; // a set-aside lexeme sits at least 0.25 under a decided one (the product calls a rival within 0.15 a conflict)
 /** What a lexeme the sentence decides is raised to (the contract allows 0.75–0.85). */
 const DECIDED = 0.8;
 /** An undecided word's readings stay at or under this. */

@@ -5,15 +5,15 @@
  "date": "2026-11-26",
  "cases": {
   "o17-muallimat": "lemma: expected مُعَلِّمَة, got مُعَلِّم  <- مُعَلِّم|NOUN|0.9",
-  "o25-raahu": "root: expected ر ء ي, ab ent  <- رَأَى|VERB|0.85; رَأْي|NOUN|0.45; رَأْي|NOUN|0.45",
+  "o25-raahu": "root: expected ر ء ي, ab ent  <- رَأَى|VERB|0.85; رَأْي|NOUN|0.35; رَأْي|NOUN|0.35",
   "o32-allama": "root: expected ع ل م, ab ent  <- عَلَّمَ|VERB|0.9",
   "o34-alam": "undecided (confidence 0.45) where the form decide  ; root: expected ع ل م, ab ent  <- عَلَم|NOUN|0.45; عَالَم|NOUN|0.45",
   "w-form-IX": "A pect: expected Perf, ab ent ; Per on: expected 3, got 2,3  <- اِحْمَرَّ|VERB|0.9",
   "w-defective-imperfect": "Mood: expected Ind, got Ind,Sub  <- رَمَى|VERB|0.9",
-  "w-geminate-perfect": "root: expected م د د, ab ent ; note .rootCla : expected geminate, got undefined  <- مَدَّ|VERB|0.6; مَدّ|NOUN|0.45",
+  "w-geminate-perfect": "root: expected م د د, ab ent ; note .rootCla : expected geminate, got undefined  <- مَدَّ|VERB|0.6; مَدّ|NOUN|0.35",
   "w-geminate-imperative": "lemma: expected مَدَّ, got مُدّ ; undecided (confidence 0.45) where the form decide  ; po : expected VERB, got NOUN ; Mood: expected Imp, ab ent ; Per on: expected 2, ab ent  <- مُدّ|NOUN|0.45; مَدَّ|VERB|0.45",
-  "w-alayhi": "part : expected علي/ tem+ه/ uffix, got none  <- عَلَى|ADP|0.8; عَلَى|VERB|0.45; عَلَى|VERB|0.45",
+  "w-alayhi": "part : expected علي/ tem+ه/ uffix, got none  <- عَلَى|ADP|0.8; عَلَى|VERB|0.35; عَلَى|VERB|0.35",
   "w-loose-ila": "lemma: expected إِلَى, got الَّذِي ; undecided (confidence 0.45) where the form decide  ; po : expected ADP, got PRON  <- الَّذِي|PRON|0.45; إِلَى|ADP|0.45; وَلِيَ|VERB|0.45",
-  "w-loose-madrasa": "lemma: expected مَدْرَسَة, got مُدَرِّس  <- مُدَرِّس|NOUN|0.85; مُدَرِّس|NOUN|0.45; مَدْرَسَة|NOUN|0.45"
+  "w-loose-madrasa": "lemma: expected مَدْرَسَة, got مُدَرِّس  <- مُدَرِّس|NOUN|0.85; مُدَرِّس|NOUN|0.45; مَدْرَسَة|NOUN|0.35"
  }
 }

@@ -2,7 +2,7 @@
 /**
  * npm run ko:build-lexicon -- [--in data/raw/kaikki-ko/kaikki.org-dictionary-Korean.jsonl] [--priors data/raw/ud-ko/ko_kaist-ud-train.conllu]
  *                             [--out public/lexicon/ko/standard] [--core-out src/adapters/korean/generated/core.ts]
- *                             [--limit 600000] [--core-budget 420000] [--date YYYY-MM-DD] [--docs docs/korean] [--accept-homonym-changes] [--no-write]
+ *                             [--limit 600000] [--core-budget 460000] [--date YYYY-MM-DD] [--docs docs/korean] [--accept-homonym-changes] [--no-write]
  *
  * Builds the Korean STEM lexicon (src/adapters/korean/index-store.ts, docs/korean/PLAN.md "Lexicon") from the Wiktionary Korean extract of
  * kaikki.org (CC BY-SA 4.0). The reading of the extract (what is kept, its class, its conjugation class from the entry's own infinitive, the
@@ -23,7 +23,7 @@ import zlib from 'node:zlib';
 import { koKey } from '../src/adapters/korean/hangul';
 import { koHomonymLemma, koHomonymSetKey, koLexiconShardLetters, koSharedPos, koStemKey, type KoLexEntry, type KoLexicon } from '../src/adapters/korean/index-store';
 import {
-  KO_CLOSED_TAGS, koBuildRows, koCompareRegistry, koCoreTuple, koCoreTupleJson, koLoadDocs, koPureHanja, koReadSlim, koRegistryOf, koSelectCore,
+  KO_CLOSED_TAGS, koBuildRows, koCoreFromMembers, koCoreMemberKey, koCompareRegistry, koCoreTuple, koCoreTupleJson, koLoadDocs, koPureHanja, koReadSlim, koRegistryOf, koSelectCore,
   type KoDocs, type KoRegistryRecord, type KoRow,
 } from '../src/dict/korean';
 
@@ -33,7 +33,7 @@ const opt: Record<string, string> = {};
 const flags = new Set<string>();
 for (let i = 0; i < args.length; i++) {
   if (!args[i].startsWith('--')) { console.error(`bad argument ${args[i]}`); process.exit(1); }
-  if (args[i] === '--no-write' || args[i] === '--accept-homonym-changes') { flags.add(args[i].slice(2)); continue; }
+  if (args[i] === '--no-write' || args[i] === '--accept-homonym-changes' || args[i] === '--accept-core-drops') { flags.add(args[i].slice(2)); continue; }
   if (args[i + 1] === undefined) { console.error(`${args[i]} needs a value`); process.exit(1); }
   opt[args[i].slice(2)] = args[i + 1]; i++;
 }
@@ -42,7 +42,7 @@ const PRIORS = opt.priors ?? 'data/raw/ud-ko/ko_kaist-ud-train.conllu';
 const OUT = opt.out ?? 'public/lexicon/ko/standard';
 const CORE_OUT = opt['core-out'] ?? 'src/adapters/korean/generated/core.ts';
 const LIMIT = Number(opt.limit ?? 600_000);
-const CORE_BUDGET = Number(opt['core-budget'] ?? 420_000);
+const CORE_BUDGET = Number(opt['core-budget'] ?? 460_000);
 const TODAY = opt.date ?? new Date().toISOString().slice(0, 10);
 const WRITE = !flags.has('no-write');
 const DOC_OUT = 'docs/korean/INDEX.md';
@@ -141,6 +141,7 @@ const spellingCount = new Map<string, number>();
     if (r.bound) e.bound = true;
     if (r.related) e.related = r.related;
     if (r.hada) e.hada = true;
+    if (r.multi) e.multi = true;
     if (r.hanja) e.hanja = r.hanja;
     if (r.pron) e.pron = r.pron;
     // the count is of the SPELLING: a main set gives it to the main entry only; a balanced set to EVERY entry (it orders stems, it does not choose
@@ -211,7 +212,26 @@ const extraSet = new Set(docs.coreExtra?.lemmas ?? []);
 const lexLemmas = new Set(lexEntries.map((e) => e.lemma));
 const extraLacking = [...extraSet].filter((l) => !lexLemmas.has(l));
 // the FILE (header and footer included) stays within the budget: the rows get the budget less the fixed text
-const core = koSelectCore(lexEntries, CORE_BUDGET - 3300, extraSet);
+const membersFile = 'docs/korean/core-members.json';
+const members = fs.existsSync(membersFile) ? new Set((JSON.parse(fs.readFileSync(membersFile, 'utf8')) as { members: Array<[string, string, number, number]> }).members.map(([l, t, c, h]) => koCoreMemberKey({ lemma: l, tag: t, clf: c, hom: h }))) : undefined;
+let coreMissing: string[] = [];
+const core = (() => {
+  if (!members) return koSelectCore(lexEntries, CORE_BUDGET - 3300, extraSet);
+  const m = koCoreFromMembers(lexEntries, members);
+  coreMissing = m.missing;
+  return { chosen: m.chosen, bytes: m.bytes, forcedBytes: m.bytes, forcedRows: m.chosen.length };
+})();
+if (coreMissing.length && !flags.has('accept-core-drops')) { console.error(`the core would lose ${coreMissing.length} entr${coreMissing.length === 1 ? 'y' : 'ies'} it is frozen to hold (docs/korean/core-members.json): the lexicon no longer has ${coreMissing.join(', ')} (pass --accept-core-drops after a decision)`); process.exit(1); }
+// no entry the previous generated core held may leave it silently: a gloss that costs bytes must never move a reading
+if (fs.existsSync(CORE_OUT)) {
+  const prev = fs.readFileSync(CORE_OUT, 'utf8');
+  const a0 = prev.indexOf('const ROWS');
+  const prevRows: string[] = [];
+  if (a0 >= 0) for (const line of prev.slice(prev.indexOf('\n', a0) + 1, prev.indexOf('\n];', a0)).split('\n')) { const t = line.trim().replace(/,$/, ''); if (t.startsWith('[')) { const r = JSON.parse(t) as Array<string | number>; prevRows.push(koCoreMemberKey({ lemma: String(r[0]), tag: String(r[1]), clf: Number(r[2]) & 1, hom: Number(r[3]) || 0 })); } }
+  const now = new Set(core.chosen.map(koCoreMemberKey));
+  const dropped = prevRows.filter((k) => !now.has(k));
+  if (dropped.length && !flags.has('accept-core-drops')) { console.error(`the rebuilt core would drop ${dropped.length} entries the previous core held: ${dropped.slice(0, 20).map((k) => k.split(String.fromCharCode(0)).join(' ')).join(', ')}${dropped.length > 20 ? ', …' : ''} (pass --accept-core-drops after a decision)`); process.exit(1); }
+}
 const coreRows = [...core.chosen].sort((a, b) => cmp(a.lemma, b.lemma) || cmp(a.tag, b.tag) || (a.hom ?? 0) - (b.hom ?? 0));
 const coreTuples = coreRows.map((e) => koCoreTupleJson(koCoreTuple(e)));
 const coreSetCount = new Set(coreRows.map((e) => koHomonymSetKey(e))).size;
@@ -573,7 +593,8 @@ ${extraLacking.join(', ') || '(none)'}
 | shard bytes | ${(gzTotal / 1e6).toFixed(2)} MB gzip, ${(plainTotal / 1e6).toFixed(1)} MB plain |
 | largest shard | \`${largest.prefix}\` ${(largest.plain / 1e6).toFixed(2)} MB plain, ${(largest.gz / 1e6).toFixed(2)} MB gzip |
 | core entries | ${fmt(coreRows.length)} in ${fmt(coreSetCount)} sets (${fmt(coreHanjaKeys)} also under a Hanja key); closed classes ${[...KO_CLOSED_TAGS].join(' ')} and IC with a count ≥ 1 whole, then open classes by descending count; a set goes in whole or not at all |
-| core bytes | ${fmt(core.bytes)} of rows, the file at most ${fmt(CORE_BUDGET)} bytes; forced by core-extra.json: ${fmt(core.forcedRows)} rows, ${fmt(core.forcedBytes)} bytes (${pct(core.forcedBytes, CORE_BUDGET)} of the budget); every field of a shard row is in the core row, \`pron\` included |
+| core membership | frozen: exactly the ${fmt(core.chosen.length)} entries of docs/korean/core-members.json (the core of commit 7ae1d540), whatever their glosses cost; no entry of the previous core may drop (the build fails otherwise); members no longer in the lexicon: ${coreMissing.length}${coreMissing.length ? ' (' + coreMissing.join(', ') + ')' : ''}; core-extra spellings not in the frozen set: ${[...extraSet].filter((l) => !core.chosen.some((e) => e.lemma === l)).length} |
+| core bytes | ${fmt(core.bytes)} of rows, the file at most ${fmt(CORE_BUDGET)} bytes; rows forced (frozen membership or core-extra.json): ${fmt(core.forcedRows)}; every field of a shard row is in the core row, \`pron\` included |
 | running words in the core | ${pct(coreTokens, kaistTotal)} of the ${fmt(kaistTotal)} counted morphemes of the classes the lexicon builds (${pct(coreTokens, lexTokens)} of the ${fmt(lexTokens)} the lexicon covers) have their headword in the core |
 `;
 
@@ -595,7 +616,7 @@ if (WRITE) {
 import { koStemKey, type KoLexEntry, type KoLexicon, type KoIrregular, type KoTag } from '../index-store';
 import { koKey } from '../hangul';
 
-/** [lemma, tag, flags, hom, irr, gloss, hanja, pron, n, voice, base, related], trailing empty fields left off. flags: 1 clf, 2 own, 4 glossOwn, 8 bound, 16 hada, bits 5-6 the state of the set (1 main, 2 other, 3 balanced), decoded below in one place. */
+/** [lemma, tag, flags, hom, irr, gloss, hanja, pron, n, voice, base, related], trailing empty fields left off. flags: 1 clf, 2 own, 4 glossOwn, 8 bound, 16 hada, bits 5-6 the state of the set (1 main, 2 other, 3 balanced), 128 multi, decoded below in one place. */
 const ROWS: Array<Array<string | number>> = [
 `;
   const footer = `];
@@ -613,7 +634,8 @@ function expand(): Record<string, KoLexEntry[]> {
     if (flags & 4) e.glossOwn = true;
     if (flags & 8) e.bound = true;
     if (flags & 16) e.hada = true;
-    if (flags >> 5) e.set = (['', 'main', 'other', 'balanced'] as const)[flags >> 5] as 'main' | 'other' | 'balanced';
+    if (flags & 128) e.multi = true;
+    if ((flags >> 5) & 3) e.set = (['', 'main', 'other', 'balanced'] as const)[(flags >> 5) & 3] as 'main' | 'other' | 'balanced';
     if (r[3]) e.hom = Number(r[3]);
     if (r[8]) e.n = Number(r[8]);
     if (r[9]) { e.voice = r[9] as 'Pass' | 'Caus'; e.base = String(r[10] ?? ''); }

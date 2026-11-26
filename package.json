@@ -35,6 +35,7 @@
     "el:build-modern": "vite-node --config scripts/vite.config.ts scripts/el-build-kaikki.mts --lang el",
     "lexicon:shard": "vite-node --config scripts/vite.config.ts scripts/lexicon-shard.mts --set all",
     "ko:build-lexicon": "vite-node --config scripts/vite.config.ts scripts/ko-build-lexicon.mts",
+    "ko:review-sheet": "vite-node --config scripts/vite.config.ts scripts/ko-review-sheet.mts",
     "ko:data-checksum": "vite-node --config scripts/vite.config.ts scripts/ko-data-checksum.mts",
     "ru:build-index":"vite-node --config scripts/vite.config.ts scripts/ru-build-index.mts",
     "ko:known-limits": "vite-node --config scripts/vite.config.ts scripts/ko-known-limits.mts",

@@ -149,6 +149,14 @@ export function koPredicateGloss(g: string): string {
   return koShortGloss(`${/(?:ed|en)$/.test(first) || PARTICIPLES.has(first) ? 'to be' : 'to become'} ${g}`);
 }
 
+/** The comparison key of a sense: lower-case letters and digits only, brackets removed. */
+export function koSenseKey(g: string): string { return g.toLowerCase().replace(/\([^)]*\)/g, ' ').replace(/[^\p{L}\p{N}]+/gu, ' ').trim(); }
+/** How many senses of an entry are really different: a sense that repeats, or starts or ends another, is a near-duplicate. */
+export function koDistinctSenses(keys: readonly string[]): number {
+  const ks = keys.filter((k) => k.length > 0);
+  return ks.filter((k, i) => !ks.some((o, j) => j < i && (o === k || o.startsWith(k) || k.startsWith(o)))).length;
+}
+
 /** A gloss that only points at another word: "synonym of X", "See the entry at X". */
 const POLITE_OF = /(?:polite|formal|honorific|deferential)[^,;]*\b(?:form|style|speech)\b[^,;]*\bof\b|^(?:polite|formal) /i;
 /** The headwords a polite or inflected form may belong to (감사합니다 → 감사하다, 가세요 → 가다 / 가시다). */
@@ -475,7 +483,11 @@ export interface KoRow extends KoLexEntry {
   /** The extract's own part of speech. */
   rawPos?: string;
   /** Every raw sense of the entry in file order (merged entries concatenated), as the dictionary writes it, for the override positions. */
-  senseTexts: Array<{ full: string; short: string }>;
+  senseTexts: Array<{ full: string; short: string; tags?: string[] }>;
+  /** The normalised first gloss of each live (non-form) sense, for the multi flag. */
+  liveKeys?: string[];
+  /** A reviewed override or an own gloss decides the first meaning. */
+  decided?: true;
   /** Derived and related headwords the source lists for the entry. */
   relWords?: string[];
   /** A verb the source's set relates this one to (see KoLexEntry.related). */
@@ -521,6 +533,7 @@ export interface KoReport {
   xrefResolved: number;
   xrefEmpty: number;
   glossOverrides: number;
+  multi: number;
   doedaGlosses: string[];
   counterNouns: string[];
   sentenceGlosses: number;
@@ -567,7 +580,7 @@ const normGlossKey = (g: string | undefined): string => (g ?? '').toLowerCase().
 export function koBuildRows(raws: readonly KoRaw[], docs: KoDocs = {}): { rows: KoRow[]; report: KoReport } {
   const report: KoReport = {
     read: raws.length, kept: 0, keptByPos: {}, skipped: {}, skippedByTag: {}, merges: 0, mergedSameEtym: [], assignedRows: [], mergedSameWord: [], orderSets: [], irrDisagree: [], noTable: 0, noClass: [], byShape: 0,
-    voiceBoth: [], voicePairs: [], mixedDependent: 0, maj: [], majFirstOnly: [], sets: [], contractionPos: [], contractionKept: [], contractionFused: [], xrefResolved: 0, xrefEmpty: 0, glossOverrides: 0, doedaGlosses: [], counterNouns: [], sentenceGlosses: 0, haGained: 0, haOther: [], relatedPairs: [], voiceDecided: 0, hada: { total: 0, listedOnly: [] }, voiceUndecided: [], actionNouns: {}, xrefStart: {}, tableDisagree: [], politeDropped: [], politeKept: [], rootsKept: 0, rootsAsNoun: [], bound: [], supplement: [], glossOwn: [],
+    voiceBoth: [], voicePairs: [], mixedDependent: 0, maj: [], majFirstOnly: [], sets: [], contractionPos: [], contractionKept: [], contractionFused: [], xrefResolved: 0, xrefEmpty: 0, glossOverrides: 0, multi: 0, doedaGlosses: [], counterNouns: [], sentenceGlosses: 0, haGained: 0, haOther: [], relatedPairs: [], voiceDecided: 0, hada: { total: 0, listedOnly: [] }, voiceUndecided: [], actionNouns: {}, xrefStart: {}, tableDisagree: [], politeDropped: [], politeKept: [], rootsKept: 0, rootsAsNoun: [], bound: [], supplement: [], glossOwn: [],
   };
   const ev = koSuffixEvidence(raws);
   // the passive and causative verbs that a base verb's ko-verb-set names
@@ -586,7 +599,7 @@ export function koBuildRows(raws: readonly KoRaw[], docs: KoDocs = {}): { rows: 
     if (!c.tag) { inc(report.skipped, c.skip ?? 'other'); continue; }
     const h = koHeadword(r) as { lemma: string };
     if (c.contraction && /\+\s*-/.test(r.senses[0]?.glosses[0] ?? '')) { report.contractionFused.push({ word: h.lemma, target: `${c.contraction} + particle` }); continue; }
-    const row: KoRow = { lemma: h.lemma, tag: c.tag, lines: [r.no], senseCount: r.senses.length, rawPos: r.pos, relWords: r.relatedWords, senseTexts: r.senses.map((x) => ({ full: x.glosses.join(' — '), short: x.glosses.length > 1 && x.glosses[0].endsWith(':') ? `${x.glosses[0]} ${x.glosses[1]}` : x.glosses[0] ?? '' })) };
+    const row: KoRow = { lemma: h.lemma, tag: c.tag, lines: [r.no], senseCount: r.senses.length, rawPos: r.pos, relWords: r.relatedWords, liveKeys: r.senses.filter((x) => !koSenseIsForm(x) && x.glosses.length).map((x) => koSenseKey(x.glosses[x.glosses.length - 1])), senseTexts: r.senses.map((x) => ({ full: x.glosses.join(' — '), short: x.glosses.length > 1 && x.glosses[0].endsWith(':') ? `${x.glosses[0]} ${x.glosses[1]}` : x.glosses[0] ?? '', tags: x.tags })) };
     if (c.clf) row.clf = true;
     if (c.counterNoun) report.counterNouns.push(h.lemma);
     if (r.etym !== undefined) row.etym = r.etym;
@@ -695,6 +708,7 @@ export function koBuildRows(raws: readonly KoRaw[], docs: KoDocs = {}): { rows: 
     to.lines.push(...from.lines);
     to.senseCount += from.senseCount;
     to.senseTexts.push(...from.senseTexts);
+    if (from.liveKeys?.length) to.liveKeys = [...(to.liveKeys ?? []), ...from.liveKeys];
     if (from.relWords?.length) to.relWords = [...(to.relWords ?? []), ...from.relWords];
     for (const f of ['gloss', 'hanja', 'pron', 'irr', 'voice', 'base', 'xref'] as const) if (to[f] === undefined && from[f] !== undefined) (to as unknown as Record<string, unknown>)[f] = from[f];
     if (to.gloss !== undefined) delete to.xref;
@@ -925,7 +939,7 @@ export function koBuildRows(raws: readonly KoRaw[], docs: KoDocs = {}): { rows: 
       const bad = pos.filter((p) => !Number.isInteger(p) || p < 1 || p > hits[0].senseCount);
       if (bad.length) throw new Error(`gloss-overrides.json entries[${i}] (${o.lemma} ${o.pos} hom ${o.hom ?? 0}): sense position(s) ${bad.join(', ')} do not exist (the entry has ${hits[0].senseCount} senses)`);
       if (!o.own && !pos.length) throw new Error(`gloss-overrides.json entries[${i}] (${o.lemma} ${o.pos} hom ${o.hom ?? 0}): a line without "own" must name at least one sense`);
-      hits[0].gloss = o.gloss; report.glossOverrides++;
+      hits[0].gloss = o.gloss; report.glossOverrides++; hits[0].decided = true;
       const seen = new Set<number>();
       hits[0].prefer = pos.filter((p) => !seen.has(p) && seen.add(p)).map((p) => hits[0].senseTexts[p - 1]).filter((x): x is { full: string; short: string } => !!x && !!x.full);
       if (o.own) hits[0].ownText = o.gloss;
@@ -942,6 +956,8 @@ export function koBuildRows(raws: readonly KoRaw[], docs: KoDocs = {}): { rows: 
       if (own || r.relWords?.includes(verb)) { r.hada = true; report.hada.total++; if (!own) report.hada.listedOnly.push(r.lemma); }
     }
   }
+  // multi: the source gives the entry two or more really different senses and nothing hand-written decides the first meaning
+  for (const r of rows) if (!r.decided && !r.glossOwn && !r.own && koDistinctSenses(r.liveKeys ?? []) >= 2) { r.multi = true; report.multi++; }
   report.kept = rows.length;
   return { rows, report };
 }
@@ -1094,10 +1110,10 @@ export const KO_CLOSED_TAGS: ReadonlySet<string> = new Set(['NP', 'NR', 'MM', 'M
  * Flag bits of a core row (ONE small number instead of one field per flag, so a row with no other optional field pays only that number):
  * 1 clf, 2 own, 4 glossOwn, 8 bound, 16 hada, and the state of its set in bits 5 and 6 (32 main, 64 other, 96 balanced). Decoded in one place: the generated core.
  */
-export const KO_CORE_FLAG = { clf: 1, own: 2, glossOwn: 4, bound: 8, hada: 16, setShift: 5 } as const;
+export const KO_CORE_FLAG = { clf: 1, own: 2, glossOwn: 4, bound: 8, hada: 16, setShift: 5, multi: 128 } as const;
 export const KO_CORE_SET_CODE: Readonly<Record<string, number>> = { main: 1, other: 2, balanced: 3 };
 export function koCoreFlags(e: KoLexEntry): number {
-  return (e.clf ? KO_CORE_FLAG.clf : 0) | (e.own ? KO_CORE_FLAG.own : 0) | (e.glossOwn ? KO_CORE_FLAG.glossOwn : 0) | (e.bound ? KO_CORE_FLAG.bound : 0) | (e.hada ? KO_CORE_FLAG.hada : 0) | ((e.set ? KO_CORE_SET_CODE[e.set] : 0) << KO_CORE_FLAG.setShift);
+  return (e.clf ? KO_CORE_FLAG.clf : 0) | (e.own ? KO_CORE_FLAG.own : 0) | (e.glossOwn ? KO_CORE_FLAG.glossOwn : 0) | (e.bound ? KO_CORE_FLAG.bound : 0) | (e.hada ? KO_CORE_FLAG.hada : 0) | (e.multi ? KO_CORE_FLAG.multi : 0) | ((e.set ? KO_CORE_SET_CODE[e.set] : 0) << KO_CORE_FLAG.setShift);
 }
 
 /** One core row as a compact tuple: lemma, tag, flags, hom, irr, gloss, hanja, pron, n, voice, base, related (trailing empty fields left off). */
@@ -1152,6 +1168,18 @@ export function koSelectCore(entries: readonly KoLexEntry[], budget: number, ext
     take(s);
   }
   return { chosen, bytes, forcedBytes, forcedRows };
+}
+
+/** The key of a core entry in docs/korean/core-members.json: headword, class, counter, entry number. */
+export const koCoreMemberKey = (e: { lemma: string; tag: string; clf?: boolean | number; hom?: number }): string => `${e.lemma}\u0000${e.tag}\u0000${e.clf ? 1 : 0}\u0000${e.hom ?? 0}`;
+
+/** The core as exactly its frozen members (every one that still exists), and the members that no longer exist in the lexicon. */
+export function koCoreFromMembers(entries: readonly KoLexEntry[], members: ReadonlySet<string>): { chosen: KoLexEntry[]; bytes: number; missing: string[] } {
+  const chosen = entries.filter((e) => members.has(koCoreMemberKey(e)));
+  const have = new Set(chosen.map(koCoreMemberKey));
+  const missing = [...members].filter((k) => !have.has(k)).map((k) => k.split(String.fromCharCode(0)).join(' '));
+  const bytes = chosen.reduce((t, e) => t + Buffer.byteLength(koCoreTupleJson(koCoreTuple(e))) + 4, 0);
+  return { chosen, bytes, missing };
 }
 
 // ───────────────────────────── the homonym registry ─────────────────────────────

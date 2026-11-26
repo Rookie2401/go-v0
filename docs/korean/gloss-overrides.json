@@ -323,6 +323,21 @@
     {"lemma":"발전하다","pos":"VERB","hom":1,"gloss":"to develop, to grow","senses":[1],"was":"to grow"},
     {"lemma":"잡다","pos":"VERB","hom":0,"gloss":"to catch, to grab, to hold; to take","senses":[2,1],"was":"to take"},
     {"lemma":"운동","pos":"NOUN","hom":0,"gloss":"exercise, sport; movement","senses":[1,2],"was":"exercise"},
-    {"lemma":"겨레","pos":"NOUN","hom":0,"gloss":"a people, a nation (generally of Koreans); kinsmen","senses":[2,1],"was":"kinsmen"}
+    {"lemma":"겨레","pos":"NOUN","hom":0,"gloss":"a people, a nation (generally of Koreans); kinsmen","senses":[2,1],"was":"kinsmen"},
+    {"lemma":"미안하다","pos":"ADJ","hom":0,"gloss":"to be sorry; to be ashamed of oneself","senses":[2,1],"was":"to be ashamed of oneself"},
+    {"lemma":"찍다","pos":"VERB","hom":0,"gloss":"to take (a photograph, a video); to stamp, to mark; to chop","senses":[7,2,1],"was":"to chop"},
+    {"lemma":"잠기다","pos":"VERB","hom":0,"gloss":"to be locked; to be submerged, to sink","senses":[3,1],"was":"to sink"},
+    {"lemma":"울리다","pos":"VERB","hom":0,"gloss":"to cause to weep; to sound or ring","senses":[3,1],"was":"to sound or ring"},
+    {"lemma":"밀리다","pos":"VERB","hom":0,"gloss":"to be pushed; to get stuck, fall behind; to be overdue","senses":[2,3,1],"was":"to be overdue","own":true},
+    {"lemma":"낳다","pos":"VERB","hom":0,"gloss":"to give birth to, to bear; to lay (eggs)","senses":[1,2],"was":"to lay","own":true},
+    {"lemma":"블라디미르","pos":"PROPN","hom":0,"gloss":"Vladimir (a male given name); Vladimir (a city and oblast of Russia)","senses":[1,2,3],"was":"Vladimir (an oblast of Russia)"},
+    {"lemma":"괜찮다","pos":"ADJ","hom":0,"gloss":"to be all right, OK; to be nice, good","senses":[1,2,3],"was":"to be nice"},
+    {"lemma":"좀","pos":"ADV","hom":0,"gloss":"a little, somewhat; please (softening a request)","senses":[1,3,2],"was":"little while"},
+    {"lemma":"말미암다","pos":"VERB","hom":0,"gloss":"to be due to, to come from (…로 말미암아: because of)","senses":[1,2],"was":"to be engendered","own":true},
+    {"lemma":"임하다","pos":"VERB","hom":0,"gloss":"to come, to arrive; to undertake","senses":[2,1],"was":"to undertake"},
+    {"lemma":"닦다","pos":"VERB","hom":0,"gloss":"to wipe; to clean, to brush; to polish","senses":[2,3,1],"was":"to polish"},
+    {"lemma":"구원","pos":"NOUN","hom":0,"gloss":"salvation, redemption; rescue, relief","senses":[2,1],"was":"relief","own":true},
+    {"lemma":"과자","pos":"NOUN","hom":0,"gloss":"cookie, cracker, pastry; sweets, candy","senses":[3,1,2],"was":"sweet"},
+    {"lemma":"열심히","pos":"ADV","hom":0,"gloss":"diligently, hard, with dedication; enthusiastically","senses":[1],"was":"enthusiastically","own":true}
   ]
 }

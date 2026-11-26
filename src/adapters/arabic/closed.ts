@@ -12,7 +12,7 @@
  *   AR_DIALECT_*    not here: the closed list of dialect markers belongs to the sentence package
  */
 import type { PartOfSpeech } from '../../core';
-import { arKey, arLoose } from './text';
+import { arKey, arLoose, packVocal } from './text';
 
 export interface ArClosedEntry {
   /** The word as written, with its vowels (what the printed vowels are compared with). */
@@ -97,7 +97,7 @@ put('كَيْفَ', 'ADV', 'how?', { role: 'interrogative' });
 put('أَيْنَ', 'ADV', 'where?', { role: 'interrogative' });
 put('مَتَى', 'ADV', 'when?', { role: 'interrogative' });
 put('كَمْ', 'ADV', 'how many? how much?', { role: 'interrogative', governs: 'accusative (a singular noun)' });
-put('هَلْ', 'PART', 'question particle (yes/no)', { role: 'interrogative particle' });
+put('هَلْ', 'PART', '(question word: is…? does…?)', { role: 'interrogative particle' });
 put('أَيُّ', 'PRON', 'which? any', { lemma: 'أَيّ', role: 'interrogative', governs: 'genitive' });
 
 // ───────────────────────────── prepositions ─────────────────────────────
@@ -108,9 +108,10 @@ PREP('مُنْذُ', 'since, for (a period)'); PREP('مُذْ', 'since');
 PREP('خَلَا', 'except'); PREP('عَدَا', 'except');
 // the nouns that work as prepositions: accusative in form, governing a genitive
 const ADVP = (f: string, gloss: string): void => put(f, 'ADP', gloss, { governs: 'genitive', role: 'preposition (a noun in the accusative governing a genitive)' });
-ADVP('مَعَ', 'with, together with'); ADVP('عِنْدَ', 'at, with, at the place of'); ADVP('لَدَى', 'at, with'); ADVP('بَيْنَ', 'between, among');
+ADVP('مَعَ', 'with, together with'); ADVP('عِنْدَ', 'at, with, near (someone)'); ADVP('لَدَى', 'at, with'); ADVP('بَيْنَ', 'between, among');
 ADVP('قَبْلَ', 'before'); ADVP('بَعْدَ', 'after'); ADVP('فَوْقَ', 'above, over'); ADVP('تَحْتَ', 'under, below'); ADVP('أَمَامَ', 'in front of');
-ADVP('خَلْفَ', 'behind'); ADVP('حَوْلَ', 'around, about'); ADVP('دُونَ', 'without, below'); ADVP('ضِدَّ', 'against'); ADVP('نَحْوَ', 'towards, about');
+ADVP('خَلْفَ', 'behind'); ADVP('حَوْلَ', 'around, about'); ADVP('دُونَ', 'below; without'); ADVP('ضِدَّ', 'against'); ADVP('نَحْوَ', 'towards; about')
+ADVP('وَفْقَ', 'according to');
 ADVP('خِلَالَ', 'during, through'); ADVP('عِنْدَمَا', 'when'); ADVP('لَدُنْ', 'from, from the side of');
 
 /**
@@ -168,8 +169,8 @@ put('كَأَنَّ', 'PART', 'as if (+ accusative subject)', { role: 'particle'
 put('لٰكِنَّ', 'CONJ', 'but (+ accusative subject)', { role: 'conjunction', governs: 'accusative subject' });
 put('لَيْتَ', 'PART', 'if only (+ accusative subject)', { role: 'particle', governs: 'accusative subject' });
 put('لَعَلَّ', 'PART', 'perhaps, may (+ accusative subject)', { role: 'particle', governs: 'accusative subject' });
-put('قَدْ', 'PART', 'already, indeed (+ perfect); perhaps (+ imperfect)', { role: 'particle of the verb' });
-put('سَوْفَ', 'PART', 'will (puts an imperfect verb in the future)', { role: 'future particle' });
+put('قَدْ', 'PART', 'already; may (with the imperfect)', { role: 'particle of the verb' });
+put('سَوْفَ', 'PART', 'will (future)', { role: 'future particle' });
 put('إِنْ', 'SCONJ', 'if (+ jussive)', { role: 'conditional', governs: 'jussive' });
 put('إِذَا', 'SCONJ', 'if, when', { role: 'conditional' });
 put('لَوْ', 'SCONJ', 'if (contrary to fact)', { role: 'conditional' });
@@ -194,7 +195,7 @@ put('الْآنَ', 'ADV', 'now', { role: 'adverb of time' });
 
 // fused particles: written as one word, not cut
 const FUSED = (f: string, gloss: string, of: string, more: Partial<ArClosedEntry> = {}): void => put(f, 'PART', gloss, { fusedOf: of, role: 'fused particles', ...more });
-FUSED('مِمَّا', 'from what, than what', 'مِنْ + مَا'); FUSED('عَمَّا', 'about what, from what', 'عَنْ + مَا'); FUSED('فِيمَا', 'in what; while', 'فِي + مَا');
+FUSED('مِمَّا', 'from what, than what', 'مِنْ + مَا'); FUSED('عَمَّا', 'about what', 'عَنْ + مَا'); FUSED('فِيمَا', 'in what; while', 'فِي + مَا');
 FUSED('إِلَامَ', 'to what? until when?', 'إِلَى + مَا'); FUSED('أَلَّا', 'that not (+ subjunctive)', 'أَنْ + لَا', { governs: 'subjunctive' });
 FUSED('أَلَا', 'beware! indeed (opens a sentence)', 'أَ + لَا'); FUSED('لِئَلَّا', 'so that not (+ subjunctive)', 'لِ + أَنْ + لَا', { governs: 'subjunctive' });
 FUSED('كَيْلَا', 'so that not (+ subjunctive)', 'كَيْ + لَا', { governs: 'subjunctive' }); FUSED('إِنَّمَا', 'only, but; indeed', 'إِنَّ + مَا');
@@ -206,6 +207,57 @@ put('سَاعَتَئِذٍ', 'ADV', 'at that hour', { role: 'adverb of time' })
 // the vocative يا written onto the next word (Quranic يٰٓأَيُّهَا, plain يأيها): one unit "O (you who)"
 put('يَاأَيُّهَا', 'PART', 'O (you who …)', { fusedOf: 'يَا + أَيُّهَا', role: 'vocative' });
 AR_CLOSED[arKey('يَأَيُّهَا')] = AR_CLOSED[arKey('يَاأَيُّهَا')];
+
+/**
+ * HAND glosses of closed-class LEXEMES: a short, plain meaning a learner can answer with, in place of the index's one-line dictionary
+ * description ("indicates an inclusive disjunction", "Indicates nonveridicality, might"). MACHINE-DRAFTED, not reviewed by a native speaker or
+ * an Arabist. Key: "<vocalized head>|<POS>". The adverbs are the closed-class lemmas among the 2,000 commonest lexemes of the index.
+ */
+const EXTRA_GLOSSES: Readonly<Record<string, string>> = {
+  'بِ|ADP': 'in, with, by', 'لِ|ADP': 'to, for', 'كَ|ADP': 'like, as', 'وَفْقَ|ADV': 'according to', 'وَفْقَ|ADP': 'according to',
+  'مَا|ADV': 'as long as; whenever', 'حَسَنًا|ADV': 'well; okay', 'هُنَا|ADV': 'here', 'نَعَمْ|ADV': 'yes', 'هُنَاكَ|ADV': 'there', 'فَقَطْ|ADV': 'only',
+  'الْآنَ|ADV': 'now', 'لَنْ|ADV': 'will not (future)', 'كَيْفَ|ADV': 'how?', 'جِدًّا|ADV': 'very', 'لِمَاذَا|ADV': 'why?', 'حَتَّى|ADV': 'even; until',
+  'كَذٰلِكَ|ADV': 'likewise; also', 'رُبَّمَا|ADV': 'perhaps', 'حَقًّا|ADV': 'truly', 'أَيْنَ|ADV': 'where?', 'أَيْضًا|ADV': 'also', 'كَمْ|ADV': 'how many?',
+  'دَائِمًا|ADV': 'always', 'أَبَدًا|ADV': 'never; ever', 'اللَّيْلَةَ|ADV': 'tonight', 'تَمَامًا|ADV': 'completely', 'إِذَنْ|ADV': 'then; therefore',
+  'لِهٰذَا|ADV': 'for this reason', 'هٰكَذَا|ADV': 'like this; thus', 'لِذٰلِكَ|ADV': 'therefore', 'قَلِيلًا|ADV': 'a little', 'كَثِيرًا|ADV': 'a lot; often',
+  'لِلْغَايَةِ|ADV': 'extremely', 'مَتَى|ADV': 'when?', 'مُجَدَّدًا|ADV': 'again', 'بِالْفِعْلِ|ADV': 'indeed; actually', 'مَعًا|ADV': 'together',
+  'هُنَالِكَ|ADV': 'there', 'أَوَّلًا|ADV': 'first; firstly', 'غَدًا|ADV': 'tomorrow', 'بِالضَّبْطِ|ADV': 'exactly', 'فِعْلًا|ADV': 'really; indeed',
+  'أَهْلًا|ADV': 'welcome', 'قَرِيبًا|ADV': 'soon; nearby', 'تَقْرِيبًا|ADV': 'approximately', 'مُبَاشَرَةً|ADV': 'directly', 'أَحْيَانًا|ADV': 'sometimes',
+  'أَخِيرًا|ADV': 'finally', 'حَالًا|ADV': 'immediately', 'بَلَى|ADV': 'yes (answering a negative question)', 'كَهٰذَا|ADV': 'like this', 'ثَمَّةَ|ADV': 'there (is)',
+  'بَدَلًا|ADV': 'instead', 'بكثير|ADV': 'by far; much', 'أَمْسِ|ADV': 'yesterday', 'دَوْمًا|ADV': 'always', 'طَبْعًا|ADV': 'of course', 'طَالَمَا|ADV': 'as long as; often',
+  'سَابِقًا|ADV': 'previously', 'صَبَاحًا|ADV': 'in the morning', 'فَجْأَةً|ADV': 'suddenly', 'بِالْكَاد|ADV': 'barely', 'حَالِيًّا|ADV': 'currently',
+  'لَطَالَمَا|ADV': 'often; always', 'فَوْرًا|ADV': 'immediately', 'مَرَّتَيْنِ|ADV': 'twice', 'مُبَكِّرًا|ADV': 'early', 'شَخْصِيًّا|ADV': 'personally',
+  'أَنَّى|ADV': 'how; wherever', 'م|ADV': 'AD (the common era)', 'بِجِدٍّ|ADV': 'seriously', 'لِلْأَسَف|ADV': 'unfortunately', 'إِلَيْهِمْ|ADV': 'to them',
+  'إِلَيْكُمْ|ADV': 'to you (pl.)', 'حَتْمًا|ADV': 'necessarily; surely', 'أَيْنَمَا|ADV': 'wherever', 'بِجِوَار|ADV': 'next to', 'مَجَّانًا|ADV': 'free of charge',
+  'كَالْعَادَة|ADV': 'as usual', 'بِالضَّرُورَة|ADV': 'necessarily', 'عِنْدَئِذٍ|ADV': 'then; at that time',
+};
+const GLOSS_BY_ID = new Map<string, string>();
+const GLOSS_BY_KEY = new Map<string, string>();
+const glossKeys = (head: string, pos: string): [string, string] => [`${arKey(head)}|${packVocal(head)}|${pos}`, `${arKey(head)}|${pos}`];
+function addGloss(head: string, pos: string, gloss: string, force: boolean): void {
+  const [a, b] = glossKeys(head, pos);
+  if (force || !GLOSS_BY_ID.has(a)) GLOSS_BY_ID.set(a, gloss);
+  if (force || !GLOSS_BY_KEY.has(b)) GLOSS_BY_KEY.set(b, gloss);
+}
+for (const [id, g] of Object.entries(EXTRA_GLOSSES)) { const [h, p] = id.split('|'); addGloss(h, p, g, true); }
+for (const es of Object.values(AR_CLOSED)) for (const e of es) if (!e.suffix && !e.fusedOf) addGloss(e.lemma, e.pos, e.gloss, false);
+for (const es of Object.values(AR_CLOSED)) for (const e of es) if (e.fusedOf) addGloss(e.lemma, e.pos, e.gloss, false);
+/** The hand gloss of a closed-class lexeme (its head and part of speech), or undefined. The parts of speech of one head are tried in turn. */
+export function arClosedGloss(head: string, pos: string): string | undefined {
+  for (const p of [pos, 'PRON', 'ADP', 'PART', 'CONJ', 'SCONJ', 'ADV', 'DET', 'INTJ', 'NUM']) {
+    const [a, b] = glossKeys(head, p);
+    const g = GLOSS_BY_ID.get(a) ?? GLOSS_BY_KEY.get(b);
+    if (g) return g;
+  }
+  return undefined;
+}
+/** Every hand gloss (lemma id → gloss), for the table the maintainers read before it ships. */
+export const arClosedGlossTable = (): Array<[string, string]> => {
+  const out = new Map<string, string>();
+  for (const [id, g] of Object.entries(EXTRA_GLOSSES)) out.set(id, g);
+  for (const es of Object.values(AR_CLOSED)) for (const e of es) if (!e.suffix) { const id = `${e.lemma}|${e.pos}`; if (!out.has(id)) out.set(id, GLOSS_BY_ID.get(glossKeys(e.lemma, e.pos)[0]) ?? e.gloss); }
+  return [...out];
+};
 
 export const arClosedFor = (key: string): readonly ArClosedEntry[] => AR_CLOSED[key] ?? [];
 

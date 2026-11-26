@@ -27,7 +27,7 @@
 import type { AnalysisCandidate, PartOfSpeech, RawToken, WordPart } from '../../core';
 import { AR_IDENTITIES, arMainOf, arMainOfVocalized } from './identities';
 import { arSegmentations, arProcliticAllows, arEncliticAllows, type ArSegmentation, type Clitic } from './clitics';
-import { arClosedFor, arClosedLooseFor, AR_PRIORS, type ArClosedEntry } from './closed';
+import { arClosedFor, arClosedGloss, arClosedLooseFor, AR_PRIORS, type ArClosedEntry } from './closed';
 import { arGuess } from './guess';
 import { AR_PREFERRED } from './generated/preferences';
 import { arKeyIsPartial, lookupArabicForm, lookupArabicLemma, lemmaOfId, lexOf, type ArIndexHit, type ArLemmaRow } from './index-store';
@@ -53,6 +53,8 @@ const CONF_ENDING = 0.1;
 const CONF_MAIN = 0.7;
 const CONF_STRUCTURAL = 0.6;
 const CONF_UNDECIDED = 0.45;
+/** What a lexeme set aside by a decided word is capped at (0.45 is the cap of an undecided set only). */
+const CONF_SET_ASIDE = 0.35;
 const CONF_PRINTED = 0.75;
 const CONF_VOCALIZED = 0.8;
 const CONF_CLOSED = 0.8;
@@ -863,6 +865,15 @@ function toCandidate(m: Merged, p: Printed, confidence: number, identity: string
     notes.caseSource = 'inferred';
   }
   const c: AnalysisCandidate = { lemma, pos: m.pos, morph: { ...m.morph }, confidence: round2(confidence), origin: seg.proclitics.length || seg.enclitics.length ? 'rule' : row0.hand ? 'hand' : 'dictionary', sourceId: row0.hand ? AR_SOURCE_IDS.closed : seg.proclitics.length || seg.enclitics.length ? AR_SOURCE_IDS.rules : AR_SOURCE_IDS.tables };
+  // a closed-class word: the HAND gloss (a short plain meaning), the index's description goes to notes.otherMeanings
+  if (CLOSED_POS.has(m.pos) || m.pos === 'ADV') {
+    const hand = arClosedGloss(m.head, m.pos) ?? row0.hand?.gloss;
+    if (hand) {
+      if (gloss && gloss !== hand) notes.otherMeanings = [...new Set([...(notes.otherMeanings ? String(notes.otherMeanings).split('; ') : []), gloss])].join('; ');
+      gloss = hand;
+      notes.glossSource = 'closed';
+    }
+  }
   if (gloss) c.gloss = gloss;
   const lexReg = lexOf([info.head, info.gloss, info.pos, info.lex, info.count] as ArLemmaRow)['Reg'];
   c.varieties = lexReg === 'Cla' ? [AR_VARIETIES.classical] : lexReg === 'Msa' ? [AR_VARIETIES.msa] : [AR_VARIETIES.msa, AR_VARIETIES.classical];
@@ -1135,13 +1146,15 @@ function readSurface(token: RawToken, text: string, at: number[] | undefined, qu
     seenSig.add(sig);
     out.push(c);
   }
-  // the invariant: at most ONE lexeme group at or above 0.5 (a first one keeps it, the others are capped at 0.45)
-  let credited: string | undefined;
-  for (const c of out) {
-    if (!c.lemma || c.confidence < 0.5) continue;
-    const g = `${arCanon(c.lemma)}|${groupId(c.pos ?? '')}`;
-    if (credited === undefined) credited = g;
-    else if (g !== credited) c.confidence = CONF_UNDECIDED;
+  // the invariant: at most ONE lexeme group at or above 0.5. A DECIDED word (its top reading at 0.5 or more) sets every reading of another lexeme
+  // group aside at 0.35 at most (and 0.25 under the top at least), so the product's "a different reading within 0.15 is a conflict" never fires
+  // on a decided word; 0.45 is the cap of an UNDECIDED set only. Other cells of the SAME lexeme stay where they are.
+  const groupOfCand = (c: AnalysisCandidate): string => `${arCanon(c.lemma ?? '')}|${groupId(c.pos ?? '')}`;
+  const topC = out.find((c) => c.lemma && c.confidence >= 0.5);
+  if (topC) {
+    const g0 = groupOfCand(topC);
+    const cap = Math.min(CONF_SET_ASIDE, round2(topC.confidence - 0.25));
+    for (const c of out) if (c !== topC && c.lemma && groupOfCand(c) !== g0 && c.confidence > cap) c.confidence = cap;
   }
   return out;
 }

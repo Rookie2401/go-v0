@@ -21,6 +21,14 @@ const token = (surface: string): RawToken => ({ surface, start: 0, end: surface.
 const cands = (surface: string): AnalysisCandidate[] => arWordCandidates(token(surface));
 const top = (surface: string): AnalysisCandidate => cands(surface)[0];
 const lemmas = (cs: AnalysisCandidate[]): string[] => [...new Set(cs.map((c) => c.lemma ?? '?'))];
+/** A decided word (top reading at 0.5 or more) has no reading of another lexeme group within 0.2 of it: the product calls a rival within 0.15 a conflict. */
+const gapViolation = (cs: AnalysisCandidate[]): string | undefined => {
+  const top = cs.find((c) => c.lemma && c.confidence >= 0.5);
+  if (!top) return undefined;
+  const g = (c: AnalysisCandidate): string => `${arKey(c.lemma ?? '')}|${c.pos === 'ADJ' ? 'NOUN' : c.pos}`;
+  const near = cs.find((c) => c !== top && c.lemma && g(c) !== g(top) && top.confidence - c.confidence < 0.2);
+  return near ? `${top.lemma} ${top.confidence} vs ${near.lemma} ${near.confidence}` : undefined;
+};
 const partTexts = (c: AnalysisCandidate): string[] => (c.parts ?? []).map((p) => p.text);
 
 describe('verbs (fully vocalized: the page decides, one lexeme, 0.90)', () => {
@@ -668,6 +676,7 @@ describe('batch 2 over the real index (compiled core, shards, shipped list and g
       if (!cs.length) continue;
       read++;
       for (const c of cs) expect(c.gloss ?? '', key).not.toMatch(/(^|\s)\d+\.\s/);
+      expect(gapViolation(cs), key).toBeUndefined();
       const groups = new Set(cs.filter((c) => c.confidence >= 0.5 && c.lemma).map((c) => `${c.lemma}|${c.pos === 'ADJ' ? 'NOUN' : c.pos}`));
       expect(groups.size, key).toBeLessThanOrEqual(1);
     }
@@ -997,6 +1006,7 @@ describe('every vocalized starter word of the Alphabet Sprint reads as itself (r
       const a = cands(form);
       const top1 = a[0];
       if (a.some((c) => /(^|\s)\d+\.\s/.test(c.gloss ?? ''))) violations.push(`${form} (gloss) a numbered gloss`);
+      { const gv = gapViolation(a); if (gv) violations.push(`${form} (gap) ${gv}`); }
       if (!top1 || !reads(top1, h)) { violations.push(`${form} (a) top ${top1?.lemma}|${top1?.pos} ${top1?.confidence}`); continue; }
       if (top1.confidence < 0.5) undecided++;
       if (!cands(arKey(form)).some((c) => reads(c, h))) violations.push(`${form} (b) bare key does not offer it`);

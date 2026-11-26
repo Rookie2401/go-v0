@@ -31,10 +31,10 @@ import { decompose, FINALS, isHangulSyllable } from '../../../src/adapters/korea
 
 type One = { lemma: string; pos: string; means: string | string[]; undecided?: boolean };
 type Want = One | { anyOf: One[] };
-interface Entry { w: string; bare: Want; s: Array<{ t: string; at: string; want: Want; shardsOnly?: boolean }>; note?: string; shardsOnly?: boolean }
+interface Entry { w: string; bare: Want; s: Array<{ t: string; at: string; want: Want; shardsOnly?: boolean; twoSidedOk?: boolean }>; note?: string; shardsOnly?: boolean }
 interface Block { blk: string; t: string; chk: Array<{ at: string; want: Want; shardsOnly?: boolean }> }
-interface TwoSided { w: string; bare?: 'undecided' | 'noun' | 'pred' | 'whole'; bareCore?: 'undecided' | 'noun' | 'pred' | 'whole'; counts?: Record<string, string>; s: Array<{ side: 'noun' | 'pred' | 'whole'; t: string; at: string; want: Array<{ lemma: string; pos: string }>; shardsOnly?: boolean }>; note?: string }
-interface Table { known: string[]; frameKnown: string[]; twoSidedKnown: string[]; entries: Entry[]; blocks: Block[]; frameNouns: Array<[string, string, number]>; twoSided: TwoSided[] }
+interface TwoSided { w: string; bare?: 'undecided' | 'noun' | 'pred' | 'whole'; bareCore?: 'undecided' | 'noun' | 'pred' | 'whole'; counts?: Record<string, string>; s: Array<{ side: 'noun' | 'pred' | 'whole'; t: string; at: string; want: Array<{ lemma: string; pos: string }>; shardsOnly?: boolean; twoSidedOk?: boolean }>; note?: string }
+interface Table { predicateBare?: string[]; known: string[]; frameKnown: string[]; twoSidedKnown: string[]; entries: Entry[]; blocks: Block[]; frameNouns: Array<[string, string, number]>; twoSided: TwoSided[] }
 
 const TABLE = JSON.parse(fs.readFileSync(path.resolve(__dirname, 'common-words.table.json'), 'utf8')) as Table;
 const SHARDS = path.resolve(__dirname, '../../../public/lexicon/ko/standard');
@@ -60,15 +60,22 @@ function matchOne(c: AnalysisCandidate | undefined, w: One): boolean {
   return kws.some((k) => new RegExp(`(?<![a-z])${esc(k)}(?:s|es)?(?![a-z])`, 'iu').test(text));
 }
 const matches = (c: AnalysisCandidate | undefined, w: Want): boolean => ('anyOf' in w ? w.anyOf.some((x) => matchOne(c, x)) : matchOne(c, w));
+/** Not right, but undecided: the set's undecided reading of the wanted word first, or the wanted reading creditable beside another first. */
+function undecidedFor(top: AnalysisCandidate | undefined, all: AnalysisCandidate[], w: Want): boolean {
+  if (!top || matches(top, w)) return false;
+  const lemmas = ('anyOf' in w ? w.anyOf : [w]).map((x) => x.lemma);
+  if (top.notes?.homonym === 'undecided' && top.lemma && lemmas.includes(koBareLemma(top.lemma))) return true;
+  return creditable(top) && all.some((c) => c !== top && creditable(c) && matches(c, w));
+}
 const showWant = (w: Want): string => ('anyOf' in w ? w.anyOf.map(showWant).join(' or ') : `${w.lemma}/${w.pos}/${[w.means].flat().join(',')}${w.undecided ? '/undecided' : ''}`);
 const showGot = (c: AnalysisCandidate | undefined): string => (c ? `${c.lemma}/${c.pos}/${(c.gloss ?? '').slice(0, 40)}${c.notes?.homonym === 'undecided' ? '/undecided' : ''}${c.unconfirmed ? '/unconfirmed' : ''} ${c.confidence}` : '(none)');
 
-function sentenceReading(t: string, at: string): { top?: AnalysisCandidate; second?: AnalysisCandidate } {
+function sentenceReading(t: string, at: string): { top?: AnalysisCandidate; second?: AnalysisCandidate; all: AnalysisCandidate[] } {
   const tokens = koAdapter.tokenize(t);
   const out = koAdapter.analyze(tokens);
   const a = out.find((x) => x.token.isWord && x.token.surface === at);
   if (!a) throw new Error(`"${at}" is not a token of "${t}" (tokens: ${tokens.filter((x) => x.isWord).map((x) => x.surface).join(' ')})`);
-  return { top: a.candidates[0], second: a.candidates[1] };
+  return { top: a.candidates[0], second: a.candidates[1], all: a.candidates };
 }
 
 // ───────────────────────────── the noun frames ─────────────────────────────
@@ -99,6 +106,14 @@ export function nounForm(noun: string, particle: string): string {
 }
 /** A written form the installed lexicon holds as a headword of its own (a noun, adverb, determiner …; predicates are keyed by stem). */
 const isHeadword = (form: string): boolean => lookupKoreanStem(form).some((h) => h.entry.lemma === form);
+/** A frame's BARE form that is two-sided (block T's rule): the noun + particle reading and a reading of another, COUNTED word both creditable. */
+function frameBareTwoSided(cs: AnalysisCandidate[], noun: string, classes: string[], particle: string): boolean {
+  if (!cs[0] || !creditable(cs[0])) return false;
+  const nounSide = (c: AnalysisCandidate) => frameOk(c, noun, classes, particle);
+  const rival = (c: AnalysisCandidate) => !!c.lemma && koBareLemma(c.lemma) !== noun && !c.unconfirmed && rowCount(c) > 0;
+  const cred = cs.filter(creditable);
+  return (nounSide(cs[0]) || rival(cs[0])) && cred.some(nounSide) && cred.some(rival);
+}
 function frameOk(c: AnalysisCandidate | undefined, noun: string, classes: string[], particle: string): boolean {
   if (!c || c.unconfirmed || !c.lemma || koBareLemma(c.lemma) !== noun || !classes.includes(c.pos ?? '')) return false;
   return String(c.morph.Particle ?? '').split('+').includes(particle);
@@ -129,7 +144,27 @@ function sideOf(c: AnalysisCandidate, e: TwoSided): string | undefined {
 const tMatch = (c: AnalysisCandidate | undefined, side: string, want: Array<{ lemma: string; pos: string }>, surface: string): boolean =>
   !!c && !c.unconfirmed && !!c.lemma && want.some((w) => w.lemma === koBareLemma(c.lemma!) && w.pos === c.pos) && (side !== 'noun' || koBareLemma(c.lemma) === surface || hostsParticle(c));
 
-export interface CheckResult { id: string; kind: 'entry' | 'block' | 'frame' | 'frameSkip' | 'T'; w: string; where: string; want: string; got: string; second: string; context?: string; ok: boolean }
+/** The count of a reading's own lexicon row (lemma, homonym number; a predicate by its predicate rows); a closed-table word counts as common. */
+function rowCount(c: AnalysisCandidate): number {
+  if (!c.lemma) return 0;
+  if (c.sourceId !== 'kaikki-ko-lexicon') return 1000;
+  const bare = koBareLemma(c.lemma);
+  const m = /[⁰¹²³⁴-⁹]+$/u.exec(c.lemma);
+  const hom = m ? Number([...m[0]].map((ch) => '⁰¹²³⁴⁵⁶⁷⁸⁹'.indexOf(ch)).join('')) : undefined;
+  const PT = ['VV', 'VA', 'VX'];
+  const hits = PRED_POS.has(c.pos ?? '') ? PT.flatMap((t) => lookupKoreanStem(bare.endsWith('다') ? bare.slice(0, -1) : bare).filter((h) => h.entry.tag === t)) : lookupKoreanStem(bare);
+  return Math.max(0, ...hits.map((h) => h.entry).filter((r) => r.lemma === bare && (hom === undefined || r.hom === hom)).map((r) => r.n ?? 0));
+}
+/** Two-sided, both creditable (the owner's rule: an undecided result counts as fixed): the wanted reading is creditable among the readings
+ * and the first reading is a creditable reading of another word. */
+const bothCreditable = (all: AnalysisCandidate[], isWanted: (c: AnalysisCandidate) => boolean): boolean =>
+  !!all[0] && creditable(all[0]) && !isWanted(all[0]) && all.some((c) => creditable(c) && isWanted(c));
+/** The pack's own rule grants these bare forms the predicate alone (the predicate at least four times commoner and the noun counted under 30,
+ * or the noun's rows faint): a confident predicate reading of the bare form is the pack's rule, not a fix (table.predicateBare). */
+const PRED_BARE = new Set<string>(TABLE.predicateBare ?? []);
+const predicateBareOk = (form: string, c: AnalysisCandidate | undefined): boolean => PRED_BARE.has(form) && !!c && creditable(c) && PRED_POS.has(c.pos ?? '');
+
+export interface CheckResult { id: string; kind: 'entry' | 'block' | 'frame' | 'frameSkip' | 'T'; w: string; where: string; want: string; got: string; second: string; context?: string; ok: boolean; und?: boolean }
 
 function runAll(state: 'core' | 'shards'): CheckResult[] {
   const out: CheckResult[] = [];
@@ -143,28 +178,29 @@ function runAll(state: 'core' | 'shards'): CheckResult[] {
     const okBare = expect === 'undecided'
       ? !cs[0] || !creditable(cs[0]) || [...sides].filter((s) => !s.startsWith('other')).length >= 2
       : !!cs[0] && creditable(cs[0]) && sideOf(cs[0], e) === expect;
-    push({ idBase: `T|${e.w}|bare`, kind: 'T', w: e.w, where: `${expect === 'undecided' ? 'undecided' : `${expect}-side`} bare`, want: expect, got: showGot(cs[0]), second: showGot(cs[1]), context: [...sides].join(' '), ok: okBare });
+    const okBare2 = okBare || predicateBareOk(e.w, cs[0]);
+    push({ idBase: `T|${e.w}|bare`, kind: 'T', w: e.w, where: `${expect === 'undecided' ? 'undecided' : `${expect}-side`} bare`, want: expect, got: showGot(cs[0]), second: showGot(cs[1]), context: [...sides].join(' '), ok: okBare2 });
     e.s.forEach((s, k) => {
       if (state === 'core' && s.shardsOnly) return;
       const r = sentenceReading(s.t, s.at);
-      push({ idBase: `T|${e.w}|s${k}`, kind: 'T', w: e.w, where: `${s.side} ${s.t}`, want: s.want.map((w) => `${w.lemma}/${w.pos}`).join(' or '), got: showGot(r.top), second: showGot(r.second), context: r.top?.notes?.context ? String(r.top.notes.context) : undefined, ok: tMatch(r.top, s.side, s.want, s.at) });
+      push({ idBase: `T|${e.w}|s${k}`, kind: 'T', w: e.w, where: `${s.side} ${s.t}`, want: s.want.map((w) => `${w.lemma}/${w.pos}`).join(' or '), got: showGot(r.top), second: showGot(r.second), context: r.top?.notes?.context ? String(r.top.notes.context) : undefined, ok: tMatch(r.top, s.side, s.want, s.at) || (!!s.twoSidedOk && bothCreditable(r.all, (c) => tMatch(c, s.side, s.want, s.at))), und: !tMatch(r.top, s.side, s.want, s.at) && bothCreditable(r.all, (c) => tMatch(c, s.side, s.want, s.at)) });
     });
   }
   if (process.env.KO_SWEEP_ONLY === 'T') return out;
   for (const e of TABLE.entries) {
     if (state === 'core' && e.shardsOnly) continue;
     const cs = koAnalyzeToken(e.w);
-    push({ idBase: `${e.w}|bare`, kind: 'entry', w: e.w, where: 'bare', want: showWant(e.bare), got: showGot(cs[0]), second: showGot(cs[1]), ok: matches(cs[0], e.bare) });
+    push({ idBase: `${e.w}|bare`, kind: 'entry', w: e.w, where: 'bare', want: showWant(e.bare), got: showGot(cs[0]), second: showGot(cs[1]), ok: matches(cs[0], e.bare), und: undecidedFor(cs[0], cs, e.bare) });
     e.s.forEach((s, k) => {
       if (state === 'core' && s.shardsOnly) return;
       const r = sentenceReading(s.t, s.at);
-      push({ idBase: `${e.w}|s${k}`, kind: 'entry', w: e.w, where: `${s.t} @${s.at}`, want: showWant(s.want), got: showGot(r.top), second: showGot(r.second), context: r.top?.notes?.context ? String(r.top.notes.context) : undefined, ok: matches(r.top, s.want) });
+      push({ idBase: `${e.w}|s${k}`, kind: 'entry', w: e.w, where: `${s.t} @${s.at}`, want: showWant(s.want), got: showGot(r.top), second: showGot(r.second), context: r.top?.notes?.context ? String(r.top.notes.context) : undefined, ok: matches(r.top, s.want) || (!!s.twoSidedOk && bothCreditable(r.all, (c) => matches(c, s.want))), und: undecidedFor(r.top, r.all, s.want) });
     });
   }
   for (const b of TABLE.blocks) b.chk.forEach((c) => {
     if (state === 'core' && c.shardsOnly) return;
     const r = sentenceReading(b.t, c.at);
-    push({ idBase: `${b.blk}|${b.t}|${c.at}`, kind: 'block', w: c.at, where: `${b.blk}: ${b.t} @${c.at}`, want: showWant(c.want), got: showGot(r.top), second: showGot(r.second), context: r.top?.notes?.context ? String(r.top.notes.context) : undefined, ok: matches(r.top, c.want) });
+    push({ idBase: `${b.blk}|${b.t}|${c.at}`, kind: 'block', w: c.at, where: `${b.blk}: ${b.t} @${c.at}`, want: showWant(c.want), got: showGot(r.top), second: showGot(r.second), context: r.top?.notes?.context ? String(r.top.notes.context) : undefined, ok: matches(r.top, c.want), und: undecidedFor(r.top, r.all, c.want) });
   });
   for (const [noun, cls, n] of TABLE.frameNouns) {
     const classes = cls.split('+');
@@ -177,10 +213,10 @@ function runAll(state: 'core' | 'shards'): CheckResult[] {
       if (isHeadword(form)) { push({ idBase: `F|${noun}|${fr.id}|skip`, kind: 'frameSkip', w: noun, where: `${fr.id} ${form} is a headword`, want: '', got: '', second: '', ok: true }); continue; }
       const want = `${noun}/${cls} + ${fr.particle} (count ${n})`;
       const bare = koAnalyzeToken(form);
-      push({ idBase: `F|${noun}|${fr.id}|bare`, kind: 'frame', w: noun, where: `${fr.id} bare ${form}`, want, got: showGot(bare[0]), second: showGot(bare[1]), ok: frameOk(bare[0], noun, classes, fr.particle) });
+      push({ idBase: `F|${noun}|${fr.id}|bare`, kind: 'frame', w: noun, where: `${fr.id} bare ${form}`, want, got: showGot(bare[0]), second: showGot(bare[1]), ok: frameOk(bare[0], noun, classes, fr.particle) || predicateBareOk(form, bare[0]) || frameBareTwoSided(bare, noun, classes, fr.particle), und: !frameOk(bare[0], noun, classes, fr.particle) && frameBareTwoSided(bare, noun, classes, fr.particle) });
       const t = fr.sentence(form);
       const r = sentenceReading(t, form);
-      push({ idBase: `F|${noun}|${fr.id}|sent`, kind: 'frame', w: noun, where: `${fr.id} ${t}`, want, got: showGot(r.top), second: showGot(r.second), context: r.top?.notes?.context ? String(r.top.notes.context) : undefined, ok: frameOk(r.top, noun, classes, fr.particle) });
+      push({ idBase: `F|${noun}|${fr.id}|sent`, kind: 'frame', w: noun, where: `${fr.id} ${t}`, want, got: showGot(r.top), second: showGot(r.second), context: r.top?.notes?.context ? String(r.top.notes.context) : undefined, ok: frameOk(r.top, noun, classes, fr.particle), und: !frameOk(r.top, noun, classes, fr.particle) && r.all.some((c) => creditable(c) && frameOk(c, noun, classes, fr.particle)) && !!r.top && creditable(r.top) });
     }
   }
   return out;

@@ -109,7 +109,7 @@ describe('the Arabic validation cases are what the analyser really reads, with i
     const practice = AR_TUTORIAL.steps.find((s) => s.id === 'practice-lookup')!.practice!;
     const mine = AR_VALIDATION.find((c) => c.surface === practice.target && c.sentence === practice.sentence);
     expect(mine, 'the practice sentence is a validation sentence').toBeDefined();
-    expect(mine!.expect.status).toBe('requires-review'); // read with confidence, but its leading meaning is not yet a reviewed one (deck gate rule sense-unreviewed)
+    expect(mine!.expect.status).toBe('high-confidence'); // recorded from what the analyser and the deck gate give (scripts/ar-validation-probe.mts)
   });
 });
 

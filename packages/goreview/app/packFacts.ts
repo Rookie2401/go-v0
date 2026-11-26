@@ -353,6 +353,9 @@ export function packFactsFor(opts: { fetch: typeof fetch; baseUrl: string; lexic
             if (await ensureRussianKeys(russianUnitKeys(unitId))) clearGreekSentenceCaches();
           } catch { return undefined; }
         }
+        // Arabic admits NO form card (the deck gate, docs/arabic/DECK.md): a bare form's facts are the provider's `requires-review` answer, which names no lemma and no meaning,
+        // so no shard is fetched for it and nothing downstream can pick a lexeme from the bare key.
+        if (languageId === 'ar' && requestedLanguage === 'ar' && unitId.startsWith('form:ar:')) return forVariety(varietyId).factsFor(unitId, requestedLanguage, varietyId);
         if (languageId === 'ar' && requestedLanguage === 'ar') {
           try {
             if (await ensureArabicKeys(arabicUnitKeys(unitId))) clearGreekSentenceCaches();

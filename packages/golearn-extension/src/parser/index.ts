@@ -446,7 +446,8 @@ function itemIdsFor(L: Lang, selected: number[], tokens: RawToken[], best: Array
   const ids: string[] = [];
   selected.slice(0, MAX_ITEM_IDS).forEach((i, k) => {
     const c = best[k];
-    const creditable = c?.lemma && !c.unconfirmed && c.confidence >= LEMMA_MIN_CONFIDENCE;
+    // a reading the language's deck gate holds (notes.reviewGate = 'yes': a misread or undecided word) is credited to its FORM id only
+    const creditable = c?.lemma && !c.unconfirmed && c.confidence >= LEMMA_MIN_CONFIDENCE && c.notes?.reviewGate !== 'yes';
     ids.push(creditable ? `lemma:${L.lang}:${c!.lemma}${c!.pos ? ':' + c!.pos : ''}` : formId(L, tokens[i].surface));
   });
   if (!single) for (const p of phrases) if (p.pattern?.length) ids.push(`phrase:${L.lang}:${p.pattern.join('_')}`);

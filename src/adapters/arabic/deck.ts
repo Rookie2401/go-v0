@@ -18,6 +18,7 @@
  *   guess               is a guess from the shape of the word (`unconfirmed`);
  *   derived             is a participle or verbal noun that has no entry of its own (notes.derivedFrom);
  *   no-meaning          has no English meaning (the entry's gloss is empty);
+ *   numbered-gloss     has a gloss that numbers several dictionary entries ("1. chief 2. big"): the reviewed choice does not lead;
  *   gloss-pos          has a first meaning that does not fit its part of speech (a verb's begins 'to ', a noun's does not);
  *   dialect             is flagged dialect or foreign (notes.variety);
  *   undecided           has confidence < 0.5, or identity undecided / partial / rare (no lexeme is credited);
@@ -29,7 +30,8 @@
  *   known-misread-lemma is a lexeme the sweep found credited to the wrong spelling;
  *   sense-unreviewed    has a leading meaning nobody has reviewed: the index row's `Sense` is not Rev (reviewed choice) or One (one real sense),
  *                       or it has Homonyms and is not Rev. A row without the key is read as Ord (several unlabelled senses: not eligible).
- * Closed-class entries (closed.ts: hand-written, one-line functions) have no `Sense` and are exempt from the last rule.
+ * A closed-class lexeme is judged by the same rule, with one more way in: its reading's gloss is a SINGLE hand-written gloss of the closed table (closed.ts), not a numbered
+ * "1. ... 2. ..." merge of several entries, and the reading is not a homonym merge (notes.homonyms); otherwise it needs a reviewed (Rev) or single (One) index row like any word.
  */
 import type { AnalysisCandidate, AnalyzedToken, RawToken } from '../../core';
 import { AR_CLOSED } from './closed';
@@ -37,29 +39,41 @@ import { AR_KNOWN_LIMITS, AR_LIMITED_LEMMAS } from './generated/deck-limits';
 import { installedArabicIndexes, lexOf, lookupArabicLemma, type ArabicFormIndex, type ArLemmaRow } from './index-store';
 import { arHeadForm, arKey, hasTashkil } from './text';
 
-export interface ArDeckLimit { id: string; test: string; reason: string }
+export interface ArDeckLimit {
+  id: string; test: string; reason: string;
+  /** true: the hold is about the READING (a misread, undecided or unlisted word): the mark also says `reviewGate = 'yes'` and the extension credits the word to its form id only.
+   *  false: the hold is about the MEANING SHOWN on the card (unreviewed, wrong part of speech, no gloss, a plural entry): the reading is right, the lemma is still credited. */
+  reading: boolean;
+  /** The reason's class, in the names of the shared gate (notes.reviewKind): the GoLearn card says why a held word is not added to review. */
+  kind: ArReviewKind;
+}
+export type ArReviewKind = 'unlisted' | 'no-meaning' | 'undecided-entry' | 'two-words' | 'low-confidence' | 'known-limit' | 'other-listed-word' | 'unwritten-copula' | 'meaning-unreviewed' | 'other-variety';
+
+/** A reading held by the language's deck gate for what it IS (not for the meaning the card would show). After the merge with Korean's shared gate: import it from src/core/review-gate.ts. */
+export const heldByReviewGate = (c: { notes?: Record<string, string | string[]> } | undefined): boolean => c?.notes?.reviewGate === 'yes';
 
 /** THE known-limits table: id, the test in words, and the sentence a learner reads. */
 export const AR_DECK_LIMITS: readonly ArDeckLimit[] = [
-  { id: 'no-reading', test: 'the analyser gives the word no reading', reason: 'no reading: the word is not in the Arabic word list' },
-  { id: 'not-an-entry', test: "the top reading's lemma and part of speech are no entry of the Arabic index or of the closed-class table", reason: 'not an entry of the Arabic word list' },
-  { id: 'guess', test: 'the top reading is a guess from the shape of the word (unconfirmed)', reason: 'a guess from the shape of the word, not an entry of the word list' },
-  { id: 'derived', test: 'the top reading is a participle or verbal noun with no entry of its own (notes.derivedFrom)', reason: 'a participle or verbal noun with no entry of its own: its lexeme is not in the word list' },
-  { id: 'no-meaning', test: 'the entry has no English gloss', reason: 'no English meaning' },
-  { id: 'gloss-pos', test: "the first meaning does not match the part of speech: a VERB's must begin 'to ', a NOUN / ADJ / PRON meaning must not", reason: "its first meaning does not fit its part of speech (a verb's meaning begins 'to ')" },
-  { id: 'dialect', test: 'the reading is flagged dialect or foreign (notes.variety)', reason: 'flagged as dialect or foreign: not read as Standard Arabic' },
-  { id: 'undecided', test: 'top confidence < 0.5, or notes.identity is undecided, partial or rare', reason: 'undecided: more evidence must decide' },
-  { id: 'plural-entry', test: 'the reading is a broken plural that is an entry of its own (notes.pluralEntry)', reason: 'a plural that is an entry of its own: the card would teach the plural, not the word' },
-  { id: 'pronoun-form', test: 'a pronoun or demonstrative whose stem is written with other letters than its entry (the dictionary files one form under another)', reason: 'a pronoun or demonstrative written differently from its entry: the card would show another spelling' },
-  { id: 'two-lexemes', test: 'a reading of another lexeme is also credited (>= 0.5)', reason: 'two lexemes are both credited: more evidence must decide' },
-  { id: 'restored-spelling', test: 'notes.spelling is restored and the reviewed identities list does not name the reading', reason: 'read through a restored spelling (a hamza, ى or ة put back): more evidence must decide' },
-  { id: 'known-misread-form', test: 'the written form is in AR_KNOWN_LIMITS (generated by scripts/ar-deck-limits.mts)', reason: 'known limit: this spelling is misread' },
-  { id: 'known-misread-lemma', test: 'the lexeme is in AR_LIMITED_LEMMAS (credited to a misread spelling by the sweep)', reason: 'known limit: this lexeme is credited to a misread spelling' },
-  { id: 'sense-unreviewed', test: "the index row's Sense is not Rev or One (or it has Homonyms and is not Rev)", reason: 'its leading meaning has not been reviewed yet (the dictionary lists several senses)' },
+  { id: 'no-reading', test: 'the analyser gives the word no reading', reason: 'no reading: the word is not in the Arabic word list', reading: true, kind: 'unlisted' },
+  { id: 'not-an-entry', test: "the top reading's lemma and part of speech are no entry of the Arabic index or of the closed-class table", reason: 'not an entry of the Arabic word list', reading: true, kind: 'unlisted' },
+  { id: 'guess', test: 'the top reading is a guess from the shape of the word (unconfirmed)', reason: 'a guess from the shape of the word, not an entry of the word list', reading: true, kind: 'low-confidence' },
+  { id: 'derived', test: 'the top reading is a participle or verbal noun with no entry of its own (notes.derivedFrom)', reason: 'a participle or verbal noun with no entry of its own: its lexeme is not in the word list', reading: true, kind: 'unlisted' },
+  { id: 'no-meaning', test: 'the entry has no English gloss', reason: 'no English meaning', reading: false, kind: 'no-meaning' },
+  { id: 'numbered-gloss', test: 'the reading\'s gloss is a numbered merge of several dictionary entries ("1. ... 2. ...")', reason: 'several dictionary entries share this headword: the meaning shown has not been separated', reading: true, kind: 'undecided-entry' },
+  { id: 'gloss-pos', test: "the first meaning does not match the part of speech: a VERB's must begin 'to ', a NOUN / ADJ / PRON meaning must not", reason: "its first meaning does not fit its part of speech (a verb's meaning begins 'to ')", reading: false, kind: 'meaning-unreviewed' },
+  { id: 'dialect', test: 'the reading is flagged dialect or foreign (notes.variety)', reason: 'flagged as dialect or foreign: not read as Standard Arabic', reading: true, kind: 'other-variety' },
+  { id: 'undecided', test: 'top confidence < 0.5, or notes.identity is undecided, partial or rare', reason: 'undecided: more evidence must decide', reading: true, kind: 'two-words' },
+  { id: 'plural-entry', test: 'the reading is a broken plural that is an entry of its own (notes.pluralEntry)', reason: 'a plural that is an entry of its own: the card would teach the plural, not the word', reading: false, kind: 'other-listed-word' },
+  { id: 'pronoun-form', test: 'a pronoun or demonstrative whose stem is written with other letters than its entry (the dictionary files one form under another)', reason: 'a pronoun or demonstrative written differently from its entry: the card would show another spelling', reading: true, kind: 'other-listed-word' },
+  { id: 'two-lexemes', test: 'a reading of another lexeme is also credited (>= 0.5)', reason: 'two lexemes are both credited: more evidence must decide', reading: true, kind: 'two-words' },
+  { id: 'restored-spelling', test: 'notes.spelling is restored and the reviewed identities list does not name the reading', reason: 'read through a restored spelling (a hamza, ى or ة put back): more evidence must decide', reading: true, kind: 'low-confidence' },
+  { id: 'known-misread-form', test: 'the written form is in AR_KNOWN_LIMITS (generated by scripts/ar-deck-limits.mts)', reason: 'known limit: this spelling is misread', reading: true, kind: 'known-limit' },
+  { id: 'known-misread-lemma', test: 'the lexeme is in AR_LIMITED_LEMMAS (credited to a misread spelling by the sweep)', reason: 'known limit: this lexeme is credited to a misread spelling', reading: true, kind: 'known-limit' },
+  { id: 'sense-unreviewed', test: "the index row's Sense is not Rev or One (or it has Homonyms and is not Rev)", reason: 'its leading meaning has not been reviewed yet (the dictionary lists several senses)', reading: false, kind: 'meaning-unreviewed' },
 ];
 const LIMIT = new Map(AR_DECK_LIMITS.map((l) => [l.id, l]));
 
-export interface ArDeckVerdict { id: string; reason: string }
+export interface ArDeckVerdict { id: string; reason: string; /** the other lexemes' vocalized headwords, best first, at most 6 (kind two-words) */ rivals?: string[] }
 const verdict = (id: string, detail?: string): ArDeckVerdict => ({ id, reason: `${LIMIT.get(id)!.reason}${detail ? ` (${detail})` : ''}` });
 
 // ───────────────────────────── the word list ─────────────────────────────
@@ -149,6 +163,8 @@ function sameLetters(c: AnalysisCandidate, surface: string): boolean {
   const stem = c.parts?.find((p) => p.kind === 'stem')?.text ?? surface;
   return arKey(stem) === arKey(c.lemma ?? '');
 }
+/** The vocalized headwords of some readings, best first, once each, at most 6. */
+const headsOf = (cs: readonly AnalysisCandidate[]): string[] => [...new Set(cs.filter((c) => c.lemma).map((c) => arHeadForm(c.lemma!, c.pos ?? 'NOUN')))].slice(0, 6);
 const lemmaKey = (c: AnalysisCandidate): string => `${c.lemma ?? ''}|${c.pos ?? ''}`;
 
 /** The known-limits entry of a written token: the printed (vocalized) form first, then its unvocalized key when the page printed no vowels. */
@@ -174,10 +190,10 @@ export function arDeckVerdict(surface: string, cands: readonly AnalysisCandidate
   const identity = text(notes.identity);
   if (top.confidence < 0.5 || identity === 'undecided' || identity === 'partial' || identity === 'rare') {
     const rivals = new Set(cands.filter((c) => c.confidence >= top.confidence - 0.15 && c.lemma).map(lemmaKey));
-    if (rivals.size >= 2) return { id: 'undecided', reason: `undecided between ${rivals.size} readings: more evidence must decide` };
+    if (rivals.size >= 2) return { id: 'undecided', reason: `undecided between ${rivals.size} readings: more evidence must decide`, rivals: headsOf(cands.filter((c) => c.confidence >= top.confidence - 0.15)) };
     return verdict('undecided', identity === 'partial' ? 'the word list for this spelling is not loaded' : identity === 'rare' ? 'a rare reading of a short unvocalized word' : `confidence ${top.confidence}`);
   }
-  if (cands.some((c) => c !== top && c.confidence >= 0.5 && !c.unconfirmed && c.lemma && lemmaKey(c) !== lemmaKey(top))) return verdict('two-lexemes');
+  if (cands.some((c) => c !== top && c.confidence >= 0.5 && !c.unconfirmed && c.lemma && lemmaKey(c) !== lemmaKey(top))) return { ...verdict('two-lexemes'), rivals: headsOf(cands.filter((c) => c !== top && c.confidence >= 0.5 && !c.unconfirmed && lemmaKey(c) !== lemmaKey(top))) };
   if (text(notes.pluralEntry)) return verdict('plural-entry');
   if ((top.pos === 'PRON' || top.pos === 'DET') && (!sameLetters(top, surface) || spelledOtherwise(top.lemma, top.pos))) return verdict('pronoun-form');
   if (text(notes.spelling) === 'restored' && identity !== 'main') return verdict('restored-spelling');
@@ -185,6 +201,7 @@ export function arDeckVerdict(surface: string, cands: readonly AnalysisCandidate
   const closed = closedGloss(top.lemma, top.pos);
   if (!row && closed === undefined) return verdict('not-an-entry');
   if (!(closed ?? row?.[1] ?? '').trim()) return verdict('no-meaning');
+  if (/(^|\s)\d+\.\s/u.test(top.gloss ?? '')) return verdict('numbered-gloss');
   const lead = (top.gloss ?? closed ?? row?.[1] ?? '').replace(/^\s*\d+\.\s*/u, '').trim();
   const verbal = top.pos === 'VERB' || top.pos === 'AUX';
   const toLead = /^to\b/iu.test(lead);
@@ -193,7 +210,11 @@ export function arDeckVerdict(surface: string, cands: readonly AnalysisCandidate
   if (limited) return { id: 'known-misread-form', reason: `${LIMIT.get('known-misread-form')!.reason} (${limited})` };
   const badLemma = (AR_LIMITED_LEMMAS as Record<string, string>)[`${arHeadForm(top.lemma, top.pos)}|${top.pos}`];
   if (badLemma) return { id: 'known-misread-lemma', reason: `${LIMIT.get('known-misread-lemma')!.reason} (${badLemma})` };
-  if (closed === undefined && row && !arSenseOk(row)) return verdict('sense-unreviewed');
+  const shown = top.gloss ?? closed ?? '';
+  const merged = /^\s*1\.\s/u.test(shown) || !!text(notes.homonyms);
+  const handOk = closed !== undefined && !merged;
+  const rowOk = !!row && arSenseOk(row) && (!text(notes.homonyms) || arSenseClass(row) === 'Rev');
+  if (!handOk && !rowOk) return verdict('sense-unreviewed');
   return undefined;
 }
 
@@ -210,6 +231,7 @@ export function arMarkForDeck(tokens: readonly RawToken[], analyzed: AnalyzedTok
     if (!token?.isWord || !a.candidates.length) return a;
     const v = arDeckVerdict(token.surface, a.candidates);
     if (!v) return a;
-    return { ...a, candidates: a.candidates.map((c) => ({ ...c, notes: { ...c.notes, reviewStatus: 'requires-review', reviewReason: v.reason, deckLimit: v.id } })) };
+    const gate: Record<string, string> = LIMIT.get(v.id)!.reading ? { reviewGate: 'yes' } : {};
+    return { ...a, candidates: a.candidates.map((c) => ({ ...c, notes: { ...c.notes, reviewStatus: 'requires-review', reviewReason: v.reason, deckLimit: v.id, reviewKind: LIMIT.get(v.id)!.kind, ...(v.rivals?.length ? { reviewRivals: v.rivals } : {}), ...gate } })) };
   });
 }

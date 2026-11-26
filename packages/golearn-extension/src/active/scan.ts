@@ -79,7 +79,8 @@ export function wordsOfText(raw: string, adapter: LanguageAdapter, languageId: s
     const candidates = analysed[i]?.candidates ?? [];
     // the first of the highest confidence, as the scanner always chose it
     const best = candidates.length ? candidates.reduce((m, c) => (c.confidence > m.confidence ? c : m), candidates[0]) : undefined;
-    const creditable = (c: (typeof candidates)[number] | undefined): boolean => !!c?.lemma && !c.unconfirmed && c.confidence >= LEMMA_MIN_CONFIDENCE;
+    // a reading the language's deck gate holds (notes.reviewGate = 'yes') is credited to its FORM id only
+    const creditable = (c: (typeof candidates)[number] | undefined): boolean => !!c?.lemma && !c.unconfirmed && c.confidence >= LEMMA_MIN_CONFIDENCE && c.notes?.reviewGate !== 'yes';
     const lemmaId = (c: (typeof candidates)[number]): string => `lemma:${languageId}:${c.lemma}${c.pos ? ':' + c.pos : ''}`;
     const known = creditable(best);
     const readings: string[] = [];

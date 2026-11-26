@@ -17,7 +17,7 @@ import path from 'node:path';
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 import { shardsPresent } from '../../scripts/ar-deck-limits-lib.mts';
 import { arDeckSenseWhenAbsent } from '../../src/adapters/arabic/deck';
-import { runDeckAudit, type AuditResult, type AuditText, type GoldSentence } from './arabic-deck-audit.support';
+import { REVIEWED_EQUIVALENT_MEANINGS, runDeckAudit, type AuditResult, type AuditText, type GoldSentence } from './arabic-deck-audit.support';
 
 const fixture = JSON.parse(fs.readFileSync(path.resolve('test/fixtures/arabic/deck-audit.json'), 'utf8')) as { frozen: string; _about: string; wordCount: number; sentences: GoldSentence[] };
 const TEXTS: AuditText[] = fixture.sentences.map((s) => ({ id: s.id, text: s.text, gold: s.tokens }));
@@ -29,7 +29,7 @@ const NAMED_TEXTS: AuditText[] = NAMED.map((w, i) => ({ id: `ab1-${i}`, text: w 
 const show = (label: string, r: AuditResult): void => {
   const f = r.figures;
   console.log([
-    `ARABIC DECK AUDIT, ${label}: ${r.words} words (${r.distinctWords} distinct)`,
+    `ARABIC DECK AUDIT, ${label}: ${r.words} words (${r.distinctWords} distinct); reviewed-equivalent meanings in the table: ${REVIEWED_EQUIVALENT_MEANINGS.length}`,
     `  admitted ${f.admitted} (lemma ${f.admitted - f.formCards}, FORM ${f.formCards}); false ${f.false}; unknown or fragment ${f.unknownOrFragment}; admitted with no gold behind them ${f.unchecked}`,
     `  held back ${f.held} distinct words = ${(100 * f.heldShare).toFixed(1)}% of distinct words; by rule: ${JSON.stringify(f.heldByReason)}`,
     `  readings kept on the card: ${r.candidatesStillThere} of ${r.readingsKept} word tokens still have their readings`,
@@ -43,8 +43,8 @@ const show = (label: string, r: AuditResult): void => {
  * the gold contradicts is FALSE under the owner's rule; the target is an empty list. The list is frozen here so that a NEW one fails the suite, and the day a
  * gloss is reviewed the entry must be deleted (the second assertion fails when a listed card is no longer a finding).
  */
-const OPEN_MEANING_FINDINGS: string[] = ['lemma:ar:وِزَارَة:NOUN'];
-const isMeaning = (p: string): boolean => /leading meaning|does not begin|is labelled/u.test(p);
+const OPEN_MEANING_FINDINGS: string[] = [];
+const isMeaning = (p: string): boolean => /leading meaning|does not begin|is labelled|numbered merge/u.test(p);
 
 describe.skipIf(!shardsPresent())('the Arabic deck audit: real path, today\'s rules', () => {
   let r: AuditResult;
@@ -100,4 +100,36 @@ describe.skipIf(!shardsPresent())('the Arabic deck audit: SIMULATION of the merg
     const named = new Set(r.cards.filter((c) => c.behind.some((b) => b.sentence.startsWith('ab1-') && AB1_SURFACES.has(b.surface))).map((c) => c.unitId));
     expect([...named]).toEqual([]);
   });
+});
+
+const MEANING_HOLDS = new Set(['sense-unreviewed', 'gloss-pos', 'no-meaning', 'plural-entry']);
+
+describe.skipIf(!shardsPresent())('the two kinds of hold, proved through the real path', () => {
+  let r: AuditResult;
+  beforeAll(async () => { r = await runDeckAudit([...TEXTS]); }, 900_000);
+  afterAll(() => arDeckSenseWhenAbsent());
+
+  it('kind 2 (a real lemma whose first MEANING is unreviewed): the lemma is still credited, and neither its lemma unit nor a form unit yields a card', () => {
+    const held = r.held.filter((h) => MEANING_HOLDS.has(h.limit));
+    expect(held.length).toBeGreaterThan(0);
+    const cardIds = new Set(r.cards.map((c) => c.unitId));
+    for (const h of held) {
+      expect(h.unitIds.some((i) => i.startsWith('lemma:ar:')), `${h.surface} keeps its lemma id in the vocabulary`).toBe(true);
+      for (const id of h.unitIds) expect(cardIds.has(id), `${h.surface}: ${id}`).toBe(false);
+    }
+    expect(r.cards.filter((c) => c.kind === 'form')).toEqual([]);
+  });
+
+  it('the same lemma becomes card-eligible once its meaning is reviewed: Sense=Ord gives no card, Sense=Rev gives one', async () => {
+    const candidates = r.held.filter((h) => h.limit === 'sense-unreviewed').flatMap((h) => h.unitIds.filter((i) => i.startsWith('lemma:ar:'))).slice(0, 6);
+    expect(candidates.length).toBeGreaterThan(0);
+    const patch = (lex: string): Record<string, string> => Object.fromEntries(candidates.map((id) => { const m = /^lemma:ar:(.*):([A-Z]+)$/u.exec(id)!; return [`${m[1]}|${m[2]}`, lex]; }));
+    const texts = candidates.map((id, i) => ({ id: `flip-${i}`, text: /^lemma:ar:(.*):[A-Z]+$/u.exec(id)![1] }));
+    const ord = await runDeckAudit(texts, { patchLex: patch('Sense=Ord') });
+    expect(ord.cards.filter((c) => candidates.includes(c.unitId))).toEqual([]);
+    const rev = await runDeckAudit(texts, { patchLex: patch('Sense=Rev') });
+    const admitted = rev.cards.filter((c) => candidates.includes(c.unitId));
+    expect(admitted.length, 'at least one of the reviewed lemmas becomes a card').toBeGreaterThan(0);
+    expect(admitted.every((c) => c.kind === 'lemma')).toBe(true);
+  }, 900_000);
 });

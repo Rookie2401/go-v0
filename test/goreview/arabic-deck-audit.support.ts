@@ -55,14 +55,29 @@ export interface AuditResult {
   figures: { admitted: number; false: number; unknownOrFragment: number; formCards: number; held: number; heldShare: number; heldByReason: Record<string, number>; unchecked: number };
 }
 
-const files = (async (input: RequestInfo | URL) => {
+/** The assets as a server would serve them; `patchLex` rewrites the `lex` of named lemma rows ("head|POS" -> "Sense=Rev") in every shard it serves: the "same row, reviewed" proof. */
+const makeFiles = (patchLex: Record<string, string> = {}): typeof fetch => (async (input: RequestInfo | URL) => {
   const url = new URL(String(input), 'http://assets.local/');
   const file = path.join(PUBLIC, decodeURIComponent(url.pathname));
   if (!fs.existsSync(file) || fs.statSync(file).isDirectory()) return new Response('not found', { status: 404 });
   const bytes = fs.readFileSync(file);
-  return new Response(file.endsWith('.gz') ? zlib.gunzipSync(bytes) : bytes);
+  if (!file.endsWith('.gz')) return new Response(bytes);
+  const raw = zlib.gunzipSync(bytes);
+  if (!Object.keys(patchLex).length) return new Response(raw);
+  const shard = JSON.parse(raw.toString('utf8')) as { lemmas?: Record<string, string[]> };
+  for (const [k, lex] of Object.entries(patchLex)) if (shard.lemmas?.[k]) shard.lemmas[k][3] = lex;
+  return new Response(JSON.stringify(shard));
 }) as typeof fetch;
+const files = makeFiles();
 
+/**
+ * MEANINGS A PERSON HAS DECIDED ARE THE SAME THING although the keyword check cannot see it. Visible on purpose: every entry says who decided and why,
+ * the summary line prints the size of this table, and a card counts as correct through it only when lemma, gold meaning AND the meaning shown all match.
+ */
+export const REVIEWED_EQUIVALENT_MEANINGS: ReadonlyArray<{ lemma: string; goldMeaning: string; shown: string; decidedBy: string; why: string }> = [
+  { lemma: '\u0648\u0650\u0632\u064E\u0627\u0631\u064E\u0629', goldMeaning: 'ministry', shown: 'a government department', decidedBy: 'the lead (release manager), fix batch 1, 2026-11-26',
+    why: 'a ministry is a government department; the card shows the modern sense in the source\'s own words (the source lists "the office, responsibility, or burden of ministry", an archaic sense, and "a government department")' },
+];
 const STOP = new Set(['to', 'a', 'an', 'the', 'of', 'be', 'or', 'and', 'in', 'is']);
 /** A word without its plural / third-person s (towards = toward, ministers = minister). */
 const stem = (w: string): string => (w.length > 3 ? w.replace(/s$/u, '') : w);
@@ -91,6 +106,8 @@ const event = (id: string, unitId: string, n: number, at: string): GoEvent => ({
 export interface RunOptions {
   /** the merge simulation: an index row with no `Sense` key is read as One (labelled in every report that uses it) */
   senseWhenAbsent?: 'One';
+  /** "head|POS" -> the `lex` string its index row is served with (e.g. "Sense=Ord", "Sense=Rev") */
+  patchLex?: Record<string, string>;
 }
 
 /** The ids a GoReview-bound card names. */
@@ -151,7 +168,8 @@ export async function runDeckAudit(texts: AuditText[], opts: RunOptions = {}): P
   // 3. GoReview's side: the product's own loader starts from the core and loads the shards the units need
   resetArabicIndexes((idx) => idx === 'ar-core');
   const prefs = { ...DEFAULT_PREFERENCES('ar'), varietyId: 'ar-standard', maxNew: 5000, dailyNewLimit: 5000, cardsPerDeck: 5000 };
-  const factsFor = packFactsFor({ fetch: files, baseUrl: 'http://assets.local/' });
+  const served = makeFiles(opts.patchLex);
+  const factsFor = packFactsFor({ fetch: served, baseUrl: 'http://assets.local/' });
   const engine = createReviewEngine({ builders: registry, evidenceFor, ratingFor, now: () => NOW, random: () => 0, factsFor });
   const unresolved: VocabularyItem[] = knowledge.filter((k) => !stored.has(k.unitId)).map((k) => ({ knowledge: k, surfaceForms: [], sources: [] }));
   const recovered = await engine.recoverCandidates!({ api, enrolmentId: ENROLMENT, languageId: 'ar', varietyId: 'ar-standard', prefs, events, deck: [], knowledge, unresolvedVocabulary: unresolved, existingCandidates: [], now: NOW });
@@ -186,8 +204,9 @@ export async function runDeckAudit(texts: AuditText[], opts: RunOptions = {}): P
       const golds = b.map((x) => x.gold).filter((g): g is GoldToken => !!g);
       for (const g of golds) {
         if (g.lemma && arKey(g.lemma) !== arKey(head)) problems.push(`gold lemma ${g.lemma} for ${g.surface}, card ${head}`);
-        if (g.meaning && glosses[0] && !meaningFits(glosses[0], g.meaning)) problems.push(`leading meaning "${glosses[0]}" does not fit gold "${g.meaning}" (${g.surface})`);
+        if (g.meaning && glosses[0] && !meaningFits(glosses[0], g.meaning) && !REVIEWED_EQUIVALENT_MEANINGS.some((e) => e.lemma === head && e.goldMeaning === g.meaning && e.shown === glosses[0])) problems.push(`leading meaning "${glosses[0]}" does not fit gold "${g.meaning}" (${g.surface})`);
       }
+      if (glosses[0] && /(^|\s)\d+\.\s/u.test(glosses[0])) problems.push(`the first meaning is a numbered merge of several entries: "${glosses[0]}"`);
       if (glosses[0]) {
         const verb = pos === 'VERB' || pos === 'AUX';
         if (verb && !/^to /iu.test(glosses[0].replace(/^\d+\.\s*/u, ''))) problems.push(`a VERB card whose leading meaning "${glosses[0]}" does not begin "to "`);

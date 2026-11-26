@@ -174,9 +174,55 @@ describe('rule (f): the first meaning fits the part of speech', () => {
   afterAll(() => { uninstallArabicIndex(EXTRA.id); });
   it('passes a verb whose meaning begins "to " and refuses one that does not, and a noun / adjective whose meaning does', () => {
     expect(id(PLAIN, [cand(FI3L, { pos: 'VERB', gloss: 'to do' })])).toBeUndefined();
-    expect(id(PLAIN, [cand(FI3L, { pos: 'VERB', gloss: '1. to do 2. to make' })])).toBeUndefined();
+    expect(id(PLAIN, [cand(FI3L, { pos: 'VERB', gloss: '1. to do 2. to make' })])).toBe('numbered-gloss');
     expect(id(PLAIN, [cand(FI3L2, { pos: 'VERB', gloss: 'come !' })])).toBe('gloss-pos');
     expect(id(PLAIN, [cand(KITAB, { pos: 'ADJ', gloss: 'to be big' })])).toBe('gloss-pos');
     expect(id(PLAIN, [cand(KITAB, { pos: 'NOUN', gloss: 'book' })])).toBeUndefined();
+  });
+});
+
+describe('rule (e) for a closed-class lexeme: a single hand gloss, never a numbered merge or a homonym merge', () => {
+  const FI = 'فِي';
+  it('passes a single hand-written gloss; refuses a numbered merge and a homonym merge', () => {
+    expect(id(PLAIN, [cand(FI, { pos: 'ADP', gloss: 'in' })])).toBeUndefined();
+    expect(id(PLAIN, [cand(FI, { pos: 'ADP', gloss: '1. in 2. into' })])).toBe('numbered-gloss');
+  });
+});
+
+describe('rule (g): a numbered merge of dictionary entries is held, and stops being held when the gloss is one meaning', () => {
+  it('holds "1. chief, leader 2. big" and "1. to say 2. To nap"; passes the clean meaning', () => {
+    const KB = '\u0643\u064E\u0628\u0650\u064A\u0631';
+    const extra: ArabicFormIndex = { ...SYNTHETIC, id: 'deck-gate-test-num', lemmas: { [`${KB}|ADJ`]: [KB, 'big', 'ADJ', 'Sense=Rev', 5] } };
+    installArabicIndex(extra);
+    try {
+      expect(id(PLAIN, [cand(KB, { pos: 'ADJ', gloss: '1. chief, leader 2. big' })])).toBe('numbered-gloss');
+      expect(arDeckVerdict(PLAIN, [cand(KB, { pos: 'ADJ', gloss: '1. chief, leader 2. big' })])?.reason).toBe('several dictionary entries share this headword: the meaning shown has not been separated');
+      expect(id(PLAIN, [cand(KB, { pos: 'ADJ', gloss: 'big' })])).toBeUndefined();
+      expect(id(PLAIN, [cand(KB, { pos: 'ADJ', gloss: '3.5 mm big' })])).toBeUndefined();
+    } finally { uninstallArabicIndex(extra.id); }
+  });
+});
+
+describe('reviewKind and reviewRivals (the names the GoLearn card reads)', () => {
+  const KINDS: Record<string, string> = {
+    'no-reading': 'unlisted', 'not-an-entry': 'unlisted', derived: 'unlisted', 'no-meaning': 'no-meaning', undecided: 'two-words', 'two-lexemes': 'two-words',
+    'numbered-gloss': 'undecided-entry', guess: 'low-confidence', 'restored-spelling': 'low-confidence', 'known-misread-form': 'known-limit', 'known-misread-lemma': 'known-limit',
+    'plural-entry': 'other-listed-word', 'pronoun-form': 'other-listed-word', dialect: 'other-variety', 'sense-unreviewed': 'meaning-unreviewed', 'gloss-pos': 'meaning-unreviewed',
+  };
+  it('every rule of the table has the agreed kind, and kind 2 (meaning) rules set no reviewGate', () => {
+    expect(Object.fromEntries(AR_DECK_LIMITS.map((l) => [l.id, l.kind]))).toEqual(KINDS);
+    expect(AR_DECK_LIMITS.filter((l) => l.kind === 'meaning-unreviewed').every((l) => !l.reading)).toBe(true);
+  });
+  it('a marked token carries reviewKind, and for two words the rivals\' vocalized headwords, best first (strings in an array)', () => {
+    const toks = [{ surface: PLAIN, normalized: PLAIN, start: 0, end: 3, isWord: true } as RawToken];
+    const out = arMarkForDeck(toks, [{ token: toks[0], candidates: [cand(KITAB, { confidence: 0.45 }), cand(QALAM, { confidence: 0.45 }), cand(AYN, { confidence: 0.4 })], analyzer: 'ar' } as AnalyzedToken]);
+    const n = out[0].candidates[0].notes!;
+    expect(n.reviewKind).toBe('two-words');
+    expect(n.reviewGate).toBe('yes');
+    expect(Array.isArray(n.reviewRivals) && (n.reviewRivals as string[]).length).toBe(3);
+    expect((n.reviewRivals as string[])[0]).toBe(KITAB);
+    const held = arMarkForDeck(toks, [{ token: toks[0], candidates: [cand(BAYT)], analyzer: 'ar' } as AnalyzedToken]);
+    expect(held[0].candidates[0].notes).toMatchObject({ reviewKind: 'meaning-unreviewed', deckLimit: 'sense-unreviewed' });
+    expect(held[0].candidates[0].notes?.reviewGate).toBeUndefined();
   });
 });

@@ -82,7 +82,10 @@ describe.skipIf(!have)('the built extension', () => {
     // 2026-11-19 (French pack, after merging master 22be2d7e): 840 -> 880 KB. The same French text reaches the setup page (manifest,
     // construction explanations, orientation: 37.6 KB on 985c742b). Measured 896,583 bytes = 875.6 KB on the merged tree.
     // 2026-11-19 (release/ru-fr, both packs on master 3d92b264): 880 -> 910 KB. app.js measured 926,340 bytes = 904.6 KB with Russian and French (setup page built with GOLEARN_APP_DICT=sq,ru,fr).
-    if (sizes.has('app/app.js')) expect(sizes.get('app/app.js')!, 'app/app.js').toBeLessThanOrEqual(910 * KB);
+    // 2026-11-26: 910 -> 915 KB. The Languages page took GoReview's language display (b0b86316: 931,462 bytes, 378 under the ceiling) and
+    // then its top bar's symbols (app/barIcons.ts: the globe, the person, the cog and the arrow as inline SVG paths, about 1.5 KB; the
+    // sentences cut from the head of the page give 0.6 KB back). app.js measured 932,398 bytes = 910.5 KB (GOLEARN_APP_DICT default).
+    if (sizes.has('app/app.js')) expect(sizes.get('app/app.js')!, 'app/app.js').toBeLessThanOrEqual(915 * KB);
     for (const id of ['sq', 'es', 'de', 'hi', 'th', 'nb', 'nn', 'ru', 'fr']) expect(sizes.has(`analysers/${id}.js`), `analysers/${id}.js`).toBe(true);
   });
 

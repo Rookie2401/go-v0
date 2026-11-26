@@ -136,7 +136,11 @@ export class ArSentence {
   /** adjective token → the noun it was attached to (rule g), so a governor's case passes on. */
   readonly adjOf = new Map<number, number>();
 
-  constructor(readonly tokens: readonly RawToken[], readonly cands: Cand[][], readonly edit: boolean[], readonly raise: boolean[]) {
+  /** Tokens whose readings the dialect and foreign-script flags may lower and annotate (also lists handed in as given: lowering and notes are allowed there). */
+  flag: boolean[];
+
+  constructor(readonly tokens: readonly RawToken[], readonly cands: Cand[][], readonly edit: boolean[], readonly raise: boolean[], flag?: boolean[]) {
+    this.flag = flag ?? edit.slice();
     this.n = tokens.length;
     this.keys = tokens.map((t) => (t.isWord ? arKey(t.surface) : ''));
     this.word = tokens.map((t, i) => t.isWord && cands[i].length > 0);
@@ -1083,12 +1087,12 @@ function applyCases(s: ArSentence): void {
 // ───────────────────────────── the sentence as a whole ─────────────────────────────
 
 /** Writes the dialect flag on every reading of a sentence: capped, marked, nothing credited. */
-function flagDialect(s: ArSentence, idx: number[], variety: string, markers: string[], markerAt: ReadonlySet<number>): void {
+function flagDialect(s: ArSentence, idx: number[], variety: string, markers: string[]): void {
   for (const i of idx) {
-    if (!s.edit[i]) continue;
-    // a marker word the lexicon has no reading for still shows what it is: one uncredited reading without a lemma
-    if (!s.cands[i].length && markerAt.has(i) && s.raise[i]) {
-      s.cands[i].push({ morph: {}, confidence: 0.2, unconfirmed: true, origin: 'rule', sourceId: AR_SOURCE_IDS.rules, notes: { source: 'rule', role: 'dialect word' } });
+    if (!s.flag[i]) continue;
+    // a word the lexicon has no reading for still shows what the sentence is: one uncredited reading without a lemma
+    if (!s.cands[i].length && s.raise[i]) {
+      s.cands[i].push({ morph: {}, confidence: 0.2, unconfirmed: true, origin: 'rule', sourceId: AR_SOURCE_IDS.rules, notes: { source: 'rule', role: 'dialect sentence' } });
     }
     for (const c of s.cands[i]) {
       if (c.confidence > UNDECIDED) c.confidence = UNDECIDED;
@@ -1101,7 +1105,7 @@ function flagDialect(s: ArSentence, idx: number[], variety: string, markers: str
 /** Writes the foreign-script flag: every reading unconfirmed and at 0.35 or less, so nothing is credited. */
 function flagForeign(s: ArSentence, idx: number[], reason: string): void {
   for (const i of idx) {
-    if (!s.edit[i]) continue;
+    if (!s.flag[i]) continue;
     for (const c of s.cands[i]) {
       c.unconfirmed = true;
       if (c.confidence > 0.35) c.confidence = 0.35;
@@ -1145,11 +1149,11 @@ const dialectOptions = {
 };
 
 /** The sentence layer over readings already made: the lists in `base` are copied and ordered; the input is never changed. */
-export function orderArSentence(tokens: readonly RawToken[], base: readonly Cand[][], opts: { varietyId?: string; edit?: boolean[]; raise?: boolean[] } = {}): Cand[][] {
+export function orderArSentence(tokens: readonly RawToken[], base: readonly Cand[][], opts: { varietyId?: string; edit?: boolean[]; raise?: boolean[]; flag?: boolean[] } = {}): Cand[][] {
   const cands = base.map((cs) => cs.map(cloneCand));
   const edit = tokens.map((_, i) => opts.edit?.[i] ?? true);
   const raise = tokens.map((_, i) => opts.raise?.[i] ?? true);
-  const s = new ArSentence(tokens, cands, edit, raise);
+  const s = new ArSentence(tokens, cands, edit, raise, tokens.map((_, i) => opts.flag?.[i] ?? edit[i]));
   for (const group of sentenceGroups(tokens)) {
     const wordsIn = group.filter((i) => tokens[i].isWord);
     if (!wordsIn.some((i) => cands[i].length > 0)) continue;
@@ -1159,7 +1163,7 @@ export function orderArSentence(tokens: readonly RawToken[], base: readonly Cand
     if (opts.varietyId !== 'ar-cla') {
       const dia = arDialectSignals(sub, dialectOptions);
       if (dia) {
-        flagDialect(s, wordsIn, dia.variety, dia.markers, new Set(dia.indexes.map((x) => group[x])));
+        flagDialect(s, wordsIn, dia.variety, dia.markers);
         wordsIn.forEach((i) => { s.edit[i] = false; });
       }
     }
@@ -1206,6 +1210,9 @@ export function arRefine(tokens: RawToken[], analyzed: AnalyzedToken[], analyzer
   const own = (i: number): boolean => analyzed[i].analyzer === AR_ANALYZER && analyzers.has(AR_ANALYZER) && !given?.has(i);
   const editable = (i: number): boolean => tokens[i].isWord && !given?.has(i) && analyzers.has(analyzed[i].analyzer);
   const base = tokens.map((t, i) => (!t.isWord ? [] : own(i) ? arWordCandidates(t) : analyzed[i].candidates));
-  const ordered = orderArSentence(tokens, base, { edit: tokens.map((_, i) => editable(i)), raise: tokens.map((_, i) => own(i)) });
-  return tokens.map((_, i) => (!editable(i) ? analyzed[i] : { ...analyzed[i], candidates: ordered[i] }));
+  // a list handed in (`given`) of this analyser is not made again and no rule moves it, but the sentence flags may lower and annotate it
+  const flaggable = (i: number): boolean => tokens[i].isWord && analyzers.has(analyzed[i].analyzer);
+  const ordered = orderArSentence(tokens, base, { edit: tokens.map((_, i) => editable(i)), raise: tokens.map((_, i) => own(i)), flag: tokens.map((_, i) => flaggable(i)) });
+  const flagged = (i: number): boolean => ordered[i].some((c) => c.notes?.variety === 'dialect?' || typeof c.notes?.notArabic === 'string');
+  return tokens.map((_, i) => (editable(i) ? { ...analyzed[i], candidates: ordered[i] } : flaggable(i) && flagged(i) ? { ...analyzed[i], candidates: ordered[i] } : analyzed[i]));
 }

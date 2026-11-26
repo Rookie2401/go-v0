@@ -173,7 +173,7 @@ const stats = {
   headTrimmed: 0, headFromExpansion: 0, headUnvocalized: 0, headKeyMismatch: 0, noCanonical: 0,
   ruleChanged: {} as Record<string, number>, mergedIds: 0, homonymPairs: 0, homonymExtra: 0,
   participleDropped: 0, participleKept: 0,
-  rootEntries: 0, rootMalformed: 0, rootTemplate: 0, rootCategory: 0, rootBoth: 0, rootDisagree: 0, rootCategoryAmbiguous: 0, multiHeadEntries: 0, extraHeads: 0, multiCanonUnsplit: 0, aliasUncontracted: 0, vfFormFromRows: 0, firstPersonGender: 0, firstPersonMerged: 0, vfRowDisagree: 0, vfSubLines: 0, oneTableSplit: 0, glossChoiceTaken: 0, glossChanged: 0, participleEntries: 0, participleOf: 0, idClean: 0, idFail: 0, cliticExcluded: 0, noTableLemmas: 0, noTableWithRow: 0, noTableSpace: 0, adjFemPages: 0, adjFemPagesNew: 0, adjFemLemmas: 0, adjLemmas: 0, coreCompleted: 0, corePartial: 0, corePartialShare: 0, oneTableUnmatched: 0, vfFormFromHead: 0, unvocRows: {} as Record<string, number>, genderTag: 0, genderHead: 0, declUniform: 0, declMixed: 0,
+  rootEntries: 0, rootMalformed: 0, rootTemplate: 0, rootCategory: 0, rootBoth: 0, rootDisagree: 0, rootCategoryAmbiguous: 0, multiHeadEntries: 0, extraHeads: 0, multiCanonUnsplit: 0, aliasUncontracted: 0, vfFormFromRows: 0, firstPersonGender: 0, firstPersonMerged: 0, vfRowDisagree: 0, vfSubLines: 0, oneTableSplit: 0, homonymLexemes: 0, glossLabelChanged: 0, glossChoiceTaken: 0, glossChanged: 0, participleEntries: 0, participleOf: 0, idClean: 0, idFail: 0, cliticExcluded: 0, noTableLemmas: 0, noTableWithRow: 0, noTableSpace: 0, adjFemPages: 0, adjFemPagesNew: 0, adjFemLemmas: 0, adjLemmas: 0, coreCompleted: 0, corePartial: 0, corePartialShare: 0, oneTableUnmatched: 0, vfFormFromHead: 0, unvocRows: {} as Record<string, number>, genderTag: 0, genderHead: 0, declUniform: 0, declMixed: 0,
   regCla: 0, regMsa: 0, resolvedByTier: { samePos: 0, nominal: 0, any: 0 } as Record<string, number>,
 };
 const invalidExamples: string[] = [];
@@ -185,7 +185,7 @@ const unresolved = new Map<string, number>();
 
 type Cell = [form: string, code: number];
 interface Ent {
-  pos: string; word: string; head: string; headRaw: string; etym: number; gloss: string; glossOld: string; senseGlosses: string[]; order: number;
+  pos: string; word: string; head: string; headRaw: string; etym: number; gloss: string; glossOld: string; senseGlosses: string[]; senseLines: string[]; senseClass: string; order: number;
   lex: Record<string, string>; root?: string; table: Cell[]; headline: Cell[]; citation?: number; lemma: number;
 }
 interface PageTarget { target: string; tags: string[]; form?: string }
@@ -277,21 +277,47 @@ function rawGloss(raw: string): string {
   if (t.length > 59) { const sp = t.lastIndexOf(' ', 59); t = sp > 10 ? t.slice(0, sp) : t.slice(0, 59); }
   return tidy(t);
 }
-/** The sense of the gloss: the first sense, unless it is long (or, for a verb, is not a "to …" phrase) and one of the first three senses is shorter and fit. */
-function chooseGloss(real: Record<string, unknown>[], pos: string): string {
-  const withGloss = real.filter((x) => strs(x.glosses).length && !strs(x.tags).includes('no-gloss')).slice(0, 3);
-  const cands = withGloss.map((x) => cleanGloss(strs(x.glosses)[0])).filter((c) => c.length >= 2);
-  if (!cands.length) return withGloss.length ? rawGloss(strs(withGloss[0].glosses)[0]) : '';
-  let first = cands[0];
+/** Source labels that keep a sense from LEADING an entry when an unlabelled sense exists: the source lists senses historically, and these mark the old, the rare, the regional and the figurative. */
+const SKIP_LABELS = new Set(['obsolete', 'archaic', 'dated', 'historical', 'rare', 'uncommon', 'poetic', 'literary', 'dialectal', 'regional', 'obsolete-form', 'misspelling', 'nonstandard', 'proscribed', 'figuratively', 'figurative', 'Egypt', 'Egyptian', 'Levantine', 'Gulf', 'Maghrebi', 'Maghreb', 'Morocco', 'Moroccan', 'Iraq', 'Iraqi', 'Sudan', 'Sudanese', 'Hijazi', 'Yemen', 'Yemeni', 'Kuwait', 'Palestine', 'Palestinian', 'Mauritania', 'al-Andalus', 'Algeria', 'Tunisia', 'Libya', 'Syria', 'Lebanon', 'Jordan', 'Saudi Arabia', 'Oman', 'UAE', 'Bahrain', 'Qatar', 'Najdi', 'Bedouin', 'colloquial', 'slang']);
+/** A line that says the word is a form of another ("plural of قَطْر", "feminine singular of X", "Judeo-Arabic spelling of X"). */
+const FORM_LINE = /^(?:the )?(?:[A-Za-z-]+ ){0,3}(?:plural|dual|singular|feminine|masculine|spelling|form|variant|participle|verbal noun|diminutive|elative|collective|singulative)(?: [A-Za-z-]+){0,2} of /i;
+const labelsOf = (x: Record<string, unknown>): string[] => [...strs(x.tags), ...strs(x.raw_tags)];
+const isLabelled = (x: Record<string, unknown>): boolean => {
+  const t = labelsOf(x);
+  if (t.some((l) => SKIP_LABELS.has(l))) return true;
+  // Classical only: the label Classical without Modern / Standard
+  if (t.includes('Classical') && !t.includes('Modern') && !t.includes('Standard')) return true;
+  return FORM_LINE.test(strs(x.glosses)[0] ?? '');
+};
+interface GlossChoice { text: string; cls: 'One' | 'Lab' | 'Ord' }
+/**
+ * The sense of the gloss: among the senses, those the source labels as obsolete / archaic / dialectal … and the form-of lines do not lead while an unlabelled sense exists;
+ * the first remaining sense leads unless it is long (or, for a verb, not a "to …" phrase) and one of the first three remaining senses is shorter and fit.
+ * Class: One (a single real sense once form lines are set aside), Lab (several senses; the lead stands after labelled ones), Ord (the source's order).
+ */
+function chooseGloss(real: Record<string, unknown>[], pos: string, useLabels = true): GlossChoice {
+  const all = real.filter((x) => strs(x.glosses).length && !strs(x.tags).includes('no-gloss'));
+  if (!all.length) return { text: '', cls: 'Ord' };
+  const body = all.filter((x) => !FORM_LINE.test(strs(x.glosses)[0] ?? ''));
+  const free = all.filter((x) => !isLabelled(x));
+  const pool = useLabels && free.length ? free : all;
+  const withGloss = pool.slice(0, 3);
+  const cands = withGloss.map((x) => ({ c: cleanGloss(strs(x.glosses)[0]), x })).filter((o) => o.c.length >= 2);
+  const klass = (lead: Record<string, unknown> | undefined): 'One' | 'Lab' | 'Ord' => (body.length === 1 ? 'One' : lead && lead === pool[0] && all.indexOf(lead) > 0 ? 'Lab' : 'Ord');
+  if (!cands.length) return { text: rawGloss(strs(withGloss[0].glosses)[0]), cls: klass(undefined) };
+  let first = cands[0].c;
   // a long first sense is tried with its first alternative alone ("day, period from sunrise to sunset" → "day")
   if (first.length > 30 || (pos === 'VERB' && first.length > 20)) { const one = cleanGloss(strs(withGloss[0].glosses)[0], 1); if (one.length >= 2 && one.length < first.length) first = one; }
+  const shortest = (list: Array<{ c: string; x: Record<string, unknown> }>): { c: string; x: Record<string, unknown> } => list.reduce((a, b) => (b.c.length < a.c.length ? b : a));
   if (pos === 'VERB') {
-    if (first.startsWith('to ') && first.length <= 20) return first;
-    const to = [first, ...cands.slice(1)].filter((c) => c.startsWith('to ') && c.length > 3);
-    return to.length ? to.reduce((a, b) => (b.length < a.length ? b : a)) : first;
+    if (first.startsWith('to ') && first.length <= 20) return { text: first, cls: klass(cands[0].x) };
+    const to = [{ c: first, x: cands[0].x }, ...cands.slice(1)].filter((o) => o.c.startsWith('to ') && o.c.length > 3);
+    if (to.length) { const w = shortest(to); return { text: w.c, cls: klass(w.x) }; }
+    return { text: first, cls: klass(cands[0].x) };
   }
-  if (first.length <= 30) return first;
-  return cands.reduce((a, b) => (b.length < a.length ? b : a));
+  if (first.length <= 30) return { text: first, cls: klass(cands[0].x) };
+  const w = shortest([{ c: first, x: cands[0].x }, ...cands.slice(1)]);
+  return { text: w.c, cls: klass(w.x) };
 }
 
 const EXP_LINE = /^#\s*(\S+)\s*\([^)]*\)(?:\s*\/[^/]*\/)?\s*:\s*(.+?)\s+of\s+(\S+)\s*\(/u;
@@ -485,7 +511,9 @@ const EXP_BARE = /^#\s*([a-z][a-z/ -]*?)\s+of\s+(\S+)\s*\(/u;
         if (decls.size === 1) { lex.Decl = [...decls][0]; stats.declUniform++; } else if (decls.size > 1) stats.declMixed++;
         if (isCla) { lex.Reg = 'Cla'; stats.regCla++; } else if (isMsa) { lex.Reg = 'Msa'; stats.regMsa++; }
         const citeTags = canonTags.length ? canonTags : ['canonical'];
-        ents.push({ pos: lpos, word, head: h.head, headRaw: h.head, etym: Number.isFinite(en) ? en : 9999, gloss: chooseGloss(real, lpos), glossOld, senseGlosses: real.map((x) => strs(x.glosses)[0] ?? '').filter(Boolean), order, lex, root, table: tableCells, headline: cellsOf(grp.headline, true), citation: intern(citeTags), lemma: -1 });
+        const cg = chooseGloss(real, lpos);
+        if (chooseGloss(real, lpos, false).text !== cg.text) stats.glossLabelChanged++;
+        ents.push({ pos: lpos, word, head: h.head, headRaw: h.head, etym: Number.isFinite(en) ? en : 9999, gloss: cg.text, senseClass: cg.cls, senseLines: real.filter((x) => strs(x.glosses).length).map((x) => `[${labelsOf(x).join(',')}] ${strs(x.glosses)[0]}`.slice(0, 70)), glossOld, senseGlosses: real.map((x) => strs(x.glosses)[0] ?? '').filter(Boolean), order, lex, root, table: tableCells, headline: cellsOf(grp.headline, true), citation: intern(citeTags), lemma: -1 });
       }
     }
 
@@ -514,6 +542,13 @@ console.log(`read ${fmt(stats.lines)} lines: ${fmt(stats.lemmaEntries)} lemma en
 const lemmaIds: string[] = [];
 const glossChoices: Record<string, string[]> = !flags.has('no-gloss-choices') && fs.existsSync(GLOSS_CHOICES_PATH) ? ((JSON.parse(fs.readFileSync(GLOSS_CHOICES_PATH, 'utf8')) as { choices?: Record<string, string[]> }).choices ?? {}) : {};
 const glossChoiceNone: string[] = [];
+const reviewedHolder = new Map<string, number>(); // lexeme → the lemma id whose entry holds the sense a reviewed choice matched
+function setLex(l: number, key: string, val: string): void {
+  const kv: Record<string, string> = {};
+  for (const p of lemmaRows[l][3].split('|')) { const i = p.indexOf('='); if (i > 0) kv[p.slice(0, i)] = p.slice(i + 1); }
+  kv[key] = val;
+  lemmaRows[l][3] = Object.keys(kv).sort().map((k) => `${k}=${kv[k]}`).join('|');
+}
 const lemmaRows: ArLemmaRow[] = [];
 const lemmaKeys: string[][] = [];
 const lemmaOfEnt: number[] = [];
@@ -546,7 +581,7 @@ const byKey = new Map<string, number[]>(); // key of a head → lemma numbers
     for (const m of changed) { if (exact.length) { m.lemma = exact[0].lemma; stats.mergedIds++; } else m.lemma = next(m); }
     void idOf;
     if (nth > 1) { stats.homonymPairs++; stats.homonymExtra += nth - 1; }
-    for (const m of members) lemmaOfEnt.push(m.lemma);
+    for (const m of members) { lemmaOfEnt.push(m.lemma); }
     const kws = glossChoices[g];
     if (kws) {
       // the reviewed choice: the first source sense (over every entry of the head and part of speech) whose gloss holds a keyword as a whole word; the lead id of the lexeme and the entry
@@ -564,10 +599,12 @@ const byKey = new Map<string, number[]>(); // key of a head → lemma numbers
       outer: for (const firstOnly of [true, false]) for (const m of members) for (const sg of m.senseGlosses) { const c = pick(sg, firstOnly); if (c) { hit = { m, text: c }; break outer; } }
       if (hit) {
         stats.glossChoiceTaken++;
-        lemmaRows[members[0].lemma][1] = hit.text;
         lemmaRows[hit.m.lemma][1] = hit.text;
+        hit.m.senseClass = 'Rev';
+        reviewedHolder.set(g, hit.m.lemma);
       } else glossChoiceNone.push(g);
     }
+    for (const m of members) if (!/(^|\|)Sense=/.test(lemmaRows[m.lemma][3])) setLex(m.lemma, 'Sense', m.senseClass);
   }
 }
 // the root of a merged entry fills a gap of the entry it merged into
@@ -784,6 +821,18 @@ for (const [k, v] of Object.entries(identities)) {
   idInfo.set(k, { n, stem, raw: v });
   if (n !== undefined) { mainByKey.set(k, n); if (stem !== k && !mainByKey.has(stem) && !(stem in identities)) mainByKey.set(stem, n); }
 }
+// homonym siblings (one head, one part of speech): Homonyms=N on each, Lead=Yes on the lead id: the id the reviewed identities name, else the one whose sense a reviewed gloss choice matched, else the first
+const lexemeIds = new Map<string, number[]>();
+lemmaIds.forEach((id, l) => { const lx = id.split('|').slice(0, 2).join('|'); (lexemeIds.get(lx) ?? lexemeIds.set(lx, []).get(lx)!).push(l); });
+const leadOfLexeme = new Map<string, number>();
+{
+  const named = new Set<number>(mainByKey.values());
+  for (const [lx, ids] of lexemeIds) {
+    const lead = ids.find((l) => named.has(l)) ?? (reviewedHolder.has(lx) ? reviewedHolder.get(lx)! : ids[0]);
+    leadOfLexeme.set(lx, lead);
+    if (ids.length > 1) { for (const l of ids) setLex(l, 'Homonyms', String(ids.length)); setLex(lead, 'Lead', 'Yes'); stats.homonymLexemes++; }
+  }
+}
 const shareCounts = new Array<number>(lemmaIds.length).fill(0); // the old definition (frequency / holders): used only to admit closed classes to the core
 let identityApplied = 0;
 let identityUnknown = 0;
@@ -960,12 +1009,27 @@ for (const k of keys) {
 for (const [k, ip] of idInfo) if (ip.n !== undefined) { const f = freq.get(k) ?? 0; if (f) { addTo(groupCount, groupOf[ip.n], f); identityApplied++; } }
 for (let l = 0; l < lemmaRows.length; l++) lemmaRows[l][4] = Math.round((groupCount.get(groupOf[l]) ?? 0) + SECOND_WEIGHT * (groupSecond.get(groupOf[l]) ?? 0));
 const zeroCount = lemmaRows.filter((r) => r[4] === 0).length;
+const senseClassOf = (l: number): string => /(^|\|)Sense=(\w+)/.exec(lemmaRows[l][3])?.[2] ?? '?';
+const classTotals: Record<string, number> = { Rev: 0, One: 0, Lab: 0, Ord: 0 };
+const classTop: Record<string, number> = { Rev: 0, One: 0, Lab: 0, Ord: 0 };
+{
+  const withRows = lemmaKeys.map((k) => k.length > 0);
+  for (let l = 0; l < lemmaIds.length; l++) if (withRows[l]) classTotals[senseClassOf(l)] = (classTotals[senseClassOf(l)] ?? 0) + 1;
+  const entOf = new Map<number, Ent>();
+  for (const en of ents) if (!entOf.has(en.lemma)) entOf.set(en.lemma, en);
+  const leads = [...leadOfLexeme.values()].filter((l) => ['NOUN', 'VERB', 'ADJ', 'ADV'].includes(lemmaRows[l][2]) && withRows[l]).sort((a, b) => lemmaRows[b][4] - lemmaRows[a][4] || (lemmaIds[a] < lemmaIds[b] ? -1 : 1)).slice(0, 2000);
+  for (const l of leads) classTop[senseClassOf(l)] = (classTop[senseClassOf(l)] ?? 0) + 1;
+  if (opt['top-lexemes']) {
+    const out = leads.map((l) => [lemmaIds[l], String(lemmaRows[l][4]), senseClassOf(l), lemmaRows[l][1], ...(entOf.get(l)?.senseLines ?? [])].join('\t'));
+    fs.writeFileSync(opt['top-lexemes'], `id\tcount\tclass\tgloss\tsenses\n${out.join('\n')}\n`);
+  }
+}
 if (opt['gloss-of-file']) {
   const oldGloss = new Map<string, string>();
   for (const en of ents) oldGloss.set(lemmaIds[en.lemma], en.glossOld);
   for (const h of fs.readFileSync(opt['gloss-of-file'], 'utf8').split(/\s+/).filter(Boolean)) {
     const hits = lemmaIds.map((id, l) => ({ id, l })).filter((x) => lemmaRows[x.l][0] === arHeadForm(h, 'NOUN') || lemmaRows[x.l][0] === arHeadForm(h, 'VERB'));
-    for (const x of hits) console.log('gloss ' + x.id + ' :: ' + (oldGloss.get(x.id) ?? '') + ' => ' + lemmaRows[x.l][1]);
+    for (const x of hits) console.log('gloss ' + x.id + ' :: ' + (oldGloss.get(x.id) ?? '') + ' => ' + lemmaRows[x.l][1] + '  [' + senseClassOf(x.l) + ']');
   }
 }
 if (opt['counts-of-file']) {
@@ -1232,6 +1296,8 @@ Lemma string convention: \`arHeadForm\` of \`arabic/text.ts\`.
 | pages that are only alternative spellings (alt-of) | ${fmt(stats.altOnlyEntries)} |
 | participle entries (verb class in the extract, head "active / passive participle of X"; made ADJ with VerbForm=Part, Voice, Of=verb) / of those with Of | ${fmt(stats.participleEntries)} / ${fmt(stats.participleOf)} |
 | lemma glosses changed by the clean-gloss rule (batch 6; counted before the reviewed choices) | ${fmt(stats.glossChanged)} |
+| gloss trust class (Sense= in lex): Rev (a reviewed choice matched) / One (a single real sense) / Lab (the lead stands after labelled senses) / Ord (the source's order, unreviewed): over all lemma ids with rows / over the 2,000 highest-count lexemes (leads) | ${classTotals.Rev} / ${classTotals.One} / ${classTotals.Lab} / ${classTotals.Ord}; ${classTop.Rev} / ${classTop.One} / ${classTop.Lab} / ${classTop.Ord} |
+| lexemes with homonym siblings (Homonyms=N on each id, Lead=Yes on the lead) / glosses that differ from the batch-6 choice because of the sense labels | ${fmt(stats.homonymLexemes)} / ${fmt(stats.glossLabelChanged)} |
 | reviewed gloss choices (gloss-choices.json): lexemes that took one / lexemes where no sense matched (keeping the default) | ${fmt(stats.glossChoiceTaken)} / ${fmt(glossChoiceNone.length)}: ${glossChoiceNone.join(', ')} |
 | lemma ids by part of speech | ${Object.entries(lemmaByPos).sort((a, b) => b[1] - a[1]).map(([k, v]) => `${k} ${fmt(v)}`).join(', ')} |
 | lemma ids (with at least one row) | ${fmt(lemmaIds.length)} (${fmt(lemmasWithRows)}) |

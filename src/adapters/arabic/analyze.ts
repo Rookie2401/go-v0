@@ -587,6 +587,9 @@ function isMarginal(m: Merged, all: Merged[]): boolean {
     && ((o.citation && !isOpenZero(o)) || ((o.pos === 'NOUN' || o.pos === 'ADJ' || o.pos === 'VERB' || o.pos === 'ADV') && countOf(o) > 0 && countOf(m) > 0)))) return true;
   // a cut against a whole-word closed-class entry of the same written word (لِأَنَّ is its own entry, not لِ + أَنَّ)
   if (m.seg.proclitics.length > 0 && others.some((o) => noClitics(o) && CLOSED_POS.has(o.pos) && !o.rows.every((r) => r.viaLoose || r.derived) && !isClosedChain(o))) return true;
+  // a word that begins لل is the preposition لِ + the article (one alif dropped): a lām on a VERB whose own stem begins with ل (لَبَّى in للبيت) is marginal against لِ + ال + a nominal
+  if ((m.pos === 'VERB' || m.pos === 'AUX') && m.seg.proclitics.some((c) => c.id === 'li') && m.seg.stemKey.startsWith('ل')
+    && others.some((o) => (o.pos === 'NOUN' || o.pos === 'ADJ') && o.seg.proclitics.map((c) => c.id).join() === 'li,al' && !o.rows.every((r) => r.viaLoose))) return true;
   // two or more proclitics, or the question أ, against a whole word that is a finite verb or a nominal cell of a real lemma
   if ((m.seg.proclitics.length >= 2 || m.seg.proclitics.some((c) => c.id === 'a'))
     && others.some((o) => noClitics(o) && !o.rows.every((r) => r.derived) && (o.pos === 'NOUN' || o.pos === 'ADJ' || o.pos === 'PROPN' || (o.pos === 'VERB' && o.morph.VerbForm === 'Fin')))) return true;

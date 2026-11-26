@@ -107,3 +107,52 @@ describe('a foreign-script sentence in the analyser', () => {
     expect(all(a).length).toBeGreaterThan(0);
   });
 });
+
+// ───────────────────────────── the real shards ─────────────────────────────
+
+import path from 'node:path';
+import zlib from 'node:zlib';
+import { AR_ANALYZER } from '../../src/adapters/arabic/version';
+import { arRefine } from '../../src/adapters/arabic/sentence';
+
+const MANIFEST = path.resolve('public/lexicon/ar/standard/manifest.json');
+describe.skipIf(!fs.existsSync(MANIFEST))('an Egyptian line with the full index (the real-browser failure)', () => {
+  const LINE = 'إحنا مش عارفين ليه الشارع زحمة النهارده، وعايز كل واحد يروح بيته بدري.';
+  beforeAll(() => {
+    resetArabicIndexes();
+    const man = JSON.parse(fs.readFileSync(MANIFEST, 'utf8')) as { shards: Record<string, { file: string }> };
+    for (const s of Object.values(man.shards)) installArabicIndex(JSON.parse(zlib.gunzipSync(fs.readFileSync(path.resolve('public/lexicon/ar/standard', s.file))).toString('utf8')) as ArabicFormIndex);
+  });
+  afterAll(() => resetArabicIndexes());
+
+  it('the markers are the list\'s, whatever readings the index has for the same letters (مش is also مَشَّ)', () => {
+    const s = arDialectSignals(arTokenize(LINE));
+    expect(s?.variety).toBe('egyptian');
+    expect(s?.markers).toEqual(expect.arrayContaining(['إحنا', 'مش', 'ليه', 'النهارده', 'وعايز']));
+  });
+  it('every word carries notes.variety = dialect? and nothing is credited, including words the lexicon cannot read', () => {
+    const a = arAnalyze(arTokenize(LINE));
+    const wordsOnly = a.filter((x) => x.token.isWord);
+    expect(wordsOnly.length).toBe(13);
+    for (const w of wordsOnly) {
+      expect(w.candidates.length, w.token.surface).toBeGreaterThan(0);
+      for (const c of w.candidates) { expect(c.notes?.variety, w.token.surface).toBe('dialect?'); expect(c.confidence, w.token.surface).toBeLessThan(0.5); }
+    }
+  });
+  it('through arRefine, with the importer\'s lists handed in as `given`, the flag still lowers and annotates them', () => {
+    const toks = arTokenize(LINE);
+    const first = arAnalyze(toks);
+    // the importer put a dictionary's readings (here: the word level's own, at 0.9) on every word and says they are given
+    const handed: AnalyzedToken[] = first.map((x) => (x.token.isWord ? { ...x, candidates: x.candidates.map((c) => ({ ...c, confidence: 0.9, notes: { ...c.notes, variety: undefined, context: undefined } as Record<string, string> })) } : x));
+    const given = new Set(handed.map((x, i) => (x.token.isWord ? i : -1)).filter((i) => i >= 0));
+    const out = arRefine(toks, handed, new Set([AR_ANALYZER]), given);
+    for (const [i, w] of out.entries()) {
+      if (!w.token.isWord) continue;
+      for (const c of w.candidates) { expect(c.notes?.variety, w.token.surface).toBe('dialect?'); expect(c.confidence, `${w.token.surface} #${i}`).toBeLessThanOrEqual(0.45); }
+    }
+  });
+  it('NEGATIVE: a Standard sentence with ONE look-alike (the verb مَشَّ, ليه as a name) stays Standard', () => {
+    const a = arAnalyze(arTokenize('مشَّ الرجل الصغير عظم السمكة في المطبخ'));
+    expect(a.flatMap((x) => x.candidates).some((c) => c.notes?.variety === 'dialect?')).toBe(false);
+  });
+});

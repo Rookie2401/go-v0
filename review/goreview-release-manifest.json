@@ -5,8 +5,8 @@
   "releaseEligible": true,
   "buildMode": "release",
   "git": {
-    "commit": "8f661b6540a7d797fceb25cfe6ba531679e389ea",
-    "tree": "9fcbcfa15093159c12b0b173dcdd16650891c586",
+    "commit": "d30c1032c8ca1c2438bd3aa0a604fe37b2977c15",
+    "tree": "7f5e132925fb4e6aa3563efcab45daef48cb2ae9",
     "dirty": false
   },
   "sourceManifestSha256": "975e685e6fb450d70ef46e4c1259eaed592390187b084ee1367bd3846696149d",
@@ -7493,7 +7493,7 @@
     "algorithm": "FSRS-6.0",
     "sha256": "4968e995b7b7c3356cf843fc73c6f75cd5f2e1595315bde7caec9d2dd10bb287"
   },
-  "artifactManifestSha256": "afc3e68fa9cf33bc1d5c08b9da500d88ce1bf6e1d31cf5fc5ebbaebb29112a87",
+  "artifactManifestSha256": "4b9f825fdb9231e605c2d51dc727fc27a9c7321173c27dd89a3746c913e91f5c",
   "artifactFiles": [
     {
       "path": "EB-Garamond-OFL.txt",
@@ -7757,7 +7757,7 @@
     },
     {
       "path": "config.json",
-      "sha256": "12e3ea610e89befb344707958ecd8a63edcc471783a19f0edbc1164e18e6e1fc"
+      "sha256": "8937eb856253d3ea575224c95748979a10a09054d7a8b2713f7406070ce7dcf9"
     },
     {
       "path": "icons/apple-touch-icon.png",
@@ -10601,7 +10601,7 @@
     },
     {
       "path": "sw.js",
-      "sha256": "6ffb7d48f8859bd1a394b74756b6b39ac3e3db4f6430f8b4ca1d2abfcd5f7e55"
+      "sha256": "0904ad82ca662dc92b3c7d519130e24a7ac9cbcf69c9b856a26bfbbbc0e8f7fa"
     }
   ]
 }

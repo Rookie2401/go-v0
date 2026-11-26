@@ -20,7 +20,7 @@
  */
 'use strict';
 
-var BUILD_ID = '3fc433a64065';
+var BUILD_ID = '461cf6b61933';
 var PRECACHE = [
   "./",
   "./EB-Garamond-OFL.txt",
@@ -77,7 +77,7 @@ var PRECACHE = [
   "./index.html",
   "./manifest.webmanifest"
 ];
-var ASSET_BASE = './';
+var ASSET_BASE = '../';
 var LANG_CHUNKS = {
   "albanian": [
     "./assets/lang-albanian-BE5vTq3L.js"

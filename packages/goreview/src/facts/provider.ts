@@ -25,6 +25,7 @@ import { answerVariants } from '../../../../src/core/english-verb';
 import { greekWordAnalysis } from '../../../../src/adapters/greek/word-analysis';
 import type { ExampleSentence, FactsProvider, UnitFacts } from '../types';
 import { FORM_HELD_REASON, holdsDeck } from './deck-holds';
+import ANSWER_EXCLUSIONS from '../../../../src/adapters/arabic/answer-exclusions.json';
 import type { ExampleReading, FeatureDef, FormGroup, FormInfo, ReviewFacts } from './review-facts';
 
 // ───────────────────────────── dependencies ─────────────────────────────
@@ -486,6 +487,17 @@ export function createFactsProvider(deps: FactsProviderDeps): FactsProvider & { 
       } catch { chosen = []; }
       const have = new Set(g.glosses.slice(0, g.lexiconCount).map((x) => x.trim().toLowerCase()));
       g.glosses = [...g.glosses.slice(0, g.lexiconCount), ...chosen.filter((x) => x && !have.has(x.trim().toLowerCase()))];
+    }
+    // A language held to the deck rule: reviewed exclusions (src/adapters/arabic/answer-exclusions.json). A whole alternative that equals an excluded string is dropped from
+    // the meaning SHOWN as well as from the accepted answers, so the card never shows an answer it then refuses.
+    if (holdsDeck(lang)) {
+      const excluded = ((ANSWER_EXCLUSIONS as { exclude: Record<string, string[]> }).exclude[`${lemma}|${pos ?? ''}`] ?? []).map((x) => x.trim().toLowerCase());
+      if (excluded.length) {
+        const keep = (alt: string): boolean => !excluded.includes(alt.trim().toLowerCase());
+        g.glosses = g.glosses
+          .map((gl) => gl.split(/\s*;\s*/u).map((part) => part.split(/\s*,\s*/u).filter(keep).join(', ')).filter(Boolean).join('; '))
+          .filter(Boolean);
+      }
     }
     const constructionIds = [...new Set(forms.map((f) => f.constructionId).filter((c): c is string => !!c))];
     const group: FormGroup = { lemma, ...(pos ? { pos } : {}), forms };

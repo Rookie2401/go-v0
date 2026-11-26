@@ -141,9 +141,29 @@ describe.skipIf(!shardsPresent())('a headword with several source entries: قَ�
     expect(card, 'قَالَ is admitted: a reviewed lead, one entry chosen by meaning').toBeDefined();
     expect(card!.glosses[0]).toBe('to say');
     // the printout of the audit's item 1: "to advocate, to propound, to root, to stand up for, to support" is a sense of the SAY record itself (root ق و ل), so these are true answers
-    for (const a of ['to say', 'to advocate', 'to propound', 'to root', 'to support']) expect(card!.accepted, a).toContain(a);
+    for (const a of ['to say', 'to advocate', 'to propound', 'to support']) expect(card!.accepted, a).toContain(a);
+    // the reviewed exclusion (answer-exclusions.json): "to root" alone means to plant roots, so it is neither accepted nor shown
+    expect(card!.accepted).not.toContain('to root');
+    expect(card!.glosses.join(' | ').toLowerCase()).not.toMatch(/(^|[,;|]\s*)to root(\s*[,;|]|$)/u);
+    expect(card!.glosses.join(' | ')).toContain('to advocate, to propound, to stand up for, to support');
     // the nap entry (root ق ي ل) is another word: none of its senses is an answer
     for (const a of ['to nap', 'To nap', 'to nap.', 'to do something at noon', 'to cancel a contract or a promise']) expect(card!.accepted.map((x) => x.toLowerCase()), a).not.toContain(a.toLowerCase());
     expect(card!.problems).toEqual([]);
   }, 600_000);
+});
+
+describe.skipIf(!shardsPresent())('the reviewed answer exclusions cannot rot', () => {
+  it('every key names a lemma of the index, with a non-empty excluded string', async () => {
+    const { installFullIndex } = await import('../../scripts/ar-deck-limits-lib.mts');
+    const { arLemmaRow } = await import('../../src/adapters/arabic/deck');
+    const table = JSON.parse(fs.readFileSync(path.resolve('src/adapters/arabic/answer-exclusions.json'), 'utf8')) as { exclude: Record<string, string[]> };
+    installFullIndex();
+    expect(Object.keys(table.exclude).length).toBeGreaterThan(0);
+    for (const [key, list] of Object.entries(table.exclude)) {
+      const [head, pos] = key.split('|');
+      expect(arLemmaRow(head, pos), `exclusion for ${key}: not an entry of the Arabic index`).toBeDefined();
+      expect(list.length).toBeGreaterThan(0);
+      for (const x of list) expect(x.trim()).not.toBe('');
+    }
+  });
 });

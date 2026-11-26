@@ -1,0 +1,6 @@
+{
+  "_about": "REVIEWED EXCLUSIONS of accepted answers for Arabic lemma cards (2026-11-26). A key is \"<vocalized head>|<POS>\"; each string is a whole alternative (case-insensitive) that GoReview neither shows nor accepts for that lexeme, although the dictionary entry lists it. Decided by the auditor, confirmed by the lead: قَالَ|VERB, \"to root\": on its own it means to plant roots in English, a false meaning for a learner who types it (\"to advocate\", \"to propound\" stay). A test fails if a key is no lemma of the index.",
+  "exclude": {
+    "قَالَ|VERB": ["to root"]
+  }
+}

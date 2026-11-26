@@ -94,6 +94,10 @@ On the merged tip fd7f471d (index with its `Sense` classes, one clean meaning pe
 * **AB1** (أقرأ, أطير, شاء, تحدث, مواطن, الجديدة, الجزيرة, إن): no card, form or lemma, exists for any of them (asserted).
 * `REVIEWED_EQUIVALENT_MEANINGS` has one entry: وِزَارَة "a government department" = gold "ministry" (the lead: the source's wording of the modern sense).
 
+## Reviewed exclusions of accepted answers
+
+`src/adapters/arabic/answer-exclusions.json` is a small, explicit table (no heuristic): per lexeme (`<vocalized head>|<POS>`) a list of whole alternatives that the card neither shows nor accepts although the dictionary entry lists them. It has one entry: قَالَ|VERB, "to root" (the auditor: alone it means to plant roots in English; the lead confirmed). The sense stays on the card as "to advocate, to propound, to stand up for, to support". `lemmaFacts` applies it (Arabic only), and a test fails if a key is no lemma of the index.
+
 ## What a learner sees
 
 Nothing is taken away from the reading. A held word is still read by the analyser, still shown on the GoLearn card with all its readings (the undecided ones marked), and can still be marked as known or unknown. It is simply not drilled in GoReview until the pack can decide it: a bare or undecided word never becomes a card, and a word whose leading meaning has not been reviewed waits for that review. The reason is in the analysis (`notes.reviewReason`) and, for a form unit, in the facts (`lexicalRecognition.reason`).

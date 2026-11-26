@@ -138,6 +138,17 @@ export const KO_PAGE_TEXT = /MC reading|eumhun reading|^More information/i;
 /** A syllable page's text as a sense: its reading notes, or a bare list of characters (no Latin letter, no Hangul syllable, only Hanja, punctuation and spaces). */
 export const koIsPageText = (g: string): boolean => KO_PAGE_TEXT.test(g) || (/\p{Script=Han}/u.test(g) && !/[A-Za-z가-힣]/.test(g)) || /^\p{Script=Han}+(?:[,\s]+\p{Script=Han}+)*\s*:/u.test(g);
 
+/** The gloss of a …되다 verb as a verb: "(to be) X" and a participle become "to be X", anything else "to become X". */
+const PARTICIPLES = new Set(['known', 'taken', 'given', 'seen', 'done', 'made', 'written', 'broken', 'chosen', 'held', 'found', 'built', 'sold', 'lost', 'set', 'put', 'shown', 'begun', 'caught', 'brought', 'thought']);
+export function koPredicateGloss(g: string): string {
+  const m = /^\(to be\)\s*(.*)$/i.exec(g);
+  if (m) return koShortGloss(`to be ${m[1]}`);
+  if (/^to\b/i.test(g)) return g;
+  if (/^(?:be|become|get)\b/i.test(g)) return koShortGloss(`to ${g}`);
+  const first = (g.split(/[\s,;]/)[0] ?? '').toLowerCase();
+  return koShortGloss(`${/(?:ed|en)$/.test(first) || PARTICIPLES.has(first) ? 'to be' : 'to become'} ${g}`);
+}
+
 /** A gloss that only points at another word: "synonym of X", "See the entry at X". */
 const POLITE_OF = /(?:polite|formal|honorific|deferential)[^,;]*\b(?:form|style|speech)\b[^,;]*\bof\b|^(?:polite|formal) /i;
 /** The headwords a polite or inflected form may belong to (감사합니다 → 감사하다, 가세요 → 가다 / 가시다). */
@@ -510,6 +521,7 @@ export interface KoReport {
   xrefResolved: number;
   xrefEmpty: number;
   glossOverrides: number;
+  doedaGlosses: string[];
   counterNouns: string[];
   sentenceGlosses: number;
   haGained: number;
@@ -555,7 +567,7 @@ const normGlossKey = (g: string | undefined): string => (g ?? '').toLowerCase().
 export function koBuildRows(raws: readonly KoRaw[], docs: KoDocs = {}): { rows: KoRow[]; report: KoReport } {
   const report: KoReport = {
     read: raws.length, kept: 0, keptByPos: {}, skipped: {}, skippedByTag: {}, merges: 0, mergedSameEtym: [], assignedRows: [], mergedSameWord: [], orderSets: [], irrDisagree: [], noTable: 0, noClass: [], byShape: 0,
-    voiceBoth: [], voicePairs: [], mixedDependent: 0, maj: [], majFirstOnly: [], sets: [], contractionPos: [], contractionKept: [], contractionFused: [], xrefResolved: 0, xrefEmpty: 0, glossOverrides: 0, counterNouns: [], sentenceGlosses: 0, haGained: 0, haOther: [], relatedPairs: [], voiceDecided: 0, hada: { total: 0, listedOnly: [] }, voiceUndecided: [], actionNouns: {}, xrefStart: {}, tableDisagree: [], politeDropped: [], politeKept: [], rootsKept: 0, rootsAsNoun: [], bound: [], supplement: [], glossOwn: [],
+    voiceBoth: [], voicePairs: [], mixedDependent: 0, maj: [], majFirstOnly: [], sets: [], contractionPos: [], contractionKept: [], contractionFused: [], xrefResolved: 0, xrefEmpty: 0, glossOverrides: 0, doedaGlosses: [], counterNouns: [], sentenceGlosses: 0, haGained: 0, haOther: [], relatedPairs: [], voiceDecided: 0, hada: { total: 0, listedOnly: [] }, voiceUndecided: [], actionNouns: {}, xrefStart: {}, tableDisagree: [], politeDropped: [], politeKept: [], rootsKept: 0, rootsAsNoun: [], bound: [], supplement: [], glossOwn: [],
   };
   const ev = koSuffixEvidence(raws);
   // the passive and causative verbs that a base verb's ko-verb-set names
@@ -899,6 +911,12 @@ export function koBuildRows(raws: readonly KoRaw[], docs: KoDocs = {}): { rows: 
       }
       report.xrefStart[key] = report.xrefStart[key] ?? { resolved: 0, empty: 0 };
       if (resolved) { r.gloss = koShortGloss(resolved); report.xrefStart[key].resolved++; } else { delete r.gloss; report.xrefStart[key].empty++; }
+    }
+    // a …되다 verb is worded as a verb: the source often glosses it with a participle or an adjective ("independent", "(to be) reported")
+    for (const r of rows) {
+      if (r.tag !== 'VV' || !r.lemma.endsWith('되다') || !r.gloss || r.own || /^to /i.test(r.gloss)) continue;
+      const g = koPredicateGloss(r.gloss);
+      if (g !== r.gloss) { report.doedaGlosses.push(`${r.lemma}: "${r.gloss}" -> "${g}"`); r.gloss = g; }
     }
     (docs.overrides?.entries ?? []).forEach((o, i) => {
       const hits = rows.filter((r) => r.lemma === o.lemma && (koSharedPos(r) ?? r.tag) === o.pos && (r.hom ?? 0) === (o.hom ?? 0));

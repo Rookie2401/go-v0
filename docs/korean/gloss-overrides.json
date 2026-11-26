@@ -311,6 +311,18 @@
     {"lemma":"도","pos":"CLF","hom":0,"gloss":"degree (temperature); degree (angle)","senses":[2,3],"was":"bound"},
     {"lemma":"풀리다","pos":"VERB","hom":0,"gloss":"to come untied; to be solved; to ease off","senses":[1],"was":"To be untied.","own":true},
     {"lemma":"달","pos":"NOUN","hom":1,"gloss":"moon; month","senses":[1],"was":"moon","own":true},
-    {"lemma":"반","pos":"NOUN","hom":2,"gloss":"class (at a school); group, party","senses":[2,1],"was":"party"}
+    {"lemma":"반","pos":"NOUN","hom":2,"gloss":"class (at a school); group, party","senses":[2,1],"was":"party"},
+    {"lemma":"식","pos":"NOUN","hom":0,"gloss":"way, manner, style; ceremony; formula","senses":[1,2],"was":"ceremony","own":true},
+    {"lemma":"편하다","pos":"ADJ","hom":0,"gloss":"to be comfortable; to be convenient","senses":[1,2],"was":"easygoing"},
+    {"lemma":"아쉽다","pos":"ADJ","hom":0,"gloss":"to feel the lack of, to miss; to be sorry","senses":[2,1],"was":"sad"},
+    {"lemma":"상당하다","pos":"ADJ","hom":0,"gloss":"to be considerable; to be appropriate in magnitude","senses":[1,2],"was":"remarkable"},
+    {"lemma":"원만하다","pos":"ADJ","hom":0,"gloss":"to be smooth, peaceful, friendly; to be good-natured","senses":[1],"was":"mild"},
+    {"lemma":"밉다","pos":"ADJ","hom":0,"gloss":"to be hateful, detestable; to dislike","senses":[1],"was":"unpleasant","own":true},
+    {"lemma":"섭섭하다","pos":"ADJ","hom":0,"gloss":"to feel sad or hurt, disappointed (at a parting or a slight)","senses":[1],"was":"sorry","own":true},
+    {"lemma":"감독","pos":"NOUN","hom":0,"gloss":"supervision; a director (of a film or a play)","senses":[1,2],"was":"direction"},
+    {"lemma":"발전하다","pos":"VERB","hom":1,"gloss":"to develop, to grow","senses":[1],"was":"to grow"},
+    {"lemma":"잡다","pos":"VERB","hom":0,"gloss":"to catch, to grab, to hold; to take","senses":[2,1],"was":"to take"},
+    {"lemma":"운동","pos":"NOUN","hom":0,"gloss":"exercise, sport; movement","senses":[1,2],"was":"exercise"},
+    {"lemma":"겨레","pos":"NOUN","hom":0,"gloss":"a people, a nation (generally of Koreans); kinsmen","senses":[2,1],"was":"kinsmen"}
   ]
 }

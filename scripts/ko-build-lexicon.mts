@@ -523,6 +523,7 @@ A row has a voice (and its base) when the entry itself says so in a sense (a glo
 ## Glosses
 
 - rows with no gloss: ${fmt(noGloss)}
+- a …되다 verb whose source gloss is a participle or an adjective is worded as a verb (to be reported, to become independent): ${report.doedaGlosses.length}; examples: ${report.doedaGlosses.slice(0, 12).join('; ')}
 - a cross-reference is never a gloss: "See the entry at …" senses are skipped; a "synonym of X" sense is resolved to X's own gloss, marked "= X: …" (${fmt(report.xrefResolved)} resolved), else the gloss is left empty (${fmt(report.xrefEmpty)})
 - glosses that began with a cross-reference pattern (Root of, Combining form of, Only used in, Used only in), resolved to the named word's own gloss or left empty, by pattern and class: ${Object.entries(report.xrefStart).sort((a, b) => cmp(a[0], b[0])).map(([k, v]) => `${k} ${v.resolved} resolved / ${v.empty} empty`).join('; ') || '(none)'}
 - glosses written as a sentence ("To be untied."), normalised for the short line (first letter lower-case unless it opens a name, no final stop): ${report.sentenceGlosses}

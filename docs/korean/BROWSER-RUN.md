@@ -5,6 +5,14 @@ Rig: `scripts/loadcheck/golearn/ko.mjs`; pages: `scripts/loadcheck/golearn/ko-pa
 
 **Result: every step passed except step 9 (Reading Analysis), which fails on the first try with Active on and succeeds on a second try.**
 
+## Run on 9ade366f (2026-11-27, the rare-rival rule off)
+
+The same rig and build commands, run again by the coordinator. All 18 checks passed (steps 1 to 10, the second-profile gate
+checks 12a to 12f); Reading Analysis again answered "knowledge-changing" on its first attempt (380 ms) and succeeded on the
+retry (982 ms). The two screenshots (two-words card for 피는; held card for 눈이) were looked at: unchanged, no clipping.
+GoReview made two cards from marked words (one fronted 친구에게만, the pack-sentence form noted below) and none from held words.
+The record below is the run on b91ae4a2.
+
 ## Build
 
 At `b91ae4a2`. The build stamp reads `b91ae4a21d57-dirty`; the only change in the tree at build time was `docs/korean/SWEEP.md` (not this run's edit, no product code).

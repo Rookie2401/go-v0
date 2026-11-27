@@ -43,6 +43,8 @@ export interface DeckGateDeps {
   varietyId?: string;
   /** (d) Why this unit is on the language's known-limits list, or undefined. */
   known?(unitId: string): string | undefined;
+  /** A language whose written forms are never cards (deck-known-limits.ts DECK_NO_FORM_CARDS): the sentence GoReview shows for every form unit, or undefined. */
+  noFormCards?: string;
 }
 
 /** A sense so labelled is not the word's current main meaning. */
@@ -138,8 +140,13 @@ export async function applyDeckGate(facts: UnitFacts | undefined, deps: DeckGate
   const isLemma = id.startsWith(`lemma:${lang}:`);
   const isForm = id.startsWith(`form:${lang}:`);
   if (!isLemma && !isForm) return facts;
-  if (facts.status === 'invalidated' || facts.status === 'conflicted' || facts.status === 'requires-review' || facts.status === 'verified') return facts;
+  if (facts.status === 'invalidated' || facts.status === 'conflicted' || facts.status === 'verified') return facts;
   if (facts.unit.provenance?.source === 'reviewer') return facts;
+  // a language's own review gate (src/core/review-gate.ts) marked this lemma's reading: that mark is the hold, with the kind and sentence the language wrote
+  const mark = (facts as ReviewFacts).reviewMark;
+  if (mark) return held(facts, mark.kind, mark.reason);
+  if (isForm && deps.noFormCards) return held(facts, 'known-limit', deps.noFormCards);
+  if (facts.status === 'requires-review') return facts;
   const known = deps.known?.(id);
   if (known) return held(facts, 'known-limit', known);
   const meaning = cardMeaning(facts);

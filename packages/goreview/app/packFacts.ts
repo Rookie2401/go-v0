@@ -33,7 +33,7 @@ import { featureKey, type Paradigm, type ParadigmCell } from '../../../src/core/
 import type { PartOfSpeech } from '../../../src/core/model';
 import { buildParadigm, formRomanOf, pickRecord, selectedCellKeys, type LexicalRecord } from '../src/facts/paradigm-table';
 import { applyDeckGate } from '../src/facts/deck-gate';
-import { deckKnownLimit } from '../src/facts/deck-known-limits';
+import { deckKnownLimit, deckNoFormCards } from '../src/facts/deck-known-limits';
 
 export { featureKey };
 export type { Paradigm, ParadigmCell };
@@ -363,11 +363,6 @@ export function packFactsFor(opts: { fetch: typeof fetch; baseUrl: string; lexic
           } catch { return undefined; }
         }
         const facts = await forVariety(varietyId).factsFor(unitId, requestedLanguage, varietyId);
-        // Korean: a written form is read in its sentence, but a form card is built from the form read ALONE, which finds a look-alike entry (게 the crab for the ending, 거야 as 거 + 이야) and
-        // duplicates the lemma card of the same word. So no Korean form unit becomes a card: the lemma card, decided in its sentence by the review gate (src/core/review-gate.ts), is the card.
-        if (facts && languageId === 'ko' && requestedLanguage === 'ko' && unitId.startsWith('form:ko:')) {
-          return { ...facts, unit: { ...facts.unit, status: 'requires-review' }, status: 'requires-review', lexicalRecognition: { status: 'withheld', reason: 'A Korean written form is not made a card of its own: its meaning read alone can be a look-alike entry, and the word has its lemma card.' } } as typeof facts;
-        }
         if (facts && languageId === 'arc' && requestedLanguage === 'arc') {
           const token = adapter.tokenize(facts.unit.label).find(t => t.isWord);
           const analyses = token && adapter.analyze([token], { varietyId: varietyId ?? 'arc-bib' });
@@ -417,7 +412,7 @@ export function packFactsFor(opts: { fetch: typeof fetch; baseUrl: string; lexic
         if (!facts || requestedLanguage !== languageId) return facts;
         return applyDeckGate(facts, {
           languageId, varietyId: varietyId ?? manifest.varietyId, gloss: (lemma, pos, forms) => dictionary.gloss(lemma, pos, forms),
-          factsOf: (id) => gated.factsFor(id, requestedLanguage, varietyId), known: (id) => deckKnownLimit(languageId, id),
+          factsOf: (id) => gated.factsFor(id, requestedLanguage, varietyId), known: (id) => deckKnownLimit(languageId, id), ...(deckNoFormCards(languageId) ? { noFormCards: deckNoFormCards(languageId) } : {}),
         });
       },
     } as Provider;

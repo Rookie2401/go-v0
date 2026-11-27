@@ -37,6 +37,7 @@ import { installedRussianIndexes, resetRussianIndexes } from '../../src/adapters
 import { createGreekShardLoader } from '../../src/adapters/greek/shards';
 import { createHebrewShardLoader } from '../../src/adapters/hebrew/shards';
 import { createRussianShardLoader } from '../../src/adapters/russian/shards';
+import { createKoreanShardLoader } from '../../src/adapters/korean/shards';
 import type { ShardSource } from '../../src/adapters/shared/shards';
 import type { LanguageAdapter } from '../../src/core';
 import { isCrossReferenceOnly } from '../../src/core/review-meaning';
@@ -85,8 +86,8 @@ export async function prepareLexicon(lang: string, adapter: LanguageAdapter, tex
   for (const set of LEXICON_SETS[lang] ?? []) {
     let job = shardLoaders.get(set);
     if (!job) {
-      const make = set.startsWith('el/') ? createGreekShardLoader : set.startsWith('ru/') ? createRussianShardLoader : createHebrewShardLoader;
-      job = make(shardSource, { base: `lexicon/${set}`, maxLoaded: 4096 }) as unknown as Promise<Ensurer>;
+      const make = set.startsWith('el/') ? createGreekShardLoader : set.startsWith('ru/') ? createRussianShardLoader : set.startsWith('ko/') ? createKoreanShardLoader : createHebrewShardLoader;
+      job = make(shardSource, { base: `lexicon/${set}`, maxLoaded: set.startsWith('ko/') ? 64 : 4096 }) as unknown as Promise<Ensurer>;
       shardLoaders.set(set, job);
     }
     const loader = await job;
@@ -280,6 +281,7 @@ export const AUDIT_SETS: readonly AuditSet[] = [
   { id: 'el', lang: 'el', varietyId: 'el-mod', name: 'Modern Greek' }, { id: 'el-koi', lang: 'el', varietyId: 'el-koi', name: 'Koine Greek' },
   { id: 'he', lang: 'he', varietyId: 'he-mod', name: 'Modern Hebrew' }, { id: 'he-bib', lang: 'he', varietyId: 'he-bib', name: 'Biblical Hebrew' },
   { id: 'arc', lang: 'arc', varietyId: 'arc-bib', name: 'Biblical Aramaic' },
+  { id: 'ko', lang: 'ko', name: 'Korean' },
 ];
 export const auditSet = (id: string): AuditSet => { const s = AUDIT_SETS.find((x) => x.id === id); if (!s) throw new Error(`no audit set ${id}`); return s; };
 export const auditText = (id: string, part: 'dev' | 'heldout'): string => path.join(ROOT, 'data/deck-audit', id, `${part}.txt`);

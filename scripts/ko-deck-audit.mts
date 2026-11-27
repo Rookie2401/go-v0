@@ -130,7 +130,7 @@ export interface Figures {
   byConf: Map<string, { n: number; bad: number }>; byPos: Map<string, { n: number; bad: number }>;
   /** (iii) the sweep's wanted meaning keywords against the first meaning the card shows */
   meaningChecked: number; meaningMiss: Array<Card & { shown: string; wanted: string[] }>;
-  /** form cards (form:ko:...) the facts provider admits WITHOUT the form rule (packFacts.ts: no Korean form unit is a card), and how many read another headword than the gold one */
+  /** form cards (form:ko:...) the facts provider admits WITHOUT the form rule (DECK_NO_FORM_CARDS: no Korean form unit is a card), and how many read another headword than the gold one */
   formWithout: number; formFalseWithout: number;
   /** every admitted lemma card with the first meaning it shows and how often it occurred */
   cards: Map<string, { n: number; shown: string }>;
@@ -220,6 +220,8 @@ export async function runAudit(sentences: AuditSentence[], opts: { trainForms?: 
     let why: string | undefined;
     if (!facts) why = 'no facts';
     else if (BAD.has(facts.status)) why = `facts ${facts.status}`;
+    // the facts carry the language's own review mark (ReviewFacts.reviewMark); the deck gate (packages/goreview/src/facts/deck-gate.ts) is what turns it into a hold, and this audit reads the facts before that
+    else if ((facts as { reviewMark?: unknown }).reviewMark) why = 'facts requires-review';
     else if (!facts.glosses.length) why = 'no English meaning';
     else if (!facts.unit.provenance?.ref?.startsWith('goreview-facts:pack-derived@')) why = 'not pack-derived';
     cache.set(unit, why);
@@ -493,7 +495,7 @@ export function summary(name: string, fig: Figures): string[] {
     `| FALSE cards (part 1: a real mismatch) | ${fig.falseWithout} (all false, with or without convention) | ${fig.falseWith.length} |`,
     `| cards false only by annotation convention (part 2) | | ${fig.byConvention.length} |`,
     `| unknown or fragment cards | | ${fig.unknown.length} |`,
-    `| form cards (form:ko:...) admitted | ${fig.formWithout} (${fig.formFalseWithout} read another headword than the gold one) | 0 (no Korean form unit is a card: packFacts.ts) |`,
+    `| form cards (form:ko:...) admitted | ${fig.formWithout} (${fig.formFalseWithout} read another headword than the gold one) | 0 (no Korean form unit is a card: DECK_NO_FORM_CARDS) |`,
     `| first meaning vs the sweep's wanted keywords | | ${fig.meaningMiss.length} misses of ${fig.meaningChecked} checked |`, '',
     `Held back: ${heldN} admitted occurrences (${fig.admittedOccurrencesWithout ? (100 * heldN / fig.admittedOccurrencesWithout).toFixed(1) : '0'} %). By reason:`, '', ...reasons.map(([k, n]) => `- ${k}: ${n}`), '',
     'The twenty commonest words held back (surface → headword: occurrences):', '', ...top.map(([k, n]) => `- ${k}: ${n}`), '');

@@ -23,7 +23,7 @@ import { DECK_KNOWN_LIMITS } from '../../packages/goreview/src/facts/deck-known-
 import { AUDIT_SETS, ROOT, auditText, dataPresent, readSentences, runDeckAudit, type AuditCard } from './support';
 
 interface Verdict { shown: string; v: 'ok' | 'false-reading' | 'false-meaning' | 'unknown' | 'unsure'; note?: string }
-interface VerdictFile { readBy: string; cards: Record<string, Verdict[]>; residual: string[] }
+interface VerdictFile { readBy: string; /** true: the set's cards have not been read yet; the set is reported as a todo, never as passing */ unread?: boolean; cards: Record<string, Verdict[]>; residual: string[] }
 const BAD = new Set(['false-reading', 'false-meaning', 'unknown']);
 const verdictsOf = (id: string): VerdictFile | undefined => {
   const file = path.join(ROOT, 'data/deck-audit', id, 'verdicts.json');
@@ -34,6 +34,8 @@ const verdictFor = (file: VerdictFile, card: AuditCard): Verdict | undefined => 
 describe.each(AUDIT_SETS.map((s) => [s.id, s] as const))('deck audit: %s', (_id, set) => {
   const file = verdictsOf(set.id);
   const ready = dataPresent(set.lang) && !!file && fs.existsSync(auditText(set.id, 'dev')) && fs.existsSync(auditText(set.id, 'heldout'));
+
+  if (file?.unread) { it.todo(`${set.name}: UNREAD, no reader has judged its cards yet (verdicts.json unread: true), so nothing is claimed about it`); return; }
 
   it.skipIf(!ready)(`${set.name}: no unknown card, no unread card, no false card on the development text, and exactly the named residue on the held-out text`, async () => {
     const dev = await runDeckAudit(set.lang, readSentences(auditText(set.id, 'dev')), { varietyId: set.varietyId });

@@ -20,6 +20,7 @@ import type { GrammarConstruction, PackManifest } from '../../../language-packs/
 import type { GlossResult } from '../../../language-packs/src/runtime';
 import type { Tutorial } from '../../../language-packs/src/tutorial/types';
 import type { AnalysisCandidate, AnalyzedToken, PhraseCandidate, RawToken } from '../../../../src/core';
+import type { ReviewKind } from '../../../../src/core/review-gate';
 import { projectWordAnalysis } from '../../../../src/core/word-analysis';
 import { answerVariants } from '../../../../src/core/english-verb';
 import { greekWordAnalysis } from '../../../../src/adapters/greek/word-analysis';
@@ -459,9 +460,12 @@ export function createFactsProvider(deps: FactsProviderDeps): FactsProvider & { 
     if (!rec && !read.cand) return undefined;
     // a lemma competes only with readings of OTHER words: its own inflected readings (Nom,Acc vs Acc …) are not a conflict about the lemma
     const rivals = read.all.filter((c) => c !== read.cand && (c.lemma !== read.cand!.lemma || c.pos !== read.cand!.pos));
-    const baseUnit = rec?.unit ?? synth('lexeme', unitId, lemma, statusOf(read.cand!, [read.cand!, ...rivals]), sourceOf(read.cand), read.cand!.confidence, pos ? { pos } : {});
-    // a lemma whose own reading the language's review gate holds back (src/core/review-gate.ts: notes.reviewGate, with its reviewReason) requires review, whatever status a stored row carries
-    const unit = (read.cand?.notes?.reviewGate === 'yes' || (read.cand?.notes?.reviewStatus === 'requires-review' && read.cand.notes.reviewKind !== undefined)) && baseUnit.status !== 'invalidated' ? { ...baseUnit, status: 'requires-review' as const } : baseUnit;
+    const unit = rec?.unit ?? synth('lexeme', unitId, lemma, statusOf(read.cand!, [read.cand!, ...rivals]), sourceOf(read.cand), read.cand!.confidence, pos ? { pos } : {});
+    // a language's own review gate (src/core/review-gate.ts) marks the readings it holds back with notes; the facts only carry that mark, and the deck gate (deck-gate.ts) is what holds the unit
+    const n = read.cand?.notes;
+    const one = (v: unknown): string => (Array.isArray(v) ? String(v[0] ?? '') : typeof v === 'string' ? v : '');
+    const reviewMark: ReviewFacts['reviewMark'] = n && (n.reviewGate === 'yes' || (n.reviewStatus === 'requires-review' && n.reviewKind !== undefined))
+      ? { kind: (one(n.reviewKind) || 'known-limit') as ReviewKind, reason: one(n.reviewReason) || "The language's review gate holds this word back from review." } : undefined;
     const forms = formsOfLemma(lemma, pos);
     const { examples, readings } = collect((o) => lemmaMatches(o, lemma, pos));
     const lexGloss = read.cand && !read.cand.unconfirmed && read.cand.gloss ? [read.cand.gloss] : [];
@@ -495,7 +499,7 @@ export function createFactsProvider(deps: FactsProviderDeps): FactsProvider & { 
       ...(rec ? {} : { derivedFromPack: true }),
       source: unit.provenance.source, lemmaInWordList: inWordList(read.cand), lexiconGlossCount: g.lexiconCount,
       featureDefs: featureDefsUsed, exampleReadings: readings, formGroups: [group],
-      alternativeReadings: otherReadings(lemma, lemma, pos), ...(periodReading ? { periodReading } : {}),
+      alternativeReadings: otherReadings(lemma, lemma, pos), ...(periodReading ? { periodReading } : {}), ...(reviewMark ? { reviewMark } : {}),
     };
   }
 

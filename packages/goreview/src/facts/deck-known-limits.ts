@@ -150,3 +150,13 @@ export const DECK_KNOWN_LIMITS: Readonly<Record<string, Readonly<Record<string, 
 };
 
 export const deckKnownLimit = (languageId: string, unitId: string): string | undefined => DECK_KNOWN_LIMITS[languageId]?.[unitId];
+
+/**
+ * Languages whose written FORM units are never review cards, with the one plain sentence GoReview shows. A form is read in its sentence, but a form card is
+ * built from the form read ALONE, which can find a look-alike entry (Korean 게 "crab" for the ending, 거야 as 거 + 이야) and, when it finds the right word,
+ * only repeats that word's lemma card. The lemma card, decided in its sentence by the language's review gate, is the card. Not a list of faults: a policy.
+ */
+export const DECK_NO_FORM_CARDS: Readonly<Record<string, string>> = {
+  ko: 'A Korean written form is not made a review card of its own: its meaning read alone can be a look-alike word, and the word has its lemma card.',
+};
+export const deckNoFormCards = (languageId: string): string | undefined => DECK_NO_FORM_CARDS[languageId];

@@ -1,11 +1,6 @@
 {
  "readBy": "AI models (Claude), not native speakers; each card judged once, in the first sentence it came from, against the brief in docs/ecosystem/DECK-GATE.md. 2026-11-26.",
- "residual": [
-  "form:th:ทาสี",
-  "form:th:พริก",
-  "lemma:th:ทาสี:NOUN",
-  "lemma:th:พริก:NOUN"
- ],
+ "residual": [],
  "cards": {
   "form:th:กระจก": [
    {
@@ -5017,6 +5012,10 @@
    {
     "shown": "people (of a place or trade), as in ชาวนา ",
     "v": "ok"
+   },
+   {
+    "shown": "people (of a place or trade), as in ชาวนา \"rice farmer\"",
+    "v": "ok"
    }
   ],
   "lemma:th:ชาวนา:NOUN": [
@@ -5409,6 +5408,10 @@
    {
     "shown": "all, both, whole (as in ทั้งสอง ",
     "v": "ok"
+   },
+   {
+    "shown": "all, both, whole (as in ทั้งสอง \"both\", ทั้งหมด \"all\")",
+    "v": "ok"
    }
   ],
   "lemma:th:ทาง:NOUN": [
@@ -5457,6 +5460,10 @@
   "lemma:th:ที:NOUN": [
    {
     "shown": "time, turn (as in ทีหนึ่ง ",
+    "v": "ok"
+   },
+   {
+    "shown": "time, turn (as in ทีหนึ่ง \"once\")",
     "v": "ok"
    }
   ],
@@ -6591,6 +6598,10 @@
   "lemma:th:ละ:DET": [
    {
     "shown": "each, per (วันละสามครั้ง ",
+    "v": "ok"
+   },
+   {
+    "shown": "each, per (วันละสามครั้ง \"three times a day\")",
     "v": "ok"
    }
   ],
@@ -7825,6 +7836,10 @@
    {
     "shown": "to matter; to be wrong (as in ไม่เป็นไร ",
     "v": "ok"
+   },
+   {
+    "shown": "to matter; to be wrong (as in ไม่เป็นไร \"never mind\")",
+    "v": "ok"
    }
   ],
   "lemma:th:เผย:VERB": [
@@ -8606,5 +8621,11 @@
     "v": "ok"
    }
   ]
- }
+ },
+ "heldResidue": [
+  "form:th:ทาสี",
+  "form:th:พริก",
+  "lemma:th:ทาสี:NOUN",
+  "lemma:th:พริก:NOUN"
+ ]
 }

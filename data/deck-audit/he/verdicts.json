@@ -1,21 +1,6 @@
 {
  "readBy": "AI models (Claude), not native speakers; each card judged once, in the first sentence it came from, against the brief in docs/ecosystem/DECK-GATE.md. 2026-11-26.",
- "residual": [
-  "form:he:בשביל",
-  "lemma:he:בִּשְׁבִיל:ADP",
-  "lemma:he:בָּקוּ:PROPN",
-  "lemma:he:גִּלְגָּל:PROPN",
-  "lemma:he:חֹפֶשׁ:NOUN",
-  "lemma:he:כִּיס:NOUN",
-  "lemma:he:כִּנּוֹר:NOUN",
-  "lemma:he:מְכוֹנָה:NOUN",
-  "lemma:he:נָשַׁר:VERB",
-  "lemma:he:עָמַל:VERB",
-  "lemma:he:פִּלֵּס:VERB",
-  "lemma:he:פֹּעַל:NOUN",
-  "lemma:he:רָדָה:VERB",
-  "lemma:he:שֶׁקַע:NOUN"
- ],
+ "residual": [],
  "cards": {
   "form:he:אדם": [
    {
@@ -1854,6 +1839,11 @@
    {
     "shown": "to give birth (",
     "v": "ok"
+   },
+   {
+    "shown": "to give birth (\"to child\"; beget a descendant)",
+    "v": "false-reading",
+    "note": "נולדו is the nif'al verb נוֹלַד 'to be born' (here: all human beings are born free), not the pa'al יָלַד 'to give birth'."
    }
   ],
   "lemma:he:יָפֶה:ADJ": [
@@ -3777,5 +3767,21 @@
     "v": "ok"
    }
   ]
- }
+ },
+ "heldResidue": [
+  "form:he:בשביל",
+  "lemma:he:בִּשְׁבִיל:ADP",
+  "lemma:he:בָּקוּ:PROPN",
+  "lemma:he:גִּלְגָּל:PROPN",
+  "lemma:he:חֹפֶשׁ:NOUN",
+  "lemma:he:כִּיס:NOUN",
+  "lemma:he:כִּנּוֹר:NOUN",
+  "lemma:he:מְכוֹנָה:NOUN",
+  "lemma:he:נָשַׁר:VERB",
+  "lemma:he:עָמַל:VERB",
+  "lemma:he:פִּלֵּס:VERB",
+  "lemma:he:פֹּעַל:NOUN",
+  "lemma:he:רָדָה:VERB",
+  "lemma:he:שֶׁקַע:NOUN"
+ ]
 }

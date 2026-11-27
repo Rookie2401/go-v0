@@ -436,3 +436,51 @@ the Spanish nouns added (`caso`, `gusto`, `marca`) and the motion verbs before `
 listed noun's own form is the noun except before an auxiliary; Albanian `kisha` and `kurse`; the fresh held-out sentences themselves (an AI model wrote
 them: the writer was least sure of the Albanian and of Hebrew spelling); every held and remaining unit; every verdict (the readers were AI models).
 
+## Follow-up 4 (2026-11-27): the named cards held, the full Latin list, and fragments
+
+The owner, on the two questions follow-up 3 left (the options chosen): "Hold them now" and "Load the full list". And the Arabic builder's check
+that no admitted card's first meaning stops mid-phrase, run over every set.
+
+### The named residue is held
+
+Every card named on a held-out text (79 units over the fifteen sets) is on its language's known-limits list now, so the deck admits none of them.
+Each set's `verdicts.json` keeps the names in `heldResidue` for later fixes; `residual` is empty. The list also carries what the full Latin list
+brought (below): **known-limits units 57 → 155.** On the fifteen held-out texts this holds about 73 of 5,956 cards (1.2 %). A held unit is held
+whole: a word read rightly elsewhere (`porta`, `avis`, `сохранить`) gets no card until its fault is fixed.
+
+### GoReview loads the full Latin lexicon
+
+As the reader extension always has (and as GoReview does for French): `leanBuiltins.ts` and `builtins.ts` wait for `loadLatinLexicon()`. With the
+1,900-word seed alone, `casa` was read as `cado`, `poetas` as `peto`, `vitium` as `vicis`. With it go the Latin fixes written for follow-up 3:
+a shortened genitive plural in -um loses to an ordinary cell of another word (`portum`); a greeting at the head of a sentence is the verb or
+interjection (`Salve`); a capitalised opener with only plural common readings before a singular noun is the name; `nostrum` agreeing with a noun is
+the possessive; after a preposition a rival noun in the wrong case is penalised more.
+
+| Measure | Before | After |
+|---|---|---|
+| Latin evaluation (`scripts/latin-eval.mts --corpus main --gold`), lemma strict / lenient: New Testament | 95.6 / 97.6 | 95.7 / 97.7 |
+| Cicero, Vergil, Ovid | 91.7/92.6, 89.5/90.0, 89.6/90.4 | identical |
+| Latin development text: admitted cards | 442 | 509 |
+| Start-up golden (`goreview.startup.golden.json`), re-recorded for this reason | | one reading differs in 18 sentences: `nihil` a noun, not a pronoun; the rest is candidate detail |
+
+**What a Latin learner downloads.** The installable GoReview fetches the Latin analyser as chunks on first use: 3.41 MB (1.08 MB compressed)
+against 0.36 MB (0.10 MB) before, once, then kept. The chunks are not precached: the precache (54 files, 3.05 MB compressed) is unchanged, so no
+other learner downloads anything new. In the extension's GoReview the entry script is unchanged (6.04 MB) and the Latin list is a separate chunk
+read from disk; the package grows by about 3 MB.
+
+**Latin figures.** The old held-out half is development text now; the fresh half (90 sentences by an AI model, not a Latinist; read once with the
+seed list, no rule written from it): 348 cards, 10 false at the first reading with the full list (2.9 %), all held by name now. All 241 new Latin
+cards were read. For a Latinist: the 23 Latin units on the list, the greeting, `-um` and `nostrum` rules, and the sentences.
+
+### Fragments
+
+The check (`test/deck-audit/fragments.ts`, now part of the audit test) first flagged 79 admitted cards:
+
+| Finding | Count | What it was |
+|---|---|---|
+| An unclosed bracket, Thai and Modern Greek | 5 | a fault of THIS audit, not of the app: it read a card's meaning only up to the first quote mark inside it (`time, turn (as in ทีหนึ่ง "once")`). The audit reads the whole meaning now, and the affected cards were read again |
+| An unclosed bracket, Latin `timeo`, Russian `посыпать` | 2 | real. The gate cuts the unfinished aside (`timeo`); `посыпать` then reads "to pour", which a reader found wrong, so it is held |
+| Ends in a preposition, "and", or a modal's "to"; begins a longer sense | 72 | read by an AI reader: all whole English ("from, by, of", "to take care of", "devoid of, free of", "a, an", "must, have to"). The check does not count a final preposition |
+
+One more turned up with the check in place (Greek `πλαγιά`, a meaning left on a colon): the gate strips it. The audit now fails on an empty
+meaning, a dangling comma, semicolon or colon, an unclosed bracket, a final article ("many a" excepted) or a conjunction that joins nothing.

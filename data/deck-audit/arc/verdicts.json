@@ -1,8 +1,6 @@
 {
  "readBy": "AI models (Claude), not native speakers; each card judged once, in the first sentence it came from, against the brief in docs/ecosystem/DECK-GATE.md. 2026-11-26.",
- "residual": [
-  "lemma:arc:קַיִט:NOUN"
- ],
+ "residual": [],
  "cards": {
   "lemma:arc:אֱדַיִן:ADV": [
    {
@@ -528,5 +526,8 @@
     "v": "ok"
    }
   ]
- }
+ },
+ "heldResidue": [
+  "lemma:arc:קַיִט:NOUN"
+ ]
 }

@@ -334,3 +334,12 @@ describe('lead senses where the meanings come from the lexicon (attested-form la
     expect(shown(await applyDeckGate(form, { ...deps('he', {}), factsOf: async () => lemma }))).toBe(shown(form));
   });
 });
+
+describe('a meaning broken off inside a bracket', () => {
+  it('shows without the unfinished aside; a meaning that is only the aside is not a card', async () => {
+    const f = facts('lemma:la:timeo:VERB', { lemma: 'timeo', pos: 'VERB', lexicon: ['fear, be afraid of (ne + SUB = lest'], inWordList: true });
+    expect(shown(await applyDeckGate(f, deps('la', {})))).toBe('fear, be afraid of');
+    const only = facts('lemma:la:x:VERB', { lemma: 'x', pos: 'VERB', lexicon: ['(of things'], inWordList: true });
+    expect((await applyDeckGate(only, deps('la', {})))?.reviewHold?.kind).toBe('meaning-unreviewed');
+  });
+});

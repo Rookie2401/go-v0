@@ -22,7 +22,9 @@ const LOADERS: Readonly<Record<string, () => Promise<LanguageAdapter>>> = Object
   th: () => import('../../../src/adapters/th').then((m) => m.thAdapter),
   nb: () => import('../../../src/adapters/nb').then((m) => m.nbAdapter),
   nn: () => import('../../../src/adapters/nn').then((m) => m.nnAdapter),
-  la: () => import('../../../src/adapters/la').then((m) => m.laAdapter),
+  // Latin waits for the full lexicon too, as the reader loads it (2026-11-27, the owner: GoReview loads the full list): the 1,900-word seed alone read
+  // forms of unlisted words as far-fetched forms of listed ones (casa as cado). The lexicon chunks are fetched once, for a Latin learner only.
+  la: () => import('../../../src/adapters/la').then(async (m) => { await m.loadLatinLexicon().catch(() => undefined); return m.laAdapter; }),
   he: () => import('../../../src/adapters/he').then((m) => m.heAdapter),
   el: () => import('../../../src/adapters/el').then((m) => m.elAdapter),
   arc: () => import('../../../src/adapters/arc').then((m) => m.arcAdapter),

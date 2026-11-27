@@ -557,67 +557,67 @@
   {
    "text": "In principio erat Verbum",
    "summary": "in=in/ADP principio=principium/NOUN erat=sum/AUX verbum=verbum/NOUN",
-   "sha256": "5403c8660d2393543b9bca2c94030c2634baef00057d6219a90308456b322d14"
+   "sha256": "884985c786c0eadaee99fe81d2ac224565ab36974c2899ef0cb8bc0d6290e0f0"
   },
   {
    "text": "In principio erat Verbum",
    "summary": "in=in/ADP principio=principium/NOUN erat=sum/AUX verbum=verbum/NOUN",
-   "sha256": "5403c8660d2393543b9bca2c94030c2634baef00057d6219a90308456b322d14"
+   "sha256": "884985c786c0eadaee99fe81d2ac224565ab36974c2899ef0cb8bc0d6290e0f0"
   },
   {
    "text": "In principio erat Verbum",
    "summary": "in=in/ADP principio=principium/NOUN erat=sum/AUX verbum=verbum/NOUN",
-   "sha256": "5403c8660d2393543b9bca2c94030c2634baef00057d6219a90308456b322d14"
+   "sha256": "884985c786c0eadaee99fe81d2ac224565ab36974c2899ef0cb8bc0d6290e0f0"
   },
   {
    "text": "Verbum, et Verbum erat",
    "summary": "verbum=verbum/NOUN et=et/CONJ verbum=verbum/NOUN erat=sum/AUX",
-   "sha256": "13a69cfe52b7ee481adad3814c52e953c7ee14fbf0ef2e6efb9e0a99ce4f2a8d"
+   "sha256": "cf14243e0736d1700e2b81e48d191c55f5bd40b2a996f6d75d6d42dc739e4e41"
   },
   {
    "text": "Verbum erat apud Deum",
    "summary": "verbum=verbum/NOUN erat=sum/AUX apud=apud/ADP deum=deus/NOUN",
-   "sha256": "d8c0de261acdbd6f4fb4981e828fe384f48086ba4a6bf340f5be3878872e2889"
+   "sha256": "875b6e0d6ba0710b01f1426134780408b0faa398164846defa37a62a167ec036"
   },
   {
    "text": "Verbum erat apud Deum",
    "summary": "verbum=verbum/NOUN erat=sum/AUX apud=apud/ADP deum=deus/NOUN",
-   "sha256": "d8c0de261acdbd6f4fb4981e828fe384f48086ba4a6bf340f5be3878872e2889"
+   "sha256": "875b6e0d6ba0710b01f1426134780408b0faa398164846defa37a62a167ec036"
   },
   {
    "text": "Dominus regit me, et nihil mihi deerit.",
-   "summary": "dominus=dominus/NOUN regit=rego/VERB me=ego/PRON et=et/CONJ nihil=nihil/PRON mihi=ego/PRON deerit=desum/VERB",
-   "sha256": "7d501494556c360cd91ab6e0ecf295ee4fe255f4c103e83ade4f1995a69cded8"
+   "summary": "dominus=dominus/NOUN regit=rego/VERB me=ego/PRON et=et/CONJ nihil=nihil/NOUN mihi=ego/PRON deerit=desum/VERB",
+   "sha256": "b1e4d2eb5c7d76d538fcd96ec3a2cc94b1f78f427e1a978be1eb02de9c4ea0b9"
   },
   {
    "text": "Dominus regit me, et nihil mihi deerit.",
-   "summary": "dominus=dominus/NOUN regit=rego/VERB me=ego/PRON et=et/CONJ nihil=nihil/PRON mihi=ego/PRON deerit=desum/VERB",
-   "sha256": "7d501494556c360cd91ab6e0ecf295ee4fe255f4c103e83ade4f1995a69cded8"
+   "summary": "dominus=dominus/NOUN regit=rego/VERB me=ego/PRON et=et/CONJ nihil=nihil/NOUN mihi=ego/PRON deerit=desum/VERB",
+   "sha256": "b1e4d2eb5c7d76d538fcd96ec3a2cc94b1f78f427e1a978be1eb02de9c4ea0b9"
   },
   {
    "text": "Dominus regit me, et nihil mihi deerit.",
-   "summary": "dominus=dominus/NOUN regit=rego/VERB me=ego/PRON et=et/CONJ nihil=nihil/PRON mihi=ego/PRON deerit=desum/VERB",
-   "sha256": "7d501494556c360cd91ab6e0ecf295ee4fe255f4c103e83ade4f1995a69cded8"
+   "summary": "dominus=dominus/NOUN regit=rego/VERB me=ego/PRON et=et/CONJ nihil=nihil/NOUN mihi=ego/PRON deerit=desum/VERB",
+   "sha256": "b1e4d2eb5c7d76d538fcd96ec3a2cc94b1f78f427e1a978be1eb02de9c4ea0b9"
   },
   {
    "text": "Dominus regit me, et nihil mihi deerit.",
-   "summary": "dominus=dominus/NOUN regit=rego/VERB me=ego/PRON et=et/CONJ nihil=nihil/PRON mihi=ego/PRON deerit=desum/VERB",
-   "sha256": "7d501494556c360cd91ab6e0ecf295ee4fe255f4c103e83ade4f1995a69cded8"
+   "summary": "dominus=dominus/NOUN regit=rego/VERB me=ego/PRON et=et/CONJ nihil=nihil/NOUN mihi=ego/PRON deerit=desum/VERB",
+   "sha256": "b1e4d2eb5c7d76d538fcd96ec3a2cc94b1f78f427e1a978be1eb02de9c4ea0b9"
   },
   {
    "text": "Dominus regit me, et nihil mihi deerit.",
-   "summary": "dominus=dominus/NOUN regit=rego/VERB me=ego/PRON et=et/CONJ nihil=nihil/PRON mihi=ego/PRON deerit=desum/VERB",
-   "sha256": "7d501494556c360cd91ab6e0ecf295ee4fe255f4c103e83ade4f1995a69cded8"
+   "summary": "dominus=dominus/NOUN regit=rego/VERB me=ego/PRON et=et/CONJ nihil=nihil/NOUN mihi=ego/PRON deerit=desum/VERB",
+   "sha256": "b1e4d2eb5c7d76d538fcd96ec3a2cc94b1f78f427e1a978be1eb02de9c4ea0b9"
   },
   {
    "text": "Verbum caro factum est",
    "summary": "verbum=verbum/NOUN caro=caro/NOUN factum=facio/VERB est=sum/AUX",
-   "sha256": "9ba8ad81b2a8f943d723c4c954d6cdc8bd0e069e1ff2ce66ea08b1af73afb1c0"
+   "sha256": "6701c6c6201a650460624b9969b9b5504acadffe330e1ad9ac0cb62fab8686c5"
   },
   {
    "text": "Verbum caro factum est",
    "summary": "verbum=verbum/NOUN caro=caro/NOUN factum=facio/VERB est=sum/AUX",
-   "sha256": "9ba8ad81b2a8f943d723c4c954d6cdc8bd0e069e1ff2ce66ea08b1af73afb1c0"
+   "sha256": "6701c6c6201a650460624b9969b9b5504acadffe330e1ad9ac0cb62fab8686c5"
   },
   {
    "text": "et habitavit in nobis",
@@ -632,12 +632,12 @@
   {
    "text": "Hoc erat in principio apud Deum.",
    "summary": "hoc=hic/PRON erat=sum/AUX in=in/ADP principio=principium/NOUN apud=apud/ADP deum=deus/NOUN",
-   "sha256": "cdc7c5447a9d39ed6bc6c962eebeb9d96f90b245c5958b09378ccea8a22002f1"
+   "sha256": "2a6a7dd396daea00b3cde2c02d83bb9b663a76f29b4b9518a45388c3d7dd1f05"
   },
   {
    "text": "Xyzqwk Deus est.",
    "summary": "xyzqwk=?/? deus=deus/NOUN est=sum/AUX",
-   "sha256": "1308f83527612658fb7fe04edc362556d61ffd66827663a5d74506a82bcb5893"
+   "sha256": "6dc95a7ac89f71e1fa41c8ca1d5c9a90576a7112b8a6e6c3374b7fcf878aaf34"
   },
   {
    "text": "Xyzqwk",

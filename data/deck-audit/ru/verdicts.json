@@ -1,27 +1,6 @@
 {
  "readBy": "AI models (Claude), not native speakers; each card judged once, in the first sentence it came from, against the brief in docs/ecosystem/DECK-GATE.md. 2026-11-26.",
- "residual": [
-  "form:ru:выставка",
-  "form:ru:пломба",
-  "form:ru:руль",
-  "form:ru:сохранить",
-  "lemma:ru:авария:NOUN",
-  "lemma:ru:бутерброд:NOUN",
-  "lemma:ru:водитель:NOUN",
-  "lemma:ru:выставка:NOUN",
-  "lemma:ru:гроза:NOUN",
-  "lemma:ru:дух:NOUN",
-  "lemma:ru:знак:NOUN",
-  "lemma:ru:настоящий:ADJ",
-  "lemma:ru:перевести:VERB",
-  "lemma:ru:пломба:NOUN",
-  "lemma:ru:поднимать:VERB",
-  "lemma:ru:руль:NOUN",
-  "lemma:ru:сохранить:VERB",
-  "lemma:ru:спускать:VERB",
-  "lemma:ru:терапевт:NOUN",
-  "lemma:ru:шапка:NOUN"
- ],
+ "residual": [],
  "cards": {
   "form:ru:автобус": [
    {
@@ -799,6 +778,10 @@
   "form:ru:материал": [
    {
     "shown": "material (matter from which physical things are made or which is otherwise used…",
+    "v": "ok"
+   },
+   {
+    "shown": "material",
     "v": "ok"
    }
   ],
@@ -3901,6 +3884,10 @@
    {
     "shown": "loan; credit (specifically in reference to credits and debits in double-entry…",
     "v": "ok"
+   },
+   {
+    "shown": "loan; credit",
+    "v": "ok"
    }
   ],
   "lemma:ru:кресло:NOUN": [
@@ -4129,6 +4116,10 @@
    {
     "shown": "material (matter from which physical things are made or which is otherwise used…",
     "v": "ok"
+   },
+   {
+    "shown": "material",
+    "v": "ok"
    }
   ],
   "lemma:ru:матч:NOUN": [
@@ -4188,6 +4179,10 @@
   "lemma:ru:мечтать:VERB": [
    {
     "shown": "to dream (to imagine something, usually intensely but often unrealistically…",
+    "v": "ok"
+   },
+   {
+    "shown": "to dream",
     "v": "ok"
    }
   ],
@@ -4648,6 +4643,10 @@
   "lemma:ru:нравиться:VERB": [
    {
     "shown": "to please [with dative ‘someone’] (idiomatically translated with English like…",
+    "v": "ok"
+   },
+   {
+    "shown": "to please [with dative ‘someone’]",
     "v": "ok"
    }
   ],
@@ -5621,6 +5620,11 @@
    {
     "shown": "to pour (of friable/solid objects, such as sands, not liquids; sometimes used…",
     "v": "ok"
+   },
+   {
+    "shown": "to pour",
+    "v": "false-meaning",
+    "note": "посыпать means to sprinkle or strew (here: sprinkle with herbs); a bare 'to pour' misleads, as it suggests pouring liquid."
    }
   ],
   "lemma:ru:посёлок:NOUN": [
@@ -6343,6 +6347,10 @@
   "lemma:ru:сибирь:PROPN": [
    {
     "shown": "Siberia (the region of Russia in Asia, stretching from the Pacific Ocean to…",
+    "v": "ok"
+   },
+   {
+    "shown": "Siberia",
     "v": "ok"
    }
   ],
@@ -7689,6 +7697,10 @@
    {
     "shown": "guide (a trained specialist who leads guided tours at a museum or other…",
     "v": "ok"
+   },
+   {
+    "shown": "guide",
+    "v": "ok"
    }
   ],
   "lemma:ru:эксперт:NOUN": [
@@ -7751,5 +7763,27 @@
     "v": "ok"
    }
   ]
- }
+ },
+ "heldResidue": [
+  "form:ru:выставка",
+  "form:ru:пломба",
+  "form:ru:руль",
+  "form:ru:сохранить",
+  "lemma:ru:авария:NOUN",
+  "lemma:ru:бутерброд:NOUN",
+  "lemma:ru:водитель:NOUN",
+  "lemma:ru:выставка:NOUN",
+  "lemma:ru:гроза:NOUN",
+  "lemma:ru:дух:NOUN",
+  "lemma:ru:знак:NOUN",
+  "lemma:ru:настоящий:ADJ",
+  "lemma:ru:перевести:VERB",
+  "lemma:ru:пломба:NOUN",
+  "lemma:ru:поднимать:VERB",
+  "lemma:ru:руль:NOUN",
+  "lemma:ru:сохранить:VERB",
+  "lemma:ru:спускать:VERB",
+  "lemma:ru:терапевт:NOUN",
+  "lemma:ru:шапка:NOUN"
+ ]
 }

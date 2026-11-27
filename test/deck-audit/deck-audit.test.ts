@@ -21,6 +21,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { describe, expect, it } from 'vitest';
 import { DECK_KNOWN_LIMITS } from '../../packages/goreview/src/facts/deck-known-limits';
+import { fragmentWhy } from './fragments';
 import { DECK_LEAD_SENSES } from '../../packages/goreview/src/facts/deck-lead-senses';
 import { packFactsFor } from '../../packages/goreview/app/packFacts';
 import { createPackRuntime, packFor } from '../../packages/language-packs/src';
@@ -58,6 +59,7 @@ describe.each(AUDIT_SETS.map((s) => [s.id, s] as const))('deck audit: %s', (_id,
     // 4 — the held-out text: what remains, by name (a unit also met in the development text is counted there)
     const devUnits = new Set(devCards.map((c) => c.unitId));
     expect(bad(heldout.cards.filter((c) => !devUnits.has(c.unitId))), 'held-out text: the named residue').toEqual([...file!.residual].sort());
+    expect(runs.flatMap(([, r]) => r.cards).map((c) => ({ unit: c.unitId, shown: c.shown, why: fragmentWhy(c.shown) })).filter((x) => x.why), 'no admitted card shows a fragment').toEqual([]);
   }, 600_000);
 
   it.skipIf(!file)(`${set.name}: every unit on the known-limits list is one a reader found false or unknown`, () => {

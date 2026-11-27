@@ -1,14 +1,6 @@
 {
  "readBy": "AI models (Claude), not native speakers; each card judged once, in the first sentence it came from, against the brief in docs/ecosystem/DECK-GATE.md. 2026-11-26.",
- "residual": [
-  "form:el:ανέκαμψε",
-  "form:el:συναντηθήκαμε",
-  "lemma:el:βιάζω:VERB",
-  "lemma:el:βόλτα:NOUN",
-  "lemma:el:διασταύρωση:NOUN",
-  "lemma:el:καταβάλλω:VERB",
-  "lemma:el:ρίχνω:VERB"
- ],
+ "residual": [],
  "cards": {
   "form:el:άφησαν": [
    {
@@ -3132,6 +3124,10 @@
    {
     "shown": "slope of a landform that extends above the surrounding terrain:",
     "v": "ok"
+   },
+   {
+    "shown": "slope of a landform that extends above the surrounding terrain",
+    "v": "ok"
    }
   ],
   "lemma:el:πλατφόρμα:NOUN": [
@@ -4058,5 +4054,14 @@
     "note": "Ancient polytonic headword, not the modern word; modern is εγώ"
    }
   ]
- }
+ },
+ "heldResidue": [
+  "form:el:ανέκαμψε",
+  "form:el:συναντηθήκαμε",
+  "lemma:el:βιάζω:VERB",
+  "lemma:el:βόλτα:NOUN",
+  "lemma:el:διασταύρωση:NOUN",
+  "lemma:el:καταβάλλω:VERB",
+  "lemma:el:ρίχνω:VERB"
+ ]
 }

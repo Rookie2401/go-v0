@@ -1,11 +1,6 @@
 {
  "readBy": "AI models (Claude), not native speakers; each card judged once, in the first sentence it came from, against the brief in docs/ecosystem/DECK-GATE.md. 2026-11-26.",
- "residual": [
-  "form:el:παρεκάλει",
-  "form:el:ἀπέχοντος",
-  "form:el:ἀπολωλώς",
-  "lemma:el:ἄσωτος:ADJ"
- ],
+ "residual": [],
  "cards": {
   "form:el:αὐξανόμενα": [
    {
@@ -2689,5 +2684,11 @@
     "v": "ok"
    }
   ]
- }
+ },
+ "heldResidue": [
+  "form:el:παρεκάλει",
+  "form:el:ἀπέχοντος",
+  "form:el:ἀπολωλώς",
+  "lemma:el:ἄσωτος:ADJ"
+ ]
 }

@@ -158,7 +158,28 @@ async function firstMeaning(deps: DeckGateDeps, senses: readonly Sense[], pos: s
   return head ? { head } : { kind: 'meaning-unreviewed' };
 }
 
+/** A meaning cut inside a bracket (a word list's own truncated gloss, or a long one shortened) shows without the unfinished aside; undefined when it has none. */
+function withoutOpenBracket(shown: string): string | undefined {
+  const open: number[] = [];
+  for (let i = 0; i < shown.length; i++) { if (shown[i] === '(' || shown[i] === '[') open.push(i); else if (shown[i] === ')' || shown[i] === ']') open.pop(); }
+  return open.length ? shown.slice(0, open[0]).replace(/[\s,;:—–…-]+$/u, '').trim() : undefined;
+}
+
 export async function applyDeckGate(facts: UnitFacts | undefined, deps: DeckGateDeps): Promise<GatedFacts | undefined> {
+  const gated = await gateUnit(facts, deps);
+  if (!gated || gated.reviewHold) return gated;
+  const meaning = cardMeaning(gated);
+  // ... nor one left hanging on a colon, comma or semicolon (a list's lead-in)
+  const cut = meaning ? withoutOpenBracket(meaning.shown) ?? (/[,;:]$/u.test(meaning.shown) ? meaning.shown.replace(/[,;:]+$/u, '').trim() : undefined) : undefined;
+  if (cut === undefined) return gated;
+  // (e) a card never shows a broken-off meaning: the unfinished aside goes, and a meaning that was nothing but that is not a card
+  if (!/\p{L}/u.test(cut)) return held(gated, 'meaning-unreviewed', REASON['meaning-unreviewed']);
+  if (meaning!.base) return { ...gated, lexicalRecognition: { ...gated.lexicalRecognition!, glosses: [cut, ...gated.lexicalRecognition!.glosses!.filter((g) => g !== meaning!.shown)] } };
+  const rest = gated.glosses.filter((g) => g !== meaning!.shown && withoutOpenBracket(g) === undefined);
+  return { ...gated, glosses: [cut, ...rest], lexiconGlossCount: 1 } as UnitFacts;
+}
+
+async function gateUnit(facts: UnitFacts | undefined, deps: DeckGateDeps): Promise<GatedFacts | undefined> {
   if (!facts) return facts;
   const id = facts.unit.unitId;
   const lang = deps.languageId;

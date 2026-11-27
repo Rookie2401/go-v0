@@ -13,7 +13,7 @@ Lemma string convention: `arHeadForm` of `arabic/text.ts`.
 | lemma entries / form pages (of which "ar-verb form" pages) / lemma entries that also hold form-of senses | 27,090 / 50,698 (41,350) / 2,982 |
 | pages that are only alternative spellings (alt-of) | 1,021 |
 | participle entries (verb class in the extract, head "active / passive participle of X"; made ADJ with VerbForm=Part, Voice, Of=verb) / of those with Of | 14 / 10 |
-| lemma glosses changed by the clean-gloss rule (batch 6; counted before the reviewed choices) | 13,220 |
+| lemma glosses changed by the clean-gloss rule (batch 6; counted before the reviewed choices) | 13,224 |
 | gloss trust class (Sense= in lex): Rev (a reviewed choice matched) / One (a single real sense) / Lab (the lead stands after labelled senses) / Ord (the source's order, unreviewed): over all lemma ids with rows / over the 2,000 highest-count lexemes (leads) | 1889 / 13724 / 139 / 9549; 1234 / 599 / 5 / 162 |
 | lexemes with homonym siblings (Homonyms=N on each id, Lead=Yes on the lead) / glosses that differ from the batch-6 choice because of the sense labels | 787 / 172 |
 | reviewed gloss choices (gloss-choices.json): lexemes that took one / lexemes where no sense matched (keeping the default) | 1,889 / 7: أَنَا|PRON, زَهْرَة|NOUN, زَوْج|NOUN, فَقِير|ADJ, قَرْيَة|NOUN, مَتَى|ADP, وَاحِد|PRON |
@@ -56,12 +56,12 @@ Lemma string convention: `arHeadForm` of `arabic/text.ts`.
 | lemma entries with no table at all / of those with a row under their written form (the source's canonical row, code `canonical…`) | 2,520 / 2,015 (without: 505, of which multi-word heads 505) |
 | adjective lemmas with a feminine row (any origin) / of all adjective lemma ids; "feminine … of X" form pages of adjectives resolved (rows new, the rest already in the adjective's table) | 3,538 / 3,814; 930 (49 new) |
 | core ranking | marginal (own = weight of a lemma's own keys per byte; marginal = frequency of the keys it adds to those already covered, per byte) |
-| core | 1678 lemmas (255 of closed classes, 2 seeded), 2598 keys, 12795 rows, 499,887 bytes of JSON (budget 500,000) |
+| core | 1678 lemmas (255 of closed classes, 2 seeded), 2598 keys, 12795 rows, 499,824 bytes of JSON (budget 500,000) |
 | core token coverage on ar_50k (running words whose key is a core key) | 55.95 % of 149,102,962 (clitic forms are not keys) |
 | identity checks accepted through a numbered sibling of the main id / through the loose fold | 2 / 2 (counted apart from the clean ones above) |
 | lexeme preferences (--identities): candidate loser/winner pairs / dropped as one lexeme (same head, same part-of-speech group) / dropped as both directions (b) / dropped as balanced (c) / closed-class loser to open winner dropped (d) | 1,904 / 75 / 7 / 109 / 2 |
-| reviewed preferences (preferences-reviewed.json) merged / derived pairs they overrode / pairs removed by its balanced list / lexemes not in the index (skipped); derived pairs before the merge | 103 / 0 / 5 / 0; 1,291 |
-| preferences emitted: pairs / distinct losers / distinct winners | 1,375 / 1,218 / 589 |
+| reviewed preferences (preferences-reviewed.json) merged / derived pairs they overrode / pairs removed by its balanced list / lexemes not in the index (skipped); derived pairs before the merge | 100 / 0 / 8 / 0; 1,291 |
+| preferences emitted: pairs / distinct losers / distinct winners | 1,370 / 1,214 / 586 |
 | lemma ids with count 0 (counts by lexeme group: own keys of the group, plus the weaker decided-key term, weight 0.25; before the group rule 22,516) | 21,103 of 27,089 |
 | identities file | src/adapters/arabic/identities.json: 866 keys credited to their main lemma; checked clean 865, failed 11 (10 naming a lemma id not in the index) |
 
@@ -73,7 +73,7 @@ Share of ar_50k running words by the number of lemma ids their key has in this i
 
 ## Core budget projections (not stored)
 
-- 350,000 bytes: 679 lemmas, tokenCoverage 0.5223
+- 350,000 bytes: 680 lemmas, tokenCoverage 0.5225
 - 500,000 bytes: 885 lemmas, tokenCoverage 0.5595
 - 800,000 bytes: 1328 lemmas, tokenCoverage 0.6008
 

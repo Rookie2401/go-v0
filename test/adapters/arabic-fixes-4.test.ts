@@ -137,3 +137,41 @@ describe.skipIf(!fs.existsSync(MANIFEST))('batch 2 with the real index', () => {
     expect(lookupArabicLemma('صَبَاح|NOUN')?.[1]).toBe('morning');
   });
 });
+
+// ───────────────────────────── batch 3: five named faults of the third blind text ─────────────────────────────
+
+describe.skipIf(!fs.existsSync(MANIFEST))('batch 3 with the real index', () => {
+  beforeAll(() => {
+    resetArabicIndexes();
+    const man = JSON.parse(fs.readFileSync(MANIFEST, 'utf8')) as { shards: Record<string, { file: string }> };
+    for (const s of Object.values(man.shards)) installArabicIndex(JSON.parse(zlib.gunzipSync(fs.readFileSync(path.join(DIR, s.file))).toString('utf8')) as ArabicFormIndex);
+  });
+  afterAll(() => resetArabicIndexes());
+  const word = (t: string, surface: string): AnalysisCandidate[] => run(t).find((x) => x.token.surface === surface)!.candidates;
+
+  it('1. a gloss alternative ends at a spaced dash or an opening quotation mark: عُنْوَان is "title"', () => {
+    expect(lookupArabicLemma('عُنْوَان|NOUN')?.[1]).toBe('title');
+    for (const id of ['الخَبِير|PROPN', 'القَابِض|PROPN']) { const g = lookupArabicLemma(id)?.[1] ?? ''; expect(g, id).not.toMatch(/["“]/); }
+  });
+  it('2. إذا is إِذَا "if", never إِذَنْ reached through the tanwin spelling إذًا (the audited sentence and two of mine)', () => {
+    for (const t of ['إذا ارتفع الماء بعد الأمطار الغزيرة فسيغمر الحقول', 'إذا حضر المدير بدأ الاجتماع', 'إذا نجح الطالب فرح أهله']) {
+      const cs = word(t, 'إذا');
+      expect(cs.filter((c) => c.lemma === 'إِذَنْ').every((c) => c.confidence < 0.5), t).toBe(true);
+      expect(cs[0].lemma, t).toBe('إِذَا');
+    }
+  });
+  it('3. ما before زال and its sisters is not "what" (no credit to the pronoun); elsewhere ما is not touched', () => {
+    for (const [t, w] of [['ما زال الطلاب يتبادلون القصص الجديدة', 'ما'], ['ما زالت المدينة جميلة', 'ما'], ['ما يزال الوضع صعبا', 'ما']] as Array<[string, string]>) {
+      const cs = word(t, w);
+      expect(cs.filter((c) => c.pos === 'PRON' && c.lemma === 'مَا').every((c) => c.confidence < 0.5), t).toBe(true);
+    }
+    expect(String(word('ما هذا الشيء', 'ما')[0].notes?.context ?? '')).not.toContain('زَالَ');
+  });
+  it('4. عجب is a Form I / Form IV twin: لم يعجبني is not decided for عَجِبَ (the audited sentence and two of mine)', () => {
+    for (const [t, w] of [['لم يعجبني الفيلم لأن قصته طويلة', 'يعجبني'], ['لم يعجبها الكتاب', 'يعجبها'], ['لم يعجبنا المطعم', 'يعجبنا']] as Array<[string, string]>) {
+      expect(word(t, w).filter((c) => c.lemma === 'عَجِبَ').every((c) => c.confidence < 0.5), t).toBe(true);
+    }
+    // a pair the reviewed preferences hold still decides: لم يكتب is كَتَبَ
+    expect(word('لم يكتب الطالب', 'يكتب')[0]).toMatchObject({ lemma: 'كَتَبَ', confidence: 0.8 });
+  });
+});

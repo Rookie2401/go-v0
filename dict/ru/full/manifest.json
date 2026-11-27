@@ -20,7 +20,7 @@
     "withAudio": 18458
   },
   "builtAt": "2026-11-18",
-  "gzip": false,
+  "gzip": true,
   "strings": [
     "declension",
     "plural",

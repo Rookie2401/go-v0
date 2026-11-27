@@ -11,6 +11,9 @@ the sentences of block K with 겁니다 (갈, 먹을, 올, 제), 겁니까 (언�
 171 of 14,196 (185). The test's own known lists (`common-words.table.json`) are the current record; nothing was added to them.
 그는 다리를 접니다 stays listed. The two-sided gate is unchanged.
 
+Added 2026-11-27 (older than every round, found by the release manager's reading): 문을 걸어 잠갔다 and 벽에 그림을 걸어 놓았어요
+read 걷다 "to walk" where the word is 걸다 "to hang, to lock". Both are held from review (the word list also has 걸다) and listed.
+
 ## Method
 
 - Expectations are what a careful Korean teacher would say the word is, decided before the analyser was run; a corrected expectation is listed below. Nothing has been reviewed by a native speaker.

@@ -337,10 +337,10 @@ const isExist = (stem: string): boolean => /[있없밌]$/u.test(stem) || stem ==
 const KO_CORE_PARTICLE_IDS: ReadonlySet<string> = new Set(['subject', 'object', 'topic', 'also', 'of', 'to', 'at', 'at-short', 'and', 'only', 'by', 'to-person', 'to-person-hante', 'to-person-hon', 'from', 'until']);
 
 /** Rule 2 (round fourteen): at token level a RARE rival of another headword is set aside below the credit floor (see finish()). The
- *  owner may reverse it: switch it off here. `predicates` (one verb against a rarer verb of the same form) is OFF since the audit of
+ *  OFF since 2026-11-27 (the release manager had allowed it on their own reading and withdrew it after the audit): nothing below runs. `predicates` (one verb against a rarer verb of the same form) is OFF since the audit of
  *  2d71345d: setting the rarer verb aside before the sentence is read made 개가 사람을 물었어요 a confident 묻다 "to ask" and 칼을
  *  갈게요 a confident 가다 "to go" (an object no longer could choose 물다 or 갈다). The twenty-times clause is measured only, not on. */
-export const KO_RARE_RIVAL_RULE = { on: true, predicates: false, dwarfed20: false };
+export const KO_RARE_RIVAL_RULE = { on: false, predicates: false, dwarfed20: false };
 
 let orderSeq = 0;
 function baseScore(entry: KoLexEntry | undefined, stemSyl: number, nMorph: number, violations: number): number {

@@ -468,17 +468,11 @@ consonant (ㅂ or ㄴ) becomes the final of the nominal's last syllable: 겁니�
   stands and both stay creditable. There is no construction for -(으)ㄹ 것이다 as future or presumption in
   `constructions.ts`, for 갈 거예요 as little as for 갈 겁니다: a stated gap, not added here.
 
-**A listed word with no count is not a live rival** (`KO_RARE_RIVAL_RULE` in `analyze.ts`). At token level a listed
-whole word with no count at all, standing against a counted first reading of the same letters, is set aside at 0.45
-(이게, 그게; 누가 "Luke"; 목이 "wood ear"). Never touched: a listed word that has a count, noun + particle against a
-predicate, the contracted copula's verb, a homonym set's undecided reading.
-
-A second clause, one verb against a much rarer verb spelled the same (주세요: 줄다 beside 주다), was tried and is OFF
-(`predicates: false`). It removed the rarer verb before the sentence was read, so an object could no longer choose it:
-개가 사람을 물었어요 read 묻다 "to ask" and 칼을 갈게요 read 가다 "to go", both confidently (the independent audit found
-it). So 주세요, 갈게요, 가세요 and 길어요 are shown as two words and are not drilled from those sentences, as are 가요 and
-해요. Doing better needs to know which verbs take an object, which the lexicon does not hold. The clause for a rival
-that is counted but dwarfed (`dwarfed20`) is off as before.
+**Rare rivals: tried, and OFF** (`KO_RARE_RIVAL_RULE.on = false` in `analyze.ts`). A rule that set a rare look-alike
+aside at token level was added on the release manager's reading of "fix Korean" and withdrawn. Its verb-against-verb half
+removed the rarer verb before the sentence was read, so 개가 사람을 물었어요 read 묻다 "to ask" and 칼을 갈게요 read 가다 "to go",
+both confidently (the independent audit). So 주세요, 갈게요, 가세요, 길어요, 이게, 그게, 누가, 가요 and 해요 are shown as two words
+and are not drilled from those sentences. Doing better needs to know which verbs take an object.
 
 ## Constructions (`korean/constructions.ts`, `detectPatterns`)
 

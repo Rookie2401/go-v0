@@ -928,7 +928,7 @@ underBothStates('final round: a counter or a lone surname + particle after the c
 
 /** Round fourteen, rule 1: the contracted copula (vowel-final nominal + unwritten 이다 + an ending whose first consonant joins its last syllable,
  *  or -니까); rule 2: a rare rival of another headword is set aside below the credit floor. */
-underBothStates('round fourteen: the contracted copula; an uncounted rival is no live rival (core; core + shards)', () => {
+underBothStates('round fourteen: the contracted copula; rare rivals stay live (core; core + shards)', () => {
   const live = (c: AnalysisCandidate | undefined) => !!c && !c.unconfirmed && c.confidence >= 0.5;
   const reading = (form: string, lemma: string) => koAnalyzeToken(form).find((c) => koBareLemmaT(c.lemma ?? '') === lemma);
   // where a verb fits too, both creditable, by the counts
@@ -950,14 +950,9 @@ underBothStates('round fourteen: the contracted copula; an uncounted rival is no
     expect(cs.some((c) => c.parts?.some((p) => p.lemma === '이다') && live(c)), `${form}: no live copula reading`).toBe(false);
   }
   for (const form of ['거예요', '거죠', '거야']) expect(koBareLemmaT(koAnalyzeToken(form)[0].lemma ?? ''), form).toBe('거');
-  // rule 2: a listed whole word with no count gives way to a counted reading
-  for (const [form, rare] of [['누가', '누가'], ['이게', '이게'], ['그게', '그게']] as const) {
-    const r = koAnalyzeToken(form).slice(1).find((c) => koBareLemmaT(c.lemma ?? '') === rare);
-    expect(live(r), `${form}: ${rare} is set aside`).toBe(false);
-  }
-  // …but one verb never sets aside another before the sentence is read (audit of 2d71345d): 주다 / 줄다 and 가다 / 갈다 stay live
-  for (const [form, a2, b2] of [['주세요', '주다', '줄다'], ['갈게요', '가다', '갈다']] as const) {
-    expect(live(reading(form, a2)) && live(reading(form, b2)), form).toBe(true);
+  // the rare-rival rule is off: both words stay live and the card says it cannot tell (the audit of 2d71345d and the ruling after it)
+  for (const [form, x, y] of [['주세요', '주다', '줄다'], ['갈게요', '가다', '갈다']] as const) {
+    expect(live(reading(form, x)) && live(reading(form, y)), form).toBe(true);
   }
   // not a noun + core particle against a predicate form
   for (const [form, a, b] of [['물을', '물', '묻다'], ['실을', '실', '싣다']] as const) {

@@ -20,7 +20,7 @@
  */
 'use strict';
 
-var BUILD_ID = '9c24793e38b5';
+var BUILD_ID = '69a8e8e9ccb4';
 var PRECACHE = [
   "./",
   "./EB-Garamond-OFL.txt",
@@ -45,10 +45,10 @@ var PRECACHE = [
   "./assets/he-CDT9jrOs.js",
   "./assets/hebrew-script-CnsZhqS-.js",
   "./assets/hi-DahJF875.js",
-  "./assets/index-BijJIBcn.js",
+  "./assets/index-BYjY1HiE.js",
   "./assets/jerusalem-YWyJNBCG.webp",
   "./assets/la-CwaQG1iI.js",
-  "./assets/languageChoices-DPfrbu-T.js",
+  "./assets/languageChoices-Ikb5X5GJ.js",
   "./assets/nb-DD4vZ02j.js",
   "./assets/nn-BFIvrq7f.js",
   "./assets/norwegian-CE2nWb77.js",
@@ -62,9 +62,9 @@ var PRECACHE = [
   "./assets/shared-f3Tn5VdE.js",
   "./assets/sq-BV_-FP7T.js",
   "./assets/src-BdSvOU29.js",
-  "./assets/style-DbT1ML9p.css",
+  "./assets/style-BYagmCNE.css",
   "./assets/syntax-CGmPxLTF.js",
-  "./assets/th-DqmlX8JH.js",
+  "./assets/th-Ceo5IDSp.js",
   "./assets/valle-de-angeles-BxOTzEvC.webp",
   "./assets/varanasi-D-p-TlCF.webp",
   "./config.json",
@@ -86,51 +86,51 @@ var LANG_CHUNKS = {
     "./assets/lang-aramaic-B5WkUau3.js"
   ],
   "de": [
-    "./assets/lang-de-DGeTeS1r.js"
+    "./assets/lang-de-izy4WiCV.js"
   ],
   "el": [
-    "./assets/lang-el-Cvy5323o.js"
+    "./assets/lang-el-BvPawAgS.js"
   ],
   "es": [
-    "./assets/lang-es-CLPJSB1t.js"
+    "./assets/lang-es-DcjxTH0U.js"
   ],
   "fr": [
-    "./assets/lang-fr-WtGMNuTo.js"
+    "./assets/lang-fr-ClWdK9yE.js"
   ],
   "french": [
     "./assets/lang-french-CIGjcOcX.js",
     "./assets/lang-french-LVX0gXcx.js"
   ],
   "he": [
-    "./assets/lang-he-vjSG5O8o.js"
+    "./assets/lang-he-C87TnxPn.js"
   ],
   "hebrew": [
     "./assets/lang-hebrew-Bsnip4qd.js",
     "./assets/lang-hebrew-apRjTzMX.js"
   ],
   "hi": [
-    "./assets/lang-hi-PXk2-izY.js"
+    "./assets/lang-hi-tRVMp9pt.js"
   ],
   "hindi": [
     "./assets/lang-hindi-DyM6_O99.js"
   ],
   "la": [
-    "./assets/lang-la-BkTGCvyE.js"
+    "./assets/lang-la-DMZhqMJY.js"
   ],
   "nb": [
-    "./assets/lang-nb-DC8zA2QR.js"
+    "./assets/lang-nb-DxAcrh7W.js"
   ],
   "nn": [
-    "./assets/lang-nn-DfGZdCBJ.js"
+    "./assets/lang-nn-BlUiBJYT.js"
   ],
   "norwegian": [
-    "./assets/lang-norwegian-CY2hDirZ.js"
+    "./assets/lang-norwegian-CHKLk1qh.js"
   ],
   "ru": [
-    "./assets/lang-ru-oF05VsOk.js"
+    "./assets/lang-ru-DGSGcP_D.js"
   ],
   "sq": [
-    "./assets/lang-sq-CoQ-1Nzj.js"
+    "./assets/lang-sq-DbwV1AJK.js"
   ],
   "th": [
     "./assets/lang-th-PKk-XJpB.js"

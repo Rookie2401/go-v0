@@ -1,5 +1,5 @@
 {
-  "_about": "REVIEWED EXCLUSIONS of accepted answers for Arabic lemma cards (2026-11-26). A key is \"<vocalized head>|<POS>\"; each string is a whole alternative (case-insensitive) that GoReview neither shows nor accepts for that lexeme, although the dictionary entry lists it. Decided by the auditor, confirmed by the lead: قَالَ|VERB, \"to root\": on its own it means to plant roots in English, a false meaning for a learner who types it (\"to advocate\", \"to propound\" stay). On 2026-11-26 eleven more lexemes were added from the independent reader's list of answers that are not meanings of the word (a later sense of the word's own entry that the reader found wrong), reader-found and lead-confirmed: اِتَّصَلَ, بَيْت, بِطَاقَة, تَقْرِير, ثُمَّ, ضَرُورِيّ, عَالَم, عَدَد, عَرَفَ, غَيْر, مَكْتَبَة. خَرَجَ|VERB \"to get\" (2026-11-27, reader-found and lead-confirmed): a sense of its own entry that stands alone (\"to get\"), not \"to get out\". A test fails if a key is no lemma of the index.",
+  "_about": "REVIEWED EXCLUSIONS of accepted answers for Arabic lemma cards (2026-11-26). A key is \"<vocalized head>|<POS>\"; each string is a whole alternative (case-insensitive) that GoReview neither shows nor accepts for that lexeme, although the dictionary entry lists it. Decided by the auditor, confirmed by the lead: قَالَ|VERB, \"to root\": on its own it means to plant roots in English, a false meaning for a learner who types it (\"to advocate\", \"to propound\" stay). On 2026-11-26 eleven more lexemes were added from the independent reader's list of answers that are not meanings of the word (a later sense of the word's own entry that the reader found wrong), reader-found and lead-confirmed: اِتَّصَلَ, بَيْت, بِطَاقَة, تَقْرِير, ثُمَّ, ضَرُورِيّ, عَالَم, عَدَد, عَرَفَ, غَيْر, مَكْتَبَة. خَرَجَ|VERB \"to get\" (2026-11-27, reader-found and lead-confirmed): a sense of its own entry that stands alone (\"to get\"), not \"to get out\". On 2026-11-27 (reader-found, lead-confirmed) seven more lexemes: أَكَّدَ \"to say\" (the fourth sense), اِنْقَطَعَ \"stay\", دَخَلَ \"to sleep\", كَتَبَ \"to track\", وَاصَلَ (the later senses \"to hold close, or loving, communion, commerce or intercourse with\" and \"to give, present with\"), وَصَلَ \"to enter\", غَطَّى \"to describe\". A test fails if a key is no lemma of the index.",
   "exclude": {
     "قَالَ|VERB": [
       "to root"
@@ -46,6 +46,36 @@
     ],
     "خَرَجَ|VERB": [
       "to get"
+    ],
+    "أَكَّدَ|VERB": [
+      "to say"
+    ],
+    "اِنْقَطَعَ|VERB": [
+      "stay"
+    ],
+    "دَخَلَ|VERB": [
+      "to sleep"
+    ],
+    "كَتَبَ|VERB": [
+      "to track"
+    ],
+    "وَاصَلَ|VERB": [
+      "to hold close",
+      "loving",
+      "communion",
+      "commerce or intercourse with",
+      "to give",
+      "present with",
+      "to give, present with"
+    ],
+    "وَصَلَ|VERB": [
+      "to enter"
+    ],
+    "غَطَّى|VERB": [
+      "to describe"
+    ],
+    "إِذَا|CONJ": [
+      "and"
     ]
   }
 }

@@ -56,6 +56,8 @@ export function isFragmentAlternative(alt: string, opts: { functionWords?: boole
   if (/\p{Script=Arabic}/u.test(b) || b.includes(':') || /\betc\b/iu.test(b)) return true;
   // a quotation mark is a quotation, not a meaning; "forms the ..." and "being ..." describe grammar (a description of the form, not what the word means)
   if (/["\u201C\u201D\u201E\u00AB\u00BB]/u.test(b) || /^(?:forms the|being)\b/iu.test(b)) return true;
+  // "or loving", "and then": the rest of a sentence the sense was written as, not an alternative of its own
+  if (/^(?:or|and)\s/iu.test(b)) return true;
   if (GRAMMAR_WORD.test(b) || USAGE_NOTE.test(b) || GRAMMAR_NOTE.test(b) || isCrossReferenceOnly(a)) return true;
   if (opts.functionWords !== false && FUNCTION_WORD.test(b)) return true;
   return false;
@@ -74,6 +76,10 @@ const MAX_ITEM_WORDS = 4;
 export function arCleanSense(sense: string, opts: { functionWords?: boolean } = {}): string {
   const cut = sense.search(EXAMPLE_CUT);
   if (cut >= 0) sense = sense.slice(0, cut);
+  // a closing bracket with no opening one ("to stay away, fail to arrive or appear yield, success, supplies, etc)"): the source lost the opening bracket, so
+  // where the aside begins is unknown; only the first item, which no aside can have reached, is kept
+  const opens = (sense.match(/[([]/gu) ?? []).length; const closes = (sense.match(/[)\]]/gu) ?? []).length;
+  if (closes > opens) { const first = splitOutside(sense, ';')[0] ?? ''; sense = splitOutside(first, ',')[0] ?? ''; }
   // a final full stop is the sentence's, not the meaning's ("the lift(s)." would leave "the lift ." once its aside is taken out)
   const parts = splitOutside(sense, ';').map((part) => splitOutside(part, ',').filter((alt) => !isFragmentAlternative(alt, opts)).map((alt) => alt.replace(/[.\s]+$/u, '')));
   const all = parts.flat();

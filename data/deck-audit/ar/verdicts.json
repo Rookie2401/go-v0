@@ -389,7 +389,8 @@
   "lemma:ar:أَكَّدَ:VERB": [
    {
     "shown": "to confirm",
-    "v": "ok"
+    "v": "ok",
+    "note": "bad answers: to say"
    }
   ],
   "lemma:ar:أَكْثَر:ADJ": [
@@ -554,6 +555,10 @@
    {
     "shown": "to wait",
     "v": "ok"
+   },
+   {
+    "shown": "to wait for",
+    "v": "ok"
    }
   ],
   "lemma:ar:اِنْتِشَار:NOUN": [
@@ -676,6 +681,10 @@
   "lemma:ar:تَوَقَّعَ:VERB": [
    {
     "shown": "to expect, to look",
+    "v": "ok"
+   },
+   {
+    "shown": "to expect",
     "v": "ok"
    }
   ],
@@ -1490,6 +1499,10 @@
    {
     "shown": "most, the majority",
     "v": "ok"
+   },
+   {
+    "shown": "most, the majority of",
+    "v": "ok"
    }
   ],
   "lemma:ar:مُنْذُ:ADP": [
@@ -1635,6 +1648,10 @@
    {
     "shown": "to arrive",
     "v": "ok"
+   },
+   {
+    "shown": "to arrive at",
+    "v": "ok"
    }
   ],
   "lemma:ar:وَفْد:NOUN": [
@@ -1725,6 +1742,10 @@
    {
     "shown": "to be possible",
     "v": "ok"
+   },
+   {
+    "shown": "to be possible for",
+    "v": "ok"
    }
   ],
   "lemma:ar:أَيْضًا:ADV": [
@@ -1767,6 +1788,10 @@
    {
     "shown": "to be in contact",
     "v": "ok"
+   },
+   {
+    "shown": "to be in contact with",
+    "v": "ok"
    }
   ],
   "lemma:ar:اِحْتَاجَ:VERB": [
@@ -1790,6 +1815,10 @@
   "lemma:ar:اِسْتَطَاعَ:VERB": [
    {
     "shown": "to be able",
+    "v": "ok"
+   },
+   {
+    "shown": "to be able to",
     "v": "ok"
    }
   ],
@@ -2565,7 +2594,8 @@
    },
    {
     "shown": "to cover",
-    "v": "ok"
+    "v": "ok",
+    "note": "bad answers: to describe"
    }
   ],
   "lemma:ar:غَيَّرَ:VERB": [
@@ -2689,7 +2719,8 @@
   "lemma:ar:كَتَبَ:VERB": [
    {
     "shown": "to write",
-    "v": "ok"
+    "v": "ok",
+    "note": "bad answers: to track"
    }
   ],
   "lemma:ar:كَثِير:ADJ": [
@@ -3220,6 +3251,10 @@
    {
     "shown": "front, place that is before",
     "v": "ok"
+   },
+   {
+    "shown": "front",
+    "v": "ok"
    }
   ],
   "lemma:ar:إِذَا:CONJ": [
@@ -3305,7 +3340,7 @@
    {
     "shown": "to be cut off",
     "v": "ok",
-    "note": "bad answers: a rope"
+    "note": "bad answers: success | supplies | stay"
    }
   ],
   "lemma:ar:بَاعَ:VERB": [
@@ -3475,7 +3510,8 @@
   "lemma:ar:دَخَلَ:VERB": [
    {
     "shown": "to enter",
-    "v": "ok"
+    "v": "ok",
+    "note": "bad answers: to sleep"
    }
   ],
   "lemma:ar:دَرْس:NOUN": [
@@ -3978,7 +4014,8 @@
   "lemma:ar:وَاصَلَ:VERB": [
    {
     "shown": "to continue doing uninterruptedly",
-    "v": "ok"
+    "v": "ok",
+    "note": "bad answers: loving | communion | commerce or intercourse with | to hold close | to give, present with | to give | present with"
    }
   ],
   "lemma:ar:أَخِير:ADJ": [

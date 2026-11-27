@@ -77,3 +77,13 @@ describe('two mechanical filters (batch 11)', () => {
     expect(arCleanSense("don't, can't")).toBe("don't, can't");
   });
 });
+
+describe('batch 13: a lost opening bracket, and "or ..." continuations', () => {
+  it('a sense with a closing bracket and no opening one keeps only its first item', () => {
+    expect(arCleanSense('to stay away, fail to arrive or appear yield, success, supplies, etc)')).toBe('to stay away');
+    expect(arCleanSense('to cover (an event, an occasion), to describe')).toBe('to cover (an event, an occasion), to describe');
+  });
+  it('an alternative that begins with "or" or "and" is a continuation, not a meaning', () => {
+    expect(arCleanSense('to hold close, or loving, communion')).toBe('to hold close, communion');
+  });
+});

@@ -54,8 +54,9 @@ describe.skipIf(!have)('the built extension', () => {
     // 2026-11-25, the review hold: 589 -> 591 KB. The card now says so when a word is undecided between two different words (both shown, each with its class and
     // meaning, no single answer in the headline) and shows why a held word is not added to review (parser/cardModel.ts reviewHold, popup/card.ts; any language that
     // writes the review gate's notes, src/core/review-gate.ts). Measured 604,503 bytes = 590.3 KB.
-    // 2026-11-26, Arabic on top of Korean: 591 -> 608 KB. The content script takes the Arabic text views (arabic/text.ts: the key, the loose key, the tokenizer), language/arabic.ts and the Arabic branches of language/resolve.ts and active/pageLanguages.ts; the analyser and its lexicon are in analysers/ar.js. Measured 621,766 bytes = 607.2 KB on the ko + ar build (604,503 with Korean alone: Arabic adds 16.9 KB).
-    expect(sizes.get('content.js')!, 'content.js').toBeLessThanOrEqual(608 * KB);
+    // 2026-11-27, Korean on master 7a8ced80: measured 605,765 bytes = 591.6 KB (599,025 on that master, built the same day).
+    // 2026-11-27, Arabic on top of Korean (merge of 63205859): 592 -> 609 KB. Measured 623,025 bytes = 608.4 KB on the ko + ar tree, +17,260 over Korean's own 605,765: the Arabic text views (arabic/text.ts), language/arabic.ts and the Arabic branches of language/resolve.ts and active/pageLanguages.ts.
+    expect(sizes.get('content.js')!, 'content.js').toBeLessThanOrEqual(609 * KB);
     // Hindi reading must resolve in the offline Repository too. Its real analyser adds
     // about 460 KB to the former Albanian-only worker; classic workers cannot import
     // the page's analyser chunk. Keep an explicit ceiling rather than dropping analysis.
@@ -84,8 +85,9 @@ describe.skipIf(!have)('the built extension', () => {
     // ask it for: the pack manifest with its honest limits, the plain explanation of every feature value the analyser writes (speech levels,
     // connectives, the 58 particle families), of 35 constructions, and the orientation. Measured 1,342,801 bytes = 1,311.3 KB (1,263.2 KB on
     // master a822b1ab, built the same day). No Korean analyser, lexicon or Hangul table is in the worker: they are in analysers/ko.js (558 KB then; 609,722 bytes = 595.4 KB in the pack's final code, where background.js measured 1,342,910 bytes).
-    // 2026-11-26, Arabic on top of Korean: 1315 -> 1343 KB. The worker takes the Arabic pack's manifest, grammar explanations, validation cases, orientation and voice registry, as for every pack; no Arabic analyser or lexicon is in it. Measured 1,374,562 bytes = 1,342.3 KB on the ko + ar build (1,342,910 with Korean alone: Arabic adds 30.9 KB).
-    expect(sizes.get('background.js')!, 'background.js').toBeLessThanOrEqual(1343 * KB);
+    // 2026-11-27, Korean on master 7a8ced80: measured 1,349,016 bytes = 1,317.4 KB (1,299,239 on that master): the Korean manifest, grammar explanations and orientation.
+    // 2026-11-27, Arabic on top of Korean (merge of 63205859): 1318 -> 1348 KB. Measured 1,380,329 bytes = 1,347.9 KB on the ko + ar tree, +31,313 over Korean's own 1,349,016: the Arabic pack's manifest, grammar explanations, validation cases, orientation and voice registry; no Arabic analyser or lexicon is in it.
+    expect(sizes.get('background.js')!, 'background.js').toBeLessThanOrEqual(1348 * KB);
     // 2026-10-21: 650 -> 760 KB; the GoTell redesign (aec73a36) and the GoListen playback refactor (9aae9cb0) brought app.js to 723 KB
     // (measured with the Biblia card of the reader screen, 0.8 KB, reverted). A ceiling again, not a target.
     // 2026-11-08: 760 -> 800 KB; master's build already measured 779 KB.
@@ -106,8 +108,9 @@ describe.skipIf(!have)('the built extension', () => {
     // dictionary code is in app.js (checked on the build). Measured 982,295 bytes = 959.3 KB (setup page built with GOLEARN_APP_DICT=sq,ru,fr,ko;
     // 929,736 bytes = 907.9 KB on master a822b1ab, built the same day with sq,ru,fr).
     // After merging master 4a381610 (app.js 932,398 bytes there): Korean's 52.6 KB on top gives about 985,000 bytes; ceiling 965 KB until the final build is measured.
-    // 2026-11-26, Arabic on top of Korean: 965 -> 1004 KB. The setup page takes the Arabic pack's manifest, explanations, validation cases and orientation. Measured 1,027,323 bytes = 1,003.2 KB on the ko + ar build (Arabic measured +37 KB on its own base before the merge; Korean alone was estimated at about 985,000 bytes, not measured on this tree).
-    if (sizes.has('app/app.js')) expect(sizes.get('app/app.js')!, 'app/app.js').toBeLessThanOrEqual(1004 * KB);
+    // 2026-11-27, Korean on master 7a8ced80: measured 988,236 bytes = 965.1 KB (933,350 on that master).
+    // 2026-11-27, Arabic on top of Korean (merge of 63205859): 966 -> 1005 KB. Measured 1,028,278 bytes = 1,004.2 KB on the ko + ar tree, +40,042 over Korean's own 988,236: the setup page takes the Arabic pack's manifest, explanations, validation cases and orientation. analysers/ar.js 801,675 bytes, analysers/ko.js 632,059.
+    if (sizes.has('app/app.js')) expect(sizes.get('app/app.js')!, 'app/app.js').toBeLessThanOrEqual(1005 * KB);
     for (const id of ['sq', 'es', 'de', 'hi', 'th', 'nb', 'nn', 'ru', 'fr', 'ko', 'ar']) expect(sizes.has(`analysers/${id}.js`), `analysers/${id}.js`).toBe(true);
   });
 

@@ -109,17 +109,18 @@ describe.skipIf(!DATA)('Korean exercises: the bare headword on the front, the ri
     // 시간 is held exactly while its lexicon entry carries the multi-sense flag (the meaning hold, the last rule of the gate): no model review has cleared it yet, or it has
     expect((await unitFacts(TIME)).status === 'requires-review', 'the meaning hold follows the entry multi flag').toBe(koEntryOf('시간', 'NOUN')?.multi === true);
     expect((await unitFacts(decidedSnow())).status).not.toBe('requires-review');
-    expect((await unitFacts(UNDECIDED)).status).toBe('requires-review');
+    const undecided = await unitFacts(UNDECIDED) as { status: string; glosses: string[]; reviewHold?: { kind: string; reason: string } };
+    expect(undecided.status).toBe('requires-review');
+    // NOW: the deck gate holds it with the kind and the sentence the Korean review gate wrote, and no meaning to build a card from
+    expect(undecided.reviewHold?.kind).toBeTruthy();
+    expect(undecided.reviewHold?.reason).not.toBe('');
+    expect(undecided.glosses).toEqual([]);
   });
 
-  it('(iii) the undecided bare item (display kept; no longer admitted): the front is the bare headword, the back names every meaning of the spelling', async () => {
-    const e = (await build(UNDECIDED, 'written-recognition')) as Exercise;
-    expect(e.prompt.stimulusText).toBe('눈');
-    const shown = JSON.stringify([e.answerKey.explanation, e.answerKey.accepted]);
-    expect(shown).toMatch(/eye/);
-    expect(shown).toMatch(/snow/);
-    expect(shown).toMatch(/scale/);
-    expect(shown).not.toMatch(SUPERSCRIPT);
+  it('(iii) the undecided bare item is held by the deck gate: no exercise is built for it, and the reason is given', async () => {
+    const e = await build(UNDECIDED, 'written-recognition');
+    expect('unavailable' in e, 'a held unit builds no card').toBe(true);
+    expect('unavailable' in e && e.reason).toBeTruthy();
   });
 
   // FAULT (G3: the question accepts only some meanings): the facts for the bare 눈 carry every entry's meaning (the second entry labelled
@@ -127,9 +128,9 @@ describe.skipIf(!DATA)('Korean exercises: the bare headword on the front, the ri
   // entry's senses and the analyser's merged line ("eye; eyesight / snow / scale / bud"): "snow", "scale" and "bud" ALONE are not accepted. A learner who
   // answers "snow" to the undecided card is marked wrong although the card's own explanation says 눈 means snow among other things.
   // (packages/goreview/src/exercises/written-recognition.ts and shared.ts, the accepted-answer assembly; the label prefix "(noun, entry N)" hides later entries.)
-  it('(iii) the undecided item accepts "snow" and "eye" and "scale" each as a correct answer, not only the first entry\'s senses', async () => {
-    const e = (await build(UNDECIDED, 'written-recognition')) as Exercise;
-    for (const meaning of ['eye', 'snow', 'scale']) expect(e.answerKey.accepted, meaning).toContain(meaning);
+  it('(iii) the held undecided item has no answer key, so no meaning of it can be marked wrong', async () => {
+    const e = await build(UNDECIDED, 'written-recognition');
+    expect('answerKey' in e).toBe(false);
   });
 
   it('no exercise built for any of the three asks something a Korean learner cannot answer: no number to type, no superscript in a prompt, an answer or an explanation', async () => {
@@ -145,7 +146,8 @@ describe.skipIf(!DATA)('Korean exercises: the bare headword on the front, the ri
       }
     }
     // a provisional Korean pack makes the meaning-of-a-word card for each of the three; the other families are withheld with their reasons (the hand-back lists them)
-    expect(built).toEqual(expect.arrayContaining([`${TIME}|written-recognition`, `${decidedSnow()}|written-recognition`, `${UNDECIDED}|written-recognition`]));
+    expect(built).toEqual(expect.arrayContaining([`${TIME}|written-recognition`, `${decidedSnow()}|written-recognition`]));
+    expect(built.filter((b) => b.startsWith(`${UNDECIDED}|`)), 'the held undecided item builds nothing').toEqual([]);
   });
 
   it('audio: a listening exercise, where GoListen has a Korean source, is given the bare headword and expects it back', async () => {
@@ -163,7 +165,7 @@ describe.skipIf(!DATA)('the three cards on the real GoReview screens', () => {
   let root: HTMLElement;
   afterAll(() => { app?.destroy(); });
 
-  it('a session over the deck shows each card\'s front and back; a homonym number appears on none; the undecided back shows every meaning', async () => {
+  it('a session over the deck shows each card\'s front and back; a homonym number appears on none; the held undecided item is not asked', async () => {
     const cards = [TIME, decidedSnow(), UNDECIDED];
     const events = cards.map((unitId) => buildCardAdded({ learnerId, enrolmentId, languageId: 'ko', at: NOW, deviceId, producerVersion: 'test', unitId, unitKind: 'lexeme', dimension: 'written-recognition', family: 'written-recognition', addedBy: 'learner' }));
     expect((await repo.api.appendEvents(events)).ok).toBe(true);
@@ -201,7 +203,7 @@ describe.skipIf(!DATA)('the three cards on the real GoReview screens', () => {
       root.querySelector<HTMLElement>('[data-grade="good"]')!.click();
       await until(() => !ex.isConnected, 8000);
     }
-    expect([...seen.keys()].sort()).toEqual(cards.map((u) => `card:written-recognition:${u}`).sort());
+    expect([...seen.keys()].sort()).toEqual(cards.filter((u) => u !== UNDECIDED).map((u) => `card:written-recognition:${u}`).sort());
     for (const [item, s] of seen) expect(`${s.front}${s.back}${s.tools}`, item).not.toMatch(SUPERSCRIPT);
     const time = seen.get(`card:written-recognition:${TIME}`)!;
     expect(time.front).toContain('시간');
@@ -210,15 +212,12 @@ describe.skipIf(!DATA)('the three cards on the real GoReview screens', () => {
     expect(snow.front).toContain('눈');
     expect(snow.back).toMatch(/snow/);
     expect(snow.back, 'the decided card does not show the other meanings').not.toMatch(/eye|scale|bud/);
-    const all = seen.get(`card:written-recognition:${UNDECIDED}`)!;
-    expect(all.front).toContain('눈');
-    expect(all.back, 'G3: the undecided back shows EVERY meaning of the spelling').toMatch(/eye/);
-    expect(all.back).toMatch(/snow/);
-    expect(all.back).toMatch(/scale/);
+    // the held undecided item is in the deck but is not asked: the deck gate gave it no meaning to build a card from
+    expect(seen.has(`card:written-recognition:${UNDECIDED}`)).toBe(false);
     // three cards, three schedules: none merged with another
     const deck = foldDeckItems(await app.ctx.events('ko'), createFsrsScheduler({ desiredRetention: 0.9 }), { languageId: 'ko', now: clock() });
     expect(deck.map((d) => d.unitId).sort()).toEqual([...cards].sort());
-    expect(deck.map((d) => d.unitId + ':' + d.schedule.reps + ':' + d.schedule.phase).join(' ; '), 'each card was reviewed once').toBe(deck.map((d) => d.unitId + ':1:learning').join(' ; '));
+    expect(deck.map((d) => d.unitId + ':' + d.schedule.reps + ':' + d.schedule.phase).sort().join(' ; '), 'each asked card was reviewed once; the held undecided item was never asked').toBe(deck.map((d) => d.unitId + (d.unitId === UNDECIDED ? ':0:new' : ':1:learning')).sort().join(' ; '));
   }, 120_000);
 });
 

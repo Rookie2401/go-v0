@@ -22,7 +22,7 @@ import { agreeNounPhrases, settlePhrases } from './agreement';
 import { decideHomographs, mergeSameReadings } from './context-nouns';
 import { baseReadings } from './context-base';
 import { decideVerbs } from './context-verbs';
-import { applyCapitals, decideInitial, decideNames, decideWords } from './context-words';
+import { applyCapitals, decideAfterPhrases, decideInitial, decideNames, decideWords } from './context-words';
 import { DE_ANALYZER, capitalise, cloneCandidate, makeSent, makeToks, norm, settle, type R } from './context';
 import { componentLemmas } from './compounds';
 import { joinSeparableVerbs } from './units';
@@ -54,6 +54,7 @@ function run(tokens: RawToken[], lex: DeLexiconView, given: (i: number) => Given
   for (const t of s.toks) if (t.word) mergeSameReadings(t);
   if (decideHomographs(s)) settlePhrases(s);
   for (const t of s.toks) if (t.word) mergeSameReadings(t);
+  decideAfterPhrases(s);
   return toks.map((t) => {
     if (!t.word) return [];
     settle(t);

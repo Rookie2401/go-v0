@@ -61,8 +61,21 @@ function lemmaKeys(form: string): Set<string> {
   return out;
 }
 
+/** The New Testament lexicon's own meaning of a headword (the MorphGNT index's lemma table), for a Koine learner; the full index when it is installed, else the compiled core. */
+function elHeadwordGloss(lemma: string, pos: string | undefined, varietyId: string): string | undefined {
+  if (varietyId !== 'el-koi') return undefined;
+  const key = lemma.normalize('NFC');
+  for (const idx of installedGreekIndexes()) {
+    if (idx.id !== EL_SOURCE_IDS.morphgnt) continue;
+    const row = idx.lemmas[key];
+    if (row?.[1] && (!pos || !row[2] || row[2] === pos)) return row[1];
+  }
+  return undefined;
+}
+
 export const elAdapter: LanguageAdapter = {
   lang: 'el',
+  headwordGloss: elHeadwordGloss,
   name: 'Greek',
   script: 'Grek',
   version: EL_VERSION,

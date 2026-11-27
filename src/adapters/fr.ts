@@ -477,8 +477,24 @@ function orderByContext(tokens: RawToken[], base: AnalysisCandidate[][]): Analys
     view[i] = base[i];
     const out = disambiguateFrench(i, tokens, view);
     view[i] = first[i];
-    return out;
+    return fragmentOfConjunction(tokens, i, out);
   });
+}
+
+/** First words of the conjunctions written "X que" that mean nothing alone: parce que, tandis que, pourvu que. */
+const CONJUNCTION_FRAGMENTS: ReadonlySet<string> = new Set(['parce', 'tandis', 'pourvu']);
+
+/**
+ * "parce" in "parce que" is a piece of the phrase, not a conjunction of its own: read before que / qu' it keeps its reading (the phrase
+ * unit carries the meaning) but is `unconfirmed`, 0.6 at most, so no card is made of the fragment.
+ */
+function fragmentOfConjunction(tokens: RawToken[], i: number, cands: AnalysisCandidate[]): AnalysisCandidate[] {
+  if (!CONJUNCTION_FRAGMENTS.has(tokens[i].normalized) || cands.length === 0) return cands;
+  const next = tokens[i + 1];
+  if (!next || !next.isWord || (next.normalized !== 'que' && next.normalized !== "qu'")) return cands;
+  return cands.map((c) => (c.pos === 'SCONJ'
+    ? { ...c, unconfirmed: true, confidence: Math.min(c.confidence, 0.6), notes: { ...c.notes, fragment: 'one word of a fixed phrase: read the phrase, not the word alone' } }
+    : c));
 }
 
 /**

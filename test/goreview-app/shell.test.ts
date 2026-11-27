@@ -65,6 +65,25 @@ describe('the hash router', () => {
     window.location.hash = '#/review';
     await until(() => rig.app.current() === 'review', 'the hashchange');
   });
+
+  it('opens and closes Settings with one contained destination-screen motion and ignores an unchanged route', async () => {
+    const rig = await makeRig({ signedIn: true });
+    const main = rig.q<HTMLElement>('#screen');
+
+    await rig.go('settings');
+    expect(rig.app.current()).toBe('settings');
+    expect(main.dataset.settingsMotion).toBe('enter');
+    expect(document.documentElement.dataset.settingsTransition).toBeUndefined();
+
+    await rig.go('settings');
+    expect(rig.app.current()).toBe('settings');
+    expect(main.dataset.settingsMotion).toBe('enter');
+
+    await rig.go('review');
+    expect(rig.app.current()).toBe('review');
+    expect(main.dataset.settingsMotion).toBe('leave');
+    expect(document.documentElement.dataset.settingsTransition).toBeUndefined();
+  });
 });
 
 describe('the service address', () => {

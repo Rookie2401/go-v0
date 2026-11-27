@@ -7,36 +7,33 @@ export const EL_VERSION = '1';
 
 /**
  * Real selections the pack must read as stated, each exactly as adapter-el@1 reads it with its COMPILED CORE alone (the closed classes and
- * the commonest New Testament words; the Ancient and Modern tables are assets a host installs). The sentences are verses of the SBL Greek
+ * the commonest New Testament words; the Ancient and Modern tables are assets a host installs). The sentences are short phrases of three to five words cut from verses of the SBL Greek
  * New Testament (John 1:1, 3:16, 14:6; 1 John; Mark 16:6) and one Modern and one Homeric line. A reading is MorphGNT's reading of that
  * word; the statuses are what the Repository's rule gives them. The last two cases state the core's limits.
  */
-const JOHN_1_1 = 'Ἐν ἀρχῇ ἦν ὁ λόγος, καὶ ὁ λόγος ἦν πρὸς τὸν θεόν, καὶ θεὸς ἦν ὁ λόγος.';
-const JOHN_3_16 = 'Οὕτως γὰρ ἠγάπησεν ὁ θεὸς τὸν κόσμον, ὥστε τὸν υἱὸν τὸν μονογενῆ ἔδωκεν.';
-const JOHN_14_6 = 'Ἐγώ εἰμι ἡ ὁδὸς καὶ ἡ ἀλήθεια καὶ ἡ ζωή.';
 export const EL_VALIDATION: ValidationCase[] = [
-  { id: 'v-arche', surface: 'ἀρχῇ', sentence: JOHN_1_1, expect: { lemma: 'ἀρχή', pos: 'NOUN', features: { Case: 'Dat', Number: 'Sing', Gender: 'Fem' }, status: 'high-confidence' } },
-  { id: 'v-en', surface: 'ἦν', sentence: JOHN_1_1, expect: { lemma: 'εἰμί', pos: 'VERB', features: { Person: '3', Tense: 'Impf', Voice: 'Act', Mood: 'Ind', Number: 'Sing' }, status: 'high-confidence' } },
-  { id: 'v-logos', surface: 'λόγος', sentence: JOHN_1_1, expect: { lemma: 'λόγος', pos: 'NOUN', features: { Case: 'Nom', Number: 'Sing', Gender: 'Masc' }, status: 'high-confidence' } },
-  { id: 'v-theon', surface: 'θεόν', sentence: JOHN_1_1, expect: { lemma: 'θεός', pos: 'NOUN', features: { Case: 'Acc', Number: 'Sing', Gender: 'Masc' }, status: 'high-confidence' } },
-  { id: 'v-ton', surface: 'τὸν', sentence: JOHN_1_1, expect: { lemma: 'ὁ', pos: 'DET', features: { Case: 'Acc', Number: 'Sing', Gender: 'Masc', Definite: 'Def' }, status: 'high-confidence' } },
-  { id: 'v-pros', surface: 'πρὸς', sentence: JOHN_1_1, expect: { lemma: 'πρός', pos: 'ADP', status: 'high-confidence' } },
-  { id: 'v-en-prep', surface: 'Ἐν', sentence: JOHN_1_1, expect: { lemma: 'ἐν', pos: 'ADP', status: 'high-confidence' } },
-  { id: 'v-egapesen', surface: 'ἠγάπησεν', sentence: JOHN_3_16, expect: { lemma: 'ἀγαπάω', pos: 'VERB', features: { Person: '3', Tense: 'Aor', Voice: 'Act', Mood: 'Ind', Number: 'Sing' }, status: 'high-confidence' } },
-  { id: 'v-kosmon', surface: 'κόσμον', sentence: JOHN_3_16, expect: { lemma: 'κόσμος', pos: 'NOUN', features: { Case: 'Acc', Number: 'Sing', Gender: 'Masc' }, status: 'high-confidence' } },
-  { id: 'v-huion', surface: 'υἱὸν', sentence: JOHN_3_16, expect: { lemma: 'υἱός', pos: 'NOUN', features: { Case: 'Acc', Number: 'Sing', Gender: 'Masc' }, status: 'high-confidence' } },
-  { id: 'v-edoken', surface: 'ἔδωκεν', sentence: JOHN_3_16, expect: { lemma: 'δίδωμι', pos: 'VERB', features: { Person: '3', Tense: 'Aor', Voice: 'Act', Mood: 'Ind', Number: 'Sing' }, status: 'high-confidence' } },
-  { id: 'v-gar', surface: 'γὰρ', sentence: JOHN_3_16, expect: { lemma: 'γάρ', pos: 'CONJ', status: 'high-confidence' } },
-  { id: 'v-eimi', surface: 'εἰμι', sentence: JOHN_14_6, expect: { lemma: 'εἰμί', pos: 'VERB', features: { Person: '1', Tense: 'Pres', Mood: 'Ind', Number: 'Sing' }, status: 'high-confidence' } },
-  { id: 'v-hodos', surface: 'ὁδὸς', sentence: JOHN_14_6, expect: { lemma: 'ὁδός', pos: 'NOUN', features: { Case: 'Nom', Number: 'Sing', Gender: 'Fem' }, status: 'high-confidence' } },
-  { id: 'v-zoe', surface: 'ζωή', sentence: JOHN_14_6, expect: { lemma: 'ζωή', pos: 'NOUN', features: { Case: 'Nom', Number: 'Sing', Gender: 'Fem' }, status: 'high-confidence' } },
-  { id: 'v-ego', surface: 'Ἐγώ', sentence: JOHN_14_6, expect: { lemma: 'ἐγώ', pos: 'PRON', features: { Case: 'Nom', Number: 'Sing', PronType: 'Prs' }, status: 'high-confidence' } },
+  { id: 'v-arche', surface: 'ἀρχῇ', sentence: 'Ἐν ἀρχῇ ἦν ὁ λόγος,', expect: { lemma: 'ἀρχή', pos: 'NOUN', features: { Case: 'Dat', Number: 'Sing', Gender: 'Fem' }, status: 'high-confidence' } },
+  { id: 'v-en', surface: 'ἦν', sentence: 'Ἐν ἀρχῇ ἦν ὁ λόγος,', expect: { lemma: 'εἰμί', pos: 'VERB', features: { Person: '3', Tense: 'Impf', Voice: 'Act', Mood: 'Ind', Number: 'Sing' }, status: 'high-confidence' } },
+  { id: 'v-logos', surface: 'λόγος', sentence: 'Ἐν ἀρχῇ ἦν ὁ λόγος,', expect: { lemma: 'λόγος', pos: 'NOUN', features: { Case: 'Nom', Number: 'Sing', Gender: 'Masc' }, status: 'high-confidence' } },
+  { id: 'v-theon', surface: 'θεόν', sentence: 'ἦν πρὸς τὸν θεόν,', expect: { lemma: 'θεός', pos: 'NOUN', features: { Case: 'Acc', Number: 'Sing', Gender: 'Masc' }, status: 'high-confidence' } },
+  { id: 'v-ton', surface: 'τὸν', sentence: 'ἦν πρὸς τὸν θεόν,', expect: { lemma: 'ὁ', pos: 'DET', features: { Case: 'Acc', Number: 'Sing', Gender: 'Masc', Definite: 'Def' }, status: 'high-confidence' } },
+  { id: 'v-pros', surface: 'πρὸς', sentence: 'ἦν πρὸς τὸν θεόν,', expect: { lemma: 'πρός', pos: 'ADP', status: 'high-confidence' } },
+  { id: 'v-en-prep', surface: 'Ἐν', sentence: 'Ἐν ἀρχῇ ἦν ὁ λόγος,', expect: { lemma: 'ἐν', pos: 'ADP', status: 'high-confidence' } },
+  { id: 'v-egapesen', surface: 'ἠγάπησεν', sentence: 'Οὕτως γὰρ ἠγάπησεν ὁ θεὸς', expect: { lemma: 'ἀγαπάω', pos: 'VERB', features: { Person: '3', Tense: 'Aor', Voice: 'Act', Mood: 'Ind', Number: 'Sing' }, status: 'high-confidence' } },
+  { id: 'v-kosmon', surface: 'κόσμον', sentence: 'θεὸς τὸν κόσμον,', expect: { lemma: 'κόσμος', pos: 'NOUN', features: { Case: 'Acc', Number: 'Sing', Gender: 'Masc' }, status: 'high-confidence' } },
+  { id: 'v-huion', surface: 'υἱὸν', sentence: 'ὥστε τὸν υἱὸν', expect: { lemma: 'υἱός', pos: 'NOUN', features: { Case: 'Acc', Number: 'Sing', Gender: 'Masc' }, status: 'high-confidence' } },
+  { id: 'v-edoken', surface: 'ἔδωκεν', sentence: 'υἱὸν τὸν μονογενῆ ἔδωκεν.', expect: { lemma: 'δίδωμι', pos: 'VERB', features: { Person: '3', Tense: 'Aor', Voice: 'Act', Mood: 'Ind', Number: 'Sing' }, status: 'high-confidence' } },
+  { id: 'v-gar', surface: 'γὰρ', sentence: 'Οὕτως γὰρ ἠγάπησεν ὁ θεὸς', expect: { lemma: 'γάρ', pos: 'CONJ', status: 'high-confidence' } },
+  { id: 'v-eimi', surface: 'εἰμι', sentence: 'Ἐγώ εἰμι ἡ ὁδὸς', expect: { lemma: 'εἰμί', pos: 'VERB', features: { Person: '1', Tense: 'Pres', Mood: 'Ind', Number: 'Sing' }, status: 'high-confidence' } },
+  { id: 'v-hodos', surface: 'ὁδὸς', sentence: 'Ἐγώ εἰμι ἡ ὁδὸς', expect: { lemma: 'ὁδός', pos: 'NOUN', features: { Case: 'Nom', Number: 'Sing', Gender: 'Fem' }, status: 'high-confidence' } },
+  { id: 'v-zoe', surface: 'ζωή', sentence: 'καὶ ἡ ζωή.', expect: { lemma: 'ζωή', pos: 'NOUN', features: { Case: 'Nom', Number: 'Sing', Gender: 'Fem' }, status: 'high-confidence' } },
+  { id: 'v-ego', surface: 'Ἐγώ', sentence: 'Ἐγώ εἰμι ἡ ὁδὸς', expect: { lemma: 'ἐγώ', pos: 'PRON', features: { Case: 'Nom', Number: 'Sing', PronType: 'Prs' }, status: 'high-confidence' } },
   { id: 'v-pisteuo', surface: 'Πιστεύω', sentence: 'Πιστεύω εἰς τὸν θεόν.', expect: { lemma: 'πιστεύω', pos: 'VERB', features: { Person: '1', Tense: 'Pres', Voice: 'Act', Mood: 'Ind', Number: 'Sing' }, status: 'high-confidence' } },
   { id: 'v-estin', surface: 'ἔστιν', sentence: 'οὐκ ἔστιν ὧδε', expect: { lemma: 'εἰμί', pos: 'VERB', features: { Person: '3', Tense: 'Pres', Number: 'Sing' }, status: 'high-confidence' } },
   { id: 'v-eimi-2sg', surface: 'εἶ', sentence: 'σὺ εἶ ἀγαθός.', expect: { lemma: 'εἰμί', pos: 'VERB', features: { Person: '2', Tense: 'Pres', Number: 'Sing' }, status: 'high-confidence' } },
-  { id: 'v-eimi-1pl', surface: 'ἐσμέν', sentence: 'ἡμεῖς ἐσμὲν φίλοι.', expect: { lemma: 'εἰμί', pos: 'VERB', features: { Person: '1', Tense: 'Pres', Number: 'Plur' }, status: 'high-confidence' } },
-  { id: 'v-eimi-2pl', surface: 'ἐστέ', sentence: 'ὑμεῖς ἐστὲ φίλοι.', expect: { lemma: 'εἰμί', pos: 'VERB', features: { Person: '2', Tense: 'Pres', Number: 'Plur' }, status: 'high-confidence' } },
-  { id: 'v-eimi-3pl', surface: 'εἰσίν', sentence: 'αὐτοὶ εἰσὶν φίλοι.', expect: { lemma: 'εἰμί', pos: 'VERB', features: { Person: '3', Tense: 'Pres', Number: 'Plur' }, status: 'high-confidence' } },
+  { id: 'v-eimi-1pl', surface: 'ἐσμὲν', sentence: 'ἡμεῖς ἐσμὲν φίλοι.', expect: { lemma: 'εἰμί', pos: 'VERB', features: { Person: '1', Tense: 'Pres', Number: 'Plur' }, status: 'high-confidence' } },
+  { id: 'v-eimi-2pl', surface: 'ἐστὲ', sentence: 'ὑμεῖς ἐστὲ φίλοι.', expect: { lemma: 'εἰμί', pos: 'VERB', features: { Person: '2', Tense: 'Pres', Number: 'Plur' }, status: 'high-confidence' } },
+  { id: 'v-eimi-3pl', surface: 'εἰσὶν', sentence: 'αὐτοὶ εἰσὶν φίλοι.', expect: { lemma: 'εἰμί', pos: 'VERB', features: { Person: '3', Tense: 'Pres', Number: 'Plur' }, status: 'high-confidence' } },
   { id: 'v-have-1sg', surface: 'ἔχω', sentence: 'ἔχω βιβλίον.', expect: { lemma: 'ἔχω', pos: 'VERB', features: { Person: '1', Tense: 'Pres', Number: 'Sing' }, status: 'high-confidence' } },
   { id: 'v-have-2sg', surface: 'ἔχεις', sentence: 'ἔχεις βιβλίον.', expect: { lemma: 'ἔχω', pos: 'VERB', features: { Person: '2', Tense: 'Pres', Number: 'Sing' }, status: 'high-confidence' } },
   { id: 'v-have-3sg', surface: 'ἔχει', sentence: 'ἔχει βιβλίον.', expect: { lemma: 'ἔχω', pos: 'VERB', features: { Person: '3', Tense: 'Pres', Number: 'Sing' }, status: 'high-confidence' } },

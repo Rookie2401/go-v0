@@ -1128,20 +1128,10 @@ img, svg, video, canvas { max-width: 100%; }
   #settings-link svg { transition: transform .32s cubic-bezier(.22, .7, .25, 1); }
   .screen[data-settings-motion="enter"] { animation: settings-slide-in .32s cubic-bezier(.22, .7, .25, 1) both; }
   .screen[data-settings-motion="leave"] { animation: settings-slide-back .32s cubic-bezier(.22, .7, .25, 1) both; }
-  html[data-settings-transition] #screen { view-transition-name: settings-screen; animation: none; }
-  html[data-settings-transition] #screen > :is(h1, .body) { animation: none; }
-  html[data-settings-transition]::view-transition-old(root) { display: none; }
-  html[data-settings-transition]::view-transition-new(root) { animation: none; }
-  ::view-transition-group(settings-screen) { animation-duration: .32s; pointer-events: none; }
-  html[data-settings-transition="enter"]::view-transition-old(settings-screen) { animation: settings-pull-left .32s ease-in both; }
-  html[data-settings-transition="enter"]::view-transition-new(settings-screen) { animation: settings-slide-in .32s cubic-bezier(.22, .7, .25, 1) both; }
-  html[data-settings-transition="leave"]::view-transition-old(settings-screen) { animation: settings-pull-right .32s ease-in both; }
-  html[data-settings-transition="leave"]::view-transition-new(settings-screen) { animation: settings-slide-back .32s cubic-bezier(.22, .7, .25, 1) both; }
+  .screen[data-settings-motion] > :is(h1, .body) { animation: none; }
 }
-@keyframes settings-slide-in { from { transform: translateX(100%); } }
-@keyframes settings-slide-back { from { transform: translateX(-100%); } }
-@keyframes settings-pull-left { to { transform: translateX(-100%); } }
-@keyframes settings-pull-right { to { transform: translateX(100%); } }
+@keyframes settings-slide-in { from { transform: translateX(1.5rem); opacity: .82; } }
+@keyframes settings-slide-back { from { transform: translateX(-1.5rem); opacity: .82; } }
 
 /* #/account and #/setup in the home's look (the owner, 2026-11-18: "in line with the design philosophy of the homescreen"). Both wear the home's
    hero (app.ts: a kicker between gold rules, the title, the photo of the language being reviewed) and then the home's column of warm tiles with no

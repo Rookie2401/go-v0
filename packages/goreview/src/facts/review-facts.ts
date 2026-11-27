@@ -8,6 +8,7 @@
  */
 import type { AnalysisStatus, ProvenanceSource } from '../../../repository-contract/src';
 import type { UnitFacts } from '../types';
+import type { ReviewKind } from '../../../../src/core/review-gate';
 import type { WordAnalysis } from '../../../../src/core/word-analysis';
 
 /** One inflected form the pack can vouch for, with the status of its best reading in the pack's own sentences. */
@@ -50,6 +51,8 @@ export interface ReviewFacts extends UnitFacts {
    * (deck-gate.ts) reads it: a word of another period is not carded, and a meaning from another period gives way to the period's own.
    */
   periodReading?: { attested: boolean; inPeriod: boolean; gloss?: string };
+  /** A language's own review gate (src/core/review-gate.ts) holds this lemma's reading back: the kind and one plain sentence it wrote in the reading's notes. The deck gate (deck-gate.ts) turns it into the unit's hold. */
+  reviewMark?: { kind: ReviewKind; reason: string };
   /** The first N entries of `glosses` come from the word list; the rest are dictionary senses. */
   lexiconGlossCount?: number;
   /** The adapter's plain description of the form's features ("definite masculine accusative singular"). */

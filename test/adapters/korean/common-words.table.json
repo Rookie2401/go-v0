@@ -1,6 +1,6 @@
 {
   "note": "Package W common-word sweep (test/adapters/korean/common-words.test.ts). entries and blocks are hand-written (expectations decided before the analyser was run; a corrected expectation says so in its note); frameNouns is generated from the lexicon by tmp-mem/ko-sweep/merge.mts: every noun and pronoun of the entries and blocks, then the 400 commonest one- and two-syllable lexicon nouns. known / frameKnown: the checks wrong when the table was written (word|bare|state, word|sN|state, B or C|sentence|token|state, F|noun|frame|bare or sent|state); the test fails when one starts passing.",
-  "known": [
+  "known": ["P|문을 걸어 잠갔다.|걸어@core","P|문을 걸어 잠갔다.|걸어@shards","P|벽에 그림을 걸어 놓았어요.|걸어@core","P|벽에 그림을 걸어 놓았어요.|걸어@shards",
     "B|그는 힘이 세요.|세요@core",
     "B|그는 힘이 세요.|세요@shards",
     "B|이 주 동안 휴가예요.|주@core",
@@ -9,35 +9,35 @@
     "B|주차장에 차 두 대가 있어요.|대가@shards",
     "C|아침에 사과 주스를 마셨어요.|사과@core",
     "C|아침에 사과 주스를 마셨어요.|사과@shards",
-    "K|그것은 제 겁니다.|겁니다@core",
-    "K|그것은 제 겁니다.|겁니다@shards",
+    
+    
     "K|그는 다리를 접니다.|접니다@shards",
-    "K|내일 갈 건데요.|건데요@core",
-    "K|내일 갈 건데요.|건데요@shards",
-    "K|내일 갈 겁니다.|겁니다@core",
-    "K|내일 갈 겁니다.|겁니다@shards",
-    "K|누구세요? 접니다.|접니다@core",
-    "K|누구세요? 접니다.|접니다@shards",
-    "K|밥을 먹을 겁니다.|겁니다@core",
-    "K|밥을 먹을 겁니다.|겁니다@shards",
-    "K|비가 올 겁니다.|겁니다@core",
-    "K|비가 올 겁니다.|겁니다@shards",
-    "K|언제 갈 겁니까?|겁니까@core",
-    "K|언제 갈 겁니까?|겁니까@shards",
-    "K|여기가 어딥니까?|어딥니까@core",
-    "K|여기가 어딥니까?|어딥니까@shards",
-    "K|이 사람은 제 친굽니다.|친굽니다@core",
-    "K|이 사람은 제 친굽니다.|친굽니다@shards",
-    "K|이거 얼맙니까?|얼맙니까@core",
-    "K|이거 얼맙니까?|얼맙니까@shards",
-    "K|이건 누구 겁니까?|겁니까@core",
-    "K|이건 누구 겁니까?|겁니까@shards",
-    "K|이게 뭡니까?|뭡니까@core",
-    "K|이게 뭡니까?|뭡니까@shards",
-    "K|저 사람은 누굽니까?|누굽니까@core",
-    "K|저 사람은 누굽니까?|누굽니까@shards",
-    "K|제가 할 거니까 걱정 마세요.|거니까@core",
-    "K|제가 할 거니까 걱정 마세요.|거니까@shards",
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     "간|s1@core",
     "감|s1@core",
     "감|s1@shards",
@@ -1146,6 +1146,8 @@
     {"blk":"C","t":"내일은 엄마 생일이에요.","chk":[{"at":"엄마","want":{"lemma":"엄마","pos":"NOUN","means":["mom","mother","mum"]}},{"at":"생일이에요","want":{"lemma":"생일","pos":"NOUN","means":["birthday"]}}]},
     {"blk":"C","t":"할머니는 시골 집에 사세요.","chk":[{"at":"시골","want":{"lemma":"시골","pos":"NOUN","means":["countryside","country","rural"]}},{"at":"집에","want":{"lemma":"집","pos":"NOUN","means":["home","house"]}}]},
     {"blk":"C","t":"컴퓨터 게임을 좋아해요.","chk":[{"at":"컴퓨터","want":{"lemma":"컴퓨터","pos":"NOUN","means":["computer"]}},{"at":"게임을","want":{"lemma":"게임","pos":"NOUN","means":["game"]}}]},
+    {"blk":"P","t":"문을 걸어 잠갔다.","chk":[{"at":"걸어","want":{"lemma":"걸다","pos":"VERB","means":["hang","hook","lock","fasten","speak","put"]}}]},
+    {"blk":"P","t":"벽에 그림을 걸어 놓았어요.","chk":[{"at":"걸어","want":{"lemma":"걸다","pos":"VERB","means":["hang","hook","lock","fasten","speak","put"]}}]},
     {"blk":"K","t":"내일 갈 겁니다.","chk":[{"at":"겁니다","want":{"anyOf":[{"lemma":"거","pos":"NOUN","means":["thing"]},{"lemma":"것","pos":"NOUN","means":["thing"]}]}}]},
     {"blk":"K","t":"밥을 먹을 겁니다.","chk":[{"at":"겁니다","want":{"anyOf":[{"lemma":"거","pos":"NOUN","means":["thing"]},{"lemma":"것","pos":"NOUN","means":["thing"]}]}}]},
     {"blk":"K","t":"비가 올 겁니다.","chk":[{"at":"겁니다","want":{"anyOf":[{"lemma":"거","pos":"NOUN","means":["thing"]},{"lemma":"것","pos":"NOUN","means":["thing"]}]}}]},

@@ -192,7 +192,7 @@ describe.skipIf(!shardsPresent())('no admitted card\'s first meaning stops where
         return false;
       }));
       if (!ok) failures.push(`${c.unitId}: shows "${c.shown}"`);
-      const why = fragmentWhy(c.shown, recs.flatMap((r) => (r.s ?? []).map((x) => x.g)));
+      const why = fragmentWhy(c.shown);
       if (why) failures.push(`${c.unitId}: "${c.shown}" ${why}`);
     }
     for (const w of ['سِوًى', 'تَوَقَّعَ', 'أَثْنَاءَ']) console.log(`checked ${w}: ${checked.has(w) ? 'a card in the development text, whole item' : 'not admitted in the development text'}`);

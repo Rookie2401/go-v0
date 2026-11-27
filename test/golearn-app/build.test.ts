@@ -53,7 +53,8 @@ describe.skipIf(!has('dist/app/app.js'))('the options-page build (dist/app)', ()
     // 2026-11-25: 910 -> 931 KB with test/extension/bundle.test.ts, for the Arabic pack (its manifest, explanations, validation cases and orientation). Measured 953,190 characters.
     // 2026-11-26: 931 -> 983 KB with Korean and Arabic (each pack's manifest, explanations, validation cases and orientation, as in test/extension/bundle.test.ts).
     // Measured 1,005,828 bytes = 982.3 KB on the ko + ar tree.
-    expect(code.length).toBeLessThan(983 * 1024);
+    // 2026-11-27: 983 -> 1005 KB on the ko + ar tree after the merge of Korean 63205859 (master 7a8ced80): measured 1,028,278 bytes = 1,004.2 KB (Korean alone 988,236).
+    expect(code.length).toBeLessThan(1005 * 1024);
   });
 
   it('carries the dictionary the installer fetches, and nothing of a planned language', () => {

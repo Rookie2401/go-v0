@@ -102,6 +102,10 @@ const COME_HERE = new Set(['a', 'al', 'aquí', 'acá', 'conmigo', 'con', 'y', 'p
 const KNOWING_NEXT = new Set(['que', 'qué', 'dónde', 'cómo', 'cuándo', 'quién', 'cuál', 'si', 'por', 'nada', 'algo', 'mucho', 'poco']);
 const NOT_EATING_NEXT = new Set(['si', 'antes', 'siempre', 'cuando', 'nunca']);
 /** Temporal adverbs that can decide the tense of an otherwise homographic finite form. */
+/** Verbs of going on a way: a noun-or-adverb after them is the adverb (siga derecho, camina recto). */
+const MOTION_LEMMAS = new Set(['seguir', 'ir', 'caminar', 'andar', 'avanzar', 'continuar', 'venir', 'tirar', 'marchar']);
+/** Nouns that are also an adverb only after a verb of motion. */
+const ADVERB_AFTER_MOTION = new Set(['derecho']);
 const PAST_TIME = new Set(['ayer', 'anoche', 'anteayer', 'antier']);
 const PRESENT_TIME = new Set(['ahora', 'actualmente']);
 /** Words of degree that stand before an adjective or adverb: muy alto, bien bonito, tan lejos. */
@@ -394,6 +398,16 @@ function amongNominals(i: number, tokens: RawToken[], base: C[][], asLeft: C[]):
     const r = prefer(['ADV'], 'directly after a verb: an adverb');
     if (r) return r;
   }
+  // Siga derecho por la calle, va todo derecho: directly after a verb of going on (or "todo"), a word that is noun and
+  // adverb is "straight ahead"
+  if (has('ADV') && has('NOUN') && prev !== undefined && (p === 'todo' || solid(base[prev]).some((c) => isVerbal(c) && MOTION_LEMMAS.has(c.lemma ?? '')))) {
+    const r = prefer(['ADV'], p === 'todo' ? 'after "todo": an adverb' : 'after a verb of motion: an adverb ("straight ahead")');
+    if (r) return r.map((c, k) => (k === 0 ? { ...c, confidence: Math.max(c.confidence, 0.75) } : c));
+  }
+  // …anywhere else such a word is its noun (tiene derecho a votar, el derecho civil): the adverb is the rarer reading
+  if (has('ADV') && has('NOUN') && ADVERB_AFTER_MOTION.has(w) && list[0].pos === 'NOUN') {
+    return list.map((c) => (c.pos === 'ADV' ? { ...c, confidence: Math.min(c.confidence, 0.4) } : { ...c, confidence: Math.max(c.confidence, 0.75) }));
+  }
   if (determinerBefore) {
     // el vaquero es valiente, un aficionado del club: the noun — unless a plain noun follows (un buen día: the adjective).
     // Only an article or a possessive says so for certain: after qué, mucho, todo or a number an adverb or adjective stands as well (qué bien, todo nuevo)
@@ -542,7 +556,11 @@ function verbOrNot(i: number, tokens: RawToken[], base: C[][]): C[] {
   // haber + participle (había pasado, he pecado), an adverb between allowed
   const governor = p !== undefined && DEGREE.has(p) && prev2 !== undefined ? prev2 : prev;
   if (any(governor, (c) => c.lemma === 'haber' && isVerbal(c)) && form(governor) !== 'hay') {
-    const r = choose(isParticiple, 'after haber: a participle');
+    // the participle after haber does not agree (ha comido, han comido): a feminine or plural -a/-as/-os form is a noun
+    // (va a haber comida, había cenas)
+    const agreeing = (c: C) => isParticiple(c) && !(c.morph.Gender === 'Fem' || c.morph.Number === 'Plur');
+    const noun = other.some((c) => c.pos === 'NOUN') && verbal.every(isParticiple) && verbal.every((c) => !agreeing(c));
+    const r = noun ? choose((c) => c.pos === 'NOUN', 'after haber, a feminine or plural form: the noun (haber comida), not its participle', false, 'strong') : choose(agreeing, 'after haber: a participle');
     if (r) return r;
   }
   // ser / estar + adjective (está llena, estaba cansada, es tarde) — but está bajo la mesa, fueron todos salvo Ana:

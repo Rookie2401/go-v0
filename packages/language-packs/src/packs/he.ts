@@ -7,28 +7,24 @@ export const HE_VERSION = '1';
 
 /**
  * Real selections the pack must read as stated, each exactly as adapter-he@1 reads it with its COMPILED CORE alone (the closed classes and
- * the commonest Biblical words; the full indexes are assets a host installs). The sentences are verses of the Miqra according to the Masorah
- * (Genesis 1:1, 1:3, 1:5; Deuteronomy 6:4; Numbers 23:19; Psalm 10:16; Deuteronomy 29:1; Ezekiel 2:1; 1 Chronicles) and one Modern sentence.
+ * the commonest Biblical words; the full indexes are assets a host installs). The sentences are short phrases of two or three words cut from verses of the Miqra according to the Masorah
+ * (Genesis 1:1, 1:3, 1:5; Deuteronomy 6:4; Numbers 23:19; Psalm 10:16; Deuteronomy 29:1; Ezekiel 2:1; 1 Chronicles), never a whole verse, and one Modern sentence.
  * A reading here is the Open Scriptures morphology's reading of that word; the statuses are what the Repository's rule gives them. The two
  * 'none' cases state the core's limits: a rarer Biblical word and a Modern word have no reading until the full indexes are loaded.
  */
-const GEN_1_1 = 'בְּרֵאשִׁ֖ית בָּרָ֣א אֱלֹהִ֑ים אֵ֥ת הַשָּׁמַ֖יִם וְאֵ֥ת הָאָֽרֶץ׃';
-const GEN_1_3 = 'וַיֹּ֥אמֶר אֱלֹהִ֖ים יְהִ֣י א֑וֹר וַֽיְהִי־אֽוֹר׃';
-const GEN_1_5 = 'וַיְהִי־עֶ֥רֶב וַיְהִי־בֹ֖קֶר י֥וֹם אֶחָֽד׃';
-const DEUT_6_4 = 'שְׁמַ֖ע יִשְׂרָאֵ֑ל יְהוָ֥ה אֱלֹהֵ֖ינוּ יְהוָ֥ה ׀ אֶחָֽד׃';
 export const HE_VALIDATION: ValidationCase[] = [
-  { id: 'v-elohim', surface: 'אֱלֹהִ֑ים', sentence: GEN_1_1, expect: { lemma: 'אֱלֹהִים', pos: 'NOUN', features: { Gender: 'Masc', Number: 'Plur', State: 'Abs' }, status: 'high-confidence' } },
-  { id: 'v-et', surface: 'אֵ֥ת', sentence: GEN_1_1, expect: { lemma: 'אֵת', pos: 'PART', features: { PartType: 'Obj' }, status: 'high-confidence' } },
-  { id: 'v-hashamayim', surface: 'הַשָּׁמַ֖יִם', sentence: GEN_1_1, expect: { lemma: 'שָׁמַיִם', pos: 'NOUN', features: { Gender: 'Masc', Number: 'Plur', State: 'Abs', Definite: 'Def' }, status: 'high-confidence' } },
-  { id: 'v-veet', surface: 'וְאֵ֥ת', sentence: GEN_1_1, expect: { lemma: 'אֵת', pos: 'PART', status: 'high-confidence' } },
-  { id: 'v-haaretz', surface: 'הָאָֽרֶץ', sentence: GEN_1_1, expect: { lemma: 'אֶרֶץ', pos: 'NOUN', features: { Number: 'Sing', Definite: 'Def' }, status: 'high-confidence' } },
-  { id: 'v-vayomer', surface: 'וַיֹּ֥אמֶר', sentence: GEN_1_3, expect: { lemma: 'אָמַר', pos: 'VERB', features: { Binyan: 'Qal', Conj: 'Wayyiqtol', Person: '3', Gender: 'Masc', Number: 'Sing' }, status: 'high-confidence' } },
-  { id: 'v-yehi', surface: 'יְהִ֣י', sentence: GEN_1_3, expect: { lemma: 'הָיָה', pos: 'VERB', features: { Binyan: 'Qal', Conj: 'Juss', Person: '3' }, status: 'high-confidence' } },
-  { id: 'v-yom', surface: 'י֥וֹם', sentence: GEN_1_5, expect: { lemma: 'יוֹם', pos: 'NOUN', features: { Gender: 'Masc', Number: 'Sing' }, status: 'conflicted' } },
-  { id: 'v-echad', surface: 'אֶחָֽד', sentence: GEN_1_5, expect: { lemma: 'אֶחָד', pos: 'NUM', features: { Gender: 'Masc', Number: 'Sing', NumType: 'Card' }, status: 'high-confidence' } },
-  { id: 'v-shema', surface: 'שְׁמַ֖ע', sentence: DEUT_6_4, expect: { lemma: 'שָׁמַע', pos: 'VERB', features: { Binyan: 'Qal', Conj: 'Imp', Person: '2', Gender: 'Masc', Number: 'Sing' }, status: 'high-confidence' } },
-  { id: 'v-yisrael', surface: 'יִשְׂרָאֵ֑ל', sentence: DEUT_6_4, expect: { lemma: 'יִשְׂרָאֵל', pos: 'PROPN', status: 'high-confidence' } },
-  { id: 'v-elohenu', surface: 'אֱלֹהֵ֖ינוּ', sentence: DEUT_6_4, expect: { lemma: 'אֱלֹהִים', pos: 'NOUN', features: { Number: 'Plur', State: 'Cons' }, status: 'high-confidence' } },
+  { id: 'v-elohim', surface: 'אֱלֹהִ֑ים', sentence: 'בָּרָ֣א אֱלֹהִ֑ים', expect: { lemma: 'אֱלֹהִים', pos: 'NOUN', features: { Gender: 'Masc', Number: 'Plur', State: 'Abs' }, status: 'high-confidence' } },
+  { id: 'v-et', surface: 'אֵ֥ת', sentence: 'אֱלֹהִ֑ים אֵ֥ת', expect: { lemma: 'אֵת', pos: 'PART', features: { PartType: 'Obj' }, status: 'high-confidence' } },
+  { id: 'v-hashamayim', surface: 'הַשָּׁמַ֖יִם', sentence: 'אֵ֥ת הַשָּׁמַ֖יִם', expect: { lemma: 'שָׁמַיִם', pos: 'NOUN', features: { Gender: 'Masc', Number: 'Plur', State: 'Abs', Definite: 'Def' }, status: 'high-confidence' } },
+  { id: 'v-veet', surface: 'וְאֵ֥ת', sentence: 'וְאֵ֥ת הָאָֽרֶץ׃', expect: { lemma: 'אֵת', pos: 'PART', status: 'high-confidence' } },
+  { id: 'v-haaretz', surface: 'הָאָֽרֶץ', sentence: 'וְאֵ֥ת הָאָֽרֶץ׃', expect: { lemma: 'אֶרֶץ', pos: 'NOUN', features: { Number: 'Sing', Definite: 'Def' }, status: 'high-confidence' } },
+  { id: 'v-vayomer', surface: 'וַיֹּ֥אמֶר', sentence: 'וַיֹּ֥אמֶר אֱלֹהִ֖ים', expect: { lemma: 'אָמַר', pos: 'VERB', features: { Binyan: 'Qal', Conj: 'Wayyiqtol', Person: '3', Gender: 'Masc', Number: 'Sing' }, status: 'high-confidence' } },
+  { id: 'v-yehi', surface: 'יְהִ֣י', sentence: 'אֱלֹהִ֖ים יְהִ֣י א֑וֹר', expect: { lemma: 'הָיָה', pos: 'VERB', features: { Binyan: 'Qal', Conj: 'Juss', Person: '3' }, status: 'high-confidence' } },
+  { id: 'v-yom', surface: 'י֥וֹם', sentence: 'וַיְהִי־בֹ֖קֶר י֥וֹם אֶחָֽד׃', expect: { lemma: 'יוֹם', pos: 'NOUN', features: { Gender: 'Masc', Number: 'Sing' }, status: 'conflicted' } },
+  { id: 'v-echad', surface: 'אֶחָֽד', sentence: 'וַיְהִי־בֹ֖קֶר י֥וֹם אֶחָֽד׃', expect: { lemma: 'אֶחָד', pos: 'NUM', features: { Gender: 'Masc', Number: 'Sing', NumType: 'Card' }, status: 'high-confidence' } },
+  { id: 'v-shema', surface: 'שְׁמַ֖ע', sentence: 'שְׁמַ֖ע יִשְׂרָאֵ֑ל', expect: { lemma: 'שָׁמַע', pos: 'VERB', features: { Binyan: 'Qal', Conj: 'Imp', Person: '2', Gender: 'Masc', Number: 'Sing' }, status: 'high-confidence' } },
+  { id: 'v-yisrael', surface: 'יִשְׂרָאֵ֑ל', sentence: 'שְׁמַ֖ע יִשְׂרָאֵ֑ל', expect: { lemma: 'יִשְׂרָאֵל', pos: 'PROPN', status: 'high-confidence' } },
+  { id: 'v-elohenu', surface: 'אֱלֹהֵ֖ינוּ', sentence: 'יְהוָ֥ה אֱלֹהֵ֖ינוּ', expect: { lemma: 'אֱלֹהִים', pos: 'NOUN', features: { Number: 'Plur', State: 'Cons' }, status: 'high-confidence' } },
   { id: 'v-lo', surface: 'לֹ֨א', sentence: 'כִּ֤י לֹ֨א אִ֣ישׁ אֵ֔ל', expect: { lemma: 'לֹא', pos: 'PART', features: { Polarity: 'Neg' }, status: 'high-confidence' } },
   { id: 'v-ki', surface: 'כִּ֤י', sentence: 'כִּ֤י לֹ֨א אִ֣ישׁ אֵ֔ל', expect: { lemma: 'כִּי', pos: 'CONJ', status: 'high-confidence' } },
   { id: 'v-vayiqra', surface: 'וַיִּקְרָ֨א', sentence: 'וַיִּקְרָ֨א מֹשֶׁ֜ה אֶל־כָּל־יִשְׂרָאֵ֗ל', expect: { lemma: 'קָרָא', pos: 'VERB', features: { Conj: 'Wayyiqtol', Person: '3', Gender: 'Masc', Number: 'Sing' }, status: 'high-confidence' } },
@@ -36,7 +32,7 @@ export const HE_VALIDATION: ValidationCase[] = [
   { id: 'v-ben', surface: 'בֶּן', sentence: 'בֶּן־אָדָ֣ם', expect: { lemma: 'בֵּן', pos: 'NOUN', features: { State: 'Cons' }, status: 'high-confidence' } },
   { id: 'v-divrei', surface: 'דִּבְרֵ֥י', sentence: 'דִּבְרֵ֥י הַיָּמִ֖ים', expect: { lemma: 'דָּבָר', pos: 'NOUN', features: { Number: 'Plur', State: 'Cons' }, status: 'high-confidence' } },
   // the core's limits, stated: a Biblical word outside the commonest lemmas, and any Modern word, have no reading until the full indexes are installed
-  { id: 'v-core-limit-biblical', surface: 'בָּרָ֣א', sentence: GEN_1_1, expect: { readings: 'none' } },
+  { id: 'v-core-limit-biblical', surface: 'בָּרָ֣א', sentence: 'בָּרָ֣א', expect: { readings: 'none' } },
   { id: 'v-core-limit-modern', surface: 'הילדים', sentence: 'הילדים קוראים ספר.', expect: { readings: 'none' } },
 ];
 

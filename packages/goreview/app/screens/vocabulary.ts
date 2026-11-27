@@ -122,8 +122,9 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
 
   function itemRow(item: VocabularyItem): HTMLElement {
     const unitId = item.knowledge.unitId;
-    // a Korean homonym number (눈²) is identity, not spelling: the title is the headword; a unit with no label (the worker had no analyser) is titled by the word in its id, never the id
-    const title = displayLemma(item.unit?.languageId ?? activeIdentity.languageId, vocabLabel(item.unit?.label, unitId));
+    // a Korean homonym number (눈²) is identity, not spelling: the title is the headword.
+    // A record the Repository holds no unit for shows the word its id carries, never the id; a unit with no label (the worker had no analyser) is titled by the word in its id too (Arabic: with its vowels).
+    const title = displayLemma(item.unit?.languageId ?? activeIdentity.languageId, vocabLabel(item.unit?.label, unitId)); // vocabLabel is unitLabel (Korean's rule) for a missing label, and also for a label that is an id
     const kind = item.unit?.kind ?? unitId.split(':', 1)[0];
     const kindLabel = UNIT_KIND_LABEL[kind] ?? kind;
     const variants = [...new Set(item.surfaceForms.filter((x) => x && x !== title))].slice(0, 25);

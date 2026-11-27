@@ -1,15 +1,6 @@
 {
  "readBy": "AI models (Claude), not native speakers; each card judged once, in the first sentence it came from, against the brief in docs/ecosystem/DECK-GATE.md. 2026-11-26.",
- "residual": [
-  "form:de:autobahn",
-  "form:de:gebühren",
-  "form:de:kündigte",
-  "form:de:linken",
-  "form:de:verfahren",
-  "form:de:zwiebeln",
-  "lemma:de:bitten:VERB",
-  "lemma:de:lieb:ADJ"
- ],
+ "residual": [],
  "cards": {
   "form:de:ab": [
    {
@@ -30,9 +21,21 @@
     "v": "ok"
    }
   ],
+  "form:de:abholen": [
+   {
+    "shown": "to pick up; to fetch",
+    "v": "ok"
+   }
+  ],
   "form:de:abkühlen": [
    {
     "shown": "to cool off, to cool down",
+    "v": "ok"
+   }
+  ],
+  "form:de:achtzig": [
+   {
+    "shown": "eighty",
     "v": "ok"
    }
   ],
@@ -54,11 +57,28 @@
     "v": "ok"
    }
   ],
+  "form:de:ampel": [
+   {
+    "shown": "traffic light",
+    "v": "ok"
+   }
+  ],
+  "form:de:amt": [
+   {
+    "shown": "agency",
+    "v": "ok"
+   },
+   {
+    "shown": "office; post",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
+   }
+  ],
   "form:de:an": [
    {
     "shown": "on, upon, at, in, against",
     "v": "false-reading",
-    "note": "\"an\" here is the separable prefix of anziehen, not the preposition"
+    "note": "an here is the separable verb particle of anziehen (zog ... an), not the preposition"
    }
   ],
   "form:de:angebaut": [
@@ -71,6 +91,11 @@
    {
     "shown": "offer, proposition",
     "v": "ok"
+   },
+   {
+    "shown": "offer",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:de:anhaltenden": [
@@ -83,6 +108,11 @@
    {
     "shown": "a female given name",
     "v": "ok"
+   },
+   {
+    "shown": "Anna (female first name)",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:de:arbeitslosigkeit": [
@@ -116,6 +146,12 @@
     "v": "ok"
    }
   ],
+  "form:de:ausgeben": [
+   {
+    "shown": "to spend, to expend",
+    "v": "ok"
+   }
+  ],
   "form:de:ausruhen": [
    {
     "shown": "to rest",
@@ -132,13 +168,33 @@
    {
     "shown": "identity document",
     "v": "ok"
+   },
+   {
+    "shown": "identity card",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
+   }
+  ],
+  "form:de:ausziehen": [
+   {
+    "shown": "to move out, to vacate",
+    "v": "ok"
+   },
+   {
+    "shown": "to take off (clothes); to move out",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:de:autobahn": [
    {
     "shown": "motorway (Britain, Ireland, New Zealand)",
-    "v": "false-meaning",
-    "note": "Autobahn is the German motorway; the Britain/Ireland/NZ gloss is a marginal sense"
+    "v": "ok"
+   },
+   {
+    "shown": "motorway",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:de:außer": [
@@ -187,11 +243,27 @@
    {
     "shown": "by, near",
     "v": "ok"
+   },
+   {
+    "shown": "at; near; with; at the home of",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:de:bein": [
    {
     "shown": "leg of a person, animal",
+    "v": "ok"
+   },
+   {
+    "shown": "leg",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
+   }
+  ],
+  "form:de:bergstraßen": [
+   {
+    "shown": "mountain road",
     "v": "ok"
    }
   ],
@@ -241,6 +313,12 @@
   "form:de:blitzlicht": [
    {
     "shown": "flash, flashlight",
+    "v": "ok"
+   }
+  ],
+  "form:de:bring": [
+   {
+    "shown": "to bring",
     "v": "ok"
    }
   ],
@@ -327,6 +405,12 @@
   "form:de:darf": [
    {
     "shown": "to be allowed (to do something); to be permitted (to do something); may",
+    "v": "ok"
+   }
+  ],
+  "form:de:darüber": [
+   {
+    "shown": "over it; about it",
     "v": "ok"
    }
   ],
@@ -424,11 +508,28 @@
    {
     "shown": "you (singular familiar), thou",
     "v": "ok"
+   },
+   {
+    "shown": "you (informal, one person)",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:de:einbruch": [
    {
     "shown": "burglary, break-in",
+    "v": "ok"
+   }
+  ],
+  "form:de:eingang": [
+   {
+    "shown": "entrance",
+    "v": "ok"
+   }
+  ],
+  "form:de:einkaufen": [
+   {
+    "shown": "to shop",
     "v": "ok"
    }
   ],
@@ -448,11 +549,22 @@
    {
     "shown": "to adjust, to set",
     "v": "ok"
+   },
+   {
+    "shown": "to employ; to adjust",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:de:elektriker": [
    {
     "shown": "electrician (male or of unspecified gender) (a person who installs, repairs and maintains electrical wiring and equipment)",
+    "v": "ok"
+   }
+  ],
+  "form:de:eltern": [
+   {
+    "shown": "parents",
     "v": "ok"
    }
   ],
@@ -467,6 +579,12 @@
     "shown": "archaic form of eng",
     "v": "unknown",
     "note": "enge is an inflected form of eng (narrow); the shown gloss is only an archaic-form pointer"
+   }
+  ],
+  "form:de:entlang": [
+   {
+    "shown": "along",
+    "v": "ok"
    }
   ],
   "form:de:entwurf": [
@@ -484,6 +602,12 @@
   "form:de:erhöhung": [
    {
     "shown": "increase, elevation, rise, increment",
+    "v": "ok"
+   }
+  ],
+  "form:de:eröffnet": [
+   {
+    "shown": "to open (to the public)",
     "v": "ok"
    }
   ],
@@ -575,6 +699,13 @@
    {
     "shown": "ferry",
     "v": "ok"
+   }
+  ],
+  "form:de:fängst": [
+   {
+    "shown": "to catch",
+    "v": "false-reading",
+    "note": "fängst...an is anfangen (to begin), not fangen"
    }
   ],
   "form:de:fünfundzwanzig": [
@@ -690,6 +821,11 @@
    {
     "shown": "railway (track on which trains run)",
     "v": "ok"
+   },
+   {
+    "shown": "platform; track",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:de:groß": [
@@ -728,10 +864,21 @@
     "v": "ok"
    }
   ],
+  "form:de:halsschmerzen": [
+   {
+    "shown": "sore throat",
+    "v": "ok"
+   }
+  ],
   "form:de:handy": [
    {
     "shown": "mobile phone, mobile, cell phone",
     "v": "ok"
+   },
+   {
+    "shown": "mobile phone",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:de:heimatdorf": [
@@ -796,12 +943,29 @@
    {
     "shown": "yard, court",
     "v": "ok"
+   },
+   {
+    "shown": "yard; farm; court",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
+   }
+  ],
+  "form:de:holt": [
+   {
+    "shown": "to fetch; to get",
+    "v": "false-reading",
+    "note": "holt...ab is abholen (pick up), not holen"
    }
   ],
   "form:de:hund": [
    {
     "shown": "dog, hound",
     "v": "ok"
+   },
+   {
+    "shown": "dog",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:de:immer": [
@@ -824,6 +988,11 @@
    {
     "shown": "an island, an isle",
     "v": "ok"
+   },
+   {
+    "shown": "island",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:de:ist": [
@@ -845,10 +1014,23 @@
     "v": "ok"
    }
   ],
+  "form:de:jemand": [
+   {
+    "shown": "someone, somebody",
+    "v": "ok"
+   }
+  ],
   "form:de:kannst": [
    {
     "shown": "to be able (to do or be something), to have the possibility of, can.",
     "v": "ok"
+   }
+  ],
+  "form:de:kaufte": [
+   {
+    "shown": "to buy",
+    "v": "false-reading",
+    "note": "kaufte...ein is einkaufen (to shop), not kaufen"
    }
   ],
   "form:de:kaum": [
@@ -871,11 +1053,22 @@
    {
     "shown": "kid; child (young person)",
     "v": "ok"
+   },
+   {
+    "shown": "child",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:de:kindergeldes": [
    {
     "shown": "child benefit (state payment to people with children)",
+    "v": "ok"
+   }
+  ],
+  "form:de:kino": [
+   {
+    "shown": "cinema",
     "v": "ok"
    }
   ],
@@ -910,6 +1103,12 @@
    }
   ],
   "form:de:kopfschmerzen": [
+   {
+    "shown": "headache",
+    "v": "ok"
+   }
+  ],
+  "form:de:kopfweh": [
    {
     "shown": "headache",
     "v": "ok"
@@ -965,6 +1164,18 @@
    {
     "shown": "refrigerator",
     "v": "ok"
+   },
+   {
+    "shown": "fridge",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
+   }
+  ],
+  "form:de:kündigt": [
+   {
+    "shown": "to give notice; to cancel",
+    "v": "false-reading",
+    "note": "kündigt...an is ankündigen (announces), not kündigen"
    }
   ],
   "form:de:kündigte": [
@@ -976,7 +1187,7 @@
    {
     "shown": "to give notice; to cancel",
     "v": "false-reading",
-    "note": "kündigte an is a form of ankündigen (announce), not kündigen"
+    "note": "kündigte...an is the separable verb ankündigen (announced), not kündigen"
    }
   ],
   "form:de:kürzen": [
@@ -1003,10 +1214,21 @@
     "v": "ok"
    }
   ],
+  "form:de:lebensmittel": [
+   {
+    "shown": "groceries; food",
+    "v": "ok"
+   }
+  ],
   "form:de:leicht": [
    {
     "shown": "light (not heavy)",
     "v": "ok"
+   },
+   {
+    "shown": "easy; light",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:de:leider": [
@@ -1019,6 +1241,11 @@
    {
     "shown": "Leipzig (a city in Saxony, Germany)",
     "v": "ok"
+   },
+   {
+    "shown": "Leipzig (city)",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:de:linken": [
@@ -1034,9 +1261,35 @@
     "v": "ok"
    }
   ],
+  "form:de:mach": [
+   {
+    "shown": "to make; to do",
+    "v": "false-reading",
+    "note": "Mach...zu is zumachen (close), not machen"
+   }
+  ],
+  "form:de:machte": [
+   {
+    "shown": "to make; to do",
+    "v": "false-reading",
+    "note": "machte...auf is aufmachen (opened), not machen"
+   }
+  ],
   "form:de:man": [
    {
     "shown": "one, you",
+    "v": "ok"
+   }
+  ],
+  "form:de:manchmal": [
+   {
+    "shown": "sometimes",
+    "v": "ok"
+   }
+  ],
+  "form:de:meer": [
+   {
+    "shown": "sea",
     "v": "ok"
    }
   ],
@@ -1044,13 +1297,34 @@
    {
     "shown": "flour; meal (ground cereal)",
     "v": "ok"
+   },
+   {
+    "shown": "flour",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
+   }
+  ],
+  "form:de:meistens": [
+   {
+    "shown": "mostly (for the most part)",
+    "v": "ok"
+   },
+   {
+    "shown": "mostly; usually",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:de:mit": [
    {
     "shown": "with (in the company of, alongside)",
     "v": "false-reading",
-    "note": "\"teilte mit\" is mitteilen; mit here is the separable prefix"
+    "note": "mit is the separable particle of mitteilen (teilte mit), not the preposition"
+   },
+   {
+    "shown": "with; by (means of)",
+    "v": "false-reading",
+    "note": "mit is the separable particle of mitteilen (teilte mit), not the preposition"
    }
   ],
   "form:de:mitbringen": [
@@ -1075,7 +1349,7 @@
    {
     "shown": "tomorrow",
     "v": "false-reading",
-    "note": "\"heute Morgen\" is the noun Morgen (morning), not morgen \"tomorrow\""
+    "note": "heute Morgen means this morning; Morgen is the noun, not the adverb morgen"
    }
   ],
   "form:de:möchte": [
@@ -1146,6 +1420,11 @@
    {
     "shown": "nobody, no one",
     "v": "ok"
+   },
+   {
+    "shown": "no one; nobody",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:de:nun": [
@@ -1170,6 +1449,11 @@
    {
     "shown": "in any case, anyway, either way",
     "v": "ok"
+   },
+   {
+    "shown": "anyway; in any case",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:de:opposition": [
@@ -1182,12 +1466,22 @@
    {
     "shown": "arrangement, regulation",
     "v": "ok"
+   },
+   {
+    "shown": "order; tidiness",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:de:pfund": [
    {
     "shown": "a metric pound, 500 grams",
     "v": "ok"
+   },
+   {
+    "shown": "pound (500 grams)",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:de:picknick": [
@@ -1200,6 +1494,11 @@
    {
     "shown": "police; law enforcement",
     "v": "ok"
+   },
+   {
+    "shown": "police",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:de:pressekonferenz": [
@@ -1224,6 +1523,11 @@
    {
     "shown": "city hall",
     "v": "ok"
+   },
+   {
+    "shown": "town hall",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:de:rechts": [
@@ -1248,6 +1552,13 @@
    {
     "shown": "red (colour)",
     "v": "ok"
+   }
+  ],
+  "form:de:ruft": [
+   {
+    "shown": "to call; to shout",
+    "v": "false-reading",
+    "note": "ruft...an is anrufen (to phone), not rufen"
    }
   ],
   "form:de:salz": [
@@ -1280,6 +1591,13 @@
     "v": "ok"
    }
   ],
+  "form:de:schmecke": [
+   {
+    "shown": "to taste",
+    "v": "false-reading",
+    "note": "schmecke...ab is abschmecken (season to taste), not schmecken"
+   }
+  ],
   "form:de:schwer": [
    {
     "shown": "heavy, weighty",
@@ -1290,6 +1608,11 @@
    {
     "shown": "public pool, public swimming pool, baths",
     "v": "ok"
+   },
+   {
+    "shown": "swimming pool",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:de:schälen": [
@@ -1336,6 +1659,12 @@
     "v": "ok"
    }
   ],
+  "form:de:selten": [
+   {
+    "shown": "rarely",
+    "v": "ok"
+   }
+  ],
   "form:de:seltener": [
    {
     "shown": "rare, infrequent, uncommon, scarce",
@@ -1347,6 +1676,12 @@
     "shown": "forms the present perfect and past perfect tenses of certain verbs",
     "v": "false-meaning",
     "note": "sind means \"are\"; shown gloss is the auxiliary function"
+   }
+  ],
+  "form:de:sofort": [
+   {
+    "shown": "immediately, at once",
+    "v": "ok"
    }
   ],
   "form:de:sollten": [
@@ -1370,12 +1705,30 @@
    {
     "shown": "otherwise (under different circumstances)",
     "v": "ok"
+   },
+   {
+    "shown": "otherwise; else",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:de:spazieren": [
    {
     "shown": "to take a walk, to stroll",
     "v": "ok"
+   }
+  ],
+  "form:de:sportplatz": [
+   {
+    "shown": "sports field",
+    "v": "ok"
+   }
+  ],
+  "form:de:stellte": [
+   {
+    "shown": "to put; to place",
+    "v": "false-reading",
+    "note": "stellte...vor is vorstellen (introduced), not stellen"
    }
   ],
   "form:de:stress": [
@@ -1418,6 +1771,11 @@
    {
     "shown": "dough, paste, pastry",
     "v": "ok"
+   },
+   {
+    "shown": "dough",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:de:teilte": [
@@ -1450,17 +1808,38 @@
     "v": "ok"
    }
   ],
+  "form:de:tür": [
+   {
+    "shown": "door (rigid plane on a hinge)",
+    "v": "ok"
+   },
+   {
+    "shown": "door",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
+   }
+  ],
   "form:de:uhr": [
    {
     "shown": "hours",
     "v": "false-meaning",
-    "note": "Uhr means clock/watch/o'clock, not \"hours\""
+    "note": "Uhr means clock/watch or o'clock, not hours"
+   },
+   {
+    "shown": "clock; watch; o'clock",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:de:um": [
    {
     "shown": "about",
     "v": "ok"
+   },
+   {
+    "shown": "around; at (a time); about",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:de:umsteigen": [
@@ -1516,6 +1895,11 @@
    {
     "shown": "delay, lateness, late arrival",
     "v": "ok"
+   },
+   {
+    "shown": "delay",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:de:vierhundert": [
@@ -1542,6 +1926,12 @@
     "v": "ok"
    }
   ],
+  "form:de:vorher": [
+   {
+    "shown": "beforehand, previously",
+    "v": "ok"
+   }
+  ],
   "form:de:vorjahr": [
    {
     "shown": "previous year",
@@ -1552,6 +1942,11 @@
    {
     "shown": "forest; woods; woodland",
     "v": "ok"
+   },
+   {
+    "shown": "forest",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:de:wann": [
@@ -1595,6 +1990,12 @@
     "v": "ok"
    }
   ],
+  "form:de:weitergibt": [
+   {
+    "shown": "to impart",
+    "v": "ok"
+   }
+  ],
   "form:de:weiterhin": [
    {
     "shown": "still",
@@ -1605,6 +2006,11 @@
    {
     "shown": "who (what person or people)",
     "v": "ok"
+   },
+   {
+    "shown": "who",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:de:werde": [
@@ -1642,12 +2048,22 @@
    {
     "shown": "where (at what place)",
     "v": "ok"
+   },
+   {
+    "shown": "where",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:de:wohnung": [
    {
     "shown": "domicile",
     "v": "ok"
+   },
+   {
+    "shown": "flat; apartment",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:de:wollte": [
@@ -1659,6 +2075,12 @@
   "form:de:wollten": [
    {
     "shown": "to want; to wish; to desire; to demand",
+    "v": "ok"
+   }
+  ],
+  "form:de:womit": [
+   {
+    "shown": "with what, what…with",
     "v": "ok"
    }
   ],
@@ -1701,6 +2123,17 @@
     "v": "ok"
    }
   ],
+  "form:de:zentrum": [
+   {
+    "shown": "center, centre — central point",
+    "v": "ok"
+   },
+   {
+    "shown": "centre",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
+   }
+  ],
   "form:de:zersetzen": [
    {
     "shown": "to corrode, decompose",
@@ -1741,6 +2174,11 @@
    {
     "shown": "satisfied, content, happy (with something)",
     "v": "ok"
+   },
+   {
+    "shown": "content, satisfied",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:de:zug": [
@@ -1752,11 +2190,22 @@
     "shown": "pull",
     "v": "false-meaning",
     "note": "Zug first means train (also pull/draught); bare pull is a marginal first gloss"
+   },
+   {
+    "shown": "train; pull",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:de:zum": [
    {
     "shown": "contraction of zu + dem, literally “to the; for the",
+    "v": "ok"
+   }
+  ],
+  "form:de:zurück": [
+   {
+    "shown": "back, backward, backwards, to the rear.",
     "v": "ok"
    }
   ],
@@ -1808,6 +2257,12 @@
     "v": "ok"
    }
   ],
+  "form:de:zwölf": [
+   {
+    "shown": "twelve",
+    "v": "ok"
+   }
+  ],
   "form:de:ältere": [
    {
     "shown": "old",
@@ -1824,6 +2279,11 @@
    {
     "shown": "[with accusative or dative] above",
     "v": "ok"
+   },
+   {
+    "shown": "over; above; across; about",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:de:übrigens": [
@@ -1848,6 +2308,18 @@
     "v": "ok"
    }
   ],
+  "lemma:de:Ampel:NOUN": [
+   {
+    "shown": "traffic light",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Amt:NOUN": [
+   {
+    "shown": "office; post",
+    "v": "ok"
+   }
+  ],
   "lemma:de:Angebot:NOUN": [
    {
     "shown": "offer",
@@ -1857,6 +2329,12 @@
   "lemma:de:Anna:PROPN": [
    {
     "shown": "Anna (female first name)",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Antwort:NOUN": [
+   {
+    "shown": "answer",
     "v": "ok"
    }
   ],
@@ -1875,6 +2353,12 @@
   "lemma:de:Arbeit:NOUN": [
    {
     "shown": "work; job",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Arzt:NOUN": [
+   {
+    "shown": "doctor (male)",
     "v": "ok"
    }
   ],
@@ -1920,6 +2404,18 @@
     "v": "ok"
    }
   ],
+  "lemma:de:Besuch:NOUN": [
+   {
+    "shown": "visit; visitor",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Betrieb:NOUN": [
+   {
+    "shown": "business; operation",
+    "v": "ok"
+   }
+  ],
   "lemma:de:Bett:NOUN": [
    {
     "shown": "bed",
@@ -1935,6 +2431,12 @@
   "lemma:de:Bildschirm:NOUN": [
    {
     "shown": "screen",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Blatt:NOUN": [
+   {
+    "shown": "leaf; sheet",
     "v": "ok"
    }
   ],
@@ -2028,15 +2530,33 @@
     "v": "ok"
    }
   ],
+  "lemma:de:Dresden:PROPN": [
+   {
+    "shown": "Dresden (city)",
+    "v": "ok"
+   }
+  ],
   "lemma:de:Ei:NOUN": [
    {
     "shown": "egg",
     "v": "ok"
    }
   ],
+  "lemma:de:Eingang:NOUN": [
+   {
+    "shown": "entrance",
+    "v": "ok"
+   }
+  ],
   "lemma:de:Einkauf:NOUN": [
    {
     "shown": "purchase",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Eltern:NOUN": [
+   {
+    "shown": "parents",
     "v": "ok"
    }
   ],
@@ -2070,6 +2590,18 @@
     "v": "ok"
    }
   ],
+  "lemma:de:Fahrkarte:NOUN": [
+   {
+    "shown": "ticket",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Fahrplan:NOUN": [
+   {
+    "shown": "timetable",
+    "v": "ok"
+   }
+  ],
   "lemma:de:Fahrrad:NOUN": [
    {
     "shown": "bicycle",
@@ -2079,6 +2611,12 @@
   "lemma:de:Fenster:NOUN": [
    {
     "shown": "window",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Ferien:NOUN": [
+   {
+    "shown": "holidays (school); vacation",
     "v": "ok"
    }
   ],
@@ -2094,9 +2632,28 @@
     "v": "ok"
    }
   ],
+  "lemma:de:Fischer:PROPN": [
+   {
+    "shown": "Fischer (surname)",
+    "v": "false-reading",
+    "note": "Die Fischer is the common noun, the fishermen, not the surname"
+   }
+  ],
+  "lemma:de:Flughafen:NOUN": [
+   {
+    "shown": "airport",
+    "v": "ok"
+   }
+  ],
   "lemma:de:Fluss:NOUN": [
    {
     "shown": "river",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Frage:NOUN": [
+   {
+    "shown": "question",
     "v": "ok"
    }
   ],
@@ -2109,6 +2666,12 @@
   "lemma:de:Freitag:NOUN": [
    {
     "shown": "Friday",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Freund:NOUN": [
+   {
+    "shown": "friend; boyfriend",
     "v": "ok"
    }
   ],
@@ -2130,6 +2693,12 @@
     "v": "ok"
    }
   ],
+  "lemma:de:Fuß:NOUN": [
+   {
+    "shown": "foot",
+    "v": "ok"
+   }
+  ],
   "lemma:de:Garten:NOUN": [
    {
     "shown": "garden",
@@ -2145,6 +2714,12 @@
   "lemma:de:Gebühr:NOUN": [
    {
     "shown": "fee",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Gehirn:NOUN": [
+   {
+    "shown": "brain",
     "v": "ok"
    }
   ],
@@ -2169,6 +2744,12 @@
   "lemma:de:Gemälde:NOUN": [
    {
     "shown": "painting",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Gemüse:NOUN": [
+   {
+    "shown": "vegetables",
     "v": "ok"
    }
   ],
@@ -2208,6 +2789,12 @@
     "v": "ok"
    }
   ],
+  "lemma:de:Großmutter:NOUN": [
+   {
+    "shown": "grandmother",
+    "v": "ok"
+   }
+  ],
   "lemma:de:Großvater:NOUN": [
    {
     "shown": "grandfather",
@@ -2232,6 +2819,12 @@
     "v": "ok"
    }
   ],
+  "lemma:de:Hals:NOUN": [
+   {
+    "shown": "neck; throat",
+    "v": "ok"
+   }
+  ],
   "lemma:de:Haltestelle:NOUN": [
    {
     "shown": "stop (bus, tram)",
@@ -2241,6 +2834,12 @@
   "lemma:de:Hamburg:PROPN": [
    {
     "shown": "Hamburg (city)",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Handwerk:NOUN": [
+   {
+    "shown": "trade; craft",
     "v": "ok"
    }
   ],
@@ -2316,6 +2915,12 @@
     "v": "ok"
    }
   ],
+  "lemma:de:Jacke:NOUN": [
+   {
+    "shown": "jacket",
+    "v": "ok"
+   }
+  ],
   "lemma:de:Jahr:NOUN": [
    {
     "shown": "year",
@@ -2334,15 +2939,33 @@
     "v": "ok"
    }
   ],
+  "lemma:de:Karte:NOUN": [
+   {
+    "shown": "map; card; ticket",
+    "v": "ok"
+   }
+  ],
   "lemma:de:Kartoffel:NOUN": [
    {
     "shown": "potato",
     "v": "ok"
    }
   ],
+  "lemma:de:Kerze:NOUN": [
+   {
+    "shown": "candle",
+    "v": "ok"
+   }
+  ],
   "lemma:de:Kind:NOUN": [
    {
     "shown": "child",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Kino:NOUN": [
+   {
+    "shown": "cinema",
     "v": "ok"
    }
   ],
@@ -2370,9 +2993,27 @@
     "v": "ok"
    }
   ],
+  "lemma:de:Krankheit:NOUN": [
+   {
+    "shown": "illness",
+    "v": "ok"
+   }
+  ],
   "lemma:de:Kuchen:NOUN": [
    {
     "shown": "cake",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Kunde:NOUN": [
+   {
+    "shown": "customer",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Köln:PROPN": [
+   {
+    "shown": "Cologne",
     "v": "ok"
    }
   ],
@@ -2412,6 +3053,18 @@
     "v": "ok"
    }
   ],
+  "lemma:de:Leben:NOUN": [
+   {
+    "shown": "life",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Lebensmittel:NOUN": [
+   {
+    "shown": "groceries; food",
+    "v": "ok"
+   }
+  ],
   "lemma:de:Lehrerin:NOUN": [
    {
     "shown": "teacher (female)",
@@ -2427,6 +3080,12 @@
   "lemma:de:Leute:NOUN": [
    {
     "shown": "people",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Licht:NOUN": [
+   {
+    "shown": "light",
     "v": "ok"
    }
   ],
@@ -2460,6 +3119,12 @@
     "v": "ok"
    }
   ],
+  "lemma:de:Meer:NOUN": [
+   {
+    "shown": "sea",
+    "v": "ok"
+   }
+  ],
   "lemma:de:Mehl:NOUN": [
    {
     "shown": "flour",
@@ -2469,6 +3134,12 @@
   "lemma:de:Mensch:NOUN": [
    {
     "shown": "human being; person",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Miete:NOUN": [
+   {
+    "shown": "rent",
     "v": "ok"
    }
   ],
@@ -2499,6 +3170,12 @@
   "lemma:de:Morgen:NOUN": [
    {
     "shown": "morning",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Mund:NOUN": [
+   {
+    "shown": "mouth",
     "v": "ok"
    }
   ],
@@ -2544,6 +3221,12 @@
     "v": "ok"
    }
   ],
+  "lemma:de:Nebel:NOUN": [
+   {
+    "shown": "fog",
+    "v": "ok"
+   }
+  ],
   "lemma:de:Norden:NOUN": [
    {
     "shown": "north",
@@ -2556,6 +3239,18 @@
     "v": "ok"
    }
   ],
+  "lemma:de:Obst:NOUN": [
+   {
+    "shown": "fruit (as food)",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Oktober:NOUN": [
+   {
+    "shown": "October",
+    "v": "ok"
+   }
+  ],
   "lemma:de:Ordnung:NOUN": [
    {
     "shown": "order; tidiness",
@@ -2565,6 +3260,12 @@
   "lemma:de:Parkplatz:NOUN": [
    {
     "shown": "car park; parking space",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Pfeffer:NOUN": [
+   {
+    "shown": "pepper",
     "v": "ok"
    }
   ],
@@ -2586,6 +3287,12 @@
     "v": "ok"
    }
   ],
+  "lemma:de:Politiker:NOUN": [
+   {
+    "shown": "politician",
+    "v": "ok"
+   }
+  ],
   "lemma:de:Polizei:NOUN": [
    {
     "shown": "police",
@@ -2598,15 +3305,46 @@
     "v": "ok"
    }
   ],
+  "lemma:de:Projekt:NOUN": [
+   {
+    "shown": "project",
+    "v": "ok"
+   }
+  ],
   "lemma:de:Rathaus:NOUN": [
    {
     "shown": "town hall",
     "v": "ok"
    }
   ],
+  "lemma:de:Rauchen:NOUN": [
+   {
+    "shown": "to smoke",
+    "v": "false-meaning",
+    "note": "Rauchen as a noun means smoking; shown is a verb gloss"
+   }
+  ],
+  "lemma:de:Raum:NOUN": [
+   {
+    "shown": "room; space",
+    "v": "ok"
+   }
+  ],
   "lemma:de:Recht:NOUN": [
    {
     "shown": "right; law",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Regen:NOUN": [
+   {
+    "shown": "rain",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Reise:NOUN": [
+   {
+    "shown": "journey; trip",
     "v": "ok"
    }
   ],
@@ -2628,6 +3366,12 @@
     "v": "ok"
    }
   ],
+  "lemma:de:Schlaf:NOUN": [
+   {
+    "shown": "sleep",
+    "v": "ok"
+   }
+  ],
   "lemma:de:Schlange:NOUN": [
    {
     "shown": "snake",
@@ -2640,6 +3384,12 @@
     "v": "ok"
    }
   ],
+  "lemma:de:Schnee:NOUN": [
+   {
+    "shown": "snow",
+    "v": "ok"
+   }
+  ],
   "lemma:de:Schneider:PROPN": [
    {
     "shown": "Schneider (surname)",
@@ -2649,6 +3399,12 @@
   "lemma:de:Schokolade:NOUN": [
    {
     "shown": "chocolate",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Schuh:NOUN": [
+   {
+    "shown": "shoe",
     "v": "ok"
    }
   ],
@@ -2712,9 +3468,21 @@
     "v": "ok"
    }
   ],
+  "lemma:de:Spiel:NOUN": [
+   {
+    "shown": "game; play",
+    "v": "ok"
+   }
+  ],
   "lemma:de:Stadt:NOUN": [
    {
     "shown": "city; town",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Stelle:NOUN": [
+   {
+    "shown": "position; place",
     "v": "ok"
    }
   ],
@@ -2724,15 +3492,33 @@
     "v": "ok"
    }
   ],
+  "lemma:de:Stunde:NOUN": [
+   {
+    "shown": "hour; lesson",
+    "v": "ok"
+   }
+  ],
   "lemma:de:Sturm:NOUN": [
    {
     "shown": "storm",
     "v": "ok"
    }
   ],
+  "lemma:de:Stück:NOUN": [
+   {
+    "shown": "piece",
+    "v": "ok"
+   }
+  ],
   "lemma:de:Supermarkt:NOUN": [
    {
     "shown": "supermarket",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Suppe:NOUN": [
+   {
+    "shown": "soup",
     "v": "ok"
    }
   ],
@@ -2760,6 +3546,12 @@
     "v": "ok"
    }
   ],
+  "lemma:de:Tante:NOUN": [
+   {
+    "shown": "aunt",
+    "v": "ok"
+   }
+  ],
   "lemma:de:Tasse:NOUN": [
    {
     "shown": "cup",
@@ -2769,6 +3561,12 @@
   "lemma:de:Teig:NOUN": [
    {
     "shown": "dough",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Theater:NOUN": [
+   {
+    "shown": "theatre",
     "v": "ok"
    }
   ],
@@ -2799,6 +3597,12 @@
   "lemma:de:Treppe:NOUN": [
    {
     "shown": "stairs",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Tür:NOUN": [
+   {
+    "shown": "door",
     "v": "ok"
    }
   ],
@@ -2835,6 +3639,12 @@
   "lemma:de:Urlaub:NOUN": [
    {
     "shown": "holiday; leave",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Verfahren:NOUN": [
+   {
+    "shown": "procedure; process",
     "v": "ok"
    }
   ],
@@ -2880,6 +3690,24 @@
     "v": "ok"
    }
   ],
+  "lemma:de:Wetter:NOUN": [
+   {
+    "shown": "weather",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Wirt:NOUN": [
+   {
+    "shown": "innkeeper; landlord",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Wissen:NOUN": [
+   {
+    "shown": "knowledge",
+    "v": "ok"
+   }
+  ],
   "lemma:de:Woche:NOUN": [
    {
     "shown": "week",
@@ -2922,6 +3750,12 @@
     "v": "ok"
    }
   ],
+  "lemma:de:Zentrum:NOUN": [
+   {
+    "shown": "centre",
+    "v": "ok"
+   }
+  ],
   "lemma:de:Zimmer:NOUN": [
    {
     "shown": "room",
@@ -2952,9 +3786,27 @@
     "v": "ok"
    }
   ],
+  "lemma:de:ab:ADP": [
+   {
+    "shown": "from; as of",
+    "v": "ok"
+   }
+  ],
   "lemma:de:abbiegen:VERB": [
    {
     "shown": "to turn off",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:abgehen:VERB": [
+   {
+    "shown": "to leave; to depart; to come off",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:abholen:VERB": [
+   {
+    "shown": "to pick up; to fetch",
     "v": "ok"
    }
   ],
@@ -2970,9 +3822,19 @@
     "v": "ok"
    }
   ],
+  "lemma:de:achtzig:NUM": [
+   {
+    "shown": "eighty",
+    "v": "ok"
+   }
+  ],
   "lemma:de:als:CONJ": [
    {
     "shown": "than; as (after a comparative, or ",
+    "v": "ok"
+   },
+   {
+    "shown": "than; as (after a comparative, or \"as a child\")",
     "v": "ok"
    }
   ],
@@ -3006,6 +3868,12 @@
     "v": "ok"
    }
   ],
+  "lemma:de:ander:ADJ": [
+   {
+    "shown": "other",
+    "v": "ok"
+   }
+  ],
   "lemma:de:anfangen:VERB": [
    {
     "shown": "to begin; to start",
@@ -3018,6 +3886,24 @@
     "v": "ok"
    }
   ],
+  "lemma:de:ankommen:VERB": [
+   {
+    "shown": "to arrive; to depend (on)",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:ankündigen:VERB": [
+   {
+    "shown": "to announce",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:annehmen:VERB": [
+   {
+    "shown": "to accept; to assume",
+    "v": "ok"
+   }
+  ],
   "lemma:de:anrufen:VERB": [
    {
     "shown": "to call; to telephone",
@@ -3025,6 +3911,12 @@
    }
   ],
   "lemma:de:anschauen:VERB": [
+   {
+    "shown": "to look at",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:ansehen:VERB": [
    {
     "shown": "to look at",
     "v": "ok"
@@ -3054,6 +3946,18 @@
     "v": "ok"
    }
   ],
+  "lemma:de:aufhören:VERB": [
+   {
+    "shown": "to stop; to cease",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:aufmachen:VERB": [
+   {
+    "shown": "to open",
+    "v": "ok"
+   }
+  ],
   "lemma:de:aufräumen:VERB": [
    {
     "shown": "to tidy up",
@@ -3066,9 +3970,27 @@
     "v": "ok"
    }
   ],
+  "lemma:de:aufstellen:VERB": [
+   {
+    "shown": "to set up; to put up",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:aufwachen:VERB": [
+   {
+    "shown": "to wake up",
+    "v": "ok"
+   }
+  ],
   "lemma:de:aus:ADP": [
    {
     "shown": "out of; from; made of",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:ausgeben:VERB": [
+   {
+    "shown": "to spend; to hand out",
     "v": "ok"
    }
   ],
@@ -3096,6 +4018,12 @@
     "v": "ok"
    }
   ],
+  "lemma:de:ausziehen:VERB": [
+   {
+    "shown": "to take off (clothes); to move out",
+    "v": "ok"
+   }
+  ],
   "lemma:de:außer:ADP": [
    {
     "shown": "except; apart from; out of",
@@ -3111,6 +4039,12 @@
   "lemma:de:bauen:VERB": [
    {
     "shown": "to build",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:beantworten:VERB": [
+   {
+    "shown": "to answer (a question)",
     "v": "ok"
    }
   ],
@@ -3186,9 +4120,27 @@
     "v": "ok"
    }
   ],
+  "lemma:de:betreten:VERB": [
+   {
+    "shown": "to enter; to step on",
+    "v": "ok"
+   }
+  ],
   "lemma:de:bevor:SCONJ": [
    {
     "shown": "before",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:biegen:VERB": [
+   {
+    "shown": "to bend; to turn",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:billig:ADJ": [
+   {
+    "shown": "cheap",
     "v": "ok"
    }
   ],
@@ -3217,9 +4169,22 @@
     "note": "bitte in bitte schön is the polite particle/interjection, not the verb bitten"
    }
   ],
+  "lemma:de:blasen:VERB": [
+   {
+    "shown": "to blow",
+    "v": "false-reading",
+    "note": "blass is the adjective pale, not a form of blasen"
+   }
+  ],
   "lemma:de:bleiben:VERB": [
    {
     "shown": "to stay; to remain",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:braten:VERB": [
+   {
+    "shown": "to fry; to roast",
     "v": "ok"
    }
   ],
@@ -3259,9 +4224,21 @@
     "v": "ok"
    }
   ],
+  "lemma:de:darüber:ADV": [
+   {
+    "shown": "over it; about it",
+    "v": "ok"
+   }
+  ],
   "lemma:de:dass:SCONJ": [
    {
     "shown": "that",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:dauern:VERB": [
+   {
+    "shown": "to last",
     "v": "ok"
    }
   ],
@@ -3344,6 +4321,18 @@
     "v": "ok"
    }
   ],
+  "lemma:de:durch:ADP": [
+   {
+    "shown": "through; by",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:durchlesen:VERB": [
+   {
+    "shown": "to read through",
+    "v": "ok"
+   }
+  ],
   "lemma:de:dürfen:AUX": [
    {
     "shown": "to be allowed to; may",
@@ -3362,6 +4351,12 @@
     "v": "ok"
    }
   ],
+  "lemma:de:einladen:VERB": [
+   {
+    "shown": "to invite",
+    "v": "ok"
+   }
+  ],
   "lemma:de:einmal:ADV": [
    {
     "shown": "once; one day",
@@ -3371,6 +4366,12 @@
   "lemma:de:einnehmen:VERB": [
    {
     "shown": "to take (medicine); to occupy",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:einpacken:VERB": [
+   {
+    "shown": "to pack up",
     "v": "ok"
    }
   ],
@@ -3416,6 +4417,12 @@
     "v": "ok"
    }
   ],
+  "lemma:de:enden:VERB": [
+   {
+    "shown": "to end",
+    "v": "ok"
+   }
+  ],
   "lemma:de:eng:ADJ": [
    {
     "shown": "narrow; tight",
@@ -3425,6 +4432,12 @@
   "lemma:de:entdecken:VERB": [
    {
     "shown": "to discover",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:entlang:ADP": [
+   {
+    "shown": "along (after its noun: die Straße entlang)",
     "v": "ok"
    }
   ],
@@ -3455,6 +4468,12 @@
   "lemma:de:erhöhen:VERB": [
    {
     "shown": "to raise; to increase",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:erkennen:VERB": [
+   {
+    "shown": "to recognize",
     "v": "ok"
    }
   ],
@@ -3530,6 +4549,12 @@
     "v": "ok"
    }
   ],
+  "lemma:de:fertig:ADJ": [
+   {
+    "shown": "finished; ready",
+    "v": "ok"
+   }
+  ],
   "lemma:de:festnehmen:VERB": [
    {
     "shown": "to arrest",
@@ -3539,6 +4564,12 @@
   "lemma:de:finden:VERB": [
    {
     "shown": "to find",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:fließen:VERB": [
+   {
+    "shown": "to flow",
     "v": "ok"
    }
   ],
@@ -3575,6 +4606,12 @@
   "lemma:de:frisch:ADJ": [
    {
     "shown": "fresh",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:fühlen:VERB": [
+   {
+    "shown": "to feel",
     "v": "ok"
    }
   ],
@@ -3698,6 +4735,12 @@
     "v": "ok"
    }
   ],
+  "lemma:de:herausfinden:VERB": [
+   {
+    "shown": "to find out",
+    "v": "ok"
+   }
+  ],
   "lemma:de:heute:ADV": [
    {
     "shown": "today",
@@ -3761,6 +4804,12 @@
   "lemma:de:jemals:ADV": [
    {
     "shown": "ever",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:jemand:PRON": [
+   {
+    "shown": "someone; anyone",
     "v": "ok"
    }
   ],
@@ -3878,6 +4927,12 @@
     "v": "ok"
    }
   ],
+  "lemma:de:laufen:VERB": [
+   {
+    "shown": "to run; to walk",
+    "v": "ok"
+   }
+  ],
   "lemma:de:laut:ADJ": [
    {
     "shown": "loud",
@@ -3899,6 +4954,12 @@
   "lemma:de:leider:ADV": [
    {
     "shown": "unfortunately",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:leidtun:VERB": [
+   {
+    "shown": "to be sorry (es tut mir leid)",
     "v": "ok"
    }
   ],
@@ -3933,6 +4994,12 @@
     "v": "ok"
    }
   ],
+  "lemma:de:link:ADJ": [
+   {
+    "shown": "left (on the left-hand side)",
+    "v": "ok"
+   }
+  ],
   "lemma:de:links:ADV": [
    {
     "shown": "on the left; to the left",
@@ -3951,6 +5018,12 @@
     "v": "ok"
    }
   ],
+  "lemma:de:manchmal:ADV": [
+   {
+    "shown": "sometimes",
+    "v": "ok"
+   }
+  ],
   "lemma:de:mein:DET": [
    {
     "shown": "my",
@@ -3960,6 +5033,12 @@
   "lemma:de:meinen:VERB": [
    {
     "shown": "to mean; to think",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:meistens:ADV": [
+   {
+    "shown": "mostly; usually",
     "v": "ok"
    }
   ],
@@ -3984,6 +5063,12 @@
   "lemma:de:mitbringen:VERB": [
    {
     "shown": "to bring along",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:mitnehmen:VERB": [
+   {
+    "shown": "to take along",
     "v": "ok"
    }
   ],
@@ -4131,15 +5216,33 @@
     "v": "ok"
    }
   ],
+  "lemma:de:parken:VERB": [
+   {
+    "shown": "to park",
+    "v": "ok"
+   }
+  ],
   "lemma:de:passen:VERB": [
    {
     "shown": "to fit; to suit",
     "v": "ok"
    }
   ],
+  "lemma:de:planen:VERB": [
+   {
+    "shown": "to plan",
+    "v": "ok"
+   }
+  ],
   "lemma:de:privat:ADJ": [
    {
     "shown": "private",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:putzen:VERB": [
+   {
+    "shown": "to clean",
     "v": "ok"
    }
   ],
@@ -4167,6 +5270,12 @@
     "v": "ok"
    }
   ],
+  "lemma:de:reisen:VERB": [
+   {
+    "shown": "to travel",
+    "v": "ok"
+   }
+  ],
   "lemma:de:reparieren:VERB": [
    {
     "shown": "to repair",
@@ -4176,6 +5285,12 @@
   "lemma:de:rot:ADJ": [
    {
     "shown": "red",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:rühren:VERB": [
+   {
+    "shown": "to stir",
     "v": "ok"
    }
   ],
@@ -4191,6 +5306,12 @@
     "v": "ok"
    }
   ],
+  "lemma:de:schaffen:VERB": [
+   {
+    "shown": "to create",
+    "v": "ok"
+   }
+  ],
   "lemma:de:schauen:VERB": [
    {
     "shown": "to look",
@@ -4200,6 +5321,12 @@
   "lemma:de:schlafen:VERB": [
    {
     "shown": "to sleep",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:schlecht:ADJ": [
+   {
+    "shown": "bad",
     "v": "ok"
    }
   ],
@@ -4287,6 +5414,12 @@
     "v": "ok"
    }
   ],
+  "lemma:de:selten:ADV": [
+   {
+    "shown": "rarely",
+    "v": "ok"
+   }
+  ],
   "lemma:de:senken:VERB": [
    {
     "shown": "to lower",
@@ -4308,6 +5441,18 @@
   "lemma:de:sinken:VERB": [
    {
     "shown": "to sink",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:sobald:SCONJ": [
+   {
+    "shown": "as soon as",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:sofort:ADV": [
+   {
+    "shown": "immediately",
     "v": "ok"
    }
   ],
@@ -4365,6 +5510,12 @@
     "v": "ok"
    }
   ],
+  "lemma:de:streiten:VERB": [
+   {
+    "shown": "to quarrel",
+    "v": "ok"
+   }
+  ],
   "lemma:de:städtisch:ADJ": [
    {
     "shown": "urban; municipal",
@@ -4380,6 +5531,12 @@
   "lemma:de:suchen:VERB": [
    {
     "shown": "to look for",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:teilnehmen:VERB": [
+   {
+    "shown": "to take part",
     "v": "ok"
    }
   ],
@@ -4449,9 +5606,33 @@
     "v": "ok"
    }
   ],
+  "lemma:de:verbessern:VERB": [
+   {
+    "shown": "to improve",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:verbieten:VERB": [
+   {
+    "shown": "to forbid",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:vergessen:VERB": [
+   {
+    "shown": "to forget",
+    "v": "ok"
+   }
+  ],
   "lemma:de:verkürzen:VERB": [
    {
     "shown": "to shorten",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:verlassen:VERB": [
+   {
+    "shown": "to leave; to abandon",
     "v": "ok"
    }
   ],
@@ -4459,7 +5640,17 @@
    {
     "shown": "to hurt oneself",
     "v": "false-meaning",
-    "note": "verletzen means to injure/hurt; \"to hurt oneself\" is too narrow"
+    "note": "verletzen means to injure/hurt; reflexive to hurt oneself is a narrower sense"
+   },
+   {
+    "shown": "to injure; to hurt (sich verletzen: to hurt oneself)",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:verlieren:VERB": [
+   {
+    "shown": "to lose",
+    "v": "ok"
    }
   ],
   "lemma:de:verstehen:VERB": [
@@ -4510,6 +5701,18 @@
     "v": "ok"
    }
   ],
+  "lemma:de:vorher:ADV": [
+   {
+    "shown": "beforehand",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:vorstellen:VERB": [
+   {
+    "shown": "to introduce; to imagine",
+    "v": "ok"
+   }
+  ],
   "lemma:de:wann:ADV": [
    {
     "shown": "when",
@@ -4556,6 +5759,13 @@
    {
     "shown": "to hurt; to be sore",
     "v": "ok"
+   }
+  ],
+  "lemma:de:weichen:VERB": [
+   {
+    "shown": "to yield; to give way",
+    "v": "false-reading",
+    "note": "weich is the adjective soft, not a form of the verb weichen"
    }
   ],
   "lemma:de:weil:SCONJ": [
@@ -4618,6 +5828,12 @@
     "v": "ok"
    }
   ],
+  "lemma:de:womit:ADV": [
+   {
+    "shown": "with what",
+    "v": "ok"
+   }
+  ],
   "lemma:de:während:SCONJ": [
    {
     "shown": "while; whereas",
@@ -4657,6 +5873,18 @@
   "lemma:de:zufrieden:ADJ": [
    {
     "shown": "content, satisfied",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:zumachen:VERB": [
+   {
+    "shown": "to close; to shut",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:zurückgeben:VERB": [
+   {
+    "shown": "to give back",
     "v": "ok"
    }
   ],
@@ -4702,6 +5930,18 @@
     "v": "ok"
    }
   ],
+  "lemma:de:zwölf:NUM": [
+   {
+    "shown": "twelve",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:ändern:VERB": [
+   {
+    "shown": "to change",
+    "v": "ok"
+   }
+  ],
   "lemma:de:ärgern:VERB": [
    {
     "shown": "to annoy",
@@ -4720,5 +5960,11 @@
     "v": "ok"
    }
   ]
- }
+ },
+ "heldResidue": [
+  "lemma:de:Fischer:PROPN",
+  "lemma:de:Rauchen:NOUN",
+  "lemma:de:blasen:VERB",
+  "lemma:de:weichen:VERB"
+ ]
 }

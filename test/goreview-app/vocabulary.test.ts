@@ -140,3 +140,18 @@ describe('My Vocabulary', () => {
     expect(rig.root.querySelector('[data-action="resume-practice"]')).toBeNull();
   });
 });
+
+describe('My Vocabulary: a record the Repository holds no unit for', () => {
+  it.each([
+    ['ko', 'lemma:ko:책:NOUN', '책'],
+    ['ko', 'lemma:ko:눈²:NOUN', '눈'],
+    ['sq', 'lemma:sq:libër:NOUN', 'libër'],
+    ['sq', 'form:sq:shtëpinë', 'shtëpinë'],
+  ])('shows the word, not the internal unit id (%s, %s)', async (_language, unitId, word) => {
+    const rig = await makeRig({ signedIn: true });
+    const { unit: _unit, ...unitless } = item(unitId, word, 'new');
+    await useVocabularyApi(rig, () => ({ items: [{ ...unitless, surfaceForms: [] }], catalog }));
+    expect(rig.q('.vocabulary-title h3').textContent).toBe(word);
+    expect(rig.q('#vocabulary-results').textContent).not.toContain(unitId);
+  });
+});

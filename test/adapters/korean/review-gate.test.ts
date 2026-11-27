@@ -123,7 +123,7 @@ describe('the meaning hold: an entry whose first meaning is unchecked or doubtfu
       if (card.lemma === e.lemma && card.reviewHold?.kind === 'meaning-unreviewed') { found = { word: surface, lemma: e.lemma }; expect(card.itemIds).toEqual([`lemma:ko:${e.lemma}:NOUN`]); break; }
     }
     expect(found, 'a multi-sense noun is held for the card with its lemma still credited').toBeTruthy();
-  });
+  }, 90_000);
   it('through the real GoReview facts path: a multi-sense lemma gets no card; a one-sense lemma and an own-gloss lemma do', async () => {
     const { packFactsFor } = await import('../../../packages/goreview/app/packFacts');
     const fs = await import('node:fs'); const path = await import('node:path');

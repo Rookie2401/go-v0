@@ -131,7 +131,7 @@ describe('the deck gate: form units', () => {
   });
   it('a base-meaning card shows what the word\'s own card shows first', async () => {
     const sein = facts('lemma:de:sein:AUX', { lemma: 'sein', pos: 'AUX', lexicon: ['to be'], inWordList: true });
-    const f = facts('form:de:ist', { pos: 'AUX', base: { lemma: 'sein', pos: 'AUX', glosses: ['forms the present perfect and past perfect tenses of certain verbs', 'to be'] } });
+    const f = facts('form:de:gewesen', { pos: 'AUX', base: { lemma: 'sein', pos: 'AUX', glosses: ['forms the present perfect and past perfect tenses of certain verbs', 'to be'] } });
     const g = await applyDeckGate(f, deps('de', {}, { 'lemma:de:sein:AUX': sein }));
     expect(shown(g)).toBe('to be');
   });
@@ -191,4 +191,155 @@ describe('the deck gate: grammar notes, machine word lists and periods', () => {
 
 describe('pointers written as grammar', () => {
   it.each(['to-infinitive of עָבַד (avád).', 'bare infinitive (infinitive construct) of בא', 'infinitive construct of בא'])('%s', (g) => { expect(isCrossReferenceOnly(g)).toBe(true); });
+});
+
+describe('pointers with a slash between labels', () => {
+  it('"imperfect middle/passive indicative of X" is a pointer', () => {
+    expect(isCrossReferenceOnly('third-person singular imperfect middle/passive indicative of πυνθάνομαι (punthánomai)')).toBe(true);
+    expect(crossReferenceTarget('third-person singular imperfect middle/passive indicative of πυνθάνομαι (punthánomai)')).toBe('πυνθάνομαι');
+  });
+});
+
+describe('a written form the forms index lists under another word', () => {
+  const verb = [{ gloss: 'to be due, to be owed', pos: 'VERB' }];
+  const withIndex = (hits: Array<{ lemma: string; pos?: string }>): DeckGateDeps => ({ ...deps('de', { 'gebühren': verb, sonntag: [{ gloss: 'Sunday', pos: 'NOUN' }] }), formIdentities: async () => hits });
+  it('is undecided by its spelling: German Gebühren (plural of Gebühr) is not the verb gebühren', async () => {
+    const g = await applyDeckGate(facts('form:de:gebühren', { dictionary: ['to be due, to be owed'] }), withIndex([{ lemma: 'Gebühr', pos: 'NOUN' }, { lemma: 'gebühren', pos: 'VERB' }]));
+    expect(g?.reviewHold?.kind).toBe('undecided-entry');
+    expect(g?.reviewHold?.reason).toContain('form of another word');
+  });
+  it('a form listed under its own headword only, or beside a place name, passes', async () => {
+    const own = await applyDeckGate(facts('form:de:sonntag', { dictionary: ['Sunday'] }), withIndex([{ lemma: 'Sonntag', pos: 'NOUN' }, { lemma: 'Sonntag', pos: 'PROPN' }]));
+    expect(own?.reviewHold).toBeUndefined();
+    const none = await applyDeckGate(facts('form:de:sonntag', { dictionary: ['Sunday'] }), withIndex([]));
+    expect(none?.reviewHold).toBeUndefined();
+  });
+});
+
+describe('a form card whose spelling is several words', () => {
+  const lemma = facts('lemma:de:linken:VERB', { lemma: 'linken', pos: 'VERB', dictionary: ['to deceive'] });
+  const d: DeckGateDeps = { ...deps('de', { linken: [{ gloss: 'to deceive', pos: 'VERB' }] }, { 'lemma:de:linken:VERB': lemma }),
+    formIdentities: async () => [{ lemma: 'linken', pos: 'VERB' }, { lemma: 'link', pos: 'ADJ' }, { lemma: 'Linke', pos: 'NOUN' }] };
+  const form = (source: string): UnitFacts => { const f = facts('form:de:linken', { lemma: 'linken', pos: 'VERB', dictionary: ['to deceive'] }); return { ...f, unit: { ...f.unit, provenance: { ...f.unit.provenance, source } } } as UnitFacts; };
+  it('is held when the reading of it is only a rule\u2019s guess (German linken), and the word\u2019s own lemma card is not touched', async () => {
+    expect((await applyDeckGate(form('rule'), d))?.reviewHold?.kind).toBe('undecided-entry');
+    expect((await applyDeckGate(lemma, d))?.reviewHold).toBeUndefined();
+  });
+  it('stands when the pack\u2019s own word list confirms the reading, and when one headword is listed under two classes', async () => {
+    expect((await applyDeckGate(form('hand-lexicon'), d))?.reviewHold).toBeUndefined();
+    const und: DeckGateDeps = { ...deps('de', { und: [{ gloss: 'and', pos: 'CONJ' }] }), formIdentities: async () => [{ lemma: 'und', pos: 'CONJ' }, { lemma: 'und', pos: 'INTJ' }] };
+    expect((await applyDeckGate(facts('form:de:und', { dictionary: ['and'] }), und))?.reviewHold).toBeUndefined();
+  });
+});
+
+describe('a form card has no sentence', () => {
+  it('a spelling the word list reads as another word too gets no form card; its lemma card is untouched', async () => {
+    const lemma = facts('lemma:nb:lære:NOUN', { lemma: 'lære', pos: 'NOUN', lexicon: ['teaching; doctrine'], inWordList: true });
+    const form = { ...facts('form:nb:lære', { lemma: 'lære', pos: 'NOUN', dictionary: ['teaching; doctrine'] }), alternativeReadings: [{ lemma: 'lære', pos: 'VERB', glosses: ['learn; teach'] }] } as UnitFacts;
+    const g = await applyDeckGate(form, deps('nb', {}, { 'lemma:nb:lære:NOUN': lemma }));
+    expect(g?.reviewHold?.kind).toBe('undecided-entry');
+    expect(g?.reviewHold?.reason).toContain('more than one word');
+    expect(await applyDeckGate(lemma, deps('nb', {}))).toBe(lemma);
+  });
+  it('German: a finite verb form may be half of a separable verb and gets no form card; the infinitive and a participle keep theirs', async () => {
+    const holen = facts('lemma:de:holen:VERB', { lemma: 'holen', pos: 'VERB', lexicon: ['to fetch'], inWordList: true });
+    const d = deps('de', {}, { 'lemma:de:holen:VERB': holen });
+    const form = (label: string, features: Record<string, string>): UnitFacts => ({ ...facts(`form:de:${label}`, { lemma: 'holen', pos: 'VERB', dictionary: ['to fetch'] }), features }) as UnitFacts;
+    expect((await applyDeckGate(form('holt', { VerbForm: 'Fin', Person: '3', Number: 'Sing' }), d))?.reviewHold?.reason).toContain('separable');
+    expect((await applyDeckGate(form('holen', { VerbForm: 'Inf' }), d))?.reviewHold).toBeUndefined();
+    expect((await applyDeckGate(form('geholt', { VerbForm: 'Part' }), d))?.reviewHold).toBeUndefined();
+    // a verb that carries its prefix already: its joined finite form is its own (dass er sie abholt)
+    const abholen = facts('lemma:de:abholen:VERB', { lemma: 'abholen', pos: 'VERB', lexicon: ['to pick up'], inWordList: true });
+    const abholt = { ...facts('form:de:abholt', { lemma: 'abholen', pos: 'VERB', dictionary: ['to pick up'] }), features: { VerbForm: 'Fin', Person: '3' } } as UnitFacts;
+    expect((await applyDeckGate(abholt, deps('de', {}, { 'lemma:de:abholen:VERB': abholen })))?.reviewHold).toBeUndefined();
+    // another language's finite forms are not touched by this rule
+    const hacer = facts('lemma:es:hacer:VERB', { lemma: 'hacer', pos: 'VERB', lexicon: ['to do'], inWordList: true });
+    const hace = { ...facts('form:es:hace', { lemma: 'hacer', pos: 'VERB', dictionary: ['to do'] }), features: { VerbForm: 'Fin', Person: '3' } } as UnitFacts;
+    expect((await applyDeckGate(hace, deps('es', {}, { 'lemma:es:hacer:VERB': hacer })))?.reviewHold).toBeUndefined();
+  });
+});
+
+describe('follow-up 3: the first meaning', () => {
+  it('a machine word list that leads with the first ITEM of a not-current sense gives way to the first current sense', async () => {
+    // Russian платье: the list says "clothes" (the first item of "clothes, clothing", which the entry marks archaic); the current sense is "dress, gown, frock"
+    const senses: Sense[] = [{ gloss: 'clothes, clothing', pos: 'NOUN', tags: ['archaic', 'historical'] }, { gloss: 'dress, gown, frock', pos: 'NOUN' }];
+    const f = { ...facts('lemma:ru:платье:NOUN', { lemma: 'платье', pos: 'NOUN', lexicon: ['clothes'], dictionary: ['clothes, clothing', 'dress, gown, frock'], inWordList: true }), source: 'dictionary' } as UnitFacts;
+    expect(shown(await applyDeckGate(f, deps('ru', { 'платье': senses })))).toBe('dress, gown, frock');
+    // a list meaning that is the first item of a CURRENT first sense stays
+    const ok = { ...facts('lemma:ru:стол:NOUN', { lemma: 'стол', pos: 'NOUN', lexicon: ['table'], dictionary: ['table, desk', 'board, fare'], inWordList: true }), source: 'dictionary' } as UnitFacts;
+    expect(shown(await applyDeckGate(ok, deps('ru', { 'стол': [{ gloss: 'table, desk', pos: 'NOUN' }, { gloss: 'board, fare', pos: 'NOUN' }] })))).toBe('table');
+  });
+
+  it('the citation form shows what its word’s own card shows first, also when that meaning is long', async () => {
+    // Russian линия: the word's card shows the first sense; the form card passed it over (seven words) for the later short sense "a cloth hall"
+    const first = 'line (path through two or more points, or figuratively)';
+    const lemma = { ...facts('lemma:ru:линия:NOUN', { lemma: 'линия', pos: 'NOUN', lexicon: [first], dictionary: [first, 'a cloth hall'], inWordList: true }), source: 'dictionary' } as UnitFacts;
+    const form = facts('form:ru:линия', { lemma: 'линия', pos: 'NOUN', dictionary: [first, 'a cloth hall'], inWordList: true });
+    expect(shown(form)).toBe('a cloth hall');
+    const d = deps('ru', { 'линия': [{ gloss: first, pos: 'NOUN' }, { gloss: 'a cloth hall', pos: 'NOUN' }] }, { 'lemma:ru:линия:NOUN': lemma });
+    expect(shown(await applyDeckGate(form, d))).toBe(first);
+    // a second meaning the word's card lists too (Thai เงิน "silver (metal)" beside the word list's "money; silver"): the citation form shows the first
+    const money = facts('lemma:th:เงิน:NOUN', { lemma: 'เงิน', pos: 'NOUN', lexicon: ['money; silver'], inWordList: true });
+    const silver = facts('form:th:เงิน', { lemma: 'เงิน', pos: 'NOUN', dictionary: ['silver (metal)', 'money'], inWordList: true });
+    expect(shown(await applyDeckGate(silver, deps('th', {}, { 'lemma:th:เงิน:NOUN': money })))).toBe('money; silver');
+    // an INFLECTED form with a meaning of its own that its word's card lists keeps it (oss "us" beside vi "we; us")
+    const vi = facts('lemma:nb:vi:PRON', { lemma: 'vi', pos: 'PRON', lexicon: ['we; us'], inWordList: true });
+    const oss = facts('form:nb:oss', { lemma: 'vi', pos: 'PRON', dictionary: ['us'], inWordList: true });
+    expect(shown(await applyDeckGate(oss, deps('nb', {}, { 'lemma:nb:vi:PRON': vi })))).toBe('us');
+  });
+
+  it('a lead sense named for a word is shown first when the entry has it, and the word is held when the entry no longer has it', async () => {
+    const senses: Sense[] = [{ gloss: 'pipe', pos: 'NOUN' }, { gloss: 'binoculars (optical device)', pos: 'NOUN' }, { gloss: 'camera', pos: 'NOUN' }];
+    const f = facts('lemma:th:กล้อง:NOUN', { lemma: 'กล้อง', pos: 'NOUN', dictionary: ['pipe', 'binoculars (optical device)', 'camera'], inWordList: true });
+    const withLead = (lead: string[], dict: Sense[]): DeckGateDeps => ({ ...deps('th', { 'กล้อง': dict }), lead: (id) => (id === 'lemma:th:กล้อง:NOUN' ? lead : undefined) });
+    expect(shown(await applyDeckGate(f, deps('th', { 'กล้อง': senses })))).toBe('pipe');
+    const g = await applyDeckGate(f, withLead(['camera'], senses));
+    expect(shown(g)).toBe('camera');
+    expect(cardMeaning(g!)?.accepted).toContain('pipe'); // the entry's other senses are still accepted answers
+    // two senses named: shown together
+    expect(shown(await applyDeckGate(f, withLead(['camera', 'pipe'], senses)))).toBe('camera; pipe');
+    // the entry changed and has the sense no longer: held, not shown with a meaning nobody chose
+    const without = facts('lemma:th:กล้อง:NOUN', { lemma: 'กล้อง', pos: 'NOUN', dictionary: ['pipe', 'binoculars (optical device)'], inWordList: true });
+    const gone = await applyDeckGate(without, withLead(['camera'], senses.slice(0, 2)));
+    expect(gone?.reviewHold?.kind).toBe('meaning-unreviewed');
+    expect(gone?.reviewHold?.reason).toContain('no longer in its dictionary entry');
+    // the form card of the same word follows its word's card
+    const form = facts('form:th:กล้อง', { lemma: 'กล้อง', pos: 'NOUN', dictionary: ['pipe', 'binoculars (optical device)', 'camera'], inWordList: true });
+    const d = withLead(['camera'], senses);
+    const all: DeckGateDeps = { ...d, factsOf: async (id) => (id === 'lemma:th:กล้อง:NOUN' ? applyDeckGate(f, d) : undefined) };
+    expect(shown(await applyDeckGate(form, all))).toBe('camera');
+  });
+
+  it('a form with no reading that the forms index lists under one word shows that word’s own first meaning', async () => {
+    // German uhr: the form unit has lost the capital of Uhr; the dictionary's entry leads with "hours, o'clock", the word's own card with "clock; watch; o'clock"
+    const uhr = facts('lemma:de:Uhr:NOUN', { lemma: 'Uhr', pos: 'NOUN', lexicon: ['clock; watch; o’clock'], inWordList: true });
+    const form = { ...facts('form:de:uhr', { dictionary: ['hours, o’clock', 'clock, watch'] }), unit: { ...facts('form:de:uhr', {}).unit, provenance: { source: 'parser', ref: 't', confidence: 0.5 } } } as UnitFacts;
+    const d: DeckGateDeps = { ...deps('de', { uhr: [{ gloss: 'hours, o’clock', pos: 'NOUN' }, { gloss: 'clock, watch', pos: 'NOUN' }] }, { 'lemma:de:Uhr:NOUN': uhr }), formIdentities: async () => [{ lemma: 'Uhr', pos: 'NOUN' }] };
+    expect(shown(await applyDeckGate(form, d))).toBe('clock; watch; o’clock');
+    // with no forms index (or no such word's card) the form is as it was
+    expect(shown(await applyDeckGate(form, deps('de', { uhr: [{ gloss: 'hours, o’clock', pos: 'NOUN' }, { gloss: 'clock, watch', pos: 'NOUN' }] })))).toBe('hours, o’clock');
+  });
+});
+
+describe('lead senses where the meanings come from the lexicon (attested-form languages)', () => {
+  it('the sense named is taken from the facts\u2019 own senses, and the word\u2019s form card shows it too', async () => {
+    const senses = ['arm', 'hand', 'forelimb (anterior limb)'];
+    const lemma = facts('lemma:he:yad:NOUN', { lemma: 'yad', pos: 'NOUN', lexicon: ['arm'], dictionary: senses, inWordList: true });
+    const form = facts('form:he:beyado', { lemma: 'yad', pos: 'NOUN', dictionary: senses });
+    const d: DeckGateDeps = { ...deps('he', {}), lead: (id) => (id === 'lemma:he:yad:NOUN' ? ['hand'] : undefined) };
+    const all: DeckGateDeps = { ...d, factsOf: async (id) => (id === 'lemma:he:yad:NOUN' ? applyDeckGate(lemma, d) : undefined) };
+    expect(shown(await applyDeckGate(lemma, d))).toBe('hand');
+    expect(shown(await applyDeckGate(form, all))).toBe('hand');
+    // without a named sense the attested form keeps its lemma's meaning as it was
+    expect(shown(await applyDeckGate(form, { ...deps('he', {}), factsOf: async () => lemma }))).toBe(shown(form));
+  });
+});
+
+describe('a meaning broken off inside a bracket', () => {
+  it('shows without the unfinished aside; a meaning that is only the aside is not a card', async () => {
+    const f = facts('lemma:la:timeo:VERB', { lemma: 'timeo', pos: 'VERB', lexicon: ['fear, be afraid of (ne + SUB = lest'], inWordList: true });
+    expect(shown(await applyDeckGate(f, deps('la', {})))).toBe('fear, be afraid of');
+    const only = facts('lemma:la:x:VERB', { lemma: 'x', pos: 'VERB', lexicon: ['(of things'], inWordList: true });
+    expect((await applyDeckGate(only, deps('la', {})))?.reviewHold?.kind).toBe('meaning-unreviewed');
+  });
 });

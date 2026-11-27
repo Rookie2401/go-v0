@@ -425,6 +425,29 @@ for (const state of ['core', 'shards'] as const) {
         });
       }
       it('S-c look-alike: 옷을 사는 것 is 사다', () => expect(lemmaOf(readIn('옷을 사는 것을 좋아해요.', '사는').top)).toBe('사다'));
+      // the contracted copula (겁니다 = 거 + copula + -ㅂ니다) against 걸다 / 절다: (a) after an adnominal, (b) after a possessive, the
+      // nominal; (c) with an object, the verb; (d) with no cue, both creditable. Each pin applies only once the token layer offers both.
+      const both = (s: string, w: string) => { const r = readIn(s, w); return r.all.some((c) => nounSide(c) && (c.parts ?? []).some((x) => x.lemma === '이다') && live(c)) && r.all.some((c) => isPred(c) && c.pos !== 'AUX'); };
+      for (const [s, w] of [['내일 갈 겁니다.', '겁니다'], ['밥을 먹을 겁니다.', '겁니다'], ['비가 올 겁니다.', '겁니다'], ['언제 갈 겁니까?', '겁니까'], ['좋은 겁니다.', '겁니다'], ['그것은 제 겁니다.', '겁니다'], ['이건 누구 겁니까?', '겁니까'], ['이건 우리 겁니다.', '겁니다']] as const) {
+        it(`contracted copula ${s}: ${w} is the nominal + copula`, () => {
+          const r = readIn(s, w);
+          if (!r.all.some((c) => isPred(c) && c.pos !== 'AUX') && nounSide(r.top)) return; // no verb rival offered: nothing to decide
+          expect(nounSide(r.top), `${r.top.lemma} ${r.top.pos}`).toBe(true);
+          expect(r.all.some((c) => isPred(c) && c.pos !== 'AUX' && live(c))).toBe(false);
+        });
+      }
+      for (const [s, w, verb] of [['친구에게 전화를 겁니다.', '겁니다', '걸다'], ['옷을 옷걸이에 겁니다.', '겁니다', '걸다'], ['그가 저에게 말을 겁니다.', '겁니다', '걸다'], ...(state === 'shards' ? [['그는 다리를 접니다.', '접니다', '절다'] as const] : [])] as const) {
+        it(`contracted copula look-alike ${s}: ${w} is the verb ${verb}`, () => {
+          if (!both(s, w) && lemmaOf(readIn(s, w).top) === verb) return;
+          const r = readIn(s, w);
+          expect(lemmaOf(r.top)).toBe(verb);
+          expect(r.all.some((c) => nounSide(c) && (c.parts ?? []).some((x) => x.lemma === '이다') && live(c))).toBe(false);
+        });
+      }
+      it('contracted copula with no cue (누구세요? 접니다.): the token order stands, both creditable when both are offered', () => {
+        if (!both('누구세요? 접니다.', '접니다')) return;
+        undecided('누구세요? 접니다.', '접니다', (c) => nounSide(c), (c) => isPred(c) && c.pos !== 'AUX');
+      });
       // S-d: Sino-Korean numerals (composed ones too) count minutes, native ones persons
       for (const s of ['B: 이십 분 후에 출발해요.', '이십 분 후에 출발해요.', '십 분 기다렸어요.']) it(`S-d ${s}: 분 is the minute`, () => { const t = readIn(s, '분').top; expect(t.gloss ?? '').toMatch(/minute/u); expect(t.notes?.homonym).not.toBe('undecided'); });
       it('S-d: 세 분이 오셨어요 → 분 "person"', () => expect(readIn('세 분이 오셨어요.', '분이').top.gloss ?? '').toMatch(/person|people/u));
@@ -675,4 +698,14 @@ describe('the confidence helpers', () => {
     // the adapter's own tokens are marked as usual
     expect(koOrderSentences(tokens, base)[1][0].morph.Complement).toBe('Yes');
   });
+});
+
+// audit of 2d71345d: the object chooses the verb
+describe('an object chooses the rarer verb (the audit of 2d71345d)', () => {
+  it.each([['개가 사람을 물었어요.', '물었어요', '물다'], ['모기가 팔을 물었어요.', '물었어요', '물다'], ['칼을 갈게요.', '갈게요', '갈다'], ['커피를 갈게요.', '갈게요', '갈다']] as const)(
+    '%s: %s is %s', (sentence, form, verb) => {
+      const out = koAdapter.analyze(koAdapter.tokenize(sentence));
+      const a = out.find((x) => x.token.surface === form);
+      expect((a?.candidates[0]?.lemma ?? '').replace(/[⁰¹²³⁴⁵⁶⁷⁸⁹]/gu, '')).toBe(verb);
+    });
 });

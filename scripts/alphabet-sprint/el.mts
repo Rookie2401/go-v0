@@ -13,7 +13,7 @@
 import fs from 'node:fs';
 import { KOINE_CORE } from '../../src/adapters/greek/generated/koine-core';
 import { transliterateGreek } from '../../src/adapters/greek/pronunciation';
-import { firstSense, writeWords } from './lib.mts';
+import { cutPhrase, firstSense, writeWords } from './lib.mts';
 import type { StarterPhrase, StarterWord } from '../../packages/language-packs/src/alphabet-sprint/types';
 
 const GREEK_WORD = /^[\p{Script=Greek}]+$/u;
@@ -86,8 +86,15 @@ for (const [h, f] of found) {
     source: `${f.source} (occurs); gloss: ${modernPath} (Wiktionary via kaikki.org)`,
   });
 }
+/** Whole sentences of the retired course dialogue are cut to a short run of words (form and gloss together), keyed by the gloss. */
+const DIALOGUE_CUTS: Array<[string, [number, number], [number, number]]> = [
+  ['I am fine, Petros, but there is something I do not understand.', [0, 3], [0, 4]],
+  ['I do not understand why God forgives sin.', [0, 5], [0, 6]],
+  ['Thank you, Petros. Now I understand more.', [2, 5], [3, 7]],
+];
+const cutDialoguePhrase = (p: StarterPhrase): StarterPhrase => { const c = DIALOGUE_CUTS.find(([g]) => g === p.gloss); return c ? cutPhrase(p, c[1], c[2]) : p; };
 const modernPhrases: StarterPhrase[] = [];
-for (const t of texts) for (const s of t.sentences) if (s.english && s.text.split(/\s+/).length <= 9) modernPhrases.push({ form: s.text, gloss: s.english, source: t.source });
+for (const t of texts) for (const s of t.sentences) if (s.english && s.text.split(/\s+/).length <= 9) modernPhrases.push(cutDialoguePhrase({ form: s.text, gloss: s.english, source: t.source }));
 
 writeWords({
   lang: 'el', words: modernWords, phrases: modernPhrases,

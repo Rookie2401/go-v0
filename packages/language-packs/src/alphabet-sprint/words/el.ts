@@ -1065,8 +1065,8 @@ export const PHRASES: readonly StarterPhrase[] = [
   "source": "data/corpus/el/dialogue-01.json"
  },
  {
-  "form": "Είμαι καλά, Πέτρο, αλλά υπάρχει κάτι που δεν καταλαβαίνω.",
-  "gloss": "I am fine, Petros, but there is something I do not understand.",
+  "form": "Είμαι καλά, Πέτρο",
+  "gloss": "I am fine, Petros",
   "source": "data/corpus/el/dialogue-01.json"
  },
  {
@@ -1075,8 +1075,8 @@ export const PHRASES: readonly StarterPhrase[] = [
   "source": "data/corpus/el/dialogue-01.json"
  },
  {
-  "form": "Δεν καταλαβαίνω γιατί ο Θεός συγχωρεί την αμαρτία.",
-  "gloss": "I do not understand why God forgives sin.",
+  "form": "Δεν καταλαβαίνω γιατί ο Θεός",
+  "gloss": "I do not understand why God",
   "source": "data/corpus/el/dialogue-01.json"
  },
  {
@@ -1085,8 +1085,8 @@ export const PHRASES: readonly StarterPhrase[] = [
   "source": "data/corpus/el/dialogue-01.json"
  },
  {
-  "form": "Ευχαριστώ, Πέτρο. Τώρα καταλαβαίνω περισσότερο.",
-  "gloss": "Thank you, Petros. Now I understand more.",
+  "form": "Τώρα καταλαβαίνω περισσότερο",
+  "gloss": "Now I understand more",
   "source": "data/corpus/el/dialogue-01.json"
  },
  {

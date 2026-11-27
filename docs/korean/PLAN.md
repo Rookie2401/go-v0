@@ -444,6 +444,36 @@ reading is not. The analyser is frozen after it (`eb3830f2`). What each word cam
 **What the round could not fix by a rule** (a main entry's other meaning needs a word cue): 선과 악 (goodness),
 위가 아파요 (stomach), 창을 들고 (spear), 손을 꼭 잡았어요 (tightly), 아이가 많이 컸어요 (크다 as a verb).
 
+## After the freeze (2026-11-26): the contracted copula, and rare rivals at token level
+
+The owner allowed one more rule ("Allow the one rule"), found by the deck audit after the freeze; the second rule below is
+the release manager's reading of the owner's later "fix Korean", not the owner's own words, and sits behind one switch.
+Measured like the last round: the sweep with no unexpected reading in either lexicon state, no side of the two-sided gate
+lower, the development split not worse (91.00 → 91.01 % strict, 94.20 → 94.22 % lenient, confident and wrong 4.73 → 4.72 %).
+
+**The contracted copula.** After a vowel-final noun, pronoun or bound noun the copula is not written and the ending's first
+consonant (ㅂ or ㄴ) becomes the final of the nominal's last syllable: 겁니다 (거 + 이 + ㅂ니다), 겁니까, 건데요, 접니다,
+뭡니까, 얼맙니까, 누굽니까, 어딥니까, 친굽니다; the copula left out before -니까 (거니까) is the same thing.
+
+- *Token (`analyze.ts`).* The reading is produced from the copula's own ending table on that syllable, with no word list;
+  adnominal -ㄴ is excluded (건, 전 are other fused forms). It is LIVE when the nominal is a listed word and either no
+  predicate spells the same form or the nominal's count is at least a quarter of the commonest such predicate's. So 갑니다,
+  합니다, 옵니다, 압니다, 삽니다 stay their verbs alone (가 10 against 가다 815). Where it is live and a listed verb fits too
+  (걸다 for 겁니다, 절다 for 접니다), the two are ordered by the counts and BOTH stay creditable however rare the verb is:
+  the sentence decides. Known cost: 나니까요 reads 나 + copula first (나 499 against 나다 345).
+- *Sentence (`sentence.ts`).* (a) After an adnominal form (갈 / 먹을 / 올 / 좋은 겁니다) the nominal is the bound noun of
+  -(으)ㄹ / -는 / -(으)ㄴ 것이다: the nominal + copula, the verb set aside. (b) After a determiner, a genitive in 의 or a bare
+  possessive pronoun (제, 내, 우리, 누구 …): the nominal + copula. (c) Otherwise, with an object in 을/를 earlier in its
+  clause (전화를 겁니다, 말을 겁니다, 다리를 접니다): the verb, the nominal set aside. (d) With none of these the token order
+  stands and both stay creditable. There is no construction for -(으)ㄹ 것이다 as future or presumption in
+  `constructions.ts`, for 갈 거예요 as little as for 갈 겁니다: a stated gap, not added here.
+
+**Rare rivals: tried, and OFF** (`KO_RARE_RIVAL_RULE.on = false` in `analyze.ts`). A rule that set a rare look-alike
+aside at token level was added on the release manager's reading of "fix Korean" and withdrawn. Its verb-against-verb half
+removed the rarer verb before the sentence was read, so 개가 사람을 물었어요 read 묻다 "to ask" and 칼을 갈게요 read 가다 "to go",
+both confidently (the independent audit). So 주세요, 갈게요, 가세요, 길어요, 이게, 그게, 누가, 가요 and 해요 are shown as two words
+and are not drilled from those sentences. Doing better needs to know which verbs take an object.
+
 ## Constructions (`korean/constructions.ts`, `detectPatterns`)
 
 Keys (each `syntax:ko:<key>`): `ko-progressive` -고 있다, `ko-resultative` -아/어 있다, `ko-want` -고 싶다,

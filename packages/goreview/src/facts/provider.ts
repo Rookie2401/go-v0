@@ -20,13 +20,13 @@ import type { GrammarConstruction, PackManifest } from '../../../language-packs/
 import type { GlossResult } from '../../../language-packs/src/runtime';
 import type { Tutorial } from '../../../language-packs/src/tutorial/types';
 import type { AnalysisCandidate, AnalyzedToken, PhraseCandidate, RawToken } from '../../../../src/core';
+import type { ReviewKind } from '../../../../src/core/review-gate';
 import { projectWordAnalysis } from '../../../../src/core/word-analysis';
 import { answerVariants } from '../../../../src/core/english-verb';
 import { greekWordAnalysis } from '../../../../src/adapters/greek/word-analysis';
 import type { ExampleSentence, FactsProvider, UnitFacts } from '../types';
 import { FORM_HELD_REASON, holdsDeck } from './deck-holds';
 import { held } from './deck-gate';
-import type { ReviewKind } from '../../../../src/core/review-gate';
 import { arCleanSense, arUnitRecords, type ArFullRecord } from '../../../../src/adapters/arabic/answers';
 import ANSWER_EXCLUSIONS from '../../../../src/adapters/arabic/answer-exclusions.json';
 import type { ExampleReading, FeatureDef, FormGroup, FormInfo, ReviewFacts } from './review-facts';
@@ -44,6 +44,8 @@ export interface FactsAdapter {
   describeMorph?(morph: Record<string, string>, pos?: AnalysisCandidate['pos']): string;
   detectPhrases?(tokens: RawToken[], analyses: AnalyzedToken[]): PhraseCandidate[];
   pronunciation?(token: RawToken, analysis?: AnalyzedToken): { notes?: string[] };
+  /** The meaning the learner's period source gives a headword (core/adapters.ts `headwordGloss`). */
+  headwordGloss?(lemma: string, pos: string | undefined, varietyId: string): string | undefined;
   readonly sources?: Readonly<Record<string, { label: string; licence?: string }>>;
 }
 
@@ -454,6 +456,12 @@ export function createFactsProvider(deps: FactsProviderDeps): FactsProvider & { 
 
   const inWordList = (c: AnalysisCandidate | undefined): boolean => !!c && !c.unconfirmed && c.origin !== 'rule' && !(!c.origin && c.notes?.source === 'rule');
 
+  /** The meaning the learner's period source gives a headword, when the adapter holds one. */
+  const periodGloss = (lemma: string, pos: string | undefined): string | undefined => {
+    if (!deps.varietyId) return undefined;
+    try { return adapter.headwordGloss?.(lemma, pos, deps.varietyId) || undefined; } catch { return undefined; }
+  };
+
   // ───────── lemma ─────────
   async function lemmaFacts(unitId: string, rec: RepositoryUnit | undefined): Promise<ReviewFacts | undefined> {
     const parsed = parseLemmaId(unitId, lang);
@@ -465,12 +473,15 @@ export function createFactsProvider(deps: FactsProviderDeps): FactsProvider & { 
     // a lemma competes only with readings of OTHER words: its own inflected readings (Nom,Acc vs Acc …) are not a conflict about the lemma
     const rivals = read.all.filter((c) => c !== read.cand && (c.lemma !== read.cand!.lemma || c.pos !== read.cand!.pos));
     const baseUnit = rec?.unit ?? synth('lexeme', unitId, lemma, statusOf(read.cand!, [read.cand!, ...rivals]), sourceOf(read.cand), read.cand!.confidence, pos ? { pos } : {});
-    // a lemma whose own reading the language's review gate holds back (src/core/review-gate.ts: notes.reviewGate, with its reviewReason) requires review, whatever status a stored row carries
-    const gated: LinguisticUnit = (read.cand?.notes?.reviewGate === 'yes' || (read.cand?.notes?.reviewStatus === 'requires-review' && read.cand.notes.reviewKind !== undefined)) && baseUnit.status !== 'invalidated' ? { ...baseUnit, status: 'requires-review' as const } : baseUnit;
-    // a language held to the deck rule (src/core/review-gate.ts holdsDeck): an unmarked reading is provisional at most (an experimental pack), whatever a stored row says
-    const marked = holdsDeck(lang) && gated.status === 'requires-review' && !!read.cand?.notes && (read.cand.notes.reviewGate === 'yes' || read.cand.notes.reviewStatus === 'requires-review');
-    const unit: LinguisticUnit = !holdsDeck(lang) || gated.status === 'requires-review' ? gated
-      : rankOf(gated.status) > rankOf('provisional') && gated.status !== 'verified' ? { ...gated, status: 'provisional' } : gated;
+    // a language's own review gate (src/core/review-gate.ts) marks the readings it holds back with notes; the facts only carry that mark, and the deck gate (deck-gate.ts) is what holds the unit
+    const n = read.cand?.notes;
+    const one = (v: unknown): string => (Array.isArray(v) ? String(v[0] ?? '') : typeof v === 'string' ? v : '');
+    const reviewMark: ReviewFacts['reviewMark'] = n && (n.reviewGate === 'yes' || (n.reviewStatus === 'requires-review' && n.reviewKind !== undefined))
+      ? { kind: (one(n.reviewKind) || 'known-limit') as ReviewKind, reason: one(n.reviewReason) || "The language's review gate holds this word back from review." } : undefined;
+    // a language held to the deck rule (src/core/review-gate.ts holdsDeck: Arabic): its own gate runs here, not in the deck gate. A marked reading requires review, an unmarked one is provisional at most (an experimental pack), whatever a stored row says
+    const marked = holdsDeck(lang) && !!n && (n.reviewGate === 'yes' || n.reviewStatus === 'requires-review') && baseUnit.status !== 'invalidated';
+    const unit: LinguisticUnit = !holdsDeck(lang) ? baseUnit : marked ? { ...baseUnit, status: 'requires-review' as const }
+      : rankOf(baseUnit.status) > rankOf('provisional') && baseUnit.status !== 'verified' ? { ...baseUnit, status: 'provisional' as const } : baseUnit;
     const forms = formsOfLemma(lemma, pos);
     const { examples, readings } = collect((o) => lemmaMatches(o, lemma, pos));
     const lexGloss = read.cand && !read.cand.unconfirmed && read.cand.gloss ? [read.cand.gloss] : [];
@@ -524,6 +535,9 @@ export function createFactsProvider(deps: FactsProviderDeps): FactsProvider & { 
         const best = mine.filter(fits).sort((a, b) => b.confidence - a.confidence)[0];
         periodReading = { attested: !!best, inPeriod: fits(read.cand), ...(best?.gloss ? { gloss: best.gloss } : {}) };
       }
+      // the period source's own meaning of the headword leads, where the adapter holds one (Koine θεωρέω: "I behold, look at", not the Ancient tables' first sense)
+      const own = periodGloss(lemma, pos);
+      if (own && own !== read.cand.gloss) periodReading = { attested: true, inPeriod: false, gloss: own };
     }
     const featureDefsUsed: Record<string, FeatureDef> = { ...featureDefs };
     const built: ReviewFacts = {
@@ -539,7 +553,7 @@ export function createFactsProvider(deps: FactsProviderDeps): FactsProvider & { 
       ...(rec ? {} : { derivedFromPack: true }),
       source: unit.provenance.source, lemmaInWordList: inWordList(read.cand), lexiconGlossCount: g.lexiconCount,
       featureDefs: featureDefsUsed, exampleReadings: readings, formGroups: [group],
-      alternativeReadings: otherReadings(lemma, lemma, pos), ...(periodReading ? { periodReading } : {}),
+      alternativeReadings: otherReadings(lemma, lemma, pos), ...(periodReading ? { periodReading } : {}), ...(reviewMark ? { reviewMark } : {}),
     };
     // a lemma the language's own gate holds (the analyser marked the reading: src/adapters/arabic/deck.ts) comes out in the deck gate's own shape
     if (marked) return held(built, (read.cand!.notes!.reviewKind as ReviewKind | undefined) ?? 'meaning-unreviewed', String(read.cand!.notes!.reviewReason ?? 'This word is not made a review card.'));
@@ -638,7 +652,7 @@ export function createFactsProvider(deps: FactsProviderDeps): FactsProvider & { 
     const own: FormInfo[] = lemma ? formsOfLemma(lemma, lemmaPos) : [];
     const morphDescription = describe(features, pos);
     const wordAnalysis = lang === 'el'
-      ? greekWordAnalysis({ surface: label, lemma, pos, lemmaGloss: lexCand?.gloss, morph: features,
+      ? greekWordAnalysis({ surface: label, lemma, pos, lemmaGloss: lexCand?.gloss ? (lemma ? periodGloss(lemma, lemmaPos ?? pos) : undefined) ?? lexCand.gloss : lexCand?.gloss, morph: features,
           source: topAlone?.sourceId ?? unit.provenance.ref, confidence: topAlone?.confidence,
           alternatives: (alone?.candidates.slice(1) ?? []).map((c) => ({ morph: c.morph, confidence: c.confidence })) })
       : projectWordAnalysis({ language: lang, surface: label, normalizedForm: formNorm, ...(lemma ? { lemma } : {}), ...(pos ? { pos } : {}),

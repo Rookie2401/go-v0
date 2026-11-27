@@ -50,7 +50,7 @@ const PRE_NOUN_DET = new Set(['en', 'ei', 'et', 'eit', 'ein', 'den', 'det', 'de'
 const can = (s: Slot | undefined, p: (c: Cand) => boolean): boolean => !!s && s.cands.some(p);
 const topIs = (s: Slot | undefined, p: (c: Cand) => boolean): boolean => !!s && !!s.cands[0] && p(s.cands[0]);
 
-const subjectSlot = (s: Slot | undefined): boolean => can(s, (c) => c.pos === 'PRON' && (has(c, 'Case', 'Nom') || SUBJECT_LEMMAS.has(c.lemma)) && !has(c, 'PronType', 'Rel') && !has(c, 'PronType', 'Int'));
+const subjectSlot = (s: Slot | undefined): boolean => can(s, (c) => c.pos === 'PRON' && (has(c, 'Case', 'Nom') || (SUBJECT_LEMMAS.has(c.lemma) && !has(c, 'Case', 'Acc'))) && !has(c, 'PronType', 'Rel') && !has(c, 'PronType', 'Int'));
 /** A word that can only be an adverb (endelig, snart): it may stand between an auxiliary and its participle. */
 const advSlot = (s: Slot | undefined): boolean => !!s && s.word && s.cands.length > 0 && s.cands.every((c) => c.pos === 'ADV');
 const TIME_NOUNS = new Set(['vinter', 'sommer', 'høst', 'vår', 'kveld', 'morgen', 'natt', 'dag', 'uke', 'måned', 'år', 'ettermiddag', 'formiddag', 'sommar', 'haust', 'morgon', 'veke', 'månad']);
@@ -65,6 +65,61 @@ function nominalSlot(s: Slot | undefined): boolean {
   const top = s.cands[0];
   if (isVerb(top) && finiteOnly(top)) return false;
   return true;
+}
+
+const isMarkerSlot = (s: Slot | undefined): boolean => !!s && (can(s, (p) => p.pos === 'PART' && p.lemma === 'å') || can(s, (p) => p.pos === 'AUX' && MODALS.has(p.lemma) && finiteAny(p)) || can(s, (p) => p.pos === 'VERB' && ['la', 'late', 'få'].includes(p.lemma) && finiteAny(p)));
+const skippableAdv = (s: Slot | undefined): boolean => !!s && s.word && (SENT_ADV.has(s.tok.normalized) || advSlot(s));
+const isCoordinator = (s: Slot | undefined): boolean => !!s && s.word && ['og', 'eller'].includes(s.tok.normalized) && can(s, (p) => p.pos === 'CONJ');
+
+/**
+ * Is slot k where an infinitive stands: after å or a modal (also across adverbs: vil gjerne lære, kan ikke drikke; in an inversion:
+ * Kan jeg få, Vil du hjelpe; and as the second of two coordinated infinitives: bør hvile og drikke)?
+ */
+function infinitivePosition(slots: Slot[], k: number, depth = 0): boolean {
+  let p = k - 1;
+  while (p >= 0 && skippableAdv(slots[p])) p--;
+  const s = slots[p];
+  if (!s || !s.word) return false;
+  if (isMarkerSlot(s)) return true;
+  if (subjectSlot(s)) {
+    let q = p - 1;
+    while (q >= 0 && skippableAdv(slots[q])) q--;
+    const m = slots[q];
+    return !!m && m.word && can(m, (c) => c.pos === 'AUX' && MODALS.has(c.lemma) && finiteAny(c)) && !can(m, (c) => c.pos === 'NOUN');
+  }
+  if (isCoordinator(s) && depth < 3) {
+    let q = p - 1;
+    while (q >= 0 && skippableAdv(slots[q])) q--;
+    const prev = slots[q];
+    return !!prev && prev.word && can(prev, (c) => isVerb(c) && has(c, 'VerbForm', 'Inf')) && infinitivePosition(slots, q, depth + 1);
+  }
+  return false;
+}
+
+/** The clause of slot k (back to the last punctuation) starts with an imperative and has no subject: Tilsett melet og rør, Skrell og skjer. */
+function coordinatedImperative(slots: Slot[], k: number): boolean {
+  const og = slots[k - 1];
+  if (!isCoordinator(og)) return false;
+  let first = k - 1;
+  while (first > 0 && slots[first - 1].word) first--;
+  const head = slots[first];
+  if (!head || !head.word || first === k - 1) return false;
+  if (!can(head, (c) => isVerb(c) && has(c, 'Mood', 'Imp')) || head.cands.some((c) => c.pos === 'PRON' || c.pos === 'DET')) return false;
+  for (let j = first; j < k - 1; j++) if (subjectSlot(slots[j])) return false;
+  return true;
+}
+
+/** The clause before slot k (after og) already has a finite verb and no punctuation between: Vi reiste til Spania og badet. */
+function elidedSubjectAfterOg(slots: Slot[], k: number): boolean {
+  if (!isCoordinator(slots[k - 1])) return false;
+  let j = k - 2;
+  // the nearest finite verb of the clause; after a copula (Han var lærer og fisker) og joins two predicates, not two clauses
+  while (j >= 0 && slots[j].word) {
+    const top = slots[j].cands[0];
+    if (top && finiteOnly(top)) return !(top.pos === 'AUX' && ['være', 'vere', 'bli', 'verte'].includes(top.lemma));
+    j--;
+  }
+  return false;
 }
 
 interface Ctx { i: number; slots: Slot[]; std: NoStandard; pw?: Slot; ppw?: Slot; nw?: Slot; nnw?: Slot; punctBefore: string; clauseStart: boolean }
@@ -87,11 +142,17 @@ function adjust(c: Cand, x: Ctx): number {
   const surface = x.slots[x.i].tok.normalized;
   let s = 0;
   const pTop = pw?.cands[0];
-  const afterMarker = !!pw && (can(pw, (p) => p.pos === 'PART' && p.lemma === 'å') || can(pw, (p) => p.pos === 'AUX' && MODALS.has(p.lemma) && finiteAny(p)) || can(pw, (p) => p.pos === 'VERB' && ['la', 'late', 'få'].includes(p.lemma) && finiteAny(p)));
+  const afterMarker = infinitivePosition(x.slots, x.i);
+  const coordImp = coordinatedImperative(x.slots, x.i);
+  const elided = elidedSubjectAfterOg(x.slots, x.i);
+  const nextUnknownWord = !!nw && nw.word && nw.cands.length === 0 && nw.tok.surface === nw.tok.surface.toLocaleLowerCase('nb');
+  const nextNoun = (!!nw && topIs(nw, (n) => n.pos === 'NOUN') && !can(nw, (n) => finiteAny(n))) || nextUnknownWord;
+  const homAdj = x.slots[x.i].cands.some((k) => k.pos === 'ADJ');
+  const homNoun = x.slots[x.i].cands.some((k) => k.pos === 'NOUN');
   const postposed = !!pw && can(pw, (p) => p.pos === 'DET' && split(p.morph.Poss).includes('Yes')) && !!ppw && topIs(ppw, (p) => p.pos === 'NOUN' && has(p, 'Definite', 'Def'));
   // a subject (or an adverb after it) directly before: ... han spiser, ... han ikke spiser
   const afterSubject = postposed || !!pw && (subjectSlot(pw) || (SENT_ADV.has(pw.tok.normalized) && subjectSlot(ppw)) || topIs(pw, (p) => (p.pos === 'NOUN' || p.pos === 'PROPN') && (has(p, 'Definite', 'Def') || p.pos === 'PROPN')));
-  const afterDet = !postposed && !!pw && can(pw, (p) => (p.pos === 'DET' || (p.pos === 'ADJ' && (has(p, 'Definite', 'Def') || p.lemma === 'annen'))) && (PRE_NOUN_DET.has(p.lemma) || p.pos === 'ADJ'));
+  const afterDet = !postposed && !!pw && can(pw, (p) => (p.pos === 'DET' || (p.pos === 'ADJ' && (has(p, 'Definite', 'Def') || p.lemma === 'annen') && (topIs(pw, (q) => q.pos === 'ADJ') || !pw.cands.some((q) => q.pos === 'NOUN')))) && (PRE_NOUN_DET.has(p.lemma) || p.pos === 'ADJ'));
   const afterAdj = !!pw && topIs(pw, (p) => p.pos === 'ADJ');
   const afterAdp = !!pw && topIs(pw, (p) => p.pos === 'ADP');
   const afterHa = !!pw && can(pw, (p) => p.pos === 'AUX' && ['ha', 'bli', 'hava', 'verte'].includes(p.lemma) && (finiteAny(p) || has(p, 'VerbForm', 'Inf')));
@@ -100,6 +161,7 @@ function adjust(c: Cand, x: Ctx): number {
   const afterSeUt = !!pw && pw.tok.normalized === 'ut' && can(ppw, (p) => ['se', 'sjå'].includes(p.lemma) && p.pos === 'VERB');
   const afterCopula = !!pw && can(pw, (p) => p.pos === 'AUX' && ['være', 'bli', 'vere', 'verte'].includes(p.lemma));
   const beforeNominal = nominalSlot(nw);
+  const nextFinite0 = (n: Slot | undefined): boolean => can(n, (k) => finiteAny(k));
 
   if (isVerb(c)) {
     const inf = has(c, 'VerbForm', 'Inf');
@@ -115,7 +177,17 @@ function adjust(c: Cand, x: Ctx): number {
     if (fin && nw && nw.tok.normalized === 'å' && can(nw, (n) => n.pos === 'PART')) s += 2.5;
     if (fin && x.clauseStart && subjectSlot(nw)) s += 2.5; // inversion and questions: Kommer du? I dag spiser jeg
     if (afterDet || afterAdp) s -= 2.5;
-    if (imp) { s += x.slots[x.i].initial && !subjectSlot(nw) ? 0.5 : -2; if (afterSubject) s -= 1.5; }
+    if (imp) {
+      s += x.slots[x.i].initial && !subjectSlot(nw) ? 0.5 : -2;
+      if (afterSubject) s -= 1.5;
+      // an instruction: Rør forsiktig, Tilsett melet og rør forsiktig
+      const objectLike = !!nw && nw.word && (advSlot(nw) || can(nw, (n) => n.pos === 'DET' || (n.pos === 'PRON' && !has(n, 'Case', 'Nom')))) && !can(nw, (n) => finiteAny(n));
+      if (x.slots[x.i].initial && objectLike) s += 1.5;
+      if (coordImp) s += 5;
+    }
+    if (elided && fin && !nextFinite0(nw)) s += 2.5;
+    // var fiskar, er lærer: a finite verb cannot follow a finite copula or auxiliary
+    if (finiteOnly(c) && !!pw && can(pw, (p) => p.pos === 'AUX' && ['være', 'vere', 'bli', 'verte', 'ha', 'hava'].includes(p.lemma) && finiteOnly(p))) s -= 4;
     if (c.pos === 'AUX' && !part && !imp && !inf) s += 0.5;
     if (has(c, 'Voice', 'Pass')) s -= 0.5;
   } else if (c.pos === 'NOUN') {
@@ -123,6 +195,11 @@ function adjust(c: Cand, x: Ctx): number {
     if (afterAdj) s += 1.5;
     if (afterAdp) s += 2;
     if (afterMarker) s -= 2;
+    if (elided && !nextFinite0(nw) && !afterDet) s -= 1;
+    // a noun that is also an adjective, in front of another noun, is the adjective (denne tunge kassa); with no determiner in front of it,
+    // after a preposition, it is the adjective used as a noun (blant unge)
+    if (homAdj && nextNoun) s -= 3;
+    if (homAdj && afterAdp && !afterDet && !has(c, 'Definite', 'Def')) s -= 4;
     if (afterSubject && !afterDet) s -= 0.5;
     if (afterHa || afterHaAdv) s -= 1;
     if (pw && can(pw, (p) => p.pos === 'DET' && split(p.morph.Poss).includes('Yes'))) s += 1;
@@ -132,6 +209,10 @@ function adjust(c: Cand, x: Ctx): number {
     if (afterDet && beforeNominal) s += 1.5;
     if (afterDet && !beforeNominal && !afterAdj) s += 0.5;
     if (afterAdp) s -= 0.5;
+    if (homNoun && nextNoun && !afterAdj) s += 2.5;
+    if (homNoun && afterAdp && !afterDet && !nextNoun) s += 4;
+    // the second of two coordinated predicate adjectives: stort og lyst
+    if (pw && isCoordinator(pw) && ppw && topIs(ppw, (p) => p.pos === 'ADJ')) s += 3.5;
     if (afterMarker) s -= 2;
     if (!afterCopula && !afterSeUt && !afterDet && !beforeNominal && !afterAdj && !afterVaere) s -= 1;
   } else if (c.pos === 'ADV') {
@@ -155,16 +236,20 @@ function functionWordAdjust(c: Cand, x: Ctx, f: Flags): number {
   const { surface } = f;
   const nextFinite = can(nw, (n) => finiteAny(n));
   const nextSubject = subjectSlot(nw);
-  const nextIsNounPhraseStart = f.beforeNominal && !nextFinite;
+  // a word the lexicon does not hold (tjuefem, einaste) is taken to start or continue the noun phrase
+  const nextUnknown = !!nw && nw.word && nw.cands.length === 0 && !(nw.tok.surface[0] === nw.tok.surface[0].toUpperCase() && nw.tok.surface[0] !== nw.tok.surface[0].toLowerCase());
+  const nextIsNounPhraseStart = (f.beforeNominal && !nextFinite) || nextUnknown;
   // a number in front of a plural noun (tre år, tre veker): the numeral, not the noun tre
   const nextPluralNoun = can(nw, (n) => n.pos === 'NOUN' && has(n, 'Number', 'Plur') && has(n, 'Definite', 'Ind'));
   if (c.pos === 'NUM' && nextPluralNoun) return 3;
   if (c.pos === 'NOUN' && c.lemma === 'tre' && nextPluralNoun) return -3;
   // verb forms that are also very frequent function words: så (se, past), for (fare, past)
   if (c.pos === 'VERB' && surface === 'så' && c.lemma === 'se') return f.afterSubject && !x.clauseStart && !nextSubject ? 2.5 : -3;
-  if (c.pos === 'VERB' && surface === 'for' && c.lemma === 'fare') return nextIsNounPhraseStart ? -6 : f.afterSubject ? 0 : -4;
+  const nextInfMark = !!nw && can(nw, (n) => n.pos === 'PART' && n.lemma === 'å');
+  if (c.pos === 'VERB' && surface === 'for' && c.lemma === 'fare') return nextIsNounPhraseStart || nextInfMark ? -6 : f.afterSubject ? 0 : -4;
   const quant = ['denne', 'dette', 'disse', 'desse', 'noen', 'noe', 'nokon', 'noko', 'ingen', 'mange', 'mye', 'mykje', 'lite', 'alt', 'all', 'alle', 'begge', 'hver', 'kvar', 'mer', 'meir', 'mest', 'flere', 'fleire', 'flest', 'få', 'litt'];
   if (c.pos === 'PRON' && ['dette', 'disse', 'desse'].includes(c.lemma)) return nextIsNounPhraseStart ? -2.5 : 1.5;
+  if (c.pos === 'DET' && c.lemma === 'få') return nextIsNounPhraseStart && !can(nw, (n) => n.pos === 'NOUN' && has(n, 'Definite', 'Def') && !has(n, 'Number', 'Plur')) && !f.afterMarker ? 1.5 : -3;
   if (c.pos === 'DET' && quant.includes(c.lemma)) return nextIsNounPhraseStart ? 1.5 : -1.5;
   if (c.pos === 'PRON' && quant.includes(c.lemma)) return nextIsNounPhraseStart ? -1.5 : 1.5;
   if (c.pos === 'ADV' && ['mer', 'meir', 'mest', 'mye', 'mykje', 'litt'].includes(c.lemma)) return nextIsNounPhraseStart ? -1 : 0.5;
@@ -216,8 +301,8 @@ function functionWordAdjust(c: Cand, x: Ctx, f: Flags): number {
     case 'for': {
       if (c.pos === 'CONJ') return nomPron(nw) && (x.punctBefore === ',' || !x.clauseStart || true) && !x.clauseStart ? 3 : x.clauseStart && nomPron(nw) && x.punctBefore === ',' ? 3 : -1.5;
       if (c.pos === 'ADV') return can(nw, (n) => n.pos === 'ADJ' || n.pos === 'ADV') && !beforeNominalNoun(nw as Slot) ? 3 : -2;
-      if (c.pos === 'ADP') return nomPron(nw) ? -2 : 0.5;
-      if (c.pos === 'VERB') return nextIsNounPhraseStart ? -6 : f.afterSubject ? 0 : -4;
+      if (c.pos === 'ADP') return nomPron(nw) ? -2 : nextInfMark ? 2 : 0.5;
+      if (c.pos === 'VERB') return nextIsNounPhraseStart || nextInfMark ? -6 : f.afterSubject ? 0 : -4;
       return 0;
     }
     case 'om': {
@@ -259,7 +344,7 @@ function functionWordAdjust(c: Cand, x: Ctx, f: Flags): number {
     case 'rett': return 0;
     case 'på': case 'av': case 'over': case 'under': case 'etter': case 'før ': {
       if (c.pos === 'ADV') return !nw || !nextIsNounPhraseStart && !nomPron(nw) && !can(nw, (n) => n.pos === 'DET' || n.pos === 'PRON') ? 1 : -2;
-      if (c.pos === 'ADP') return !nw ? -1.5 : 0;
+      if (c.pos === 'ADP') return !nw ? -1.5 : nextIsNounPhraseStart ? 2 : 0;
       return 0;
     }
     default: break;

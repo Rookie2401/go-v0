@@ -5,7 +5,7 @@ import { NOUN_ROWS } from '../../src/adapters/german/lexicon-nouns';
 import { VERB_ROWS } from '../../src/adapters/german/lexicon-verbs';
 import { ADJECTIVE_ROWS, ADVERB_ROWS } from '../../src/adapters/german/lexicon-modifiers';
 import { FUNCTION_ROWS } from '../../src/adapters/german/function-words';
-import { firstSense, frequencyRanks, lexiconRows, weightFromRank, writeWords } from './lib.mts';
+import { cutPhrase, firstSense, frequencyRanks, lexiconRows, weightFromRank, writeWords } from './lib.mts';
 import type { StarterWord } from '../../packages/language-packs/src/alphabet-sprint/types';
 
 const ranks = frequencyRanks('de');
@@ -34,7 +34,9 @@ if (words.length < 270) words.push(...unranked.filter((u) => !seen.has(u.form) &
 const dialogue = JSON.parse(fs.readFileSync('data/corpus/de/dialogue-01.json', 'utf8')) as { sections: Array<{ paragraphs: Array<{ sentences: Array<{ text: string; english: string }> }> }> };
 const phrases = dialogue.sections.flatMap((s) => s.paragraphs.flatMap((p) => p.sentences))
   .filter((s) => s.english && s.text.split(/\s+/).length <= 9)
-  .map((s) => ({ form: s.text, gloss: s.english, source: 'data/corpus/de/dialogue-01.json (course-authored, drafter-glossed)' }));
+  .map((s) => ({ form: s.text, gloss: s.english, source: 'data/corpus/de/dialogue-01.json (course-authored, drafter-glossed)' }))
+  // one whole sentence of the retired course dialogue is cut to a short run of words (form and gloss together)
+  .map((p) => (p.gloss === 'I do not understand why God forgives sin.' ? cutPhrase(p, [0, 5], [0, 6]) : p));
 writeWords({
   lang: 'de', words: words.slice(0, 300), phrases,
   sources: [...sources.map(([s]) => s), 'data/corpus/de/dialogue-01.json', ranks.size ? 'ranked by public/dict/de/frequency.json (local)' : 'unranked'],

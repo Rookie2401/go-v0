@@ -92,6 +92,31 @@ function decideAdjectiveBeforeName(s: Sent, t: Tok): void {
 }
 
 /**
+ * lieber before a bare noun, with nothing before it that takes an adjective (Wein oder lieber Saft; Ich trinke lieber Tee): the comparative of gern, "rather", is as
+ * likely as the adjective lieb "dear" (lieber Freund). After a finite verb it is the adverb; after a comma, a coordinator or at the head of the phrase the sentence
+ * does not say, so both words are kept level and neither is a card. After a determiner or an adjective (mein lieber Freund) it is the adjective and is left alone.
+ */
+function decideBareLieber(s: Sent, t: Tok): void {
+  if (t.cap || t.raw.normalized !== 'lieber') return;
+  const adj = t.rs.filter((r) => !r.down && adjLieb(r));
+  // the agreement step has already marked the adverb down behind the adjective phrase: it is the one reading to bring back
+  const adv = t.rs.filter((r) => r.c.pos === 'ADV' && r.c.lemma === 'lieber');
+  const nx = s.toks[t.i + 1];
+  if (t.frozen || !adj.length || !adv.length || !nx?.word || !nx.cap || !anyLive(nx, (c) => c.pos === 'NOUN')) return;
+  const prev = s.toks[t.i - 1];
+  const afterVerb = !!prev?.word && isFin(top(prev)?.c) && !anyLive(prev, (c) => c.pos === 'DET' || c.pos === 'ADP');
+  const attributive = !afterVerb && !!prev?.word && anyLive(prev, (c) => c.pos === 'DET' || c.pos === 'ADJ' || c.pos === 'ADP' || (c.pos === 'PRON' && has(c, 'PronType', 'Prs')) || isNounLike(c));
+  if (attributive) return;
+  const level = Math.max(...adj.map((r) => r.c.confidence));
+  for (const r of adv) { r.down = false; r.c.confidence = level; }
+  if (afterVerb) { prefer(t, (r) => adv.includes(r), `after the verb ${prev.raw.surface}: the adverb lieber, "rather"`); return; }
+  for (const r of [...adv, ...adj]) addContext(r, 'lieber before a bare noun with no determiner: "rather" (gern) or "dear" (lieb); the sentence does not say which');
+  // level, with the adverb (the commoner word) in front
+  t.rs = [...adv, ...t.rs.filter((r) => !adv.includes(r))];
+  settle(t);
+}
+
+/**
  * nächste Woche, der nächste Zug, am nächsten Tag: nächst "next" is a word of its own; the superlative of nah ("nearest") spells
  * alike and stays right behind it. The order moves, nothing is marked down or removed.
  */
@@ -334,4 +359,9 @@ export function decideWords(s: Sent): void {
     decideNext(t);
   }
   void addContext;
+}
+
+/** The decisions that must come after the last settling of the noun phrases (which marks an adverb down inside an adjective phrase again). */
+export function decideAfterPhrases(s: Sent): void {
+  for (const t of s.toks) if (t.word) decideBareLieber(s, t);
 }

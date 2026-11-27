@@ -4,7 +4,9 @@
 // writes every reading to a JSON report. Adapted from ru.mjs. Nothing here touches the owner's profile, service or account; the hosted
 // service is never contacted (the copy's service address is the local one). The account's credentials are generated at run time, kept in
 // memory and never printed.
-//   node scripts/loadcheck/golearn/ko.mjs [dist] [outDir]
+//   node scripts/loadcheck/golearn/ko.mjs [dist] [outDir] [gate|reading]
+// "gate" runs only step 12 (the review-gate cards and what GoReview makes of them), which uses a second throw-away profile with no account;
+// its report is report-gate.json. "reading" runs only the setup (step 1) and Reading Analysis (step 9) with Active on; report-reading.json.
 // Environment: LOADCHECK_BRAVE (required), LOADCHECK_TMP (optional; default <temp>/loadcheck-golearn-ko). No real site is visited.
 import { spawn, spawnSync } from 'node:child_process';
 import { createServer } from 'node:http';
@@ -156,8 +158,9 @@ const step = (n, name, status, evidence) => {
   report.steps.push({ step: n, name, status, evidence });
   console.log(`[${n}] ${status} ${name} ${JSON.stringify(evidence)?.slice(0, 700)}`);
 };
-const ONLY = new Set((process.argv[4] ?? '').split(',').filter(Boolean).map(String));
-const want = (n) => !ONLY.size || ONLY.has(String(n));
+const MODE = process.argv[4] ?? '';
+const GATE_ONLY = MODE === 'gate';
+const REPORT = MODE ? `report-${MODE}.json` : 'report.json';
 
 // ── helpers bound to one browser ──
 function browserApi(c) {
@@ -241,7 +244,7 @@ async function main() {
   // the service first
   let health;
   const t0svc = Date.now();
-  for (let i = 0; i < 400 && !health && svcExit === undefined; i++) { try { const r = await fetch(`${SVC_URL}/health`, { signal: AbortSignal.timeout(3000) }); if (r.ok) health = await r.json(); else await sleep(1000); } catch { await sleep(1000); } }
+  for (const end = Date.now() + 900000; Date.now() < end && !health && svcExit === undefined;) { try { const r = await fetch(`${SVC_URL}/health`, { signal: AbortSignal.timeout(3000) }); if (r.ok) health = await r.json(); else await sleep(1000); } catch { await sleep(1000); } }
   report.timings.serviceStartMs = Date.now() - t0svc;
   report.service = { url: SVC_URL, health: health ?? 'did not answer', log: svcLog.slice(0, 5) };
   console.log('service', JSON.stringify(report.service).slice(0, 200));
@@ -410,6 +413,156 @@ async function main() {
     return { before: r.card?.pressed, click, pressed: after?.pressed, levelName: after?.levelName, status: after?.status, lemma: r.card?.lemma ?? r.card?.word };
   };
 
+  /** GoReview's language, as it shows it now: the kicker in the header, and the names on its Languages page */
+  async function reviewLanguages(rv) {
+    return B.evalIn(rv.s, `(async () => { const header = document.getElementById('language-name')?.textContent.trim(); location.hash = '#/languages'; await new Promise((r) => setTimeout(r, 4000)); const listed = [...document.querySelectorAll('.account-language-name, .deck-title')].map((e) => e.textContent.replace(/\\s+/g, ' ').trim().slice(0, 60)); location.hash = '#/review'; await new Promise((r) => setTimeout(r, 4000)); return { header, listed }; })()`, 30000);
+  }
+
+  /** where the card and one of its rows stand, and anything that sticks out of the card or scrolls sideways */
+  const GEOMETRY = `function (sel) {
+    const card = this.querySelector('.card'); const row = card.querySelector(sel);
+    const box = (e) => { const b = e.getBoundingClientRect(); return { x: Math.round(b.x), y: Math.round(b.y), w: Math.round(b.width), h: Math.round(b.height) }; };
+    const inView = (e) => { const b = e.getBoundingClientRect(), r = card.getBoundingClientRect(); return b.top >= Math.max(0, r.top) - 1 && b.bottom <= Math.min(innerHeight, r.bottom) + 1; };
+    const visibleBefore = row ? inView(row) : undefined;
+    row?.scrollIntoView({ block: 'nearest' });
+    const r = card.getBoundingClientRect(); const sideways = [];
+    for (const e of [card, ...card.querySelectorAll('*')]) {
+      if (!e.getClientRects().length || e.closest('.sr, [hidden]')) continue;
+      const b = e.getBoundingClientRect(); const name = e.tagName.toLowerCase() + '.' + String(e.getAttribute('class') ?? '');
+      if (b.width > 1 && (b.right > r.right + 1 || b.left < r.left - 1)) sideways.push(name + ' outside the card by ' + Math.round(Math.max(b.right - r.right, r.left - b.left)) + 'px');
+      if (e.clientWidth > 1 && e.scrollWidth > e.clientWidth + 1) sideways.push(name + ' scrollWidth ' + e.scrollWidth + ' > ' + e.clientWidth);
+    }
+    return { card: box(card), row: row && box(row), rowVisibleWithoutScrolling: visibleBefore, rowVisibleNow: row && inView(row), cardScrolls: card.scrollHeight > card.clientHeight + 1, viewport: { w: innerWidth, h: innerHeight }, scroll: { x: scrollX, y: scrollY }, insideViewport: r.left >= 0 && r.right <= innerWidth && r.top >= 0 && r.bottom <= innerHeight, sideways: sideways.slice(0, 12) };
+  }`;
+  /** the card with a margin round it (so that anything spilling out of it shows) */
+  const cardShot = async (pg, geo, name) => {
+    const m = 24, k = geo.card;
+    const r = await c.send('Page.captureScreenshot', { format: 'png', clip: { x: Math.max(0, k.x + geo.scroll.x - m), y: Math.max(0, k.y + geo.scroll.y - m), width: k.w + 2 * m, height: k.h + 2 * m, scale: 1.5 } }, pg.s);
+    if (!r.result?.data) return undefined;
+    const f = path.join(OUT, name + '.png');
+    fs.writeFileSync(f, Buffer.from(r.result.data, 'base64'));
+    return f;
+  };
+
+  // ═════════ 12. the review gate: two words, a held word, 겁니다; then what GoReview makes of them (a second profile, no account) ═════════
+  async function gatePhase() {
+    phase = 'gate';
+    const out = (report.gate = {});
+    killTree(b1);
+    await sleep(3000);
+    b1 = launch(PORT2, 'profile2');
+    version = undefined;
+    for (let i = 0; i < 60 && !version; i++) { try { version = await (await fetch(`http://127.0.0.1:${PORT2}/json/version`)).json(); } catch { await sleep(500); } }
+    if (!version) throw new Error('brave did not start (second profile)');
+    report.browser = version.Browser;
+    c = new Conn(version.webSocketDebuggerUrl, 'b2'); await c.open();
+    B = browserApi(c);
+    const sw3 = await B.findSw();
+    if (!sw3) throw new Error('the extension did not load (second profile)');
+    await B.attach(sw3.targetId, 'worker');
+    out.sameExtensionId = new URL(sw3.url).host === id;
+    ctl = await B.open(extUrl('app/index.html#/languages'), 'setup');
+    await sleep(3500);
+    const clicked = await B.evalIn(ctl.s, `(() => { const r = document.querySelector('li.lang-row[data-language="ko"]'); if (!r) return 'no row'; r.querySelectorAll('details').forEach((d) => d.open = true); const b = r.querySelector('button[data-action="choose"]'); if (!b) return 'no button'; b.click(); return 'clicked ' + b.textContent.trim(); })()`);
+    let feedback = '';
+    for (let i = 0; i < 360; i++) {
+      feedback = await B.evalIn(ctl.s, `document.querySelector('li.lang-row[data-language="ko"] .lang-feedback')?.innerText.replace(/\\s+/g, ' ').slice(0, 400) ?? ''`);
+      if (/is ready|did not|not pass/i.test(feedback)) break;
+      await sleep(1000);
+    }
+    await popup('ko');
+    await msg({ type: 'golearn:active', op: 'set', patch: { active: false } });
+    out.install = { clicked, feedback, ok: /Korean is ready/i.test(feedback) };
+    step('12-install', 'second profile, no account: Korean installed on the setup page', out.install.ok ? 'PASS' : 'FAIL', out.install);
+
+    const pg = await B.open(page('gate'), 'gate');
+    await sleep(2000);
+    let first = true;
+    const look = async (target) => {
+      const r = await lookup(pg, target, { inject: first, deeper: false });
+      first = false;
+      await sleep(2000);
+      r.card = await B.onCard(pg.s, READ_CARD);
+      return r;
+    };
+    const rowOf = (r, name) => (r.card?.rows ?? []).find((x) => x.startsWith(name + ': '))?.slice(name.length + 2);
+    const brief = (r) => ({ word: r.card?.word, lemma: r.card?.lemma, pos: r.card?.pos, meaning: r.card?.meaning, rows: r.card?.rows, text: r.card?.text?.slice(0, 900), error: r.error });
+    const markIt = async () => { const click = await B.onCard(pg.s, CLICK, ['.rateBtn[data-mark="recognized"]']); await sleep(1500); return click; };
+
+    // (a) 피는: no one word is the headline
+    let r = await look({ id: 'g1', word: '피는' });
+    const two = rowOf(r, 'two-words');
+    const items = (r.card?.rows ?? []).filter((x) => x.startsWith('two-words-item: ')).map((x) => x.slice(16));
+    let geo = r.card && !r.card.nocard ? await B.onCard(pg.s, GEOMETRY, ['[data-row="two-words"]']) : undefined;
+    out.twoWords = { ...brief(r), block: two, items, hold: rowOf(r, 'review-hold'), geometry: geo, shot: geo?.card && (await cardShot(pg, geo, 'shot-two-words')) };
+    step('12a', '피는: the card shows the two-words block naming 피 and 피다', two?.startsWith('The sentence does not decide which of these words this is:') && items.some((x) => /^피(?![가-힣])/.test(x)) && items.some((x) => /^피다/.test(x)) ? 'PASS' : 'FAIL', { block: two, items, hold: out.twoWords.hold, geometry: geo });
+    out.twoWords.mark = await markIt();
+
+    // (b) 눈이 예뻐요: held from review, and the card says so
+    r = await look({ id: 'g2', word: '눈이' });
+    const hold = rowOf(r, 'review-hold');
+    geo = r.card && !r.card.nocard ? await B.onCard(pg.s, GEOMETRY, ['[data-row="review-hold"]']) : undefined;
+    out.held = { ...brief(r), line: hold, geometry: geo, shot: geo?.card && (await cardShot(pg, geo, 'shot-held')) };
+    step('12b', '눈이 예뻐요: the card shows "Not added to review:"', hold?.startsWith('Not added to review:') ? 'PASS' : 'FAIL', { line: hold, lemma: r.card?.lemma, meaning: r.card?.meaning, geometry: geo });
+    out.held.mark = await markIt();
+
+    // (c) 겁니다 is 거, not 걸다
+    r = await look({ id: 'g3', word: '겁니다' });
+    out.geopnida = brief(r);
+    const head = [r.card?.lemma, r.card?.meaning, ...(r.card?.rows ?? []).filter((x) => /^(meaning|lemma-gloss|two-words)/.test(x))].join(' | ');
+    out.geopnida.shot = await B.shot(pg.s, 'card-geopnida');
+    step('12c', '내일 갈 겁니다: the card for 겁니다 shows 거 (thing), not 걸다 "to hang"', /^거(?![가-힣])/.test(r.card?.lemma ?? '') && /thing/i.test(r.card?.meaning ?? '') && !/걸다|to hang/i.test(head) ? 'PASS' : 'FAIL', { lemma: r.card?.lemma, pos: r.card?.pos, meaning: r.card?.meaning, rows: r.card?.rows });
+
+    // two ordinary words, marked
+    out.marked = {};
+    for (const word of ['친구가', '책을']) {
+      r = await look({ id: 'g4', word });
+      out.marked[word] = { ...brief(r), hold: rowOf(r, 'review-hold'), click: await markIt() };
+    }
+    await B.close(pg.t);
+    const rawEvents = async () => (await msg({ type: 'golearn:local-repo', op: 'export' }))?.events ?? [];
+    out.itemMarked = (await rawEvents()).filter((e) => e.kind === 'ItemMarked').map((e) => ({ mark: e.payload?.mark, itemIds: e.subject?.itemIds }));
+    const cand = await msg({ type: 'golearn:local-repo', op: 'candidates', languageId: 'ko', limit: 50 });
+    out.candidates = cand?.candidates ? cand.candidates.map((x) => x.unitId ?? x.itemId ?? J(x).slice(0, 120)) : cand;
+
+    // (d) GoReview: Korean offered; every card of the session is read and answered Easy, until it ends
+    const rv = await B.open(extUrl('review/index.html'), 'goreview-gate');
+    await sleep(7000);
+    const langs = await reviewLanguages(rv);
+    out.review = { languages: langs, home: await B.evalIn(rv.s, `document.body.innerText.replace(/\\s+/g, ' ').slice(0, 700)`), cards: [] };
+    step('12d', 'GoReview offers Korean', langs?.header === 'Korean' && (langs?.listed ?? []).some((n) => /Korean/.test(n)) ? 'PASS' : 'FAIL', { ...langs, home: out.review.home.slice(0, 300) });
+    const readFront = `(() => { const s = document.getElementById('session'); if (!s) return null; return { stimulus: document.getElementById('stimulus')?.innerText.trim(), instruction: document.getElementById('instruction')?.innerText.trim(), reveal: !!(document.getElementById('reveal') ?? document.getElementById('flip-card')), text: s.innerText.replace(/\\s+/g, ' ').slice(0, 400) }; })()`;
+    out.review.start = await B.evalIn(rv.s, `(() => { const b = document.getElementById('start-session') ?? document.getElementById('start-new'); if (!b) return { err: 'no start button', page: document.body.innerText.replace(/\\s+/g, ' ').slice(0, 700) }; b.click(); return { clicked: b.id, text: b.textContent.replace(/\\s+/g, ' ').trim().slice(0, 200) }; })()`);
+    let stopped = 'card limit';
+    for (let k = 0; k < 40; k++) {
+      let front;
+      for (let i = 0; i < 24; i++) { await sleep(500); front = await B.evalIn(rv.s, readFront); if (front?.stimulus && front.reveal) break; }
+      if (!front?.stimulus || !front.reveal) { stopped = front?.stimulus ? 'a card without a reveal button: ' + front.text : 'no further card'; break; }
+      await B.evalIn(rv.s, `(document.getElementById('reveal') ?? document.getElementById('flip-card')).click()`);
+      await sleep(900);
+      const answer = await B.evalIn(rv.s, `document.getElementById('revealed-answer')?.innerText.replace(/\\s+/g, ' ').trim()`);
+      if (!out.review.cards.length) out.review.shot = await B.shot(rv.s, 'gate-goreview-first-card');
+      const grade = await B.evalIn(rv.s, `(() => { const g = document.querySelector('.grade[data-grade="easy"]') ?? document.querySelector('.grade[data-grade="good"]'); if (!g) return 'no grade button'; g.click(); return g.dataset.grade; })()`);
+      out.review.cards.push({ front: front.stimulus, instruction: front.instruction, answer, grade });
+      await sleep(1500);
+    }
+    out.review.stopped = stopped;
+    out.review.end = await B.evalIn(rv.s, `document.body.innerText.replace(/\\s+/g, ' ').slice(0, 900)`);
+    out.review.endShot = await B.shot(rv.s, 'gate-goreview-end');
+    out.review.homeAfter = await B.evalIn(rv.s, `(async () => { location.hash = '#/review'; await new Promise((r) => setTimeout(r, 5000)); return document.body.innerText.replace(/\\s+/g, ' ').slice(0, 700); })()`, 20000);
+    out.review.vocabulary = await B.evalIn(rv.s, `(async () => { location.hash = '#/vocabulary'; await new Promise((r) => setTimeout(r, 5000)); return (document.getElementById('vocabulary-results')?.innerText ?? '').replace(/\\s+/g, ' ').slice(0, 2500); })()`, 20000);
+    const added = (await rawEvents()).filter((e) => e.kind === 'CardAdded');
+    out.review.cardsAdded = added.map((e) => ({ subject: e.subject, payload: e.payload }));
+    const addedText = J(added);
+    const heldAdded = addedText.match(/(lemma|form):ko:(눈[¹²³⁴⁵⁶⁷⁸⁹]*이?|피(다|는)?[¹²³⁴⁵⁶⁷⁸⁹]*)(?![가-힣¹²³⁴⁵⁶⁷⁸⁹])/g) ?? [];
+    const heldShown = out.review.cards.filter((x) => /^(눈이?|피|피다|피는)$/.test(x.front));
+    const fromMarked = addedText.match(/lemma:ko:(친구|책)[¹²³⁴⁵⁶⁷⁸⁹]*:[A-Z]+/g) ?? [];
+    step('12e', 'GoReview builds at least one card from a marked word', fromMarked.length ? 'PASS' : 'FAIL', { start: out.review.start, fromMarked: [...new Set(fromMarked)], cards: out.review.cards, marked: out.itemMarked });
+    step('12f', 'GoReview builds no card from the held words (눈이, 피는)', out.review.cards.length && !heldAdded.length && !heldShown.length ? 'PASS' : 'FAIL', { cards: out.review.cards.map((x) => x.front), stopped, heldAdded, heldShown, cardsAdded: out.review.cardsAdded.length, candidates: out.candidates, end: out.review.end.slice(0, 300) });
+    out.nonLocalRequests = [...new Set(net.map((n) => n.url).filter((u) => /^(https?|wss?):/.test(u) && !/^(https?|wss?):\/\/127\.0\.0\.1[:/]/.test(u)))].slice(0, 20);
+    await B.close(rv.t);
+  }
+
   const email = `ko-rig-${crypto.randomBytes(4).toString('hex')}@example.test`;
   const password = crypto.randomBytes(18).toString('base64url');
   const svcApi = async (method, p, body, token) => { const r = await fetch(`${SVC_URL}${p}`, { method, headers: { ...(token ? { authorization: `Bearer ${token}` } : {}), ...(body ? { 'content-type': 'application/json' } : {}) }, ...(body ? { body: JSON.stringify(body) } : {}) }); let j = null; try { j = await r.json(); } catch { /* */ } return { status: r.status, body: j }; };
@@ -434,7 +587,7 @@ async function main() {
   const syncNow = async () => { const sy = await msg({ type: 'golearn:sync-now' }, 90000); const up = await msg({ type: 'golearn:local-repo', op: 'upload' }, 90000); await sleep(2500); return { sync: sy && { ok: sy.ok, pushed: sy.pushed, error: sy.error ?? sy.lastError, keys: Object.keys(sy) }, upload: up && JSON.stringify(up).slice(0, 200) }; };
   const cardBrief = (r) => r?.card && !r.card.nocard ? { word: r.card.word, lemma: r.card.lemma, pos: r.card.pos, kicker: r.card.lemmaKicker, meaning: r.card.meaning, rows: r.card.rows, translit: r.card.translit, soundRow: r.card.soundRow, sourceLinks: r.card.sourceLinks, headings: r.card.headings, layers: r.card.layers, text: r.card.text, language: r.card.host?.['data-language-id'], basis: r.card.host?.['data-language-basis'], sentence: r.sel?.sentence, replyMs: r.replyMs, cardMs: r.cardMs } : { error: r?.error, reply: r?.reply, sel: r?.sel, card: r?.card && { nocard: r.card.nocard, text: r.card.text?.slice(0, 600) } };
 
-  const dictNames = {};
+  if (GATE_ONLY) { await gatePhase(); return; }
   // ═════════ 1. account, then Korean through the setup page ═════════
   phase = 'setup';
   let packVersion;
@@ -444,7 +597,7 @@ async function main() {
     for (let attempt = 0; attempt < 5; attempt++) { made = await msg({ type: 'golearn:create-account', baseUrl: SVC_URL, email, password, displayName: 'Rig' }); if (made?.ok !== false) break; await sleep(8000); }
     await B.evalIn(ctl.s, `(async () => { location.hash = '#/languages'; location.reload(); return 1; })()`);
     await sleep(4000);
-    report.account = { ok: made?.ok, error: made?.error, message: made?.message, line: await B.evalIn(ctl.s, `document.getElementById('account-line')?.innerText ?? document.body.innerText.slice(0, 200)`) };
+    report.account = { ok: made?.ok, error: made?.error, message: made?.message, line: await B.evalIn(ctl.s, `document.getElementById('account-link')?.getAttribute('aria-label') ?? document.body.innerText.slice(0, 200)`) };
     const netBefore = net.length;
     const row = await B.evalIn(ctl.s, `(() => { const r = document.querySelector('li.lang-row[data-language="ko"]'); if (!r) return { err: 'no Korean row', rows: [...document.querySelectorAll('li.lang-row')].map((x) => x.dataset.language) }; return { name: r.querySelector('.lang-name')?.innerText.replace(/\\s+/g, ' ').trim(), level: r.querySelector('.lang-level')?.innerText.trim(), text: r.innerText.replace(/\\s+/g, ' ').slice(0, 500), rows: [...document.querySelectorAll('li.lang-row')].map((x) => x.dataset.language) }; })()`);
     const t0 = Date.now();
@@ -478,6 +631,8 @@ async function main() {
     const st = await msg({ type: 'golearn:get-state' });
     report.popupKo = { ...p, state: { languageId: st?.languageId, chosen: st?.chosenLanguages }, enrolments: acct.enrolments };
   }
+
+  if (MODE === 'reading') { await msg({ type: 'golearn:active', op: 'set', patch: { active: true } }); await readingStep(); return; }
 
   // ═════════ 2. Korean in the extension's own lists, once each ═════════
   {
@@ -664,8 +819,8 @@ async function main() {
     const rv = await B.open(extUrl('review/index.html'), 'goreview');
     await sleep(6000);
     const home = await B.evalIn(rv.s, `document.body.innerText.replace(/\\s+/g, ' ').slice(0, 1500)`);
-    const langs = await B.evalIn(rv.s, `(() => { const s = document.getElementById('language-select'); return { selected: s?.selectedOptions?.[0]?.textContent.trim(), options: [...(s?.options ?? [])].map((o) => o.textContent.trim()), name: document.getElementById('language-name')?.textContent }; })()`);
-    const chose = await B.evalIn(rv.s, `(async () => { const s = document.getElementById('language-select'); if (!s) return { err: 'no language select', name: document.getElementById('language-name')?.textContent }; const o = [...s.options].find((x) => /Korean|한국어/i.test(x.textContent)); if (!o) return { err: 'Korean not offered', options: [...s.options].map((x) => x.textContent) }; if (s.value !== o.value) { s.value = o.value; s.dispatchEvent(new Event('change')); } await new Promise((r) => setTimeout(r, 7000)); return { selected: document.getElementById('language-select')?.selectedOptions?.[0]?.textContent.trim() }; })()`, 30000);
+    const langs = await reviewLanguages(rv);
+    const chose = { header: langs?.header };
     const homeKo = await B.evalIn(rv.s, `document.body.innerText.replace(/\\s+/g, ' ').slice(0, 1500)`);
     const vocab = await B.evalIn(rv.s, `(async () => { location.hash = '#/vocabulary'; await new Promise((r) => setTimeout(r, 4000)); const t = document.body.innerText.replace(/\\s+/g, ' ').slice(0, 1500); location.hash = '#/review'; await new Promise((r) => setTimeout(r, 4000)); return t; })()`, 30000);
     const readFront = `(() => { const s = document.getElementById('session'); if (!s) return null; return { stimulus: document.getElementById('stimulus')?.innerText.trim(), instruction: document.getElementById('instruction')?.innerText.trim(), text: s.innerText.replace(/\\s+/g, ' ').slice(0, 800) }; })()`;
@@ -723,17 +878,18 @@ async function main() {
     const sched = (exp?.events ?? []).filter((e) => e.kind === 'CardReviewed').map((e) => ({ subject: e.subject, payload: e.payload }));
     report.goreview = { homeBefore, homeAfter, home, langs, start, front, reveal, back, grade, next, afterGrade, reviewEventsOnDevice: reviewEvents, accountReviews: acct2.reviews, sched };
     const ok = !!front?.stimulus && !!back?.answer && grade?.clicked === 'good' && reviewEvents.some((e) => e.kind === 'CardReviewed');
-    step(8, 'GoReview: Korean selected, an eligible card, one answer, the schedule moved', ok ? 'PASS' : 'FAIL', { options: langs?.options, chose, front, answer: back?.answer, grades: back?.grades, grade, nextCard: next?.stimulus, afterGradeScreen: afterGrade?.slice(0, 400), deviceEvents: reviewEvents.map((e) => ({ kind: e.kind, units: e.units, subject: e.subject, payload: e.payload })), accountEvents: acct2.reviews, sched });
+    step(8, 'GoReview: Korean selected, an eligible card, one answer, the schedule moved', ok ? 'PASS' : 'FAIL', { listed: langs?.listed, chose, front, answer: back?.answer, grades: back?.grades, grade, nextCard: next?.stimulus, afterGradeScreen: afterGrade?.slice(0, 400), deviceEvents: reviewEvents.map((e) => ({ kind: e.kind, units: e.units, subject: e.subject, payload: e.payload })), accountEvents: acct2.reviews, sched });
     await B.close(rv.t);
   }
 
   // ═════════ 9. Reading Analysis on the news page ═════════
-  phase = 'reading';
-  {
+  await readingStep();
+  async function readingStep() {
+    phase = 'reading';
     const pg = await B.open(page('news'), 'news-reading');
     await c.send('Target.activateTarget', { targetId: pg.t });
     await sleep(2500);
-    const res = await B.evalIn(ctl.s, `(async () => {
+    const analyse = () => B.evalIn(ctl.s, `(async () => {
       const t = (await chrome.tabs.query({})).find((x) => x.url === ${J(pg.url)});
       if (!t) return { s: { stage: 'no-tab' } };
       await chrome.tabs.update(t.id, { active: true });
@@ -747,9 +903,17 @@ async function main() {
       while (s && ['extracting', 'resolving', 'verifying', 'calculating'].includes(s.stage)) { await new Promise((r) => setTimeout(r, 150)); s = await send('status'); }
       return { ms: Math.round(performance.now() - t0), injected, s };
     })()`, 300000);
+    const attempts = [];
+    let res;
+    for (let i = 0; i < 3; i++) {
+      res = await analyse();
+      attempts.push({ ms: res?.ms, stage: res?.s?.stage, code: res?.s?.error?.code });
+      if (res?.s?.error?.code !== 'knowledge-changing') break;
+      await sleep(8000);
+    }
     const cov = res?.s?.result?.coverage;
     report.reading = res;
-    step(9, 'Reading Analysis on the news page', res?.s?.stage === 'done' && cov ? 'PASS' : 'FAIL', { stage: res?.s?.stage, ms: res?.ms, error: res?.s?.error ?? res?.s?.message, coverage: cov && { knownPercent: cov.knownPercent, knownOccurrences: cov.knownOccurrences, counts: cov.counts }, keys: Object.keys(res?.s?.result ?? {}), languageId: res?.s?.result?.languageId });
+    step(9, 'Reading Analysis on the news page', res?.s?.stage === 'done' && cov ? 'PASS' : 'FAIL', { attempts, stage: res?.s?.stage, ms: res?.ms, error: res?.s?.error ?? res?.s?.message, coverage: cov && { knownPercent: cov.knownPercent, knownOccurrences: cov.knownOccurrences, counts: cov.counts }, keys: Object.keys(res?.s?.result ?? {}), languageId: res?.s?.result?.languageId });
     await B.close(pg.t);
   }
 
@@ -772,7 +936,7 @@ async function main() {
     const accountDown = down ? undefined : await readAccount();
     startSvc();
     let health2;
-    for (let i = 0; i < 400 && !health2 && svcExit === undefined; i++) { try { const r = await fetch(`${SVC_URL}/health`, { signal: AbortSignal.timeout(3000) }); if (r.ok) health2 = await r.json(); else await sleep(1000); } catch { await sleep(1000); } }
+    for (const end = Date.now() + 900000; Date.now() < end && !health2 && svcExit === undefined;) { try { const r = await fetch(`${SVC_URL}/health`, { signal: AbortSignal.timeout(3000) }); if (r.ok) health2 = await r.json(); else await sleep(1000); } catch { await sleep(1000); } }
     const syncUp = await syncNow();
     const acct3 = await readAccount();
     const grace = (acct3.itemMarked ?? []).filter((m) => (m.itemIds ?? []).some((u) => /은혜/.test(u)));
@@ -807,6 +971,7 @@ async function main() {
     report.timings.browserMemory = mem && mem !== '' ? `processes and MB working set (processes whose command line names the profile; the renderer/GPU children carry other command lines, so this is a floor): ${mem}` : 'not read';
     step(11, 'timings, sizes, memory', 'INFO', report.timings);
   }
+  await gatePhase();
   report.timings.note = 'replyMs = until the content script answered the lookup message; cardMs = until the card showed a lemma/word (both from the moment the rig sent the lookup; the first lookup also includes the content script injection).';
 }
 
@@ -814,11 +979,11 @@ try { await main(); } catch (e) { step('harness', 'harness', 'FAIL', String(e?.s
 finally {
   report.finishedAt = new Date().toISOString();
   report.consoleErrors = consoleLog.filter((x) => x.kind !== 'warning' && x.kind !== 'log-warning');
-  fs.writeFileSync(path.join(OUT, 'report.json'), JSON.stringify(report, null, 1));
+  fs.writeFileSync(path.join(OUT, REPORT), JSON.stringify(report, null, 1));
   server.close();
   for (const p of children.reverse()) killTree(p);
   await sleep(2000);
   for (const d of ['ext', 'profile', 'profile2', 'svc']) { try { removeDir(path.join(TMP, d)); } catch { /* a browser file still held: left in the temp folder */ } }
-  console.log('report:', path.join(OUT, 'report.json'), 'screenshots:', SHOTS);
+  console.log('report:', path.join(OUT, REPORT), 'screenshots:', SHOTS);
   process.exit(0);
 }

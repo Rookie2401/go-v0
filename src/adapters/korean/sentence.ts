@@ -1210,6 +1210,38 @@ function ruleNominalPairs(s: KoSentence): void {
   }
 }
 
+/**
+ * The contracted copula (겁니다, 겁니까, 건데요, 거니까, 접니다: a vowel-final nominal + the copula not written + its ending) against a verb
+ * of the same letters (걸다 + -ㅂ니다, 절다 + -ㅂ니다). The sentence decides by what stands straight before it:
+ *   (a) an adnominal form (갈 겁니다, 먹을 겁니다, 좋은 겁니다): the bound noun of -(으)ㄹ / -는 / -(으)ㄴ 것이다, the nominal + copula;
+ *   (b) a determiner, a possessive or a genitive (제 겁니다, 누구 겁니까, 우리 겁니다, 친구의 겁니다): the nominal + copula;
+ *   (c) otherwise, an object in 을/를 earlier in its clause (전화를 겁니다, 옷을 옷걸이에 겁니다, 다리를 접니다): the verb, which takes it;
+ *   (d) none of these (접니다 alone, answering "who is it?"): the token order stands, both creditable.
+ */
+const POSSESSIVE_WORDS = new Set(['제', '내', '네', '우리', '저희', '너희', '누구', '그', '이', '저', '자기', '당신']);
+function ruleContractedCopula(s: KoSentence): void {
+  for (let i = 0; i < s.n; i++) {
+    if (!s.isWord(i)) continue;
+    const cs = s.cands[i];
+    const nominal = cs.find((c) => isNominal(c) && !c.unconfirmed && (c.parts ?? []).some((x) => x.lemma === '이다') && c.confidence >= 0.5 && !c.notes?.credit);
+    const verb = cs.find((c) => isPredicate(c) && c.pos !== 'AUX' && !c.unconfirmed && c.confidence >= 0.5 && !c.notes?.credit);
+    if (!nominal || !verb) continue;
+    const pv = s.prev(i);
+    const pTop = pv >= 0 && s.isWord(pv) ? s.top(pv) : undefined;
+    const say = `${s.surface(i)}`;
+    if (pTop && isPredicate(pTop) && isAdn(pTop)) {
+      koPromote(s, i, (c) => c === nominal, `${say} after the adnominal ${s.surface(pv)}: ${bare(nominal)} + the copula (-(으)ㄹ / -는 것이다), not ${bare(verb)}.`, (c) => isPredicate(c) && c.pos !== 'AUX');
+      continue;
+    }
+    if (pTop && (pTop.pos === 'DET' || lastParticle(pTop) === 'of' || (!particlesOf(pTop).length && POSSESSIVE_WORDS.has(s.key(pv)) && pTop.pos === 'PRON'))) {
+      koPromote(s, i, (c) => c === nominal, `${say} after ${s.surface(pv)} (whose): ${bare(nominal)} + the copula, not ${bare(verb)}.`, (c) => isPredicate(c) && c.pos !== 'AUX');
+      continue;
+    }
+    const o = s.objectBefore(i);
+    if (o >= 0) koPromote(s, i, (c) => c === verb, `${say} with the object ${s.surface(o)}: the verb ${bare(verb)}, not ${bare(nominal)} + the copula.`, (c) => isNominal(c));
+  }
+}
+
 function ruleAfterAdnominal(s: KoSentence): void {
   for (let i = 1; i < s.n; i++) {
     if (!s.isWord(i)) continue;
@@ -1462,6 +1494,7 @@ export function koOrderSentences(tokens: RawToken[], base: Cand[][], frozen: Rea
     ruleAdnominalOrNoun(s);
     ruleNounBeforeNoun(s);
     ruleNominalPairs(s);
+    ruleContractedCopula(s);
     ruleAfterAdnominal(s);
     ruleLookalikes(s);
     ruleDeulleo(s);

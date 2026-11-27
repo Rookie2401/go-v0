@@ -299,6 +299,12 @@ export interface LanguageAdapter {
   /** The adapter's own sources (hand word list, rule sets) with their honest review state, keyed by sourceId. */
   readonly sources?: Readonly<Record<string, AnalysisSourceInfo>>;
   /**
+   * (optional) The meaning a PERIOD variety's own source gives a headword, when the adapter holds one apart from the reading it would give the
+   * headword written alone (Greek: the New Testament lexicon's meaning of θεωρέω, "I behold, look at", where the Ancient tables lead with a rare
+   * classical sense). Undefined when the variety has no such source or the source has no such headword. Nothing is invented.
+   */
+  headwordGloss?(lemma: string, pos: string | undefined, varietyId: string): string | undefined;
+  /**
    * The word across the periods of the language (the card's "Variants" tab): for each period variety, the form(s) the
    * adapter's sources attest, or a plain statement that they attest none. Optional: a language without period varieties
    * omits it. Never invents a form (see VariantSet).

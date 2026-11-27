@@ -925,3 +925,37 @@ underBothStates('final round: a counter or a lone surname + particle after the c
   // a surname with no common noun of its letters is untouched
   expect(koAnalyzeToken('박이')[0].pos).toBe('PROPN');
 });
+
+/** Round fourteen, rule 1: the contracted copula (vowel-final nominal + unwritten 이다 + an ending whose first consonant joins its last syllable,
+ *  or -니까); rule 2: a rare rival of another headword is set aside below the credit floor. */
+underBothStates('round fourteen: the contracted copula; rare rivals stay live (core; core + shards)', () => {
+  const live = (c: AnalysisCandidate | undefined) => !!c && !c.unconfirmed && c.confidence >= 0.5;
+  const reading = (form: string, lemma: string) => koAnalyzeToken(form).find((c) => koBareLemmaT(c.lemma ?? '') === lemma);
+  // where a verb fits too, both creditable, by the counts
+  for (const [form, nominal, verb] of [['겁니다', '거', '걸다'], ['겁니까', '거', '걸다'], ['거니까', '거', '걸다'], ['접니다', '저', '절다']] as const) {
+    expect(live(reading(form, nominal)), `${form}: ${nominal} + copula live`).toBe(true);
+    // (절다 is a shard row: with the core alone there is no verb to keep)
+    if (lookupT(verb.replace(/다$/u, '')).some((h) => koBareLemmaT(h.entry.lemma) === verb)) expect(live(reading(form, verb)), `${form}: ${verb} live`).toBe(true);
+  }
+  // where no verb fits, the nominal reading is the reading
+  for (const [form, nominal] of [['뭡니까', '뭐'], ['얼맙니까', '얼마'], ['누굽니까', '누구'], ['어딥니까', '어디'], ['친굽니다', '친구'], ['건데요', '거']] as const) {
+    const c = koAnalyzeToken(form)[0];
+    expect(koBareLemmaT(c.lemma ?? ''), form).toBe(nominal);
+    expect(live(c), form).toBe(true);
+  }
+  // a verb the counts know far better keeps the form alone
+  for (const [form, verb] of [['갑니다', '가다'], ['합니다', '하다'], ['옵니다', '오다'], ['압니다', '알다'], ['삽니다', '살다']] as const) {
+    const cs = koAnalyzeToken(form);
+    expect(koBareLemmaT(cs[0].lemma ?? ''), form).toBe(verb);
+    expect(cs.some((c) => c.parts?.some((p) => p.lemma === '이다') && live(c)), `${form}: no live copula reading`).toBe(false);
+  }
+  for (const form of ['거예요', '거죠', '거야']) expect(koBareLemmaT(koAnalyzeToken(form)[0].lemma ?? ''), form).toBe('거');
+  // the rare-rival rule is off: both words stay live and the card says it cannot tell (the audit of 2d71345d and the ruling after it)
+  for (const [form, x, y] of [['주세요', '주다', '줄다'], ['갈게요', '가다', '갈다']] as const) {
+    expect(live(reading(form, x)) && live(reading(form, y)), form).toBe(true);
+  }
+  // not a noun + core particle against a predicate form
+  for (const [form, a, b] of [['물을', '물', '묻다'], ['실을', '실', '싣다']] as const) {
+    expect(live(reading(form, a)) && live(reading(form, b)), form).toBe(true);
+  }
+});

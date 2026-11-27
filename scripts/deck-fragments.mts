@@ -7,21 +7,17 @@
  */
 import fs from 'node:fs';
 import path from 'node:path';
-import { AUDIT_SETS, auditText, dataPresent, diskFetch, readSentences, runDeckAudit } from '../test/deck-audit/support';
+import { AUDIT_SETS, auditText, dataPresent, readSentences, runDeckAudit } from '../test/deck-audit/support';
 import { fragmentWhy } from '../test/deck-audit/fragments';
-import { createPackRuntime, packFor } from '../packages/language-packs/src';
 
 const out = process.argv.slice(2).find((a) => a.endsWith('.tsv')) ?? 'C:/Users/CJWal/dev/tmp-mem/ar-af/other-languages-fragments.tsv';
 const rows = ['set\tunit id\tshown meaning\twhy'];
 for (const set of AUDIT_SETS) {
   if (!dataPresent(set.lang) || !fs.existsSync(auditText(set.id, 'dev'))) { console.log(`${set.id}: data not on this machine`); continue; }
   const result = await runDeckAudit(set.lang, readSentences(auditText(set.id, 'dev')), { varietyId: set.varietyId });
-  const runtime = createPackRuntime(packFor(set.lang)!, { fetch: diskFetch, baseUrl: 'http://assets.local/' });
   let n = 0;
   for (const c of result.cards) {
-    let senses: string[] = [];
-    try { senses = ((await runtime.gloss(c.lemma ?? c.headword, c.pos))?.senses ?? []).map((s) => s.gloss); } catch { senses = []; }
-    const why = fragmentWhy(c.shown, senses);
+    const why = fragmentWhy(c.shown);
     if (why) { n++; rows.push([set.id, c.unitId, c.shown, why].map((x) => String(x).replace(/[\t\r\n]+/gu, ' ')).join('\t')); }
   }
   console.log(`${set.id}: ${result.cards.length} cards, ${n} fragment findings`);

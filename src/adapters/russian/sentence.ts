@@ -85,7 +85,7 @@ export function ruAgrees(a: Cand, b: Cand): boolean {
 interface Why { d: number; text: string }
 
 /** What a HARD rule (a requirement of Russian grammar, not a preference) says about the readings of one token: which are compatible with it. */
-interface Verdict { i: number; compat: boolean[]; rule: string }
+interface Verdict { i: number; compat: boolean[]; rule: string; /** The rule is decisive: a compatible reading the context-free order had lowered as 'much rarer' gets that penalty back. */ restore?: boolean }
 
 /** Words after which a noun stands in the genitive plural (or the genitive of quantity), and the numerals 2–4 that take the genitive singular. */
 export const PAUCAL = new Set(['два', 'две', 'три', 'четыре', 'оба', 'обе', 'полтора', 'полторы']);
@@ -159,10 +159,10 @@ class Sentence {
    * A hard rule's verdict on token `i`: `ok` says which readings are compatible with it. Recorded in the final run only, and only when
    * the rule really separates the readings (some are compatible and some are not).
    */
-  hardVerdict(i: number, ok: (c: Cand, k: number) => boolean, rule: string): void {
+  hardVerdict(i: number, ok: (c: Cand, k: number) => boolean, rule: string, restore = false): void {
     if (this.round < 1 || i < 0 || i >= this.n) return;
     const compat = this.cands[i].map((c, k) => ok(c, k));
-    if (compat.some(Boolean) && compat.some((x) => !x)) this.hard.push({ i, compat, rule });
+    if (compat.some(Boolean) && compat.some((x) => !x)) this.hard.push({ i, compat, rule, ...(restore ? { restore } : {}) });
   }
 
   add(i: number, k: number, d: number, text: string): void {
@@ -405,6 +405,69 @@ function ruleSubjectVerb(s: Sentence): void {
 }
 
 
+/** Light words that may stand between a subject and its finite verb (он не сел, она уже спала). */
+const SUBJECT_LIGHT = new Set(['не', 'уже', 'ещё', 'еще', 'бы', 'же', 'тоже', 'также', 'всегда', 'сразу', 'вдруг', 'тогда', 'потом', 'всё', 'вновь']);
+const SUBJECT_PRONOUNS = new Set([...SUBJECT_PRON, 'ты', 'вы']);
+
+/**
+ * A word right after its subject (a personal pronoun, or a clear nominative noun; «не», «уже» … may stand between) that has a finite verb
+ * reading agreeing with the subject IS that verb: «Он сел в трамвай», «Кошка спала». Its other readings are forms of a noun that cannot
+ * be the predicate (село, gen. pl.), so they are set aside, and a verb reading the context-free order had lowered as 'much rarer' is
+ * no longer so. A word with no finite reading is left alone (the rule needs a verb reading to prefer).
+ */
+function ruleVerbAfterSubject(s: Sentence): void {
+  for (let i = 0; i < s.n; i++) {
+    if (!s.word[i]) continue;
+    const isVerbal = (c: Cand): boolean => isFin(c) && !hasVal(c, 'Mood', 'Imp');
+    if (!s.cands[i].some(isVerbal) || s.cands[i].every(isVerbal)) continue;
+    let p = s.prevWord(i);
+    while (p >= 0 && SUBJECT_LIGHT.has(s.keys[p])) p = s.prevWord(p);
+    if (p < 0) continue;
+    let subjects: Cand[] = [];
+    if (SUBJECT_PRONOUNS.has(s.keys[p])) subjects = s.cands[p].filter((c) => isPos(c, 'PRON') && casesOf(c).includes('Nom'));
+    else if (s.round >= 1) {
+      const topN = s.top(p);
+      if (topN && isSubjectCand(topN) && isNoun(topN) && vals(topN, 'Case').length === 1 && vals(topN, 'Number').length === 1 && s.cands[p].every((c) => c === topN || c.confidence <= topN.confidence - 0.15) && topN.confidence >= 0.85) subjects = [topN];
+    }
+    if (!subjects.length) continue;
+    const fits = (c: Cand): boolean => isVerbal(c) && subjects.some((n) => verbAgrees(c, n));
+    if (!s.cands[i].some(fits)) continue;
+    s.addWhere(i, fits, 2, `it agrees with its subject «${s.surface(p)}» right before it`);
+    s.hardVerdict(i, (c) => fits(c) || isFin(c), `«${s.surface(i)}» stands right after its subject «${s.surface(p)}» and is the verb that agrees with it`, true);
+  }
+}
+
+/** Verbs that take the genitive (or a partitive one) where other verbs take the accusative. */
+const GEN_VERBS = new Set([
+  'ждать', 'ожидать', 'дожидаться', 'дождаться', 'бояться', 'опасаться', 'остерегаться', 'пугаться', 'желать', 'пожелать', 'хотеть', 'захотеть', 'требовать', 'потребовать',
+  'добиваться', 'добиться', 'достигать', 'достигнуть', 'достичь', 'касаться', 'коснуться', 'избегать', 'избежать', 'лишать', 'лишить', 'лишаться', 'лишиться', 'просить', 'попросить',
+  'искать', 'поискать', 'заслуживать', 'заслужить', 'придерживаться', 'держаться', 'хватать', 'хватить', 'недоставать', 'достаться', 'достать', 'стоить', 'бывать', 'быть',
+  'набрать', 'набирать', 'выпить', 'пить', 'налить', 'наливать', 'принести', 'купить', 'взять', 'дать', 'съесть', 'добавить', 'добавлять', 'положить',
+]);
+
+/**
+ * A noun form that can only be the genitive, right after a finite verb that takes the accusative, when ANOTHER word of the same spelling
+ * can be the object (accusative) there: «принимали душ» is душ (the shower), not a form of душа (genitive plural, which needs a governor).
+ * Only where such a homograph exists, never after a verb of genitive government, with a negation, or after a quantity word.
+ */
+function ruleObjectAfterVerb(s: Sentence): void {
+  for (let j = 0; j < s.n; j++) {
+    if (!s.word[j]) continue;
+    const p = s.prevWord(j);
+    if (p < 0 || s.round < 1) continue;
+    const verb = s.top(p);
+    if (!verb || !isFin(verb) || hasVal(verb, 'Mood', 'Imp') || GEN_VERBS.has(verb.lemma ?? '')) continue;
+    const clause = s.clauseTokens(j);
+    if (clause.some((x) => x < j && (['не', 'ни', 'нет', 'нету'].includes(s.keys[x]) || GEN_PLURAL.has(s.keys[x])))) continue;
+    const accLemmas = new Set(s.cands[j].filter((c) => isNoun(c) && casesOf(c).includes('Acc')).map((c) => `${c.lemma}|${c.pos}`));
+    if (!accLemmas.size) continue;
+    const genOnly = (c: Cand): boolean => isNoun(c) && casesOf(c).length > 0 && casesOf(c).every((x) => x === 'Gen') && !accLemmas.has(`${c.lemma}|${c.pos}`);
+    if (!s.cands[j].some(genOnly)) continue;
+    s.addWhere(j, (c) => !genOnly(c), 1.5, `«${s.surface(p)}» takes an object in the accusative`);
+    s.hardVerdict(j, (c) => !genOnly(c), `after «${s.surface(p)}», which takes the accusative, «${s.surface(j)}» is its object, and a form that is only genitive has no governor here`, true);
+  }
+}
+
 /** A second nominative is not preferred: after a verb that already has a nominative subject before it, a nominal reading that is nominative only is held back and one that is accusative only is favoured. */
 function ruleSecondNominative(s: Sentence): void {
   const COPULAS = new Set(['быть', 'являться', 'стать', 'казаться', 'оказаться', 'считаться', 'остаться']);
@@ -622,6 +685,8 @@ export function orderRuSentence(tokens: RawToken[], base: AnalysisCandidate[][])
     ruleGenitive(s);
     ruleSubjectVerb(s);
     ruleSecondNominative(s);
+    ruleVerbAfterSubject(s);
+    ruleObjectAfterVerb(s);
     ruleVerbs(s);
     ruleFunctionWords(s);
     ruleShortPredicate(s);
@@ -650,6 +715,9 @@ export function orderRuSentence(tokens: RawToken[], base: AnalysisCandidate[][])
         const v = verdicts.find((x) => !x.compat[k])!;
         c.confidence = Math.min(c.confidence, Math.max(HARD_FLOOR, Math.round((cands[k].confidence - HARD_LOWER) * 100) / 100));
         c.notes = { ...c.notes, context: (c.notes?.context ? String(c.notes.context) + ' ' : '') + 'Set aside because ' + v.rule + '.' };
+      } else if (hardApplies && allowed[k] && String(cands[k].notes?.context ?? '').startsWith('much rarer than') && verdicts.some((v) => v.restore && v.compat[k] && v.compat.some((x) => !x))) {
+        // a decisive rule picks this reading: the context-free 'much rarer in running text' says nothing about THIS sentence, so its penalty is given back
+        c.confidence = Math.min(0.9, Math.round((cands[k].confidence + 0.2) * 100) / 100);
       }
       return c;
     });

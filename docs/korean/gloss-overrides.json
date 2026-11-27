@@ -537,6 +537,13 @@
     {"lemma":"찾다","pos":"VERB","hom":0,"gloss":"to look for; to find","senses":[1,2],"was":"to search"},
     {"lemma":"일어나다","pos":"VERB","hom":0,"gloss":"to get up; to happen, occur","senses":[1,2],"was":"to arise"},
     {"lemma":"깎다","pos":"VERB","hom":0,"gloss":"to cut, shave, peel; to reduce (a price)","senses":[1,2],"was":"to cut"},
-    {"lemma":"정류장","pos":"NOUN","hom":0,"gloss":"stop, station (for buses)","senses":[1],"was":"stop"}
+    {"lemma":"정류장","pos":"NOUN","hom":0,"gloss":"stop, station (for buses)","senses":[1],"was":"stop"},
+    {"lemma":"경제적","pos":"NOUN","hom":0,"gloss":"economic; economical","senses":[1],"was":"economical (attributive)","own":true},
+    {"lemma":"동안","pos":"NOUN","hom":0,"gloss":"period, length of time; during","senses":[1],"was":"interval","own":true},
+    {"lemma":"필요하다","pos":"ADJ","hom":0,"gloss":"to be necessary; to need","senses":[1],"was":"to have a need","own":true},
+    {"lemma":"바라보다","pos":"VERB","hom":0,"gloss":"to look at, to gaze at","senses":[1],"was":"to observe","own":true},
+    {"lemma":"보다","pos":"ADV","hom":0,"gloss":"more (than before)","senses":[1],"was":"relatively","own":true},
+    {"lemma":"터","pos":"NOUN","hom":2,"gloss":"intention, expectation (-(으)ㄹ 터)","senses":[1],"was":"inference","own":true},
+    {"lemma":"주장","pos":"NOUN","hom":2,"gloss":"team captain","senses":[1],"was":"player representing the team in an athletic competition","own":true}
   ]
 }

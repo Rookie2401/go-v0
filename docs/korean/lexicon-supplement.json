@@ -152,6 +152,7 @@
     {"lemma":"추리","tag":"NNG","hom":91,"gloss":"reasoning, deduction (as in detective stories)","hanja":"推理","why":"추리 소설, 추리하다; the source has 추리 only as a dialect \"plum\""},
     {"lemma":"타당","tag":"XR","gloss":"valid, appropriate (root of 타당하다)","hanja":"妥當","why":"타당하다, 타당성; the source has 타당 only as 他黨 \"the other party\""},
     {"lemma":"중대","tag":"XR","gloss":"serious, important (root of 중대하다)","hanja":"重大","why":"중대하다, 중대한 문제; the source has 중대 only as 中隊 \"company\""},
-    {"lemma":"지상","tag":"NNG","hom":91,"gloss":"the ground, above ground; this world","hanja":"地上","why":"지상 5층, 지상에서; the source has 지상 only as 紙上 \"paper\""}
+    {"lemma":"지상","tag":"NNG","hom":91,"gloss":"the ground, above ground; this world","hanja":"地上","why":"지상 5층, 지상에서; the source has 지상 only as 紙上 \"paper\""},
+    {"lemma":"줌","tag":"NNB","clf":true,"gloss":"handful (counter: 한 줌, a handful)","why":"한 줌의 소금; absent from the source as a noun"}
   ]
 }

@@ -1,0 +1,1 @@
+import{t as e}from"./es-DyoGcmQ9.js";export{e as adapter};

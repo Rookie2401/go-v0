@@ -5,11 +5,11 @@
   "releaseEligible": true,
   "buildMode": "release",
   "git": {
-    "commit": "74aafe98cfe06cf66edfb6e2be955b9736f8c740",
-    "tree": "fd4b9b1a318a6f81b66d9360ab975eab12d026b4",
+    "commit": "22c43f2c311dac3851195f4803541ed80291a1bd",
+    "tree": "88b5f42dc2db398b91d62d9ad7adf0922ee24332",
     "dirty": false
   },
-  "sourceManifestSha256": "d9590dede1504314f37d5d5d579795095da27431280d489aab81233b2a1a4632",
+  "sourceManifestSha256": "4f08d21cdba540d15745c5541e81bef7e637929a98a348948eb26843b3482744",
   "sourceFiles": [
     {
       "path": "THIRD-PARTY-NOTICES.md",
@@ -513,7 +513,7 @@
     },
     {
       "path": "packages/goreview/app/packFacts.ts",
-      "sha256": "ceda1515affeb580d5eb6a8f2ab9ebff5a716081b8a03b73e6768d5a566f0837"
+      "sha256": "69205f61d73b362ef2ef37baf356a1055b3e24cfa2972d43409a230bae1b8c4b"
     },
     {
       "path": "packages/goreview/app/photos/athens.webp",
@@ -865,11 +865,11 @@
     },
     {
       "path": "packages/goreview/src/facts/deck-gate.ts",
-      "sha256": "29d0d73062aa95e3dc3812f657f4e69b02008aeacefb615281aee45db7fbd394"
+      "sha256": "5fe3e9104c23159dc046b7af2a30de7eb429def5ba2c87997e1dbddafebc80d5"
     },
     {
       "path": "packages/goreview/src/facts/deck-known-limits.ts",
-      "sha256": "ae230ebc63dd22d29aa053962c599d849090e30e910763810ce0ac64a3acceb2"
+      "sha256": "948d777778bab59c95d5e629e72c3bf6c6720a34533dbc271c0b2378378bdd2a"
     },
     {
       "path": "packages/goreview/src/facts/index.ts",
@@ -4993,11 +4993,11 @@
     },
     {
       "path": "src/adapters/german/context-verbs.ts",
-      "sha256": "70042e5e4bc0fd3ab0f130a4a641d2645ef40fd4cbe8a723b9dc4567af23fbb4"
+      "sha256": "5521a800286a956d9cc0b569d150bb6e1a7cceba5453516131de547a446d9a15"
     },
     {
       "path": "src/adapters/german/context-words.ts",
-      "sha256": "7945872b0ce172c374d56625c88db73ecc698b967bc3edb83aab16e26ba5446c"
+      "sha256": "55fa25f48416130c802110ff9e83f8e6527768160904ad6e8db267c1f0e29c72"
     },
     {
       "path": "src/adapters/german/context.ts",
@@ -5025,15 +5025,15 @@
     },
     {
       "path": "src/adapters/german/lexicon-modifiers.ts",
-      "sha256": "5054dbe83f3a5dc792809c4cb4347b98f57130e246461e66960daa1da98e3358"
+      "sha256": "52cd6eb88aaf912fb5ade9572727732796cae9ff7226e6ad7dd3a30fa884d544"
     },
     {
       "path": "src/adapters/german/lexicon-nouns.ts",
-      "sha256": "6756170c2d8dedf098fcbfdab3a8d8aefb1acb501bb2e95227b75e6e5bf2ddb5"
+      "sha256": "5c994c7a229729820f81e623eca02745d740944240e93c98791c58425bdb5926"
     },
     {
       "path": "src/adapters/german/lexicon-verbs.ts",
-      "sha256": "db3558795fdf47be3f294e1e0ea5acdf43cd8e8ba4611cc94466d6526be37273"
+      "sha256": "aab02c407f13864ee85e988c9f7d98894d956b03d2092f95ef6d2bf1f4ba5811"
     },
     {
       "path": "src/adapters/german/lexicon.ts",
@@ -5113,7 +5113,7 @@
     },
     {
       "path": "src/adapters/german/sentence.ts",
-      "sha256": "3bca7817c4a08503974239602f0e5bb9e8e64735f759efa29e8d28d44f967e34"
+      "sha256": "b008953c645d81ab2271e0ff81637885fa2ed9c97a7462a34307d8bd08fc6d2e"
     },
     {
       "path": "src/adapters/german/sentences.ts",
@@ -5593,7 +5593,7 @@
     },
     {
       "path": "src/adapters/norwegian/analysis.ts",
-      "sha256": "b3082842b2aee054f067c130672fcb53e61a193795422a57a91855985c476408"
+      "sha256": "d4ab7bf0d069434519b0dfa6747093231b592bf1ea93bf381466a6d01b8fb40a"
     },
     {
       "path": "src/adapters/norwegian/compounds.ts",
@@ -5605,7 +5605,7 @@
     },
     {
       "path": "src/adapters/norwegian/context.ts",
-      "sha256": "b6dc400bbb80e5e3225c2712a02977007e5b10c842404a77a19370ce32979606"
+      "sha256": "f23553b115dc3b5104be50e5b8c9cbff5209aae4e9aaf95b1afacf10317de61a"
     },
     {
       "path": "src/adapters/norwegian/engine.ts",
@@ -5629,7 +5629,7 @@
     },
     {
       "path": "src/adapters/norwegian/lexicon-function-nb.ts",
-      "sha256": "858de071fe7066ab2fe13fa4b0265d0f410458e320510fb6ae20958b5b928126"
+      "sha256": "b10da75cf45a86e69df154ad3e18682e437d3ce50415d0c19e9a0a66aa0ad81e"
     },
     {
       "path": "src/adapters/norwegian/lexicon-function-nn.ts",
@@ -5645,7 +5645,7 @@
     },
     {
       "path": "src/adapters/norwegian/lexicon-nouns-nb-3.ts",
-      "sha256": "40bd8e82fe7875d6594f75c7051196515986d59d7f6ff124e827e2ccc29d26bb"
+      "sha256": "d38154b086fa57c570e28068a3864b2de706e57d6e701c9f351c260c16658e6e"
     },
     {
       "path": "src/adapters/norwegian/lexicon-nouns-nb-4.ts",
@@ -5653,15 +5653,15 @@
     },
     {
       "path": "src/adapters/norwegian/lexicon-nouns-nn.ts",
-      "sha256": "2182e2f692f800141c82fd15e4b6b8880cb02e63c715162ddee6d483434cfd20"
+      "sha256": "127f77953de51af1e336db7adb4d70e5523f0b3302ce30ed29c9e07ba6e070e9"
     },
     {
       "path": "src/adapters/norwegian/lexicon-verbs-nb.ts",
-      "sha256": "b0939880285cc7b38da373d128742720a414d4b7c1ab5cd8b9a57eacb50e6145"
+      "sha256": "efa954dac544df74f2779c093007638e86c8a23e86829665c21165a0a1a2baa0"
     },
     {
       "path": "src/adapters/norwegian/lexicon-verbs-nn.ts",
-      "sha256": "48151c7c0089430523337d9c37afb9b906d27c0831a417455f42dfdbab39aeb8"
+      "sha256": "335afb502356d4126cd3467512f9156f0b0d0b1503e552bbd3ea879eee73365b"
     },
     {
       "path": "src/adapters/norwegian/lexicon.ts",
@@ -5701,7 +5701,7 @@
     },
     {
       "path": "src/adapters/norwegian/units.ts",
-      "sha256": "dd4063f95473751ced0983050e00db7afff230bb12a0792e7621d16cdfdbd14f"
+      "sha256": "66bb7e769b2957e60ef7454f5f5ae337f1cb611b8ad906dbe4bda4fb6b1cf7c0"
     },
     {
       "path": "src/adapters/norwegian/varieties.ts",
@@ -5933,7 +5933,7 @@
     },
     {
       "path": "src/adapters/th.ts",
-      "sha256": "c36d693aa38cf5d3b21e78fef9b778c5f0cfdda39544c4b870290b40652d75eb"
+      "sha256": "ef1142fada75f2ec2c0331a25746e9ca6106a19e46ad8c223f76d49d4e3db034"
     },
     {
       "path": "src/adapters/thai/classifiers.ts",
@@ -5969,7 +5969,7 @@
     },
     {
       "path": "src/adapters/thai/lexicon-everyday.ts",
-      "sha256": "c36730d9c1540c6fa1475ba78c7aa280a42f1f605e89a763b383778dedf512db"
+      "sha256": "9ac28e0002a7f89826ac057c3aa4e43dbb3726621cfb007a7a6365ba6c0532ce"
     },
     {
       "path": "src/adapters/thai/lexicon-ladder.ts",
@@ -6000,6 +6000,10 @@
       "sha256": "d9f3bd9be7e9199d1e37da39ffc0de6b91ed20d719a03b760aaa2196b6448dd9"
     },
     {
+      "path": "src/adapters/thai/recut.ts",
+      "sha256": "9cec2305045cf75cf79d5982501266307821ba995dec7b7875e3c7f307ea6ef6"
+    },
+    {
       "path": "src/adapters/thai/segmentations.ts",
       "sha256": "6e83696b3e1236c73889a474a4a7501df8adf6d0601eb4bce5b57653c01dc961"
     },
@@ -6013,7 +6017,7 @@
     },
     {
       "path": "src/adapters/thai/text.ts",
-      "sha256": "0826751fe0f08217de8a1ac08ad15171c2761b8a508878fa2e4bf4af8c2c2c8f"
+      "sha256": "7fc79ded9f1b72c165b5b079f9fde7eedf811f70f8e908a7b8ab8c4f093c26a5"
     },
     {
       "path": "src/core/adapters.ts",
@@ -7451,6 +7455,7 @@
     "src/adapters/thai/paradigm.ts",
     "src/adapters/thai/phrases.ts",
     "src/adapters/thai/prose.ts",
+    "src/adapters/thai/recut.ts",
     "src/adapters/thai/segmentations.ts",
     "src/adapters/thai/syntax.ts",
     "src/adapters/thai/table-tags.ts",
@@ -7508,7 +7513,7 @@
     "algorithm": "FSRS-6.0",
     "sha256": "4968e995b7b7c3356cf843fc73c6f75cd5f2e1595315bde7caec9d2dd10bb287"
   },
-  "artifactManifestSha256": "dd543efa993919460d5a980e965948bafca80d0422628efc317999ea108b5c5a",
+  "artifactManifestSha256": "6950ebcdef151df01f7c846666e800c5499184f94f0324f2064a22e32242698d",
   "artifactFiles": [
     {
       "path": "EB-Garamond-OFL.txt",
@@ -7599,8 +7604,8 @@
       "sha256": "d1940ad0216fb0cf1d4a01b60892734106d2e4ae35e21cfb695a57f04936a60d"
     },
     {
-      "path": "assets/index-Bybv0nF9.js",
-      "sha256": "a9aba7e2aca3b4c4fe95572b797285f9f13ef740eda950a346e5fb0bfcfa9c0a"
+      "path": "assets/index-BijJIBcn.js",
+      "sha256": "9ae914f0f658b797774e0ece12775f7e97ec472a048d455c5181b48105965140"
     },
     {
       "path": "assets/jerusalem-YWyJNBCG.webp",
@@ -7619,20 +7624,20 @@
       "sha256": "c7324768bd26c74911f4d583d18cc3d0f62fcbbc14da15668ef4b4cb855bb868"
     },
     {
-      "path": "assets/lang-de-Cko0bP9J.js",
-      "sha256": "6c845e3f9b0f46bc1de5979fd5453dc1794ae12b3031d1cab5648465c1f148d5"
+      "path": "assets/lang-de-DGeTeS1r.js",
+      "sha256": "a50a6ba7ec122c65e0888c3fb5f7e2a209b30d9ad557e23b864d7da69dc2e2be"
     },
     {
-      "path": "assets/lang-el-xEQKXZ-Q.js",
-      "sha256": "52b8c5893a063dd0d5372a113a086d6199d7b83bf749a735e4714467d7c86b3c"
+      "path": "assets/lang-el-Cvy5323o.js",
+      "sha256": "064f1f947bdda83c825cab311863c9fec58d6488c0474146baba4594ae4490d1"
     },
     {
-      "path": "assets/lang-es-0ViotqCi.js",
-      "sha256": "dde091207de73fc82a51df789b9480fff9576ee58e7a160a447093cdf4c19779"
+      "path": "assets/lang-es-CLPJSB1t.js",
+      "sha256": "e0f1309408292ff536a44df23a70c42aa47942feb3c4fb8843018f8981fcb168"
     },
     {
-      "path": "assets/lang-fr-QHX_eYtr.js",
-      "sha256": "be2a2aed86e66a245ad8c3230698867dec0564e89b77809e7562095158528767"
+      "path": "assets/lang-fr-WtGMNuTo.js",
+      "sha256": "eabd1044d8f54e2449529cd5d73ff04640bb5032ee293c8aeca2a626dba79663"
     },
     {
       "path": "assets/lang-french-CIGjcOcX.js",
@@ -7643,8 +7648,8 @@
       "sha256": "cacf110d70dd5bd5150466097d9412286d6cc2dbbbb96f617ea9a5754af36c82"
     },
     {
-      "path": "assets/lang-he-C54ZVlsr.js",
-      "sha256": "61802afb4136703c879611ae8c55a4341814b9a9e927bc237fbeb95f2a424bf2"
+      "path": "assets/lang-he-vjSG5O8o.js",
+      "sha256": "d88382a5c712d5cf0305ae5dcd91e3eee305de5d856073a0055adbd5c639bd9d"
     },
     {
       "path": "assets/lang-hebrew-Bsnip4qd.js",
@@ -7655,48 +7660,48 @@
       "sha256": "fa0a59464851c6d94c25e39cd9a1706bede329c8f8b6d856911a5a63912048a0"
     },
     {
-      "path": "assets/lang-hi-CbE9-Are.js",
-      "sha256": "6d3962099957d9286cc54dffabc1e2da391a45f8f74542309e43b7531a2ee76a"
+      "path": "assets/lang-hi-PXk2-izY.js",
+      "sha256": "23d65f472c509a90a3c7caa36bd2a3f60533848e3607fa224cee9c847fa917ea"
     },
     {
       "path": "assets/lang-hindi-DyM6_O99.js",
       "sha256": "1c7e6f34552d45229be3030177ba78df56300e64ccadf5f6e454c34b24b54548"
     },
     {
-      "path": "assets/lang-la-B7ryCsAw.js",
-      "sha256": "b4e19f86cdd2313015b1437bd169763e47afc5cccaea7f63972e05793faf082e"
+      "path": "assets/lang-la-BkTGCvyE.js",
+      "sha256": "c36aa4e638774c5d32fe055a71d7c788363036fa79b6f23008331854ef0b961f"
     },
     {
-      "path": "assets/lang-nb-DsbNWBgv.js",
-      "sha256": "b026933d5f1f5e53beac457e8df03e28a4d026823ac6b9395373d9b80ae5aff7"
+      "path": "assets/lang-nb-DC8zA2QR.js",
+      "sha256": "5433dee7a76d9727b5702019dd567182b9602ed7f829042c485afd47a6f20ac2"
     },
     {
-      "path": "assets/lang-nn-DbJ01sqD.js",
-      "sha256": "d73ac7c56095889968cb63b0f76267f6a36009dbbc00f3e53d8232788238b3b3"
+      "path": "assets/lang-nn-DfGZdCBJ.js",
+      "sha256": "f515dea6d0a501432c56ab62f5c25dc09846c7aa8656b5f59e0fe16370192d70"
     },
     {
-      "path": "assets/lang-norwegian-_VQh16Ya.js",
-      "sha256": "60ca1a181c17bd2bcec8e61de4fc8adcea43526ac6bb2639f8a99964a3c56b69"
+      "path": "assets/lang-norwegian-CY2hDirZ.js",
+      "sha256": "b3a8e93301852d7b6bf2cde3b06791922a4dcad2313376b4b763170bd0c034da"
     },
     {
-      "path": "assets/lang-ru-k_OAgXEV.js",
-      "sha256": "91b6d25125f6c8ca2a0d3f4c56b3fcdec45e8b2de01294099ebe4db105034692"
+      "path": "assets/lang-ru-oF05VsOk.js",
+      "sha256": "0a4f7acbeb512a2a8b600e011574110b041bef9b5915fbf7a53867d5850cd200"
     },
     {
-      "path": "assets/lang-sq-CmIAorbU.js",
-      "sha256": "f3f61e53ceffd89ca0d1cea3e569a3c7d3ae901b2164770e8cdfa9ef188adc23"
+      "path": "assets/lang-sq-CoQ-1Nzj.js",
+      "sha256": "f63191cc655081994dba7f7aac446053d3cb83acf33f972db3160c15b8bdf100"
     },
     {
-      "path": "assets/lang-th-QSLCPu7R.js",
-      "sha256": "4b1c89dd1327b0ccc496a70b239e151c42333788dfa33ea726f6fcdda4448492"
+      "path": "assets/lang-th-PKk-XJpB.js",
+      "sha256": "5e1124064435716d0e2d55fb4810e76ca2b85f36f29cf497fa50e1ba84ca9e28"
     },
     {
       "path": "assets/lang-thai-nIagJDQ-.js",
       "sha256": "56a6f2a93f2a6677a715110c74adb6220e068ef34cd5c5e7d13072c9b9e84484"
     },
     {
-      "path": "assets/languageChoices-DSuu_7Dw.js",
-      "sha256": "48d18916ac8b4c181d7ba84603eeab08bb69b2fccf29d7e941767309cf274492"
+      "path": "assets/languageChoices-DPfrbu-T.js",
+      "sha256": "a56c770660ab7c9fe1ab18d98915ffd15c716db5c06978f4b22b038187676cf3"
     },
     {
       "path": "assets/nb-DD4vZ02j.js",
@@ -7759,8 +7764,8 @@
       "sha256": "80fa8b92d9c1653a1a67c61db2bc76d90a4008a8368a2a9b7eae8aa043fc4cea"
     },
     {
-      "path": "assets/th-Cg9eohnC.js",
-      "sha256": "5e1cac34567561a8e05064e540cb0d2fc15ec8f0675ba761fb5cc645b5d5794e"
+      "path": "assets/th-DqmlX8JH.js",
+      "sha256": "2f9b26d444ad504d2ab1118d30d24982ff9d1e5cb15b5c7414219c60953ca23b"
     },
     {
       "path": "assets/valle-de-angeles-BxOTzEvC.webp",
@@ -7800,7 +7805,7 @@
     },
     {
       "path": "index.html",
-      "sha256": "3464598312ce90c70db3df8f479a892d846f8ced38d4f4fc1053373787a5f19d"
+      "sha256": "0a31a867ddf1d419f3d6c1e629344477152e4cbf147f0c95bad63ceed3a35273"
     },
     {
       "path": "lexicon/el/ancient/_.json.gz",
@@ -10616,7 +10621,7 @@
     },
     {
       "path": "sw.js",
-      "sha256": "10ce763e5ba0a4f82b2d5b4c4d90ba170c6869388e179f61e4fa9e91a66c3816"
+      "sha256": "cd999fdb0fe8dfa43f46fe0b6a095878fb3d2bcec8a88b563701c953b173f7e1"
     }
   ]
 }

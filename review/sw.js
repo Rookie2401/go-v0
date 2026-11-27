@@ -20,7 +20,7 @@
  */
 'use strict';
 
-var BUILD_ID = '8d4759e94ac7';
+var BUILD_ID = '9c24793e38b5';
 var PRECACHE = [
   "./",
   "./EB-Garamond-OFL.txt",
@@ -45,10 +45,10 @@ var PRECACHE = [
   "./assets/he-CDT9jrOs.js",
   "./assets/hebrew-script-CnsZhqS-.js",
   "./assets/hi-DahJF875.js",
-  "./assets/index-Bybv0nF9.js",
+  "./assets/index-BijJIBcn.js",
   "./assets/jerusalem-YWyJNBCG.webp",
   "./assets/la-CwaQG1iI.js",
-  "./assets/languageChoices-DSuu_7Dw.js",
+  "./assets/languageChoices-DPfrbu-T.js",
   "./assets/nb-DD4vZ02j.js",
   "./assets/nn-BFIvrq7f.js",
   "./assets/norwegian-CE2nWb77.js",
@@ -64,7 +64,7 @@ var PRECACHE = [
   "./assets/src-BdSvOU29.js",
   "./assets/style-DbT1ML9p.css",
   "./assets/syntax-CGmPxLTF.js",
-  "./assets/th-Cg9eohnC.js",
+  "./assets/th-DqmlX8JH.js",
   "./assets/valle-de-angeles-BxOTzEvC.webp",
   "./assets/varanasi-D-p-TlCF.webp",
   "./config.json",
@@ -86,54 +86,54 @@ var LANG_CHUNKS = {
     "./assets/lang-aramaic-B5WkUau3.js"
   ],
   "de": [
-    "./assets/lang-de-Cko0bP9J.js"
+    "./assets/lang-de-DGeTeS1r.js"
   ],
   "el": [
-    "./assets/lang-el-xEQKXZ-Q.js"
+    "./assets/lang-el-Cvy5323o.js"
   ],
   "es": [
-    "./assets/lang-es-0ViotqCi.js"
+    "./assets/lang-es-CLPJSB1t.js"
   ],
   "fr": [
-    "./assets/lang-fr-QHX_eYtr.js"
+    "./assets/lang-fr-WtGMNuTo.js"
   ],
   "french": [
     "./assets/lang-french-CIGjcOcX.js",
     "./assets/lang-french-LVX0gXcx.js"
   ],
   "he": [
-    "./assets/lang-he-C54ZVlsr.js"
+    "./assets/lang-he-vjSG5O8o.js"
   ],
   "hebrew": [
     "./assets/lang-hebrew-Bsnip4qd.js",
     "./assets/lang-hebrew-apRjTzMX.js"
   ],
   "hi": [
-    "./assets/lang-hi-CbE9-Are.js"
+    "./assets/lang-hi-PXk2-izY.js"
   ],
   "hindi": [
     "./assets/lang-hindi-DyM6_O99.js"
   ],
   "la": [
-    "./assets/lang-la-B7ryCsAw.js"
+    "./assets/lang-la-BkTGCvyE.js"
   ],
   "nb": [
-    "./assets/lang-nb-DsbNWBgv.js"
+    "./assets/lang-nb-DC8zA2QR.js"
   ],
   "nn": [
-    "./assets/lang-nn-DbJ01sqD.js"
+    "./assets/lang-nn-DfGZdCBJ.js"
   ],
   "norwegian": [
-    "./assets/lang-norwegian-_VQh16Ya.js"
+    "./assets/lang-norwegian-CY2hDirZ.js"
   ],
   "ru": [
-    "./assets/lang-ru-k_OAgXEV.js"
+    "./assets/lang-ru-oF05VsOk.js"
   ],
   "sq": [
-    "./assets/lang-sq-CmIAorbU.js"
+    "./assets/lang-sq-CoQ-1Nzj.js"
   ],
   "th": [
-    "./assets/lang-th-QSLCPu7R.js"
+    "./assets/lang-th-PKk-XJpB.js"
   ],
   "thai": [
     "./assets/lang-thai-nIagJDQ-.js"

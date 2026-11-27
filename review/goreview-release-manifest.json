@@ -5,11 +5,11 @@
   "releaseEligible": true,
   "buildMode": "release",
   "git": {
-    "commit": "d30c1032c8ca1c2438bd3aa0a604fe37b2977c15",
-    "tree": "7f5e132925fb4e6aa3563efcab45daef48cb2ae9",
+    "commit": "36e6d1747bfacd2b606082dbb3c76a56bf86694e",
+    "tree": "8c1e02b6a7a0172890184c2b30e606e8f42e6173",
     "dirty": false
   },
-  "sourceManifestSha256": "975e685e6fb450d70ef46e4c1259eaed592390187b084ee1367bd3846696149d",
+  "sourceManifestSha256": "1151e6afc063bb644eec5d51be3273e3019e2ec429ac5a2ebaa756a1476e20e5",
   "sourceFiles": [
     {
       "path": "THIRD-PARTY-NOTICES.md",
@@ -29,7 +29,7 @@
     },
     {
       "path": "package.json",
-      "sha256": "e9309536f342a17248b65c7fcd1791d8ecbb4b9410247d3264ef5a94cec2d7ac"
+      "sha256": "d0a90441817235edc08c70c9cae9bb50c3a801e2fdd644d068445fc8aad5eb44"
     },
     {
       "path": "packages/biblia-ios/package-lock.json",
@@ -441,7 +441,7 @@
     },
     {
       "path": "packages/goreview/app/engine.ts",
-      "sha256": "82453341368be9c0c7718868e519e431f66209bf1a53cbcda339ebe00f11d9cd"
+      "sha256": "3e7b799e0b2149fa7ec5d93472fec6b7d5c841a54162ba2be256251b12189751"
     },
     {
       "path": "packages/goreview/app/enrolmentName.ts",
@@ -513,7 +513,7 @@
     },
     {
       "path": "packages/goreview/app/packFacts.ts",
-      "sha256": "e712e6023b6bba3eb4f42aeacbf76d88d96c436e96114fc54013c26e35173057"
+      "sha256": "ceda1515affeb580d5eb6a8f2ab9ebff5a716081b8a03b73e6768d5a566f0837"
     },
     {
       "path": "packages/goreview/app/photos/athens.webp",
@@ -853,7 +853,7 @@
     },
     {
       "path": "packages/goreview/src/exercises/shared.ts",
-      "sha256": "b847cd3496996b74964276a345341c4c02d21560a687620d01a511fe6a076e91"
+      "sha256": "1ae1f1480093b27df8a3966f7181449771976fc1a1ae467e221639ca4512c105"
     },
     {
       "path": "packages/goreview/src/exercises/validate.ts",
@@ -862,6 +862,14 @@
     {
       "path": "packages/goreview/src/exercises/written-recognition.ts",
       "sha256": "cb4bf35539d69e9a0fc3bd3c141c4d6388c98e27853738c0f792df6317b703ba"
+    },
+    {
+      "path": "packages/goreview/src/facts/deck-gate.ts",
+      "sha256": "29d0d73062aa95e3dc3812f657f4e69b02008aeacefb615281aee45db7fbd394"
+    },
+    {
+      "path": "packages/goreview/src/facts/deck-known-limits.ts",
+      "sha256": "d1b9b12e55d6d65dd48f4ad1fe5687f8bdd288b4309306e2c8151e3cf28de887"
     },
     {
       "path": "packages/goreview/src/facts/index.ts",
@@ -873,11 +881,11 @@
     },
     {
       "path": "packages/goreview/src/facts/provider.ts",
-      "sha256": "1d8b8479c75a84d6cca91aa71089f5ed8fd4df2e92a5fc23584a8af7cc060a8f"
+      "sha256": "3376971f67b699eadfb18935421fcd4be41292c9198734eee8975c01cd3e116f"
     },
     {
       "path": "packages/goreview/src/facts/review-facts.ts",
-      "sha256": "5736b74b0d9a6cdb90464041bcbec98a7840527c1a63e8118e23990c864818ec"
+      "sha256": "b128c8db7677fe0cbfe45cffb8770b2778427140505796536ecf68ea79b6155c"
     },
     {
       "path": "packages/goreview/src/grading/grade.ts",
@@ -6020,6 +6028,10 @@
       "sha256": "48de6a67cec1bed86a69857b0f013a8acb068745d6ad3ac250d95e8423bf47c0"
     },
     {
+      "path": "src/core/review-meaning.ts",
+      "sha256": "dfd017e499523d0535c941b62c35d1a092b8b8beb8e453d56bc74a9ab2ba1960"
+    },
+    {
       "path": "src/core/syntax.ts",
       "sha256": "5941e2bfc088e0a0ebf1393831b32690b34e11dcdc1118c73ddabecd57d90372"
     },
@@ -6914,6 +6926,8 @@
     "packages/goreview/src/exercises/shared.ts",
     "packages/goreview/src/exercises/validate.ts",
     "packages/goreview/src/exercises/written-recognition.ts",
+    "packages/goreview/src/facts/deck-gate.ts",
+    "packages/goreview/src/facts/deck-known-limits.ts",
     "packages/goreview/src/facts/index.ts",
     "packages/goreview/src/facts/paradigm-table.ts",
     "packages/goreview/src/facts/provider.ts",
@@ -7444,6 +7458,7 @@
     "src/core/adapters.ts",
     "src/core/english-verb.ts",
     "src/core/paradigm.ts",
+    "src/core/review-meaning.ts",
     "src/core/syntax.ts",
     "src/core/word-analysis.ts",
     "src/dict/build.ts",
@@ -7493,7 +7508,7 @@
     "algorithm": "FSRS-6.0",
     "sha256": "4968e995b7b7c3356cf843fc73c6f75cd5f2e1595315bde7caec9d2dd10bb287"
   },
-  "artifactManifestSha256": "4b9f825fdb9231e605c2d51dc727fc27a9c7321173c27dd89a3746c913e91f5c",
+  "artifactManifestSha256": "e852d59299bda8fabeaf83260c49f52b481c44a38060dd105e91aaed0e3bb7f4",
   "artifactFiles": [
     {
       "path": "EB-Garamond-OFL.txt",
@@ -7584,8 +7599,8 @@
       "sha256": "d1940ad0216fb0cf1d4a01b60892734106d2e4ae35e21cfb695a57f04936a60d"
     },
     {
-      "path": "assets/index-ftfx5Wxq.js",
-      "sha256": "56fcd22c829540b4ce3cf788a6d2166eb921e5438e8c7e3b32cbcd5b16cd6084"
+      "path": "assets/index-BPoQuWUb.js",
+      "sha256": "dc0c42c467ca15f73198c96e442f8af21b5355bcf283e31240b014a2f4beb975"
     },
     {
       "path": "assets/jerusalem-YWyJNBCG.webp",
@@ -7604,20 +7619,20 @@
       "sha256": "c7324768bd26c74911f4d583d18cc3d0f62fcbbc14da15668ef4b4cb855bb868"
     },
     {
-      "path": "assets/lang-de-DQcxsL7B.js",
-      "sha256": "206df4c3630a001f1b7e70f4d11b721cce6bfb123cb2710d3892d5d7dfffa4d8"
+      "path": "assets/lang-de-Bh53F6WX.js",
+      "sha256": "75e75a6ead0f44f0cffb8f0e9d29ec85b3d427cb7442bed43bc54f3e5337e3dc"
     },
     {
-      "path": "assets/lang-el-DzaoYSBX.js",
-      "sha256": "1f771b0491e18e5b32367c700049627cbc9c185ae49443fd8965074e4389f49e"
+      "path": "assets/lang-el-DqjiFMae.js",
+      "sha256": "2766ca849bc950e69d7d2587adb9260d2f68ef00fa889c8531ba7196d4d85c87"
     },
     {
-      "path": "assets/lang-es-BGCTJEMO.js",
-      "sha256": "8a43ec2514757f9d1ae9653dfe5849214de39414bc15902694db6d320dbf84ef"
+      "path": "assets/lang-es-D2OMePaP.js",
+      "sha256": "a0d9e583dd19fe063343158deceebaf2047e446176b06d3572ec2b46527742c0"
     },
     {
-      "path": "assets/lang-fr-BxFRNmz_.js",
-      "sha256": "914063c7fee887e101a5395dcd91a4618a92669b09415c9c923a97bc2c0fdb18"
+      "path": "assets/lang-fr-D4wiPyKD.js",
+      "sha256": "e8d264e443e02939b5e5efbc6526aa4aa88447166936e10ad2365d0a57733b8e"
     },
     {
       "path": "assets/lang-french-CIGjcOcX.js",
@@ -7628,8 +7643,8 @@
       "sha256": "cacf110d70dd5bd5150466097d9412286d6cc2dbbbb96f617ea9a5754af36c82"
     },
     {
-      "path": "assets/lang-he-DmkURzZj.js",
-      "sha256": "2a4b0fbd35fb5ea7cf174a99e41759f6c3dc3accfb8c7841b533bb970f4fb895"
+      "path": "assets/lang-he-BQx1q7pD.js",
+      "sha256": "7a43cd7fd4185d6e158f12cc63c49b3447f236baf23ccd3cdb47df097f8944c1"
     },
     {
       "path": "assets/lang-hebrew-Bsnip4qd.js",
@@ -7640,36 +7655,36 @@
       "sha256": "fa0a59464851c6d94c25e39cd9a1706bede329c8f8b6d856911a5a63912048a0"
     },
     {
-      "path": "assets/lang-hi-BmEOMfJy.js",
-      "sha256": "b34a003023fa70cacbb5c22840cca54ce734d56447ccc20cabf20a34a755999e"
+      "path": "assets/lang-hi-DeWdR7rI.js",
+      "sha256": "b75b070265b9539a49f43443e400f1e5e39bacec215a6826dc8e55f9df8d40fc"
     },
     {
       "path": "assets/lang-hindi-DyM6_O99.js",
       "sha256": "1c7e6f34552d45229be3030177ba78df56300e64ccadf5f6e454c34b24b54548"
     },
     {
-      "path": "assets/lang-la-CJTMWMJi.js",
-      "sha256": "87eb796261b584a9d6ee94a7f23cfe342395b23cd11ed438b34b1683c31683c4"
+      "path": "assets/lang-la-ovOtmf0q.js",
+      "sha256": "39c6b4770dda47f1fbf356737fd3fd5e324cdf887d16dfc5d97f20fa2f4bf894"
     },
     {
-      "path": "assets/lang-nb-B4CzkPNN.js",
-      "sha256": "421ebe3250e5e9b7a6c1f3b4f374c3da78234ccff4868a920a418c6dc005adbc"
+      "path": "assets/lang-nb-DYzGk-Ql.js",
+      "sha256": "1b17b2b011f40ee06fe3fb1835da02ecd8bdd5721e712e83d0a6b7749c24a795"
     },
     {
-      "path": "assets/lang-nn-D9kfDIFR.js",
-      "sha256": "7ed94be8a50cf87e82256665547940805fdc6524f5c877fae9a6e59fc288e3e2"
+      "path": "assets/lang-nn-B9DZ8wqA.js",
+      "sha256": "c310b9f5f47f4cd9bbe12447d262dc45d8aab3fbe0e7deee28dea7a3a8f0704b"
     },
     {
-      "path": "assets/lang-norwegian-DB_FqTvz.js",
-      "sha256": "afe1c3c2504275a5babef1e8156f4df9e587eff8f50a8e6cd26ae5a21d9e72e9"
+      "path": "assets/lang-norwegian-BIOLx_dk.js",
+      "sha256": "a54ddb2fa5c3a51392f8aca52d3243cc53c450de84aec7d712c289900ef17876"
     },
     {
-      "path": "assets/lang-ru-DG_CXB8w.js",
-      "sha256": "1f12dc6bb01ecb9b5e99989c03932b0871ec3505802a8a2911b4f6a00bb45d6d"
+      "path": "assets/lang-ru-CetFKLPg.js",
+      "sha256": "7ca3ffdd7d63201b3a4da333f79deec311c952236dfcea821b723484f726f5a7"
     },
     {
-      "path": "assets/lang-sq-C_KckCY0.js",
-      "sha256": "06ea0104b13315663b618dadc2b6866cc0d6fc03619a8b0fa12e74b4f1f5c2cc"
+      "path": "assets/lang-sq-CJKIl51X.js",
+      "sha256": "7049e390660e25de46c02a582f166cc3e6432853a6d5d9b3f2657e85816d9d32"
     },
     {
       "path": "assets/lang-th-QSLCPu7R.js",
@@ -7680,8 +7695,8 @@
       "sha256": "56a6f2a93f2a6677a715110c74adb6220e068ef34cd5c5e7d13072c9b9e84484"
     },
     {
-      "path": "assets/languageChoices-COuPxGG6.js",
-      "sha256": "d134d5a4c54f6a82910dfee8db6fc4c63bff56e2aedc485da3adb805d50437ff"
+      "path": "assets/languageChoices-DjQ3s3V-.js",
+      "sha256": "49f7b7fe8acb76f46772a753821c6fc36321044a003538d6883d74b46dfeb1b1"
     },
     {
       "path": "assets/nb-DD4vZ02j.js",
@@ -7744,8 +7759,8 @@
       "sha256": "80fa8b92d9c1653a1a67c61db2bc76d90a4008a8368a2a9b7eae8aa043fc4cea"
     },
     {
-      "path": "assets/th-33NgCB34.js",
-      "sha256": "4b61b52e2cb516752bb02a154e18efa78528b4870c2b0b7c19956d3722bf9cf0"
+      "path": "assets/th-CKQpyzLG.js",
+      "sha256": "7178e1dca7f5568cbbe4f5b9d42677b6dd6b068caf57d4becbd673a2aaeb088b"
     },
     {
       "path": "assets/valle-de-angeles-BxOTzEvC.webp",
@@ -7785,7 +7800,7 @@
     },
     {
       "path": "index.html",
-      "sha256": "aa37f4757aaed058ebb46337eb6cd991d2865e5faac0ea4bb0920a05cb4bff3e"
+      "sha256": "7fa0281ef2399b28e18aef13a60e2364d8c0aa5a0df8c77fc686f56212b4cfb5"
     },
     {
       "path": "lexicon/el/ancient/_.json.gz",
@@ -10601,7 +10616,7 @@
     },
     {
       "path": "sw.js",
-      "sha256": "0904ad82ca662dc92b3c7d519130e24a7ac9cbcf69c9b856a26bfbbbc0e8f7fa"
+      "sha256": "bb158e564101eed3e5ad5835614012648d4f5ea1519fff0e8cd79754b81c8a1a"
     }
   ]
 }

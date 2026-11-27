@@ -1,0 +1,1 @@
+import{t as e}from"./arc-DnsWH8Ag.js";export{e as adapter};

@@ -20,7 +20,7 @@
  */
 'use strict';
 
-var BUILD_ID = '3e8df60f6ae9';
+var BUILD_ID = '7b8c92f67b10';
 var PRECACHE = [
   "./",
   "./EB-Garamond-OFL.txt",
@@ -45,10 +45,10 @@ var PRECACHE = [
   "./assets/he-CDT9jrOs.js",
   "./assets/hebrew-script-CnsZhqS-.js",
   "./assets/hi-DahJF875.js",
-  "./assets/index-BPoQuWUb.js",
+  "./assets/index-DdEAYLoB.js",
   "./assets/jerusalem-YWyJNBCG.webp",
   "./assets/la-CwaQG1iI.js",
-  "./assets/languageChoices-DjQ3s3V-.js",
+  "./assets/languageChoices-CNCzCyMw.js",
   "./assets/nb-DD4vZ02j.js",
   "./assets/nn-BFIvrq7f.js",
   "./assets/norwegian-CE2nWb77.js",
@@ -64,7 +64,7 @@ var PRECACHE = [
   "./assets/src-BdSvOU29.js",
   "./assets/style-DbT1ML9p.css",
   "./assets/syntax-CGmPxLTF.js",
-  "./assets/th-CKQpyzLG.js",
+  "./assets/th-BPP1umjf.js",
   "./assets/valle-de-angeles-BxOTzEvC.webp",
   "./assets/varanasi-D-p-TlCF.webp",
   "./config.json",
@@ -86,51 +86,51 @@ var LANG_CHUNKS = {
     "./assets/lang-aramaic-B5WkUau3.js"
   ],
   "de": [
-    "./assets/lang-de-Bh53F6WX.js"
+    "./assets/lang-de-DcsppLzf.js"
   ],
   "el": [
-    "./assets/lang-el-DqjiFMae.js"
+    "./assets/lang-el-mDpoa5G6.js"
   ],
   "es": [
-    "./assets/lang-es-D2OMePaP.js"
+    "./assets/lang-es-MIb7wW9w.js"
   ],
   "fr": [
-    "./assets/lang-fr-D4wiPyKD.js"
+    "./assets/lang-fr-CTgmAq9U.js"
   ],
   "french": [
     "./assets/lang-french-CIGjcOcX.js",
     "./assets/lang-french-LVX0gXcx.js"
   ],
   "he": [
-    "./assets/lang-he-BQx1q7pD.js"
+    "./assets/lang-he-CzqeAxlp.js"
   ],
   "hebrew": [
     "./assets/lang-hebrew-Bsnip4qd.js",
     "./assets/lang-hebrew-apRjTzMX.js"
   ],
   "hi": [
-    "./assets/lang-hi-DeWdR7rI.js"
+    "./assets/lang-hi-Bn23wBoy.js"
   ],
   "hindi": [
     "./assets/lang-hindi-DyM6_O99.js"
   ],
   "la": [
-    "./assets/lang-la-ovOtmf0q.js"
+    "./assets/lang-la-BQ4CdB5w.js"
   ],
   "nb": [
-    "./assets/lang-nb-DYzGk-Ql.js"
+    "./assets/lang-nb-HFSISPUA.js"
   ],
   "nn": [
-    "./assets/lang-nn-B9DZ8wqA.js"
+    "./assets/lang-nn-Dp4eZ7ax.js"
   ],
   "norwegian": [
-    "./assets/lang-norwegian-BIOLx_dk.js"
+    "./assets/lang-norwegian-V5xXuAif.js"
   ],
   "ru": [
-    "./assets/lang-ru-CetFKLPg.js"
+    "./assets/lang-ru-DJ8VhIJA.js"
   ],
   "sq": [
-    "./assets/lang-sq-CJKIl51X.js"
+    "./assets/lang-sq-C-1Oaxsh.js"
   ],
   "th": [
     "./assets/lang-th-QSLCPu7R.js"

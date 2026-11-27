@@ -1,0 +1,1 @@
+import{p as e}from"./index-DE-Px5yd.js";export{e as adapter};

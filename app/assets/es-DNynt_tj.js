@@ -1,0 +1,1 @@
+import{t as e}from"./es-UAkRPKb_.js";export{e as adapter};

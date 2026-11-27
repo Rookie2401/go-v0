@@ -289,11 +289,10 @@ export function createApp(root: HTMLElement, deps: Deps): AppHandle {
     const my = ++seq;
     const nextRoute = [id, ...params].join('/');
     if (id === 'settings' && route && route !== 'settings') settingsReturn = route;
-    if (route && route !== nextRoute && (id === 'settings' || route === 'settings')) {
-      main.dataset.settingsMotion = id === 'settings' ? 'enter' : 'leave';
-    } else {
-      delete main.dataset.settingsMotion;
-    }
+    const settingsMotion = route && route !== nextRoute && (id === 'settings' || route === 'settings')
+      ? id === 'settings' ? 'enter' : 'leave'
+      : undefined;
+    delete main.dataset.settingsMotion;
     for (const d of disposers) { try { d(); } catch { /* a screen's cleanup must not stop the next screen */ } }
     disposers = [];
     clear(main);
@@ -380,7 +379,12 @@ export function createApp(root: HTMLElement, deps: Deps): AppHandle {
       if (view.alive()) { clear(body); append(body, [p(`This screen could not be shown: ${e instanceof Error ? e.message : String(e)}`, 'error')]); }
     }
     if (!view.alive()) return;
+    // Animate the one finished destination screen. Capturing both full pages with
+    // the View Transition API made mobile WebKit briefly expose two viewports,
+    // which read as a bounce and a scale snap while Settings opened or closed.
+    if (settingsMotion) main.dataset.settingsMotion = settingsMotion;
     await safeRefreshHeader();
+    if (!view.alive()) return;
     // a screen that put focus on a control of its own (the answer box of a session's first item) keeps it; otherwise the screen itself takes focus
     const held = deps.doc.activeElement;
     if (held && held !== main && main.contains(held)) return;
@@ -397,30 +401,11 @@ export function createApp(root: HTMLElement, deps: Deps): AppHandle {
     await renderDone;
   }
 
-  let activeSettingsTransition: ReturnType<Document['startViewTransition']> | undefined;
   const onHash = (): void => {
-    activeSettingsTransition?.skipTransition();
     const r = parseHash(win.location.hash, deps.enableGoTell);
     if (!r) return;
     if (win.location.hash !== `#/${r.path}`) win.history.replaceState(win.history.state, '', `#/${r.path}`);
-    if (r.path === route) return;
-    const opening = r.id === 'settings';
-    if (route && (opening || route === 'settings') && deps.doc.startViewTransition &&
-        !win.matchMedia?.('(prefers-reduced-motion: reduce)').matches) {
-      const page = deps.doc.documentElement;
-      page.dataset.settingsTransition = opening ? 'enter' : 'leave';
-      const transition = deps.doc.startViewTransition(() => show(r.id, r.params));
-      renderDone = transition.updateCallbackDone;
-      const cleanup = (): void => {
-        if (activeSettingsTransition === transition) {
-          delete page.dataset.settingsTransition;
-          activeSettingsTransition = undefined;
-        }
-      };
-      activeSettingsTransition = transition;
-      void transition.ready.catch(() => {});
-      void transition.finished.then(cleanup, cleanup);
-    } else renderDone = show(r.id, r.params);
+    if (r.path !== route) renderDone = show(r.id, r.params);
   };
   win.addEventListener('hashchange', onHash);
 
@@ -440,7 +425,6 @@ export function createApp(root: HTMLElement, deps: Deps): AppHandle {
     ready: () => renderDone,
     destroy() {
       destroyed = true;
-      activeSettingsTransition?.skipTransition();
       win.removeEventListener('hashchange', onHash);
       win.removeEventListener('goreview:update-ready', onUpdateReady);
       win.removeEventListener('resume', onResume);

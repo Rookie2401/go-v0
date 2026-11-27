@@ -27,8 +27,10 @@ export function createAnalyserLoader(chromeApi: UrlLoaderApi | undefined, base: 
     let p = inflight.get(languageId);
     if (!p) {
       p = (async () => {
-        const mod = (await import(/* @vite-ignore */ urlOf(languageId))) as { adapter?: LanguageAdapter; createShardLoader?: AnalyserExtras['createShardLoader'] };
+        const mod = (await import(/* @vite-ignore */ urlOf(languageId))) as { adapter?: LanguageAdapter; createShardLoader?: AnalyserExtras['createShardLoader']; ready?: Promise<unknown> };
         if (!mod.adapter) throw new Error(`the ${languageId} analyser chunk has no adapter`);
+        // a chunk may bring more data in a chunk of its own (French: the dictionary's lemma list) and say when it has arrived; it settles either way
+        if (mod.ready) await mod.ready.catch(() => undefined);
         registerAnalyser(languageId, mod.adapter, mod.createShardLoader ? { createShardLoader: mod.createShardLoader } : undefined);
       })().finally(() => { inflight.delete(languageId); });
       inflight.set(languageId, p);

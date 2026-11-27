@@ -1,0 +1,7982 @@
+{
+ "readBy": "AI models (Claude), not native speakers; each card judged once, in the first sentence it came from, against the brief in docs/ecosystem/DECK-GATE.md. 2026-11-26.",
+ "residual": [],
+ "cards": {
+  "form:fr:aboyer": [
+   {
+    "shown": "to bark",
+    "v": "ok"
+   }
+  ],
+  "form:fr:accueil": [
+   {
+    "shown": "reception, hospitality",
+    "v": "ok"
+   }
+  ],
+  "form:fr:acheter": [
+   {
+    "shown": "to buy",
+    "v": "ok"
+   }
+  ],
+  "form:fr:actuel": [
+   {
+    "shown": "current",
+    "v": "ok"
+   }
+  ],
+  "form:fr:agréable": [
+   {
+    "shown": "pleasant",
+    "v": "ok"
+   }
+  ],
+  "form:fr:aider": [
+   {
+    "shown": "to help; to aid",
+    "v": "ok"
+   }
+  ],
+  "form:fr:ainsi": [
+   {
+    "shown": "in this way, thus",
+    "v": "ok"
+   },
+   {
+    "shown": "thus, in this way",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
+   }
+  ],
+  "form:fr:allumer": [
+   {
+    "shown": "to light",
+    "v": "ok"
+   }
+  ],
+  "form:fr:alors": [
+   {
+    "shown": "then (at that time)",
+    "v": "ok"
+   },
+   {
+    "shown": "then, so, at that time",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
+   }
+  ],
+  "form:fr:amie": [
+   {
+    "shown": "friend",
+    "v": "ok"
+   }
+  ],
+  "form:fr:an": [
+   {
+    "shown": "year",
+    "v": "ok"
+   }
+  ],
+  "form:fr:anniversaire": [
+   {
+    "shown": "birthday",
+    "v": "ok"
+   }
+  ],
+  "form:fr:appareil": [
+   {
+    "shown": "device, camera",
+    "v": "ok"
+   }
+  ],
+  "form:fr:appartement": [
+   {
+    "shown": "apartment, flat",
+    "v": "ok"
+   },
+   {
+    "shown": "flat, apartment",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
+   }
+  ],
+  "form:fr:apporter": [
+   {
+    "shown": "to bring (something)",
+    "v": "ok"
+   },
+   {
+    "shown": "to bring",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
+   }
+  ],
+  "form:fr:apprentissage": [
+   {
+    "shown": "apprenticeship",
+    "v": "false-meaning",
+    "note": "apprentissage mainly means learning; apprenticeship is a narrower sense and wrong in this sentence"
+   }
+  ],
+  "form:fr:après-midi": [
+   {
+    "shown": "afternoon",
+    "v": "ok"
+   }
+  ],
+  "form:fr:arbre": [
+   {
+    "shown": "axle",
+    "v": "false-meaning",
+    "note": "arbre is tree; axle is a technical sense"
+   },
+   {
+    "shown": "tree",
+    "v": "ok"
+   }
+  ],
+  "form:fr:argent": [
+   {
+    "shown": "money; silver",
+    "v": "ok"
+   }
+  ],
+  "form:fr:armoire": [
+   {
+    "shown": "a very stocky man",
+    "v": "false-meaning",
+    "note": "armoire is a wardrobe; 'very stocky man' is a slang sense"
+   },
+   {
+    "shown": "wardrobe",
+    "v": "ok"
+   }
+  ],
+  "form:fr:arriver": [
+   {
+    "shown": "to arrive, to happen",
+    "v": "ok"
+   },
+   {
+    "shown": "to cope, to manage",
+    "v": "false-meaning",
+    "note": "arriver first means to arrive; 'cope, manage' is a secondary sense"
+   }
+  ],
+  "form:fr:arrêt": [
+   {
+    "shown": "stopping, checking",
+    "v": "ok"
+   }
+  ],
+  "form:fr:artiste": [
+   {
+    "shown": "artist",
+    "v": "ok"
+   }
+  ],
+  "form:fr:ascenseur": [
+   {
+    "shown": "lift, elevator",
+    "v": "ok"
+   }
+  ],
+  "form:fr:assaisonnement": [
+   {
+    "shown": "seasoning, flavouring",
+    "v": "ok"
+   }
+  ],
+  "form:fr:assez": [
+   {
+    "shown": "to a sufficient or moderate degree",
+    "v": "ok"
+   }
+  ],
+  "form:fr:aujourd'hui": [
+   {
+    "shown": "today",
+    "v": "ok"
+   }
+  ],
+  "form:fr:aussi": [
+   {
+    "shown": "too, also, as well",
+    "v": "ok"
+   },
+   {
+    "shown": "also, too; as",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
+   }
+  ],
+  "form:fr:automne": [
+   {
+    "shown": "autumn, fall",
+    "v": "ok"
+   }
+  ],
+  "form:fr:autoroute": [
+   {
+    "shown": "expressway, freeway, motorway, highway",
+    "v": "ok"
+   }
+  ],
+  "form:fr:autour": [
+   {
+    "shown": "around",
+    "v": "ok"
+   }
+  ],
+  "form:fr:autrefois": [
+   {
+    "shown": "in the past, formerly",
+    "v": "ok"
+   }
+  ],
+  "form:fr:avec": [
+   {
+    "shown": "with",
+    "v": "ok"
+   }
+  ],
+  "form:fr:avis": [
+   {
+    "shown": "opinion",
+    "v": "ok"
+   }
+  ],
+  "form:fr:avoir": [
+   {
+    "shown": "to have",
+    "v": "ok"
+   }
+  ],
+  "form:fr:balcon": [
+   {
+    "shown": "balcony",
+    "v": "ok"
+   }
+  ],
+  "form:fr:banque": [
+   {
+    "shown": "bank",
+    "v": "ok"
+   }
+  ],
+  "form:fr:beau": [
+   {
+    "shown": "handsome, fine, attractive",
+    "v": "ok"
+   },
+   {
+    "shown": "beautiful, handsome",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
+   }
+  ],
+  "form:fr:beaucoup": [
+   {
+    "shown": "much, very much, a lot",
+    "v": "ok"
+   },
+   {
+    "shown": "a lot, much, many",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
+   }
+  ],
+  "form:fr:belgique": [
+   {
+    "shown": "Belgium",
+    "v": "ok"
+   },
+   {
+    "shown": "the Netherlands",
+    "v": "false-meaning",
+    "note": "Belgique is Belgium, not the Netherlands"
+   }
+  ],
+  "form:fr:besoin": [
+   {
+    "shown": "need",
+    "v": "ok"
+   }
+  ],
+  "form:fr:beurre": [
+   {
+    "shown": "butter",
+    "v": "ok"
+   }
+  ],
+  "form:fr:bibliothèque": [
+   {
+    "shown": "library",
+    "v": "ok"
+   }
+  ],
+  "form:fr:blanc": [
+   {
+    "shown": "white",
+    "v": "ok"
+   },
+   {
+    "shown": "white color",
+    "v": "ok"
+   }
+  ],
+  "form:fr:bleu": [
+   {
+    "shown": "blue",
+    "v": "ok"
+   }
+  ],
+  "form:fr:boire": [
+   {
+    "shown": "to drink",
+    "v": "ok"
+   }
+  ],
+  "form:fr:bonjour": [
+   {
+    "shown": "good day; good afternoon",
+    "v": "ok"
+   },
+   {
+    "shown": "hello, good morning",
+    "v": "ok"
+   }
+  ],
+  "form:fr:bonsoir": [
+   {
+    "shown": "good evening",
+    "v": "ok"
+   }
+  ],
+  "form:fr:bord": [
+   {
+    "shown": "border, edge, limit; boundary",
+    "v": "ok"
+   },
+   {
+    "shown": "edge",
+    "v": "ok"
+   }
+  ],
+  "form:fr:bouton": [
+   {
+    "shown": "button",
+    "v": "ok"
+   }
+  ],
+  "form:fr:box": [
+   {
+    "shown": "stall (for a horse), loose box",
+    "v": "false-meaning",
+    "note": "box in this sentence is an internet router; horse stall is a marginal first sense"
+   }
+  ],
+  "form:fr:brancher": [
+   {
+    "shown": "to connect, plug in (appliance)",
+    "v": "ok"
+   }
+  ],
+  "form:fr:bronchite": [
+   {
+    "shown": "bronchitis",
+    "v": "ok"
+   }
+  ],
+  "form:fr:brûler": [
+   {
+    "shown": "to burn",
+    "v": "ok"
+   }
+  ],
+  "form:fr:bureau": [
+   {
+    "shown": "desk",
+    "v": "ok"
+   },
+   {
+    "shown": "office; desk",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
+   }
+  ],
+  "form:fr:bâtiment": [
+   {
+    "shown": "building, edifice",
+    "v": "ok"
+   }
+  ],
+  "form:fr:bébé": [
+   {
+    "shown": "baby",
+    "v": "ok"
+   }
+  ],
+  "form:fr:café": [
+   {
+    "shown": "coffee (drink)",
+    "v": "ok"
+   }
+  ],
+  "form:fr:calmement": [
+   {
+    "shown": "calmly",
+    "v": "ok"
+   }
+  ],
+  "form:fr:camionnette": [
+   {
+    "shown": "van",
+    "v": "ok"
+   }
+  ],
+  "form:fr:campagne": [
+   {
+    "shown": "campaign",
+    "v": "false-meaning",
+    "note": "campagne here and ordinarily means countryside; 'campaign' is the secondary sense"
+   },
+   {
+    "shown": "countryside; campaign",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
+   }
+  ],
+  "form:fr:canapé": [
+   {
+    "shown": "sofa",
+    "v": "ok"
+   }
+  ],
+  "form:fr:carte": [
+   {
+    "shown": "card",
+    "v": "ok"
+   }
+  ],
+  "form:fr:casserole": [
+   {
+    "shown": "saucepan (utensil)",
+    "v": "ok"
+   }
+  ],
+  "form:fr:cassé": [
+   {
+    "shown": "broken",
+    "v": "ok"
+   }
+  ],
+  "form:fr:cathédrale": [
+   {
+    "shown": "cathedral",
+    "v": "ok"
+   }
+  ],
+  "form:fr:ceci": [
+   {
+    "shown": "this",
+    "v": "ok"
+   }
+  ],
+  "form:fr:cela": [
+   {
+    "shown": "that",
+    "v": "ok"
+   }
+  ],
+  "form:fr:cent": [
+   {
+    "shown": "hundred",
+    "v": "ok"
+   }
+  ],
+  "form:fr:centre-ville": [
+   {
+    "shown": "town centre, city center, downtown",
+    "v": "ok"
+   }
+  ],
+  "form:fr:cet": [
+   {
+    "shown": "this",
+    "v": "ok"
+   }
+  ],
+  "form:fr:chaleur": [
+   {
+    "shown": "heat",
+    "v": "ok"
+   }
+  ],
+  "form:fr:changer": [
+   {
+    "shown": "to change",
+    "v": "ok"
+   },
+   {
+    "shown": "to exchange (something)",
+    "v": "ok"
+   }
+  ],
+  "form:fr:chantier": [
+   {
+    "shown": "building site",
+    "v": "ok"
+   }
+  ],
+  "form:fr:chapeau": [
+   {
+    "shown": "hat",
+    "v": "ok"
+   }
+  ],
+  "form:fr:chargeur": [
+   {
+    "shown": "stoker, fireman",
+    "v": "false-meaning",
+    "note": "chargeur is a charger (battery/phone) or loader; stoker, fireman is an obscure sense"
+   }
+  ],
+  "form:fr:chat": [
+   {
+    "shown": "cat (feline)",
+    "v": "ok"
+   },
+   {
+    "shown": "cat",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
+   }
+  ],
+  "form:fr:chaud": [
+   {
+    "shown": "warm, hot",
+    "v": "ok"
+   }
+  ],
+  "form:fr:chauffer": [
+   {
+    "shown": "to heat, warm, warm up",
+    "v": "ok"
+   }
+  ],
+  "form:fr:chemin": [
+   {
+    "shown": "path, way, road",
+    "v": "ok"
+   }
+  ],
+  "form:fr:cher": [
+   {
+    "shown": "dear, beloved",
+    "v": "ok"
+   }
+  ],
+  "form:fr:chercher": [
+   {
+    "shown": "to look for, to seek",
+    "v": "ok"
+   }
+  ],
+  "form:fr:chez": [
+   {
+    "shown": "at the home of, among",
+    "v": "ok"
+   },
+   {
+    "shown": "in",
+    "v": "false-meaning",
+    "note": "chez means at the home of / among, not simply in"
+   }
+  ],
+  "form:fr:chien": [
+   {
+    "shown": "dog",
+    "v": "ok"
+   }
+  ],
+  "form:fr:chocolat": [
+   {
+    "shown": "chocolate",
+    "v": "ok"
+   }
+  ],
+  "form:fr:chose": [
+   {
+    "shown": "thing",
+    "v": "ok"
+   }
+  ],
+  "form:fr:chêne": [
+   {
+    "shown": "oak (tree), oak tree",
+    "v": "ok"
+   }
+  ],
+  "form:fr:chômage": [
+   {
+    "shown": "idleness",
+    "v": "false-meaning",
+    "note": "chômage is unemployment, not idleness"
+   },
+   {
+    "shown": "unemployment",
+    "v": "ok"
+   }
+  ],
+  "form:fr:ciel": [
+   {
+    "shown": "sky",
+    "v": "ok"
+   }
+  ],
+  "form:fr:cinq": [
+   {
+    "shown": "five",
+    "v": "ok"
+   }
+  ],
+  "form:fr:cinquante": [
+   {
+    "shown": "fifty",
+    "v": "ok"
+   }
+  ],
+  "form:fr:cinéma": [
+   {
+    "shown": "cinema",
+    "v": "ok"
+   }
+  ],
+  "form:fr:classement": [
+   {
+    "shown": "ranking",
+    "v": "ok"
+   }
+  ],
+  "form:fr:clavier": [
+   {
+    "shown": "keyboard (of a computer)",
+    "v": "ok"
+   }
+  ],
+  "form:fr:colis": [
+   {
+    "shown": "parcel, package",
+    "v": "ok"
+   }
+  ],
+  "form:fr:colline": [
+   {
+    "shown": "hill, downs",
+    "v": "ok"
+   }
+  ],
+  "form:fr:collègue": [
+   {
+    "shown": "colleague",
+    "v": "ok"
+   }
+  ],
+  "form:fr:commun": [
+   {
+    "shown": "common (shared)",
+    "v": "ok"
+   },
+   {
+    "shown": "common",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
+   }
+  ],
+  "form:fr:complètement": [
+   {
+    "shown": "completely",
+    "v": "ok"
+   }
+  ],
+  "form:fr:conseil": [
+   {
+    "shown": "advice; council",
+    "v": "ok"
+   },
+   {
+    "shown": "piece of advice",
+    "v": "ok"
+   }
+  ],
+  "form:fr:conserver": [
+   {
+    "shown": "to keep (in a particular place)",
+    "v": "ok"
+   },
+   {
+    "shown": "to keep, to preserve",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
+   }
+  ],
+  "form:fr:consommation": [
+   {
+    "shown": "consumption",
+    "v": "ok"
+   }
+  ],
+  "form:fr:correspondance": [
+   {
+    "shown": "correspondence",
+    "v": "ok"
+   }
+  ],
+  "form:fr:coucher": [
+   {
+    "shown": "to lay, to lay down",
+    "v": "ok"
+   }
+  ],
+  "form:fr:cour": [
+   {
+    "shown": "courtyard,",
+    "v": "ok"
+   },
+   {
+    "shown": "yard, court",
+    "v": "ok"
+   }
+  ],
+  "form:fr:courir": [
+   {
+    "shown": "to run",
+    "v": "ok"
+   }
+  ],
+  "form:fr:courses": [
+   {
+    "shown": "shopping, usually for groceries",
+    "v": "ok"
+   }
+  ],
+  "form:fr:cousin": [
+   {
+    "shown": "cousin (male)",
+    "v": "ok"
+   }
+  ],
+  "form:fr:création": [
+   {
+    "shown": "creation",
+    "v": "ok"
+   }
+  ],
+  "form:fr:cuillère": [
+   {
+    "shown": "spoon",
+    "v": "ok"
+   }
+  ],
+  "form:fr:cuire": [
+   {
+    "shown": "to cook",
+    "v": "ok"
+   }
+  ],
+  "form:fr:cyclable": [
+   {
+    "shown": "bicycle",
+    "v": "ok"
+   }
+  ],
+  "form:fr:côte": [
+   {
+    "shown": "rib (bone)",
+    "v": "ok"
+   },
+   {
+    "shown": "coast; rib",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
+   }
+  ],
+  "form:fr:côté": [
+   {
+    "shown": "side",
+    "v": "ok"
+   }
+  ],
+  "form:fr:dame": [
+   {
+    "shown": "lady",
+    "v": "ok"
+   }
+  ],
+  "form:fr:dans": [
+   {
+    "shown": "in",
+    "v": "ok"
+   }
+  ],
+  "form:fr:davantage": [
+   {
+    "shown": "more",
+    "v": "ok"
+   }
+  ],
+  "form:fr:demain": [
+   {
+    "shown": "tomorrow",
+    "v": "ok"
+   }
+  ],
+  "form:fr:demi-heure": [
+   {
+    "shown": "half an hour; thirty minutes",
+    "v": "ok"
+   }
+  ],
+  "form:fr:dent": [
+   {
+    "shown": "tooth",
+    "v": "ok"
+   }
+  ],
+  "form:fr:dentiste": [
+   {
+    "shown": "dentist",
+    "v": "ok"
+   }
+  ],
+  "form:fr:depuis": [
+   {
+    "shown": "since",
+    "v": "ok"
+   }
+  ],
+  "form:fr:dernier": [
+   {
+    "shown": "last",
+    "v": "ok"
+   }
+  ],
+  "form:fr:deux": [
+   {
+    "shown": "two",
+    "v": "ok"
+   }
+  ],
+  "form:fr:devenir": [
+   {
+    "shown": "to become",
+    "v": "ok"
+   }
+  ],
+  "form:fr:dimanche": [
+   {
+    "shown": "Sunday",
+    "v": "ok"
+   }
+  ],
+  "form:fr:dire": [
+   {
+    "shown": "to say",
+    "v": "ok"
+   }
+  ],
+  "form:fr:dix": [
+   {
+    "shown": "ten",
+    "v": "ok"
+   }
+  ],
+  "form:fr:dix-sept": [
+   {
+    "shown": "seventeen",
+    "v": "ok"
+   }
+  ],
+  "form:fr:docteur": [
+   {
+    "shown": "a doctor (physician)",
+    "v": "ok"
+   },
+   {
+    "shown": "doctor",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
+   }
+  ],
+  "form:fr:dont": [
+   {
+    "shown": "of/from whom/which, whose; whereof",
+    "v": "ok"
+   },
+   {
+    "shown": "whose, of which, of whom",
+    "v": "ok"
+   }
+  ],
+  "form:fr:dormir": [
+   {
+    "shown": "to sleep",
+    "v": "ok"
+   }
+  ],
+  "form:fr:douane": [
+   {
+    "shown": "customs",
+    "v": "ok"
+   },
+   {
+    "shown": "customs office",
+    "v": "ok"
+   }
+  ],
+  "form:fr:doux": [
+   {
+    "shown": "sweet",
+    "v": "ok"
+   }
+  ],
+  "form:fr:dur": [
+   {
+    "shown": "hard, tough (difficult to penetrate)",
+    "v": "ok"
+   }
+  ],
+  "form:fr:dès": [
+   {
+    "shown": "Audio (France (Vosges)): (file)",
+    "v": "unknown",
+    "note": "shown is a dictionary audio-file artefact, not a meaning (dès = from, as early as)"
+   }
+  ],
+  "form:fr:début": [
+   {
+    "shown": "beginning",
+    "v": "ok"
+   },
+   {
+    "shown": "start, beginning",
+    "v": "ok"
+   }
+  ],
+  "form:fr:décomposer": [
+   {
+    "shown": "to decompose",
+    "v": "ok"
+   }
+  ],
+  "form:fr:déjà": [
+   {
+    "shown": "already, before",
+    "v": "ok"
+   }
+  ],
+  "form:fr:désolé": [
+   {
+    "shown": "desolate, forsaken",
+    "v": "false-meaning",
+    "note": "désolé ordinarily means sorry (as in the sentence); desolate is a rare sense"
+   },
+   {
+    "shown": "sorry",
+    "v": "ok"
+   }
+  ],
+  "form:fr:désormais": [
+   {
+    "shown": "from now on",
+    "v": "ok"
+   },
+   {
+    "shown": "henceforth, from now on",
+    "v": "ok"
+   }
+  ],
+  "form:fr:eau": [
+   {
+    "shown": "In particular, rain",
+    "v": "false-meaning",
+    "note": "eau is water; the shown gloss is a garbled fragment"
+   },
+   {
+    "shown": "water",
+    "v": "ok"
+   }
+  ],
+  "form:fr:elle": [
+   {
+    "shown": "she",
+    "v": "ok"
+   }
+  ],
+  "form:fr:emprunter": [
+   {
+    "shown": "to borrow (~ à (“from",
+    "v": "ok"
+   }
+  ],
+  "form:fr:encore": [
+   {
+    "shown": "still",
+    "v": "ok"
+   }
+  ],
+  "form:fr:endroit": [
+   {
+    "shown": "place, spot (specified area)",
+    "v": "ok"
+   }
+  ],
+  "form:fr:enfant": [
+   {
+    "shown": "child",
+    "v": "ok"
+   }
+  ],
+  "form:fr:enfin": [
+   {
+    "shown": "finally; in the end",
+    "v": "ok"
+   },
+   {
+    "shown": "at last, finally",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
+   }
+  ],
+  "form:fr:ensuite": [
+   {
+    "shown": "in turn, subsequently, thereafter, then",
+    "v": "ok"
+   }
+  ],
+  "form:fr:entrepôt": [
+   {
+    "shown": "warehouse; storehouse",
+    "v": "ok"
+   }
+  ],
+  "form:fr:environ": [
+   {
+    "shown": "about, close to, around",
+    "v": "ok"
+   }
+  ],
+  "form:fr:envoyer": [
+   {
+    "shown": "to send",
+    "v": "ok"
+   }
+  ],
+  "form:fr:escalier": [
+   {
+    "shown": "staircase",
+    "v": "ok"
+   },
+   {
+    "shown": "step, stair",
+    "v": "ok"
+   }
+  ],
+  "form:fr:espace": [
+   {
+    "shown": "space",
+    "v": "ok"
+   }
+  ],
+  "form:fr:espèce": [
+   {
+    "shown": "species, kind",
+    "v": "ok"
+   }
+  ],
+  "form:fr:et": [
+   {
+    "shown": "and",
+    "v": "ok"
+   }
+  ],
+  "form:fr:expérience": [
+   {
+    "shown": "experience",
+    "v": "ok"
+   }
+  ],
+  "form:fr:facteur": [
+   {
+    "shown": "factor; element",
+    "v": "ok"
+   },
+   {
+    "shown": "postman; maker",
+    "v": "ok"
+   }
+  ],
+  "form:fr:faible": [
+   {
+    "shown": "weak",
+    "v": "ok"
+   }
+  ],
+  "form:fr:faire": [
+   {
+    "shown": "to do",
+    "v": "ok"
+   }
+  ],
+  "form:fr:famille": [
+   {
+    "shown": "family (group of related people)",
+    "v": "ok"
+   },
+   {
+    "shown": "family",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
+   }
+  ],
+  "form:fr:farine": [
+   {
+    "shown": "flour, specifically wheat flour",
+    "v": "ok"
+   }
+  ],
+  "form:fr:fauteuil": [
+   {
+    "shown": "armchair",
+    "v": "ok"
+   }
+  ],
+  "form:fr:fenêtre": [
+   {
+    "shown": "window",
+    "v": "ok"
+   }
+  ],
+  "form:fr:fermer": [
+   {
+    "shown": "to close, to shut",
+    "v": "ok"
+   }
+  ],
+  "form:fr:feu": [
+   {
+    "shown": "fire",
+    "v": "ok"
+   }
+  ],
+  "form:fr:fièvre": [
+   {
+    "shown": "fever",
+    "v": "ok"
+   }
+  ],
+  "form:fr:forêt": [
+   {
+    "shown": "forest",
+    "v": "ok"
+   }
+  ],
+  "form:fr:frais": [
+   {
+    "shown": "fresh (recently produced, unspoiled)",
+    "v": "ok"
+   },
+   {
+    "shown": "fresh, cool",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
+   }
+  ],
+  "form:fr:frigo": [
+   {
+    "shown": "fridge; refrigerator",
+    "v": "ok"
+   }
+  ],
+  "form:fr:froid": [
+   {
+    "shown": "cold (temperature)",
+    "v": "ok"
+   },
+   {
+    "shown": "cold",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
+   }
+  ],
+  "form:fr:fromage": [
+   {
+    "shown": "cheese",
+    "v": "ok"
+   }
+  ],
+  "form:fr:fumer": [
+   {
+    "shown": "to smoke",
+    "v": "ok"
+   }
+  ],
+  "form:fr:gardien": [
+   {
+    "shown": "guardian, warden (protector)",
+    "v": "ok"
+   }
+  ],
+  "form:fr:gare": [
+   {
+    "shown": "railway station",
+    "v": "ok"
+   },
+   {
+    "shown": "station",
+    "v": "ok"
+   }
+  ],
+  "form:fr:gaz": [
+   {
+    "shown": "gas",
+    "v": "ok"
+   }
+  ],
+  "form:fr:glace": [
+   {
+    "shown": "ice",
+    "v": "ok"
+   }
+  ],
+  "form:fr:gouvernement": [
+   {
+    "shown": "government",
+    "v": "ok"
+   }
+  ],
+  "form:fr:grand-mère": [
+   {
+    "shown": "grandmother",
+    "v": "ok"
+   }
+  ],
+  "form:fr:grand-père": [
+   {
+    "shown": "grandfather",
+    "v": "ok"
+   }
+  ],
+  "form:fr:gratuitement": [
+   {
+    "shown": "freely, for free",
+    "v": "ok"
+   }
+  ],
+  "form:fr:grenouille": [
+   {
+    "shown": "frog",
+    "v": "ok"
+   }
+  ],
+  "form:fr:grâce": [
+   {
+    "shown": "grace, charm",
+    "v": "ok"
+   }
+  ],
+  "form:fr:guitare": [
+   {
+    "shown": "guitar",
+    "v": "ok"
+   }
+  ],
+  "form:fr:gâteau": [
+   {
+    "shown": "a cookie",
+    "v": "false-meaning",
+    "note": "gâteau is cake; cookie is wrong"
+   },
+   {
+    "shown": "cake",
+    "v": "ok"
+   }
+  ],
+  "form:fr:heure": [
+   {
+    "shown": "hour, time",
+    "v": "ok"
+   }
+  ],
+  "form:fr:hier": [
+   {
+    "shown": "yesterday",
+    "v": "ok"
+   }
+  ],
+  "form:fr:histoire": [
+   {
+    "shown": "story",
+    "v": "ok"
+   },
+   {
+    "shown": "history; story",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
+   }
+  ],
+  "form:fr:histoires": [
+   {
+    "shown": "a scene",
+    "v": "false-meaning",
+    "note": "histoire is story/history; a scene is not its main meaning"
+   }
+  ],
+  "form:fr:hiver": [
+   {
+    "shown": "winter",
+    "v": "ok"
+   }
+  ],
+  "form:fr:homme": [
+   {
+    "shown": "man; human being",
+    "v": "ok"
+   }
+  ],
+  "form:fr:huile": [
+   {
+    "shown": "oil (liquid fat)",
+    "v": "ok"
+   },
+   {
+    "shown": "oil",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
+   }
+  ],
+  "form:fr:huit": [
+   {
+    "shown": "eight",
+    "v": "ok"
+   }
+  ],
+  "form:fr:hélène": [
+   {
+    "shown": "Helen",
+    "v": "ok"
+   },
+   {
+    "shown": "a female given name",
+    "v": "ok"
+   }
+  ],
+  "form:fr:hôpital": [
+   {
+    "shown": "hospital",
+    "v": "ok"
+   }
+  ],
+  "form:fr:ici": [
+   {
+    "shown": "here",
+    "v": "ok"
+   }
+  ],
+  "form:fr:identité": [
+   {
+    "shown": "identity",
+    "v": "ok"
+   }
+  ],
+  "form:fr:il": [
+   {
+    "shown": "Impersonal subject; it",
+    "v": "ok"
+   },
+   {
+    "shown": "he, it",
+    "v": "ok"
+   }
+  ],
+  "form:fr:inquiet": [
+   {
+    "shown": "worried",
+    "v": "ok"
+   }
+  ],
+  "form:fr:institut": [
+   {
+    "shown": "institute",
+    "v": "ok"
+   }
+  ],
+  "form:fr:isoler": [
+   {
+    "shown": "to isolate",
+    "v": "ok"
+   }
+  ],
+  "form:fr:jamais": [
+   {
+    "shown": "never",
+    "v": "ok"
+   }
+  ],
+  "form:fr:jambe": [
+   {
+    "shown": "leg",
+    "v": "ok"
+   }
+  ],
+  "form:fr:jardin": [
+   {
+    "shown": "garden",
+    "v": "ok"
+   }
+  ],
+  "form:fr:jaune": [
+   {
+    "shown": "yellow",
+    "v": "ok"
+   }
+  ],
+  "form:fr:je": [
+   {
+    "shown": "I",
+    "v": "ok"
+   }
+  ],
+  "form:fr:jour": [
+   {
+    "shown": "day",
+    "v": "ok"
+   }
+  ],
+  "form:fr:journée": [
+   {
+    "shown": "day",
+    "v": "ok"
+   }
+  ],
+  "form:fr:joyeux": [
+   {
+    "shown": "joyful, happy",
+    "v": "ok"
+   }
+  ],
+  "form:fr:juin": [
+   {
+    "shown": "June",
+    "v": "ok"
+   }
+  ],
+  "form:fr:jus": [
+   {
+    "shown": "juice",
+    "v": "ok"
+   }
+  ],
+  "form:fr:jusque": [
+   {
+    "shown": "until, up to",
+    "v": "ok"
+   }
+  ],
+  "form:fr:juste": [
+   {
+    "shown": "fair, just",
+    "v": "ok"
+   }
+  ],
+  "form:fr:justement": [
+   {
+    "shown": "precisely, exactly; accurately",
+    "v": "ok"
+   }
+  ],
+  "form:fr:l'": [
+   {
+    "shown": "apocopic form of le, la: the",
+    "v": "ok"
+   }
+  ],
+  "form:fr:lac": [
+   {
+    "shown": "lake",
+    "v": "ok"
+   }
+  ],
+  "form:fr:lait": [
+   {
+    "shown": "milk",
+    "v": "ok"
+   }
+  ],
+  "form:fr:lancer": [
+   {
+    "shown": "to throw",
+    "v": "ok"
+   }
+  ],
+  "form:fr:laver": [
+   {
+    "shown": "to wash",
+    "v": "ok"
+   }
+  ],
+  "form:fr:lendemain": [
+   {
+    "shown": "the day after, the next day",
+    "v": "ok"
+   }
+  ],
+  "form:fr:lentement": [
+   {
+    "shown": "slowly",
+    "v": "ok"
+   }
+  ],
+  "form:fr:lever": [
+   {
+    "shown": "to raise, lift",
+    "v": "ok"
+   }
+  ],
+  "form:fr:libre": [
+   {
+    "shown": "free, at liberty",
+    "v": "ok"
+   }
+  ],
+  "form:fr:linge": [
+   {
+    "shown": "linen",
+    "v": "ok"
+   }
+  ],
+  "form:fr:locataire": [
+   {
+    "shown": "renter, tenant, lessee",
+    "v": "ok"
+   }
+  ],
+  "form:fr:longtemps": [
+   {
+    "shown": "for a long time",
+    "v": "ok"
+   }
+  ],
+  "form:fr:louer": [
+   {
+    "shown": "to rent",
+    "v": "ok"
+   }
+  ],
+  "form:fr:lui": [
+   {
+    "shown": "him, he, it",
+    "v": "ok"
+   }
+  ],
+  "form:fr:lumineux": [
+   {
+    "shown": "bright, luminous",
+    "v": "ok"
+   }
+  ],
+  "form:fr:lundi": [
+   {
+    "shown": "Monday",
+    "v": "ok"
+   }
+  ],
+  "form:fr:là": [
+   {
+    "shown": "referring to physical place — there",
+    "v": "ok"
+   }
+  ],
+  "form:fr:légèrement": [
+   {
+    "shown": "lightly",
+    "v": "ok"
+   },
+   {
+    "shown": "slightly, lightly",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
+   }
+  ],
+  "form:fr:madame": [
+   {
+    "shown": "madam, Mrs. or Ms.",
+    "v": "ok"
+   }
+  ],
+  "form:fr:magasin": [
+   {
+    "shown": "shop, store",
+    "v": "ok"
+   }
+  ],
+  "form:fr:magnifique": [
+   {
+    "shown": "magnificent, splendid, superb",
+    "v": "ok"
+   }
+  ],
+  "form:fr:main": [
+   {
+    "shown": "hand",
+    "v": "ok"
+   }
+  ],
+  "form:fr:maire": [
+   {
+    "shown": "mayor",
+    "v": "ok"
+   }
+  ],
+  "form:fr:mairie": [
+   {
+    "shown": "mayor’s office, mayoralty",
+    "v": "ok"
+   },
+   {
+    "shown": "town hall",
+    "v": "ok"
+   }
+  ],
+  "form:fr:mais": [
+   {
+    "shown": "but, although",
+    "v": "ok"
+   }
+  ],
+  "form:fr:maison": [
+   {
+    "shown": "house",
+    "v": "ok"
+   }
+  ],
+  "form:fr:malheureusement": [
+   {
+    "shown": "unfortunately",
+    "v": "ok"
+   }
+  ],
+  "form:fr:manger": [
+   {
+    "shown": "to eat",
+    "v": "ok"
+   }
+  ],
+  "form:fr:manteau": [
+   {
+    "shown": "coat",
+    "v": "ok"
+   }
+  ],
+  "form:fr:marcher": [
+   {
+    "shown": "to walk",
+    "v": "ok"
+   }
+  ],
+  "form:fr:mardi": [
+   {
+    "shown": "Tuesday",
+    "v": "ok"
+   }
+  ],
+  "form:fr:matin": [
+   {
+    "shown": "morning",
+    "v": "ok"
+   }
+  ],
+  "form:fr:maîtresse": [
+   {
+    "shown": "mistress",
+    "v": "ok"
+   }
+  ],
+  "form:fr:merci": [
+   {
+    "shown": "thank you",
+    "v": "ok"
+   }
+  ],
+  "form:fr:mieux": [
+   {
+    "shown": "better",
+    "v": "ok"
+   },
+   {
+    "shown": "more, -er.",
+    "v": "false-meaning",
+    "note": "mieux is better; the gloss is garbled"
+   }
+  ],
+  "form:fr:mijoter": [
+   {
+    "shown": "to simmer",
+    "v": "ok"
+   }
+  ],
+  "form:fr:mille": [
+   {
+    "shown": "thousand, one thousand, a thousand",
+    "v": "ok"
+   }
+  ],
+  "form:fr:minuit": [
+   {
+    "shown": "midnight",
+    "v": "ok"
+   }
+  ],
+  "form:fr:moins": [
+   {
+    "shown": "less",
+    "v": "ok"
+   },
+   {
+    "shown": "minus; negative",
+    "v": "false-meaning",
+    "note": "moins means less; 'minus; negative' is a technical sense"
+   }
+  ],
+  "form:fr:mois": [
+   {
+    "shown": "month",
+    "v": "ok"
+   }
+  ],
+  "form:fr:monde": [
+   {
+    "shown": "world",
+    "v": "ok"
+   }
+  ],
+  "form:fr:monnaie": [
+   {
+    "shown": "change (money back after a transaction)",
+    "v": "ok"
+   },
+   {
+    "shown": "change, currency",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
+   }
+  ],
+  "form:fr:montagne": [
+   {
+    "shown": "mountain",
+    "v": "ok"
+   }
+  ],
+  "form:fr:monter": [
+   {
+    "shown": "to go up",
+    "v": "ok"
+   }
+  ],
+  "form:fr:mot": [
+   {
+    "shown": "word",
+    "v": "ok"
+   }
+  ],
+  "form:fr:mur": [
+   {
+    "shown": "wall",
+    "v": "ok"
+   }
+  ],
+  "form:fr:musée": [
+   {
+    "shown": "a male given name",
+    "v": "false-meaning",
+    "note": "musée is museum, not a given name"
+   },
+   {
+    "shown": "museum",
+    "v": "ok"
+   }
+  ],
+  "form:fr:mère": [
+   {
+    "shown": "mother",
+    "v": "ok"
+   }
+  ],
+  "form:fr:médicament": [
+   {
+    "shown": "medicine",
+    "v": "ok"
+   }
+  ],
+  "form:fr:méthode": [
+   {
+    "shown": "method",
+    "v": "ok"
+   }
+  ],
+  "form:fr:métro": [
+   {
+    "shown": "metro",
+    "v": "ok"
+   },
+   {
+    "shown": "underground",
+    "v": "ok"
+   }
+  ],
+  "form:fr:nager": [
+   {
+    "shown": "to swim",
+    "v": "ok"
+   }
+  ],
+  "form:fr:ne": [
+   {
+    "shown": "not",
+    "v": "ok"
+   }
+  ],
+  "form:fr:nettement": [
+   {
+    "shown": "clearly, sharply",
+    "v": "ok"
+   },
+   {
+    "shown": "neatly, cleanly, clearly",
+    "v": "ok"
+   }
+  ],
+  "form:fr:noir": [
+   {
+    "shown": "black in colour",
+    "v": "ok"
+   },
+   {
+    "shown": "black, dark",
+    "v": "ok"
+   }
+  ],
+  "form:fr:nom": [
+   {
+    "shown": "name",
+    "v": "ok"
+   }
+  ],
+  "form:fr:nombre": [
+   {
+    "shown": "number",
+    "v": "ok"
+   }
+  ],
+  "form:fr:nombreux": [
+   {
+    "shown": "numerous, many",
+    "v": "ok"
+   }
+  ],
+  "form:fr:normalement": [
+   {
+    "shown": "in theory",
+    "v": "false-meaning",
+    "note": "normalement means normally; 'in theory' is not its meaning"
+   },
+   {
+    "shown": "normally",
+    "v": "ok"
+   }
+  ],
+  "form:fr:notre": [
+   {
+    "shown": "our",
+    "v": "ok"
+   }
+  ],
+  "form:fr:nouveau": [
+   {
+    "shown": "new, novel",
+    "v": "ok"
+   }
+  ],
+  "form:fr:noël": [
+   {
+    "shown": "A Christmas gift.",
+    "v": "false-meaning",
+    "note": "Noël is Christmas, not 'a Christmas gift'"
+   }
+  ],
+  "form:fr:obtenir": [
+   {
+    "shown": "to get, to obtain",
+    "v": "ok"
+   },
+   {
+    "shown": "to obtain, to get",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
+   }
+  ],
+  "form:fr:office": [
+   {
+    "shown": "charge, task, mandate",
+    "v": "false-meaning",
+    "note": "office in office du tourisme is a bureau/office; 'charge, task, mandate' is a marginal sense"
+   },
+   {
+    "shown": "administrative bureau, department",
+    "v": "ok"
+   }
+  ],
+  "form:fr:oignon": [
+   {
+    "shown": "onion (Allium cepa)",
+    "v": "ok"
+   }
+  ],
+  "form:fr:on": [
+   {
+    "shown": "one, people, you",
+    "v": "ok"
+   }
+  ],
+  "form:fr:oncle": [
+   {
+    "shown": "uncle",
+    "v": "ok"
+   }
+  ],
+  "form:fr:ordinateur": [
+   {
+    "shown": "a computer, a computing device.",
+    "v": "ok"
+   }
+  ],
+  "form:fr:ou": [
+   {
+    "shown": "or",
+    "v": "ok"
+   }
+  ],
+  "form:fr:ouest": [
+   {
+    "shown": "west",
+    "v": "ok"
+   }
+  ],
+  "form:fr:oui": [
+   {
+    "shown": "yes",
+    "v": "ok"
+   }
+  ],
+  "form:fr:ouverture": [
+   {
+    "shown": "opening",
+    "v": "ok"
+   }
+  ],
+  "form:fr:ouvrir": [
+   {
+    "shown": "to open",
+    "v": "ok"
+   }
+  ],
+  "form:fr:où": [
+   {
+    "shown": "where (interrogative)",
+    "v": "ok"
+   },
+   {
+    "shown": "where; when, in which",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
+   }
+  ],
+  "form:fr:pain": [
+   {
+    "shown": "bread",
+    "v": "ok"
+   }
+  ],
+  "form:fr:panne": [
+   {
+    "shown": "plush velvet",
+    "v": "false-meaning",
+    "note": "panne means breakdown/failure; plush velvet is a rare textile sense"
+   },
+   {
+    "shown": "breakdown (state of no longer functioning)",
+    "v": "ok"
+   }
+  ],
+  "form:fr:paquet": [
+   {
+    "shown": "packet",
+    "v": "ok"
+   }
+  ],
+  "form:fr:par": [
+   {
+    "shown": "through",
+    "v": "ok"
+   },
+   {
+    "shown": "by, through, per",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
+   }
+  ],
+  "form:fr:parapluie": [
+   {
+    "shown": "umbrella for rain",
+    "v": "ok"
+   }
+  ],
+  "form:fr:parc": [
+   {
+    "shown": "park",
+    "v": "ok"
+   }
+  ],
+  "form:fr:parfois": [
+   {
+    "shown": "sometimes",
+    "v": "ok"
+   }
+  ],
+  "form:fr:parrain": [
+   {
+    "shown": "godfather; masculine of marraine",
+    "v": "ok"
+   }
+  ],
+  "form:fr:partir": [
+   {
+    "shown": "to share, to share out",
+    "v": "false-meaning",
+    "note": "partir is to leave/depart; to share out is archaic"
+   }
+  ],
+  "form:fr:paul": [
+   {
+    "shown": "Paul (biblical figure)",
+    "v": "ok"
+   }
+  ],
+  "form:fr:pays": [
+   {
+    "shown": "country",
+    "v": "ok"
+   },
+   {
+    "shown": "land",
+    "v": "ok"
+   }
+  ],
+  "form:fr:paysage": [
+   {
+    "shown": "countryside",
+    "v": "ok"
+   },
+   {
+    "shown": "landscape",
+    "v": "ok"
+   }
+  ],
+  "form:fr:peindre": [
+   {
+    "shown": "to paint",
+    "v": "ok"
+   }
+  ],
+  "form:fr:peine": [
+   {
+    "shown": "punishment",
+    "v": "ok"
+   },
+   {
+    "shown": "sorrow; effort; punishment",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
+   }
+  ],
+  "form:fr:personnel": [
+   {
+    "shown": "personal",
+    "v": "ok"
+   }
+  ],
+  "form:fr:petit": [
+   {
+    "shown": "small",
+    "v": "ok"
+   }
+  ],
+  "form:fr:peu": [
+   {
+    "shown": "little; not very much/many",
+    "v": "ok"
+   }
+  ],
+  "form:fr:pharmacie": [
+   {
+    "shown": "pharmacy, drugstore",
+    "v": "ok"
+   }
+  ],
+  "form:fr:photographier": [
+   {
+    "shown": "to photograph",
+    "v": "ok"
+   }
+  ],
+  "form:fr:piscine": [
+   {
+    "shown": "swimming pool",
+    "v": "ok"
+   }
+  ],
+  "form:fr:plafond": [
+   {
+    "shown": "ceiling",
+    "v": "ok"
+   }
+  ],
+  "form:fr:plage": [
+   {
+    "shown": "beach",
+    "v": "ok"
+   }
+  ],
+  "form:fr:planète": [
+   {
+    "shown": "planet",
+    "v": "ok"
+   }
+  ],
+  "form:fr:pluie": [
+   {
+    "shown": "rain",
+    "v": "ok"
+   }
+  ],
+  "form:fr:plutôt": [
+   {
+    "shown": "earlier, sooner",
+    "v": "false-meaning",
+    "note": "plutôt is rather; earlier/sooner is not its meaning"
+   },
+   {
+    "shown": "rather",
+    "v": "ok"
+   }
+  ],
+  "form:fr:pneu": [
+   {
+    "shown": "tyre, tire",
+    "v": "ok"
+   }
+  ],
+  "form:fr:poireau": [
+   {
+    "shown": "leek (Allium ampeloprasum, syn. Allium porrum)",
+    "v": "ok"
+   }
+  ],
+  "form:fr:poisson": [
+   {
+    "shown": "fish (marine animal)",
+    "v": "ok"
+   },
+   {
+    "shown": "fish",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
+   }
+  ],
+  "form:fr:pompier": [
+   {
+    "shown": "firefighter",
+    "v": "ok"
+   },
+   {
+    "shown": "fireman, firefighter",
+    "v": "ok"
+   }
+  ],
+  "form:fr:pont": [
+   {
+    "shown": "bridge",
+    "v": "ok"
+   }
+  ],
+  "form:fr:porter": [
+   {
+    "shown": "to carry",
+    "v": "ok"
+   }
+  ],
+  "form:fr:pour": [
+   {
+    "shown": "for (meant for, intended for)",
+    "v": "ok"
+   },
+   {
+    "shown": "for, in order to",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
+   }
+  ],
+  "form:fr:pourquoi": [
+   {
+    "shown": "why",
+    "v": "ok"
+   }
+  ],
+  "form:fr:pourtant": [
+   {
+    "shown": "however, yet",
+    "v": "ok"
+   },
+   {
+    "shown": "yet, however",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
+   }
+  ],
+  "form:fr:premier": [
+   {
+    "shown": "first",
+    "v": "ok"
+   }
+  ],
+  "form:fr:prendre": [
+   {
+    "shown": "to take",
+    "v": "ok"
+   }
+  ],
+  "form:fr:prescrire": [
+   {
+    "shown": "to prescribe (a medication)",
+    "v": "ok"
+   },
+   {
+    "shown": "to prescribe",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
+   }
+  ],
+  "form:fr:presque": [
+   {
+    "shown": "almost",
+    "v": "ok"
+   }
+  ],
+  "form:fr:presser": [
+   {
+    "shown": "to press, to hurry",
+    "v": "ok"
+   },
+   {
+    "shown": "to urge",
+    "v": "ok"
+   }
+  ],
+  "form:fr:primaire": [
+   {
+    "shown": "primary",
+    "v": "ok"
+   }
+  ],
+  "form:fr:prix": [
+   {
+    "shown": "prize",
+    "v": "ok"
+   },
+   {
+    "shown": "price; prize",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
+   }
+  ],
+  "form:fr:prochain": [
+   {
+    "shown": "next",
+    "v": "ok"
+   },
+   {
+    "shown": "upcoming",
+    "v": "ok"
+   }
+  ],
+  "form:fr:proche": [
+   {
+    "shown": "close, near, closeby",
+    "v": "ok"
+   },
+   {
+    "shown": "near, close",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
+   }
+  ],
+  "form:fr:propre": [
+   {
+    "shown": "clean; own",
+    "v": "ok"
+   }
+  ],
+  "form:fr:préparer": [
+   {
+    "shown": "to prepare",
+    "v": "ok"
+   }
+  ],
+  "form:fr:présentation": [
+   {
+    "shown": "the act of presenting",
+    "v": "ok"
+   }
+  ],
+  "form:fr:présenter": [
+   {
+    "shown": "to present, to introduce",
+    "v": "ok"
+   }
+  ],
+  "form:fr:prévenir": [
+   {
+    "shown": "to prevent, to avert",
+    "v": "ok"
+   }
+  ],
+  "form:fr:pâte": [
+   {
+    "shown": "paste (a soft moist mixture)",
+    "v": "ok"
+   },
+   {
+    "shown": "dough, paste",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
+   }
+  ],
+  "form:fr:pâtisserie": [
+   {
+    "shown": "cakeshop",
+    "v": "ok"
+   }
+  ],
+  "form:fr:père": [
+   {
+    "shown": "father (parent)",
+    "v": "ok"
+   },
+   {
+    "shown": "father",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
+   }
+  ],
+  "form:fr:période": [
+   {
+    "shown": "period; as in interval of time",
+    "v": "ok"
+   }
+  ],
+  "form:fr:quarante": [
+   {
+    "shown": "forty",
+    "v": "ok"
+   }
+  ],
+  "form:fr:quartier": [
+   {
+    "shown": "district",
+    "v": "ok"
+   },
+   {
+    "shown": "quarter, district (part of town), neighbourhood",
+    "v": "ok"
+   }
+  ],
+  "form:fr:quatre": [
+   {
+    "shown": "four",
+    "v": "ok"
+   }
+  ],
+  "form:fr:quatre-vingts": [
+   {
+    "shown": "eighty, 80",
+    "v": "ok"
+   }
+  ],
+  "form:fr:question": [
+   {
+    "shown": "question (interrogation by torture)",
+    "v": "ok"
+   }
+  ],
+  "form:fr:qui": [
+   {
+    "shown": "who, whom",
+    "v": "ok"
+   }
+  ],
+  "form:fr:quinze": [
+   {
+    "shown": "fifteen",
+    "v": "ok"
+   }
+  ],
+  "form:fr:quitter": [
+   {
+    "shown": "to discharge somebody from an obligation",
+    "v": "false-meaning",
+    "note": "quitter is to leave; the shown sense is marginal/legal"
+   }
+  ],
+  "form:fr:raide": [
+   {
+    "shown": "stiff, straight",
+    "v": "ok"
+   }
+  ],
+  "form:fr:rallumer": [
+   {
+    "shown": "to relight",
+    "v": "ok"
+   }
+  ],
+  "form:fr:ranger": [
+   {
+    "shown": "to order, to arrange",
+    "v": "ok"
+   },
+   {
+    "shown": "to tidy, to put away",
+    "v": "ok"
+   }
+  ],
+  "form:fr:rapport": [
+   {
+    "shown": "ratio",
+    "v": "false-meaning",
+    "note": "rapport is report/relationship; ratio is secondary"
+   },
+   {
+    "shown": "report; relationship",
+    "v": "ok"
+   }
+  ],
+  "form:fr:rarement": [
+   {
+    "shown": "rarely, seldom",
+    "v": "ok"
+   }
+  ],
+  "form:fr:rayon": [
+   {
+    "shown": "ray, beam (of light, etc.)",
+    "v": "ok"
+   }
+  ],
+  "form:fr:recevoir": [
+   {
+    "shown": "to receive",
+    "v": "ok"
+   }
+  ],
+  "form:fr:redescendre": [
+   {
+    "shown": "to go down again",
+    "v": "ok"
+   }
+  ],
+  "form:fr:redémarrer": [
+   {
+    "shown": "to restart; to reboot",
+    "v": "ok"
+   }
+  ],
+  "form:fr:refroidir": [
+   {
+    "shown": "to cool",
+    "v": "ok"
+   },
+   {
+    "shown": "to lower the temperature of",
+    "v": "ok"
+   }
+  ],
+  "form:fr:remplir": [
+   {
+    "shown": "to fill",
+    "v": "ok"
+   }
+  ],
+  "form:fr:renard": [
+   {
+    "shown": "fox (small carnivore)",
+    "v": "ok"
+   },
+   {
+    "shown": "fox",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
+   }
+  ],
+  "form:fr:rendez-vous": [
+   {
+    "shown": "appointment",
+    "v": "ok"
+   },
+   {
+    "shown": "date",
+    "v": "false-meaning",
+    "note": "rendez-vous is an appointment/meeting; 'date' alone misleads"
+   }
+  ],
+  "form:fr:repas": [
+   {
+    "shown": "meal, repast",
+    "v": "ok"
+   }
+  ],
+  "form:fr:repasser": [
+   {
+    "shown": "to iron, to pass again",
+    "v": "ok"
+   }
+  ],
+  "form:fr:reposer": [
+   {
+    "shown": "to put down, to place",
+    "v": "false-meaning",
+    "note": "reposer ordinarily (se reposer) means to rest; put down is marginal here"
+   }
+  ],
+  "form:fr:rester": [
+   {
+    "shown": "to stay",
+    "v": "ok"
+   }
+  ],
+  "form:fr:retard": [
+   {
+    "shown": "delay",
+    "v": "ok"
+   }
+  ],
+  "form:fr:retirer": [
+   {
+    "shown": "to withdraw, to take off",
+    "v": "ok"
+   }
+  ],
+  "form:fr:retourner": [
+   {
+    "shown": "to turn over; to turn upside-down",
+    "v": "ok"
+   },
+   {
+    "shown": "to return, to turn over",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
+   }
+  ],
+  "form:fr:revenir": [
+   {
+    "shown": "to come back, to return",
+    "v": "ok"
+   }
+  ],
+  "form:fr:rien": [
+   {
+    "shown": "nothing",
+    "v": "ok"
+   }
+  ],
+  "form:fr:rue": [
+   {
+    "shown": "street, road",
+    "v": "ok"
+   }
+  ],
+  "form:fr:récréation": [
+   {
+    "shown": "recreation",
+    "v": "ok"
+   }
+  ],
+  "form:fr:réduire": [
+   {
+    "shown": "to reduce",
+    "v": "ok"
+   }
+  ],
+  "form:fr:région": [
+   {
+    "shown": "region; area",
+    "v": "ok"
+   }
+  ],
+  "form:fr:régional": [
+   {
+    "shown": "regional",
+    "v": "ok"
+   }
+  ],
+  "form:fr:rénovation": [
+   {
+    "shown": "renovation",
+    "v": "ok"
+   }
+  ],
+  "form:fr:rénover": [
+   {
+    "shown": "to renew, to renovate, to revitalize",
+    "v": "ok"
+   },
+   {
+    "shown": "to renovate",
+    "v": "ok"
+   }
+  ],
+  "form:fr:répéter": [
+   {
+    "shown": "to repeat",
+    "v": "ok"
+   }
+  ],
+  "form:fr:résonner": [
+   {
+    "shown": "to ring out, to resound",
+    "v": "ok"
+   }
+  ],
+  "form:fr:réunion": [
+   {
+    "shown": "meeting",
+    "v": "ok"
+   }
+  ],
+  "form:fr:sa": [
+   {
+    "shown": "his, her, its, their, one's",
+    "v": "ok"
+   }
+  ],
+  "form:fr:sac": [
+   {
+    "shown": "bag, sack",
+    "v": "ok"
+   }
+  ],
+  "form:fr:salade": [
+   {
+    "shown": "salad (raw vegetables in general)",
+    "v": "ok"
+   },
+   {
+    "shown": "salad; lettuce",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
+   }
+  ],
+  "form:fr:salle": [
+   {
+    "shown": "hall",
+    "v": "ok"
+   },
+   {
+    "shown": "room, hall",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
+   }
+  ],
+  "form:fr:samedi": [
+   {
+    "shown": "Saturday",
+    "v": "ok"
+   }
+  ],
+  "form:fr:santé": [
+   {
+    "shown": "health",
+    "v": "ok"
+   }
+  ],
+  "form:fr:sauf": [
+   {
+    "shown": "except, save",
+    "v": "ok"
+   }
+  ],
+  "form:fr:seize": [
+   {
+    "shown": "sixteen",
+    "v": "ok"
+   }
+  ],
+  "form:fr:sel": [
+   {
+    "shown": "salt",
+    "v": "ok"
+   },
+   {
+    "shown": "table salt, i.e. sodium chloride (NaCl)",
+    "v": "ok"
+   }
+  ],
+  "form:fr:selon": [
+   {
+    "shown": "according to; whichever applies; depending on",
+    "v": "ok"
+   }
+  ],
+  "form:fr:semaine": [
+   {
+    "shown": "week",
+    "v": "ok"
+   }
+  ],
+  "form:fr:sentier": [
+   {
+    "shown": "path; pathway",
+    "v": "ok"
+   }
+  ],
+  "form:fr:sentir": [
+   {
+    "shown": "to feel, to smell",
+    "v": "ok"
+   }
+  ],
+  "form:fr:sept": [
+   {
+    "shown": "seven",
+    "v": "ok"
+   }
+  ],
+  "form:fr:servir": [
+   {
+    "shown": "to be used for",
+    "v": "false-meaning",
+    "note": "servir is to serve; to be used for is a servir à sense"
+   },
+   {
+    "shown": "to serve",
+    "v": "ok"
+   }
+  ],
+  "form:fr:ses": [
+   {
+    "shown": "his, her, its, their",
+    "v": "ok"
+   }
+  ],
+  "form:fr:seulement": [
+   {
+    "shown": "only",
+    "v": "ok"
+   }
+  ],
+  "form:fr:soir": [
+   {
+    "shown": "evening",
+    "v": "ok"
+   }
+  ],
+  "form:fr:sol": [
+   {
+    "shown": "ground, floor",
+    "v": "ok"
+   }
+  ],
+  "form:fr:soleil": [
+   {
+    "shown": "sun (star)",
+    "v": "ok"
+   },
+   {
+    "shown": "sun",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
+   }
+  ],
+  "form:fr:sommet": [
+   {
+    "shown": "summit, peak",
+    "v": "ok"
+   }
+  ],
+  "form:fr:soupe": [
+   {
+    "shown": "soup",
+    "v": "ok"
+   }
+  ],
+  "form:fr:sous": [
+   {
+    "shown": "below, under",
+    "v": "ok"
+   },
+   {
+    "shown": "under, beneath",
+    "v": "ok"
+   }
+  ],
+  "form:fr:souvent": [
+   {
+    "shown": "often",
+    "v": "ok"
+   }
+  ],
+  "form:fr:stationnement": [
+   {
+    "shown": "parking",
+    "v": "ok"
+   },
+   {
+    "shown": "parking space",
+    "v": "ok"
+   }
+  ],
+  "form:fr:sucre": [
+   {
+    "shown": "sugar",
+    "v": "ok"
+   }
+  ],
+  "form:fr:sud": [
+   {
+    "shown": "south",
+    "v": "ok"
+   }
+  ],
+  "form:fr:sujet": [
+   {
+    "shown": "subject",
+    "v": "ok"
+   }
+  ],
+  "form:fr:supermarché": [
+   {
+    "shown": "supermarket",
+    "v": "ok"
+   }
+  ],
+  "form:fr:sur": [
+   {
+    "shown": "on, upon",
+    "v": "ok"
+   }
+  ],
+  "form:fr:surtout": [
+   {
+    "shown": "above all",
+    "v": "ok"
+   }
+  ],
+  "form:fr:sécher": [
+   {
+    "shown": "to dry",
+    "v": "ok"
+   }
+  ],
+  "form:fr:sécheresse": [
+   {
+    "shown": "dryness",
+    "v": "ok"
+   }
+  ],
+  "form:fr:sûr": [
+   {
+    "shown": "sure, certain",
+    "v": "ok"
+   }
+  ],
+  "form:fr:sœur": [
+   {
+    "shown": "nun",
+    "v": "false-meaning",
+    "note": "sœur is sister; nun is secondary"
+   },
+   {
+    "shown": "sister",
+    "v": "ok"
+   }
+  ],
+  "form:fr:ta": [
+   {
+    "shown": "your",
+    "v": "ok"
+   }
+  ],
+  "form:fr:table": [
+   {
+    "shown": "flat surface atop various objects",
+    "v": "ok"
+   }
+  ],
+  "form:fr:tante": [
+   {
+    "shown": "aunt",
+    "v": "ok"
+   }
+  ],
+  "form:fr:tard": [
+   {
+    "shown": "late",
+    "v": "ok"
+   }
+  ],
+  "form:fr:te": [
+   {
+    "shown": "you",
+    "v": "ok"
+   }
+  ],
+  "form:fr:tellement": [
+   {
+    "shown": "so; so much; very",
+    "v": "ok"
+   }
+  ],
+  "form:fr:temps": [
+   {
+    "shown": "time (in general)",
+    "v": "ok"
+   },
+   {
+    "shown": "time; weather",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
+   }
+  ],
+  "form:fr:tempête": [
+   {
+    "shown": "storm, tempest",
+    "v": "ok"
+   }
+  ],
+  "form:fr:terre": [
+   {
+    "shown": "earth; soil",
+    "v": "ok"
+   }
+  ],
+  "form:fr:tilleul": [
+   {
+    "shown": "linden, lime (tree)",
+    "v": "ok"
+   }
+  ],
+  "form:fr:ton": [
+   {
+    "shown": "your",
+    "v": "ok"
+   }
+  ],
+  "form:fr:toucher": [
+   {
+    "shown": "to touch (physically)",
+    "v": "ok"
+   },
+   {
+    "shown": "to touch",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
+   }
+  ],
+  "form:fr:toujours": [
+   {
+    "shown": "always",
+    "v": "ok"
+   }
+  ],
+  "form:fr:tourisme": [
+   {
+    "shown": "tourism",
+    "v": "ok"
+   }
+  ],
+  "form:fr:tournevis": [
+   {
+    "shown": "screwdriver",
+    "v": "ok"
+   }
+  ],
+  "form:fr:toux": [
+   {
+    "shown": "cough",
+    "v": "ok"
+   }
+  ],
+  "form:fr:train": [
+   {
+    "shown": "train (rail mounted vehicle)",
+    "v": "ok"
+   }
+  ],
+  "form:fr:trajet": [
+   {
+    "shown": "journey",
+    "v": "ok"
+   }
+  ],
+  "form:fr:travail": [
+   {
+    "shown": "work; labor",
+    "v": "ok"
+   }
+  ],
+  "form:fr:travailler": [
+   {
+    "shown": "to work",
+    "v": "ok"
+   }
+  ],
+  "form:fr:travaux": [
+   {
+    "shown": "roadwork",
+    "v": "ok"
+   }
+  ],
+  "form:fr:trente": [
+   {
+    "shown": "thirty",
+    "v": "ok"
+   }
+  ],
+  "form:fr:trente-cinq": [
+   {
+    "shown": "thirty-five",
+    "v": "ok"
+   }
+  ],
+  "form:fr:trimestre": [
+   {
+    "shown": "quarter (period of three months)",
+    "v": "ok"
+   }
+  ],
+  "form:fr:trois": [
+   {
+    "shown": "three",
+    "v": "ok"
+   }
+  ],
+  "form:fr:trop": [
+   {
+    "shown": "too; too much",
+    "v": "ok"
+   }
+  ],
+  "form:fr:trou": [
+   {
+    "shown": "hole",
+    "v": "ok"
+   }
+  ],
+  "form:fr:trouver": [
+   {
+    "shown": "to find",
+    "v": "ok"
+   }
+  ],
+  "form:fr:très": [
+   {
+    "shown": "very",
+    "v": "ok"
+   }
+  ],
+  "form:fr:tête": [
+   {
+    "shown": "head (part of the body)",
+    "v": "ok"
+   },
+   {
+    "shown": "head",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
+   }
+  ],
+  "form:fr:tôt": [
+   {
+    "shown": "early",
+    "v": "ok"
+   }
+  ],
+  "form:fr:usine": [
+   {
+    "shown": "factory",
+    "v": "ok"
+   }
+  ],
+  "form:fr:utiliser": [
+   {
+    "shown": "to use, to utilize",
+    "v": "ok"
+   }
+  ],
+  "form:fr:vacciner": [
+   {
+    "shown": "to vaccinate",
+    "v": "ok"
+   }
+  ],
+  "form:fr:vaisselle": [
+   {
+    "shown": "crockery, dishes, dishware",
+    "v": "ok"
+   }
+  ],
+  "form:fr:vallée": [
+   {
+    "shown": "valley",
+    "v": "ok"
+   }
+  ],
+  "form:fr:vendredi": [
+   {
+    "shown": "Friday",
+    "v": "ok"
+   }
+  ],
+  "form:fr:venir": [
+   {
+    "shown": "to come",
+    "v": "ok"
+   },
+   {
+    "shown": "to cum, to come, to orgasm",
+    "v": "false-meaning",
+    "note": "venir means to come; 'to cum, orgasm' is a vulgar marginal gloss"
+   }
+  ],
+  "form:fr:vent": [
+   {
+    "shown": "wind",
+    "v": "ok"
+   }
+  ],
+  "form:fr:vestiaire": [
+   {
+    "shown": "cloakroom",
+    "v": "ok"
+   }
+  ],
+  "form:fr:vieux": [
+   {
+    "shown": "old",
+    "v": "ok"
+   }
+  ],
+  "form:fr:ville": [
+   {
+    "shown": "town, city",
+    "v": "ok"
+   }
+  ],
+  "form:fr:vin": [
+   {
+    "shown": "wine",
+    "v": "ok"
+   }
+  ],
+  "form:fr:vingt": [
+   {
+    "shown": "twenty",
+    "v": "ok"
+   }
+  ],
+  "form:fr:vite": [
+   {
+    "shown": "quickly",
+    "v": "ok"
+   }
+  ],
+  "form:fr:voiture": [
+   {
+    "shown": "car",
+    "v": "ok"
+   }
+  ],
+  "form:fr:volontiers": [
+   {
+    "shown": "gladly",
+    "v": "ok"
+   },
+   {
+    "shown": "willingly; gladly; with pleasure",
+    "v": "ok"
+   }
+  ],
+  "form:fr:vous": [
+   {
+    "shown": "you, to you (indirect object pronoun)",
+    "v": "ok"
+   }
+  ],
+  "form:fr:vraiment": [
+   {
+    "shown": "truly, really, genuinely",
+    "v": "ok"
+   },
+   {
+    "shown": "really, truly",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
+   }
+  ],
+  "form:fr:vélo": [
+   {
+    "shown": "bicycle",
+    "v": "ok"
+   },
+   {
+    "shown": "bike, bicycle, cycle",
+    "v": "ok"
+   }
+  ],
+  "form:fr:week-end": [
+   {
+    "shown": "weekend; synonym of fin de semaine",
+    "v": "ok"
+   }
+  ],
+  "form:fr:y": [
+   {
+    "shown": "there (at a place)",
+    "v": "ok"
+   },
+   {
+    "shown": "there, to it",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
+   }
+  ],
+  "form:fr:à": [
+   {
+    "shown": "to (destination)",
+    "v": "ok"
+   },
+   {
+    "shown": "to, at, in",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
+   }
+  ],
+  "form:fr:ça": [
+   {
+    "shown": "that (distal demonstrative pronoun)",
+    "v": "ok"
+   },
+   {
+    "shown": "that, it (informal)",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
+   }
+  ],
+  "form:fr:école": [
+   {
+    "shown": "school",
+    "v": "ok"
+   }
+  ],
+  "form:fr:écran": [
+   {
+    "shown": "screen",
+    "v": "ok"
+   }
+  ],
+  "form:fr:écrire": [
+   {
+    "shown": "to write",
+    "v": "ok"
+   }
+  ],
+  "form:fr:église": [
+   {
+    "shown": "church",
+    "v": "ok"
+   }
+  ],
+  "form:fr:électricien": [
+   {
+    "shown": "electrician",
+    "v": "ok"
+   }
+  ],
+  "form:fr:électricité": [
+   {
+    "shown": "electricity",
+    "v": "ok"
+   }
+  ],
+  "form:fr:élire": [
+   {
+    "shown": "to elect",
+    "v": "ok"
+   }
+  ],
+  "form:fr:énergie": [
+   {
+    "shown": "energy, motivation",
+    "v": "ok"
+   }
+  ],
+  "form:fr:étage": [
+   {
+    "shown": "floor, storey",
+    "v": "ok"
+   }
+  ],
+  "form:fr:éteindre": [
+   {
+    "shown": "to put out",
+    "v": "ok"
+   }
+  ],
+  "form:fr:éviter": [
+   {
+    "shown": "to avoid",
+    "v": "ok"
+   }
+  ],
+  "form:fr:être": [
+   {
+    "shown": "to be",
+    "v": "ok"
+   }
+  ],
+  "form:fr:île": [
+   {
+    "shown": "island",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:Belgique:PROPN": [
+   {
+    "shown": "Belgium",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:Hélène:PROPN": [
+   {
+    "shown": "Helen",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:abeille:NOUN": [
+   {
+    "shown": "bee",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:aboyer:VERB": [
+   {
+    "shown": "to bark",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:accueil:NOUN": [
+   {
+    "shown": "reception, hospitality",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:accueillir:VERB": [
+   {
+    "shown": "to welcome",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:acheter:VERB": [
+   {
+    "shown": "to buy",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:actuel:ADJ": [
+   {
+    "shown": "current",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:adapter:VERB": [
+   {
+    "shown": "to adapt",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:affirmer:VERB": [
+   {
+    "shown": "to state, to claim",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:agréable:ADJ": [
+   {
+    "shown": "pleasant",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:aider:VERB": [
+   {
+    "shown": "to help",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:aimer:VERB": [
+   {
+    "shown": "to love, to like",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:ainsi:ADV": [
+   {
+    "shown": "thus, in this way",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:ajouter:VERB": [
+   {
+    "shown": "to add",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:aller:VERB": [
+   {
+    "shown": "to go; also forms the near future (je vais partir)",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:allumer:VERB": [
+   {
+    "shown": "to light, to switch on",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:allô:INTJ": [
+   {
+    "shown": "hello (on the telephone)",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:alors:ADV": [
+   {
+    "shown": "then, so, at that time",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:ami:NOUN": [
+   {
+    "shown": "friend (male)",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:amie:NOUN": [
+   {
+    "shown": "friend (female)",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:an:NOUN": [
+   {
+    "shown": "year",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:ancien:ADJ": [
+   {
+    "shown": "old, former, ancient",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:animer:VERB": [
+   {
+    "shown": "to bring to life, to lead",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:anniversaire:NOUN": [
+   {
+    "shown": "birthday",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:annoncer:VERB": [
+   {
+    "shown": "to announce",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:année:NOUN": [
+   {
+    "shown": "year",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:appareil:NOUN": [
+   {
+    "shown": "device, camera",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:appartement:NOUN": [
+   {
+    "shown": "flat, apartment",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:appeler:VERB": [
+   {
+    "shown": "to call",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:apporter:VERB": [
+   {
+    "shown": "to bring",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:apprendre:VERB": [
+   {
+    "shown": "to learn, to teach",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:apprentissage:NOUN": [
+   {
+    "shown": "apprenticeship",
+    "v": "false-meaning",
+    "note": "apprentissage mainly means learning; apprenticeship is a narrower sense and wrong in this sentence"
+   }
+  ],
+  "lemma:fr:appuyer:VERB": [
+   {
+    "shown": "to press, to lean",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:après-midi:NOUN": [
+   {
+    "shown": "afternoon",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:arbre:NOUN": [
+   {
+    "shown": "tree",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:argent:NOUN": [
+   {
+    "shown": "money; silver",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:armoire:NOUN": [
+   {
+    "shown": "wardrobe",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:arriver:VERB": [
+   {
+    "shown": "to arrive, to happen",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:arroser:VERB": [
+   {
+    "shown": "to water (e.g. plants)",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:arrêt:NOUN": [
+   {
+    "shown": "stopping, checking",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:arrêter:VERB": [
+   {
+    "shown": "to stop, to arrest",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:artiste:NOUN": [
+   {
+    "shown": "artist",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:ascenseur:NOUN": [
+   {
+    "shown": "lift, elevator",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:assaisonnement:NOUN": [
+   {
+    "shown": "seasoning, flavouring",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:assez:ADV": [
+   {
+    "shown": "enough, fairly",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:attendre:VERB": [
+   {
+    "shown": "to wait for",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:attirer:VERB": [
+   {
+    "shown": "to attract",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:attraper:VERB": [
+   {
+    "shown": "to catch",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:au:ADP": [
+   {
+    "shown": "to the, at the, in the (à + le)",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:augmenter:VERB": [
+   {
+    "shown": "to increase",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:aujourd'hui:ADV": [
+   {
+    "shown": "today",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:aussi:ADV": [
+   {
+    "shown": "also, too; as",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:automne:NOUN": [
+   {
+    "shown": "autumn",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:autoroute:NOUN": [
+   {
+    "shown": "expressway, freeway, motorway, highway",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:autour:ADV": [
+   {
+    "shown": "around",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:autrefois:ADV": [
+   {
+    "shown": "in the past, formerly",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:aux:ADP": [
+   {
+    "shown": "to the, at the (à + les)",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:avec:ADP": [
+   {
+    "shown": "with",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:avis:NOUN": [
+   {
+    "shown": "opinion",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:avoir:AUX": [
+   {
+    "shown": "to have; also the auxiliary of the compound tenses of most verbs",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:aéroport:NOUN": [
+   {
+    "shown": "airport",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:bain:NOUN": [
+   {
+    "shown": "bath",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:baisser:VERB": [
+   {
+    "shown": "to lower",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:balcon:NOUN": [
+   {
+    "shown": "balcony",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:banque:NOUN": [
+   {
+    "shown": "bank",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:bateau:NOUN": [
+   {
+    "shown": "boat",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:battre:VERB": [
+   {
+    "shown": "to beat, to hit",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:beau:ADJ": [
+   {
+    "shown": "beautiful, handsome",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:beaucoup:ADV": [
+   {
+    "shown": "a lot, much, many",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:besoin:NOUN": [
+   {
+    "shown": "need",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:beurre:NOUN": [
+   {
+    "shown": "butter",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:beurrer:VERB": [
+   {
+    "shown": "to butter, to rub with butter",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:bibliothèque:NOUN": [
+   {
+    "shown": "library",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:blanc:ADJ": [
+   {
+    "shown": "white",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:blesser:VERB": [
+   {
+    "shown": "to wound, to hurt",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:bleu:ADJ": [
+   {
+    "shown": "blue",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:boire:VERB": [
+   {
+    "shown": "to drink",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:bon:ADJ": [
+   {
+    "shown": "good",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:bonjour:INTJ": [
+   {
+    "shown": "hello, good morning",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:bonsoir:INTJ": [
+   {
+    "shown": "good evening",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:bord:NOUN": [
+   {
+    "shown": "edge",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:boulangerie:NOUN": [
+   {
+    "shown": "bread shop; bakery, baker's",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:bouton:NOUN": [
+   {
+    "shown": "button",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:box:NOUN": [
+   {
+    "shown": "stall (for a horse), loose box",
+    "v": "false-meaning",
+    "note": "box in this sentence is an internet router; horse stall is a marginal first sense"
+   }
+  ],
+  "lemma:fr:brancher:VERB": [
+   {
+    "shown": "to connect, plug in (appliance)",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:bronchite:NOUN": [
+   {
+    "shown": "bronchitis",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:brûler:VERB": [
+   {
+    "shown": "to burn",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:bureau:NOUN": [
+   {
+    "shown": "office; desk",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:bâtiment:NOUN": [
+   {
+    "shown": "building",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:bébé:NOUN": [
+   {
+    "shown": "baby",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:calmement:ADV": [
+   {
+    "shown": "calmly",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:camionnette:NOUN": [
+   {
+    "shown": "van",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:campagne:NOUN": [
+   {
+    "shown": "countryside; campaign",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:canapé:NOUN": [
+   {
+    "shown": "sofa",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:carotte:NOUN": [
+   {
+    "shown": "carrot",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:carte:NOUN": [
+   {
+    "shown": "card; map",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:casserole:NOUN": [
+   {
+    "shown": "saucepan (utensil)",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:cassé:ADJ": [
+   {
+    "shown": "broken",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:cathédrale:NOUN": [
+   {
+    "shown": "cathedral",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:ceci:PRON": [
+   {
+    "shown": "this",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:cela:PRON": [
+   {
+    "shown": "that",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:celui:PRON": [
+   {
+    "shown": "the one, he who",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:cent:NUM": [
+   {
+    "shown": "hundred",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:centre-ville:NOUN": [
+   {
+    "shown": "town centre, city center, downtown",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:chaleur:NOUN": [
+   {
+    "shown": "heat",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:chambre:NOUN": [
+   {
+    "shown": "bedroom, room",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:champignon:NOUN": [
+   {
+    "shown": "mushroom",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:changer:VERB": [
+   {
+    "shown": "to change",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:chantier:NOUN": [
+   {
+    "shown": "building site",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:chapeau:NOUN": [
+   {
+    "shown": "hat",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:chaque:DET": [
+   {
+    "shown": "each, every",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:chargeur:NOUN": [
+   {
+    "shown": "stoker, fireman",
+    "v": "false-meaning",
+    "note": "chargeur is a charger (battery/phone) or loader; stoker, fireman is an obscure sense"
+   }
+  ],
+  "lemma:fr:chat:NOUN": [
+   {
+    "shown": "cat",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:chaud:ADJ": [
+   {
+    "shown": "warm, hot",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:chauffer:VERB": [
+   {
+    "shown": "to heat",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:chaussure:NOUN": [
+   {
+    "shown": "shoe",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:chemin:NOUN": [
+   {
+    "shown": "path",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:cher:ADJ": [
+   {
+    "shown": "dear; expensive",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:chercher:VERB": [
+   {
+    "shown": "to look for, to search",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:chercheur:NOUN": [
+   {
+    "shown": "researcher",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:chez:ADP": [
+   {
+    "shown": "at the home of, among",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:chien:NOUN": [
+   {
+    "shown": "dog",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:chiffre:NOUN": [
+   {
+    "shown": "figure, digit",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:chocolat:NOUN": [
+   {
+    "shown": "chocolate",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:choisir:VERB": [
+   {
+    "shown": "to choose",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:chose:NOUN": [
+   {
+    "shown": "thing",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:château:NOUN": [
+   {
+    "shown": "castle",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:chêne:NOUN": [
+   {
+    "shown": "oak (tree), oak tree",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:chômage:NOUN": [
+   {
+    "shown": "idleness",
+    "v": "false-meaning",
+    "note": "chômage is unemployment, not idleness"
+   },
+   {
+    "shown": "unemployment",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:ci:ADV": [
+   {
+    "shown": "here (written after a noun or pronoun: ce livre-ci, celui-ci)",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:ciel:NOUN": [
+   {
+    "shown": "sky",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:cinq:NUM": [
+   {
+    "shown": "five",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:cinquante:NUM": [
+   {
+    "shown": "fifty",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:cinéma:NOUN": [
+   {
+    "shown": "cinema",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:clair:ADJ": [
+   {
+    "shown": "clear, light",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:claquer:VERB": [
+   {
+    "shown": "to clack (make a sharp sound)",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:classement:NOUN": [
+   {
+    "shown": "ranking",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:clavier:NOUN": [
+   {
+    "shown": "keyboard (of a computer)",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:clé:NOUN": [
+   {
+    "shown": "key",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:colis:NOUN": [
+   {
+    "shown": "parcel",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:colline:NOUN": [
+   {
+    "shown": "hill",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:collègue:NOUN": [
+   {
+    "shown": "colleague",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:colorer:VERB": [
+   {
+    "shown": "to color",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:combien:ADV": [
+   {
+    "shown": "how much, how many",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:comme:SCONJ": [
+   {
+    "shown": "as, like, since",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:commencer:VERB": [
+   {
+    "shown": "to begin",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:commerçant:NOUN": [
+   {
+    "shown": "shopkeeper",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:commun:ADJ": [
+   {
+    "shown": "common",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:complètement:ADV": [
+   {
+    "shown": "completely",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:comprendre:VERB": [
+   {
+    "shown": "to understand, to include",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:compter:VERB": [
+   {
+    "shown": "to count, to intend",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:confirmer:VERB": [
+   {
+    "shown": "to confirm",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:connaître:VERB": [
+   {
+    "shown": "to know (a person or place)",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:consacrer:VERB": [
+   {
+    "shown": "to devote, to consecrate",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:conseil:NOUN": [
+   {
+    "shown": "advice; council",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:conseiller:VERB": [
+   {
+    "shown": "to advise",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:conserver:VERB": [
+   {
+    "shown": "to keep, to preserve",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:consommation:NOUN": [
+   {
+    "shown": "consumption",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:construire:VERB": [
+   {
+    "shown": "to build",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:contrôleur:NOUN": [
+   {
+    "shown": "controller, inspector",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:convenir:VERB": [
+   {
+    "shown": "to suit, to agree",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:correctement:ADV": [
+   {
+    "shown": "correctly",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:correspondance:NOUN": [
+   {
+    "shown": "correspondence",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:coucher:VERB": [
+   {
+    "shown": "to put to bed (se coucher: to go to bed)",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:couleur:NOUN": [
+   {
+    "shown": "colour",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:couper:VERB": [
+   {
+    "shown": "to cut",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:cour:NOUN": [
+   {
+    "shown": "yard, court",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:coureur:NOUN": [
+   {
+    "shown": "runner",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:courir:VERB": [
+   {
+    "shown": "to run",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:course:NOUN": [
+   {
+    "shown": "race; errand",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:couvrir:VERB": [
+   {
+    "shown": "to cover",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:croire:VERB": [
+   {
+    "shown": "to believe",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:création:NOUN": [
+   {
+    "shown": "creation",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:créer:VERB": [
+   {
+    "shown": "to create",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:cuillère:NOUN": [
+   {
+    "shown": "spoon",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:cuire:VERB": [
+   {
+    "shown": "to cook, to bake",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:cuisiner:VERB": [
+   {
+    "shown": "to cook",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:cultiver:VERB": [
+   {
+    "shown": "to grow, to cultivate",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:cyclable:ADJ": [
+   {
+    "shown": "bicycle",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:côte:NOUN": [
+   {
+    "shown": "coast; rib",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:côté:NOUN": [
+   {
+    "shown": "side",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:dame:NOUN": [
+   {
+    "shown": "lady",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:dans:ADP": [
+   {
+    "shown": "in, inside, within",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:davantage:ADV": [
+   {
+    "shown": "more",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:de:ADP": [
+   {
+    "shown": "of, from, about",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:degré:NOUN": [
+   {
+    "shown": "degree",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:demain:ADV": [
+   {
+    "shown": "tomorrow",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:demander:VERB": [
+   {
+    "shown": "to ask",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:demi-heure:NOUN": [
+   {
+    "shown": "half an hour; thirty minutes",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:dent:NOUN": [
+   {
+    "shown": "tooth",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:dentiste:NOUN": [
+   {
+    "shown": "dentist",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:depuis:ADP": [
+   {
+    "shown": "since, for (time)",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:dernier:ADJ": [
+   {
+    "shown": "last, latest",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:descendre:VERB": [
+   {
+    "shown": "to go down, to take down",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:dessiner:VERB": [
+   {
+    "shown": "to draw",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:dessus:ADV": [
+   {
+    "shown": "on top, above",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:deux:NUM": [
+   {
+    "shown": "two",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:devenir:VERB": [
+   {
+    "shown": "to become",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:dimanche:NOUN": [
+   {
+    "shown": "Sunday",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:diminuer:VERB": [
+   {
+    "shown": "to decrease",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:dire:VERB": [
+   {
+    "shown": "to say, to tell",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:dix-sept:NUM": [
+   {
+    "shown": "seventeen",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:dix:NUM": [
+   {
+    "shown": "ten",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:docteur:NOUN": [
+   {
+    "shown": "doctor",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:donc:CONJ": [
+   {
+    "shown": "so, therefore",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:donner:VERB": [
+   {
+    "shown": "to give",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:dont:PRON": [
+   {
+    "shown": "whose, of which, of whom",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:dorer:VERB": [
+   {
+    "shown": "to gild",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:dormir:VERB": [
+   {
+    "shown": "to sleep",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:douane:NOUN": [
+   {
+    "shown": "customs",
+    "v": "ok"
+   },
+   {
+    "shown": "customs office",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:doubler:VERB": [
+   {
+    "shown": "to double, to overtake",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:doux:ADJ": [
+   {
+    "shown": "sweet, soft, gentle",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:dur:ADJ": [
+   {
+    "shown": "hard",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:durer:VERB": [
+   {
+    "shown": "to last",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:dès:ADP": [
+   {
+    "shown": "from, as early as",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:dé:NOUN": [
+   {
+    "shown": "die (dice)",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:déballer:VERB": [
+   {
+    "shown": "to unpack, unwrap",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:début:NOUN": [
+   {
+    "shown": "beginning",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:décevoir:VERB": [
+   {
+    "shown": "to disappoint",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:déchet:NOUN": [
+   {
+    "shown": "refuse, rubbish, trash, waste",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:décider:VERB": [
+   {
+    "shown": "to decide",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:décomposer:VERB": [
+   {
+    "shown": "to decompose",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:découvrir:VERB": [
+   {
+    "shown": "to discover",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:dégonfler:VERB": [
+   {
+    "shown": "to deflate",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:déjà:ADV": [
+   {
+    "shown": "already",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:délai:NOUN": [
+   {
+    "shown": "deadline, delay",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:démarrer:VERB": [
+   {
+    "shown": "to start (an engine)",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:déménager:VERB": [
+   {
+    "shown": "to move house",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:dépendre:VERB": [
+   {
+    "shown": "to depend",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:désolé:ADJ": [
+   {
+    "shown": "sorry",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:désormais:ADV": [
+   {
+    "shown": "from now on",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:détruire:VERB": [
+   {
+    "shown": "to destroy",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:dévier:VERB": [
+   {
+    "shown": "to divert",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:eau:NOUN": [
+   {
+    "shown": "water",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:elle:PRON": [
+   {
+    "shown": "she, it",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:elles:PRON": [
+   {
+    "shown": "they (feminine)",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:emmener:VERB": [
+   {
+    "shown": "to take along",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:emploi:NOUN": [
+   {
+    "shown": "job, use",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:emprunter:VERB": [
+   {
+    "shown": "to borrow",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:encore:ADV": [
+   {
+    "shown": "still, again, yet",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:endormir:VERB": [
+   {
+    "shown": "to put to sleep (s'endormir: to fall asleep)",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:endroit:NOUN": [
+   {
+    "shown": "place, spot",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:enfant:NOUN": [
+   {
+    "shown": "child",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:enfin:ADV": [
+   {
+    "shown": "at last, finally",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:enregistrer:VERB": [
+   {
+    "shown": "to record, to register",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:ensuite:ADV": [
+   {
+    "shown": "then, afterwards",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:entendre:VERB": [
+   {
+    "shown": "to hear",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:entourer:VERB": [
+   {
+    "shown": "to surround",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:entrepôt:NOUN": [
+   {
+    "shown": "warehouse; storehouse",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:entrer:VERB": [
+   {
+    "shown": "to enter, to come in",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:environ:ADV": [
+   {
+    "shown": "about, approximately",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:envoyer:VERB": [
+   {
+    "shown": "to send",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:escalier:NOUN": [
+   {
+    "shown": "staircase",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:espace:NOUN": [
+   {
+    "shown": "space",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:espèce:NOUN": [
+   {
+    "shown": "species, kind",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:essayer:VERB": [
+   {
+    "shown": "to try",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:et:CONJ": [
+   {
+    "shown": "and",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:examen:NOUN": [
+   {
+    "shown": "exam",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:excuser:VERB": [
+   {
+    "shown": "to excuse",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:explication:NOUN": [
+   {
+    "shown": "explanation",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:expliquer:VERB": [
+   {
+    "shown": "to explain",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:expérience:NOUN": [
+   {
+    "shown": "experience",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:facteur:NOUN": [
+   {
+    "shown": "postman; maker",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:faible:ADJ": [
+   {
+    "shown": "weak",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:faire:VERB": [
+   {
+    "shown": "to do, to make",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:falloir:VERB": [
+   {
+    "shown": "to be necessary (il faut)",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:famille:NOUN": [
+   {
+    "shown": "family",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:farine:NOUN": [
+   {
+    "shown": "flour",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:fauteuil:NOUN": [
+   {
+    "shown": "armchair",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:fenêtre:NOUN": [
+   {
+    "shown": "window",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:fermer:VERB": [
+   {
+    "shown": "to close, to shut",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:feu:NOUN": [
+   {
+    "shown": "fire",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:feuille:NOUN": [
+   {
+    "shown": "leaf",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:finir:VERB": [
+   {
+    "shown": "to finish",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:fièvre:NOUN": [
+   {
+    "shown": "fever",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:fleur:NOUN": [
+   {
+    "shown": "flower",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:fleurir:VERB": [
+   {
+    "shown": "to bloom",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:forêt:NOUN": [
+   {
+    "shown": "forest",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:frais:ADJ": [
+   {
+    "shown": "fresh, cool",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:frigo:NOUN": [
+   {
+    "shown": "fridge; refrigerator",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:froid:ADJ": [
+   {
+    "shown": "cold",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:fromage:NOUN": [
+   {
+    "shown": "cheese",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:frère:NOUN": [
+   {
+    "shown": "brother",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:fumer:VERB": [
+   {
+    "shown": "to smoke",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:gagner:VERB": [
+   {
+    "shown": "to win, to earn",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:garder:VERB": [
+   {
+    "shown": "to keep, to look after",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:gardien:NOUN": [
+   {
+    "shown": "guard, keeper",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:gare:NOUN": [
+   {
+    "shown": "station",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:gaz:NOUN": [
+   {
+    "shown": "gas",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:gentil:ADJ": [
+   {
+    "shown": "kind, nice",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:glace:NOUN": [
+   {
+    "shown": "ice; mirror; ice cream",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:gouvernement:NOUN": [
+   {
+    "shown": "government",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:grand-mère:NOUN": [
+   {
+    "shown": "grandmother",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:grand-père:NOUN": [
+   {
+    "shown": "grandfather",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:grandir:VERB": [
+   {
+    "shown": "to grow, to grow up",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:grenouille:NOUN": [
+   {
+    "shown": "frog",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:grâce:NOUN": [
+   {
+    "shown": "grace, charm",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:guitare:NOUN": [
+   {
+    "shown": "guitar",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:gâteau:NOUN": [
+   {
+    "shown": "cake",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:habiter:VERB": [
+   {
+    "shown": "to live (in a place)",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:habitude:NOUN": [
+   {
+    "shown": "habit",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:heure:NOUN": [
+   {
+    "shown": "hour",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:hier:ADV": [
+   {
+    "shown": "yesterday",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:histoire:NOUN": [
+   {
+    "shown": "history; story",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:hiver:NOUN": [
+   {
+    "shown": "winter",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:homme:NOUN": [
+   {
+    "shown": "man; human being",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:huile:NOUN": [
+   {
+    "shown": "oil",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:huit:NUM": [
+   {
+    "shown": "eight",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:humain:ADJ": [
+   {
+    "shown": "human",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:humeur:NOUN": [
+   {
+    "shown": "mood",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:hôpital:NOUN": [
+   {
+    "shown": "hospital",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:ici:ADV": [
+   {
+    "shown": "here",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:identité:NOUN": [
+   {
+    "shown": "identity",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:il:PRON": [
+   {
+    "shown": "he, it",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:ils:PRON": [
+   {
+    "shown": "they (masculine or mixed)",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:imaginer:VERB": [
+   {
+    "shown": "to imagine",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:incorporer:VERB": [
+   {
+    "shown": "to incorporate",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:indiquer:VERB": [
+   {
+    "shown": "to indicate",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:infirmier:NOUN": [
+   {
+    "shown": "nurse (male)",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:inférieur:ADJ": [
+   {
+    "shown": "lower, inferior",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:inonder:VERB": [
+   {
+    "shown": "to flood",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:inquiet:ADJ": [
+   {
+    "shown": "worried",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:insecte:NOUN": [
+   {
+    "shown": "insect",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:installer:VERB": [
+   {
+    "shown": "to install, to set up",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:institut:NOUN": [
+   {
+    "shown": "institute",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:interdire:VERB": [
+   {
+    "shown": "to forbid",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:investir:VERB": [
+   {
+    "shown": "to invest",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:isoler:VERB": [
+   {
+    "shown": "to isolate",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:jamais:ADV": [
+   {
+    "shown": "never, ever",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:jambe:NOUN": [
+   {
+    "shown": "leg",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:jardin:NOUN": [
+   {
+    "shown": "garden",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:jaune:ADJ": [
+   {
+    "shown": "yellow",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:je:PRON": [
+   {
+    "shown": "I",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:jeu:NOUN": [
+   {
+    "shown": "game",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:jeudi:NOUN": [
+   {
+    "shown": "Thursday",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:jeune:ADJ": [
+   {
+    "shown": "young",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:jouer:VERB": [
+   {
+    "shown": "to play",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:jour:NOUN": [
+   {
+    "shown": "day",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:journée:NOUN": [
+   {
+    "shown": "day (the whole of it)",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:joyeux:ADJ": [
+   {
+    "shown": "joyful",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:juin:NOUN": [
+   {
+    "shown": "June",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:jus:NOUN": [
+   {
+    "shown": "juice",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:jusque:ADP": [
+   {
+    "shown": "until, as far as, even",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:juste:ADJ": [
+   {
+    "shown": "fair, just; right",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:justement:ADV": [
+   {
+    "shown": "precisely, just",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:lac:NOUN": [
+   {
+    "shown": "lake",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:laisser:VERB": [
+   {
+    "shown": "to leave, to let",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:lait:NOUN": [
+   {
+    "shown": "milk",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:lancer:VERB": [
+   {
+    "shown": "to throw, to launch",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:laver:VERB": [
+   {
+    "shown": "to wash",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:lendemain:NOUN": [
+   {
+    "shown": "the day after, the next day",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:lentement:ADV": [
+   {
+    "shown": "slowly",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:lettre:NOUN": [
+   {
+    "shown": "letter",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:lever:VERB": [
+   {
+    "shown": "to raise, to lift",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:librairie:NOUN": [
+   {
+    "shown": "bookshop, bookstore (shop that sells books)",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:libre:ADJ": [
+   {
+    "shown": "free",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:linge:NOUN": [
+   {
+    "shown": "linen, washing",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:locataire:NOUN": [
+   {
+    "shown": "renter, tenant, lessee",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:logement:NOUN": [
+   {
+    "shown": "housing",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:longtemps:ADV": [
+   {
+    "shown": "for a long time",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:louer:VERB": [
+   {
+    "shown": "to rent; to praise",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:lui:PRON": [
+   {
+    "shown": "to him, to her; him (after a preposition)",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:lumineux:ADJ": [
+   {
+    "shown": "bright, luminous",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:lumière:NOUN": [
+   {
+    "shown": "light",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:lundi:NOUN": [
+   {
+    "shown": "Monday",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:là:ADV": [
+   {
+    "shown": "there, here",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:légume:NOUN": [
+   {
+    "shown": "vegetable",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:légèrement:ADV": [
+   {
+    "shown": "slightly, lightly",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:madame:NOUN": [
+   {
+    "shown": "madam, Mrs",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:magasin:NOUN": [
+   {
+    "shown": "shop",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:magnifique:ADJ": [
+   {
+    "shown": "magnificent",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:main:NOUN": [
+   {
+    "shown": "hand",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:maire:NOUN": [
+   {
+    "shown": "mayor",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:mairie:NOUN": [
+   {
+    "shown": "town hall",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:mais:CONJ": [
+   {
+    "shown": "but",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:maison:NOUN": [
+   {
+    "shown": "house, home",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:malheureusement:ADV": [
+   {
+    "shown": "unfortunately",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:manger:VERB": [
+   {
+    "shown": "to eat",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:manquer:VERB": [
+   {
+    "shown": "to miss, to be lacking",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:manteau:NOUN": [
+   {
+    "shown": "coat",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:marcher:VERB": [
+   {
+    "shown": "to walk, to work (function)",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:mardi:NOUN": [
+   {
+    "shown": "Tuesday",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:mars:NOUN": [
+   {
+    "shown": "March",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:matin:NOUN": [
+   {
+    "shown": "morning",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:maîtresse:NOUN": [
+   {
+    "shown": "mistress; teacher (female)",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:meilleur:ADJ": [
+   {
+    "shown": "better, best",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:mener:VERB": [
+   {
+    "shown": "to lead, to take",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:merci:INTJ": [
+   {
+    "shown": "thank you, thanks",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:mettre:VERB": [
+   {
+    "shown": "to put, to place",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:mieux:ADV": [
+   {
+    "shown": "better",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:mijoter:VERB": [
+   {
+    "shown": "to simmer",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:mille:NUM": [
+   {
+    "shown": "thousand",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:minuit:NOUN": [
+   {
+    "shown": "midnight",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:moi:PRON": [
+   {
+    "shown": "me (stressed)",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:moins:ADV": [
+   {
+    "shown": "less",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:mois:NOUN": [
+   {
+    "shown": "month",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:mon:DET": [
+   {
+    "shown": "my",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:monde:NOUN": [
+   {
+    "shown": "world",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:monnaie:NOUN": [
+   {
+    "shown": "change, currency",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:montagne:NOUN": [
+   {
+    "shown": "mountain",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:monter:VERB": [
+   {
+    "shown": "to go up, to climb",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:montrer:VERB": [
+   {
+    "shown": "to show",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:morceau:NOUN": [
+   {
+    "shown": "piece",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:mot:NOUN": [
+   {
+    "shown": "word",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:mur:NOUN": [
+   {
+    "shown": "wall",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:musée:NOUN": [
+   {
+    "shown": "museum",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:mère:NOUN": [
+   {
+    "shown": "mother",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:médecin:NOUN": [
+   {
+    "shown": "doctor",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:médicament:NOUN": [
+   {
+    "shown": "medicine",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:mélanger:VERB": [
+   {
+    "shown": "to mix",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:méthode:NOUN": [
+   {
+    "shown": "method",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:métro:NOUN": [
+   {
+    "shown": "underground",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:météorologique:ADJ": [
+   {
+    "shown": "meteorological",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:nager:VERB": [
+   {
+    "shown": "to swim",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:naturel:ADJ": [
+   {
+    "shown": "natural",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:ne:PART": [
+   {
+    "shown": "not (with pas, jamais, plus, rien …: the first half of the negation); with que alone: only (ne … que)",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:neiger:VERB": [
+   {
+    "shown": "to snow",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:nettement:ADV": [
+   {
+    "shown": "clearly, sharply",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:noir:ADJ": [
+   {
+    "shown": "black, dark",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:nom:NOUN": [
+   {
+    "shown": "name; noun",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:nombre:NOUN": [
+   {
+    "shown": "number",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:nombreux:ADJ": [
+   {
+    "shown": "numerous",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:normalement:ADV": [
+   {
+    "shown": "normally",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:notre:DET": [
+   {
+    "shown": "our",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:nous:PRON": [
+   {
+    "shown": "we, us",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:nouveau:ADJ": [
+   {
+    "shown": "new",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:noël:NOUN": [
+   {
+    "shown": "A Christmas gift.",
+    "v": "false-meaning",
+    "note": "Noël means Christmas; a Christmas gift is a marginal sense"
+   }
+  ],
+  "lemma:fr:nuage:NOUN": [
+   {
+    "shown": "cloud",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:obtenir:VERB": [
+   {
+    "shown": "to obtain, to get",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:occuper:VERB": [
+   {
+    "shown": "to occupy",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:office:NOUN": [
+   {
+    "shown": "charge, task, mandate",
+    "v": "false-meaning",
+    "note": "office in office du tourisme is a bureau/office; 'charge, task, mandate' is a marginal sense"
+   },
+   {
+    "shown": "administrative bureau, department",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:offrir:VERB": [
+   {
+    "shown": "to offer",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:oignon:NOUN": [
+   {
+    "shown": "onion (Allium cepa)",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:ombrager:VERB": [
+   {
+    "shown": "to shade",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:on:PRON": [
+   {
+    "shown": "one, we, people, they",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:oncle:NOUN": [
+   {
+    "shown": "uncle",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:orage:NOUN": [
+   {
+    "shown": "storm",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:ordinateur:NOUN": [
+   {
+    "shown": "computer",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:organiser:VERB": [
+   {
+    "shown": "to organise",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:ou:CONJ": [
+   {
+    "shown": "or",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:oublier:VERB": [
+   {
+    "shown": "to forget",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:ouest:NOUN": [
+   {
+    "shown": "west",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:oui:INTJ": [
+   {
+    "shown": "yes",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:ouverture:NOUN": [
+   {
+    "shown": "opening",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:ouvrir:VERB": [
+   {
+    "shown": "to open",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:où:ADV": [
+   {
+    "shown": "where; when, in which",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:pain:NOUN": [
+   {
+    "shown": "bread",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:panne:NOUN": [
+   {
+    "shown": "plush velvet",
+    "v": "false-meaning",
+    "note": "panne means breakdown/failure; plush velvet is a rare textile sense"
+   },
+   {
+    "shown": "breakdown (state of no longer functioning)",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:papier:NOUN": [
+   {
+    "shown": "paper",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:paquet:NOUN": [
+   {
+    "shown": "packet",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:par:ADP": [
+   {
+    "shown": "by, through, per",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:parapluie:NOUN": [
+   {
+    "shown": "umbrella for rain",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:parc:NOUN": [
+   {
+    "shown": "park",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:parce:SCONJ": [
+   {
+    "shown": "because (in parce que)",
+    "v": "unknown",
+    "note": "parce is only a fragment of the phrase parce que"
+   }
+  ],
+  "lemma:fr:parfaire:VERB": [
+   {
+    "shown": "to perfect",
+    "v": "false-reading",
+    "note": "parfait here is the adjective perfect, not a form of parfaire"
+   }
+  ],
+  "lemma:fr:parfois:ADV": [
+   {
+    "shown": "sometimes",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:parler:VERB": [
+   {
+    "shown": "to speak, to talk",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:parrain:NOUN": [
+   {
+    "shown": "godfather; masculine of marraine",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:partir:VERB": [
+   {
+    "shown": "to leave, to depart",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:passer:VERB": [
+   {
+    "shown": "to pass, to spend (time)",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:pays:NOUN": [
+   {
+    "shown": "country",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:paysage:NOUN": [
+   {
+    "shown": "landscape",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:peindre:VERB": [
+   {
+    "shown": "to paint",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:peine:NOUN": [
+   {
+    "shown": "sorrow; effort; punishment",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:penser:VERB": [
+   {
+    "shown": "to think",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:perdre:VERB": [
+   {
+    "shown": "to lose",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:permettre:VERB": [
+   {
+    "shown": "to allow, to permit",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:persistant:ADJ": [
+   {
+    "shown": "persistent",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:personnel:ADJ": [
+   {
+    "shown": "personal",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:perturber:VERB": [
+   {
+    "shown": "to disrupt, to disturb",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:petit:ADJ": [
+   {
+    "shown": "small, little",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:peu:ADV": [
+   {
+    "shown": "little, not much, few",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:pharmacie:NOUN": [
+   {
+    "shown": "pharmacy, drugstore",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:photographier:VERB": [
+   {
+    "shown": "to photograph",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:piscine:NOUN": [
+   {
+    "shown": "swimming pool",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:pièce:NOUN": [
+   {
+    "shown": "room; coin; play",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:placer:VERB": [
+   {
+    "shown": "to place",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:plafond:NOUN": [
+   {
+    "shown": "ceiling",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:plage:NOUN": [
+   {
+    "shown": "beach",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:plaire:VERB": [
+   {
+    "shown": "to please (s'il vous plaît)",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:planter:VERB": [
+   {
+    "shown": "to plant",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:planète:NOUN": [
+   {
+    "shown": "planet",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:plein:ADJ": [
+   {
+    "shown": "full",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:pleuvoir:VERB": [
+   {
+    "shown": "to rain",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:plonger:VERB": [
+   {
+    "shown": "to dive, to plunge",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:pluie:NOUN": [
+   {
+    "shown": "rain",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:plutôt:ADV": [
+   {
+    "shown": "rather",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:pneu:NOUN": [
+   {
+    "shown": "tyre, tire",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:poche:NOUN": [
+   {
+    "shown": "pocket",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:poireau:NOUN": [
+   {
+    "shown": "leek (Allium ampeloprasum, syn. Allium porrum)",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:poisson:NOUN": [
+   {
+    "shown": "fish",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:poivre:NOUN": [
+   {
+    "shown": "pepper",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:pomme:NOUN": [
+   {
+    "shown": "apple",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:pompier:NOUN": [
+   {
+    "shown": "firefighter",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:pont:NOUN": [
+   {
+    "shown": "bridge",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:porter:VERB": [
+   {
+    "shown": "to carry, to wear",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:posséder:VERB": [
+   {
+    "shown": "to own, to possess",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:poste:NOUN": [
+   {
+    "shown": "post office",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:pour:ADP": [
+   {
+    "shown": "for, in order to",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:pourquoi:ADV": [
+   {
+    "shown": "why",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:pourtant:ADV": [
+   {
+    "shown": "yet, however",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:premier:ADJ": [
+   {
+    "shown": "first",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:prendre:VERB": [
+   {
+    "shown": "to take",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:prescrire:VERB": [
+   {
+    "shown": "to prescribe",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:presque:ADV": [
+   {
+    "shown": "almost",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:presser:VERB": [
+   {
+    "shown": "to press, to hurry",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:primaire:ADJ": [
+   {
+    "shown": "primary",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:printemps:NOUN": [
+   {
+    "shown": "spring",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:priver:VERB": [
+   {
+    "shown": "to deprive",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:prix:NOUN": [
+   {
+    "shown": "price; prize",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:prochain:ADJ": [
+   {
+    "shown": "next",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:proche:ADJ": [
+   {
+    "shown": "near, close",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:progresser:VERB": [
+   {
+    "shown": "to progress",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:prolonger:VERB": [
+   {
+    "shown": "to prolong",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:promeneur:NOUN": [
+   {
+    "shown": "walker",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:promettre:VERB": [
+   {
+    "shown": "to promise",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:proposer:VERB": [
+   {
+    "shown": "to propose",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:propre:ADJ": [
+   {
+    "shown": "clean; own",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:protéger:VERB": [
+   {
+    "shown": "to protect",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:près:ADV": [
+   {
+    "shown": "near, close",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:précédent:ADJ": [
+   {
+    "shown": "previous",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:préférer:VERB": [
+   {
+    "shown": "to prefer",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:préparer:VERB": [
+   {
+    "shown": "to prepare",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:présentation:NOUN": [
+   {
+    "shown": "the act of presenting",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:présenter:VERB": [
+   {
+    "shown": "to present, to introduce",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:prévenir:VERB": [
+   {
+    "shown": "to warn, to forestall",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:prévisionniste:NOUN": [
+   {
+    "shown": "forecaster",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:prévoir:VERB": [
+   {
+    "shown": "to foresee, to plan",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:publier:VERB": [
+   {
+    "shown": "to publish",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:pâte:NOUN": [
+   {
+    "shown": "dough, paste",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:pâturage:NOUN": [
+   {
+    "shown": "pasture; meadow",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:père:NOUN": [
+   {
+    "shown": "father",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:période:NOUN": [
+   {
+    "shown": "period",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:qualifier:VERB": [
+   {
+    "shown": "to qualify",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:quarante:NUM": [
+   {
+    "shown": "forty",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:quartier:NOUN": [
+   {
+    "shown": "district",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:quatre-vingt:NUM": [
+   {
+    "shown": "eighty",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:quatre:NUM": [
+   {
+    "shown": "four",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:quel:DET": [
+   {
+    "shown": "which, what (also: what a …!)",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:quelque:DET": [
+   {
+    "shown": "some, a few",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:qui:PRON": [
+   {
+    "shown": "who, whom, which, that",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:quinze:NUM": [
+   {
+    "shown": "fifteen",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:quitter:VERB": [
+   {
+    "shown": "to leave (a place or person)",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:raconter:VERB": [
+   {
+    "shown": "to tell, to narrate",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:raide:ADJ": [
+   {
+    "shown": "stiff, straight",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:rallumer:VERB": [
+   {
+    "shown": "to relight",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:ramasser:VERB": [
+   {
+    "shown": "to pick up",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:ranger:VERB": [
+   {
+    "shown": "to tidy, to put away",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:rappeler:VERB": [
+   {
+    "shown": "to call back, to remind",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:rapport:NOUN": [
+   {
+    "shown": "report; relationship",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:rarement:ADV": [
+   {
+    "shown": "rarely",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:rater:VERB": [
+   {
+    "shown": "to miss, to fail",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:rayon:NOUN": [
+   {
+    "shown": "ray; shelf",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:recevoir:VERB": [
+   {
+    "shown": "to receive, to get",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:recommander:VERB": [
+   {
+    "shown": "to recommend",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:reconnaître:VERB": [
+   {
+    "shown": "to recognise",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:recruter:VERB": [
+   {
+    "shown": "to recruit",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:rectifier:VERB": [
+   {
+    "shown": "to correct",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:redescendre:VERB": [
+   {
+    "shown": "to go down again",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:redémarrer:VERB": [
+   {
+    "shown": "to restart; to reboot",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:refroidir:VERB": [
+   {
+    "shown": "to cool",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:regarder:VERB": [
+   {
+    "shown": "to look at, to watch",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:regretter:VERB": [
+   {
+    "shown": "to regret",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:rejoindre:VERB": [
+   {
+    "shown": "to rejoin, to catch up with",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:relier:VERB": [
+   {
+    "shown": "to link, to bind",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:remercier:VERB": [
+   {
+    "shown": "to thank",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:remplir:VERB": [
+   {
+    "shown": "to fill",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:renard:NOUN": [
+   {
+    "shown": "fox",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:rencontrer:VERB": [
+   {
+    "shown": "to meet",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:rendez-vous:NOUN": [
+   {
+    "shown": "appointment",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:rendre:VERB": [
+   {
+    "shown": "to give back, to make",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:rentrer:VERB": [
+   {
+    "shown": "to go back in, to come home",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:repas:NOUN": [
+   {
+    "shown": "meal",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:repasser:VERB": [
+   {
+    "shown": "to iron, to pass again",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:repeindre:VERB": [
+   {
+    "shown": "to repaint",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:reporter:VERB": [
+   {
+    "shown": "to postpone",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:reposer:VERB": [
+   {
+    "shown": "to put back, to rest",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:responsabilité:NOUN": [
+   {
+    "shown": "responsibility",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:rester:VERB": [
+   {
+    "shown": "to stay, to remain",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:retard:NOUN": [
+   {
+    "shown": "delay",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:retarder:VERB": [
+   {
+    "shown": "to delay",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:retirer:VERB": [
+   {
+    "shown": "to withdraw, to take off",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:retourner:VERB": [
+   {
+    "shown": "to return, to turn over",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:retrouver:VERB": [
+   {
+    "shown": "to find again, to meet up with",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:revenir:VERB": [
+   {
+    "shown": "to come back",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:rien:PRON": [
+   {
+    "shown": "nothing",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:rivière:NOUN": [
+   {
+    "shown": "river",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:rouge:ADJ": [
+   {
+    "shown": "red",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:rouvrir:VERB": [
+   {
+    "shown": "to reopen",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:roux:ADJ": [
+   {
+    "shown": "red-haired, russet",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:rue:NOUN": [
+   {
+    "shown": "street",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:ruelle:NOUN": [
+   {
+    "shown": "lane/laneway, alley/alleyway",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:récent:ADJ": [
+   {
+    "shown": "recent",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:récréation:NOUN": [
+   {
+    "shown": "recreation",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:réduire:VERB": [
+   {
+    "shown": "to reduce",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:région:NOUN": [
+   {
+    "shown": "region",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:régional:ADJ": [
+   {
+    "shown": "regional",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:rénovation:NOUN": [
+   {
+    "shown": "renovation",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:rénover:VERB": [
+   {
+    "shown": "to renovate",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:réparer:VERB": [
+   {
+    "shown": "to repair",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:répéter:VERB": [
+   {
+    "shown": "to repeat",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:réserver:VERB": [
+   {
+    "shown": "to reserve, to book",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:résonner:VERB": [
+   {
+    "shown": "to resonate",
+    "v": "ok"
+   },
+   {
+    "shown": "to ring out, to resound",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:réunion:NOUN": [
+   {
+    "shown": "meeting",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:réveiller:VERB": [
+   {
+    "shown": "to wake up",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:sac:NOUN": [
+   {
+    "shown": "bag",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:saisir:VERB": [
+   {
+    "shown": "to seize, to grasp",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:saison:NOUN": [
+   {
+    "shown": "season",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:salade:NOUN": [
+   {
+    "shown": "salad; lettuce",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:salle:NOUN": [
+   {
+    "shown": "room, hall",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:samedi:NOUN": [
+   {
+    "shown": "Saturday",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:sans:ADP": [
+   {
+    "shown": "without",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:santé:NOUN": [
+   {
+    "shown": "health",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:sapin:NOUN": [
+   {
+    "shown": "fir, fir tree",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:sauf:ADP": [
+   {
+    "shown": "except, unless",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:saupoudrer:VERB": [
+   {
+    "shown": "to salt",
+    "v": "false-meaning",
+    "note": "saupoudrer is to sprinkle/dust, not to salt"
+   },
+   {
+    "shown": "to sprinkle powder (onto)",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:sauver:VERB": [
+   {
+    "shown": "to save, to rescue",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:savoir:VERB": [
+   {
+    "shown": "to know (a fact), to know how to",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:se:PRON": [
+   {
+    "shown": "himself, herself, itself, themselves, each other",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:seize:NUM": [
+   {
+    "shown": "sixteen",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:sel:NOUN": [
+   {
+    "shown": "salt",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:selon:ADP": [
+   {
+    "shown": "according to, depending on",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:semaine:NOUN": [
+   {
+    "shown": "week",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:sembler:VERB": [
+   {
+    "shown": "to seem",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:sentier:NOUN": [
+   {
+    "shown": "path",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:sentir:VERB": [
+   {
+    "shown": "to feel, to smell",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:sept:NUM": [
+   {
+    "shown": "seven",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:septembre:NOUN": [
+   {
+    "shown": "September",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:serrer:VERB": [
+   {
+    "shown": "to squeeze, to tighten",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:servir:VERB": [
+   {
+    "shown": "to serve",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:seul:ADJ": [
+   {
+    "shown": "alone, only",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:seulement:ADV": [
+   {
+    "shown": "only",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:situer:VERB": [
+   {
+    "shown": "to situate",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:soir:NOUN": [
+   {
+    "shown": "evening",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:sol:NOUN": [
+   {
+    "shown": "ground, floor",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:soleil:NOUN": [
+   {
+    "shown": "sun",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:sommet:NOUN": [
+   {
+    "shown": "summit",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:sortir:VERB": [
+   {
+    "shown": "to go out, to take out",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:souffler:VERB": [
+   {
+    "shown": "to blow",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:souhaiter:VERB": [
+   {
+    "shown": "to wish",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:soupe:NOUN": [
+   {
+    "shown": "soup",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:sous:ADP": [
+   {
+    "shown": "under, beneath",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:souvent:ADV": [
+   {
+    "shown": "often",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:stationnement:NOUN": [
+   {
+    "shown": "parking",
+    "v": "ok"
+   },
+   {
+    "shown": "parking space",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:sucre:NOUN": [
+   {
+    "shown": "sugar",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:sud:NOUN": [
+   {
+    "shown": "south",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:suivre:VERB": [
+   {
+    "shown": "to follow",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:sujet:NOUN": [
+   {
+    "shown": "subject",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:supermarché:NOUN": [
+   {
+    "shown": "supermarket",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:supplémentaire:ADJ": [
+   {
+    "shown": "extra",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:sur:ADP": [
+   {
+    "shown": "on, upon, about",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:surprendre:VERB": [
+   {
+    "shown": "to surprise",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:surtout:ADV": [
+   {
+    "shown": "above all, especially",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:survenir:VERB": [
+   {
+    "shown": "to occur suddenly",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:sécher:VERB": [
+   {
+    "shown": "to dry",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:sécheresse:NOUN": [
+   {
+    "shown": "dryness",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:sûr:ADJ": [
+   {
+    "shown": "sure, safe",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:sœur:NOUN": [
+   {
+    "shown": "sister",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:t:PART": [
+   {
+    "shown": "(a linking t between a verb and il, elle or on: a-t-il; it has no meaning)",
+    "v": "unknown",
+    "note": "t is a meaningless linking letter, not a word"
+   }
+  ],
+  "lemma:fr:tante:NOUN": [
+   {
+    "shown": "aunt",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:tard:ADV": [
+   {
+    "shown": "late",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:tarif:NOUN": [
+   {
+    "shown": "rate, tariff",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:te:PRON": [
+   {
+    "shown": "you, to you (informal)",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:tellement:ADV": [
+   {
+    "shown": "so, so much",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:temps:NOUN": [
+   {
+    "shown": "time; weather",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:température:NOUN": [
+   {
+    "shown": "temperature",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:tempête:NOUN": [
+   {
+    "shown": "storm",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:terminer:VERB": [
+   {
+    "shown": "to end, to finish",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:terre:NOUN": [
+   {
+    "shown": "earth, land",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:tester:VERB": [
+   {
+    "shown": "to test",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:tilleul:NOUN": [
+   {
+    "shown": "linden, lime (tree)",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:tir:NOUN": [
+   {
+    "shown": "shot, shooting (of a weapon)",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:tiroir:NOUN": [
+   {
+    "shown": "drawer",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:toit:NOUN": [
+   {
+    "shown": "roof",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:tomate:NOUN": [
+   {
+    "shown": "tomato",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:tomber:VERB": [
+   {
+    "shown": "to fall",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:ton:DET": [
+   {
+    "shown": "your (informal, one person)",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:toucher:VERB": [
+   {
+    "shown": "to touch",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:toujours:ADV": [
+   {
+    "shown": "always, still",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:tourisme:NOUN": [
+   {
+    "shown": "tourism",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:touriste:NOUN": [
+   {
+    "shown": "tourist",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:tourner:VERB": [
+   {
+    "shown": "to turn",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:tournevis:NOUN": [
+   {
+    "shown": "screwdriver",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:toux:NOUN": [
+   {
+    "shown": "cough",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:trajet:NOUN": [
+   {
+    "shown": "journey",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:travail:NOUN": [
+   {
+    "shown": "work",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:travailler:VERB": [
+   {
+    "shown": "to work",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:traverser:VERB": [
+   {
+    "shown": "to cross",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:trente-cinq:NUM": [
+   {
+    "shown": "thirty-five",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:trente:NUM": [
+   {
+    "shown": "thirty",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:trimestre:NOUN": [
+   {
+    "shown": "quarter (period of three months)",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:trois:NUM": [
+   {
+    "shown": "three",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:trop:ADV": [
+   {
+    "shown": "too, too much",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:trou:NOUN": [
+   {
+    "shown": "hole",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:trouver:VERB": [
+   {
+    "shown": "to find",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:très:ADV": [
+   {
+    "shown": "very",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:tête:NOUN": [
+   {
+    "shown": "head",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:tôt:ADV": [
+   {
+    "shown": "early",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:usine:NOUN": [
+   {
+    "shown": "factory",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:utiliser:VERB": [
+   {
+    "shown": "to use",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:vacances:NOUN": [
+   {
+    "shown": "holiday",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:vacciner:VERB": [
+   {
+    "shown": "to vaccinate",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:vaisselle:NOUN": [
+   {
+    "shown": "crockery, dishes, dishware",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:vallée:NOUN": [
+   {
+    "shown": "valley",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:valoir:VERB": [
+   {
+    "shown": "to be worth",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:vendre:VERB": [
+   {
+    "shown": "to sell",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:vendredi:NOUN": [
+   {
+    "shown": "Friday",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:venir:VERB": [
+   {
+    "shown": "to come",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:vent:NOUN": [
+   {
+    "shown": "wind",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:verre:NOUN": [
+   {
+    "shown": "glass",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:verser:VERB": [
+   {
+    "shown": "to pour",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:vertige:NOUN": [
+   {
+    "shown": "dizziness, vertigo",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:vestiaire:NOUN": [
+   {
+    "shown": "cloakroom",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:vider:VERB": [
+   {
+    "shown": "to empty",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:vieux:ADJ": [
+   {
+    "shown": "old",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:ville:NOUN": [
+   {
+    "shown": "town, city",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:vin:NOUN": [
+   {
+    "shown": "wine",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:vingt:NUM": [
+   {
+    "shown": "twenty",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:visage:NOUN": [
+   {
+    "shown": "face",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:visiter:VERB": [
+   {
+    "shown": "to visit",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:visiteur:NOUN": [
+   {
+    "shown": "visitor",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:vite:ADV": [
+   {
+    "shown": "quickly",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:voir:VERB": [
+   {
+    "shown": "to see",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:voiture:NOUN": [
+   {
+    "shown": "car",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:volontiers:ADV": [
+   {
+    "shown": "gladly",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:voter:VERB": [
+   {
+    "shown": "to vote",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:votre:DET": [
+   {
+    "shown": "your (plural or polite)",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:vouloir:VERB": [
+   {
+    "shown": "to want",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:vous:PRON": [
+   {
+    "shown": "you (plural or polite)",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:vraiment:ADV": [
+   {
+    "shown": "really, truly",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:vélo:NOUN": [
+   {
+    "shown": "bicycle",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:vérifier:VERB": [
+   {
+    "shown": "to check",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:week-end:NOUN": [
+   {
+    "shown": "weekend",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:y:PRON": [
+   {
+    "shown": "there, to it",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:à:ADP": [
+   {
+    "shown": "to, at, in",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:âgé:ADJ": [
+   {
+    "shown": "old; elderly",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:ça:PRON": [
+   {
+    "shown": "that, it (informal)",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:école:NOUN": [
+   {
+    "shown": "school",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:écouter:VERB": [
+   {
+    "shown": "to listen to",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:écran:NOUN": [
+   {
+    "shown": "screen",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:écrire:VERB": [
+   {
+    "shown": "to write",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:église:NOUN": [
+   {
+    "shown": "church",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:électricien:NOUN": [
+   {
+    "shown": "electrician",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:électricité:NOUN": [
+   {
+    "shown": "electricity",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:élever:VERB": [
+   {
+    "shown": "to raise, to bring up",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:élire:VERB": [
+   {
+    "shown": "to elect",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:énergie:NOUN": [
+   {
+    "shown": "energy",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:énerver:VERB": [
+   {
+    "shown": "to unnerve, to make nervous",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:éplucher:VERB": [
+   {
+    "shown": "to peel",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:épuiser:VERB": [
+   {
+    "shown": "to exhaust",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:équiper:VERB": [
+   {
+    "shown": "to equip",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:étage:NOUN": [
+   {
+    "shown": "floor, storey",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:éteindre:VERB": [
+   {
+    "shown": "to put out, to switch off",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:étroit:ADJ": [
+   {
+    "shown": "narrow",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:étude:NOUN": [
+   {
+    "shown": "study",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:éviter:VERB": [
+   {
+    "shown": "to avoid",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:être:AUX": [
+   {
+    "shown": "to be; also the auxiliary of the compound tenses of many verbs and of the passive",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:île:NOUN": [
+   {
+    "shown": "island",
+    "v": "ok"
+   }
+  ],
+  "lemma:fr:œuf:NOUN": [
+   {
+    "shown": "egg",
+    "v": "ok"
+   }
+  ]
+ },
+ "heldResidue": [
+  "form:fr:apprentissage",
+  "form:fr:box",
+  "form:fr:chargeur",
+  "lemma:fr:apprentissage:NOUN",
+  "lemma:fr:box:NOUN",
+  "lemma:fr:chargeur:NOUN"
+ ]
+}

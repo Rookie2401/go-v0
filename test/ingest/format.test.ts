@@ -34,7 +34,7 @@ describe('validateDocument — acceptance', () => {
 
   it('every issue carries path, code, message, hint and severity', () => {
     const d = clone(baseDoc()) as unknown as Record<string, unknown>;
-    delete d.review; delete d.topics; d.lang = 'fr';
+    delete d.review; delete d.topics; d.lang = 'xx'; // a code that is no language of the corpus (French is one since 2026-11-17)
     const issues = issuesOf(d);
     expect(issues.length).toBeGreaterThan(2);
     for (const i of issues) {
@@ -76,7 +76,7 @@ describe('validation codes — document level', () => {
   });
 
   it('invalid-value: lang, contentType, rights, authorship, review status, corpus, difficulty, locale syntax', () => {
-    expect(issuesOf({ ...baseDoc(), lang: 'fr' }).some((i) => i.path === 'lang' && i.code === 'invalid-value')).toBe(true);
+    expect(issuesOf({ ...baseDoc(), lang: 'xx' }).some((i) => i.path === 'lang' && i.code === 'invalid-value')).toBe(true);
     expect(issuesOf({ ...baseDoc(), contentType: 'poem' }).some((i) => i.path === 'contentType' && i.code === 'invalid-value')).toBe(true);
     expect(issuesOf({ ...baseDoc(), source: { ...baseDoc().source, rights: 'maybe' } }).some((i) => i.path === 'source.rights' && i.code === 'invalid-value')).toBe(true);
     expect(issuesOf({ ...baseDoc(), source: { ...baseDoc().source, authorship: 'robot' } }).some((i) => i.path === 'source.authorship')).toBe(true);

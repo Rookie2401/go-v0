@@ -1,9 +1,13 @@
 /**
- * The canon as the Biblia app organises it: 39 books of the Tanakh in Masoretic order (Torah, Neviʾim, Ketuvim), then the 27 of the Greek
+ * The canon as the Biblia app organises it (the original-languages edition; the Hindi edition’s tree is in edition.ts): 39 books of the Tanakh in Masoretic order (Torah, Neviʾim, Ketuvim), then the 27 of the Greek
  * New Testament (Gospels, Acts, Paul, General letters, Revelation). Names, sections and verse counts come from public/data/canon.json, copied
  * from the Biblia app's build (it derives them from the text files themselves). Chapter numbers are shown in the text's own numerals.
  */
-export type BibliaLang = 'he' | 'el';
+export type BibliaLang = 'he' | 'el' | TranslationLang;
+/** The languages of Biblia's translation editions (edition.ts): each read from its publisher's USFM (usfm.ts) by the analyser GoLearn uses for it. */
+export type TranslationLang = 'hi' | 'th' | 'de' | 'es';
+export const TRANSLATION_LANGS: readonly TranslationLang[] = ['hi', 'th', 'de', 'es'];
+export const isTranslationLang = (lang: string): lang is TranslationLang => (TRANSLATION_LANGS as readonly string[]).includes(lang);
 
 export interface BookInfo {
   id: string;
@@ -62,7 +66,7 @@ export function parseCanon(json: unknown): Canon {
   const books: BookInfo[] = json.map((b) => {
     if (typeof b !== 'object' || b === null) throw new Error('bad canon row');
     const r = b as Record<string, unknown>;
-    const lang = r.lang === 'he' || r.lang === 'el' ? r.lang : r.lang === 'gr' ? 'el' : undefined;
+    const lang = r.lang === 'he' || r.lang === 'el' || (typeof r.lang === 'string' && isTranslationLang(r.lang)) ? r.lang as BibliaLang : r.lang === 'gr' ? 'el' : undefined;
     if (!lang || typeof r.id !== 'string' || typeof r.en !== 'string' || typeof r.native !== 'string' || typeof r.section !== 'string' || !Array.isArray(r.verses)) throw new Error(`bad canon row ${String(r.id)}`);
     return { id: r.id, lang, en: r.en, native: r.native, section: r.section, verses: r.verses.map(Number) };
   });
@@ -96,4 +100,16 @@ export function greekNumeral(n: number): string {
   return `${EL_HUNDREDS[Math.floor(n / 100)]}${EL_TENS[Math.floor((n % 100) / 10)]}${EL_UNITS[n % 10]}ʹ`;
 }
 
-export const numeral = (lang: BibliaLang, n: number): string => (lang === 'he' ? hebrewNumeral(n) : greekNumeral(n));
+/** Devanagari digits (१२३), the native numerals of the Hindi edition; the IRV itself prints 1, 2, 3, which the verse-number setting also offers. */
+export function devanagariNumeral(n: number): string {
+  return Number.isInteger(n) && n >= 0 ? String(n).replace(/[0-9]/g, (d) => String.fromCharCode(0x0966 + Number(d))) : String(n);
+}
+
+/** Thai digits (๑๒๓), the native numerals of the Thai edition; the OTCV itself prints 1, 2, 3, which the verse-number setting also offers. */
+export function thaiNumeral(n: number): string {
+  return Number.isInteger(n) && n >= 0 ? String(n).replace(/[0-9]/g, (d) => String.fromCharCode(0x0e50 + Number(d))) : String(n);
+}
+
+/** The text's own numerals: Hebrew letters, Greek letters, Devanagari or Thai digits; the German and Spanish editions write 1, 2, 3. */
+export const numeral = (lang: BibliaLang, n: number): string =>
+  lang === 'he' ? hebrewNumeral(n) : lang === 'el' ? greekNumeral(n) : lang === 'hi' ? devanagariNumeral(n) : lang === 'th' ? thaiNumeral(n) : String(n);

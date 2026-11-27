@@ -92,6 +92,10 @@ export interface PatternCandidate {
 export interface PronunciationSupport {
   /** Romanization / phonetic aid for display in the support panel (never sent to TTS). */
   transliteration?: string;
+  /** The pronunciation written in the language's own script, when the adapter has one (Korean: [머걷씀니다]); shown first on the card, before the romanization. */
+  respelling?: string;
+  /** The name of the romanization scheme `transliteration` follows (Revised Romanization (2000)); the card labels the romanization with it. */
+  romanizationScheme?: string;
   ipa?: string;
   /**
    * Who produced `ipa` when it is the adapter's own (rule-based, e.g. Norwegian 'rules'): the word sheet then shows it, labelled
@@ -234,6 +238,11 @@ export interface LanguageAdapter {
    */
   cellsFor?(paradigm: Pick<Paradigm, 'cells' | 'kind' | 'pos'>, features: Record<string, string>, surface?: string): ParadigmCell[];
   /**
+   * True when `cellsFor` is EXACT: an empty list means no cell of the table is the reader's form (its ending is not one of the table's rows), and
+   * the card must light none. Without it an empty list means "I do not know", and the card falls back to its loose match (`cellsForSelection`).
+   */
+  cellsForIsExact?: boolean;
+  /**
    * Alternative ways of cutting a selection into words, for a script without word spaces (Thai): the chosen cut first,
    * then the others the word list allows, each with its confidence share and basis. Optional.
    */
@@ -263,12 +272,38 @@ export interface LanguageAdapter {
    * own; the reading keeps the adapter's lemma. Empty or absent = none.
    */
   lemmaVariants?(lemma: string, pos?: PartOfSpeech): string[];
+  /**
+   * For a language whose dictionary files SEVERAL words under one key (Arabic: عِلْم knowledge, عَلَم flag and عَلِمَ to know are all "علم"):
+   * whether a dictionary record is THIS lemma. `head` is what the record carries: its vocalized headword (a full record) or its
+   * romanization (a level-1 entry). true = this lemma, false = another word written alike, undefined = cannot tell (the lemma has no
+   * vowels, or the record has no head to compare). A caller keeps only the records that answer true, and ALL of them when none does.
+   * Absent for every language but those that need it.
+   */
+  /**
+   * True when the analyser's one-line gloss of a lemma is a REVIEWED choice of its leading sense, and the dictionary's own sense order is historical
+   * (Arabic رَأَى: "to deem true, to dream, to see" in the source, "to see" in the reading). A card or deck then shows the reading's gloss first and the
+   * dictionary's senses after it, the sense equal to the gloss not repeated. Absent (false) for every other language: their order is the dictionary's.
+   */
+  leadWithReadingGloss?: boolean;
+  /**
+   * True when the dictionary files its words under a key without the vowels (Arabic: أسبوع for أُسْبُوع). A lemma id minted from that key would be a SECOND id
+   * for the word ("lemma:ar:أسبوع:NOUN" beside the analyser's "lemma:ar:أُسْبُوع:NOUN") and would split its record, so for such a language a dictionary-
+   * confirmed form stays a FORM unit: no lemma id is made from the dictionary's key. Only the analyser's own reading supplies the vocalized lemma.
+   */
+  bareDictionaryHeads?: boolean;
+  headMatches?(lemma: string, head: { vocalized?: string; romanization?: string }, pos?: PartOfSpeech): boolean | undefined;
   /** A plain-words line for a feature bundle ("first person plural, imperfect subjunctive"), for the word sheet. */
   describeMorph?(morph: Record<string, string>, pos?: PartOfSpeech): string;
   /** The varieties this adapter can label, keyed by code. */
   readonly varieties?: Readonly<Record<string, Variety>>;
   /** The adapter's own sources (hand word list, rule sets) with their honest review state, keyed by sourceId. */
   readonly sources?: Readonly<Record<string, AnalysisSourceInfo>>;
+  /**
+   * (optional) The meaning a PERIOD variety's own source gives a headword, when the adapter holds one apart from the reading it would give the
+   * headword written alone (Greek: the New Testament lexicon's meaning of θεωρέω, "I behold, look at", where the Ancient tables lead with a rare
+   * classical sense). Undefined when the variety has no such source or the source has no such headword. Nothing is invented.
+   */
+  headwordGloss?(lemma: string, pos: string | undefined, varietyId: string): string | undefined;
   /**
    * The word across the periods of the language (the card's "Variants" tab): for each period variety, the form(s) the
    * adapter's sources attest, or a plain statement that they attest none. Optional: a language without period varieties

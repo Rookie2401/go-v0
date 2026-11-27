@@ -29,6 +29,10 @@ import type { RepositoryApi } from '../../repository-service/src/api';
 import { LEMMA_MIN_CONFIDENCE } from '../../golearn-extension/src/parser';
 import { heAdapter } from '../../../src/adapters/he';
 import { elAdapter } from '../../../src/adapters/el';
+import { hiAdapter } from '../../../src/adapters/hi';
+import { thAdapter } from '../../../src/adapters/th';
+import { deAdapter } from '../../../src/adapters/de';
+import { esAdapter } from '../../../src/adapters/es';
 import type { BibliaLang } from './canon';
 
 export const LEVEL_ATTR = 'data-level';
@@ -51,8 +55,10 @@ export interface LevelSite {
   gold?: { lemmaId: string; code: string };
 }
 
-type Adapter = typeof heAdapter | typeof elAdapter;
-const adapterOf = (lang: BibliaLang): Adapter => (lang === 'he' ? heAdapter : elAdapter);
+type Adapter = typeof heAdapter | typeof elAdapter | typeof hiAdapter;
+/** The analyser of each language: for a translation edition the same one the GoLearn extension reads web pages with, so the unit ids are the same. */
+const ADAPTER: Record<BibliaLang, Adapter> = { he: heAdapter, el: elAdapter, hi: hiAdapter, th: thAdapter, de: deAdapter, es: esAdapter };
+const adapterOf = (lang: BibliaLang): Adapter => ADAPTER[lang];
 interface VerseReading { text: string; adapter: Adapter; tokens: ReturnType<Adapter['tokenize']>; analyses: ReturnType<Adapter['analyze']> }
 const same = (a: string, b: string): boolean => a.replace(/\s+/gu, ' ').trim() === b.replace(/\s+/gu, ' ').trim();
 

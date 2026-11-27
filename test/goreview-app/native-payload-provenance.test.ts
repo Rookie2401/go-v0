@@ -78,6 +78,22 @@ describe('native embedded-web provenance', () => {
     expect(() => createNativePayloadManifest(fixture(), { mode: 'release' })).toThrow(/clean, release-eligible/);
   });
 
+  it('records paths in NFC, so a payload staged on Windows verifies when the macOS build host hands back decomposed names', () => {
+    const root = fixture(true);
+    const transformations = transformNativeWebPayload(root, { serviceUrl: 'https://repository.example.com' });
+    const composed = 'й.json.gz'.normalize('NFC');
+    const decomposed = composed.normalize('NFD');
+    expect(decomposed).not.toBe(composed);
+    fs.mkdirSync(path.join(root, 'lexicon', 'ru', 'standard'), { recursive: true });
+    fs.writeFileSync(path.join(root, 'lexicon', 'ru', 'standard', composed), 'shard');
+    const manifest = createNativePayloadManifest(root, { mode: 'release', transformations }) as { payloadFiles: Array<{ path: string }> };
+    expect(manifest.payloadFiles.map((file) => file.path)).toContain(`lexicon/ru/standard/${composed}`);
+    // the name as the cloud host lists it (EAS, 2026-11-26: build 3d4239e6 failed here)
+    fs.renameSync(path.join(root, 'lexicon', 'ru', 'standard', composed), path.join(root, 'lexicon', 'ru', 'standard', decomposed));
+    expect(fs.readdirSync(path.join(root, 'lexicon', 'ru', 'standard'))).toContain(decomposed);
+    expect(() => verifyNativePayloadManifest(root, { requireRelease: true })).not.toThrow();
+  });
+
   it('binds only Capacitor’s two empty Cordova shims after an exact source copy', () => {
     const source = fixture(true);
     const transformations = transformNativeWebPayload(source, { serviceUrl: 'https://repository.example.com' });

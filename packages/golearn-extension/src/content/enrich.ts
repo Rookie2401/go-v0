@@ -69,9 +69,26 @@ const str = (v: unknown, max = 400): string | undefined => (typeof v === 'string
 const strs = (v: unknown, max = 40): string[] => (Array.isArray(v) ? v.map((x) => str(x, 120)).filter((x): x is string => !!x).slice(0, max) : []);
 
 /** The record that matches the part of speech best (the dictionary's POS vocabulary is the parser's), else the first. */
-export function pickRecord(records: LexicalRecord[] | undefined, pos?: string): LexicalRecord | undefined {
+/**
+ * When the reading names no single dictionary entry (`ambiguous`: an undecided homonym, whose analyser says so) and the lookup returned several records of
+ * the part of speech that are DIFFERENT entries (different etymology numbers), no record is the word's: undefined, never the first one presented as its own.
+ * `isLemma` (Arabic): a key may hold several words written alike, and the adapter's `headMatches` says which record is the lemma; only then are the others set aside.
+ */
+export function pickRecord(records: LexicalRecord[] | undefined, pos?: string, opts?: { ambiguous?: boolean }, isLemma?: (r: LexicalRecord) => boolean | undefined): LexicalRecord | undefined {
   if (!records?.length) return undefined;
-  return (pos && records.find((r) => r.p === pos)) || records[0];
+  if (opts?.ambiguous) {
+    const same = records.filter((r) => !pos || r.p === pos);
+    if (new Set(same.map((r) => r.e ?? r.w)).size > 1) return undefined;
+  }
+  const mine = isLemma ? records.filter((r) => isLemma(r) === true) : [];
+  const from = mine.length ? mine : records;
+  return (pos && from.find((r) => r.p === pos)) || from[0];
+}
+
+/** The `isLemma` of `pickRecord` for an analyser that can tell the words of one key apart (its `headMatches`); undefined for every other language. */
+export function headTest(adapter: { headMatches?: (lemma: string, head: { vocalized?: string }, pos?: never) => boolean | undefined } | undefined, lemma: string | undefined): ((r: LexicalRecord) => boolean | undefined) | undefined {
+  if (!adapter?.headMatches || !lemma) return undefined;
+  return (r) => { const v = r.f?.find((f) => f.t.includes('canonical'))?.f; return adapter.headMatches!(lemma, v ? { vocalized: v } : {}, r.p as never); };
 }
 
 /**
@@ -217,7 +234,8 @@ export function sensesOf(record: LexicalRecord | undefined): Array<{ gloss: stri
 export function selectedCellKeys(adapter: LanguageAdapter | undefined, paradigm: Paradigm | undefined, features: Record<string, string>, surface?: string): string[] {
   if (!paradigm || paradigm.kind === 'none' || !paradigm.cells.length) return [];
   const own = adapter?.cellsFor ? safe(() => adapter.cellsFor!(paradigm, features, surface)) : undefined;
-  const cells = own?.length ? own : cellsForSelection(paradigm, features, surface);
+  // an adapter whose cellsFor is exact (LanguageAdapter.cellsForIsExact) may answer with an empty list: no cell is the reader's form
+  const cells = own?.length || (own && adapter?.cellsForIsExact) ? own : cellsForSelection(paradigm, features, surface);
   return [...new Set(cells.map((c) => featureKey(c.features)))];
 }
 

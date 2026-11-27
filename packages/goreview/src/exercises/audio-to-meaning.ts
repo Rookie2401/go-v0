@@ -10,7 +10,7 @@
 import { reviewFacts } from '../facts/review-facts';
 import { normalizeAnswer } from '../grading/normalize';
 import { defineAudioBuilder } from './audio-common';
-import { assemble, acceptedMeanings, attributionLine, eligibilityOf, exerciseIdOf, glossSplit, precheck, quote, referenceGloss, refuse } from './shared';
+import { assemble, acceptedMeanings, attributionLine, eligibilityOf, exerciseIdOf, glossSplit, precheck, quote, referenceGloss, refuse, shownLemma } from './shared';
 import type { Planned } from './shared';
 import type { BuildContext, ReviewTarget, UnitFacts } from '../types';
 
@@ -23,8 +23,8 @@ function plan(target: ReviewTarget, facts: UnitFacts, _ctx: BuildContext): Plann
   const reference = referenceGloss(facts);
   const accepted = acceptedMeanings(facts);
   if (!reference || accepted.length === 0) return refuse('no gloss in the word list or the dictionary, so there is nothing to check a meaning against');
-  const text = facts.unit.kind === 'form' ? facts.unit.label : facts.lemma ?? facts.unit.label;
-  const alternatives = (f.alternativeReadings ?? []).flatMap((r) => r.glosses.map((g) => ({ answer: g, sense: `${r.lemma}${r.pos ? ` (${r.pos})` : ''}` })))
+  const text = facts.unit.kind === 'form' ? facts.unit.label : shownLemma(facts, facts.lemma ?? facts.unit.label);
+  const alternatives = (f.alternativeReadings ?? []).flatMap((r) => r.glosses.map((g) => ({ answer: g, sense: `${shownLemma(facts, r.lemma)}${r.pos ? ` (${r.pos})` : ''}` })))
     .filter((a) => !accepted.some((x) => normalizeAnswer(x, 'loose') === normalizeAnswer(a.answer, 'loose')));
   return {
     ok: true,

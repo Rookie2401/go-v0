@@ -1,0 +1,95 @@
+# HELD-OUT half (nb), written 2026-11-27: never read while a rule or a known-limits list was written. Written for the deck audit by an AI model (not a native speaker); no rights are claimed by anyone else. One sentence per line.
+# everyday narrative
+Jeg våknet tidlig i morges og slo på radioen for å høre værmeldingen.
+Han har arbeidet på det samme kontoret i over tjue år.
+Vi bestemte oss for å bygge et nytt hus ved sjøen.
+Hun kan svare og skrive samtidig uten å gjøre feil.
+Barna spilte fotball i parken til det ble mørkt.
+Jeg trodde at toget skulle komme klokken åtte, men det var forsinket.
+Moren min planlegger en lang tur til fjellene i sommer.
+Etter middagen tok vi med oss hunden og gikk en tur langs elven.
+Det var lett å finne veien fordi skiltene var tydelige.
+Naboen flyttet til en annen by og tok med seg alle møblene.
+Jeg liker å lese bøker og drikke te på kvelden.
+Hun ga opp å lete etter nøklene og ringte til låsesmeden.
+Han kjøpte en gammel sykkel og gjorde den i stand selv.
+Vi kom fram til hytta sent på fredag kveld.
+Læreren stilte et vanskelig spørsmål, og ingen visste svaret.
+Jeg har aldri vært i Bergen, men jeg vil gjerne reise dit.
+Hun så på de gamle bildene og smilte for seg selv.
+Solen står opp over åsen, og lyset faller på gårdene.
+Vi må finne ut hvem som tok med paraplyen.
+Han bruker mye tid på å lage mat til familien.
+De hadde ikke råd til å kjøpe en ny bil i fjor.
+Fuglene synger i trærne, og barna leker i hagen.
+Jeg skal lande i Oslo klokken ti i morgen tidlig.
+Det beste med sommeren er at dagene er lange og varme.
+Søsteren min vant en liten pris for sin første roman.
+Vi satt under taket og ventet på at regnet skulle gi seg.
+Han tok feil, men han innrømmet det med en gang.
+Hun kjenner en mann som selger gamle plater på markedet.
+Alle skal få en sjanse til å prøve seg.
+Jeg husker godt dagen da vi flyttet inn i leiligheten.
+# news register
+Prisene på strøm har gått ned med ti prosent siden i fjor.
+Meteorologene varsler kraftig regn og sterk vind langs kysten i helgen.
+Kommunestyret vedtok i går å bygge en ny skole i sentrum.
+Laget vant kampen med tre mål mot ett foran nesten fem tusen tilskuere.
+Forskere har funnet ut at søvn er viktigere for hukommelsen enn man trodde.
+Mange bedrifter har problemer med å finne nok folk til å arbeide i sommer.
+Helsemyndighetene oppfordrer alle over seksti år til å ta influensasprøyten.
+Arbeidsledigheten falt litt i løpet av høsten, viser nye tall.
+Kommunen vil kutte i budsjettet og bruke mindre penger på veiene.
+Boligprisene har steget mer i byene enn på bygdene.
+En ny undersøkelse viser at flere nordmenn handler mat på nett.
+Snøen kom tidlig i år, og flere fjellveier er allerede stengt.
+Løperen sprang halvmaraton på under én time og tjue minutter.
+Sykehuset åpner en ny avdeling for barn i løpet av neste år.
+Politikerne er uenige om hvor mye penger som bør gå til kollektivtrafikk.
+Et forskerteam har utviklet en ny metode som kan oppdage sykdom tidligere.
+Fiskerne frykter at bestanden av torsk blir mindre hvis ikke kvotene settes ned.
+Bussene kjører sjeldnere i ferien, og rutetidene endres fra mandag.
+Det blir mildere vær mot slutten av uken, men det kan komme litt regn.
+Bondelaget mener at prisen på korn må opp for at gårdene skal overleve.
+# conversation
+God morgen! Har du sovet godt i natt?
+Ja takk, men jeg våknet litt tidlig.
+Kan du ta med melk når du går i butikken?
+Selvfølgelig, trenger vi noe mer?
+Ja, kjøp litt brød og tre epler.
+Hva kan jeg hjelpe deg med i dag?
+Jeg leter etter en varm jakke til vinteren.
+Denne er billigere, men den andre er lettere.
+Jeg tar den lette, og kan du være så snill å pakke den inn?
+Hvordan har du det? Du ser blek ut.
+Jeg har hatt vondt i halsen og hodet siden i går.
+Åpne munnen og si «aaa», så skal jeg se på det.
+Du bør hvile og drikke mye vann i noen dager.
+Skal vi spille kort eller se på film i kveld?
+Jeg vil heller gå en tur hvis det ikke regner.
+Når skal du starte på det nye prosjektet?
+Vi begynner på mandag, men planen er ikke ferdig.
+Kan jeg få svar innen fredag, takk?
+Beklager, jeg rekker det ikke før neste uke.
+Unnskyld, går dette toget til Trondheim?
+Nei, du må bytte på stasjonen og vente en time.
+Hvor mye koster en billett til flyplassen?
+Den koster hundre og tjue kroner for voksne.
+Har dere et ledig rom for to netter?
+Ja, rom nummer fire ligger i andre etasje og har utsikt over havna.
+# description and instructions
+Skjær løken i små biter og stek den i smør til den blir myk.
+Tilsett mel og rør godt, og hell så i melken litt etter litt.
+La suppen koke i ti minutter, og smak til med salt og pepper.
+Gå rett fram til neste lyskryss og ta til venstre ved kirken.
+Følg veien langs elven til du ser en stor bro, og kryss den.
+Byen ligger ved en fjord og er omgitt av høye fjell.
+I sentrum finner du et lite torg, flere kafeer og et gammelt teater.
+Skolen har tre hundre elever og ligger like ved idrettsplassen.
+Elevene begynner klokken åtte og har fri klokken tre.
+Alle må ta av seg skoene før de går inn i gymsalen.
+Det er forbudt å parkere foran inngangen.
+Slå av lyset og lukk døren når du går ut av rommet.
+Les teksten nøye og svar på alle spørsmålene på arket.
+Bruk en myk klut og lunkent vann når du vasker vinduene.
+Ta med legitimasjon, og vent til navnet ditt blir ropt opp.

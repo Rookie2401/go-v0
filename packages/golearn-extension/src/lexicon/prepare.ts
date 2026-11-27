@@ -11,11 +11,24 @@
 import type { ShardLoader, ShardSource } from '../../../../src/adapters/shared/shards';
 import { createGreekShardLoader } from '../../../../src/adapters/greek/shards';
 import { createHebrewShardLoader } from '../../../../src/adapters/hebrew/shards';
+import { createRussianShardLoader } from '../../../../src/adapters/russian/shards';
 import type { UrlLoaderApi } from '../analysers/urlLoader';
-import { analyserExtras, getAnalyser } from '../parser/registry';
+import { analyserExtras, getAnalyser, setLexiconNotLoaded } from '../parser/registry';
 
 /** The sets per language, in the order they are loaded. */
-export const LEXICON_SETS: Readonly<Record<string, readonly string[]>> = { el: ['el/ancient', 'el/modern'], he: ['he/biblical', 'he/modern'] };
+export const LEXICON_SETS: Readonly<Record<string, readonly string[]>> = { el: ['el/ancient', 'el/modern'], he: ['he/biblical', 'he/modern'], ru: ['ru/standard'], ko: ['ko/standard'], ar: ['ar/standard'] };
+/** Korean's whole stem lexicon is about 1.3 MB gzip in some forty-five shards and a page loads most of it: it may keep more of them than the other sets. */
+const MAX_LOADED: Readonly<Record<string, number>> = { ko: 64 };
+
+/**
+ * The languages whose word list is loaded BEFORE a scan of Active or Reading Analysis analyses a page (the card has always prepared its own text).
+ * Korean: its compiled core holds about a fifth of the lexicon and names other lemmas than the full lexicon does (감자 → 감다), so a scan on the core
+ * alone would name one item and the card another, and a page's answer would change after any lookup. Greek, Hebrew and Russian keep loading on the
+ * first lookup, as they did, until their own measurement says otherwise (their shard sets are far larger). Arabic IS in the list (the lead's decision): a first scan made with the compiled
+ * core alone and never repeated under-credits a page (a core key that is only partial credits no lemma until its shard loads). Its full word list is
+ * 179 shards (7.9 MB), so the wait could cost. Measured (rig runs F and H, ar.mjs step E3, 113-word prose page, 2026-11-26): 1,470 ms (run F, after the run's earlier lookups) and 1,100 ms (run H, Active alone on a fresh profile) from switching Active on to the first highlight, with 0 lexicon/ar shard requests before it in both. The request log of run H shows no lexicon/ar request at all, so the 0 is not proof the wait is free: whether the shards were not needed or the requests are not visible to the rig is OPEN (AR-PROVISIONAL; no cold figure on a page with many non-core words).
+ */
+export const PREPARE_BEFORE_SCAN: ReadonlySet<string> = new Set(['ko', 'ar']);
 
 export function lexiconUrl(chromeApi: UrlLoaderApi | undefined, base: string | undefined, path: string): string {
   return chromeApi?.runtime.getURL ? chromeApi.runtime.getURL(`lexicon/${path}`) : new URL(`/dist/lexicon/${path}`, base).href;
@@ -39,9 +52,13 @@ export function createLexiconPreparer(chromeApi: UrlLoaderApi | undefined, fetch
     let p = loaders.get(set);
     if (!p) {
       // the analyser chunk's own factory installs into the chunk's index store; the src factories serve only an analyser registered from src (tests)
-      const make = analyserExtras(set.slice(0, 2))?.createShardLoader ?? (set.startsWith('el/') ? createGreekShardLoader : createHebrewShardLoader);
+      // Korean has NO src factory here on purpose: its loader needs the stem rules (korean/stems.ts, hangul.ts), about 7 KB that would sit in the
+      // content script of every page for the sake of tests; the Korean analyser chunk brings its own factory, and tests register it the same way
+      const fromChunk = analyserExtras(set.slice(0, 2))?.createShardLoader;
+      if (!fromChunk && set.startsWith('ko/')) { unavailable.add(set); p = Promise.resolve(undefined); loaders.set(set, p); return p; }
+      const make = fromChunk ?? (set.startsWith('el/') ? createGreekShardLoader : set.startsWith('ru/') ? createRussianShardLoader : createHebrewShardLoader);
       // the content script logs nothing (test/audit/security.bundle.test.ts): a missing set is remembered here and shows on the card as "not loaded"
-      p = make(source, { base: set, maxLoaded }).then((l) => l as ShardLoader, () => { unavailable.add(set); return undefined; });
+      p = make(source, { base: set, maxLoaded: Math.max(maxLoaded, MAX_LOADED[set.slice(0, 2)] ?? 0) }).then((l) => l as ShardLoader, () => { unavailable.add(set); return undefined; });
       loaders.set(set, p);
     }
     return p;
@@ -62,6 +79,7 @@ export function createLexiconPreparer(chromeApi: UrlLoaderApi | undefined, fetch
         used.push(set);
         if (r.failed.length) failed.push(`${set}: ${r.failed.length} shard${r.failed.length === 1 ? '' : 's'} (${r.failed[0][1]})`);
       }));
+      setLexiconNotLoaded(languageId, failed.length > 0); // the card says "could not be loaded", not "not in the word list"
       return { sets: used, failed };
     },
   };

@@ -1,0 +1,45 @@
+# DEVELOPMENT half (de). Written for the grammar audit of 2026-11-17 by an AI model (not a native speaker); Article 1 of the Universal Declaration of Human Rights is written out from memory; never used to tune an analyser. One sentence per line.
+# German: everyday narrative (written for this audit, ordinary A2–B1 prose)
+Gestern bin ich um halb sieben aufgestanden, obwohl ich eigentlich frei hatte.
+Meine Freundin schlief noch, also schlich ich in die Küche und machte Kaffee.
+Während ich wartete, las ich die Nachrichten auf dem Handy.
+Es hatte die ganze Nacht geschneit, und draußen war alles weiß.
+Nach dem Frühstück zog ich meine Stiefel an und ging um den See spazieren.
+Es war kälter, als ich gedacht hatte, aber die Luft war frisch und klar.
+Auf dem Heimweg traf ich unsere Nachbarin, die gerade aus dem Urlaub in Spanien zurückgekommen war.
+Wir blieben stehen und unterhielten uns eine Weile, und sie erzählte, dass ihre Tochter im Herbst an der Universität anfängt.
+Am Nachmittag kaufte ich für das Wochenende ein.
+Der Laden war voller Leute, und ich musste lange in der Schlange stehen.
+Ich kaufte Brot, Milch, Eier, Kartoffeln und eine Tüte Äpfel, außerdem ein bisschen Schokolade für die Kinder.
+Als ich nach Hause kam, rief meine Mutter an und fragte, ob wir am Sonntag zum Essen kommen wollten.
+Ich antwortete, dass wir gern kämen, aber nicht so lange bleiben könnten, weil ich am Montag früh aufstehen muss.
+Am Abend sahen wir einen Film, den alle empfohlen hatten, aber er war eigentlich ziemlich langweilig, also machten wir den Fernseher aus und gingen früh ins Bett.
+# German: news register
+Die Bundesregierung hat heute den Entwurf für den Haushalt des kommenden Jahres vorgelegt.
+Der Finanzminister sagte auf einer Pressekonferenz, die Inflation sei weiterhin zu hoch, und die Zinsen würden voraussichtlich erst im Sommer gesenkt.
+Die Opposition kritisiert, dass der Haushalt vor allem diejenigen treffe, die ohnehin wenig haben, und fordert eine Erhöhung des Kindergeldes.
+Nach Angaben des Statistischen Bundesamtes ist die Arbeitslosigkeit im vergangenen Halbjahr leicht gestiegen, besonders bei jungen Menschen unter fünfundzwanzig Jahren.
+Mehrere Gemeinden warnen, dass sie das Angebot für ältere Menschen kürzen müssen, wenn sie nicht mehr Geld bekommen.
+Die Polizei teilte mit, dass zwei Personen nach dem Einbruch festgenommen wurden und dass weiter ermittelt wird.
+Bei dem Unfall, der sich heute Morgen kurz nach acht Uhr ereignete, wurde niemand schwer verletzt.
+# German: conversation
+Hallo, wie geht es dir?
+Danke, gut, und dir?
+Auch gut, aber ich hatte in letzter Zeit viel Stress bei der Arbeit.
+Wollen wir mal einen Kaffee trinken gehen?
+Ja, gern!
+Passt es dir am Donnerstag?
+Nein, leider nicht, da muss ich zum Zahnarzt, aber wie wäre es mit Freitag nach der Arbeit?
+Das klingt gut.
+Weißt du übrigens, ob Karin kommt?
+Keine Ahnung, ich habe schon lange nicht mehr mit ihr gesprochen.
+Entschuldigung, können Sie das bitte noch einmal sagen?
+Ich habe nicht ganz verstanden, was Sie gemeint haben.
+Wie viel kostet dieser Pullover?
+Er kostet neunundvierzig Euro.
+Haben Sie ihn auch in einer größeren Größe?
+Bitte schön, hier ist er.
+Vielen Dank für Ihre Hilfe!
+# German: Article 1 of the Universal Declaration of Human Rights
+Alle Menschen sind frei und gleich an Würde und Rechten geboren.
+Sie sind mit Vernunft und Gewissen begabt und sollen einander im Geist der Brüderlichkeit begegnen.

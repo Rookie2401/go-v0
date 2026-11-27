@@ -2,7 +2,8 @@
  * Shared machinery of the exercise builders: the exercise shape GoReview really stores (the contract's `Exercise`
  * plus what validation, grading and evidence need), eligibility, the gap convention and a few pure helpers.
  */
-import { STATUS_RANK } from '../../../repository-contract/src';
+import { STATUS_RANK, displayLemma, entryGlossPieces, stripEntryLabel } from '../../../repository-contract/src';
+import { answerVariants } from '../../../../src/core/english-verb';
 import type { AnalysisStatus, Dimension, ReviewEligibility } from '../../../repository-contract/src';
 import { glossParts, normalizeAnswer } from '../grading/normalize';
 import type { GradingKey } from '../grading/grade';
@@ -26,6 +27,8 @@ export interface ExerciseContext {
 /** The exercise GoReview stores: a contract `Exercise` whose key and context carry the extra fields grading and evidence read. */
 export interface ReviewExercise extends Exercise {
   answerKey: GradingKey;
+  /** The attested form's parsing, shown on the back of a written-recognition card. */
+  formParsing?: string;
   /** Which form of the family this is ('feature' | 'lemma' | 'choice' | 'typed' …). */
   variant?: string;
   context?: ExerciseContext;
@@ -133,6 +136,8 @@ export function matchCase(form: string, template: string): string {
 export const withGap = (c: Pick<ExerciseContext, 'sentence' | 'start' | 'end'>): string => `${c.sentence.slice(0, c.start)}${GAP}${c.sentence.slice(c.end)}`;
 
 export const quote = (s: string): string => `“${s}”`;
+/** A lemma as a person reads, hears and types it: a Korean homonym number (눈²) is identity, never part of the spelling (repository-contract lemma-display.ts). */
+export const shownLemma = (facts: UnitFacts, lemma: string): string => displayLemma(facts.unit.languageId, lemma);
 
 const wordCount = (s: string): number => s.trim().split(/\s+/u).filter(Boolean).length;
 
@@ -200,7 +205,7 @@ function senseAnswers(sense: string): string[] {
 }
 
 /** The gloss one dictionary sense offers to show: the whole if short, else its first short meaning, else the leading items of its first list. */
-function senseReference(sense: string): string | undefined {
+export function senseReference(sense: string): string | undefined {
   if (wordCount(sense) <= 6) return sense;
   for (const { text: meaning } of splitTop(sense, ';')) {
     if (wordCount(meaning) <= 6) return meaning;
@@ -225,6 +230,11 @@ function senseReference(sense: string): string | undefined {
  * six words, else the leading items of its first list of meanings that fit in six words.
  */
 export function referenceGloss(facts: UnitFacts): string | undefined {
+  // Greek finite verb renderings contain a coordinated subject ("He, she, or it came").
+  // The comma is grammatical here, not a separator between dictionary senses.
+  const inflected = reviewFacts(facts).wordAnalysis?.inflectedMeaning?.text;
+  if (facts.unit?.kind === 'form' && facts.unit.languageId === 'el' && inflected)
+    return inflected;
   const { lexicon, dictionary } = glossSplit(facts);
   if (lexicon[0] !== undefined) return lexicon[0];
   for (const sense of dictionary) {
@@ -238,12 +248,32 @@ export function referenceGloss(facts: UnitFacts): string | undefined {
  * Every accepted meaning: the lexicon glosses and their parts, then, sense by sense in the dictionary's order, the pieces of each
  * sense of at most four words with no bracket (a short sense whole and its parts; a long sense split as described above).
  */
-export function acceptedMeanings(facts: UnitFacts): string[] {
+/**
+ * A meaning that numbers several senses ("1. chief, leader 2. big") is several meanings: a number-dot FOLLOWED BY A SPACE AND A LETTER, at the start
+ * or after a space, is a separator between senses (a decimal point such as "3.5 mm jack" is not). A string without numbering comes back as it was.
+ */
+export function splitNumberedSenses(meaning: string): string[] {
+  if (!/(?:^|\s)\d+\.\s+\p{L}/u.test(meaning)) return [meaning];
+  const parts = meaning.split(/(?:^|\s)\d+\.\s+(?=\p{L})/u).map((p) => p.trim()).filter(Boolean);
+  return parts.length ? parts : [meaning];
+}
+
+export function acceptedMeanings(facts: UnitFacts, opts: { splitNumbers?: boolean } = {}): string[] {
+  // `splitNumbers: false` is the behaviour before numbering was a separator (scripts/accepted-meanings-survey.mts compares the two)
+  const split = opts.splitNumbers === false ? (g: string): string[] => [g] : splitNumberedSenses;
+  // Keep the realized verb intact, and accept subject variants without ever accepting
+  // a bare pronoun such as "He" as the meaning of ἦλθεν or ἦν.
+  const inflected = reviewFacts(facts).wordAnalysis?.inflectedMeaning?.text;
+  if (facts.unit?.kind === 'form' && facts.unit.languageId === 'el' && inflected)
+    return answerVariants(inflected);
   const { lexicon, dictionary } = glossSplit(facts);
   const out: string[] = [];
   const add = (p: string): void => { if (!out.includes(p)) out.push(p); };
-  for (const g of lexicon) glossParts(g).forEach(add);
-  for (const sense of dictionary) senseAnswers(sense).forEach(add);
+  // a bare Korean homonym (눈, undecided) is every entry of its spelling: the answers are the senses of each entry, labels ("(noun, entry 2)") removed
+  // (and a numbered Arabic sense list "1. to know 2. to teach" is split first, so each sense is an answer: lexicon.flatMap(split))
+  const lang = facts.unit?.languageId;
+  for (const g of lexicon.flatMap(split)) { glossParts(g).forEach(add); for (const piece of entryGlossPieces(lang, g)) glossParts(piece).forEach(add); }
+  for (const sense of dictionary.flatMap(split)) senseAnswers(stripEntryLabel(lang, sense)).forEach(add);
   return out;
 }
 

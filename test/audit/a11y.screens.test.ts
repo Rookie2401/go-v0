@@ -332,8 +332,10 @@ describe('GoLearn setup application', () => {
     rig.packs.nextInstall = appFailingInstall();
     await appChoose(rig, 'de');
     audit(rig.root, 'app/languages (pack failed, Retry)');
-    // a language that asks a question first (the fake catalogue's Norwegian: the written standard) opens its Download panel in the row
-    rig.q<HTMLDetailsElement>('details.download').open = true;
+    // a language that asks a question first (the fake catalogue's Norwegian: the written standard) shows its Download panel in its opened box
+    const asks = [...rig.root.querySelectorAll<HTMLDetailsElement>('details.language-box')].find((d) => d.querySelector('.download-one .dl-panel'));
+    expect(asks).toBeDefined();
+    asks!.open = true;
     audit(rig.root, 'app/languages (Download question open)');
     for (const d of rig.root.querySelectorAll<HTMLDetailsElement>('#language-cards details')) d.open = true;
     audit(rig.root, 'app/languages (Details open)');

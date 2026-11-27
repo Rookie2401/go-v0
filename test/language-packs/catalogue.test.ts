@@ -10,15 +10,15 @@ import {
   LANGUAGE_CATALOGUE, LEVEL_LABEL, PACKS, TUTORIALS, audioLine, buildCatalogue, catalogueEntry, levelOf, packCapabilities, validationOf,
 } from '../../packages/language-packs/src';
 
-describe('LANGUAGE_CATALOGUE: exactly nine languages, in order (Latin, Hebrew and Greek were added 2026-10-17)', () => {
-  it('Norwegian, German, Albanian, Hindi, Thai, Spanish, Latin, Hebrew, Greek', () => {
-    expect(LANGUAGE_CATALOGUE).toHaveLength(10);
-    expect(LANGUAGE_CATALOGUE.map((e) => e.languageId)).toEqual(['nb', 'de', 'sq', 'hi', 'th', 'es', 'la', 'he', 'el', 'arc']);
-    expect(LANGUAGE_CATALOGUE.map((e) => e.name)).toEqual(['Norwegian', 'German', 'Albanian', 'Hindi', 'Thai', 'Spanish', 'Latin', 'Hebrew', 'Greek', 'Aramaic']);
-    expect(LANGUAGE_CATALOGUE.map((e) => e.nativeName)).toEqual(['norsk', 'Deutsch', 'shqip', 'हिन्दी', 'ไทย', 'español', 'Latina', 'עברית', 'Ελληνικά', 'אֲרָמִית']);
-    expect(LANGUAGE_CATALOGUE.map((e) => e.scriptId)).toEqual(['Latn', 'Latn', 'Latn', 'Deva', 'Thai', 'Latn', 'Latn', 'Hebr', 'Grek', 'Hebr']);
-    expect(LANGUAGE_CATALOGUE.map((e) => e.scriptName)).toEqual(['Latin', 'Latin', 'Latin', 'Devanagari', 'Thai script', 'Latin', 'Latin', 'Hebrew script', 'Greek alphabet', 'Hebrew script']);
-    expect(LANGUAGE_CATALOGUE.map((e) => e.packIds)).toEqual([['pack:nb', 'pack:nn'], ['pack:de'], ['pack:sq'], ['pack:hi'], ['pack:th'], ['pack:es'], ['pack:la'], ['pack:he'], ['pack:el'], ['pack:arc']]);
+describe('LANGUAGE_CATALOGUE: exactly fourteen languages, in order (Latin, Hebrew and Greek were added 2026-10-17, Russian and French 2026-11-17, Korean 2026-11-25, Arabic 2026-11-25)', () => {
+  it('Norwegian, German, Albanian, Hindi, Thai, Spanish, Latin, Hebrew, Greek, Aramaic, Russian, French, Korean, Arabic', () => {
+    expect(LANGUAGE_CATALOGUE).toHaveLength(14);
+    expect(LANGUAGE_CATALOGUE.map((e) => e.languageId)).toEqual(['nb', 'de', 'sq', 'hi', 'th', 'es', 'la', 'he', 'el', 'arc', 'ru', 'fr', 'ko', 'ar']);
+    expect(LANGUAGE_CATALOGUE.map((e) => e.name)).toEqual(['Norwegian', 'German', 'Albanian', 'Hindi', 'Thai', 'Spanish', 'Latin', 'Hebrew', 'Greek', 'Aramaic', 'Russian', 'French', 'Korean', 'Arabic']);
+    expect(LANGUAGE_CATALOGUE.map((e) => e.nativeName)).toEqual(['norsk', 'Deutsch', 'shqip', 'हिन्दी', 'ไทย', 'español', 'Latina', 'עברית', 'Ελληνικά', 'אֲרָמִית', 'Русский', 'français', '한국어', 'العربية']);
+    expect(LANGUAGE_CATALOGUE.map((e) => e.scriptId)).toEqual(['Latn', 'Latn', 'Latn', 'Deva', 'Thai', 'Latn', 'Latn', 'Hebr', 'Grek', 'Hebr', 'Cyrl', 'Latn', 'Hang', 'Arab']);
+    expect(LANGUAGE_CATALOGUE.map((e) => e.scriptName)).toEqual(['Latin', 'Latin', 'Latin', 'Devanagari', 'Thai script', 'Latin', 'Latin', 'Hebrew script', 'Greek alphabet', 'Hebrew script', 'Cyrillic', 'Latin', 'Hangul', 'Arabic']);
+    expect(LANGUAGE_CATALOGUE.map((e) => e.packIds)).toEqual([['pack:nb', 'pack:nn'], ['pack:de'], ['pack:sq'], ['pack:hi'], ['pack:th'], ['pack:es'], ['pack:la'], ['pack:he'], ['pack:el'], ['pack:arc'], ['pack:ru'], ['pack:fr'], ['pack:ko'], ['pack:ar']]);
   });
 
   it('is frozen and has no team in it: a language is chosen freely, never by team', () => {
@@ -69,11 +69,11 @@ describe('every field agrees with the manifests (nothing is hard-coded)', () => 
     expect(e.tutorialAvailable).toBe(true);
   });
 
-  it('the levels are the real ones: Albanian and Spanish installable and unreviewed; German, Hindi, Thai, Latin and both Norwegian packs experimental; none production-validated', () => {
+  it('the levels are the real ones: Albanian and Spanish installable and unreviewed; German, Hindi, Thai, Latin, French, Korean and both Norwegian packs experimental; none production-validated', () => {
     const by = Object.fromEntries(LANGUAGE_CATALOGUE.map((e) => [e.languageId, e]));
     expect([by.sq.level, by.sq.validation]).toEqual(['installable', 'unreviewed']);
     expect([by.es.level, by.es.validation]).toEqual(['installable', 'unreviewed']);
-    for (const l of ['nb', 'de', 'hi', 'th', 'la']) expect([by[l].level, by[l].validation, by[l].levelLabel], l).toEqual(['experimental', 'experimental', 'experimental, unreviewed']);
+    for (const l of ['nb', 'de', 'hi', 'th', 'la', 'fr', 'ko']) expect([by[l].level, by[l].validation, by[l].levelLabel], l).toEqual(['experimental', 'experimental', 'experimental, unreviewed']);
     expect(by.nb.packs.map((p) => p.level)).toEqual(['experimental', 'experimental']);
     for (const e of LANGUAGE_CATALOGUE) expect(e.validation, e.languageId).not.toBe('production-validated');
   });
@@ -148,6 +148,8 @@ describe('audio, whatWorks and whatDoesNot', () => {
     const not = (id: string): string => LANGUAGE_CATALOGUE.find((e) => e.languageId === id)!.whatDoesNot;
     // measured against human treebanks: the figures, as a limit (a lemma is still wrong some of the time)
     expect(not('la')).toMatch(/^Lemmas are not always right: the first reading had the right one 95\.6% on the Latin New Testament \(Clementine Vulgate\) against the PROIEL treebank \(104,345 words\) and 90\.5% on twelve classical and late Latin authors against the Perseus treebank \(65,595 words\); /);
+    // Russian: three held-out human treebanks, all below the bar, stated as a limit (the figures are docs/russian/eval.json's strict ones)
+    expect(not('ru')).toMatch(/^Lemmas are not always right: the first reading had the right one 88\.4% on Russian Wikipedia, blog and news sentences against the UD Russian-GSD treebank \(test split\) \(8,578 words\), 89\.4% on Russian social media, poetry and fiction against the UD Russian-Taiga treebank \(test split\) \(11,302 words\) and 90\.8% on a thousand translated news and Wikipedia sentences against the UD Russian-PUD treebank \(15,714 words\); /);
     // measured only against AI-written labels: said so, never as accuracy
     expect(not('de')).toMatch(/^Lemma accuracy is known only as agreement with AI-written labels that nobody has checked \(96\.3% of 215 words of course texts and 96\.3% of 80 words of held-out text\); /);
     // not measured at all
@@ -158,7 +160,7 @@ describe('audio, whatWorks and whatDoesNot', () => {
 
   it('where the analyser is not loaded (a lazy build) the entry says so instead of claiming anything', () => {
     const lazy = buildCatalogue({ adapterOf: () => undefined });
-    expect(lazy).toHaveLength(10);
+    expect(lazy).toHaveLength(14);
     for (const e of lazy) {
       expect(e.whatWorks, e.languageId).toBe('The analyser is not loaded in this build, so no card capability is claimed here until it is.');
       expect(e.whatDoesNot, e.languageId).toMatch(/^Nothing is lemmatised or analysed until the analyser is loaded/);

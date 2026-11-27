@@ -235,6 +235,7 @@ después = after, afterwards
 luego = then, later
 pronto = soon
 tarde = late
+derecho = straight ahead
 temprano = early
 mal = badly
 mejor = better

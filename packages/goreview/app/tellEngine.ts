@@ -9,6 +9,7 @@
  *                                                ConsentGiven / ConsentWithdrawn event, scope gotell:remote-assistance
  *   gotell:save-requested     string[]           draft ids the learner saved while the account could not be reached
  */
+import { unitIdLabel } from '../../repository-contract/src';
 import { createAnalyzer, createAssistance, judgeAuthorship, stepsForSentence } from '../../gotell/src/engine';
 import type { Analyzer } from '../../gotell/src/engine';
 import {
@@ -92,7 +93,7 @@ export async function createTellEngine(ctx: AppContext, id: Identity): Promise<T
   const assistance = analyzer ? createAssistance({ analyzer, consent: remoteConsent.gate, now }) : undefined;
 
   const pack = guidancePackFor(id.languageId);
-  const labelOf = (unitId: string): string => unitId.split(':')[2] ?? unitId;
+  const labelOf = (unitId: string): string => (unitId.split(':')[2] ? unitIdLabel(unitId) : unitId);
 
   // authorship: per sentence, from the steps shown FOR THAT SENTENCE; a sentence carried over unchanged keeps what it had
   const judgeFor = (steps: readonly AssistanceStep[]): SentenceJudge => (sentence, prior: SentenceVersion | undefined, index) => {

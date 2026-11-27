@@ -91,7 +91,9 @@ export async function createRealDeps(fetcher?: typeof fetch): Promise<Deps> {
     win: window, doc: document, fetch: doFetch, area: storageArea(mobile), config, mobile,
     ...(ext ? { local: async () => localRepoFor(ext) } : {}),
     links: {
-      ...(ext ? { setup: '../app/index.html#/languages', biblia: '../../biblia/index.html' } : { setup: HOSTED_SETUP, ...(config.extensionUrl ? { extension: config.extensionUrl } : {}) }),
+      // the extension's GoReview links to no Biblia (the owner, 2026-11-19: "Look at the web browser build for GoReview. Remove Biblia"); a build that
+      // ships Biblia beside it (the iPhone edition) still names it in its config.json (bibliaUrl)
+      ...(ext ? { setup: '../app/index.html#/languages' } : { setup: HOSTED_SETUP, ...(config.extensionUrl ? { extension: config.extensionUrl } : {}) }),
       ...(config.bibliaUrl ? { biblia: config.bibliaUrl } : {}),
       ...(config.supportEmail ? { support: config.supportEmail } : {}),
     },

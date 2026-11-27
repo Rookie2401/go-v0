@@ -18,6 +18,10 @@ import type { RepositoryApi } from '../../repository-service/src/api';
 import { createHebrewShardLoader } from '../../../src/adapters/hebrew/shards';
 import type { HebrewShardLoader } from '../../../src/adapters/hebrew/shards';
 import { createGreekShardLoader } from '../../../src/adapters/greek/shards';
+import { createRussianShardLoader, type RussianShardLoader } from '../../../src/adapters/russian/shards';
+import { displayLemma } from '../../repository-contract/src';
+import { createKoreanShardLoader, type KoreanShardLoader } from '../../../src/adapters/korean/shards';
+import { createArabicShardLoader, type ArabicShardLoader } from '../../../src/adapters/arabic/shards';
 import { installGreekIndex, installedGreekIndexes, type GreekFormIndex } from '../../../src/adapters/greek/index-store';
 import { installedHebrewIndexes } from '../../../src/adapters/hebrew/index-store';
 import type { GreekShardLoader } from '../../../src/adapters/greek/shards';
@@ -28,7 +32,10 @@ import { readShardBytes } from '../../../src/adapters/shared/shards';
 import { createFormsSource } from '../../../src/dict/forms';
 import { featureKey, type Paradigm, type ParadigmCell } from '../../../src/core/paradigm';
 import type { PartOfSpeech } from '../../../src/core/model';
-import { buildParadigm, formRomanOf, pickRecord, selectedCellKeys, type LexicalRecord } from '../src/facts/paradigm-table';
+import { buildParadigm, formRomanOf, headTest, pickRecord, selectedCellKeys, type LexicalRecord } from '../src/facts/paradigm-table';
+import { applyDeckGate, held } from '../src/facts/deck-gate';
+import { deckKnownLimit, deckNoFormCards } from '../src/facts/deck-known-limits';
+import { deckLeadSenses } from '../src/facts/deck-lead-senses';
 
 export { featureKey };
 export type { Paradigm, ParadigmCell };
@@ -83,12 +90,16 @@ interface HebrewFormFrequencyIndex {
 /** How long a failed dictionary read waits before it is asked once more. */
 export const SOURCE_RETRY_DELAY_MS = 400;
 
-export function packFactsFor(opts: { fetch: typeof fetch; baseUrl: string; lexiconBaseUrl?: string }): PackFacts {
+export function packFactsFor(opts: { fetch: typeof fetch; baseUrl: string; lexiconBaseUrl?: string; /** false: the facts as the pack gives them, without the deck gate (src/facts/deck-gate.ts); for the deck audit's before-and-after only */ deckGate?: boolean }): PackFacts {
   const runtimes = new Map<string, ReturnType<typeof createPackRuntime>>();
   const formsIndexes = new Map<string, ReturnType<typeof createFormsSource>>();
+  const gateFormsIndexes = new Map<string, ReturnType<typeof createFormsSource>>();
   const runtimeSourceFailures = new Map<string, number>();
   const hebrewLoaders = new Map<string, Promise<HebrewShardLoader>>();
   const greekLoaders = new Map<string, Promise<GreekShardLoader>>();
+  let russianLoader: Promise<RussianShardLoader> | undefined;
+  let koreanLoader: Promise<KoreanShardLoader> | undefined;
+  let arabicLoader: Promise<ArabicShardLoader> | undefined;
   let koineIndex: Promise<void> | undefined;
   let hebrewFrequency: Promise<HebrewFormFrequencyIndex> | undefined;
   const lexiconBase = opts.lexiconBaseUrl ?? opts.baseUrl;
@@ -196,6 +207,76 @@ export function packFactsFor(opts: { fetch: typeof fetch; baseUrl: string; lexic
       ? 'ancient' : /[\u0313-\u0345]/u.test(body.normalize('NFD')) ? 'ancient' : 'modern';
     return ensureGreekKeys(keys, period);
   };
+  /** Russian: the sharded form index (lexicon/ru/standard), loaded for the words about to be read; true when a shard was newly installed. */
+  const ensureRussianKeys = async (keys: string[]): Promise<boolean> => {
+    if (!keys.length) return false;
+    let job = russianLoader;
+    if (!job) {
+      job = createRussianShardLoader(source, { base: 'lexicon/ru/standard', maxLoaded: 24 });
+      russianLoader = job;
+      job.catch(() => { if (russianLoader === job) russianLoader = undefined; });
+    }
+    const loader = await job;
+    let changed = false;
+    for (let i = 0; i < keys.length; i += 8) {
+      const result = await loader.ensure(keys.slice(i, i + 8));
+      if (result.failed.length) throw new Error(`lexicon/ru/standard: ${result.failed.map((x) => x[1]).join(', ')}`);
+      if (result.loaded.length) changed = true;
+    }
+    return changed;
+  };
+  /** Korean: the sharded stem lexicon (lexicon/ko/standard); the loader takes tokens as written and expands them to stems itself. */
+  const ensureKoreanKeys = async (keys: string[]): Promise<boolean> => {
+    if (!keys.length) return false;
+    let job = koreanLoader;
+    if (!job) {
+      job = createKoreanShardLoader(source, { base: 'lexicon/ko/standard', maxLoaded: 64 });
+      koreanLoader = job;
+      job.catch(() => { if (koreanLoader === job) koreanLoader = undefined; });
+    }
+    const loader = await job;
+    let changed = false;
+    for (let i = 0; i < keys.length; i += 8) {
+      const result = await loader.ensure(keys.slice(i, i + 8));
+      if (result.failed.length) throw new Error(`lexicon/ko/standard: ${result.failed.map((x) => x[1]).join(', ')}`);
+      if (result.loaded.length) changed = true;
+    }
+    return changed;
+  };
+  /** The words of a Korean unit id as a person writes them: a homonym number (눈²) is identity, never spelling. */
+  const koreanUnitKeys = (unitId: string): string[] => {
+    const body = unitId.startsWith('form:ko:') ? unitId.slice('form:ko:'.length)
+      : unitId.startsWith('lemma:ko:') ? displayLemma('ko', unitId.slice('lemma:ko:'.length).replace(/:[A-Z]+$/u, '')) : '';
+    return body ? builtInAdapter('ko')!.tokenize(body).filter((t) => t.isWord).map((t) => t.normalized) : [];
+  };
+  const russianUnitKeys = (unitId: string): string[] => {
+    const body = unitId.startsWith('form:ru:') ? unitId.slice('form:ru:'.length)
+      : unitId.startsWith('lemma:ru:') ? unitId.slice('lemma:ru:'.length).replace(/:[A-Z]+$/u, '') : '';
+    return body ? builtInAdapter('ru')!.tokenize(body).filter((t) => t.isWord).map((t) => t.normalized) : [];
+  };
+  /** Arabic: the sharded form index (lexicon/ar/standard), loaded for the words about to be read; true when a shard was newly installed. */
+  const ensureArabicKeys = async (keys: string[]): Promise<boolean> => {
+    if (!keys.length) return false;
+    let job = arabicLoader;
+    if (!job) {
+      job = createArabicShardLoader(source, { base: 'lexicon/ar/standard', maxLoaded: 24 });
+      arabicLoader = job;
+      job.catch(() => { if (arabicLoader === job) arabicLoader = undefined; });
+    }
+    const loader = await job;
+    let changed = false;
+    for (let i = 0; i < keys.length; i += 8) {
+      const result = await loader.ensure(keys.slice(i, i + 8));
+      if (result.failed.length) throw new Error(`lexicon/ar/standard: ${result.failed.map((x) => x[1]).join(', ')}`);
+      if (result.loaded.length) changed = true;
+    }
+    return changed;
+  };
+  const arabicUnitKeys = (unitId: string): string[] => {
+    const body = unitId.startsWith('form:ar:') ? unitId.slice('form:ar:'.length)
+      : unitId.startsWith('lemma:ar:') ? unitId.slice('lemma:ar:'.length).replace(/:[A-Z]+$/u, '') : '';
+    return body ? builtInAdapter('ar')!.tokenize(body).filter((t) => t.isWord).map((t) => t.normalized) : [];
+  };
   const greekUnitKeys = (unitId: string): string[] => {
     if (unitId.startsWith('form:el:')) return builtInAdapter('el')!.tokenize(unitId.slice('form:el:'.length)).filter((t) => t.isWord).map((t) => t.normalized);
     if (unitId.startsWith('lemma:el:')) {
@@ -264,7 +345,7 @@ export function packFactsFor(opts: { fetch: typeof fetch; baseUrl: string; lexic
       return p;
     };
     const clearGreekSentenceCaches = (): void => { plain.clearSentenceCache(); byVariety.forEach(provider => provider.clearSentenceCache()); };
-    return {
+    const raw = {
       prime: async (unitIds: string[], varietyId?: string) => {
         if (languageId === 'he' && unitIds.some((id) => id.startsWith('form:he:'))) {
           await ensureHebrewSentenceSet(manifest);
@@ -273,6 +354,15 @@ export function packFactsFor(opts: { fetch: typeof fetch; baseUrl: string; lexic
         }
         if (languageId === 'el') {
           if (await ensureGreekFor(unitIds, varietyId ?? manifest.varietyId)) clearGreekSentenceCaches();
+        }
+        if (languageId === 'ru') {
+          if (await ensureRussianKeys(unitIds.flatMap(russianUnitKeys))) clearGreekSentenceCaches();
+        }
+        if (languageId === 'ko') {
+          if (await ensureKoreanKeys(unitIds.flatMap(koreanUnitKeys))) clearGreekSentenceCaches();
+        }
+        if (languageId === 'ar') {
+          if (await ensureArabicKeys(unitIds.flatMap(arabicUnitKeys))) clearGreekSentenceCaches();
         }
         // Start the Repository snapshot's consume window after remote pack assets load.
         await plain.prime(unitIds);
@@ -290,6 +380,24 @@ export function packFactsFor(opts: { fetch: typeof fetch; baseUrl: string; lexic
         if (languageId === 'el' && requestedLanguage === 'el') {
           try {
             if (await ensureGreekFor([unitId], varietyId ?? manifest.varietyId)) clearGreekSentenceCaches();
+          } catch { return undefined; }
+        }
+        if (languageId === 'ru' && requestedLanguage === 'ru') {
+          try {
+            if (await ensureRussianKeys(russianUnitKeys(unitId))) clearGreekSentenceCaches();
+          } catch { return undefined; }
+        }
+        if (languageId === 'ko' && requestedLanguage === 'ko') {
+          try {
+            if (await ensureKoreanKeys(koreanUnitKeys(unitId))) clearGreekSentenceCaches();
+          } catch { return undefined; }
+        }
+        // Arabic admits NO form card (the deck gate, docs/arabic/DECK.md): a bare form's facts are the provider's `requires-review` answer, which names no lemma and no meaning,
+        // so no shard is fetched for it and nothing downstream can pick a lexeme from the bare key.
+        if (languageId === 'ar' && requestedLanguage === 'ar' && unitId.startsWith('form:ar:')) return forVariety(varietyId).factsFor(unitId, requestedLanguage, varietyId);
+        if (languageId === 'ar' && requestedLanguage === 'ar') {
+          try {
+            if (await ensureArabicKeys(arabicUnitKeys(unitId))) clearGreekSentenceCaches();
           } catch { return undefined; }
         }
         const facts = await forVariety(varietyId).factsFor(unitId, requestedLanguage, varietyId);
@@ -330,6 +438,43 @@ export function packFactsFor(opts: { fetch: typeof fetch; baseUrl: string; lexic
         } catch { return undefined; }
       },
     } as Provider;
+    if (opts.deckGate === false) return raw;
+    // THE DECK GATE (src/facts/deck-gate.ts): every lemma and form unit's facts pass it before anything is built from them. It reads the dictionary through the
+    // facts' own runtime: the same files, read once (no second request for a shard the facts already hold), and a read that fails counts as a failed source like
+    // any other, so the facts are asked again later; meanwhile the gate holds what it could not check.
+    const dictionary = runtime;
+    // the pack's forms index, where its dictionary has one (a language without one answers nothing): which words a written form is listed under
+    const identitiesOf = async (form: string): Promise<Array<{ lemma: string; pos?: string }>> => {
+      let index = gateFormsIndexes.get(languageId);
+      if (!index) {
+        const dictionaryPath = manifest.lexical.dictionary?.baseUrl;
+        if (!dictionaryPath) return [];
+        const root = dictionaryPath.replace(new RegExp(`/?${languageId}/?$`, 'u'), '');
+        index = createFormsSource(languageId as Parameters<typeof createFormsSource>[0], { fetch: opts.fetch, base: `${opts.baseUrl.replace(/\/+$/u, '')}${root ? `/${root.replace(/^\/+|\/+$/gu, '')}` : ''}` });
+        gateFormsIndexes.set(languageId, index);
+      }
+      const rows = await index.lookupForms([form]);
+      return (rows.get(form) ?? []).map((hit) => ({ lemma: hit.lemma, ...(hit.pos ? { pos: hit.pos } : {}) }));
+    };
+    const gated: Provider = {
+      prime: raw.prime, clearPrime: raw.clearPrime,
+      factsFor: async (unitId, requestedLanguage, varietyId) => {
+        const facts = await raw.factsFor(unitId, requestedLanguage, varietyId);
+        if (!facts || requestedLanguage !== languageId) return facts;
+        // Arabic: its own, stricter gate has already run (src/adapters/arabic/deck.ts marks the reading; the facts provider returns a held unit in this gate's shape). What
+        // remains of this gate for Arabic is the known-limits list. Its meaning checks (b) and (e) are not applied: the card's first meaning is the reviewed index lead
+        // (Sense Rev / One), which a later "first current sense of the dictionary" must not replace.
+        if (languageId === 'ar') {
+          const known = deckKnownLimit('ar', unitId);
+          return known && facts.status !== 'requires-review' && facts.status !== 'verified' ? held(facts, 'known-limit', known) : facts;
+        }
+        return applyDeckGate(facts, {
+          languageId, varietyId: varietyId ?? manifest.varietyId, gloss: (lemma, pos, forms) => dictionary.gloss(lemma, pos, forms),
+          factsOf: (id) => gated.factsFor(id, requestedLanguage, varietyId), known: (id) => deckKnownLimit(languageId, id), lead: (id) => deckLeadSenses(languageId, id, varietyId), formIdentities: identitiesOf, ...(deckNoFormCards(languageId) ? { noFormCards: deckNoFormCards(languageId) } : {}),
+        });
+      },
+    } as Provider;
+    return gated;
   };
   // the form table of a card's word. Its dictionary reads go through a runtime of their own: a language with no full records answers
   // 404, which is the normal state there and must not count as a failed source of the facts above.
@@ -357,7 +502,7 @@ export function packFactsFor(opts: { fetch: typeof fetch; baseUrl: string; lexic
       let runtime = tableRuntimes.get(languageId);
       if (!runtime) { runtime = createPackRuntime(manifest, { fetch: opts.fetch, baseUrl: opts.baseUrl }); tableRuntimes.set(languageId, runtime); }
       const entry = await runtime.entry(lemma, pos);
-      record = pickRecord(entry?.records as LexicalRecord[] | undefined, pos);
+      record = pickRecord(entry?.records as LexicalRecord[] | undefined, pos, undefined, headTest(adapter, lemma));
     } catch { /* no dictionary table: the analyser's cells stand alone, and the table says so */ }
     const hint = { features, surface };
     const built = buildParadigm(adapter, languageId, lemma, pos as PartOfSpeech, record, hint);

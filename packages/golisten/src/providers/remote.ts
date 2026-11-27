@@ -14,7 +14,7 @@ import type { GoListenEnv } from '../environment';
 import { speechVarietyLocale } from '../environment';
 import { descriptorOf } from '../registry';
 import type { VoiceEntry, VoiceRegistry } from '../registry';
-import { fail } from './types';
+import { fail, spokenText } from './types';
 import type { Failure, PrepareOutcome, Req } from './types';
 
 export const REMOTE_MAX_CHARS = 5000; // MAX_TEXT_CHARS in server/speechHandler.ts
@@ -75,7 +75,7 @@ export async function prepareRemote(req: Req, registry: VoiceRegistry, env: GoLi
     if (req.signal?.aborted) return fail('offline', 'Pronunciation was cancelled.');
     res = await send(`${env.proxyBase}/synthesize`, {
       method: 'POST', headers: { 'content-type': 'application/json' }, credentials: 'same-origin', cache: 'no-store',
-      body: JSON.stringify({ languageId: req.languageId, text: req.text, voice: providerVoice, locale, format: 'riff-24khz-16bit-mono-pcm', kind: req.kind, sourcePermission: 'allowed' }), signal: req.signal,
+      body: JSON.stringify({ languageId: req.languageId, text: spokenText(req.languageId, req.text), voice: providerVoice, locale, format: 'riff-24khz-16bit-mono-pcm', kind: req.kind, sourcePermission: 'allowed' }), signal: req.signal,
     });
   } catch {
     return fail('offline', 'The speech service could not be reached. Check the connection.');

@@ -150,6 +150,7 @@ describe('the language-resolution hook', () => {
     const { sample, ...rest } = seen[0];
     expect(rest).toEqual({
       documentLanguage: { languageId: 'sq', source: 'html-lang', confidence: 0.8 },
+      surface: 'shtëpinë', // the word clicked, so a click on one word in the learner's own script can be read in the learner's language (resolve.ts, 4b)
       teamDefault: 'sq',
       installed: ['sq', 'es'],
     });
@@ -334,5 +335,13 @@ describe('refusals and the cross-origin fallback', () => {
     const rows = await rowsOf(r.store);
     expect(rows[0].payload).toMatchObject({ readerId: 'play-books', contextKind: 'none' });
     expect(rows[0].subject.sentenceKey).toBeUndefined();
+  });
+});
+
+describe('the resolver is handed what the click rule needs (fix batch 2)', () => {
+  it('the evidence carries the clicked surface and the block as the sample, so the sentence around the click can be tested', () => {
+    // resolve.ts rule 4b reads `surface` and `sample`; the declared-language and Persian/Urdu refusals are tested in test/reader-languages/arabic-detect.test.ts
+    const src = require('node:fs').readFileSync(require('node:path').resolve(process.cwd(), 'packages/golearn-extension/src/content/controller.ts'), 'utf8') as string;
+    expect(src).toMatch(/sample: sampleAround\(sel\),\s*surface: sel\.surface/);
   });
 });

@@ -1,4 +1,5 @@
 /** My Vocabulary is a read-only view of the Repository's encounter projection, not a second deck or word store. */
+import { displayLemma } from '../../../repository-contract/src';
 import type { KnowledgeLevel } from '../../../repository-contract/src';
 import type { VocabularyItem, VocabularyQuery } from '../../../repository-service/src/api';
 import { sourceTitle } from '../../../repository-contract/src/sources';
@@ -6,6 +7,7 @@ import type { AppContext } from '../context';
 import { append, button, clear, field, h, langProps, p, setStatus, statusLine } from '../dom';
 import { itemMarked } from '../events';
 import { languageName } from '../format';
+import { vocabLabel } from '../deckModel';
 import type { View } from './view';
 
 const LEVELS: Array<KnowledgeLevel | 'all'> = ['all', 'new', 'seen', 'recognized', 'familiar', 'known', 'automatic'];
@@ -120,7 +122,9 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
 
   function itemRow(item: VocabularyItem): HTMLElement {
     const unitId = item.knowledge.unitId;
-    const title = item.unit?.label || unitId;
+    // a Korean homonym number (눈²) is identity, not spelling: the title is the headword.
+    // A record the Repository holds no unit for shows the word its id carries, never the id; a unit with no label (the worker had no analyser) is titled by the word in its id too (Arabic: with its vowels).
+    const title = displayLemma(item.unit?.languageId ?? activeIdentity.languageId, vocabLabel(item.unit?.label, unitId)); // vocabLabel is unitLabel (Korean's rule) for a missing label, and also for a label that is an id
     const kind = item.unit?.kind ?? unitId.split(':', 1)[0];
     const kindLabel = UNIT_KIND_LABEL[kind] ?? kind;
     const variants = [...new Set(item.surfaceForms.filter((x) => x && x !== title))].slice(0, 25);
@@ -196,7 +200,7 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
             const featureExplanations = Object.entries(packFacts?.featureExplanations ?? {}).slice(0, 12);
             const facts: Array<[string, string]> = [
               ['Kind', unit.kind], ['Analysis status', unit.status], ['Part of speech', packFacts?.pos ?? unit.pos ?? 'Not supplied'],
-              ['Lemma', packFacts?.lemma ?? 'Not supplied'],
+              ['Lemma', packFacts?.lemma ? displayLemma(unit.languageId, packFacts.lemma) : 'Not supplied'],
               ['Meaning', meanings.length ? meanings.join('; ') : 'No meaning supplied by this language pack'],
               ['Features', unit.features ? Object.entries(unit.features).map(([key, value]) => `${key}: ${value}`).join('; ') : 'None recorded'],
               ['Last review', card?.history.at(-1)?.at ?? 'Not reviewed'], ['Next review', card?.schedule.due ?? 'Not scheduled'],

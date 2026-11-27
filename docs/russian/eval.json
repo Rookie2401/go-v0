@@ -1,0 +1,5787 @@
+{
+ "analyzer": "adapter-ru@1",
+ "analyserModule": "ruAnalyze (sentence, ordered by context)",
+ "index": "full: ru-core (15,385 form keys, 1,536 lemmas) + 467 shards loaded on demand from public/lexicon/ru/standard (built 2026-11-17)",
+ "seconds": 10.581,
+ "treebanks": {
+  "gsd-test": {
+   "tally": {
+    "n": 8578,
+    "covered": 7904,
+    "lemma1": 7670,
+    "lemmaAny": 7762,
+    "lemma1Strict": 7582,
+    "lemmaAnyStrict": 7666,
+    "pos1": 7564,
+    "posAny": 7685,
+    "pos1Strict": 7432,
+    "posAnyStrict": 7584,
+    "featTokens": 5851,
+    "feat1Lenient": 5596,
+    "feat1Strict": 2634,
+    "readings": 14538,
+    "multiLemma": 1680,
+    "perFeature": {
+     "Number": {
+      "gold": 5614,
+      "defined": 5501,
+      "okLenient": 5436,
+      "okStrict": 5433
+     },
+     "Gender": {
+      "gold": 4889,
+      "defined": 4782,
+      "okLenient": 4729,
+      "okStrict": 4384
+     },
+     "Tense": {
+      "gold": 962,
+      "defined": 950,
+      "okLenient": 948,
+      "okStrict": 940
+     },
+     "Mood": {
+      "gold": 718,
+      "defined": 718,
+      "okLenient": 716,
+      "okStrict": 716
+     },
+     "VerbForm": {
+      "gold": 1074,
+      "defined": 1055,
+      "okLenient": 1054,
+      "okStrict": 1054
+     },
+     "Voice": {
+      "gold": 755,
+      "defined": 208,
+      "okLenient": 204,
+      "okStrict": 203
+     },
+     "Aspect": {
+      "gold": 1074,
+      "defined": 1061,
+      "okLenient": 1057,
+      "okStrict": 1030
+     },
+     "Case": {
+      "gold": 4930,
+      "defined": 4711,
+      "okLenient": 4536,
+      "okStrict": 2820
+     },
+     "Animacy": {
+      "gold": 3760,
+      "defined": 3281,
+      "okLenient": 3241,
+      "okStrict": 3189
+     },
+     "Variant": {
+      "gold": 146,
+      "defined": 144,
+      "okLenient": 144,
+      "okStrict": 144
+     },
+     "Person": {
+      "gold": 346,
+      "defined": 343,
+      "okLenient": 343,
+      "okStrict": 340
+     },
+     "Degree": {
+      "gold": 50,
+      "defined": 20,
+      "okLenient": 20,
+      "okStrict": 20
+     }
+    }
+   },
+   "byUpos": {
+    "PROPN": {
+     "n": 714,
+     "covered": 323,
+     "lemma1": 276,
+     "lemmaAny": 282,
+     "lemma1Strict": 268,
+     "lemmaAnyStrict": 273,
+     "pos1": 256,
+     "posAny": 261,
+     "pos1Strict": 256,
+     "posAnyStrict": 261,
+     "featTokens": 323,
+     "feat1Lenient": 275,
+     "feat1Strict": 119,
+     "readings": 418,
+     "multiLemma": 29,
+     "perFeature": {
+      "Case": {
+       "gold": 323,
+       "defined": 278,
+       "okLenient": 257,
+       "okStrict": 138
+      },
+      "Number": {
+       "gold": 323,
+       "defined": 289,
+       "okLenient": 278,
+       "okStrict": 278
+      },
+      "Gender": {
+       "gold": 323,
+       "defined": 315,
+       "okLenient": 299,
+       "okStrict": 289
+      },
+      "Animacy": {
+       "gold": 323,
+       "defined": 310,
+       "okLenient": 289,
+       "okStrict": 280
+      }
+     }
+    },
+    "VERB": {
+     "n": 997,
+     "covered": 972,
+     "lemma1": 935,
+     "lemmaAny": 951,
+     "lemma1Strict": 935,
+     "lemmaAnyStrict": 951,
+     "pos1": 954,
+     "posAny": 964,
+     "pos1Strict": 954,
+     "posAnyStrict": 964,
+     "featTokens": 966,
+     "feat1Lenient": 944,
+     "feat1Strict": 203,
+     "readings": 1227,
+     "multiLemma": 107,
+     "perFeature": {
+      "Number": {
+       "gold": 838,
+       "defined": 838,
+       "okLenient": 836,
+       "okStrict": 834
+      },
+      "Gender": {
+       "gold": 466,
+       "defined": 466,
+       "okLenient": 466,
+       "okStrict": 446
+      },
+      "Tense": {
+       "gold": 862,
+       "defined": 850,
+       "okLenient": 848,
+       "okStrict": 840
+      },
+      "Mood": {
+       "gold": 618,
+       "defined": 618,
+       "okLenient": 616,
+       "okStrict": 616
+      },
+      "VerbForm": {
+       "gold": 966,
+       "defined": 947,
+       "okLenient": 946,
+       "okStrict": 946
+      },
+      "Voice": {
+       "gold": 751,
+       "defined": 208,
+       "okLenient": 204,
+       "okStrict": 203
+      },
+      "Aspect": {
+       "gold": 966,
+       "defined": 953,
+       "okLenient": 949,
+       "okStrict": 922
+      },
+      "Case": {
+       "gold": 220,
+       "defined": 111,
+       "okLenient": 100,
+       "okStrict": 63
+      },
+      "Animacy": {
+       "gold": 219,
+       "defined": 0,
+       "okLenient": 0,
+       "okStrict": 0
+      },
+      "Variant": {
+       "gold": 109,
+       "defined": 109,
+       "okLenient": 109,
+       "okStrict": 109
+      },
+      "Person": {
+       "gold": 234,
+       "defined": 233,
+       "okLenient": 233,
+       "okStrict": 231
+      }
+     }
+    },
+    "ADP": {
+     "n": 1263,
+     "covered": 1262,
+     "lemma1": 1242,
+     "lemmaAny": 1244,
+     "lemma1Strict": 1241,
+     "lemmaAnyStrict": 1243,
+     "pos1": 1234,
+     "posAny": 1236,
+     "pos1Strict": 1234,
+     "posAnyStrict": 1236,
+     "featTokens": 0,
+     "feat1Lenient": 0,
+     "feat1Strict": 0,
+     "readings": 3251,
+     "multiLemma": 743,
+     "perFeature": {}
+    },
+    "ADJ": {
+     "n": 1170,
+     "covered": 1050,
+     "lemma1": 1010,
+     "lemmaAny": 1031,
+     "lemma1Strict": 991,
+     "lemmaAnyStrict": 1007,
+     "pos1": 989,
+     "posAny": 1012,
+     "pos1Strict": 989,
+     "posAnyStrict": 1012,
+     "featTokens": 1049,
+     "feat1Lenient": 1001,
+     "feat1Strict": 366,
+     "readings": 1958,
+     "multiLemma": 140,
+     "perFeature": {
+      "Case": {
+       "gold": 1018,
+       "defined": 1004,
+       "okLenient": 957,
+       "okStrict": 582
+      },
+      "Number": {
+       "gold": 1043,
+       "defined": 1039,
+       "okLenient": 1039,
+       "okStrict": 1039
+      },
+      "Gender": {
+       "gold": 786,
+       "defined": 784,
+       "okLenient": 779,
+       "okStrict": 534
+      },
+      "Animacy": {
+       "gold": 96,
+       "defined": 56,
+       "okLenient": 56,
+       "okStrict": 56
+      },
+      "Variant": {
+       "gold": 37,
+       "defined": 35,
+       "okLenient": 35,
+       "okStrict": 35
+      },
+      "Degree": {
+       "gold": 14,
+       "defined": 11,
+       "okLenient": 11,
+       "okStrict": 11
+      }
+     }
+    },
+    "NOUN": {
+     "n": 3068,
+     "covered": 2932,
+     "lemma1": 2888,
+     "lemmaAny": 2905,
+     "lemma1Strict": 2852,
+     "lemmaAnyStrict": 2869,
+     "pos1": 2898,
+     "posAny": 2921,
+     "pos1Strict": 2898,
+     "posAnyStrict": 2921,
+     "featTokens": 2932,
+     "feat1Lenient": 2822,
+     "feat1Strict": 1723,
+     "readings": 4168,
+     "multiLemma": 285,
+     "perFeature": {
+      "Case": {
+       "gold": 2932,
+       "defined": 2892,
+       "okLenient": 2823,
+       "okStrict": 1793
+      },
+      "Number": {
+       "gold": 2932,
+       "defined": 2893,
+       "okLenient": 2841,
+       "okStrict": 2841
+      },
+      "Gender": {
+       "gold": 2932,
+       "defined": 2909,
+       "okLenient": 2877,
+       "okStrict": 2868
+      },
+      "Animacy": {
+       "gold": 2932,
+       "defined": 2901,
+       "okLenient": 2883,
+       "okStrict": 2840
+      }
+     }
+    },
+    "CCONJ": {
+     "n": 334,
+     "covered": 334,
+     "lemma1": 334,
+     "lemmaAny": 334,
+     "lemma1Strict": 334,
+     "lemmaAnyStrict": 334,
+     "pos1": 317,
+     "posAny": 318,
+     "pos1Strict": 317,
+     "posAnyStrict": 318,
+     "featTokens": 0,
+     "feat1Lenient": 0,
+     "feat1Strict": 0,
+     "readings": 1095,
+     "multiLemma": 1,
+     "perFeature": {}
+    },
+    "AUX": {
+     "n": 108,
+     "covered": 108,
+     "lemma1": 108,
+     "lemmaAny": 108,
+     "lemma1Strict": 108,
+     "lemmaAnyStrict": 108,
+     "pos1": 108,
+     "posAny": 108,
+     "pos1Strict": 108,
+     "posAnyStrict": 108,
+     "featTokens": 108,
+     "feat1Lenient": 108,
+     "feat1Strict": 103,
+     "readings": 163,
+     "multiLemma": 33,
+     "perFeature": {
+      "Number": {
+       "gold": 100,
+       "defined": 100,
+       "okLenient": 100,
+       "okStrict": 99
+      },
+      "Gender": {
+       "gold": 70,
+       "defined": 70,
+       "okLenient": 70,
+       "okStrict": 70
+      },
+      "Tense": {
+       "gold": 100,
+       "defined": 100,
+       "okLenient": 100,
+       "okStrict": 100
+      },
+      "Mood": {
+       "gold": 100,
+       "defined": 100,
+       "okLenient": 100,
+       "okStrict": 100
+      },
+      "VerbForm": {
+       "gold": 108,
+       "defined": 108,
+       "okLenient": 108,
+       "okStrict": 108
+      },
+      "Aspect": {
+       "gold": 108,
+       "defined": 108,
+       "okLenient": 108,
+       "okStrict": 108
+      },
+      "Person": {
+       "gold": 10,
+       "defined": 10,
+       "okLenient": 10,
+       "okStrict": 9
+      },
+      "Voice": {
+       "gold": 4,
+       "defined": 0,
+       "okLenient": 0,
+       "okStrict": 0
+      }
+     }
+    },
+    "ADV": {
+     "n": 249,
+     "covered": 248,
+     "lemma1": 230,
+     "lemmaAny": 237,
+     "lemma1Strict": 221,
+     "lemmaAnyStrict": 227,
+     "pos1": 219,
+     "posAny": 242,
+     "pos1Strict": 219,
+     "posAnyStrict": 242,
+     "featTokens": 36,
+     "feat1Lenient": 36,
+     "feat1Strict": 9,
+     "readings": 478,
+     "multiLemma": 111,
+     "perFeature": {
+      "Degree": {
+       "gold": 36,
+       "defined": 9,
+       "okLenient": 9,
+       "okStrict": 9
+      }
+     }
+    },
+    "NUM": {
+     "n": 77,
+     "covered": 77,
+     "lemma1": 72,
+     "lemmaAny": 73,
+     "lemma1Strict": 72,
+     "lemmaAnyStrict": 73,
+     "pos1": 62,
+     "posAny": 63,
+     "pos1Strict": 62,
+     "posAnyStrict": 63,
+     "featTokens": 76,
+     "feat1Lenient": 68,
+     "feat1Strict": 4,
+     "readings": 141,
+     "multiLemma": 6,
+     "perFeature": {
+      "Case": {
+       "gold": 76,
+       "defined": 71,
+       "okLenient": 63,
+       "okStrict": 27
+      },
+      "Animacy": {
+       "gold": 65,
+       "defined": 5,
+       "okLenient": 4,
+       "okStrict": 4
+      },
+      "Number": {
+       "gold": 25,
+       "defined": 2,
+       "okLenient": 2,
+       "okStrict": 2
+      },
+      "Gender": {
+       "gold": 39,
+       "defined": 33,
+       "okLenient": 33,
+       "okStrict": 22
+      }
+     }
+    },
+    "SCONJ": {
+     "n": 63,
+     "covered": 63,
+     "lemma1": 63,
+     "lemmaAny": 63,
+     "lemma1Strict": 63,
+     "lemmaAnyStrict": 63,
+     "pos1": 57,
+     "posAny": 62,
+     "pos1Strict": 57,
+     "posAnyStrict": 61,
+     "featTokens": 0,
+     "feat1Lenient": 0,
+     "feat1Strict": 0,
+     "readings": 143,
+     "multiLemma": 20,
+     "perFeature": {}
+    },
+    "DET": {
+     "n": 194,
+     "covered": 194,
+     "lemma1": 180,
+     "lemmaAny": 193,
+     "lemma1Strict": 165,
+     "lemmaAnyStrict": 177,
+     "pos1": 190,
+     "posAny": 191,
+     "pos1Strict": 58,
+     "posAnyStrict": 91,
+     "featTokens": 146,
+     "feat1Lenient": 133,
+     "feat1Strict": 45,
+     "readings": 676,
+     "multiLemma": 109,
+     "perFeature": {
+      "Case": {
+       "gold": 146,
+       "defined": 146,
+       "okLenient": 133,
+       "okStrict": 91
+      },
+      "Number": {
+       "gold": 146,
+       "defined": 144,
+       "okLenient": 144,
+       "okStrict": 144
+      },
+      "Gender": {
+       "gold": 109,
+       "defined": 98,
+       "okLenient": 98,
+       "okStrict": 62
+      },
+      "Animacy": {
+       "gold": 20,
+       "defined": 8,
+       "okLenient": 8,
+       "okStrict": 8
+      }
+     }
+    },
+    "PART": {
+     "n": 126,
+     "covered": 126,
+     "lemma1": 126,
+     "lemmaAny": 126,
+     "lemma1Strict": 126,
+     "lemmaAnyStrict": 126,
+     "pos1": 75,
+     "posAny": 92,
+     "pos1Strict": 75,
+     "posAnyStrict": 92,
+     "featTokens": 0,
+     "feat1Lenient": 0,
+     "feat1Strict": 0,
+     "readings": 258,
+     "multiLemma": 2,
+     "perFeature": {}
+    },
+    "PRON": {
+     "n": 215,
+     "covered": 215,
+     "lemma1": 206,
+     "lemmaAny": 215,
+     "lemma1Strict": 206,
+     "lemmaAnyStrict": 215,
+     "pos1": 205,
+     "posAny": 215,
+     "pos1Strict": 205,
+     "posAnyStrict": 215,
+     "featTokens": 215,
+     "feat1Lenient": 209,
+     "feat1Strict": 62,
+     "readings": 562,
+     "multiLemma": 94,
+     "perFeature": {
+      "Case": {
+       "gold": 215,
+       "defined": 209,
+       "okLenient": 203,
+       "okStrict": 126
+      },
+      "Number": {
+       "gold": 207,
+       "defined": 196,
+       "okLenient": 196,
+       "okStrict": 196
+      },
+      "Gender": {
+       "gold": 164,
+       "defined": 107,
+       "okLenient": 107,
+       "okStrict": 93
+      },
+      "Person": {
+       "gold": 102,
+       "defined": 100,
+       "okLenient": 100,
+       "okStrict": 100
+      },
+      "Animacy": {
+       "gold": 105,
+       "defined": 1,
+       "okLenient": 1,
+       "okStrict": 1
+      }
+     }
+    }
+   },
+   "excluded": {
+    "upos": 2293,
+    "digits": 130,
+    "no-cyrillic": 299
+   },
+   "misaligned": {
+    "we-split": 2,
+    "we-merged": 38,
+    "partial-overlap": 45,
+    "no-token": 0,
+    "gold-not-in-text": 0
+   },
+   "misalignExamples": {
+    "we-merged": "gsd-test:test-s17: «Улу»",
+    "partial-overlap": "gsd-test:test-s24: «Ср.»",
+    "we-split": "gsd-test:test-s208: «ZIP-коде»"
+   },
+   "drift": 0,
+   "sentences": 601,
+   "goldWords": 11385,
+   "ranges": 0,
+   "emptyNodes": 0,
+   "inRange": 0
+  },
+  "gsd-dev": {
+   "tally": {
+    "n": 8718,
+    "covered": 7966,
+    "lemma1": 7705,
+    "lemmaAny": 7813,
+    "lemma1Strict": 7614,
+    "lemmaAnyStrict": 7713,
+    "pos1": 7624,
+    "posAny": 7762,
+    "pos1Strict": 7505,
+    "posAnyStrict": 7666,
+    "featTokens": 5922,
+    "feat1Lenient": 5642,
+    "feat1Strict": 2617,
+    "readings": 14556,
+    "multiLemma": 1650,
+    "perFeature": {
+     "Case": {
+      "gold": 5043,
+      "defined": 4789,
+      "okLenient": 4580,
+      "okStrict": 2809
+     },
+     "Number": {
+      "gold": 5679,
+      "defined": 5552,
+      "okLenient": 5474,
+      "okStrict": 5473
+     },
+     "Gender": {
+      "gold": 4944,
+      "defined": 4842,
+      "okLenient": 4782,
+      "okStrict": 4476
+     },
+     "Animacy": {
+      "gold": 3907,
+      "defined": 3417,
+      "okLenient": 3382,
+      "okStrict": 3319
+     },
+     "Person": {
+      "gold": 353,
+      "defined": 348,
+      "okLenient": 348,
+      "okStrict": 347
+     },
+     "Tense": {
+      "gold": 950,
+      "defined": 933,
+      "okLenient": 932,
+      "okStrict": 925
+     },
+     "Mood": {
+      "gold": 683,
+      "defined": 681,
+      "okLenient": 681,
+      "okStrict": 681
+     },
+     "VerbForm": {
+      "gold": 1052,
+      "defined": 1028,
+      "okLenient": 1026,
+      "okStrict": 1026
+     },
+     "Voice": {
+      "gold": 758,
+      "defined": 215,
+      "okLenient": 214,
+      "okStrict": 214
+     },
+     "Aspect": {
+      "gold": 1052,
+      "defined": 1035,
+      "okLenient": 1031,
+      "okStrict": 1007
+     },
+     "Variant": {
+      "gold": 147,
+      "defined": 145,
+      "okLenient": 145,
+      "okStrict": 145
+     },
+     "Degree": {
+      "gold": 43,
+      "defined": 18,
+      "okLenient": 18,
+      "okStrict": 18
+     }
+    }
+   },
+   "byUpos": {
+    "ADJ": {
+     "n": 1155,
+     "covered": 1013,
+     "lemma1": 977,
+     "lemmaAny": 990,
+     "lemma1Strict": 944,
+     "lemmaAnyStrict": 954,
+     "pos1": 958,
+     "posAny": 974,
+     "pos1Strict": 958,
+     "posAnyStrict": 974,
+     "featTokens": 1013,
+     "feat1Lenient": 962,
+     "feat1Strict": 381,
+     "readings": 1925,
+     "multiLemma": 127,
+     "perFeature": {
+      "Case": {
+       "gold": 986,
+       "defined": 979,
+       "okLenient": 930,
+       "okStrict": 561
+      },
+      "Number": {
+       "gold": 1010,
+       "defined": 1005,
+       "okLenient": 1005,
+       "okStrict": 1005
+      },
+      "Gender": {
+       "gold": 743,
+       "defined": 740,
+       "okLenient": 732,
+       "okStrict": 528
+      },
+      "Animacy": {
+       "gold": 84,
+       "defined": 47,
+       "okLenient": 46,
+       "okStrict": 46
+      },
+      "Variant": {
+       "gold": 27,
+       "defined": 26,
+       "okLenient": 26,
+       "okStrict": 26
+      },
+      "Degree": {
+       "gold": 13,
+       "defined": 9,
+       "okLenient": 9,
+       "okStrict": 9
+      }
+     }
+    },
+    "NOUN": {
+     "n": 3158,
+     "covered": 3009,
+     "lemma1": 2939,
+     "lemmaAny": 2967,
+     "lemma1Strict": 2898,
+     "lemmaAnyStrict": 2922,
+     "pos1": 2966,
+     "posAny": 2997,
+     "pos1Strict": 2966,
+     "posAnyStrict": 2997,
+     "featTokens": 3009,
+     "feat1Lenient": 2880,
+     "feat1Strict": 1683,
+     "readings": 4248,
+     "multiLemma": 272,
+     "perFeature": {
+      "Case": {
+       "gold": 3009,
+       "defined": 2949,
+       "okLenient": 2855,
+       "okStrict": 1756
+      },
+      "Number": {
+       "gold": 3009,
+       "defined": 2953,
+       "okLenient": 2884,
+       "okStrict": 2884
+      },
+      "Gender": {
+       "gold": 3009,
+       "defined": 2985,
+       "okLenient": 2958,
+       "okStrict": 2947
+      },
+      "Animacy": {
+       "gold": 3009,
+       "defined": 2972,
+       "okLenient": 2956,
+       "okStrict": 2907
+      }
+     }
+    },
+    "CCONJ": {
+     "n": 361,
+     "covered": 361,
+     "lemma1": 360,
+     "lemmaAny": 361,
+     "lemma1Strict": 360,
+     "lemmaAnyStrict": 361,
+     "pos1": 342,
+     "posAny": 343,
+     "pos1Strict": 342,
+     "posAnyStrict": 343,
+     "featTokens": 0,
+     "feat1Lenient": 0,
+     "feat1Strict": 0,
+     "readings": 1131,
+     "multiLemma": 1,
+     "perFeature": {}
+    },
+    "ADP": {
+     "n": 1198,
+     "covered": 1198,
+     "lemma1": 1167,
+     "lemmaAny": 1170,
+     "lemma1Strict": 1166,
+     "lemmaAnyStrict": 1169,
+     "pos1": 1171,
+     "posAny": 1175,
+     "pos1Strict": 1171,
+     "posAnyStrict": 1175,
+     "featTokens": 0,
+     "feat1Lenient": 0,
+     "feat1Strict": 0,
+     "readings": 3027,
+     "multiLemma": 706,
+     "perFeature": {}
+    },
+    "VERB": {
+     "n": 987,
+     "covered": 969,
+     "lemma1": 931,
+     "lemmaAny": 951,
+     "lemma1Strict": 929,
+     "lemmaAnyStrict": 949,
+     "pos1": 944,
+     "posAny": 957,
+     "pos1Strict": 944,
+     "posAnyStrict": 957,
+     "featTokens": 961,
+     "feat1Lenient": 947,
+     "feat1Strict": 187,
+     "readings": 1258,
+     "multiLemma": 133,
+     "perFeature": {
+      "Number": {
+       "gold": 825,
+       "defined": 822,
+       "okLenient": 821,
+       "okStrict": 820
+      },
+      "Person": {
+       "gold": 247,
+       "defined": 245,
+       "okLenient": 245,
+       "okStrict": 244
+      },
+      "Tense": {
+       "gold": 862,
+       "defined": 845,
+       "okLenient": 844,
+       "okStrict": 837
+      },
+      "Mood": {
+       "gold": 595,
+       "defined": 593,
+       "okLenient": 593,
+       "okStrict": 593
+      },
+      "VerbForm": {
+       "gold": 961,
+       "defined": 937,
+       "okLenient": 935,
+       "okStrict": 935
+      },
+      "Voice": {
+       "gold": 758,
+       "defined": 215,
+       "okLenient": 214,
+       "okStrict": 214
+      },
+      "Aspect": {
+       "gold": 961,
+       "defined": 944,
+       "okLenient": 940,
+       "okStrict": 916
+      },
+      "Case": {
+       "gold": 230,
+       "defined": 109,
+       "okLenient": 102,
+       "okStrict": 69
+      },
+      "Gender": {
+       "gold": 441,
+       "defined": 439,
+       "okLenient": 438,
+       "okStrict": 423
+      },
+      "Animacy": {
+       "gold": 230,
+       "defined": 1,
+       "okLenient": 1,
+       "okStrict": 1
+      },
+      "Variant": {
+       "gold": 120,
+       "defined": 119,
+       "okLenient": 119,
+       "okStrict": 119
+      }
+     }
+    },
+    "PRON": {
+     "n": 213,
+     "covered": 213,
+     "lemma1": 205,
+     "lemmaAny": 213,
+     "lemma1Strict": 205,
+     "lemmaAnyStrict": 213,
+     "pos1": 205,
+     "posAny": 213,
+     "pos1Strict": 205,
+     "posAnyStrict": 213,
+     "featTokens": 213,
+     "feat1Lenient": 207,
+     "feat1Strict": 76,
+     "readings": 483,
+     "multiLemma": 80,
+     "perFeature": {
+      "Case": {
+       "gold": 213,
+       "defined": 204,
+       "okLenient": 200,
+       "okStrict": 135
+      },
+      "Number": {
+       "gold": 200,
+       "defined": 192,
+       "okLenient": 191,
+       "okStrict": 191
+      },
+      "Gender": {
+       "gold": 153,
+       "defined": 111,
+       "okLenient": 109,
+       "okStrict": 93
+      },
+      "Person": {
+       "gold": 103,
+       "defined": 100,
+       "okLenient": 100,
+       "okStrict": 100
+      },
+      "Animacy": {
+       "gold": 97,
+       "defined": 2,
+       "okLenient": 1,
+       "okStrict": 1
+      }
+     }
+    },
+    "DET": {
+     "n": 180,
+     "covered": 180,
+     "lemma1": 164,
+     "lemmaAny": 177,
+     "lemma1Strict": 156,
+     "lemmaAnyStrict": 168,
+     "pos1": 179,
+     "posAny": 179,
+     "pos1Strict": 60,
+     "posAnyStrict": 85,
+     "featTokens": 133,
+     "feat1Lenient": 111,
+     "feat1Strict": 36,
+     "readings": 657,
+     "multiLemma": 105,
+     "perFeature": {
+      "Case": {
+       "gold": 133,
+       "defined": 133,
+       "okLenient": 111,
+       "okStrict": 75
+      },
+      "Number": {
+       "gold": 133,
+       "defined": 132,
+       "okLenient": 132,
+       "okStrict": 132
+      },
+      "Gender": {
+       "gold": 87,
+       "defined": 77,
+       "okLenient": 76,
+       "okStrict": 45
+      },
+      "Animacy": {
+       "gold": 27,
+       "defined": 5,
+       "okLenient": 5,
+       "okStrict": 5
+      }
+     }
+    },
+    "PROPN": {
+     "n": 830,
+     "covered": 394,
+     "lemma1": 358,
+     "lemmaAny": 365,
+     "lemma1Strict": 357,
+     "lemmaAnyStrict": 364,
+     "pos1": 351,
+     "posAny": 356,
+     "pos1Strict": 351,
+     "posAnyStrict": 356,
+     "featTokens": 394,
+     "feat1Lenient": 346,
+     "feat1Strict": 152,
+     "readings": 534,
+     "multiLemma": 41,
+     "perFeature": {
+      "Case": {
+       "gold": 394,
+       "defined": 346,
+       "okLenient": 323,
+       "okStrict": 184
+      },
+      "Number": {
+       "gold": 394,
+       "defined": 358,
+       "okLenient": 351,
+       "okStrict": 351
+      },
+      "Gender": {
+       "gold": 394,
+       "defined": 388,
+       "okLenient": 367,
+       "okStrict": 349
+      },
+      "Animacy": {
+       "gold": 394,
+       "defined": 382,
+       "okLenient": 367,
+       "okStrict": 353
+      }
+     }
+    },
+    "PART": {
+     "n": 139,
+     "covered": 139,
+     "lemma1": 139,
+     "lemmaAny": 139,
+     "lemma1Strict": 139,
+     "lemmaAnyStrict": 139,
+     "pos1": 81,
+     "posAny": 104,
+     "pos1Strict": 81,
+     "posAnyStrict": 104,
+     "featTokens": 0,
+     "feat1Lenient": 0,
+     "feat1Strict": 0,
+     "readings": 291,
+     "multiLemma": 4,
+     "perFeature": {}
+    },
+    "ADV": {
+     "n": 263,
+     "covered": 256,
+     "lemma1": 235,
+     "lemmaAny": 249,
+     "lemma1Strict": 230,
+     "lemmaAnyStrict": 243,
+     "pos1": 219,
+     "posAny": 247,
+     "pos1Strict": 219,
+     "posAnyStrict": 247,
+     "featTokens": 30,
+     "feat1Lenient": 30,
+     "feat1Strict": 9,
+     "readings": 554,
+     "multiLemma": 125,
+     "perFeature": {
+      "Degree": {
+       "gold": 30,
+       "defined": 9,
+       "okLenient": 9,
+       "okStrict": 9
+      }
+     }
+    },
+    "NUM": {
+     "n": 78,
+     "covered": 78,
+     "lemma1": 75,
+     "lemmaAny": 75,
+     "lemma1Strict": 75,
+     "lemmaAnyStrict": 75,
+     "pos1": 65,
+     "posAny": 65,
+     "pos1Strict": 65,
+     "posAnyStrict": 65,
+     "featTokens": 78,
+     "feat1Lenient": 68,
+     "feat1Strict": 2,
+     "readings": 157,
+     "multiLemma": 7,
+     "perFeature": {
+      "Case": {
+       "gold": 78,
+       "defined": 69,
+       "okLenient": 59,
+       "okStrict": 29
+      },
+      "Number": {
+       "gold": 20,
+       "defined": 2,
+       "okLenient": 2,
+       "okStrict": 2
+      },
+      "Gender": {
+       "gold": 44,
+       "defined": 29,
+       "okLenient": 29,
+       "okStrict": 18
+      },
+      "Animacy": {
+       "gold": 66,
+       "defined": 8,
+       "okLenient": 6,
+       "okStrict": 6
+      }
+     }
+    },
+    "AUX": {
+     "n": 92,
+     "covered": 92,
+     "lemma1": 92,
+     "lemmaAny": 92,
+     "lemma1Strict": 92,
+     "lemmaAnyStrict": 92,
+     "pos1": 91,
+     "posAny": 91,
+     "pos1Strict": 91,
+     "posAnyStrict": 91,
+     "featTokens": 91,
+     "feat1Lenient": 91,
+     "feat1Strict": 91,
+     "readings": 129,
+     "multiLemma": 25,
+     "perFeature": {
+      "Number": {
+       "gold": 88,
+       "defined": 88,
+       "okLenient": 88,
+       "okStrict": 88
+      },
+      "Gender": {
+       "gold": 73,
+       "defined": 73,
+       "okLenient": 73,
+       "okStrict": 73
+      },
+      "Tense": {
+       "gold": 88,
+       "defined": 88,
+       "okLenient": 88,
+       "okStrict": 88
+      },
+      "Mood": {
+       "gold": 88,
+       "defined": 88,
+       "okLenient": 88,
+       "okStrict": 88
+      },
+      "VerbForm": {
+       "gold": 91,
+       "defined": 91,
+       "okLenient": 91,
+       "okStrict": 91
+      },
+      "Aspect": {
+       "gold": 91,
+       "defined": 91,
+       "okLenient": 91,
+       "okStrict": 91
+      },
+      "Person": {
+       "gold": 3,
+       "defined": 3,
+       "okLenient": 3,
+       "okStrict": 3
+      }
+     }
+    },
+    "SCONJ": {
+     "n": 64,
+     "covered": 64,
+     "lemma1": 63,
+     "lemmaAny": 64,
+     "lemma1Strict": 63,
+     "lemmaAnyStrict": 64,
+     "pos1": 52,
+     "posAny": 61,
+     "pos1Strict": 52,
+     "posAnyStrict": 59,
+     "featTokens": 0,
+     "feat1Lenient": 0,
+     "feat1Strict": 0,
+     "readings": 162,
+     "multiLemma": 24,
+     "perFeature": {}
+    }
+   },
+   "excluded": {
+    "upos": 2474,
+    "digits": 148,
+    "no-cyrillic": 268
+   },
+   "misaligned": {
+    "we-split": 1,
+    "we-merged": 44,
+    "partial-overlap": 56,
+    "no-token": 0,
+    "gold-not-in-text": 0
+   },
+   "misalignExamples": {
+    "partial-overlap": "gsd-dev:dev-s1: «сокр.»",
+    "we-merged": "gsd-dev:dev-s22: «Боково»",
+    "we-split": "gsd-dev:dev-s393: «USB-порты»"
+   },
+   "drift": 0,
+   "sentences": 579,
+   "goldWords": 11709,
+   "ranges": 0,
+   "emptyNodes": 0,
+   "inRange": 0
+  },
+  "taiga-test": {
+   "tally": {
+    "n": 11302,
+    "covered": 10762,
+    "lemma1": 10279,
+    "lemmaAny": 10570,
+    "lemma1Strict": 10099,
+    "lemmaAnyStrict": 10385,
+    "pos1": 10048,
+    "posAny": 10450,
+    "pos1Strict": 9765,
+    "posAnyStrict": 10186,
+    "featTokens": 7434,
+    "feat1Lenient": 6975,
+    "feat1Strict": 3026,
+    "readings": 20979,
+    "multiLemma": 2162,
+    "perFeature": {
+     "Case": {
+      "gold": 5673,
+      "defined": 5555,
+      "okLenient": 5213,
+      "okStrict": 3168
+     },
+     "Number": {
+      "gold": 6900,
+      "defined": 6715,
+      "okLenient": 6532,
+      "okStrict": 6509
+     },
+     "Gender": {
+      "gold": 5246,
+      "defined": 4968,
+      "okLenient": 4894,
+      "okStrict": 4560
+     },
+     "Animacy": {
+      "gold": 3880,
+      "defined": 3467,
+      "okLenient": 3424,
+      "okStrict": 3334
+     },
+     "Tense": {
+      "gold": 1261,
+      "defined": 1236,
+      "okLenient": 1235,
+      "okStrict": 1224
+     },
+     "Mood": {
+      "gold": 1163,
+      "defined": 1129,
+      "okLenient": 1128,
+      "okStrict": 1128
+     },
+     "VerbForm": {
+      "gold": 1663,
+      "defined": 1626,
+      "okLenient": 1603,
+      "okStrict": 1603
+     },
+     "Voice": {
+      "gold": 1426,
+      "defined": 155,
+      "okLenient": 134,
+      "okStrict": 134
+     },
+     "Aspect": {
+      "gold": 1617,
+      "defined": 1591,
+      "okLenient": 1584,
+      "okStrict": 1563
+     },
+     "Degree": {
+      "gold": 103,
+      "defined": 56,
+      "okLenient": 56,
+      "okStrict": 56
+     },
+     "Person": {
+      "gold": 1171,
+      "defined": 1137,
+      "okLenient": 1136,
+      "okStrict": 1116
+     },
+     "Variant": {
+      "gold": 152,
+      "defined": 110,
+      "okLenient": 110,
+      "okStrict": 110
+     }
+    }
+   },
+   "byUpos": {
+    "ADV": {
+     "n": 655,
+     "covered": 645,
+     "lemma1": 606,
+     "lemmaAny": 630,
+     "lemma1Strict": 566,
+     "lemmaAnyStrict": 590,
+     "pos1": 568,
+     "posAny": 628,
+     "pos1Strict": 568,
+     "posAnyStrict": 628,
+     "featTokens": 67,
+     "feat1Lenient": 67,
+     "feat1Strict": 28,
+     "readings": 1427,
+     "multiLemma": 297,
+     "perFeature": {
+      "Degree": {
+       "gold": 67,
+       "defined": 28,
+       "okLenient": 28,
+       "okStrict": 28
+      }
+     }
+    },
+    "NOUN": {
+     "n": 3343,
+     "covered": 3180,
+     "lemma1": 3075,
+     "lemmaAny": 3125,
+     "lemma1Strict": 2999,
+     "lemmaAnyStrict": 3047,
+     "pos1": 3123,
+     "posAny": 3170,
+     "pos1Strict": 3123,
+     "posAnyStrict": 3170,
+     "featTokens": 3151,
+     "feat1Lenient": 2971,
+     "feat1Strict": 1625,
+     "readings": 4540,
+     "multiLemma": 344,
+     "perFeature": {
+      "Case": {
+       "gold": 3151,
+       "defined": 3086,
+       "okLenient": 2947,
+       "okStrict": 1720
+      },
+      "Number": {
+       "gold": 3151,
+       "defined": 3093,
+       "okLenient": 2968,
+       "okStrict": 2965
+      },
+      "Gender": {
+       "gold": 3151,
+       "defined": 3122,
+       "okLenient": 3088,
+       "okStrict": 3069
+      },
+      "Animacy": {
+       "gold": 3151,
+       "defined": 3107,
+       "okLenient": 3082,
+       "okStrict": 3001
+      }
+     }
+    },
+    "ADP": {
+     "n": 1272,
+     "covered": 1272,
+     "lemma1": 1245,
+     "lemmaAny": 1246,
+     "lemma1Strict": 1245,
+     "lemmaAnyStrict": 1246,
+     "pos1": 1268,
+     "posAny": 1270,
+     "pos1Strict": 1268,
+     "posAnyStrict": 1270,
+     "featTokens": 0,
+     "feat1Lenient": 0,
+     "feat1Strict": 0,
+     "readings": 3030,
+     "multiLemma": 564,
+     "perFeature": {}
+    },
+    "PROPN": {
+     "n": 500,
+     "covered": 313,
+     "lemma1": 281,
+     "lemmaAny": 283,
+     "lemma1Strict": 276,
+     "lemmaAnyStrict": 278,
+     "pos1": 264,
+     "posAny": 274,
+     "pos1Strict": 264,
+     "posAnyStrict": 274,
+     "featTokens": 295,
+     "feat1Lenient": 261,
+     "feat1Strict": 138,
+     "readings": 406,
+     "multiLemma": 27,
+     "perFeature": {
+      "Case": {
+       "gold": 295,
+       "defined": 293,
+       "okLenient": 284,
+       "okStrict": 159
+      },
+      "Number": {
+       "gold": 295,
+       "defined": 293,
+       "okLenient": 287,
+       "okStrict": 287
+      },
+      "Gender": {
+       "gold": 295,
+       "defined": 294,
+       "okLenient": 280,
+       "okStrict": 273
+      },
+      "Animacy": {
+       "gold": 295,
+       "defined": 291,
+       "okLenient": 275,
+       "okStrict": 266
+      }
+     }
+    },
+    "CCONJ": {
+     "n": 601,
+     "covered": 601,
+     "lemma1": 595,
+     "lemmaAny": 601,
+     "lemma1Strict": 593,
+     "lemmaAnyStrict": 599,
+     "pos1": 565,
+     "posAny": 594,
+     "pos1Strict": 565,
+     "posAnyStrict": 594,
+     "featTokens": 0,
+     "feat1Lenient": 0,
+     "feat1Strict": 0,
+     "readings": 2170,
+     "multiLemma": 6,
+     "perFeature": {}
+    },
+    "AUX": {
+     "n": 109,
+     "covered": 109,
+     "lemma1": 107,
+     "lemmaAny": 108,
+     "lemma1Strict": 107,
+     "lemmaAnyStrict": 108,
+     "pos1": 87,
+     "posAny": 88,
+     "pos1Strict": 87,
+     "posAnyStrict": 88,
+     "featTokens": 88,
+     "feat1Lenient": 88,
+     "feat1Strict": 0,
+     "readings": 178,
+     "multiLemma": 38,
+     "perFeature": {
+      "Number": {
+       "gold": 69,
+       "defined": 68,
+       "okLenient": 68,
+       "okStrict": 57
+      },
+      "Gender": {
+       "gold": 35,
+       "defined": 34,
+       "okLenient": 34,
+       "okStrict": 34
+      },
+      "Tense": {
+       "gold": 70,
+       "defined": 69,
+       "okLenient": 69,
+       "okStrict": 69
+      },
+      "Mood": {
+       "gold": 69,
+       "defined": 68,
+       "okLenient": 68,
+       "okStrict": 68
+      },
+      "VerbForm": {
+       "gold": 88,
+       "defined": 87,
+       "okLenient": 87,
+       "okStrict": 87
+      },
+      "Voice": {
+       "gold": 88,
+       "defined": 0,
+       "okLenient": 0,
+       "okStrict": 0
+      },
+      "Aspect": {
+       "gold": 46,
+       "defined": 46,
+       "okLenient": 46,
+       "okStrict": 46
+      },
+      "Person": {
+       "gold": 25,
+       "defined": 25,
+       "okLenient": 25,
+       "okStrict": 14
+      }
+     }
+    },
+    "ADJ": {
+     "n": 1142,
+     "covered": 1039,
+     "lemma1": 940,
+     "lemmaAny": 1010,
+     "lemma1Strict": 895,
+     "lemmaAnyStrict": 962,
+     "pos1": 970,
+     "posAny": 1029,
+     "pos1Strict": 970,
+     "posAnyStrict": 1029,
+     "featTokens": 1036,
+     "feat1Lenient": 947,
+     "feat1Strict": 429,
+     "readings": 1998,
+     "multiLemma": 192,
+     "perFeature": {
+      "Case": {
+       "gold": 909,
+       "defined": 908,
+       "okLenient": 821,
+       "okStrict": 527
+      },
+      "Number": {
+       "gold": 1020,
+       "defined": 981,
+       "okLenient": 978,
+       "okStrict": 978
+      },
+      "Gender": {
+       "gold": 732,
+       "defined": 693,
+       "okLenient": 678,
+       "okStrict": 490
+      },
+      "Variant": {
+       "gold": 111,
+       "defined": 69,
+       "okLenient": 69,
+       "okStrict": 69
+      },
+      "Degree": {
+       "gold": 32,
+       "defined": 28,
+       "okLenient": 28,
+       "okStrict": 28
+      },
+      "Animacy": {
+       "gold": 104,
+       "defined": 34,
+       "okLenient": 34,
+       "okStrict": 34
+      }
+     }
+    },
+    "PRON": {
+     "n": 722,
+     "covered": 720,
+     "lemma1": 661,
+     "lemmaAny": 719,
+     "lemma1Strict": 660,
+     "lemmaAnyStrict": 718,
+     "pos1": 656,
+     "posAny": 709,
+     "pos1Strict": 656,
+     "posAnyStrict": 709,
+     "featTokens": 720,
+     "feat1Lenient": 699,
+     "feat1Strict": 320,
+     "readings": 1810,
+     "multiLemma": 267,
+     "perFeature": {
+      "Case": {
+       "gold": 720,
+       "defined": 694,
+       "okLenient": 681,
+       "okStrict": 429
+      },
+      "Number": {
+       "gold": 693,
+       "defined": 650,
+       "okLenient": 633,
+       "okStrict": 633
+      },
+      "Gender": {
+       "gold": 329,
+       "defined": 138,
+       "okLenient": 136,
+       "okStrict": 119
+      },
+      "Person": {
+       "gold": 475,
+       "defined": 471,
+       "okLenient": 471,
+       "okStrict": 471
+      },
+      "Animacy": {
+       "gold": 218,
+       "defined": 4,
+       "okLenient": 2,
+       "okStrict": 2
+      }
+     }
+    },
+    "VERB": {
+     "n": 1689,
+     "covered": 1627,
+     "lemma1": 1571,
+     "lemmaAny": 1610,
+     "lemma1Strict": 1568,
+     "lemmaAnyStrict": 1607,
+     "pos1": 1550,
+     "posAny": 1577,
+     "pos1Strict": 1550,
+     "posAnyStrict": 1577,
+     "featTokens": 1577,
+     "feat1Lenient": 1517,
+     "feat1Strict": 306,
+     "readings": 2014,
+     "multiLemma": 153,
+     "perFeature": {
+      "Number": {
+       "gold": 1235,
+       "defined": 1232,
+       "okLenient": 1202,
+       "okStrict": 1193
+      },
+      "Gender": {
+       "gold": 391,
+       "defined": 391,
+       "okLenient": 387,
+       "okStrict": 371
+      },
+      "Tense": {
+       "gold": 1191,
+       "defined": 1167,
+       "okLenient": 1166,
+       "okStrict": 1155
+      },
+      "Mood": {
+       "gold": 1094,
+       "defined": 1061,
+       "okLenient": 1060,
+       "okStrict": 1060
+      },
+      "VerbForm": {
+       "gold": 1575,
+       "defined": 1539,
+       "okLenient": 1516,
+       "okStrict": 1516
+      },
+      "Voice": {
+       "gold": 1338,
+       "defined": 155,
+       "okLenient": 134,
+       "okStrict": 134
+      },
+      "Aspect": {
+       "gold": 1571,
+       "defined": 1545,
+       "okLenient": 1538,
+       "okStrict": 1517
+      },
+      "Person": {
+       "gold": 671,
+       "defined": 641,
+       "okLenient": 640,
+       "okStrict": 631
+      },
+      "Case": {
+       "gold": 103,
+       "defined": 103,
+       "okLenient": 84,
+       "okStrict": 59
+      },
+      "Animacy": {
+       "gold": 21,
+       "defined": 4,
+       "okLenient": 4,
+       "okStrict": 4
+      },
+      "Variant": {
+       "gold": 40,
+       "defined": 40,
+       "okLenient": 40,
+       "okStrict": 40
+      }
+     }
+    },
+    "SCONJ": {
+     "n": 217,
+     "covered": 217,
+     "lemma1": 199,
+     "lemmaAny": 214,
+     "lemma1Strict": 199,
+     "lemmaAnyStrict": 214,
+     "pos1": 189,
+     "posAny": 214,
+     "pos1Strict": 186,
+     "posAnyStrict": 195,
+     "featTokens": 0,
+     "feat1Lenient": 0,
+     "feat1Strict": 0,
+     "readings": 540,
+     "multiLemma": 76,
+     "perFeature": {}
+    },
+    "PART": {
+     "n": 507,
+     "covered": 506,
+     "lemma1": 491,
+     "lemmaAny": 499,
+     "lemma1Strict": 488,
+     "lemmaAnyStrict": 496,
+     "pos1": 326,
+     "posAny": 407,
+     "pos1Strict": 326,
+     "posAnyStrict": 407,
+     "featTokens": 0,
+     "feat1Lenient": 0,
+     "feat1Strict": 0,
+     "readings": 1204,
+     "multiLemma": 38,
+     "perFeature": {}
+    },
+    "DET": {
+     "n": 438,
+     "covered": 438,
+     "lemma1": 419,
+     "lemmaAny": 435,
+     "lemma1Strict": 414,
+     "lemmaAnyStrict": 430,
+     "pos1": 418,
+     "posAny": 423,
+     "pos1Strict": 138,
+     "posAnyStrict": 178,
+     "featTokens": 412,
+     "feat1Lenient": 343,
+     "feat1Strict": 171,
+     "readings": 1460,
+     "multiLemma": 142,
+     "perFeature": {
+      "Case": {
+       "gold": 411,
+       "defined": 405,
+       "okLenient": 336,
+       "okStrict": 238
+      },
+      "Number": {
+       "gold": 412,
+       "defined": 398,
+       "okLenient": 396,
+       "okStrict": 396
+      },
+      "Gender": {
+       "gold": 276,
+       "defined": 263,
+       "okLenient": 258,
+       "okStrict": 186
+      },
+      "Animacy": {
+       "gold": 78,
+       "defined": 21,
+       "okLenient": 21,
+       "okStrict": 21
+      },
+      "Variant": {
+       "gold": 1,
+       "defined": 1,
+       "okLenient": 1,
+       "okStrict": 1
+      }
+     }
+    },
+    "NUM": {
+     "n": 89,
+     "covered": 88,
+     "lemma1": 82,
+     "lemmaAny": 83,
+     "lemma1Strict": 82,
+     "lemmaAnyStrict": 83,
+     "pos1": 60,
+     "posAny": 60,
+     "pos1Strict": 60,
+     "posAnyStrict": 60,
+     "featTokens": 88,
+     "feat1Lenient": 82,
+     "feat1Strict": 9,
+     "readings": 189,
+     "multiLemma": 18,
+     "perFeature": {
+      "Case": {
+       "gold": 84,
+       "defined": 66,
+       "okLenient": 60,
+       "okStrict": 36
+      },
+      "Number": {
+       "gold": 25,
+       "defined": 0,
+       "okLenient": 0,
+       "okStrict": 0
+      },
+      "Gender": {
+       "gold": 37,
+       "defined": 33,
+       "okLenient": 33,
+       "okStrict": 18
+      },
+      "Degree": {
+       "gold": 4,
+       "defined": 0,
+       "okLenient": 0,
+       "okStrict": 0
+      },
+      "Animacy": {
+       "gold": 13,
+       "defined": 6,
+       "okLenient": 6,
+       "okStrict": 6
+      }
+     }
+    },
+    "INTJ": {
+     "n": 18,
+     "covered": 7,
+     "lemma1": 7,
+     "lemmaAny": 7,
+     "lemma1Strict": 7,
+     "lemmaAnyStrict": 7,
+     "pos1": 4,
+     "posAny": 7,
+     "pos1Strict": 4,
+     "posAnyStrict": 7,
+     "featTokens": 0,
+     "feat1Lenient": 0,
+     "feat1Strict": 0,
+     "readings": 13,
+     "multiLemma": 0,
+     "perFeature": {}
+    }
+   },
+   "excluded": {
+    "upos": 3459,
+    "digits": 253,
+    "no-cyrillic": 141
+   },
+   "misaligned": {
+    "we-split": 5,
+    "we-merged": 126,
+    "partial-overlap": 154,
+    "no-token": 0,
+    "gold-not-in-text": 0
+   },
+   "misalignExamples": {
+    "we-split": "taiga-test:83: «наср@ла»",
+    "we-merged": "taiga-test:2051: «вилам»",
+    "partial-overlap": "taiga-test:4113: «пр.»"
+   },
+   "drift": 0,
+   "sentences": 1217,
+   "goldWords": 15440,
+   "ranges": 0,
+   "emptyNodes": 0,
+   "inRange": 0
+  },
+  "taiga-dev": {
+   "tally": {
+    "n": 12512,
+    "covered": 12066,
+    "lemma1": 11455,
+    "lemmaAny": 11848,
+    "lemma1Strict": 11281,
+    "lemmaAnyStrict": 11664,
+    "pos1": 11212,
+    "posAny": 11706,
+    "pos1Strict": 10902,
+    "posAnyStrict": 11440,
+    "featTokens": 8302,
+    "feat1Lenient": 7841,
+    "feat1Strict": 3506,
+    "readings": 23938,
+    "multiLemma": 2614,
+    "perFeature": {
+     "Number": {
+      "gold": 7830,
+      "defined": 7583,
+      "okLenient": 7417,
+      "okStrict": 7400
+     },
+     "Person": {
+      "gold": 1465,
+      "defined": 1428,
+      "okLenient": 1428,
+      "okStrict": 1412
+     },
+     "Mood": {
+      "gold": 1409,
+      "defined": 1377,
+      "okLenient": 1367,
+      "okStrict": 1367
+     },
+     "VerbForm": {
+      "gold": 1866,
+      "defined": 1812,
+      "okLenient": 1801,
+      "okStrict": 1801
+     },
+     "Voice": {
+      "gold": 1555,
+      "defined": 147,
+      "okLenient": 138,
+      "okStrict": 138
+     },
+     "Aspect": {
+      "gold": 1811,
+      "defined": 1778,
+      "okLenient": 1758,
+      "okStrict": 1736
+     },
+     "Case": {
+      "gold": 6295,
+      "defined": 6147,
+      "okLenient": 5809,
+      "okStrict": 3622
+     },
+     "Gender": {
+      "gold": 5808,
+      "defined": 5459,
+      "okLenient": 5370,
+      "okStrict": 5025
+     },
+     "Animacy": {
+      "gold": 4164,
+      "defined": 3745,
+      "okLenient": 3703,
+      "okStrict": 3574
+     },
+     "Tense": {
+      "gold": 1517,
+      "defined": 1490,
+      "okLenient": 1484,
+      "okStrict": 1474
+     },
+     "Degree": {
+      "gold": 92,
+      "defined": 49,
+      "okLenient": 49,
+      "okStrict": 49
+     },
+     "Variant": {
+      "gold": 203,
+      "defined": 134,
+      "okLenient": 134,
+      "okStrict": 134
+     }
+    }
+   },
+   "byUpos": {
+    "INTJ": {
+     "n": 69,
+     "covered": 52,
+     "lemma1": 47,
+     "lemmaAny": 47,
+     "lemma1Strict": 47,
+     "lemmaAnyStrict": 47,
+     "pos1": 29,
+     "posAny": 45,
+     "pos1Strict": 29,
+     "posAnyStrict": 45,
+     "featTokens": 0,
+     "feat1Lenient": 0,
+     "feat1Strict": 0,
+     "readings": 95,
+     "multiLemma": 7,
+     "perFeature": {}
+    },
+    "VERB": {
+     "n": 1871,
+     "covered": 1825,
+     "lemma1": 1731,
+     "lemmaAny": 1791,
+     "lemma1Strict": 1728,
+     "lemmaAnyStrict": 1788,
+     "pos1": 1745,
+     "posAny": 1773,
+     "pos1Strict": 1745,
+     "posAnyStrict": 1773,
+     "featTokens": 1777,
+     "feat1Lenient": 1729,
+     "feat1Strict": 370,
+     "readings": 2309,
+     "multiLemma": 210,
+     "perFeature": {
+      "Number": {
+       "gold": 1475,
+       "defined": 1457,
+       "okLenient": 1446,
+       "okStrict": 1434
+      },
+      "Person": {
+       "gold": 842,
+       "defined": 813,
+       "okLenient": 813,
+       "okStrict": 801
+      },
+      "Mood": {
+       "gold": 1331,
+       "defined": 1299,
+       "okLenient": 1289,
+       "okStrict": 1289
+      },
+      "VerbForm": {
+       "gold": 1777,
+       "defined": 1723,
+       "okLenient": 1712,
+       "okStrict": 1712
+      },
+      "Voice": {
+       "gold": 1466,
+       "defined": 146,
+       "okLenient": 137,
+       "okStrict": 137
+      },
+      "Aspect": {
+       "gold": 1771,
+       "defined": 1738,
+       "okLenient": 1718,
+       "okStrict": 1696
+      },
+      "Case": {
+       "gold": 104,
+       "defined": 104,
+       "okLenient": 97,
+       "okStrict": 63
+      },
+      "Tense": {
+       "gold": 1439,
+       "defined": 1412,
+       "okLenient": 1406,
+       "okStrict": 1396
+      },
+      "Gender": {
+       "gold": 446,
+       "defined": 446,
+       "okLenient": 444,
+       "okStrict": 431
+      },
+      "Variant": {
+       "gold": 40,
+       "defined": 40,
+       "okLenient": 40,
+       "okStrict": 40
+      },
+      "Animacy": {
+       "gold": 11,
+       "defined": 6,
+       "okLenient": 5,
+       "okStrict": 5
+      }
+     }
+    },
+    "PRON": {
+     "n": 872,
+     "covered": 872,
+     "lemma1": 808,
+     "lemmaAny": 872,
+     "lemma1Strict": 808,
+     "lemmaAnyStrict": 872,
+     "pos1": 800,
+     "posAny": 864,
+     "pos1Strict": 800,
+     "posAnyStrict": 864,
+     "featTokens": 872,
+     "feat1Lenient": 850,
+     "feat1Strict": 403,
+     "readings": 2280,
+     "multiLemma": 307,
+     "perFeature": {
+      "Case": {
+       "gold": 872,
+       "defined": 837,
+       "okLenient": 825,
+       "okStrict": 503
+      },
+      "Number": {
+       "gold": 845,
+       "defined": 790,
+       "okLenient": 776,
+       "okStrict": 776
+      },
+      "Person": {
+       "gold": 596,
+       "defined": 588,
+       "okLenient": 588,
+       "okStrict": 588
+      },
+      "Gender": {
+       "gold": 380,
+       "defined": 158,
+       "okLenient": 155,
+       "okStrict": 135
+      },
+      "Animacy": {
+       "gold": 249,
+       "defined": 2,
+       "okLenient": 0,
+       "okStrict": 0
+      }
+     }
+    },
+    "PROPN": {
+     "n": 319,
+     "covered": 192,
+     "lemma1": 168,
+     "lemmaAny": 173,
+     "lemma1Strict": 164,
+     "lemmaAnyStrict": 169,
+     "pos1": 154,
+     "posAny": 167,
+     "pos1Strict": 154,
+     "posAnyStrict": 167,
+     "featTokens": 184,
+     "feat1Lenient": 153,
+     "feat1Strict": 85,
+     "readings": 276,
+     "multiLemma": 36,
+     "perFeature": {
+      "Case": {
+       "gold": 184,
+       "defined": 168,
+       "okLenient": 160,
+       "okStrict": 99
+      },
+      "Number": {
+       "gold": 184,
+       "defined": 176,
+       "okLenient": 166,
+       "okStrict": 166
+      },
+      "Gender": {
+       "gold": 184,
+       "defined": 179,
+       "okLenient": 166,
+       "okStrict": 160
+      },
+      "Animacy": {
+       "gold": 184,
+       "defined": 168,
+       "okLenient": 157,
+       "okStrict": 148
+      }
+     }
+    },
+    "CCONJ": {
+     "n": 716,
+     "covered": 716,
+     "lemma1": 708,
+     "lemmaAny": 716,
+     "lemma1Strict": 705,
+     "lemmaAnyStrict": 713,
+     "pos1": 686,
+     "posAny": 708,
+     "pos1Strict": 686,
+     "posAnyStrict": 708,
+     "featTokens": 0,
+     "feat1Lenient": 0,
+     "feat1Strict": 0,
+     "readings": 2553,
+     "multiLemma": 9,
+     "perFeature": {}
+    },
+    "NUM": {
+     "n": 61,
+     "covered": 61,
+     "lemma1": 59,
+     "lemmaAny": 60,
+     "lemma1Strict": 59,
+     "lemmaAnyStrict": 60,
+     "pos1": 41,
+     "posAny": 42,
+     "pos1Strict": 41,
+     "posAnyStrict": 42,
+     "featTokens": 61,
+     "feat1Lenient": 54,
+     "feat1Strict": 8,
+     "readings": 123,
+     "multiLemma": 14,
+     "perFeature": {
+      "Case": {
+       "gold": 61,
+       "defined": 46,
+       "okLenient": 39,
+       "okStrict": 23
+      },
+      "Gender": {
+       "gold": 20,
+       "defined": 18,
+       "okLenient": 18,
+       "okStrict": 11
+      },
+      "Animacy": {
+       "gold": 10,
+       "defined": 5,
+       "okLenient": 5,
+       "okStrict": 5
+      },
+      "Number": {
+       "gold": 11,
+       "defined": 0,
+       "okLenient": 0,
+       "okStrict": 0
+      }
+     }
+    },
+    "NOUN": {
+     "n": 3710,
+     "covered": 3553,
+     "lemma1": 3404,
+     "lemmaAny": 3483,
+     "lemma1Strict": 3340,
+     "lemmaAnyStrict": 3419,
+     "pos1": 3487,
+     "posAny": 3536,
+     "pos1Strict": 3487,
+     "posAnyStrict": 3536,
+     "featTokens": 3545,
+     "feat1Lenient": 3343,
+     "feat1Strict": 1851,
+     "readings": 5055,
+     "multiLemma": 415,
+     "perFeature": {
+      "Case": {
+       "gold": 3545,
+       "defined": 3470,
+       "okLenient": 3313,
+       "okStrict": 1992
+      },
+      "Number": {
+       "gold": 3545,
+       "defined": 3479,
+       "okLenient": 3356,
+       "okStrict": 3355
+      },
+      "Gender": {
+       "gold": 3545,
+       "defined": 3503,
+       "okLenient": 3450,
+       "okStrict": 3433
+      },
+      "Animacy": {
+       "gold": 3545,
+       "defined": 3488,
+       "okLenient": 3460,
+       "okStrict": 3340
+      }
+     }
+    },
+    "ADP": {
+     "n": 1353,
+     "covered": 1353,
+     "lemma1": 1318,
+     "lemmaAny": 1318,
+     "lemma1Strict": 1317,
+     "lemmaAnyStrict": 1317,
+     "pos1": 1346,
+     "posAny": 1349,
+     "pos1Strict": 1346,
+     "posAnyStrict": 1349,
+     "featTokens": 0,
+     "feat1Lenient": 0,
+     "feat1Strict": 0,
+     "readings": 3283,
+     "multiLemma": 625,
+     "perFeature": {}
+    },
+    "DET": {
+     "n": 512,
+     "covered": 512,
+     "lemma1": 495,
+     "lemmaAny": 511,
+     "lemma1Strict": 490,
+     "lemmaAnyStrict": 506,
+     "pos1": 485,
+     "posAny": 486,
+     "pos1Strict": 177,
+     "posAnyStrict": 231,
+     "featTokens": 466,
+     "feat1Lenient": 413,
+     "feat1Strict": 193,
+     "readings": 1752,
+     "multiLemma": 214,
+     "perFeature": {
+      "Case": {
+       "gold": 464,
+       "defined": 460,
+       "okLenient": 408,
+       "okStrict": 278
+      },
+      "Number": {
+       "gold": 466,
+       "defined": 446,
+       "okLenient": 443,
+       "okStrict": 443
+      },
+      "Gender": {
+       "gold": 336,
+       "defined": 325,
+       "okLenient": 316,
+       "okStrict": 243
+      },
+      "Animacy": {
+       "gold": 56,
+       "defined": 24,
+       "okLenient": 24,
+       "okStrict": 24
+      },
+      "Variant": {
+       "gold": 2,
+       "defined": 2,
+       "okLenient": 2,
+       "okStrict": 2
+      }
+     }
+    },
+    "ADJ": {
+     "n": 1329,
+     "covered": 1249,
+     "lemma1": 1122,
+     "lemmaAny": 1235,
+     "lemma1Strict": 1065,
+     "lemmaAnyStrict": 1168,
+     "pos1": 1143,
+     "posAny": 1242,
+     "pos1Strict": 1143,
+     "posAnyStrict": 1242,
+     "featTokens": 1247,
+     "feat1Lenient": 1149,
+     "feat1Strict": 572,
+     "readings": 2394,
+     "multiLemma": 244,
+     "perFeature": {
+      "Case": {
+       "gold": 1064,
+       "defined": 1061,
+       "okLenient": 966,
+       "okStrict": 663
+      },
+      "Number": {
+       "gold": 1225,
+       "defined": 1156,
+       "okLenient": 1151,
+       "okStrict": 1151
+      },
+      "Gender": {
+       "gold": 858,
+       "defined": 791,
+       "okLenient": 782,
+       "okStrict": 573
+      },
+      "Degree": {
+       "gold": 31,
+       "defined": 26,
+       "okLenient": 26,
+       "okStrict": 26
+      },
+      "Variant": {
+       "gold": 161,
+       "defined": 92,
+       "okLenient": 92,
+       "okStrict": 92
+      },
+      "Animacy": {
+       "gold": 109,
+       "defined": 52,
+       "okLenient": 52,
+       "okStrict": 52
+      }
+     }
+    },
+    "ADV": {
+     "n": 798,
+     "covered": 786,
+     "lemma1": 714,
+     "lemmaAny": 751,
+     "lemma1Strict": 679,
+     "lemmaAnyStrict": 716,
+     "pos1": 652,
+     "posAny": 758,
+     "pos1Strict": 652,
+     "posAnyStrict": 758,
+     "featTokens": 61,
+     "feat1Lenient": 61,
+     "feat1Strict": 23,
+     "readings": 1784,
+     "multiLemma": 359,
+     "perFeature": {
+      "Degree": {
+       "gold": 61,
+       "defined": 23,
+       "okLenient": 23,
+       "okStrict": 23
+      }
+     }
+    },
+    "PART": {
+     "n": 574,
+     "covered": 568,
+     "lemma1": 565,
+     "lemmaAny": 566,
+     "lemma1Strict": 563,
+     "lemmaAnyStrict": 564,
+     "pos1": 366,
+     "posAny": 427,
+     "pos1Strict": 366,
+     "posAnyStrict": 427,
+     "featTokens": 0,
+     "feat1Lenient": 0,
+     "feat1Strict": 0,
+     "readings": 1267,
+     "multiLemma": 44,
+     "perFeature": {}
+    },
+    "SCONJ": {
+     "n": 223,
+     "covered": 222,
+     "lemma1": 211,
+     "lemmaAny": 220,
+     "lemma1Strict": 211,
+     "lemmaAnyStrict": 220,
+     "pos1": 189,
+     "posAny": 220,
+     "pos1Strict": 187,
+     "posAnyStrict": 209,
+     "featTokens": 0,
+     "feat1Lenient": 0,
+     "feat1Strict": 0,
+     "readings": 606,
+     "multiLemma": 96,
+     "perFeature": {}
+    },
+    "AUX": {
+     "n": 105,
+     "covered": 105,
+     "lemma1": 105,
+     "lemmaAny": 105,
+     "lemma1Strict": 105,
+     "lemmaAnyStrict": 105,
+     "pos1": 89,
+     "posAny": 89,
+     "pos1Strict": 89,
+     "posAnyStrict": 89,
+     "featTokens": 89,
+     "feat1Lenient": 89,
+     "feat1Strict": 1,
+     "readings": 161,
+     "multiLemma": 34,
+     "perFeature": {
+      "Number": {
+       "gold": 79,
+       "defined": 79,
+       "okLenient": 79,
+       "okStrict": 75
+      },
+      "Person": {
+       "gold": 27,
+       "defined": 27,
+       "okLenient": 27,
+       "okStrict": 23
+      },
+      "Tense": {
+       "gold": 78,
+       "defined": 78,
+       "okLenient": 78,
+       "okStrict": 78
+      },
+      "Mood": {
+       "gold": 78,
+       "defined": 78,
+       "okLenient": 78,
+       "okStrict": 78
+      },
+      "VerbForm": {
+       "gold": 89,
+       "defined": 89,
+       "okLenient": 89,
+       "okStrict": 89
+      },
+      "Voice": {
+       "gold": 89,
+       "defined": 1,
+       "okLenient": 1,
+       "okStrict": 1
+      },
+      "Aspect": {
+       "gold": 40,
+       "defined": 40,
+       "okLenient": 40,
+       "okStrict": 40
+      },
+      "Gender": {
+       "gold": 39,
+       "defined": 39,
+       "okLenient": 39,
+       "okStrict": 39
+      },
+      "Case": {
+       "gold": 1,
+       "defined": 1,
+       "okLenient": 1,
+       "okStrict": 1
+      }
+     }
+    }
+   },
+   "excluded": {
+    "upos": 2772,
+    "digits": 64,
+    "no-cyrillic": 120
+   },
+   "misaligned": {
+    "we-split": 1,
+    "we-merged": 56,
+    "partial-overlap": 99,
+    "no-token": 0,
+    "gold-not-in-text": 0
+   },
+   "misalignExamples": {
+    "partial-overlap": "taiga-dev:instagram-3: «#безумных»",
+    "we-merged": "taiga-dev:instagram-74: «наконец»",
+    "we-split": "taiga-dev:poetry-rnc-abstract-89: «б[ы]стро»"
+   },
+   "drift": 0,
+   "sentences": 1260,
+   "goldWords": 15624,
+   "ranges": 0,
+   "emptyNodes": 0,
+   "inRange": 0
+  },
+  "pud": {
+   "tally": {
+    "n": 15714,
+    "covered": 14935,
+    "lemma1": 14437,
+    "lemmaAny": 14686,
+    "lemma1Strict": 14262,
+    "lemmaAnyStrict": 14499,
+    "pos1": 14291,
+    "posAny": 14560,
+    "pos1Strict": 13836,
+    "posAnyStrict": 14156,
+    "featTokens": 10778,
+    "feat1Lenient": 10337,
+    "feat1Strict": 4650,
+    "readings": 27972,
+    "multiLemma": 3321,
+    "perFeature": {
+     "Case": {
+      "gold": 8440,
+      "defined": 8241,
+      "okLenient": 7955,
+      "okStrict": 4857
+     },
+     "Number": {
+      "gold": 10124,
+      "defined": 9896,
+      "okLenient": 9763,
+      "okStrict": 9750
+     },
+     "Gender": {
+      "gold": 8226,
+      "defined": 7890,
+      "okLenient": 7809,
+      "okStrict": 7241
+     },
+     "Animacy": {
+      "gold": 5760,
+      "defined": 5326,
+      "okLenient": 5249,
+      "okStrict": 5186
+     },
+     "Person": {
+      "gold": 1000,
+      "defined": 980,
+      "okLenient": 980,
+      "okStrict": 967
+     },
+     "Tense": {
+      "gold": 2006,
+      "defined": 1982,
+      "okLenient": 1972,
+      "okStrict": 1964
+     },
+     "Mood": {
+      "gold": 1599,
+      "defined": 1591,
+      "okLenient": 1591,
+      "okStrict": 1591
+     },
+     "VerbForm": {
+      "gold": 2342,
+      "defined": 2309,
+      "okLenient": 2309,
+      "okStrict": 2309
+     },
+     "Voice": {
+      "gold": 1957,
+      "defined": 317,
+      "okLenient": 315,
+      "okStrict": 315
+     },
+     "Aspect": {
+      "gold": 2304,
+      "defined": 2280,
+      "okLenient": 2247,
+      "okStrict": 2194
+     },
+     "Variant": {
+      "gold": 247,
+      "defined": 214,
+      "okLenient": 214,
+      "okStrict": 214
+     },
+     "Degree": {
+      "gold": 97,
+      "defined": 26,
+      "okLenient": 26,
+      "okStrict": 26
+     }
+    }
+   },
+   "byUpos": {
+    "SCONJ": {
+     "n": 365,
+     "covered": 365,
+     "lemma1": 355,
+     "lemmaAny": 365,
+     "lemma1Strict": 355,
+     "lemmaAnyStrict": 365,
+     "pos1": 345,
+     "posAny": 364,
+     "pos1Strict": 344,
+     "posAnyStrict": 355,
+     "featTokens": 0,
+     "feat1Lenient": 0,
+     "feat1Strict": 0,
+     "readings": 912,
+     "multiLemma": 136,
+     "perFeature": {}
+    },
+    "NOUN": {
+     "n": 4833,
+     "covered": 4750,
+     "lemma1": 4651,
+     "lemmaAny": 4700,
+     "lemma1Strict": 4592,
+     "lemmaAnyStrict": 4638,
+     "pos1": 4684,
+     "posAny": 4723,
+     "pos1Strict": 4684,
+     "posAnyStrict": 4723,
+     "featTokens": 4750,
+     "feat1Lenient": 4576,
+     "feat1Strict": 2698,
+     "readings": 6804,
+     "multiLemma": 491,
+     "perFeature": {
+      "Case": {
+       "gold": 4750,
+       "defined": 4687,
+       "okLenient": 4563,
+       "okStrict": 2800
+      },
+      "Number": {
+       "gold": 4750,
+       "defined": 4693,
+       "okLenient": 4584,
+       "okStrict": 4584
+      },
+      "Gender": {
+       "gold": 4750,
+       "defined": 4704,
+       "okLenient": 4663,
+       "okStrict": 4654
+      },
+      "Animacy": {
+       "gold": 4750,
+       "defined": 4694,
+       "okLenient": 4668,
+       "okStrict": 4613
+      }
+     }
+    },
+    "ADJ": {
+     "n": 1851,
+     "covered": 1743,
+     "lemma1": 1653,
+     "lemmaAny": 1718,
+     "lemma1Strict": 1613,
+     "lemmaAnyStrict": 1671,
+     "pos1": 1606,
+     "posAny": 1657,
+     "pos1Strict": 1606,
+     "posAnyStrict": 1657,
+     "featTokens": 1743,
+     "feat1Lenient": 1670,
+     "feat1Strict": 645,
+     "readings": 3274,
+     "multiLemma": 291,
+     "perFeature": {
+      "Case": {
+       "gold": 1634,
+       "defined": 1634,
+       "okLenient": 1564,
+       "okStrict": 939
+      },
+      "Number": {
+       "gold": 1736,
+       "defined": 1703,
+       "okLenient": 1700,
+       "okStrict": 1700
+      },
+      "Gender": {
+       "gold": 1177,
+       "defined": 1141,
+       "okLenient": 1137,
+       "okStrict": 770
+      },
+      "Variant": {
+       "gold": 101,
+       "defined": 68,
+       "okLenient": 68,
+       "okStrict": 68
+      },
+      "Animacy": {
+       "gold": 130,
+       "defined": 71,
+       "okLenient": 71,
+       "okStrict": 71
+      },
+      "Degree": {
+       "gold": 16,
+       "defined": 9,
+       "okLenient": 9,
+       "okStrict": 9
+      }
+     }
+    },
+    "ADV": {
+     "n": 724,
+     "covered": 718,
+     "lemma1": 681,
+     "lemmaAny": 705,
+     "lemma1Strict": 637,
+     "lemmaAnyStrict": 665,
+     "pos1": 653,
+     "posAny": 705,
+     "pos1Strict": 653,
+     "posAnyStrict": 705,
+     "featTokens": 81,
+     "feat1Lenient": 81,
+     "feat1Strict": 17,
+     "readings": 1524,
+     "multiLemma": 309,
+     "perFeature": {
+      "Degree": {
+       "gold": 81,
+       "defined": 17,
+       "okLenient": 17,
+       "okStrict": 17
+      }
+     }
+    },
+    "ADP": {
+     "n": 2094,
+     "covered": 2093,
+     "lemma1": 2039,
+     "lemmaAny": 2044,
+     "lemma1Strict": 2036,
+     "lemmaAnyStrict": 2041,
+     "pos1": 2080,
+     "posAny": 2087,
+     "pos1Strict": 2080,
+     "posAnyStrict": 2087,
+     "featTokens": 0,
+     "feat1Lenient": 0,
+     "feat1Strict": 0,
+     "readings": 5169,
+     "multiLemma": 1107,
+     "perFeature": {}
+    },
+    "PROPN": {
+     "n": 1089,
+     "covered": 541,
+     "lemma1": 491,
+     "lemmaAny": 494,
+     "lemma1Strict": 488,
+     "lemmaAnyStrict": 491,
+     "pos1": 467,
+     "posAny": 488,
+     "pos1Strict": 467,
+     "posAnyStrict": 488,
+     "featTokens": 541,
+     "feat1Lenient": 465,
+     "feat1Strict": 203,
+     "readings": 714,
+     "multiLemma": 31,
+     "perFeature": {
+      "Case": {
+       "gold": 541,
+       "defined": 466,
+       "okLenient": 448,
+       "okStrict": 251
+      },
+      "Number": {
+       "gold": 541,
+       "defined": 493,
+       "okLenient": 483,
+       "okStrict": 483
+      },
+      "Gender": {
+       "gold": 541,
+       "defined": 531,
+       "okLenient": 502,
+       "okStrict": 464
+      },
+      "Animacy": {
+       "gold": 541,
+       "defined": 527,
+       "okLenient": 477,
+       "okStrict": 469
+      }
+     }
+    },
+    "VERB": {
+     "n": 2113,
+     "covered": 2084,
+     "lemma1": 2006,
+     "lemmaAny": 2033,
+     "lemma1Strict": 2003,
+     "lemmaAnyStrict": 2030,
+     "pos1": 2044,
+     "posAny": 2061,
+     "pos1Strict": 2044,
+     "posAnyStrict": 2061,
+     "featTokens": 2068,
+     "feat1Lenient": 2007,
+     "feat1Strict": 557,
+     "readings": 2630,
+     "multiLemma": 233,
+     "perFeature": {
+      "Number": {
+       "gold": 1686,
+       "defined": 1679,
+       "okLenient": 1675,
+       "okStrict": 1675
+      },
+      "Person": {
+       "gold": 558,
+       "defined": 550,
+       "okLenient": 550,
+       "okStrict": 550
+      },
+      "Tense": {
+       "gold": 1750,
+       "defined": 1726,
+       "okLenient": 1716,
+       "okStrict": 1708
+      },
+      "Mood": {
+       "gold": 1346,
+       "defined": 1338,
+       "okLenient": 1338,
+       "okStrict": 1338
+      },
+      "VerbForm": {
+       "gold": 2068,
+       "defined": 2035,
+       "okLenient": 2035,
+       "okStrict": 2035
+      },
+      "Voice": {
+       "gold": 1683,
+       "defined": 317,
+       "okLenient": 315,
+       "okStrict": 315
+      },
+      "Aspect": {
+       "gold": 2067,
+       "defined": 2043,
+       "okLenient": 2010,
+       "okStrict": 1957
+      },
+      "Gender": {
+       "gold": 796,
+       "defined": 796,
+       "okLenient": 795,
+       "okStrict": 767
+      },
+      "Case": {
+       "gold": 195,
+       "defined": 195,
+       "okLenient": 171,
+       "okStrict": 104
+      },
+      "Variant": {
+       "gold": 145,
+       "defined": 145,
+       "okLenient": 145,
+       "okStrict": 145
+      },
+      "Animacy": {
+       "gold": 24,
+       "defined": 2,
+       "okLenient": 2,
+       "okStrict": 2
+      }
+     }
+    },
+    "DET": {
+     "n": 619,
+     "covered": 619,
+     "lemma1": 595,
+     "lemmaAny": 618,
+     "lemma1Strict": 573,
+     "lemmaAnyStrict": 590,
+     "pos1": 615,
+     "posAny": 616,
+     "pos1Strict": 161,
+     "posAnyStrict": 221,
+     "featTokens": 502,
+     "feat1Lenient": 467,
+     "feat1Strict": 214,
+     "readings": 1770,
+     "multiLemma": 252,
+     "perFeature": {
+      "Case": {
+       "gold": 501,
+       "defined": 500,
+       "okLenient": 466,
+       "okStrict": 305
+      },
+      "Number": {
+       "gold": 502,
+       "defined": 499,
+       "okLenient": 497,
+       "okStrict": 497
+      },
+      "Gender": {
+       "gold": 302,
+       "defined": 290,
+       "okLenient": 290,
+       "okStrict": 203
+      },
+      "Animacy": {
+       "gold": 52,
+       "defined": 21,
+       "okLenient": 21,
+       "okStrict": 21
+      },
+      "Variant": {
+       "gold": 1,
+       "defined": 1,
+       "okLenient": 1,
+       "okStrict": 1
+      }
+     }
+    },
+    "PART": {
+     "n": 270,
+     "covered": 270,
+     "lemma1": 269,
+     "lemmaAny": 270,
+     "lemma1Strict": 269,
+     "lemmaAnyStrict": 270,
+     "pos1": 183,
+     "posAny": 215,
+     "pos1Strict": 183,
+     "posAnyStrict": 215,
+     "featTokens": 0,
+     "feat1Lenient": 0,
+     "feat1Strict": 0,
+     "readings": 576,
+     "multiLemma": 6,
+     "perFeature": {}
+    },
+    "PRON": {
+     "n": 650,
+     "covered": 646,
+     "lemma1": 605,
+     "lemmaAny": 646,
+     "lemma1Strict": 604,
+     "lemmaAnyStrict": 645,
+     "pos1": 614,
+     "posAny": 643,
+     "pos1Strict": 614,
+     "posAnyStrict": 643,
+     "featTokens": 646,
+     "feat1Lenient": 635,
+     "feat1Strict": 290,
+     "readings": 1747,
+     "multiLemma": 310,
+     "perFeature": {
+      "Case": {
+       "gold": 646,
+       "defined": 615,
+       "okLenient": 610,
+       "okStrict": 396
+      },
+      "Number": {
+       "gold": 616,
+       "defined": 576,
+       "okLenient": 571,
+       "okStrict": 571
+      },
+      "Gender": {
+       "gold": 440,
+       "defined": 216,
+       "okLenient": 210,
+       "okStrict": 191
+      },
+      "Animacy": {
+       "gold": 225,
+       "defined": 1,
+       "okLenient": 0,
+       "okStrict": 0
+      },
+      "Person": {
+       "gold": 391,
+       "defined": 379,
+       "okLenient": 379,
+       "okStrict": 379
+      }
+     }
+    },
+    "AUX": {
+     "n": 295,
+     "covered": 295,
+     "lemma1": 295,
+     "lemmaAny": 295,
+     "lemma1Strict": 295,
+     "lemmaAnyStrict": 295,
+     "pos1": 274,
+     "posAny": 274,
+     "pos1Strict": 274,
+     "posAnyStrict": 274,
+     "featTokens": 274,
+     "feat1Lenient": 274,
+     "feat1Strict": 0,
+     "readings": 479,
+     "multiLemma": 111,
+     "perFeature": {
+      "Number": {
+       "gold": 253,
+       "defined": 253,
+       "okLenient": 253,
+       "okStrict": 240
+      },
+      "Person": {
+       "gold": 51,
+       "defined": 51,
+       "okLenient": 51,
+       "okStrict": 38
+      },
+      "Tense": {
+       "gold": 256,
+       "defined": 256,
+       "okLenient": 256,
+       "okStrict": 256
+      },
+      "Mood": {
+       "gold": 253,
+       "defined": 253,
+       "okLenient": 253,
+       "okStrict": 253
+      },
+      "VerbForm": {
+       "gold": 274,
+       "defined": 274,
+       "okLenient": 274,
+       "okStrict": 274
+      },
+      "Voice": {
+       "gold": 274,
+       "defined": 0,
+       "okLenient": 0,
+       "okStrict": 0
+      },
+      "Gender": {
+       "gold": 155,
+       "defined": 155,
+       "okLenient": 155,
+       "okStrict": 155
+      },
+      "Aspect": {
+       "gold": 237,
+       "defined": 237,
+       "okLenient": 237,
+       "okStrict": 237
+      }
+     }
+    },
+    "CCONJ": {
+     "n": 624,
+     "covered": 624,
+     "lemma1": 624,
+     "lemmaAny": 624,
+     "lemma1Strict": 624,
+     "lemmaAnyStrict": 624,
+     "pos1": 589,
+     "posAny": 590,
+     "pos1Strict": 589,
+     "posAnyStrict": 590,
+     "featTokens": 0,
+     "feat1Lenient": 0,
+     "feat1Strict": 0,
+     "readings": 2020,
+     "multiLemma": 0,
+     "perFeature": {}
+    },
+    "NUM": {
+     "n": 186,
+     "covered": 186,
+     "lemma1": 172,
+     "lemmaAny": 173,
+     "lemma1Strict": 172,
+     "lemmaAnyStrict": 173,
+     "pos1": 136,
+     "posAny": 136,
+     "pos1Strict": 136,
+     "posAnyStrict": 136,
+     "featTokens": 173,
+     "feat1Lenient": 162,
+     "feat1Strict": 26,
+     "readings": 351,
+     "multiLemma": 44,
+     "perFeature": {
+      "Case": {
+       "gold": 173,
+       "defined": 144,
+       "okLenient": 133,
+       "okStrict": 62
+      },
+      "Number": {
+       "gold": 40,
+       "defined": 0,
+       "okLenient": 0,
+       "okStrict": 0
+      },
+      "Gender": {
+       "gold": 65,
+       "defined": 57,
+       "okLenient": 57,
+       "okStrict": 37
+      },
+      "Animacy": {
+       "gold": 38,
+       "defined": 10,
+       "okLenient": 10,
+       "okStrict": 10
+      }
+     }
+    },
+    "INTJ": {
+     "n": 1,
+     "covered": 1,
+     "lemma1": 1,
+     "lemmaAny": 1,
+     "lemma1Strict": 1,
+     "lemmaAnyStrict": 1,
+     "pos1": 1,
+     "posAny": 1,
+     "pos1Strict": 1,
+     "posAnyStrict": 1,
+     "featTokens": 0,
+     "feat1Lenient": 0,
+     "feat1Strict": 0,
+     "readings": 2,
+     "multiLemma": 0,
+     "perFeature": {}
+    }
+   },
+   "excluded": {
+    "upos": 3212,
+    "digits": 104,
+    "no-cyrillic": 213
+   },
+   "misaligned": {
+    "we-split": 0,
+    "we-merged": 39,
+    "partial-overlap": 73,
+    "no-token": 0,
+    "gold-not-in-text": 0
+   },
+   "misalignExamples": {
+    "partial-overlap": "pud:n01004017: «4-м»",
+    "we-merged": "pud:n01020017: «самолетов»"
+   },
+   "drift": 0,
+   "sentences": 1000,
+   "goldWords": 19355,
+   "ranges": 0,
+   "emptyNodes": 0,
+   "inRange": 0
+  }
+ },
+ "all": {
+  "tally": {
+   "n": 56824,
+   "covered": 53633,
+   "lemma1": 51546,
+   "lemmaAny": 52679,
+   "lemma1Strict": 50838,
+   "lemmaAnyStrict": 51927,
+   "pos1": 50739,
+   "posAny": 52163,
+   "pos1Strict": 49440,
+   "posAnyStrict": 51032,
+   "featTokens": 38287,
+   "feat1Lenient": 36391,
+   "feat1Strict": 16433,
+   "readings": 101983,
+   "multiLemma": 11427,
+   "perFeature": {
+    "Number": {
+     "gold": 36147,
+     "defined": 35247,
+     "okLenient": 34622,
+     "okStrict": 34565
+    },
+    "Gender": {
+     "gold": 29113,
+     "defined": 27941,
+     "okLenient": 27584,
+     "okStrict": 25686
+    },
+    "Tense": {
+     "gold": 6696,
+     "defined": 6591,
+     "okLenient": 6571,
+     "okStrict": 6527
+    },
+    "Mood": {
+     "gold": 5572,
+     "defined": 5496,
+     "okLenient": 5483,
+     "okStrict": 5483
+    },
+    "VerbForm": {
+     "gold": 7997,
+     "defined": 7830,
+     "okLenient": 7793,
+     "okStrict": 7793
+    },
+    "Voice": {
+     "gold": 6451,
+     "defined": 1042,
+     "okLenient": 1005,
+     "okStrict": 1004
+    },
+    "Aspect": {
+     "gold": 7858,
+     "defined": 7745,
+     "okLenient": 7677,
+     "okStrict": 7530
+    },
+    "Case": {
+     "gold": 30381,
+     "defined": 29443,
+     "okLenient": 28093,
+     "okStrict": 17276
+    },
+    "Animacy": {
+     "gold": 21471,
+     "defined": 19236,
+     "okLenient": 18999,
+     "okStrict": 18602
+    },
+    "Variant": {
+     "gold": 895,
+     "defined": 747,
+     "okLenient": 747,
+     "okStrict": 747
+    },
+    "Person": {
+     "gold": 4335,
+     "defined": 4236,
+     "okLenient": 4235,
+     "okStrict": 4182
+    },
+    "Degree": {
+     "gold": 385,
+     "defined": 169,
+     "okLenient": 169,
+     "okStrict": 169
+    }
+   }
+  },
+  "byUpos": {
+   "PROPN": {
+    "n": 3452,
+    "covered": 1763,
+    "lemma1": 1574,
+    "lemmaAny": 1597,
+    "lemma1Strict": 1553,
+    "lemmaAnyStrict": 1575,
+    "pos1": 1492,
+    "posAny": 1546,
+    "pos1Strict": 1492,
+    "posAnyStrict": 1546,
+    "featTokens": 1737,
+    "feat1Lenient": 1500,
+    "feat1Strict": 697,
+    "readings": 2348,
+    "multiLemma": 164,
+    "perFeature": {
+     "Case": {
+      "gold": 1737,
+      "defined": 1551,
+      "okLenient": 1472,
+      "okStrict": 831
+     },
+     "Number": {
+      "gold": 1737,
+      "defined": 1609,
+      "okLenient": 1565,
+      "okStrict": 1565
+     },
+     "Gender": {
+      "gold": 1737,
+      "defined": 1707,
+      "okLenient": 1614,
+      "okStrict": 1535
+     },
+     "Animacy": {
+      "gold": 1737,
+      "defined": 1678,
+      "okLenient": 1565,
+      "okStrict": 1516
+     }
+    }
+   },
+   "VERB": {
+    "n": 7657,
+    "covered": 7477,
+    "lemma1": 7174,
+    "lemmaAny": 7336,
+    "lemma1Strict": 7163,
+    "lemmaAnyStrict": 7325,
+    "pos1": 7237,
+    "posAny": 7332,
+    "pos1Strict": 7237,
+    "posAnyStrict": 7332,
+    "featTokens": 7349,
+    "feat1Lenient": 7144,
+    "feat1Strict": 1623,
+    "readings": 9438,
+    "multiLemma": 836,
+    "perFeature": {
+     "Number": {
+      "gold": 6059,
+      "defined": 6028,
+      "okLenient": 5980,
+      "okStrict": 5956
+     },
+     "Gender": {
+      "gold": 2540,
+      "defined": 2538,
+      "okLenient": 2530,
+      "okStrict": 2438
+     },
+     "Tense": {
+      "gold": 6104,
+      "defined": 6000,
+      "okLenient": 5980,
+      "okStrict": 5936
+     },
+     "Mood": {
+      "gold": 4984,
+      "defined": 4909,
+      "okLenient": 4896,
+      "okStrict": 4896
+     },
+     "VerbForm": {
+      "gold": 7347,
+      "defined": 7181,
+      "okLenient": 7144,
+      "okStrict": 7144
+     },
+     "Voice": {
+      "gold": 5996,
+      "defined": 1041,
+      "okLenient": 1004,
+      "okStrict": 1003
+     },
+     "Aspect": {
+      "gold": 7336,
+      "defined": 7223,
+      "okLenient": 7155,
+      "okStrict": 7008
+     },
+     "Case": {
+      "gold": 852,
+      "defined": 622,
+      "okLenient": 554,
+      "okStrict": 358
+     },
+     "Animacy": {
+      "gold": 505,
+      "defined": 13,
+      "okLenient": 12,
+      "okStrict": 12
+     },
+     "Variant": {
+      "gold": 454,
+      "defined": 453,
+      "okLenient": 453,
+      "okStrict": 453
+     },
+     "Person": {
+      "gold": 2552,
+      "defined": 2482,
+      "okLenient": 2481,
+      "okStrict": 2457
+     }
+    }
+   },
+   "ADP": {
+    "n": 7180,
+    "covered": 7178,
+    "lemma1": 7011,
+    "lemmaAny": 7022,
+    "lemma1Strict": 7005,
+    "lemmaAnyStrict": 7016,
+    "pos1": 7099,
+    "posAny": 7117,
+    "pos1Strict": 7099,
+    "posAnyStrict": 7117,
+    "featTokens": 0,
+    "feat1Lenient": 0,
+    "feat1Strict": 0,
+    "readings": 17760,
+    "multiLemma": 3745,
+    "perFeature": {}
+   },
+   "ADJ": {
+    "n": 6647,
+    "covered": 6094,
+    "lemma1": 5702,
+    "lemmaAny": 5984,
+    "lemma1Strict": 5508,
+    "lemmaAnyStrict": 5762,
+    "pos1": 5666,
+    "posAny": 5914,
+    "pos1Strict": 5666,
+    "posAnyStrict": 5914,
+    "featTokens": 6088,
+    "feat1Lenient": 5729,
+    "feat1Strict": 2393,
+    "readings": 11549,
+    "multiLemma": 994,
+    "perFeature": {
+     "Case": {
+      "gold": 5611,
+      "defined": 5586,
+      "okLenient": 5238,
+      "okStrict": 3272
+     },
+     "Number": {
+      "gold": 6034,
+      "defined": 5884,
+      "okLenient": 5873,
+      "okStrict": 5873
+     },
+     "Gender": {
+      "gold": 4296,
+      "defined": 4149,
+      "okLenient": 4108,
+      "okStrict": 2895
+     },
+     "Animacy": {
+      "gold": 523,
+      "defined": 260,
+      "okLenient": 259,
+      "okStrict": 259
+     },
+     "Variant": {
+      "gold": 437,
+      "defined": 290,
+      "okLenient": 290,
+      "okStrict": 290
+     },
+     "Degree": {
+      "gold": 106,
+      "defined": 83,
+      "okLenient": 83,
+      "okStrict": 83
+     }
+    }
+   },
+   "NOUN": {
+    "n": 18112,
+    "covered": 17424,
+    "lemma1": 16957,
+    "lemmaAny": 17180,
+    "lemma1Strict": 16681,
+    "lemmaAnyStrict": 16895,
+    "pos1": 17158,
+    "posAny": 17347,
+    "pos1Strict": 17158,
+    "posAnyStrict": 17347,
+    "featTokens": 17387,
+    "feat1Lenient": 16592,
+    "feat1Strict": 9580,
+    "readings": 24815,
+    "multiLemma": 1807,
+    "perFeature": {
+     "Case": {
+      "gold": 17387,
+      "defined": 17084,
+      "okLenient": 16501,
+      "okStrict": 10061
+     },
+     "Number": {
+      "gold": 17387,
+      "defined": 17111,
+      "okLenient": 16633,
+      "okStrict": 16629
+     },
+     "Gender": {
+      "gold": 17387,
+      "defined": 17223,
+      "okLenient": 17036,
+      "okStrict": 16971
+     },
+     "Animacy": {
+      "gold": 17387,
+      "defined": 17162,
+      "okLenient": 17049,
+      "okStrict": 16701
+     }
+    }
+   },
+   "CCONJ": {
+    "n": 2636,
+    "covered": 2636,
+    "lemma1": 2621,
+    "lemmaAny": 2636,
+    "lemma1Strict": 2616,
+    "lemmaAnyStrict": 2631,
+    "pos1": 2499,
+    "posAny": 2553,
+    "pos1Strict": 2499,
+    "posAnyStrict": 2553,
+    "featTokens": 0,
+    "feat1Lenient": 0,
+    "feat1Strict": 0,
+    "readings": 8969,
+    "multiLemma": 17,
+    "perFeature": {}
+   },
+   "AUX": {
+    "n": 709,
+    "covered": 709,
+    "lemma1": 707,
+    "lemmaAny": 708,
+    "lemma1Strict": 707,
+    "lemmaAnyStrict": 708,
+    "pos1": 649,
+    "posAny": 650,
+    "pos1Strict": 649,
+    "posAnyStrict": 650,
+    "featTokens": 650,
+    "feat1Lenient": 650,
+    "feat1Strict": 195,
+    "readings": 1110,
+    "multiLemma": 241,
+    "perFeature": {
+     "Number": {
+      "gold": 589,
+      "defined": 588,
+      "okLenient": 588,
+      "okStrict": 559
+     },
+     "Gender": {
+      "gold": 372,
+      "defined": 371,
+      "okLenient": 371,
+      "okStrict": 371
+     },
+     "Tense": {
+      "gold": 592,
+      "defined": 591,
+      "okLenient": 591,
+      "okStrict": 591
+     },
+     "Mood": {
+      "gold": 588,
+      "defined": 587,
+      "okLenient": 587,
+      "okStrict": 587
+     },
+     "VerbForm": {
+      "gold": 650,
+      "defined": 649,
+      "okLenient": 649,
+      "okStrict": 649
+     },
+     "Aspect": {
+      "gold": 522,
+      "defined": 522,
+      "okLenient": 522,
+      "okStrict": 522
+     },
+     "Person": {
+      "gold": 116,
+      "defined": 116,
+      "okLenient": 116,
+      "okStrict": 87
+     },
+     "Voice": {
+      "gold": 455,
+      "defined": 1,
+      "okLenient": 1,
+      "okStrict": 1
+     },
+     "Case": {
+      "gold": 1,
+      "defined": 1,
+      "okLenient": 1,
+      "okStrict": 1
+     }
+    }
+   },
+   "ADV": {
+    "n": 2689,
+    "covered": 2653,
+    "lemma1": 2466,
+    "lemmaAny": 2572,
+    "lemma1Strict": 2333,
+    "lemmaAnyStrict": 2441,
+    "pos1": 2311,
+    "posAny": 2580,
+    "pos1Strict": 2311,
+    "posAnyStrict": 2580,
+    "featTokens": 275,
+    "feat1Lenient": 275,
+    "feat1Strict": 86,
+    "readings": 5767,
+    "multiLemma": 1201,
+    "perFeature": {
+     "Degree": {
+      "gold": 275,
+      "defined": 86,
+      "okLenient": 86,
+      "okStrict": 86
+     }
+    }
+   },
+   "NUM": {
+    "n": 491,
+    "covered": 490,
+    "lemma1": 460,
+    "lemmaAny": 464,
+    "lemma1Strict": 460,
+    "lemmaAnyStrict": 464,
+    "pos1": 364,
+    "posAny": 366,
+    "pos1Strict": 364,
+    "posAnyStrict": 366,
+    "featTokens": 476,
+    "feat1Lenient": 434,
+    "feat1Strict": 49,
+    "readings": 961,
+    "multiLemma": 89,
+    "perFeature": {
+     "Case": {
+      "gold": 472,
+      "defined": 396,
+      "okLenient": 354,
+      "okStrict": 177
+     },
+     "Animacy": {
+      "gold": 192,
+      "defined": 34,
+      "okLenient": 31,
+      "okStrict": 31
+     },
+     "Number": {
+      "gold": 121,
+      "defined": 4,
+      "okLenient": 4,
+      "okStrict": 4
+     },
+     "Gender": {
+      "gold": 205,
+      "defined": 170,
+      "okLenient": 170,
+      "okStrict": 106
+     },
+     "Degree": {
+      "gold": 4,
+      "defined": 0,
+      "okLenient": 0,
+      "okStrict": 0
+     }
+    }
+   },
+   "SCONJ": {
+    "n": 932,
+    "covered": 931,
+    "lemma1": 891,
+    "lemmaAny": 926,
+    "lemma1Strict": 891,
+    "lemmaAnyStrict": 926,
+    "pos1": 832,
+    "posAny": 921,
+    "pos1Strict": 826,
+    "posAnyStrict": 879,
+    "featTokens": 0,
+    "feat1Lenient": 0,
+    "feat1Strict": 0,
+    "readings": 2363,
+    "multiLemma": 352,
+    "perFeature": {}
+   },
+   "DET": {
+    "n": 1943,
+    "covered": 1943,
+    "lemma1": 1853,
+    "lemmaAny": 1934,
+    "lemma1Strict": 1798,
+    "lemmaAnyStrict": 1871,
+    "pos1": 1887,
+    "posAny": 1895,
+    "pos1Strict": 594,
+    "posAnyStrict": 806,
+    "featTokens": 1659,
+    "feat1Lenient": 1467,
+    "feat1Strict": 659,
+    "readings": 6315,
+    "multiLemma": 822,
+    "perFeature": {
+     "Case": {
+      "gold": 1655,
+      "defined": 1644,
+      "okLenient": 1454,
+      "okStrict": 987
+     },
+     "Number": {
+      "gold": 1659,
+      "defined": 1619,
+      "okLenient": 1612,
+      "okStrict": 1612
+     },
+     "Gender": {
+      "gold": 1110,
+      "defined": 1053,
+      "okLenient": 1038,
+      "okStrict": 739
+     },
+     "Animacy": {
+      "gold": 233,
+      "defined": 79,
+      "okLenient": 79,
+      "okStrict": 79
+     },
+     "Variant": {
+      "gold": 4,
+      "defined": 4,
+      "okLenient": 4,
+      "okStrict": 4
+     }
+    }
+   },
+   "PART": {
+    "n": 1616,
+    "covered": 1609,
+    "lemma1": 1590,
+    "lemmaAny": 1600,
+    "lemma1Strict": 1585,
+    "lemmaAnyStrict": 1595,
+    "pos1": 1031,
+    "posAny": 1245,
+    "pos1Strict": 1031,
+    "posAnyStrict": 1245,
+    "featTokens": 0,
+    "feat1Lenient": 0,
+    "feat1Strict": 0,
+    "readings": 3596,
+    "multiLemma": 94,
+    "perFeature": {}
+   },
+   "PRON": {
+    "n": 2672,
+    "covered": 2666,
+    "lemma1": 2485,
+    "lemmaAny": 2665,
+    "lemma1Strict": 2483,
+    "lemmaAnyStrict": 2663,
+    "pos1": 2480,
+    "posAny": 2644,
+    "pos1Strict": 2480,
+    "posAnyStrict": 2644,
+    "featTokens": 2666,
+    "feat1Lenient": 2600,
+    "feat1Strict": 1151,
+    "readings": 6882,
+    "multiLemma": 1058,
+    "perFeature": {
+     "Case": {
+      "gold": 2666,
+      "defined": 2559,
+      "okLenient": 2519,
+      "okStrict": 1589
+     },
+     "Number": {
+      "gold": 2561,
+      "defined": 2404,
+      "okLenient": 2367,
+      "okStrict": 2367
+     },
+     "Gender": {
+      "gold": 1466,
+      "defined": 730,
+      "okLenient": 717,
+      "okStrict": 631
+     },
+     "Person": {
+      "gold": 1667,
+      "defined": 1638,
+      "okLenient": 1638,
+      "okStrict": 1638
+     },
+     "Animacy": {
+      "gold": 894,
+      "defined": 10,
+      "okLenient": 4,
+      "okStrict": 4
+     }
+    }
+   },
+   "INTJ": {
+    "n": 88,
+    "covered": 60,
+    "lemma1": 55,
+    "lemmaAny": 55,
+    "lemma1Strict": 55,
+    "lemmaAnyStrict": 55,
+    "pos1": 34,
+    "posAny": 53,
+    "pos1Strict": 34,
+    "posAnyStrict": 53,
+    "featTokens": 0,
+    "feat1Lenient": 0,
+    "feat1Strict": 0,
+    "readings": 110,
+    "multiLemma": 7,
+    "perFeature": {}
+   }
+  },
+  "excluded": {
+   "upos": 14210,
+   "digits": 699,
+   "no-cyrillic": 1041
+  },
+  "misaligned": {
+   "we-split": 9,
+   "we-merged": 303,
+   "partial-overlap": 427,
+   "no-token": 0,
+   "gold-not-in-text": 0
+  },
+  "misalignExamples": {},
+  "drift": 0,
+  "sentences": 4657,
+  "goldWords": 73513,
+  "ranges": 0,
+  "emptyNodes": 0,
+  "inRange": 0
+ },
+ "misses": {
+  "noReading": [
+   {
+    "key": "парнас",
+    "n": 11,
+    "ex": "taiga-test:4047",
+    "note": "gold ПАРНАС PROPN"
+   },
+   {
+    "key": "лдпр",
+    "n": 10,
+    "ex": "taiga-test:4013",
+    "note": "gold ЛДПР PROPN"
+   },
+   {
+    "key": "младописьменных",
+    "n": 10,
+    "ex": "taiga-dev:uch-nauch--encicl_phil--encicl99-26",
+    "note": "gold младописьменный ADJ"
+   },
+   {
+    "key": "пропитка",
+    "n": 10,
+    "ex": "taiga-test:6229",
+    "note": "gold пропитка NOUN"
+   },
+   {
+    "key": "данька",
+    "n": 9,
+    "ex": "taiga-test:xud--borisov02-2",
+    "note": "gold Данька PROPN"
+   },
+   {
+    "key": "км2",
+    "n": 9,
+    "ex": "gsd-test:test-s146",
+    "note": "gold км2 NOUN"
+   },
+   {
+    "key": "светка",
+    "n": 7,
+    "ex": "taiga-dev:xud--ignatova05-14",
+    "note": "gold Светка PROPN"
+   },
+   {
+    "key": "васька",
+    "n": 6,
+    "ex": "taiga-test:xud--borisov02-22",
+    "note": "gold Васька PROPN"
+   },
+   {
+    "key": "гг",
+    "n": 6,
+    "ex": "gsd-test:test-s62",
+    "note": "gold гг NOUN"
+   },
+   {
+    "key": "кпрф",
+    "n": 6,
+    "ex": "taiga-test:4029",
+    "note": "gold КПРФ PROPN"
+   },
+   {
+    "key": "подбассейн",
+    "n": 6,
+    "ex": "gsd-test:test-s60",
+    "note": "gold подбассейн NOUN"
+   },
+   {
+    "key": "алексеевна",
+    "n": 5,
+    "ex": "taiga-dev:xud--mahotin_04-2",
+    "note": "gold Алексеевна PROPN"
+   },
+   {
+    "key": "зп",
+    "n": 5,
+    "ex": "taiga-dev:instagram-377",
+    "note": "gold зарплата NOUN"
+   },
+   {
+    "key": "карла",
+    "n": 5,
+    "ex": "gsd-dev:dev-s295",
+    "note": "gold Карл PROPN"
+   },
+   {
+    "key": "костиков",
+    "n": 5,
+    "ex": "taiga-dev:xud--mahotin_04-6",
+    "note": "gold Костиков PROPN"
+   },
+   {
+    "key": "водохозяйственный",
+    "n": 4,
+    "ex": "gsd-test:test-s60",
+    "note": "gold водохозяйственный ADJ"
+   },
+   {
+    "key": "гелиодор",
+    "n": 4,
+    "ex": "taiga-dev:instagram-166",
+    "note": "gold Гелиодор PROPN"
+   },
+   {
+    "key": "даневирке",
+    "n": 4,
+    "ex": "pud:w01025083",
+    "note": "gold Даневирке PROPN"
+   },
+   {
+    "key": "пятина",
+    "n": 4,
+    "ex": "gsd-dev:dev-s18",
+    "note": "gold пятина NOUN"
+   },
+   {
+    "key": "блант",
+    "n": 3,
+    "ex": "pud:w01135034",
+    "note": "gold Блант PROPN"
+   },
+   {
+    "key": "валентино",
+    "n": 3,
+    "ex": "pud:w01136029",
+    "note": "gold Валентино PROPN"
+   },
+   {
+    "key": "верди",
+    "n": 3,
+    "ex": "gsd-test:test-s155",
+    "note": "gold Верди PROPN"
+   },
+   {
+    "key": "гав",
+    "n": 3,
+    "ex": "taiga-dev:poetry-rnc-abstract-193",
+    "note": "gold гав INTJ"
+   },
+   {
+    "key": "геральдический",
+    "n": 3,
+    "ex": "gsd-test:test-s321",
+    "note": "gold геральдический ADJ"
+   },
+   {
+    "key": "гуммет",
+    "n": 3,
+    "ex": "gsd-dev:dev-s296",
+    "note": "gold Гуммет PROPN"
+   },
+   {
+    "key": "двуречье",
+    "n": 3,
+    "ex": "taiga-test:uch-nauch--encicl_phil--encicl15-37",
+    "note": "gold Двуречье PROPN"
+   },
+   {
+    "key": "дешифровка",
+    "n": 3,
+    "ex": "taiga-test:uch-nauch--encicl_phil--encicl15-2",
+    "note": "gold дешифровка NOUN"
+   },
+   {
+    "key": "жирик",
+    "n": 3,
+    "ex": "taiga-test:4001",
+    "note": "gold Жирик PROPN"
+   },
+   {
+    "key": "звукозаписывающей",
+    "n": 3,
+    "ex": "gsd-dev:dev-s385",
+    "note": "gold звукозаписывающий ADJ"
+   },
+   {
+    "key": "использованы",
+    "n": 3,
+    "ex": "pud:n01021012",
+    "note": "gold использовать VERB"
+   },
+   {
+    "key": "кеша",
+    "n": 3,
+    "ex": "pud:w01147018",
+    "note": "gold Кеша PROPN"
+   },
+   {
+    "key": "логаэды",
+    "n": 3,
+    "ex": "taiga-test:uch-nauch--encicl_litved--dolnik-9",
+    "note": "gold логаэд NOUN"
+   },
+   {
+    "key": "мвт",
+    "n": 3,
+    "ex": "gsd-test:test-s159",
+    "note": "gold мвт NOUN"
+   },
+   {
+    "key": "мисима",
+    "n": 3,
+    "ex": "pud:w01134009",
+    "note": "gold Мисима PROPN"
+   },
+   {
+    "key": "млн",
+    "n": 3,
+    "ex": "gsd-test:test-s464",
+    "note": "gold миллион NOUN"
+   },
+   {
+    "key": "мобилизован",
+    "n": 3,
+    "ex": "gsd-test:test-s179",
+    "note": "gold мобилизовать VERB"
+   },
+   {
+    "key": "навуходоносор",
+    "n": 3,
+    "ex": "taiga-test:uch-nauch--encicl_phil--encicl15-11",
+    "note": "gold Навуходоносор PROPN"
+   },
+   {
+    "key": "папуа",
+    "n": 3,
+    "ex": "pud:w01036044",
+    "note": "gold Папуа PROPN"
+   },
+   {
+    "key": "полкан",
+    "n": 3,
+    "ex": "taiga-dev:poetry-rnc-abstract-193",
+    "note": "gold Полкан PROPN"
+   },
+   {
+    "key": "предводительством",
+    "n": 3,
+    "ex": "gsd-dev:dev-s188",
+    "note": "gold предводительство NOUN"
+   },
+   {
+    "key": "пресненского",
+    "n": 3,
+    "ex": "gsd-test:test-s378",
+    "note": "gold пресненский ADJ"
+   },
+   {
+    "key": "пропитки",
+    "n": 3,
+    "ex": "taiga-test:6227",
+    "note": "gold пропитка NOUN"
+   },
+   {
+    "key": "рафферти",
+    "n": 3,
+    "ex": "pud:w01130099",
+    "note": "gold Рафферти PROPN"
+   },
+   {
+    "key": "рона",
+    "n": 3,
+    "ex": "pud:w01030096",
+    "note": "gold Рона PROPN"
+   },
+   {
+    "key": "роулинсон",
+    "n": 3,
+    "ex": "taiga-test:uch-nauch--encicl_phil--encicl15-6",
+    "note": "gold Роулинсон PROPN"
+   },
+   {
+    "key": "саймон",
+    "n": 3,
+    "ex": "gsd-test:test-s66",
+    "note": "gold Саймон PROPN"
+   },
+   {
+    "key": "силлабо-тонических",
+    "n": 3,
+    "ex": "taiga-test:uch-nauch--encicl_litved--dolnik-1",
+    "note": "gold силлабо-тонический ADJ"
+   },
+   {
+    "key": "стивен",
+    "n": 3,
+    "ex": "gsd-test:test-s66",
+    "note": "gold Стивен PROPN"
+   },
+   {
+    "key": "сырбу",
+    "n": 3,
+    "ex": "gsd-dev:dev-s113",
+    "note": "gold Сырбу PROPN"
+   },
+   {
+    "key": "томас",
+    "n": 3,
+    "ex": "gsd-test:test-s216",
+    "note": "gold Томас PROPN"
+   },
+   {
+    "key": "тутмоса",
+    "n": 3,
+    "ex": "pud:w01052038",
+    "note": "gold Тутмос PROPN"
+   },
+   {
+    "key": "уинстон",
+    "n": 3,
+    "ex": "pud:w01111021",
+    "note": "gold Уинстон PROPN"
+   },
+   {
+    "key": "федоскинские",
+    "n": 3,
+    "ex": "taiga-test:uch-nauch--encicl_hudozh--slovar_hudozhnika_103-19",
+    "note": "gold федоскинский ADJ"
+   },
+   {
+    "key": "федоскинской",
+    "n": 3,
+    "ex": "taiga-test:uch-nauch--encicl_hudozh--slovar_hudozhnika_103-11",
+    "note": "gold федоскинский ADJ"
+   },
+   {
+    "key": "федоскинцев",
+    "n": 3,
+    "ex": "taiga-test:uch-nauch--encicl_hudozh--slovar_hudozhnika_103-23",
+    "note": "gold федоскинец NOUN"
+   },
+   {
+    "key": "шэнь",
+    "n": 3,
+    "ex": "pud:w01060037",
+    "note": "gold Шэнь PROPN"
+   },
+   {
+    "key": "oни",
+    "n": 2,
+    "ex": "pud:w01013096",
+    "note": "gold они PRON"
+   },
+   {
+    "key": "агияр",
+    "n": 2,
+    "ex": "gsd-test:test-s79",
+    "note": "gold Агияр PROPN"
+   },
+   {
+    "key": "алекс",
+    "n": 2,
+    "ex": "gsd-dev:dev-s23",
+    "note": "gold Алекс PROPN"
+   },
+   {
+    "key": "алп",
+    "n": 2,
+    "ex": "gsd-test:test-s598",
+    "note": "gold Алп PROPN"
+   }
+  ],
+  "lemma": [
+   {
+    "key": "во → в (gold во)",
+    "n": 95,
+    "ex": "gsd-test:test-s21",
+    "note": "gold lemma not among the readings"
+   },
+   {
+    "key": "то → тот (gold то)",
+    "n": 65,
+    "ex": "gsd-test:test-s323",
+    "note": "gold lemma is another reading"
+   },
+   {
+    "key": "со → с (gold со)",
+    "n": 48,
+    "ex": "gsd-test:test-s10",
+    "note": "gold lemma not among the readings"
+   },
+   {
+    "key": "сша → соединённые штаты америки (gold сша)",
+    "n": 34,
+    "ex": "gsd-test:test-s67",
+    "note": "gold lemma not among the readings"
+   },
+   {
+    "key": "все → весь (gold всё)",
+    "n": 33,
+    "ex": "gsd-test:test-s200",
+    "note": "gold lemma is another reading"
+   },
+   {
+    "key": "все → весь (gold все)",
+    "n": 29,
+    "ex": "taiga-test:2067",
+    "note": "gold lemma is another reading"
+   },
+   {
+    "key": "больше → больше (gold много)",
+    "n": 20,
+    "ex": "taiga-test:3011",
+    "note": "gold lemma not among the readings"
+   },
+   {
+    "key": "его → он (gold его)",
+    "n": 17,
+    "ex": "gsd-test:test-s318",
+    "note": "gold lemma is another reading"
+   },
+   {
+    "key": "зимой → зимой (gold зима)",
+    "n": 16,
+    "ex": "taiga-test:1",
+    "note": "gold lemma is another reading"
+   },
+   {
+    "key": "ссср → союз советских социалистических республик (gold ссср)",
+    "n": 16,
+    "ex": "gsd-test:test-s141",
+    "note": "gold lemma not among the readings"
+   },
+   {
+    "key": "всего → всего (gold всё)",
+    "n": 15,
+    "ex": "gsd-test:test-s433",
+    "note": "gold lemma is another reading"
+   },
+   {
+    "key": "ее → её (gold она)",
+    "n": 15,
+    "ex": "gsd-dev:dev-s206",
+    "note": "gold lemma is another reading"
+   },
+   {
+    "key": "все → всё (gold весь)",
+    "n": 13,
+    "ex": "gsd-test:test-s47",
+    "note": "gold lemma is another reading"
+   },
+   {
+    "key": "всех → весь (gold все)",
+    "n": 11,
+    "ex": "taiga-test:6427",
+    "note": "gold lemma is another reading"
+   },
+   {
+    "key": "всё → весь (gold всё)",
+    "n": 11,
+    "ex": "gsd-test:test-s174",
+    "note": "gold lemma is another reading"
+   },
+   {
+    "key": "ко → к (gold ко)",
+    "n": 11,
+    "ex": "gsd-test:test-s196",
+    "note": "gold lemma not among the readings"
+   },
+   {
+    "key": "том → то (gold тот)",
+    "n": 11,
+    "ex": "gsd-test:test-s64",
+    "note": "gold lemma is another reading"
+   },
+   {
+    "key": "всего → весь (gold всё)",
+    "n": 10,
+    "ex": "gsd-test:test-s583",
+    "note": "gold lemma is another reading"
+   },
+   {
+    "key": "здравствуйте → здравствуйте (gold здравствовать)",
+    "n": 10,
+    "ex": "taiga-dev:instagram-127",
+    "note": "gold lemma is another reading"
+   },
+   {
+    "key": "лучше → хорошо (gold хороший)",
+    "n": 10,
+    "ex": "gsd-dev:dev-s147",
+    "note": "gold lemma is another reading"
+   },
+   {
+    "key": "включая → включать (gold включая)",
+    "n": 8,
+    "ex": "gsd-test:test-s73",
+    "note": "gold lemma is another reading"
+   },
+   {
+    "key": "возможно → возможно (gold возможный)",
+    "n": 8,
+    "ex": "gsd-test:test-s314",
+    "note": "gold lemma is another reading"
+   },
+   {
+    "key": "его → его (gold он)",
+    "n": 8,
+    "ex": "gsd-test:test-s519",
+    "note": "gold lemma is another reading"
+   },
+   {
+    "key": "позднее → поздний (gold позднее)",
+    "n": 8,
+    "ex": "gsd-test:test-s45",
+    "note": "gold lemma not among the readings"
+   },
+   {
+    "key": "равно → равно (gold равный)",
+    "n": 8,
+    "ex": "taiga-test:6183",
+    "note": "gold lemma is another reading"
+   },
+   {
+    "key": "юрка → юркий (gold юрка)",
+    "n": 8,
+    "ex": "taiga-dev:xud--mahotin_04-3",
+    "note": "gold lemma not among the readings"
+   },
+   {
+    "key": "большая → большой (gold больший)",
+    "n": 7,
+    "ex": "gsd-test:test-s212",
+    "note": "gold lemma not among the readings"
+   },
+   {
+    "key": "всем → весь (gold все)",
+    "n": 7,
+    "ex": "taiga-test:2015",
+    "note": "gold lemma is another reading"
+   },
+   {
+    "key": "г → грамм (gold г)",
+    "n": 7,
+    "ex": "gsd-test:test-s224",
+    "note": "gold lemma not among the readings"
+   },
+   {
+    "key": "горе → гора (gold горе)",
+    "n": 7,
+    "ex": "taiga-dev:poetry-rnc-abstract-249",
+    "note": "gold lemma is another reading"
+   },
+   {
+    "key": "дома → дом (gold дома)",
+    "n": 7,
+    "ex": "taiga-test:7089",
+    "note": "gold lemma is another reading"
+   },
+   {
+    "key": "ее → она (gold ее)",
+    "n": 7,
+    "ex": "gsd-dev:dev-s206",
+    "note": "gold lemma is another reading"
+   },
+   {
+    "key": "лучших → лучшее (gold лучший)",
+    "n": 7,
+    "ex": "gsd-test:test-s580",
+    "note": "gold lemma not among the readings"
+   },
+   {
+    "key": "стоит → стоять (gold стоить)",
+    "n": 7,
+    "ex": "taiga-test:4029",
+    "note": "gold lemma is another reading"
+   },
+   {
+    "key": "всего → весь (gold всего)",
+    "n": 6,
+    "ex": "taiga-test:uch-nauch--encicl_hudozh--etjud_eskiz-19",
+    "note": "gold lemma is another reading"
+   },
+   {
+    "key": "далее → дальний (gold далее)",
+    "n": 6,
+    "ex": "gsd-test:test-s236",
+    "note": "gold lemma not among the readings"
+   },
+   {
+    "key": "дальше → далеко (gold дальше)",
+    "n": 6,
+    "ex": "taiga-test:6057",
+    "note": "gold lemma is another reading"
+   },
+   {
+    "key": "его → он (gold оно)",
+    "n": 6,
+    "ex": "taiga-test:uch-nauch--encicl_hudozh--slovar_hudozhnika_103-63",
+    "note": "gold lemma is another reading"
+   },
+   {
+    "key": "им → они (gold он)",
+    "n": 6,
+    "ex": "taiga-test:4175",
+    "note": "gold lemma is another reading"
+   },
+   {
+    "key": "интересно → интересно (gold интересный)",
+    "n": 6,
+    "ex": "taiga-test:4079",
+    "note": "gold lemma is another reading"
+   },
+   {
+    "key": "невозможно → невозможно (gold невозможный)",
+    "n": 6,
+    "ex": "taiga-test:6851",
+    "note": "gold lemma is another reading"
+   },
+   {
+    "key": "основном → основное (gold основной)",
+    "n": 6,
+    "ex": "taiga-test:uch-nauch--encicl_phil--encicl15-7",
+    "note": "gold lemma is another reading"
+   },
+   {
+    "key": "позже → поздно (gold позже)",
+    "n": 6,
+    "ex": "gsd-test:test-s6",
+    "note": "gold lemma not among the readings"
+   },
+   {
+    "key": "ребята → ребёнок (gold ребята)",
+    "n": 6,
+    "ex": "taiga-test:6599",
+    "note": "gold lemma is another reading"
+   },
+   {
+    "key": "странно → странно (gold странный)",
+    "n": 6,
+    "ex": "taiga-test:4091",
+    "note": "gold lemma is another reading"
+   },
+   {
+    "key": "страшно → страшно (gold страшный)",
+    "n": 6,
+    "ex": "taiga-dev:instagram-7",
+    "note": "gold lemma is another reading"
+   },
+   {
+    "key": "хорошо → хорошо (gold хороший)",
+    "n": 6,
+    "ex": "taiga-test:2083",
+    "note": "gold lemma is another reading"
+   },
+   {
+    "key": "чем → чем (gold что)",
+    "n": 6,
+    "ex": "gsd-test:test-s456",
+    "note": "gold lemma is another reading"
+   },
+   {
+    "key": "это → этот (gold это)",
+    "n": 6,
+    "ex": "gsd-test:test-s245",
+    "note": "gold lemma is another reading"
+   },
+   {
+    "key": "использовался → использовать (gold использоваться)",
+    "n": 5,
+    "ex": "gsd-dev:dev-s237",
+    "note": "gold lemma not among the readings"
+   },
+   {
+    "key": "качестве → качество (gold качестве)",
+    "n": 5,
+    "ex": "pud:w01028050",
+    "note": "gold lemma not among the readings"
+   },
+   {
+    "key": "коне → кон (gold конь)",
+    "n": 5,
+    "ex": "taiga-dev:poetry-rnc-abstract-172",
+    "note": "gold lemma is another reading"
+   },
+   {
+    "key": "круто → круто (gold крутой)",
+    "n": 5,
+    "ex": "taiga-dev:instagram-99",
+    "note": "gold lemma is another reading"
+   },
+   {
+    "key": "многих → многий (gold много)",
+    "n": 5,
+    "ex": "gsd-test:test-s21",
+    "note": "gold lemma not among the readings"
+   },
+   {
+    "key": "порой → порой (gold пора)",
+    "n": 5,
+    "ex": "taiga-test:4247",
+    "note": "gold lemma is another reading"
+   },
+   {
+    "key": "привело → привести (gold приводить)",
+    "n": 5,
+    "ex": "pud:n01044009",
+    "note": "gold lemma not among the readings"
+   },
+   {
+    "key": "тем → то (gold тем)",
+    "n": 5,
+    "ex": "taiga-test:4129",
+    "note": "gold lemma is another reading"
+   },
+   {
+    "key": "удивительно → удивительно (gold удивительный)",
+    "n": 5,
+    "ex": "taiga-test:4193",
+    "note": "gold lemma is another reading"
+   },
+   {
+    "key": "часы → час (gold часы)",
+    "n": 5,
+    "ex": "gsd-test:test-s436",
+    "note": "gold lemma is another reading"
+   },
+   {
+    "key": "это → это (gold этот)",
+    "n": 5,
+    "ex": "gsd-test:test-s348",
+    "note": "gold lemma is another reading"
+   }
+  ],
+  "pos": [
+   {
+    "key": "gold PART → ours ADV",
+    "n": 266,
+    "ex": "gsd-test:test-s30 «лишь»",
+    "note": ""
+   },
+   {
+    "key": "gold PROPN → ours NOUN",
+    "n": 222,
+    "ex": "gsd-test:test-s17 «Орды»",
+    "note": ""
+   },
+   {
+    "key": "gold PART → ours CONJ",
+    "n": 187,
+    "ex": "gsd-test:test-s19 «будто»",
+    "note": ""
+   },
+   {
+    "key": "gold VERB → ours ADJ",
+    "n": 147,
+    "ex": "gsd-test:test-s75 «определяющий»",
+    "note": "right UPOS is another reading"
+   },
+   {
+    "key": "gold ADV → ours SCONJ",
+    "n": 130,
+    "ex": "gsd-test:test-s19 «как»",
+    "note": "right UPOS is another reading"
+   },
+   {
+    "key": "gold ADJ → ours ADV",
+    "n": 126,
+    "ex": "gsd-test:test-s198 «умнее»",
+    "note": "right UPOS is another reading"
+   },
+   {
+    "key": "gold NUM → ours ADV",
+    "n": 93,
+    "ex": "gsd-test:test-s5 «несколько»",
+    "note": ""
+   },
+   {
+    "key": "gold ADV → ours ADJ",
+    "n": 87,
+    "ex": "gsd-test:test-s45 «Позднее»",
+    "note": "right UPOS is another reading"
+   },
+   {
+    "key": "gold PRON → ours DET",
+    "n": 86,
+    "ex": "gsd-test:test-s174 «всё»",
+    "note": "right UPOS is another reading"
+   },
+   {
+    "key": "gold CCONJ → ours ADV",
+    "n": 82,
+    "ex": "gsd-test:test-s8 «также»",
+    "note": ""
+   },
+   {
+    "key": "gold ADJ → ours VERB",
+    "n": 80,
+    "ex": "gsd-test:test-s18 «бывших»",
+    "note": "right UPOS is another reading"
+   },
+   {
+    "key": "gold ADJ → ours DET",
+    "n": 76,
+    "ex": "gsd-test:test-s6 «другой»",
+    "note": ""
+   },
+   {
+    "key": "gold ADJ → ours NOUN",
+    "n": 69,
+    "ex": "gsd-test:test-s84 «лучшими»",
+    "note": ""
+   },
+   {
+    "key": "gold NOUN → ours ADJ",
+    "n": 69,
+    "ex": "gsd-test:test-s75 «переменной»",
+    "note": "right UPOS is another reading"
+   },
+   {
+    "key": "gold ADJ → ours PRON",
+    "n": 66,
+    "ex": "gsd-test:test-s7 «самых»",
+    "note": ""
+   },
+   {
+    "key": "gold AUX → ours PART",
+    "n": 60,
+    "ex": "gsd-dev:dev-s382 «бы»",
+    "note": ""
+   },
+   {
+    "key": "gold PART → ours INTJ",
+    "n": 55,
+    "ex": "taiga-test:2021 «Ну»",
+    "note": ""
+   },
+   {
+    "key": "gold SCONJ → ours PRON",
+    "n": 53,
+    "ex": "gsd-test:test-s55 «что»",
+    "note": "right UPOS is another reading"
+   },
+   {
+    "key": "gold PRON → ours SCONJ",
+    "n": 52,
+    "ex": "gsd-test:test-s155 «что»",
+    "note": "right UPOS is another reading"
+   },
+   {
+    "key": "gold NOUN → ours ADV",
+    "n": 42,
+    "ex": "gsd-test:test-s72 «рядом»",
+    "note": "right UPOS is another reading"
+   },
+   {
+    "key": "gold VERB → ours PART",
+    "n": 41,
+    "ex": "gsd-dev:dev-s268 «нет»",
+    "note": ""
+   },
+   {
+    "key": "gold ADP → ours SCONJ",
+    "n": 40,
+    "ex": "gsd-test:test-s65 «как»",
+    "note": ""
+   },
+   {
+    "key": "gold DET → ours NUM",
+    "n": 40,
+    "ex": "gsd-test:test-s398 «одна»",
+    "note": ""
+   },
+   {
+    "key": "gold CCONJ → ours PART",
+    "n": 39,
+    "ex": "gsd-test:test-s432 «Да»",
+    "note": "right UPOS is another reading"
+   },
+   {
+    "key": "gold ADV → ours NOUN",
+    "n": 38,
+    "ex": "gsd-test:test-s383 «тут»",
+    "note": "right UPOS is another reading"
+   },
+   {
+    "key": "gold NOUN → ours VERB",
+    "n": 37,
+    "ex": "gsd-test:test-s3 «уполномоченным»",
+    "note": "right UPOS is another reading"
+   },
+   {
+    "key": "gold NOUN → ours NUM",
+    "n": 35,
+    "ex": "gsd-test:test-s187 «тысяч»",
+    "note": "right UPOS is another reading"
+   },
+   {
+    "key": "gold PART → ours PRON",
+    "n": 34,
+    "ex": "gsd-test:test-s201 «это»",
+    "note": "right UPOS is another reading"
+   },
+   {
+    "key": "gold ADV → ours PRON",
+    "n": 32,
+    "ex": "gsd-test:test-s123 «где-нибудь»",
+    "note": ""
+   },
+   {
+    "key": "gold NOUN → ours PROPN",
+    "n": 32,
+    "ex": "gsd-test:test-s117 «блок»",
+    "note": "right UPOS is another reading"
+   },
+   {
+    "key": "gold ADP → ours ADV",
+    "n": 25,
+    "ex": "gsd-test:test-s46 «ниже»",
+    "note": ""
+   },
+   {
+    "key": "gold VERB → ours NOUN",
+    "n": 25,
+    "ex": "gsd-test:test-s376 «вести»",
+    "note": "right UPOS is another reading"
+   },
+   {
+    "key": "gold NOUN → ours INTJ",
+    "n": 24,
+    "ex": "gsd-test:test-s29 «Тук-тук»",
+    "note": "right UPOS is another reading"
+   },
+   {
+    "key": "gold PRON → ours ADV",
+    "n": 23,
+    "ex": "gsd-test:test-s433 «всего»",
+    "note": "right UPOS is another reading"
+   },
+   {
+    "key": "gold SCONJ → ours ADV",
+    "n": 23,
+    "ex": "gsd-test:test-s24 «так»",
+    "note": "right UPOS is another reading"
+   },
+   {
+    "key": "gold PART → ours SCONJ",
+    "n": 22,
+    "ex": "taiga-test:2119 «хотя»",
+    "note": "right UPOS is another reading"
+   },
+   {
+    "key": "gold NUM → ours PRON",
+    "n": 21,
+    "ex": "gsd-test:test-s12 «нескольких»",
+    "note": ""
+   },
+   {
+    "key": "gold PRON → ours NOUN",
+    "n": 21,
+    "ex": "taiga-test:4169 «ком»",
+    "note": "right UPOS is another reading"
+   },
+   {
+    "key": "gold SCONJ → ours DET",
+    "n": 20,
+    "ex": "taiga-test:4153 «то»",
+    "note": "right UPOS is another reading"
+   },
+   {
+    "key": "gold INTJ → ours ADP",
+    "n": 19,
+    "ex": "taiga-test:2035 «О»",
+    "note": "right UPOS is another reading"
+   },
+   {
+    "key": "gold PROPN → ours ADJ",
+    "n": 19,
+    "ex": "gsd-test:test-s93 «Хилы»",
+    "note": ""
+   },
+   {
+    "key": "gold ADV → ours DET",
+    "n": 18,
+    "ex": "gsd-test:test-s200 «все»",
+    "note": "right UPOS is another reading"
+   },
+   {
+    "key": "gold VERB → ours INTJ",
+    "n": 17,
+    "ex": "taiga-test:6889 «Здравствуй»",
+    "note": "right UPOS is another reading"
+   },
+   {
+    "key": "gold DET → ours ADJ",
+    "n": 15,
+    "ex": "gsd-test:test-s232 «всем»",
+    "note": "right UPOS is another reading"
+   },
+   {
+    "key": "gold PROPN → ours VERB",
+    "n": 14,
+    "ex": "gsd-test:test-s522 «Пори»",
+    "note": ""
+   },
+   {
+    "key": "gold ADV → ours ADP",
+    "n": 13,
+    "ex": "gsd-test:test-s372 «вплоть»",
+    "note": ""
+   },
+   {
+    "key": "gold CCONJ → ours DET",
+    "n": 13,
+    "ex": "taiga-test:2125 «То»",
+    "note": "right UPOS is another reading"
+   },
+   {
+    "key": "gold ADV → ours PART",
+    "n": 11,
+    "ex": "taiga-test:6167 «вроде»",
+    "note": ""
+   },
+   {
+    "key": "gold ADV → ours VERB",
+    "n": 9,
+    "ex": "gsd-dev:dev-s165 «совершено»",
+    "note": ""
+   },
+   {
+    "key": "gold NOUN → ours CONJ",
+    "n": 8,
+    "ex": "gsd-test:test-s268 «А»",
+    "note": "right UPOS is another reading"
+   },
+   {
+    "key": "gold NUM → ours ADJ",
+    "n": 8,
+    "ex": "gsd-test:test-s21 «многих»",
+    "note": ""
+   },
+   {
+    "key": "gold ADJ → ours PROPN",
+    "n": 7,
+    "ex": "gsd-dev:dev-s59 «Грозный»",
+    "note": "right UPOS is another reading"
+   },
+   {
+    "key": "gold ADP → ours VERB",
+    "n": 7,
+    "ex": "gsd-test:test-s73 «включая»",
+    "note": "right UPOS is another reading"
+   },
+   {
+    "key": "gold NOUN → ours ADP",
+    "n": 7,
+    "ex": "gsd-test:test-s117 «В»",
+    "note": "right UPOS is another reading"
+   },
+   {
+    "key": "gold INTJ → ours NOUN",
+    "n": 6,
+    "ex": "taiga-dev:instagram-312 «ха»",
+    "note": ""
+   },
+   {
+    "key": "gold ADP → ours NOUN",
+    "n": 5,
+    "ex": "gsd-test:test-s159 «типа»",
+    "note": ""
+   },
+   {
+    "key": "gold NOUN → ours PART",
+    "n": 5,
+    "ex": "gsd-test:test-s378 «б»",
+    "note": ""
+   },
+   {
+    "key": "gold ADV → ours CONJ",
+    "n": 4,
+    "ex": "taiga-test:6151 «Итак»",
+    "note": ""
+   },
+   {
+    "key": "gold NOUN → ours DET",
+    "n": 4,
+    "ex": "gsd-test:test-s227 «Другого»",
+    "note": ""
+   },
+   {
+    "key": "gold PART → ours DET",
+    "n": 4,
+    "ex": "taiga-test:15 «это»",
+    "note": "right UPOS is another reading"
+   }
+  ],
+  "featWrong": [
+   {
+    "key": "NOUN Number: Plur → Sing",
+    "n": 357,
+    "ex": "gsd-test:test-s36 «человек»",
+    "note": ""
+   },
+   {
+    "key": "ADJ Case: Acc → Nom",
+    "n": 233,
+    "ex": "gsd-test:test-s15 «французские»",
+    "note": ""
+   },
+   {
+    "key": "NOUN Case: Nom → Gen",
+    "n": 157,
+    "ex": "gsd-test:test-s56 «попытки»",
+    "note": ""
+   },
+   {
+    "key": "NOUN Case: Acc → Gen",
+    "n": 126,
+    "ex": "gsd-test:test-s172 «команды»",
+    "note": ""
+   },
+   {
+    "key": "DET Case: Acc → Nom",
+    "n": 124,
+    "ex": "gsd-test:test-s23 «свои»",
+    "note": ""
+   },
+   {
+    "key": "NOUN Number: Sing → Plur",
+    "n": 121,
+    "ex": "gsd-test:test-s9 «дозы»",
+    "note": ""
+   },
+   {
+    "key": "PROPN Animacy: Anim → Inan",
+    "n": 93,
+    "ex": "gsd-test:test-s35 «Луз»",
+    "note": ""
+   },
+   {
+    "key": "NOUN Case: Gen → Acc,Nom",
+    "n": 82,
+    "ex": "gsd-test:test-s9 «дозы»",
+    "note": ""
+   },
+   {
+    "key": "NOUN Gender: Fem → Masc",
+    "n": 81,
+    "ex": "gsd-test:test-s66 «певица»",
+    "note": ""
+   },
+   {
+    "key": "NOUN Animacy: Anim → Inan",
+    "n": 74,
+    "ex": "gsd-test:test-s10 «митр»",
+    "note": ""
+   },
+   {
+    "key": "NOUN Gender: Masc → Fem",
+    "n": 53,
+    "ex": "gsd-test:test-s10 «митр»",
+    "note": ""
+   },
+   {
+    "key": "VERB Case: Acc → Nom",
+    "n": 49,
+    "ex": "gsd-test:test-s23 «выдержанные»",
+    "note": ""
+   },
+   {
+    "key": "VERB Number: Plur → Sing",
+    "n": 43,
+    "ex": "gsd-test:test-s537 «терпящим»",
+    "note": ""
+   },
+   {
+    "key": "VERB Aspect: Perf → Imp",
+    "n": 41,
+    "ex": "gsd-test:test-s338 «принадлежащий»",
+    "note": ""
+   },
+   {
+    "key": "PROPN Number: Sing → Plur",
+    "n": 40,
+    "ex": "gsd-test:test-s35 «Луз»",
+    "note": ""
+   },
+   {
+    "key": "NOUN Animacy: Inan → Anim",
+    "n": 39,
+    "ex": "gsd-test:test-s80 «МИСТИКА»",
+    "note": ""
+   },
+   {
+    "key": "PROPN Gender: Masc → Fem",
+    "n": 38,
+    "ex": "gsd-test:test-s10 «Федора»",
+    "note": ""
+   },
+   {
+    "key": "PROPN Gender: Fem → Masc",
+    "n": 37,
+    "ex": "gsd-test:test-s124 «Анастасия»",
+    "note": ""
+   },
+   {
+    "key": "ADJ Case: Nom → Acc",
+    "n": 34,
+    "ex": "gsd-test:test-s145 «сильные»",
+    "note": ""
+   },
+   {
+    "key": "ADJ Gender: Masc → Fem",
+    "n": 31,
+    "ex": "gsd-test:test-s60 «речной»",
+    "note": ""
+   },
+   {
+    "key": "VERB Voice: Act → Pass",
+    "n": 31,
+    "ex": "taiga-test:6083 «Собираем»",
+    "note": ""
+   },
+   {
+    "key": "NOUN Case: Nom → Dat,Gen,Prep",
+    "n": 30,
+    "ex": "gsd-test:test-s409 «Особи»",
+    "note": ""
+   },
+   {
+    "key": "PRON Number: Sing → Plur",
+    "n": 30,
+    "ex": "taiga-test:4175 «им»",
+    "note": ""
+   },
+   {
+    "key": "VERB VerbForm: Fin → Part",
+    "n": 30,
+    "ex": "taiga-test:6083 «Собираем»",
+    "note": ""
+   },
+   {
+    "key": "NOUN Case: Acc → Dat,Gen,Prep",
+    "n": 28,
+    "ex": "gsd-test:test-s294 «операции»",
+    "note": ""
+   },
+   {
+    "key": "ADJ Case: Nom → Dat,Gen,Ins,Prep",
+    "n": 27,
+    "ex": "gsd-test:test-s60 «речной»",
+    "note": ""
+   },
+   {
+    "key": "VERB Aspect: Imp → Perf",
+    "n": 27,
+    "ex": "gsd-test:test-s65 «успевшая»",
+    "note": ""
+   },
+   {
+    "key": "NUM Case: Acc → Nom",
+    "n": 25,
+    "ex": "gsd-test:test-s79 «два»",
+    "note": ""
+   },
+   {
+    "key": "NOUN Case: Gen → Nom",
+    "n": 24,
+    "ex": "gsd-test:test-s36 «человек»",
+    "note": ""
+   },
+   {
+    "key": "NOUN Case: Acc → Nom",
+    "n": 22,
+    "ex": "gsd-test:test-s117 «блок»",
+    "note": ""
+   },
+   {
+    "key": "NOUN Case: Loc → Acc,Nom",
+    "n": 21,
+    "ex": "gsd-test:test-s57 «конференции»",
+    "note": ""
+   },
+   {
+    "key": "PROPN Animacy: Inan → Anim",
+    "n": 20,
+    "ex": "gsd-test:test-s89 «Спартаком»",
+    "note": ""
+   },
+   {
+    "key": "PROPN Case: Nom → Gen",
+    "n": 20,
+    "ex": "gsd-test:test-s35 «Луз»",
+    "note": ""
+   },
+   {
+    "key": "ADJ Case: Gen → Acc",
+    "n": 18,
+    "ex": "gsd-test:test-s158 «кавалерийских»",
+    "note": ""
+   },
+   {
+    "key": "DET Case: Nom → Acc",
+    "n": 16,
+    "ex": "gsd-test:test-s432 «весь»",
+    "note": ""
+   },
+   {
+    "key": "PRON Case: Acc → Nom",
+    "n": 16,
+    "ex": "gsd-test:test-s110 «который»",
+    "note": ""
+   },
+   {
+    "key": "NOUN Gender: Fem → Neut",
+    "n": 15,
+    "ex": "gsd-test:test-s205 «е»",
+    "note": ""
+   },
+   {
+    "key": "PROPN Case: Nom → Acc,Gen",
+    "n": 15,
+    "ex": "gsd-test:test-s124 «Анастасия»",
+    "note": ""
+   },
+   {
+    "key": "DET Case: Acc → Gen,Prep",
+    "n": 14,
+    "ex": "gsd-dev:dev-s49 «всех»",
+    "note": ""
+   },
+   {
+    "key": "NOUN Case: Dat → Gen",
+    "n": 14,
+    "ex": "gsd-test:test-s2 «рублей»",
+    "note": ""
+   },
+   {
+    "key": "NOUN Gender: Neut → Fem",
+    "n": 14,
+    "ex": "gsd-test:test-s104 «производных»",
+    "note": ""
+   },
+   {
+    "key": "PRON Gender: Neut → Masc",
+    "n": 13,
+    "ex": "gsd-dev:dev-s105 «него»",
+    "note": ""
+   },
+   {
+    "key": "DET Case: Acc → Gen",
+    "n": 12,
+    "ex": "gsd-dev:dev-s149 «своего»",
+    "note": ""
+   },
+   {
+    "key": "DET Gender: Masc → Fem",
+    "n": 12,
+    "ex": "gsd-dev:dev-s526 «какой»",
+    "note": ""
+   },
+   {
+    "key": "NOUN Gender: Masc → Neut",
+    "n": 12,
+    "ex": "gsd-test:test-s162 «животных»",
+    "note": ""
+   },
+   {
+    "key": "NOUN Gender: Neut → Masc",
+    "n": 12,
+    "ex": "gsd-test:test-s416 «НЛО»",
+    "note": ""
+   },
+   {
+    "key": "ADJ Case: Acc → Gen",
+    "n": 11,
+    "ex": "gsd-test:test-s48 «азербайджанского»",
+    "note": ""
+   },
+   {
+    "key": "ADJ Case: Acc → Gen,Prep",
+    "n": 11,
+    "ex": "gsd-test:test-s76 «остальных»",
+    "note": ""
+   },
+   {
+    "key": "PROPN Gender: Masc → Neut",
+    "n": 11,
+    "ex": "gsd-test:test-s112 «Ницше»",
+    "note": ""
+   },
+   {
+    "key": "PROPN Case: Gen → Nom",
+    "n": 10,
+    "ex": "gsd-test:test-s10 «Федора»",
+    "note": ""
+   },
+   {
+    "key": "VERB Tense: Pres → Fut",
+    "n": 10,
+    "ex": "gsd-test:test-s447 «переводится»",
+    "note": ""
+   },
+   {
+    "key": "DET Case: Nom → Dat,Gen,Ins,Prep",
+    "n": 9,
+    "ex": "taiga-test:6157 «какой»",
+    "note": ""
+   },
+   {
+    "key": "NOUN Case: Nom → Acc,Gen",
+    "n": 9,
+    "ex": "gsd-test:test-s80 «МИСТИКА»",
+    "note": ""
+   },
+   {
+    "key": "NOUN Case: Dat → Acc,Nom",
+    "n": 8,
+    "ex": "gsd-test:test-s314 «стратиграфии»",
+    "note": ""
+   },
+   {
+    "key": "VERB Mood: Imp → Ind",
+    "n": 8,
+    "ex": "gsd-test:test-s331 «Откроем»",
+    "note": ""
+   },
+   {
+    "key": "ADJ Number: Plur → Sing",
+    "n": 7,
+    "ex": "taiga-test:uch-nauch--encicl_phil--encicl15-45 «глиняным»",
+    "note": ""
+   },
+   {
+    "key": "NOUN Case: Dat → Loc",
+    "n": 7,
+    "ex": "gsd-test:test-s478 «году»",
+    "note": ""
+   },
+   {
+    "key": "NOUN Case: Nom → Acc",
+    "n": 7,
+    "ex": "taiga-dev:poetry-rnc-abstract-51 «дух»",
+    "note": ""
+   },
+   {
+    "key": "NOUN Case: Nom → Dat,Prep",
+    "n": 7,
+    "ex": "taiga-dev:poetry-rnc-abstract-249 «горе»",
+    "note": ""
+   },
+   {
+    "key": "NUM Case: Acc → Gen,Prep",
+    "n": 7,
+    "ex": "taiga-test:7217 «нескольких»",
+    "note": ""
+   }
+  ],
+  "featAbsent": [
+   {
+    "key": "VERB Voice: Act → (absent)",
+    "n": 4861,
+    "ex": "gsd-test:test-s1 «начал»",
+    "note": ""
+   },
+   {
+    "key": "PRON Animacy: Inan → (absent)",
+    "n": 742,
+    "ex": "gsd-test:test-s12 «которому»",
+    "note": ""
+   },
+   {
+    "key": "PRON Gender: Neut → (absent)",
+    "n": 628,
+    "ex": "gsd-test:test-s21 «того»",
+    "note": ""
+   },
+   {
+    "key": "AUX Voice: Act → (absent)",
+    "n": 454,
+    "ex": "gsd-test:test-s183 «быть»",
+    "note": ""
+   },
+   {
+    "key": "VERB Animacy: Inan → (absent)",
+    "n": 392,
+    "ex": "gsd-test:test-s10 «подготовленными»",
+    "note": ""
+   },
+   {
+    "key": "ADJ Animacy: Inan → (absent)",
+    "n": 241,
+    "ex": "gsd-test:test-s15 «французские»",
+    "note": ""
+   },
+   {
+    "key": "VERB Case: Nom → (absent)",
+    "n": 230,
+    "ex": "gsd-test:test-s1 «приглашён»",
+    "note": ""
+   },
+   {
+    "key": "NOUN Number: Sing → (absent)",
+    "n": 218,
+    "ex": "gsd-test:test-s22 «такси»",
+    "note": ""
+   },
+   {
+    "key": "NOUN Animacy: Inan → (absent)",
+    "n": 175,
+    "ex": "gsd-test:test-s29 «Тук-тук»",
+    "note": ""
+   },
+   {
+    "key": "ADV Degree: Cmp → (absent)",
+    "n": 167,
+    "ex": "gsd-test:test-s26 «менее»",
+    "note": ""
+   },
+   {
+    "key": "PRON Number: Sing → (absent)",
+    "n": 153,
+    "ex": "gsd-test:test-s112 «чём-то»",
+    "note": ""
+   },
+   {
+    "key": "ADJ Variant: Short → (absent)",
+    "n": 147,
+    "ex": "gsd-test:test-s314 «возможно»",
+    "note": ""
+   },
+   {
+    "key": "ADJ Number: Sing → (absent)",
+    "n": 146,
+    "ex": "gsd-test:test-s314 «возможно»",
+    "note": ""
+   },
+   {
+    "key": "PRON Animacy: Anim → (absent)",
+    "n": 142,
+    "ex": "gsd-test:test-s18 «который»",
+    "note": ""
+   },
+   {
+    "key": "ADJ Gender: Neut → (absent)",
+    "n": 140,
+    "ex": "gsd-test:test-s314 «возможно»",
+    "note": ""
+   },
+   {
+    "key": "DET Animacy: Inan → (absent)",
+    "n": 127,
+    "ex": "gsd-test:test-s23 «свои»",
+    "note": ""
+   },
+   {
+    "key": "NUM Animacy: Inan → (absent)",
+    "n": 126,
+    "ex": "gsd-test:test-s5 «несколько»",
+    "note": ""
+   },
+   {
+    "key": "PROPN Number: Sing → (absent)",
+    "n": 124,
+    "ex": "gsd-test:test-s22 «Такси»",
+    "note": ""
+   },
+   {
+    "key": "NOUN Case: Nom → (absent)",
+    "n": 117,
+    "ex": "gsd-test:test-s29 «Такси»",
+    "note": ""
+   },
+   {
+    "key": "NUM Number: Sing → (absent)",
+    "n": 116,
+    "ex": "gsd-test:test-s7 «одним»",
+    "note": ""
+   },
+   {
+    "key": "VERB Animacy: Anim → (absent)",
+    "n": 100,
+    "ex": "gsd-test:test-s1 «приглашён»",
+    "note": ""
+   },
+   {
+    "key": "VERB Voice: Pass → (absent)",
+    "n": 94,
+    "ex": "gsd-test:test-s177 «развит»",
+    "note": ""
+   },
+   {
+    "key": "PRON Gender: Masc → (absent)",
+    "n": 92,
+    "ex": "gsd-test:test-s432 «кто»",
+    "note": ""
+   },
+   {
+    "key": "NOUN Case: Gen → (absent)",
+    "n": 85,
+    "ex": "gsd-test:test-s22 «такси»",
+    "note": ""
+   },
+   {
+    "key": "NOUN Gender: Masc → (absent)",
+    "n": 85,
+    "ex": "gsd-test:test-s29 «Тук-тук»",
+    "note": ""
+   },
+   {
+    "key": "PROPN Case: Gen → (absent)",
+    "n": 72,
+    "ex": "gsd-test:test-s32 «ССР»",
+    "note": ""
+   },
+   {
+    "key": "VERB Aspect: Imp → (absent)",
+    "n": 72,
+    "ex": "gsd-test:test-s75 «определяющий»",
+    "note": ""
+   },
+   {
+    "key": "PROPN Case: Nom → (absent)",
+    "n": 69,
+    "ex": "gsd-test:test-s22 «Такси»",
+    "note": ""
+   },
+   {
+    "key": "VERB VerbForm: Part → (absent)",
+    "n": 65,
+    "ex": "gsd-test:test-s75 «определяющий»",
+    "note": ""
+   },
+   {
+    "key": "VERB Mood: Ind → (absent)",
+    "n": 60,
+    "ex": "gsd-dev:dev-s268 «нет»",
+    "note": ""
+   },
+   {
+    "key": "NOUN Number: Plur → (absent)",
+    "n": 58,
+    "ex": "gsd-test:test-s29 «Такси»",
+    "note": ""
+   },
+   {
+    "key": "VERB Tense: Pres → (absent)",
+    "n": 55,
+    "ex": "gsd-test:test-s75 «определяющий»",
+    "note": ""
+   },
+   {
+    "key": "VERB VerbForm: Inf → (absent)",
+    "n": 54,
+    "ex": "gsd-test:test-s96 «составляться»",
+    "note": ""
+   },
+   {
+    "key": "PRON Case: Acc → (absent)",
+    "n": 52,
+    "ex": "gsd-test:test-s174 «что»",
+    "note": ""
+   },
+   {
+    "key": "NOUN Animacy: Anim → (absent)",
+    "n": 50,
+    "ex": "gsd-test:test-s3 «уполномоченным»",
+    "note": ""
+   },
+   {
+    "key": "NOUN Gender: Fem → (absent)",
+    "n": 48,
+    "ex": "gsd-test:test-s179 «Осенью»",
+    "note": ""
+   },
+   {
+    "key": "PROPN Animacy: Anim → (absent)",
+    "n": 48,
+    "ex": "gsd-test:test-s63 «Элис»",
+    "note": ""
+   },
+   {
+    "key": "VERB Tense: Past → (absent)",
+    "n": 45,
+    "ex": "gsd-test:test-s177 «развит»",
+    "note": ""
+   },
+   {
+    "key": "VERB VerbForm: Fin → (absent)",
+    "n": 43,
+    "ex": "gsd-dev:dev-s268 «нет»",
+    "note": ""
+   },
+   {
+    "key": "NUM Case: Acc → (absent)",
+    "n": 41,
+    "ex": "gsd-dev:dev-s57 «несколько»",
+    "note": ""
+   },
+   {
+    "key": "VERB Aspect: Perf → (absent)",
+    "n": 41,
+    "ex": "gsd-test:test-s177 «развит»",
+    "note": ""
+   },
+   {
+    "key": "DET Number: Sing → (absent)",
+    "n": 40,
+    "ex": "gsd-test:test-s398 «одна»",
+    "note": ""
+   },
+   {
+    "key": "NOUN Case: Ins → (absent)",
+    "n": 40,
+    "ex": "gsd-test:test-s72 «рядом»",
+    "note": ""
+   },
+   {
+    "key": "VERB Person: 1 → (absent)",
+    "n": 38,
+    "ex": "taiga-test:6083 «Собираем»",
+    "note": ""
+   },
+   {
+    "key": "NOUN Case: Acc → (absent)",
+    "n": 33,
+    "ex": "gsd-dev:dev-s93 «сегодня»",
+    "note": ""
+   },
+   {
+    "key": "NUM Case: Nom → (absent)",
+    "n": 33,
+    "ex": "gsd-test:test-s5 «несколько»",
+    "note": ""
+   },
+   {
+    "key": "NUM Animacy: Anim → (absent)",
+    "n": 32,
+    "ex": "gsd-test:test-s7 «одним»",
+    "note": ""
+   },
+   {
+    "key": "NOUN Gender: Neut → (absent)",
+    "n": 31,
+    "ex": "gsd-test:test-s201 «кое-что»",
+    "note": ""
+   },
+   {
+    "key": "PRON Case: Nom → (absent)",
+    "n": 31,
+    "ex": "gsd-test:test-s155 «что»",
+    "note": ""
+   },
+   {
+    "key": "DET Gender: Neut → (absent)",
+    "n": 30,
+    "ex": "gsd-test:test-s47 «Все»",
+    "note": ""
+   },
+   {
+    "key": "PRON Person: 3 → (absent)",
+    "n": 29,
+    "ex": "gsd-test:test-s245 «Это»",
+    "note": ""
+   },
+   {
+    "key": "DET Animacy: Anim → (absent)",
+    "n": 27,
+    "ex": "gsd-test:test-s398 «одна»",
+    "note": ""
+   },
+   {
+    "key": "DET Gender: Masc → (absent)",
+    "n": 27,
+    "ex": "gsd-test:test-s79 «том»",
+    "note": ""
+   },
+   {
+    "key": "NOUN Case: Loc → (absent)",
+    "n": 24,
+    "ex": "gsd-test:test-s224 «г»",
+    "note": ""
+   },
+   {
+    "key": "PROPN Case: Loc → (absent)",
+    "n": 24,
+    "ex": "gsd-test:test-s53 «Тбилиси»",
+    "note": ""
+   },
+   {
+    "key": "NUM Gender: Masc → (absent)",
+    "n": 23,
+    "ex": "gsd-test:test-s73 «Оба»",
+    "note": ""
+   },
+   {
+    "key": "PROPN Gender: Masc → (absent)",
+    "n": 23,
+    "ex": "gsd-test:test-s93 «Хилы»",
+    "note": ""
+   },
+   {
+    "key": "ADJ Animacy: Anim → (absent)",
+    "n": 22,
+    "ex": "gsd-test:test-s17 «последний»",
+    "note": ""
+   },
+   {
+    "key": "ADJ Case: Nom → (absent)",
+    "n": 22,
+    "ex": "gsd-test:test-s19 «должен»",
+    "note": ""
+   },
+   {
+    "key": "ADV Degree: Sup → (absent)",
+    "n": 22,
+    "ex": "gsd-test:test-s210 «наиболее»",
+    "note": ""
+   }
+  ]
+ }
+}

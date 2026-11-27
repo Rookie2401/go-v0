@@ -38,6 +38,8 @@
 import type { LanguageAdapter } from '../../../../src/core';
 import type { LanguageEvidence, LanguageResolution, ResolveLanguage } from '../contract/language';
 import { parserAdapter } from '../parser';
+import { notRussianCyrillic } from './cyrillic';
+import { ARABIC_MIN_HITS, ARABIC_MIN_SHARE, arabicFunctionShare, arabicShare, notArabicScript } from './arabic';
 
 export type { LanguageEvidence, LanguageResolution, ResolveLanguage } from '../contract/language';
 
@@ -59,6 +61,8 @@ export const MIN_MARGIN = 0.25;
 export const MIN_SCRIPT_SHARE = 0.6;
 /** Devanagari is accepted as Hindi when the Hindi word list recognises at least this share of the words. */
 export const MIN_HINDI_SHARE = 0.5;
+/** Cyrillic is accepted as Russian when its letters name no other language and the Russian word list recognises at least this share of the words. */
+export const MIN_RUSSIAN_SHARE = 0.5;
 /** Confidence given to the team default: a default, not evidence. */
 export const TEAM_DEFAULT_CONFIDENCE = 0.3;
 /**
@@ -87,9 +91,15 @@ export const PACK_VARIETIES: Readonly<Record<string, readonly string[]>> = {
   he: ['he-mod', 'he-bib', 'arc-bib'],
   el: ['el-mod', 'el-koi', 'el-att', 'el-hom'],
   arc: ['arc-bib'],
+  ru: ['ru-RU'],
+  fr: ['fr-FR', 'fr-CA', 'fr-BE', 'fr-CH'],
+  ko: ['ko-KR'],
+  // the learning varieties; the spoken dialects are recognised and kept apart (NOT_THE_PACK), never chosen
+  ar: ['ar-msa', 'ar-cla'],
 };
 /** The script each pack's language is written in; a tag that states another script (hi-Latn) names something no pack analyses. */
-const PACK_SCRIPT: Readonly<Record<string, string>> = { sq: 'latn', es: 'latn', de: 'latn', hi: 'deva', th: 'thai', nb: 'latn', nn: 'latn', la: 'latn', he: 'hebr', arc: 'hebr', el: 'grek' };
+const PACK_SCRIPT: Readonly<Record<string, string>> = { sq: 'latn', es: 'latn', de: 'latn', hi: 'deva', th: 'thai', nb: 'latn', nn: 'latn', la: 'latn', he: 'hebr', arc: 'hebr', el: 'grek', ru: 'cyrl', fr: 'latn', ko: 'hang',
+  ar: 'arab' };
 
 const PRIMARY: Readonly<Record<string, string>> = {
   sq: 'sq', sqi: 'sq', als: 'sq', aln: 'sq',
@@ -104,6 +114,14 @@ const PRIMARY: Readonly<Record<string, string>> = {
   // Biblical Hebrew (hbo) and Ancient Greek (grc) are periods of the same packs, not other languages
   he: 'he', heb: 'he', iw: 'he', hbo: 'he',
   el: 'el', ell: 'el', gre: 'el', grc: 'el',
+  // Ukrainian (uk), Belarusian (be), Bulgarian (bg), Serbian (sr) and Macedonian (mk) are other languages in the same script: they
+  // are NOT listed, so a page that declares one of them is a page no pack covers
+  ru: 'ru', rus: 'ru',
+  fr: 'fr', fra: 'fr', fre: 'fr',
+  ko: 'ko', kor: 'ko',
+  // Arabic (ar), Standard Arabic (arb) and the ISO 639-2 code (ara). Persian (fa), Urdu (ur), Pashto (ps), Sorani Kurdish (ckb), Uyghur (ug) and Sindhi (sd)
+  // share the script and are NOT listed: a page that declares one of them is a page no pack covers. `arc` (Aramaic) is another language: tags match whole.
+  ar: 'ar', ara: 'ar', arb: 'ar',
 };
 /** Tags that look like a pack language but are not the pack's language. */
 const NOT_THE_PACK: Readonly<Record<string, string>> = {
@@ -118,6 +136,15 @@ const NOT_THE_PACK: Readonly<Record<string, string>> = {
   sa: 'Sanskrit is not Hindi (it shares the script)',
   awa: 'Awadhi is its own language, read beside Hindi, not analysed as Hindi',
   bra: 'Braj is its own language, read beside Hindi, not analysed as Hindi',
+  // the spoken dialects: recognised and kept apart, never read as Standard Arabic
+  arz: 'Egyptian Arabic is a spoken dialect, recognised beside Arabic and not analysed as Standard Arabic',
+  apc: 'Levantine Arabic is a spoken dialect, recognised beside Arabic and not analysed as Standard Arabic',
+  ajp: 'South Levantine Arabic is a spoken dialect, recognised beside Arabic and not analysed as Standard Arabic',
+  afb: 'Gulf Arabic is a spoken dialect, recognised beside Arabic and not analysed as Standard Arabic',
+  acm: 'Iraqi Arabic is a spoken dialect, recognised beside Arabic and not analysed as Standard Arabic',
+  ary: 'Moroccan Arabic is a spoken dialect, recognised beside Arabic and not analysed as Standard Arabic',
+  aeb: 'Tunisian Arabic is a spoken dialect, recognised beside Arabic and not analysed as Standard Arabic',
+  apd: 'Sudanese Arabic is a spoken dialect, recognised beside Arabic and not analysed as Standard Arabic',
 };
 const NORWEGIAN_UNSPECIFIED = new Set(['no', 'nor']);
 /** Confidence given to a bare "no" that the learner's single installed Norwegian pack settles: below what a declared nb or nn gets. */
@@ -146,7 +173,8 @@ export function mapLanguageTag(tag: string): TagMapping {
   if (NOT_THE_PACK[primary]) return { kind: 'ambiguous', reason: NOT_THE_PACK[primary] };
   const languageId = PRIMARY[primary];
   if (!languageId) return { kind: 'no-pack', reason: `no language pack covers "${primary}"` };
-  if (script && script !== PACK_SCRIPT[languageId]) {
+  // ko-Kore is Korean written in Hangul with Hanja, which the pack reads (Hanja inside a word is kept)
+  if (script && script !== PACK_SCRIPT[languageId] && !(languageId === 'ko' && script === 'kore')) {
     return { kind: 'ambiguous', reason: `"${tag}" is ${primary} written in ${script.toUpperCase()} script; the ${languageId} pack analyses the ${PACK_SCRIPT[languageId].toUpperCase()} script only` };
   }
   const notes: string[] = [];
@@ -161,6 +189,14 @@ export function mapLanguageTag(tag: string): TagMapping {
   } else if (languageId === 'de' && region) {
     const v = `de-${region.toUpperCase()}`;
     if (PACK_VARIETIES.de.includes(v)) varietyId = v;
+  } else if (languageId === 'fr' && region) {
+    // a region the pack labels (France, Canada, Belgium, Switzerland) is its variety; any other French-speaking region is read as French with no variety claimed
+    const v = `fr-${region.toUpperCase()}`;
+    if (PACK_VARIETIES.fr.includes(v)) varietyId = v;
+  } else if (languageId === 'ko') {
+    // ko-KR is the variety. ko-KP (North Korea) is read as Standard Korean with no variety claimed: its spelling rules are not analysed.
+    if (region === 'kr') varietyId = 'ko-KR';
+    else if (region === 'kp') notes.push('ko-KP is North Korean usage: read as Modern Standard Korean (ko-KR); North Korean spelling is not analysed as a variety of its own');
   } else if (primary === 'arc') {
     if (rest.some((p) => ['targum', 'targumic', 'onkelos', 'syriac', 'imperial', 'qumran'].includes(p))) return { kind: 'no-pack', reason: 'Only the Biblical Aramaic slice is implemented; the declared variety has no validated pack' };
     varietyId = 'arc-bib'; notes.push('The Aramaic pack currently analyses Biblical Aramaic only');
@@ -188,9 +224,9 @@ function sampleWords(sample: string): string[] {
   return out;
 }
 
-interface ScriptShare { latin: number; thai: number; devanagari: number; hebrew: number; greek: number; letters: number }
+interface ScriptShare { latin: number; thai: number; devanagari: number; hebrew: number; greek: number; cyrillic: number; hangul: number; arabic: number; letters: number }
 function scriptShare(sample: string): ScriptShare {
-  const r: ScriptShare = { latin: 0, thai: 0, devanagari: 0, hebrew: 0, greek: 0, letters: 0 };
+  const r: ScriptShare = { latin: 0, thai: 0, devanagari: 0, hebrew: 0, greek: 0, cyrillic: 0, hangul: 0, arabic: 0, letters: 0 };
   for (const ch of sample.slice(0, MAX_SAMPLE_CHARS)) {
     if (!/\p{L}/u.test(ch)) continue;
     r.letters++;
@@ -199,6 +235,9 @@ function scriptShare(sample: string): ScriptShare {
     else if (/\p{Script=Devanagari}/u.test(ch)) r.devanagari++;
     else if (/\p{Script=Hebrew}/u.test(ch)) r.hebrew++;
     else if (/\p{Script=Greek}/u.test(ch)) r.greek++;
+    else if (/\p{Script=Cyrillic}/u.test(ch)) r.cyrillic++;
+    else if (/\p{Script=Hangul}/u.test(ch)) r.hangul++;
+    else if (/\p{Script=Arabic}/u.test(ch)) r.arabic++;
   }
   return r;
 }
@@ -212,7 +251,25 @@ function wordListShare(adapter: LanguageAdapter, sample: string): { hits: number
   return { hits, words, share: hits / words };
 }
 
-interface Detection { languageId?: string; confidence: number; reasons: string[] }
+/**
+ * `against`: the sample is positively ANOTHER language (letters Russian does not use name it: Ukrainian, Bulgarian …). That is evidence,
+ * like a declaration of a language no pack covers, so the team default is not used against it. A sample that is merely not recognised
+ * (too few word-list hits) carries no `against`: it may still be the learner's language outside the word list.
+ */
+interface Detection { languageId?: string; confidence: number; reasons: string[]; against?: string }
+
+/** Languages written in the Arabic script that no pack reads: a page that declares one is never read as Arabic by a click. */
+const NON_ARABIC_SCRIPT_LANGS: ReadonlySet<string> = new Set(['fa', 'fas', 'per', 'prs', 'ur', 'urd', 'ps', 'pus', 'ckb', 'ku', 'kur', 'ug', 'uig', 'sd', 'snd', 'pnb', 'ks', 'dv']);
+const PERSIAN_WORDS: ReadonlySet<string> = new Set(['است', 'که', 'را', 'این', 'آن', 'برای', 'های']);
+const URDU_WORDS: ReadonlySet<string> = new Set(['ہے', 'کے', 'کی', 'میں', 'اور', 'کا']);
+/** Two or more of the commonest Persian (or Urdu) function words in a block: it is not Arabic (these words are not shared with Arabic). */
+function persianOrUrduWords(text: string): boolean {
+  const joiner = String.fromCharCode(0x200c);
+  const words = (text.match(/[\p{Script=Arabic}\u200c]+/gu) ?? []).map((w) => w.split(joiner).join(''));
+  const count = (set: ReadonlySet<string>): number => words.filter((w) => set.has(w)).length;
+  const miPrefix = (text.match(/(^|\s)می[\u200c ]?\p{Script=Arabic}/gu) ?? []).length; // the Persian present-tense prefix می, joined or with a gap
+  return count(PERSIAN_WORDS) + (miPrefix ? 1 : 0) >= 2 || count(URDU_WORDS) >= 2;
+}
 
 const r2 = (n: number): number => Math.round(n * 100) / 100;
 
@@ -227,6 +284,11 @@ function detect(sample: string, installed: ReadonlySet<string>, adapterOf: (l: s
   if (share(sh.thai) >= MIN_SCRIPT_SHARE) {
     if (!installed.has('th')) return { confidence: 0, reasons: ['the sample is in Thai script, but the Thai pack is not installed'] };
     return { languageId: 'th', confidence: 0.9, reasons: ['the sample is in Thai script, which none of the other packs uses'] };
+  }
+  // Hangul is written by Korean alone (no other pack reads it), so the script is the language, as for Thai
+  if (share(sh.hangul) >= MIN_SCRIPT_SHARE) {
+    if (!installed.has('ko')) return { confidence: 0, reasons: ['the sample is in Hangul, but the Korean pack is not installed'] };
+    return { languageId: 'ko', confidence: 0.9, reasons: ['the sample is in Hangul, which no other pack uses'] };
   }
   if (share(sh.devanagari) >= MIN_SCRIPT_SHARE) {
     if (!installed.has('hi')) return { confidence: 0, reasons: ['the sample is in Devanagari script, but the Hindi pack is not installed'] };
@@ -259,8 +321,34 @@ function detect(sample: string, installed: ReadonlySet<string>, adapterOf: (l: s
     if (!installed.has('el')) return { confidence: 0, reasons: ['the sample is in Greek script, but the Greek pack is not installed'] };
     return { languageId: 'el', confidence: 0.9, reasons: ['the sample is in Greek script, which no other pack uses (the analyser decides the period, Homeric to Modern, sentence by sentence)'] };
   }
+  // Cyrillic is shared by Russian, Ukrainian, Belarusian, Bulgarian, Serbian, Macedonian and more. Letters Russian does not use name
+  // another language outright (language/cyrillic.ts); without them, only the Russian word list can show that the text is Russian.
+  if (share(sh.cyrillic) >= MIN_SCRIPT_SHARE) {
+    if (!installed.has('ru')) return { confidence: 0, reasons: ['the sample is in Cyrillic script, but the Russian pack is not installed'] };
+    const other = notRussianCyrillic(sample.slice(0, MAX_SAMPLE_CHARS));
+    if (other) return { confidence: 0, against: other.language, reasons: [`the sample is in Cyrillic script, but it looks like ${other.language}, not Russian as the pack reads it (${other.evidence})`] };
+    const ru = adapterOf('ru');
+    if (!ru) return { confidence: 0, reasons: ['the sample is in Cyrillic script, which Russian shares with Ukrainian, Belarusian, Bulgarian and Serbian, and no Russian word list is available (it is not loaded) to tell them apart'] };
+    const w = wordListShare(ru, sample);
+    if (w.share >= MIN_RUSSIAN_SHARE && w.hits >= MIN_HITS) {
+      return { languageId: 'ru', confidence: r2(Math.min(0.8, 0.5 + w.share / 2)), reasons: [`the sample is in Cyrillic script, has no letter of another Cyrillic alphabet, and the Russian word list recognises ${w.hits} of ${w.words} words (the script is shared with other languages, so the word list decides)`] };
+    }
+    return { confidence: 0, reasons: [`the sample is in Cyrillic script, but the Russian word list recognises only ${w.hits} of ${w.words} words: it may be Bulgarian, Ukrainian, Serbian or another language, or Russian outside the word list`] };
+  }
+  // Arabic script is shared by Arabic, Persian, Urdu, Pashto, Kurdish and Uyghur. Letters Arabic does not use name another language outright
+  // (language/arabic.ts, on the printed text); without them, only the commonest Arabic function words can show that the text is Arabic.
+  if (share(sh.arabic) >= MIN_SCRIPT_SHARE) {
+    if (!installed.has('ar')) return { confidence: 0, reasons: ['the sample is in Arabic script, but the Arabic pack is not installed'] };
+    const other = notArabicScript(sample.slice(0, MAX_SAMPLE_CHARS));
+    if (other) return { confidence: 0, against: other.language, reasons: [`the sample is in Arabic script, but it looks like ${other.language}, not Arabic as the pack reads it (${other.evidence})`] };
+    const f = arabicFunctionShare(sample.slice(0, MAX_SAMPLE_CHARS));
+    if (f.hits >= ARABIC_MIN_HITS && f.share >= ARABIC_MIN_SHARE) {
+      return { languageId: 'ar', confidence: r2(Math.min(0.8, 0.5 + f.share / 2)), reasons: [`the sample is in Arabic script, has no letter of another Arabic-script alphabet, and ${f.hits} of its ${f.words} words are common Arabic function words (the script is shared with Persian, Urdu, Pashto, Kurdish and Uyghur)`] };
+    }
+    return { confidence: 0, reasons: [`the sample is in Arabic script, but only ${f.hits} of its ${f.words} words are common Arabic function words: it may be Persian, Urdu, Pashto or Kurdish without their own letters, or Arabic in a short passage`] };
+  }
   if (share(sh.latin) < MIN_SCRIPT_SHARE) {
-    return { confidence: 0, reasons: ['the sample is not mainly in one script this resolver can compare (Latin, Thai, Devanagari, Hebrew or Greek)'] };
+    return { confidence: 0, reasons: ['the sample is not mainly in one script this resolver can compare (Latin, Thai, Devanagari, Hebrew, Greek, Cyrillic, Hangul or Arabic)'] };
   }
 
   // Latin script: a lexicon-hit comparison across the installed packs that have a word list.
@@ -301,6 +389,12 @@ function defaultCompatibility(tag: string, sample: string, installed: ReadonlySe
   if (!adapter) return { ok: false, reason: `the ${m.languageId} word list is not loaded, so the text could not be checked against the chosen language` };
   const words = sampleWords(sample);
   if (words.length < MIN_TOKENS) return { ok: false, reason: `the text around the selection has ${words.length} word${words.length === 1 ? '' : 's'}; fewer than ${MIN_TOKENS} cannot show that it is ${m.languageId}` };
+  // a Ukrainian or Bulgarian page shares many short words with Russian: its own letters rule Russian out before the word list is asked
+  const other = m.languageId === 'ru' ? notRussianCyrillic(sample.slice(0, MAX_SAMPLE_CHARS)) : undefined;
+  if (other) return { ok: false, reason: `the text around the selection looks like ${other.language}, not Russian (${other.evidence})` };
+  // a Persian or Urdu page shares the script and many letters with Arabic: its own letters rule Arabic out before the word list is asked
+  const otherArabic = m.languageId === 'ar' ? notArabicScript(sample.slice(0, MAX_SAMPLE_CHARS)) : undefined;
+  if (otherArabic) return { ok: false, reason: `the text around the selection looks like ${otherArabic.language}, not Arabic (${otherArabic.evidence})` };
   const w = wordListShare(adapter, sample);
   const need = Math.round(DEFAULT_COMPATIBLE_SHARE * 100);
   if (w.share >= DEFAULT_COMPATIBLE_SHARE && w.hits >= MIN_HITS) {
@@ -405,15 +499,54 @@ export function createLanguageResolver(options: ResolverOptions = {}): ResolveLa
       }
     }
 
+    // 3b. an Arabic learner on a page of another language of the Arabic script. A DECLARED language that no pack reads (fa, ur, ps, ckb, ug, sd ...) wins; a
+    //     declared Arabic dialect is the dialect's (said as such); an UNDECLARED block that is Persian or Urdu by its letters or its function words is refused.
+    //     None of these is read as Arabic by detection, by a click or by the learner's default.
+    if (installed.has('ar') && evidence.teamDefault && (() => { const m = mapLanguageTag(evidence.teamDefault!); return m.kind === 'pack' && m.languageId === 'ar'; })()) {
+      const tags = [evidence.documentLanguage?.tag ?? evidence.documentLanguage?.languageId, evidence.bookLanguage?.tag ?? evidence.bookLanguage?.languageId].filter((t): t is string => !!t);
+      const primary = (t: string): string => t.toLowerCase().split(/[-_]/u)[0] ?? '';
+      const other = tags.find((t) => NON_ARABIC_SCRIPT_LANGS.has(primary(t)));
+      if (other) return undetermined([...reasons, `the page declares "${other}", a language of the Arabic script that no pack reads: it is not read as Arabic — choose a language if the page is mislabelled`]);
+      const dialectTag = tags.find((t) => /^a(rz|pc|jp|fb|cm|ry|eb|pd)$/u.test(primary(t)));
+      if (dialectTag) { const m = mapLanguageTag(dialectTag); return undetermined([...reasons, m.kind === 'ambiguous' ? m.reason : `"${dialectTag}" is a spoken Arabic dialect, not analysed as Standard Arabic`]); }
+      const block = evidence.sample ?? evidence.surface ?? '';
+      if (arabicShare(block) >= 0.5 && (notArabicScript(block) || persianOrUrduWords(block))) {
+        const why = notArabicScript(block);
+        return undetermined([...reasons, `the text looks like ${why ? why.language : 'Persian or Urdu'} (${why ? why.evidence : 'its commonest function words'}), not Arabic as the pack reads it; the team default is not used against it — choose a language if this is wrong`]);
+      }
+    }
     // 4. detection from the sample
     if (evidence.sample) {
       const d = detect(evidence.sample, installed, adapterOf);
       if (d.languageId) return { languageId: d.languageId, confidence: d.confidence, basis: 'detection', reasons: [...reasons, ...d.reasons] };
       reasons.push(...d.reasons);
+      // the text names another language outright (a Ukrainian paragraph on a page with no lang): reading it with the learner's language
+      // would record a Ukrainian word as a Russian encounter. The learner's own choice (step 1) still overrides this.
+      if (d.against) return undetermined([...reasons, `the text is ${d.against}, which no installed pack reads; the team default is not used against it — choose a language if this is wrong`]);
     } else {
       reasons.push('no sample was given to detect a language from');
     }
 
+    // 4b. an Arabic word clicked in a text of another language (one Arabic word in an English sentence): the learner chose Arabic and asked about
+    //     this word, and nothing in it is a letter Arabic lacks, so a CLICK reads it as Arabic. Nothing automatic follows from it: the page is not
+    //     Arabic, so GoLearn Active does not underline a lone word (pageLanguages decides that per block).
+    if (evidence.surface && evidence.teamDefault && installed.has('ar') && (() => { const m = mapLanguageTag(evidence.teamDefault!); return m.kind === 'pack' && m.languageId === 'ar'; })()) {
+      const w = evidence.surface;
+      // (a) a DECLARED language that no pack reads, in the Arabic script (fa, ur, ps ...), always wins; (b) a declared Arabic dialect is the dialect's: never read as Arabic here
+      const declaredTags = [evidence.documentLanguage?.tag ?? evidence.documentLanguage?.languageId, evidence.bookLanguage?.tag ?? evidence.bookLanguage?.languageId].filter((t): t is string => !!t);
+      const primaryOf = (t: string): string => t.toLowerCase().split(/[-_]/u)[0] ?? '';
+      const declaredElsewhere = declaredTags.some((t) => NON_ARABIC_SCRIPT_LANGS.has(primaryOf(t)));
+      const dialect = declaredTags.map((t) => mapLanguageTag(t)).find((m) => m.kind === 'ambiguous');
+      if (dialect && dialect.kind === 'ambiguous' && declaredTags.some((t) => /^a(rz|pc|jp|fb|cm|ry|eb|pd)$/u.test(primaryOf(t)))) return undetermined([...reasons, dialect.reason]);
+      // (c) on an undeclared block of Arabic script the SENTENCE around the click decides: no letter Arabic lacks, and not Persian or Urdu by its function words
+      // (d) a lone Arabic word inside a block of another script has no Arabic-script sentence to test: the word itself is tested
+      const block = evidence.sample ?? w;
+      const sentenceOk = arabicShare(block) >= 0.5 ? !notArabicScript(block, 0) && !persianOrUrduWords(block) : true;
+      if (!declaredElsewhere && sentenceOk && arabicShare(w) >= 0.5 && !notArabicScript(w, 0) && /\p{Script=Arabic}/u.test(w)) {
+        const m = mapLanguageTag(evidence.teamDefault);
+        return { languageId: 'ar', ...(m.kind === 'pack' && m.varietyId ? { varietyId: m.varietyId } : {}), confidence: TEAM_DEFAULT_CONFIDENCE, basis: 'team-default', reasons: [...reasons, 'the learner reads Arabic, and the selected word is in the Arabic script with no letter of another language of it: a click on it is read as Arabic (the page itself is not claimed to be Arabic)'] };
+      }
+    }
     // 5. team default — not when the page or book reliably declares a language no pack covers, UNLESS the text around the
     //    selection is plainly compatible with the learner's chosen language (a mislabelled page: an Albanian site declaring "en")
     if (declaredNoPack) {

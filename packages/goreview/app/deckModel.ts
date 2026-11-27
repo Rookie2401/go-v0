@@ -534,6 +534,16 @@ export interface VocabRow {
   unitIds?: string[];
 }
 
+/**
+ * The word a vocabulary row shows: the unit's own label, or the word inside its id when there is no label. A label that IS a unit id
+ * ("lemma:ar:أسبوع:NOUN": a unit registered from a dictionary-confirmed reading carried its id as its label) is never shown as the title.
+ */
+export function vocabLabel(label: string | undefined, unitId: string): string {
+  const text = (label ?? '').trim();
+  if (!text) return unitLabel(unitId);
+  return /^(?:lemma|form|phrase|sense|lexeme):[A-Za-z-]+:/u.test(text) ? unitLabel(text) : text;
+}
+
 /** A Repository record as listed, before records of the same word are folded together. */
 export interface VocabRecord extends VocabRow {
   kind: string;
@@ -686,7 +696,7 @@ async function loadVocabLive(ctx: AppContext, languageId: string): Promise<Vocab
       if (isClassUnit(k.unitId)) continue; // the Class Essentials cards are not vocabulary the learner met
       const last = k.lastSeenAt ?? item.lastEncounter;
       records.push({
-        unitId: k.unitId, label: item.unit?.label || unitLabel(k.unitId), level: displayLevelOf(k), encounters: k.encounters, ...(last ? { lastSeenAt: last } : {}),
+        unitId: k.unitId, label: vocabLabel(item.unit?.label, k.unitId), level: displayLevelOf(k), encounters: k.encounters, ...(last ? { lastSeenAt: last } : {}),
         kind: item.unit?.kind ?? k.unitId.split(':', 1)[0], forms: item.surfaceForms ?? [],
       });
     }

@@ -26,6 +26,7 @@ import { MAX_CONFIRM_FORMS, isUnitId, type ConfirmFormsReply, type KnowledgeView
 import type { GoEvent } from '../../../repository-contract/src';
 import type { CardUI } from '../popup/card';
 import type { LookupController } from './controller';
+import { PREPARE_BEFORE_SCAN } from '../lexicon/prepare';
 
 export interface ActiveDeps {
   doc: Document;
@@ -44,6 +45,8 @@ export interface ActiveDeps {
   buildEncounter?: (ids: string[], languageId: string, readerId: string) => GoEvent;
   adapterOf(languageId: string): LanguageAdapter | undefined;
   loadAnalyser?(languageId: string): Promise<void>;
+  /** Loads the language's sharded word list for the text about to be analysed (once per scan pass and language; a failure is remembered by the preparer and the scan goes on with the compiled core). */
+  prepareLexicon?(languageId: string, text: string): Promise<unknown>;
   /** The background answers at most this many ids per request (profile.ts MAX_IDS_PER_REQUEST). */
   batchSize?: number;
   debounceMs?: number;
@@ -112,6 +115,8 @@ export class ActiveMode {
   /** The learner's languages this page may be read in, the page's Latin-script language when it rests on evidence, and what the last scan found. */
   private installed: string[] = [];
   private pageLatin: string | undefined;
+  private pageCyrillic: string | undefined;
+  private pageArabic: string | undefined;
   private languages: string[] = [];
   private ready = false;
   private planCache = new WeakMap<Element, { text: string; verdict: LatinVerdict }>();
@@ -188,6 +193,25 @@ export class ActiveMode {
       if (!this.on) return this.state;
       if (res.languageId && res.basis !== 'team-default' && LANGUAGE_SCRIPT[res.languageId] === 'Latn') this.pageLatin = res.languageId;
     }
+    // Cyrillic is shared by several languages, so the page's Cyrillic text is Russian only on evidence too (it declares Russian, the
+    // learner chose Russian here, or its text shows it); a block the word list cannot settle is then read as the page is
+    if (this.installed.includes('ru')) {
+      const cyrillicSample = this.scriptSample(/[\p{Script=Cyrillic}́'’-]+/gu);
+      if (cyrillicSample) {
+        const res = await this.d.controller.resolvePageLanguage(cyrillicSample);
+        if (!this.on) return this.state;
+        if (res.languageId === 'ru' && res.basis !== 'team-default') this.pageCyrillic = 'ru';
+      }
+    }
+    // Arabic script is shared by Persian, Urdu, Pashto, Kurdish and Uyghur: the page's Arabic-script text is Arabic only on evidence too
+    if (this.installed.includes('ar')) {
+      const arabicSample = this.scriptSample(/[\p{Script=Arabic}]+/gu);
+      if (arabicSample) {
+        const res = await this.d.controller.resolvePageLanguage(arabicSample);
+        if (!this.on) return this.state;
+        if (res.languageId === 'ar' && res.basis !== 'team-default') this.pageArabic = 'ar';
+      }
+    }
     this.ready = true;
     this.attachClick();
     this.attachWatchers();
@@ -225,6 +249,8 @@ export class ActiveMode {
     this.languages = [];
     this.installed = [];
     this.pageLatin = undefined;
+    this.pageCyrillic = undefined;
+    this.pageArabic = undefined;
     this.ready = false;
     this.planCache = new WeakMap();
     this.nodeLanguages = new WeakMap();
@@ -258,12 +284,15 @@ export class ActiveMode {
   }
 
   /** The page's Latin-script words, as the evidence for its Latin-script language (other scripts are decided by their script). */
-  private latinSample(): string {
+  private latinSample(): string { return this.scriptSample(/[\p{Script=Latin}\p{M}'’-]+/gu); }
+
+  /** The page's words that match `words` (one script's), up to SAMPLE_CHARS. */
+  private scriptSample(wordsOfScript: RegExp): string {
     if (!this.scanner) return '';
     let s = '';
     for (const root of this.roots()) {
       for (const n of this.scanner.textNodes(root)) {
-        const words = n.data.match(/[\p{Script=Latin}\p{M}'’-]+/gu);
+        const words = n.data.match(wordsOfScript);
         if (!words) continue;
         s += (s ? ' ' : '') + words.join(' ');
         if (s.length >= SAMPLE_CHARS) return s.slice(0, SAMPLE_CHARS);
@@ -278,7 +307,7 @@ export class ActiveMode {
     const t0 = clock.now();
     const rootsNodes = this.roots().map((root) => [root, scanner.textNodes(root)] as const);
     const allNodes = rootsNodes.flatMap(([, nodes]) => nodes);
-    const planOpts = { installed: this.installed, adapterOf: (l: string) => this.d.adapterOf(l), pageLatin: this.pageLatin };
+    const planOpts = { installed: this.installed, adapterOf: (l: string) => this.d.adapterOf(l), pageLatin: this.pageLatin, pageCyrillic: this.pageCyrillic, pageArabic: this.pageArabic };
     let plan = planPage(allNodes, planOpts, this.planCache);
     if (plan.missing.size && this.d.loadAnalyser) {
       // a language of the learner's appears on the page and its analyser is not loaded yet: load it, then decide again
@@ -287,6 +316,11 @@ export class ActiveMode {
       plan = planPage(allNodes, planOpts, this.planCache);
     }
     this.nodeLanguages = plan.nodeLanguages;
+    // the full word list for the words of THIS pass, before any of them is analysed: the scan, the card and Reading Analysis then name one lemma for a word
+    if (this.d.prepareLexicon) {
+      await Promise.allSettled([...plan.byLanguage].filter(([lang]) => PREPARE_BEFORE_SCAN.has(lang)).map(([lang, ns]) => this.d.prepareLexicon!(lang, ns.map((n) => n.data).join('\n'))));
+      if (!this.on) return;
+    }
     const byDoc = new Map<Document, ScanToken[]>();
     for (const [root, nodes] of rootsNodes) {
       const here = new Set(nodes);
@@ -412,7 +446,8 @@ export class ActiveMode {
           const row = reply.forms[id.slice(prefix.length)];
           const lemma = Array.isArray(row) && typeof row[0] === 'string' && row[0] ? row[0] : undefined;
           const pos = Array.isArray(row) && typeof row[1] === 'string' && /^[A-Za-z]{1,8}$/.test(row[1]) ? row[1] : undefined;
-          const lemmaId = lemma ? `lemma:${languageId}:${lemma}${pos ? ':' + pos : ''}` : undefined;
+          // a dictionary with bare (vowelless) keys makes no lemma id: the word is confirmed under its own form id (see `bareDictionaryHeads`)
+          const lemmaId = lemma ? (this.d.adapterOf(languageId)?.bareDictionaryHeads ? id : `lemma:${languageId}:${lemma}${pos ? ':' + pos : ''}`) : undefined;
           if (lemmaId && isUnitId(lemmaId)) this.confirmed.set(id, lemmaId);
           else if (!reply.reason) this.confirmed.set(id, null); // the index answered and does not have the word
         }

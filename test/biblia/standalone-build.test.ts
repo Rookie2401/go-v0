@@ -83,6 +83,11 @@ describe('Biblia standalone build', () => {
     expect(list.filter((f) => f !== './').every((f) => fs.existsSync(path.join(out, f)))).toBe(true);
     // the texts really are in the build (so the exclusion above is meaningful) and are far larger than the shell
     expect(fs.existsSync(path.join(out, 'data'))).toBe(true);
+    // Biblia's caches keep the names they have always had (the Hindi edition, a separate site, has biblia-hindi-*)
+    expect(sw).toContain("var SHELL_PREFIX = 'biblia-shell-';");
+    expect(sw).toContain("var DATA_PREFIX = 'biblia-data-';");
+    // and none of the Hindi edition's files are in this build
+    expect(list.filter((f) => /edition-hi|tiro-devanagari/.test(f))).toEqual([]);
   });
 
   it('a second build of the same sources has the same BUILD_ID (a content hash, not a timestamp)', () => {

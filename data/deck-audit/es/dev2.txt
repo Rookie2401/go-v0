@@ -1,0 +1,95 @@
+# SECOND DEVELOPMENT half (es): the held-out half until 2026-11-27, read since to fix what it showed. Written for the deck audit by an AI model (not a native speaker); no rights are claimed by anyone else. One sentence per line.
+# everyday narrative
+Ayer me levanté temprano porque quería llegar al mercado antes de que se acabaran las frutas frescas.
+Mi hermana vive desde hace tres años en un apartamento pequeño cerca del parque central.
+Cuando éramos niños, pasábamos las vacaciones en la casa de mis abuelos junto al río.
+Dejé las llaves sobre la mesa y tuve que volver a buscarlas antes de salir.
+Mi padre toma una taza de café todas las mañanas mientras escucha las noticias en la radio.
+El invierno pasado llovió tanto que el camino hacia el pueblo quedó cerrado durante una semana.
+Sembramos tomates y chiles en el patio, y ahora tenemos más de los que podemos comer.
+Ana espera en la parada del autobús y se enoja porque el conductor siempre llega tarde.
+Mi abuelo me contaba historias de su trabajo en la finca cuando yo todavía era muy pequeño.
+El domingo vamos a ir en bicicleta hasta la laguna y allí haremos un picnic con toda la familia.
+Estaba tan cansada que me quedé dormida en el sofá antes de las nueve.
+El perro pasó toda la tarde acostado debajo del árbol y no ladró ni una sola vez.
+Después de cenar, lavamos los platos entre todos y ordenamos la cocina.
+Ella le escribió una carta muy larga a su amiga, pero nunca se atrevió a enviarla.
+Si mañana no llueve, llevaremos a los niños a nadar a la piscina del barrio.
+Busqué mis lentes durante media hora y al final los encontré dentro del refrigerador.
+Tomás trabaja como electricista y por eso casi todos los días anda de un lugar a otro.
+Hace dos semanas nos mudamos a una casa más grande porque estamos esperando un bebé.
+En otoño recogemos hongos en el bosque y los secamos para el invierno.
+El concierto fue mucho más bonito de lo que yo esperaba, y llegamos a casa después de la medianoche.
+Mi vecina es la persona más amable que conozco y siempre me ayuda a regar las plantas.
+Hace un año que aprendo a tocar la guitarra, pero todavía no toco muy bien.
+Cuando miré por la ventana, vi un zorro caminando tranquilamente por el patio.
+Mi hermano se rompió una pierna y tendrá que usar muletas durante seis semanas.
+Alquilamos una lancha pequeña en las vacaciones y navegamos hasta una isla donde no había nadie.
+Todos los martes voy a nadar después del trabajo porque el agua me hace mucho bien.
+La maestra nos explicó por qué el cielo se pone rojo en algunas tardes.
+No pudo dormir porque los vecinos estuvieron de fiesta hasta muy tarde.
+Mañana te traeré el libro del que te hablé la semana pasada.
+Al final del día estaba agotado, pero me sentía muy contento con lo que había logrado.
+# news register
+El desempleo bajó ligeramente el mes pasado, según informó el instituto de estadística este jueves.
+Debido a la sequía prolongada, los agricultores esperan una cosecha mucho menor que la del año anterior.
+El concejo municipal aprobó ayer la reparación de la escuela primaria, que estará lista para el próximo verano.
+Para el fin de semana se esperan lluvias fuertes en el sur del país y posibles tormentas eléctricas.
+Los precios de las viviendas aumentaron casi un siete por ciento en las ciudades grandes durante el último año.
+El equipo local ganó el partido por tres goles a uno y ahora encabeza la tabla de posiciones.
+Un grupo de científicos desarrolló un método que permite descomponer los residuos plásticos con mayor rapidez.
+Según la policía, dos personas resultaron levemente heridas en el accidente ocurrido en la carretera principal.
+El centro de salud recomienda a las personas mayores vacunarse contra la gripe antes de que comience el invierno.
+La alcaldía construirá el próximo año veinte nuevos estacionamientos para bicicletas junto a la estación.
+Cada vez más empresas permiten que sus empleados trabajen desde su casa dos días a la semana.
+La alcaldesa anunció que, por ahora, no subirán las tarifas de la piscina municipal.
+Debido a un temporal, varios barcos tuvieron que quedarse anoche en el puerto.
+Un nuevo telescopio permitió a los astrónomos descubrir un planeta de tamaño parecido al de la Tierra.
+El número de turistas que visitaron la costa este verano fue el más alto de la historia.
+El hospital contratará treinta enfermeras más antes de fin de año para reducir el tiempo de espera.
+El consumo de energía de los hogares disminuyó un cuatro por ciento en comparación con el año pasado.
+La corredora terminó la media maratón con su mejor marca personal y se convirtió en campeona nacional.
+Como están reparando el puente, la calle entre los dos pueblos seguirá cerrada hasta finales de marzo.
+Un estudio reciente muestra que los niños que juegan al aire libre todos los días duermen mejor.
+# conversation
+Buenos días, ¿qué le sirvo hoy?
+Quisiera una libra de manzanas y dos panes, por favor.
+¿Algo más, o con eso es todo?
+No, gracias, eso es todo. ¿Cuánto le debo?
+Son cuarenta y cinco lempiras, aquí tiene su cambio.
+¿Dónde le duele, señora Martínez?
+Desde ayer tengo un fuerte dolor de cabeza y me siento mareada todo el tiempo.
+¿Ha tenido fiebre o tos en estos días?
+Solo un poco de fiebre, pero casi no he comido nada.
+Le voy a recetar unas pastillas y usted debería descansar dos días.
+¿Vos ya tenés planes para esta noche?
+La verdad que no, pero tengo que hacer las compras para mañana.
+Entonces podríamos cocinar juntos, si querés.
+Claro, ¿qué querés que lleve, vino o mejor un jugo?
+Disculpe, ¿este autobús va hacia el centro de la ciudad?
+No, para ir al centro tiene que tomar el de la otra acera, que sale en veinte minutos.
+Muchas gracias, ¿y dónde puedo comprar el boleto?
+Allí mismo, en la ventanilla que está a la izquierda de la entrada.
+¿Me puedes ayudar? Mi computadora no enciende desde esta mañana.
+¿Ya probaste apagarla del todo y volver a encenderla?
+Sí, lo intenté tres veces, pero la pantalla sigue negra.
+Después del almuerzo la reviso, ¿te parece bien?
+¿A qué hora nos vemos mañana para preparar la presentación?
+A las ocho y media me parece bien, así tendremos tiempo suficiente.
+Perfecto, yo llevo los documentos que necesitamos.
+# description and instructions
+Primero pele las cebollas, córtelas en cubitos pequeños y sofríalas en un poco de mantequilla hasta que estén doradas.
+Luego agregue los tomates y una cucharadita de sal, y deje cocinar todo a fuego lento durante veinte minutos.
+Para la masa, mezcle trescientos gramos de harina con dos huevos y un poco de agua hasta que quede suave.
+Siga derecho por la calle principal, doble a la derecha después de la farmacia y camine junto al río.
+La alcaldía está al lado izquierdo, justo enfrente de la iglesia antigua.
+Nuestra ciudad está en un valle ancho y la rodean bosques y colinas suaves.
+En el casco antiguo hay calles estrechas, cafés pequeños y un mercado que abre todos los sábados.
+La escuela tiene unos cuatrocientos alumnos y las clases comienzan de lunes a viernes a las siete de la mañana.
+Dentro del edificio no se permite comer ni usar el celular, salvo durante el recreo largo.
+Quien quiera usar la biblioteca necesita un carnet, que se entrega gratis en la recepción.
+El apartamento es luminoso y tranquilo, tiene tres habitaciones y un balcón pequeño con vista al jardín.
+Tome las pastillas tres veces al día, después de las comidas y con un vaso de agua.
+En el museo está prohibido tocar las pinturas y tomar fotografías con flash.
+Deje enfriar el pastel diez minutos antes de sacarlo del molde y espolvoréelo con azúcar.
+Mi pueblo es pequeño, pero en verano recibe muchos visitantes porque el paisaje es muy hermoso.

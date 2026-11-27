@@ -378,7 +378,7 @@ describe('Go deeper', () => {
     expect((root(r).querySelector('button.deeperBtn') as HTMLElement).getAttribute('aria-expanded')).toBe('true');
   });
 
-  it('Form: the lemma and the morphology line, no table and no evidence chip; "analysis" is a quiet closed disclosure that opens GRAMMAR first and then one dropdown per feature, labelled from the pack', async () => {
+  it('Form: the lemma, morphology and labelled grammatical features appear after one Go deeper click; grammar notes remain in their own disclosure', async () => {
     const r = makeRig({ services: fakeServices() });
     await (await lookup(r)).settled;
     click(r, 'button.deeperBtn');
@@ -387,23 +387,26 @@ describe('Go deeper', () => {
     expect(form.querySelector('.tag')).toBeNull(); // no "analysis" chip to collide with the toggle's name
     expect(form.querySelector('[data-row="form"] .v')!.textContent).toBe('definite feminine accusative singular');
     expect(form.querySelector('[data-row="lemma"] .v')!.textContent).toBe('shtëpi (NOUN)');
+    const featureBox = form.querySelector('[data-row="features"]') as HTMLElement;
+    const feats = [...featureBox.querySelectorAll('details.feat')] as HTMLDetailsElement[];
+    expect(feats.map((d) => d.querySelector('summary')!.textContent)).toEqual(expect.arrayContaining(['Case · accusative', 'Definite · Def', 'Number · Sing']));
+    expect(featureBox.querySelector('h4')!.textContent).toBe('Grammatical features');
     const btn = form.querySelector('button.analysisBtn') as HTMLButtonElement;
     const box = form.querySelector('.analysis') as HTMLElement;
     expect(btn.textContent).toBe('analysis');
     expect(btn.getAttribute('aria-expanded')).toBe('false');
     expect(btn.getAttribute('aria-controls')).toBe(box.id);
     expect(box.hasAttribute('hidden')).toBe(true);
-    // under the morphology line
+    // summaries are visible after Go deeper; detailed explanations stay inside each summary's disclosure
     expect(form.querySelector('[data-row="form"]')!.compareDocumentPosition(btn) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+    expect(box.compareDocumentPosition(featureBox) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+    expect(box.querySelectorAll('details.feat')).toHaveLength(0);
     btn.click();
     expect(box.hasAttribute('hidden')).toBe(false);
     expect(btn.getAttribute('aria-expanded')).toBe('true');
-    // GRAMMAR first, then the features
+    // Grammar constructions are still available in the disclosure.
     expect(box.firstElementChild!.getAttribute('data-layer')).toBe('grammar');
     expect(box.firstElementChild!.querySelector('.label')!.textContent).toBe('Grammar');
-    const feats = [...box.querySelectorAll('details.feat')] as HTMLDetailsElement[];
-    expect(feats.map((d) => d.querySelector('summary')!.textContent)).toEqual(expect.arrayContaining(['Case · accusative', 'Definite · Def', 'Number · Sing']));
-    expect(box.firstElementChild!.compareDocumentPosition(feats[0]) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
     const caseFeat = feats.find((d) => d.querySelector('summary')!.textContent === 'Case · accusative')!;
     expect(caseFeat.open).toBe(false);
     expect(caseFeat.querySelector('.muted')!.textContent).toBe('A noun changes its ending to show its job in the sentence.'); // 'brief' depth: the first sentence
@@ -415,7 +418,7 @@ describe('Go deeper', () => {
     await (await lookup(noPack)).settled;
     click(noPack, 'button.deeperBtn');
     expect(root(noPack).querySelector('.layer.l2')!.textContent).toMatch(/the pack’s explanations were not available/);
-    expect(root(noPack).querySelector('.layer.l2 details.feat .muted')!.textContent).toBe('No explanation from the pack for this feature.');
+    expect(root(noPack).querySelector('.layer.l2 [data-row="features"] details.feat .muted')!.textContent).toBe('No explanation from the pack for this feature.');
   });
 
   it('Syntax lists phrases and units, and shows the syntax relation (Stage 4) or says plainly when the analyser gives none', async () => {

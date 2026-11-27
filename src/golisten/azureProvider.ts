@@ -81,6 +81,43 @@ export const AZURE_VOICES: Record<LanguageCode, AzureVoiceEntry[]> = {
     { id: 'it-IT-IsabellaNeural', locale: 'it-IT', gender: 'female' },
     { id: 'it-IT-DiegoNeural', locale: 'it-IT', gender: 'male' },
   ],
+  // Russian: Azure's ru-RU neural voices (ids from memory of the Azure voice gallery; unverified against the live list, which
+  // `listVoices` reads at runtime when it can).
+  ru: [
+    { id: 'ru-RU-SvetlanaNeural', locale: 'ru-RU', gender: 'female' },
+    { id: 'ru-RU-DmitryNeural', locale: 'ru-RU', gender: 'male' },
+    { id: 'ru-RU-DariyaNeural', locale: 'ru-RU', gender: 'female' },
+  ],
+  // French: Azure's neural voices (ids from memory of the Azure voice gallery; unverified against the live list, which `listVoices` reads at runtime when it can).
+  fr: [
+    { id: 'fr-FR-DeniseNeural', locale: 'fr-FR', gender: 'female' },
+    { id: 'fr-FR-HenriNeural', locale: 'fr-FR', gender: 'male' },
+    { id: 'fr-CA-SylvieNeural', locale: 'fr-CA', gender: 'female' },
+    { id: 'fr-CA-JeanNeural', locale: 'fr-CA', gender: 'male' },
+    { id: 'fr-BE-CharlineNeural', locale: 'fr-BE', gender: 'female' },
+    { id: 'fr-CH-ArianeNeural', locale: 'fr-CH', gender: 'female' },
+  ],
+  // Korean: Azure's ko-KR neural voices (names from the Azure voice gallery as read on 2026-11-25; ids unverified against the live list,
+  // which `listVoices` reads at runtime when it can).
+  ko: [
+    { id: 'ko-KR-SunHiNeural', locale: 'ko-KR', gender: 'female' },
+    { id: 'ko-KR-InJoonNeural', locale: 'ko-KR', gender: 'male' },
+    { id: 'ko-KR-JiMinNeural', locale: 'ko-KR', gender: 'female' },
+    { id: 'ko-KR-BongJinNeural', locale: 'ko-KR', gender: 'male' },
+    { id: 'ko-KR-GookMinNeural', locale: 'ko-KR', gender: 'male' },
+    { id: 'ko-KR-SeoHyeonNeural', locale: 'ko-KR', gender: 'female' },
+    { id: 'ko-KR-SoonBokNeural', locale: 'ko-KR', gender: 'female' },
+    { id: 'ko-KR-YuJinNeural', locale: 'ko-KR', gender: 'female' },
+    { id: 'ko-KR-HyunsuNeural', locale: 'ko-KR', gender: 'male' },
+  ],
+  // Arabic: Azure's neural voices (ids from memory of the Azure voice gallery; unverified against the live list, which `listVoices` reads at runtime when it can).
+  // A synthetic Modern Standard voice is not a Classical (Quranic) recitation.
+  ar: [
+    { id: 'ar-SA-ZariyahNeural', locale: 'ar-SA', gender: 'female' },
+    { id: 'ar-SA-HamedNeural', locale: 'ar-SA', gender: 'male' },
+    { id: 'ar-EG-SalmaNeural', locale: 'ar-EG', gender: 'female' },
+    { id: 'ar-EG-ShakirNeural', locale: 'ar-EG', gender: 'male' },
+  ],
 };
 
 export interface AzureSpeechOptions {

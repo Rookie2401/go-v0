@@ -90,11 +90,16 @@ export interface CandidateMeaningInput {
   morph?: Readonly<Record<string, string>>; source?: string; confidence?: number;
   /** The word's parts as the analyser cut them (a conjunction, the stem, an object suffix), where it did. */
   parts?: readonly CandidateWordPart[];
-  alternatives?: Array<{ lemma?: string; pos?: string; morph: Readonly<Record<string, string>>; confidence?: number }>;
+  /** `label`: how a person reads this lemma (the caller's display form, a Korean homonym number as a small "entry N"); `gloss`: its meaning, which tells two same-spelled readings apart. Identity comparisons use `lemma`. */
+  alternatives?: Array<{ lemma?: string; pos?: string; morph: Readonly<Record<string, string>>; confidence?: number; label?: string; gloss?: string }>;
   sentence?: string; sentenceConfidence?: number; sentenceSource?: string;
   /** Reference ids (a verse: "GAL.5.14"); `labelReference` turns one into a label and a source. */
   references?: string[];
   contextualMeaning?: WordMeaning;
+  /** The lemma's root as the SOURCE gives it (Arabic: "ك ت ب"), carried by the reading's notes so the word analysis needs no index of its own. No other language sets it. */
+  root?: string;
+  /** The class of the root (sound, hollow, doubled ...), where the analyser names one. */
+  rootClass?: string;
 }
 /** The English of the reading's form from its citation and features, or undefined when it cannot be written. */
 export type MeaningRealizer = (lemma: string | undefined, pos: string | undefined, morph: Readonly<Record<string, string>>, lemmaGloss: string | undefined) => string | undefined;
@@ -146,7 +151,7 @@ export function candidateWordAnalysis(input: CandidateMeaningInput, opts: Candid
     seen.add(key);
     return true;
   }).map((a) => {
-    if ((a.lemma && a.lemma !== input.lemma) || (a.pos && a.pos !== input.pos)) return `${a.lemma ?? 'another lexeme'} (${a.pos ?? 'unclassified'}; ${featureList(a.morph)})`;
+    if ((a.lemma && a.lemma !== input.lemma) || (a.pos && a.pos !== input.pos)) return `${a.label ?? a.lemma ?? 'another lexeme'} (${a.pos ?? 'unclassified'}; ${featureList(a.morph)})${a.gloss ? ` – ${a.gloss}` : ''}`;
     const meaning = VERBAL(a.pos ?? input.pos) ? opts.realize(input.lemma, a.pos ?? input.pos, a.morph, input.lemmaGloss) : undefined;
     if (meaning && meaning === inflectedText) return '';
     return meaning ?? `Alternative reading (${featureList(a.morph)})`;
@@ -200,4 +205,15 @@ export function projectWordAnalysis(input: WordAnalysisInput = {}): WordAnalysis
     confidence: confidence(input.confidence),
     ambiguity: [...(input.ambiguity ?? [])],
   };
+}
+
+/**
+ * The senses of a dictionary entry with the reading's own gloss first (see `LanguageAdapter.leadWithReadingGloss`): the gloss leads, the senses
+ * follow in their order, and a sense that says the same as the gloss is not repeated. Unchanged when there is no gloss.
+ */
+export function leadWithGloss<T extends { gloss: string }>(gloss: string | undefined, senses: readonly T[], lead: (g: string) => T): T[] {
+  const g = (gloss ?? '').trim();
+  if (!g) return [...senses];
+  const norm = (x: string): string => x.normalize('NFC').toLowerCase().replace(/[s.;,]+$/u, '').trim();
+  return [lead(g), ...senses.filter((x) => norm(x.gloss) !== norm(g))];
 }

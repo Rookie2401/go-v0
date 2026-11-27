@@ -21,6 +21,10 @@
 :root {
   --serif: 'EB Garamond', 'Iowan Old Style', 'Palatino Linotype', 'Book Antiqua', Georgia, 'Times New Roman', serif;
   --heb: 'Frank Ruhl Libre', 'David Libre', 'David', 'SBL Hebrew', 'Ezra SIL', 'Times New Roman', serif;
+  /* the Hindi edition: Tiro Devanagari Hindi is declared in its own edition-hi.css (the original edition never loads it) */
+  --deva: 'Tiro Devanagari Hindi', 'Noto Serif Devanagari', 'Kohinoor Devanagari', 'Nirmala UI', 'Mangal', serif;
+  /* the Thai edition: the device's own Thai face (Thonburi on Apple, Leelawadee on Windows, Noto on Android); the Latin around it stays EB Garamond */
+  --thai: 'Noto Serif Thai', 'Thonburi', 'Leelawadee UI', 'Leelawadee', 'Noto Sans Thai', 'Tahoma', sans-serif;
   --paper: #f7f2e8;
   --paper-raised: #fdfaf3;
   --ink: #2b2620;
@@ -41,6 +45,10 @@
   --mark-familiar: #8a6b4030;
   --reading-font-size: 26px;
   --greek-font-size: 22px;
+  --hindi-font-size: 22px;
+  --thai-font-size: 22px;
+  --german-font-size: 22px;
+  --spanish-font-size: 22px;
   --reading-line-height: 1.85;
   --measure: 38rem;
   --shadow-raised: 0 1px 2px #2b26200f, 0 6px 20px #2b262012;
@@ -83,6 +91,9 @@ h1, h2, h3, h4, p { margin: 0; }
 .error { color: var(--wine); }
 .he { font-family: var(--heb); direction: rtl; unicode-bidi: isolate; }
 .gr, .el { font-family: var(--serif); direction: ltr; unicode-bidi: isolate; }
+.hi { font-family: var(--deva); direction: ltr; unicode-bidi: isolate; }
+.th { font-family: var(--thai); direction: ltr; unicode-bidi: isolate; }
+.de, .es { font-family: var(--serif); direction: ltr; unicode-bidi: isolate; }
 
 @keyframes screen-in { from { opacity: 0; } to { opacity: 1; } }
 .route-fade { animation: 0.22s ease-out both screen-in; }
@@ -110,6 +121,9 @@ a.topbar__title:hover { text-decoration: none; color: var(--ink); }
 .home__title { letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink); margin-top: 1.75rem; font-size: clamp(1.9rem, 6vw, 2.7rem); font-weight: 600; line-height: 1.25; }
 .home__title .he { letter-spacing: 0; text-transform: none; font-weight: 400; display: block; font-size: 1.15em; margin-bottom: 0.1em; }
 .home__title .gr { display: block; text-transform: none; letter-spacing: 0; font-weight: 400; font-size: 0.9em; margin-bottom: 0.3em; }
+.home__title .hi { display: block; text-transform: none; letter-spacing: 0; font-weight: 400; font-size: 1.05em; line-height: 1.5; margin-bottom: 0.15em; }
+.home__title .th { display: block; text-transform: none; letter-spacing: 0; font-weight: 400; font-size: 1em; line-height: 1.6; margin-bottom: 0.15em; }
+.home__title .de, .home__title .es { display: block; text-transform: none; letter-spacing: 0; font-weight: 400; font-size: 0.95em; margin-bottom: 0.25em; }
 .home__subtitle { color: var(--ink-soft); margin-top: 0.4rem; font-size: 1.1rem; font-style: italic; }
 .home__rule { background: var(--rule-strong); width: 3rem; height: 1px; margin: 2rem auto; }
 .accountline { color: var(--ink-soft); font-size: 0.95rem; margin: -0.6rem auto 1.6rem; max-width: 30rem; }
@@ -121,6 +135,8 @@ button.linklike:focus-visible { outline: 2px solid var(--accent); outline-offset
 .home__continue-ref { margin-top: 0.2rem; font-size: 1.02rem; }
 .home__continue-sub { color: var(--ink-soft); font-size: 0.95rem; font-style: italic; }
 .home__continue-sub[lang='he'] { font-family: var(--heb); font-style: normal; }
+.home__continue-sub[lang='hi'] { font-family: var(--deva); font-style: normal; }
+.home__continue-sub[lang='th'] { font-family: var(--thai); font-style: normal; }
 .home__about { color: var(--ink-faint); margin: 2.5rem auto 0; max-width: 30rem; font-size: 0.9rem; text-align: left; }
 .home__about p { margin: 0 0 0.7rem; }
 
@@ -148,6 +164,8 @@ button.linklike:focus-visible { outline: 2px solid var(--accent); outline-offset
 .lib__group--current > .lib__head .lib__title { color: var(--accent); }
 .lib__native { margin-left: auto; color: var(--ink-soft); font-size: 1.05rem; white-space: nowrap; min-width: 0; overflow: hidden; text-overflow: ellipsis; flex: 0 1 auto; }
 .lib__native.he { font-size: 1.15rem; }
+.lib__native.hi { font-family: var(--deva); font-size: 1.05rem; }
+.lib__native.th { font-family: var(--thai); font-size: 1rem; }
 .lib__group--1 > .lib__head .lib__native { font-size: 1.2rem; }
 .lib__meta { color: var(--ink-faint); font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; white-space: nowrap; flex: none; min-width: 3.4rem; text-align: right; }
 .lib__children { margin-left: 0.9rem; padding-left: 1.1rem; border-left: 1px solid var(--rule-strong); margin-bottom: 0.4rem; }
@@ -163,6 +181,8 @@ button.linklike:focus-visible { outline: 2px solid var(--accent); outline-offset
 .entry__num { flex: none; font-size: 1.05rem; color: var(--ink); }
 .entry__native { margin-left: auto; font-size: 1.15rem; color: var(--ink-soft); white-space: nowrap; }
 .entry__native.he { font-family: var(--heb); font-size: 1.25rem; }
+.entry__native.hi { font-family: var(--deva); font-size: 1.1rem; }
+.entry__native.th { font-family: var(--thai); font-size: 1.05rem; }
 .entry__preview { flex-basis: 100%; color: var(--ink-faint); font-style: italic; font-size: 0.85rem; }
 .entry--at .entry__num, .entry--at .entry__native { color: var(--accent); }
 .entry--at .entry__num { font-weight: 600; }
@@ -181,6 +201,8 @@ button.linklike:focus-visible { outline: 2px solid var(--accent); outline-offset
 .reader__crumb { display: block; max-width: 100%; letter-spacing: 0.13em; text-transform: uppercase; color: var(--ink-faint); font-size: 0.72rem; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .reader__chapter { display: block; max-width: 100%; color: var(--ink-soft); font-size: 0.95rem; line-height: 1.25; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-family: var(--heb); direction: rtl; text-align: left; }
 .reader__chapter--ltr { direction: ltr; font-family: var(--serif); }
+.reader__chapter[lang='hi'] { font-family: var(--deva); }
+.reader__chapter[lang='th'] { font-family: var(--thai); }
 .reader__progress { height: 1px; background: transparent; position: relative; }
 .reader__progress > span { position: absolute; left: 0; top: 0; height: 1px; background: var(--accent); opacity: 0.6; }
 .reader__col { max-width: calc(var(--measure) + 2.7rem); margin: 0 auto; padding: 2.4rem 1.35rem calc(7rem + var(--safe-bottom)); animation: 0.22s ease-out both screen-in; }
@@ -193,7 +215,16 @@ button.linklike:focus-visible { outline: 2px solid var(--accent); outline-offset
 .reader .prose[lang='he'] { font-family: var(--heb); font-size: var(--reading-font-size); direction: rtl; text-align: right; }
 /* Greek has no hyphenation dictionary and runs as one paragraph; justifying closes the ragged gap on a narrow phone column */
 .reader .prose[lang='el'] { font-family: var(--serif); font-size: var(--greek-font-size); direction: ltr; text-align: justify; text-justify: inter-word; line-height: calc(var(--reading-line-height) - 0.15); }
+/* Hindi is set as Biblia sets Greek: justified to both margins, the space shared out between words (a ragged right edge left an uneven gap) */
+.reader .prose[lang='hi'] { font-family: var(--deva); font-size: var(--hindi-font-size); direction: ltr; text-align: justify; text-justify: inter-word; }
+/* Thai has no spaces between words (the OTCV marks them with zero-width spaces, where lines may break): ragged, like Hindi */
+.reader .prose[lang='th'] { font-family: var(--thai); font-size: var(--thai-font-size); direction: ltr; text-align: left; line-break: normal; word-break: normal; }
+/* German and Spanish are set as Biblia sets Greek: EB Garamond, justified, hyphenated by the language of the page */
+.reader .prose[lang='de'] { font-family: var(--serif); font-size: var(--german-font-size); direction: ltr; text-align: justify; text-justify: inter-word; hyphens: auto; line-height: calc(var(--reading-line-height) - 0.15); }
+.reader .prose[lang='es'] { font-family: var(--serif); font-size: var(--spanish-font-size); direction: ltr; text-align: justify; text-justify: inter-word; hyphens: auto; line-height: calc(var(--reading-line-height) - 0.15); }
 .reader .verse { display: inline; }
+/* a Psalm title (and the letters of Psalm 119) as the IRV prints it: its own line, quieter, before verse 1 */
+.reader .verse.superscription { display: block; white-space: pre-line; font-size: 0.86em; color: var(--ink-soft); font-style: normal; margin: 0 0 0.5em; text-align: left; }
 .reader .vn { font-family: var(--serif); font-size: 0.6em; color: var(--accent); vertical-align: super; line-height: 0; margin: 0 0.25em; letter-spacing: 0.02em; user-select: none; direction: ltr; unicode-bidi: isolate; }
 .reader .prose[lang='he'] .vn { font-family: var(--heb); font-size: 0.62em; }
 html[data-verse-numbers='hidden'] .reader .vn { display: none; }
@@ -202,6 +233,8 @@ html[data-verse-numbers='hidden'] .reader .vn { display: none; }
 .reader .poetry .verse { display: block; margin: 0.2em 0; }
 .reader .aramaic { border-inline-start: 3px solid var(--accent); padding-inline-start: 0.6em; }
 .reader .word { all: unset; cursor: pointer; border-radius: 3px; padding: 0 0.04em; transition: background-color 0.12s; }
+/* a translation edition's word with the punctuation touching it (app.ts editionWords): the line never breaks inside */
+.reader .wg { white-space: nowrap; }
 .reader .word:hover, .reader .word:focus-visible { background: color-mix(in srgb, var(--accent) 10%, transparent); outline: none; }
 .reader .word:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 .reader .word.sel { background: var(--selection); }
@@ -312,53 +345,24 @@ button.pill[aria-pressed='true'] { background: var(--accent); border-color: var(
 }
 
 /* Account and reading settings share Biblia's paper, ink, and brass in both themes. */
-:is(.account--signed-in, .settings) {
+:is(.account, .settings) {
   --folio-line: color-mix(in srgb, var(--rule-strong) 72%, var(--accent));
   --folio-fill: color-mix(in srgb, var(--paper-raised) 94%, var(--accent));
   --folio-surface: linear-gradient(125deg, var(--folio-fill), var(--paper-raised));
   min-height: 100dvh;
 }
-:is(.account--signed-in, .settings) .screen { max-width: 38rem; }
-:is(.account--signed-in, .settings) .screen h1 {
+:is(.account, .settings) .screen { max-width: 38rem; }
+.settings .screen h1 {
   font-size: clamp(1.85rem, 6vw, 2.5rem);
   margin: 0.25rem 0 1.5rem;
 }
-:is(.account--signed-in, .settings) .screen h1::after {
+.settings .screen h1::after {
   width: 3.15rem;
   height: 2px;
   margin-top: 0.8rem;
   background: var(--accent);
 }
-.account--signed-in .topbar__title, .settings .topbar__title { color: var(--ink); }
-
-.account-identity, .account-tile, .account-devices, .settings-reading, .settings-disclosure {
-  border: 1px solid var(--folio-line);
-  border-radius: 12px;
-  background: var(--folio-surface);
-}
-.account-identity { padding: 0.3rem clamp(0.8rem, 4vw, 1.4rem); }
-.account-identity dl, .account-identity dd { margin: 0; }
-.account-identity__row { position: relative; padding: 0.85rem 0 0.85rem clamp(3rem, 11vw, 4rem); }
-.account-identity__row + .account-identity__row { border-top: 1px solid var(--rule); }
-.account-identity dt { font-size: 0.78rem; font-weight: 600; letter-spacing: 0.17em; text-transform: uppercase; color: var(--ink-soft); }
-.account-identity .account-symbol { position: absolute; inset-inline-start: 0; top: 0.9rem; }
-.account-identity dd { display: flex; flex-wrap: wrap; gap: 0.3rem 0.75rem; align-items: center; font-size: 1.2rem; min-height: 1.75rem; }
-.account-identity dd > .btn { margin-inline-start: auto; }
-.account-identity bdi { user-select: text; }
-.account-identity #account-name { min-width: 0; }
-.account-editor { width: 100%; }
-.account-editor .field { max-width: none; }
-.account-verification { padding: 0.7rem 0; border-top: 1px solid var(--rule); }
-.account-actions { display: grid; gap: 0.65rem; margin-top: 1.2rem; }
-.account-symbol, .settings-disclosure__icon {
-  display: grid;
-  place-items: center;
-  width: clamp(2.35rem, 8vw, 3.1rem);
-  min-height: 2.3rem;
-  border-inline-end: 1px solid var(--folio-line);
-  padding-inline-end: 0.55rem;
-  color: var(--accent);
-}
+.account .topbar__title, .settings .topbar__title { color: var(--ink); }
 .account--signed-in .screen svg, .settings .screen svg {
   width: 1.55rem;
   height: 1.55rem;
@@ -368,53 +372,148 @@ button.pill[aria-pressed='true'] { background: var(--accent); border-color: var(
   stroke-linecap: round;
   stroke-linejoin: round;
 }
-.account-tile, .settings-disclosure > summary {
-  width: 100%;
-  min-height: 4.15rem;
-  display: grid;
-  grid-template-columns: auto minmax(0, 1fr) auto;
-  align-items: center;
-  gap: clamp(0.55rem, 3vw, 1.1rem);
-  padding: 0.7rem clamp(0.8rem, 4vw, 1.4rem);
-  text-align: start;
-  line-height: 1.25;
+
+/* The account in GoReview's look (the owner, 2026-11-25; packages/goreview/app/styles.css, the home and the sign-in page): the hero, a kicker
+   between gold rules over a large title, with no photograph (the owner's word); then a column of warm tiles with no outline. A tile is a
+   field of colour mixed from this theme's paper and brass, so the page follows Biblia's Light and Dark. Fields are a single line on the tile,
+   the action is the gold pill, the other ways on are gold links. */
+.account {
+  --tile: color-mix(in srgb, var(--paper-raised) 86%, var(--accent));
+  --tile-lit: color-mix(in srgb, var(--paper-raised) 76%, var(--accent));
+  --tile-inset: clamp(0.95rem, 4vw, 1.55rem);
+  /* the wine, brought toward the ink so that it reads on a tile in both themes (5.6:1 or better; the wine itself is 3.8:1 on the dark tile) */
+  --danger: color-mix(in srgb, var(--wine) 55%, var(--ink));
 }
-.account-tile:hover:not(:disabled), .settings-disclosure > summary:hover {
-  background: color-mix(in srgb, var(--accent) 6%, transparent);
-  border-color: var(--accent);
+.account .screen { max-width: 36rem; padding-top: 0; }
+.acct-hero { text-align: center; padding: clamp(1.6rem, 7vw, 2.8rem) 0 1.7rem; }
+.screen p.acct-hero__kicker {
+  display: flex; align-items: center; justify-content: center; gap: 0.85rem; max-width: none; margin: 0;
+  font-size: 0.8rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink-soft);
 }
-.account-tile:disabled { cursor: default; opacity: 0.72; }
-.account-tile__copy, .settings-disclosure__copy { display: grid; gap: 0.15rem; }
-.account-tile__copy > :last-child, .settings-disclosure__subtitle { color: var(--ink-soft); font-size: 0.98rem; font-style: italic; }
-.account-tile__title, .settings-disclosure__title { font-size: clamp(1.2rem, 4.6vw, 1.45rem); color: var(--ink); }
-.account-tile__arrow { display: flex; color: var(--accent); }
-.account-tile--danger :is(.account-symbol, .account-tile__title),
-.account--signed-in button.account-danger { color: var(--wine); }
-.account-actions > .card { margin: 0; }
-.account-pending { color: var(--wine); }
-.account-actions > .btn { justify-self: start; }
-.account-feedback:empty { margin: 0; min-height: 0; }
-.account-devices { margin-top: 1.25rem; }
-.account-devices summary {
-  cursor: pointer;
-  padding: 0.6rem clamp(0.8rem, 4vw, 1.4rem);
-  min-height: 2.75rem;
-  font-size: 1.18rem;
+.acct-hero__kicker::before, .acct-hero__kicker::after { content: ''; flex: 0 0 2.4rem; height: 1px; background: var(--accent); }
+.account .screen h1.acct-hero__title {
+  margin: 0.35rem 0 0; font-size: clamp(2.9rem, 12vw, 4.4rem); font-weight: 400; line-height: 1; letter-spacing: -0.03em; text-transform: none;
 }
-.account-devices summary::marker { color: var(--accent); }
-.account-devices .status { margin-inline: 1rem; }
-.account-devices__list { padding-inline: 2rem 1rem; margin: 0 0 0.75rem; }
+.account--signed-in .screen h1.acct-hero__title { font-size: clamp(2.3rem, 9.5vw, 3.5rem); letter-spacing: -0.02em; } /* a name can be long */
+.account .screen h1.acct-hero__title::after { width: 2.2rem; height: 1px; margin-top: 0.8rem; background: var(--accent-soft); }
+.acct-tiles { display: grid; gap: 0.8rem; }
+.acct-tiles > .status:empty { display: none; }
+.acct-tile { min-width: 0; margin: 0; padding: 1.05rem var(--tile-inset) 1.15rem; border-radius: 0.8rem; background: var(--tile); }
+.acct-tile[hidden] { display: none; }
+.acct-tile > :first-child { margin-top: 0; }
+.acct-tile > :last-child { margin-bottom: 0; }
+.account .screen .acct-kicker {
+  display: block; margin: 0 0 0.3rem; max-width: none;
+  font: inherit; font-size: 0.78rem; font-weight: 400; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-soft);
+}
+.account .screen h2.acct-title {
+  margin: 0 0 1.4rem; font-size: clamp(2.3rem, 9vw, 3.3rem); font-weight: 400; line-height: 1; letter-spacing: -0.018em; text-transform: none; color: var(--ink);
+}
+.account .field { max-width: none; margin: 0.85rem 0; }
+.account .field .cap { color: var(--ink-soft); font-weight: 400; letter-spacing: 0.18em; }
+.account .field input:is([type='text'], [type='email'], [type='password']) {
+  width: 100%; min-height: 2.75rem; padding: 0.35rem 0;
+  border: 0; border-bottom: 1px solid var(--ink-soft); border-radius: 0; background: transparent; color: var(--ink);
+  font: 1.2rem/1.3 var(--serif);
+}
+/* the line turns gold under the field being typed in; the focus outline itself stays the page's own */
+.account .field input:is([type='text'], [type='email'], [type='password']):focus { border-bottom-color: var(--accent); }
+.account .help { display: block; margin: 0.2rem 0 0; color: var(--ink-soft); font-size: 0.98rem; font-style: italic; }
+.acct-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 0.6rem 1.4rem; margin: 1.25rem 0 0.2rem; }
+.account :is(button, a).acct-pill {
+  display: inline-flex; align-items: center; justify-content: center; min-height: 2.75rem; padding: 0.45rem 1.9rem;
+  border: 1px solid var(--accent); border-radius: 999px; background: var(--accent); color: var(--accent-ink);
+  font: 600 1.02rem/1.3 var(--serif); letter-spacing: 0.04em; text-decoration: none; cursor: pointer;
+}
+.account :is(button, a).acct-pill:hover:not(:disabled) { opacity: 0.9; text-decoration: none; }
+.account :is(button, a).acct-pill--small { padding-inline: 1.3rem; }
+.account button.acct-pill--danger { background: transparent; border-color: var(--danger); color: var(--danger); }
+.account button.acct-pill:disabled, .account button.acct-link:disabled { opacity: 0.55; cursor: default; }
+.account button.acct-link, .acct-forgot > summary {
+  display: inline-flex; align-items: center; min-height: 2.75rem; padding: 0.15rem 0.5rem; margin-inline-start: -0.5rem;
+  border: 0; border-radius: 4px; background: transparent; color: var(--accent);
+  font: 600 0.98rem/1.3 var(--serif); text-decoration: underline; text-underline-offset: 0.23em; cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+.account button.acct-link[hidden] { display: none; }
+.account button.acct-link:hover:not(:disabled), .acct-forgot > summary:hover { color: var(--ink); background: color-mix(in srgb, var(--accent) 8%, transparent); }
+.account :is(.acct-pill, .acct-link):focus-visible, .acct-forgot > summary:focus-visible, .acct-fold > summary:focus-visible, .account-tile:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.account .status { text-align: start; margin: 0.9rem 0 0; }
+.acct-signin .status { font-style: italic; }
+.account .status:empty { min-height: 0; margin: 0; }
+.account .status.error, .account .status[data-kind='error'] { color: var(--danger); }
+/* a closed tile that opens: a tile's kicker with a gold caret; open, the words */
+.acct-fold { border-radius: 0.8rem; background: var(--tile); }
+.acct-fold > summary {
+  display: flex; align-items: center; justify-content: space-between; gap: 0.8rem; min-height: 3.4rem; padding: 0.6rem var(--tile-inset);
+  border-radius: 0.8rem; cursor: pointer; list-style: none; -webkit-tap-highlight-color: transparent;
+}
+.acct-fold > summary::-webkit-details-marker, .acct-forgot > summary::-webkit-details-marker { display: none; }
+.acct-fold > summary::after { content: '▾'; color: var(--accent); font-size: 0.95rem; line-height: 1; }
+.acct-fold[open] > summary::after { transform: rotate(180deg); }
+.acct-fold > summary:hover { background: var(--tile-lit); }
+.account .screen .acct-fold > summary:hover .acct-kicker { color: var(--ink); } /* the soft ink is under 4.5:1 on the lit tile */
+.account .screen .acct-fold > summary .acct-kicker { margin: 0; }
+.acct-fold__body { padding: 0 var(--tile-inset) 1.1rem; }
+.acct-fold__body > :first-child { margin-top: 0; }
+.acct-fold__body > :last-child { margin-bottom: 0; }
+.acct-fold__body p { font-size: 1.08rem; line-height: 1.5; }
+.acct-forgot { margin-top: 0.9rem; text-align: center; }
+.acct-forgot > summary { margin-inline: 0; list-style: none; }
+.acct-forgot > .acct-tile { margin-top: 0.4rem; text-align: start; }
+.account #email-links-note { margin: 0.9rem auto 0; max-width: none; text-align: center; font-size: 0.95rem; }
+.account .legal-links { margin: 0.7rem 0 0; max-width: none; text-align: center; }
+.account .legal-links a, .account #email-links-note a { color: var(--accent); text-decoration: underline; text-underline-offset: 0.18em; }
+
+/* signed in: the facts, this device, an action a tile, the guided deletion, the devices */
+.account-identity dl { display: grid; gap: 0.95rem; margin: 0; }
+.account-identity dd { display: flex; flex-wrap: wrap; align-items: center; gap: 0.2rem 0.9rem; margin: 0; min-width: 0; font-size: 1.2rem; }
+.account-identity dd > .acct-link { margin-inline-start: auto; }
+.account-identity bdi { user-select: text; overflow-wrap: anywhere; }
+.account-identity #account-name { min-width: 0; overflow-wrap: anywhere; }
+.account-identity #account-name.muted { color: var(--ink-soft); font-style: italic; }
+.account-editor { width: 100%; }
+.account-verification { flex: 1 0 100%; }
+.account .acct-tile .sync-status { margin: 0; font-size: 1.1rem; color: var(--ink); }
+.account-actions { display: grid; gap: 0.8rem; }
+.account button.account-tile {
+  width: 100%; min-height: 5rem; display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center;
+  gap: clamp(0.7rem, 3.4vw, 1.2rem); padding: 0.7rem var(--tile-inset);
+  border: 0; border-radius: 0.8rem; background: var(--tile); color: var(--ink); text-align: start; line-height: 1.2; cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+.account button.account-tile[hidden] { display: none; }
+.account button.account-tile:hover:not(:disabled) { background: var(--tile-lit); }
+.account button.account-tile:hover:not(:disabled) .account-tile__caption { color: var(--ink); }
+.account button.account-tile:disabled { cursor: default; color: var(--ink-soft); }
+.account-tile__icon, .account-tile__arrow { display: flex; color: var(--accent); }
+.account-tile__copy { display: grid; gap: 0.2rem; }
+.account-tile__title { font-size: clamp(1.5rem, 5.6vw, 1.85rem); line-height: 1.05; letter-spacing: -0.012em; }
+.account-tile__caption { color: var(--ink-soft); font-size: 1.02rem; font-style: italic; }
+.account-tile--danger :is(.account-tile__icon, .account-tile__arrow) { color: var(--danger); }
+.account .screen .account-pending { margin: 0; max-width: none; font-size: 1.12rem; color: var(--danger); }
+.acct-steps { margin: 0.5rem 0 1rem; padding-inline-start: 1.25rem; }
+.acct-steps li { font-size: 1.05rem; line-height: 1.45; }
+.acct-steps li + li { margin-top: 0.55rem; }
+.account-devices__list { margin: 0; padding-inline-start: 1.2rem; }
 .account-devices__list li + li { margin-top: 0.5rem; }
 .account-devices__list li > span { display: block; color: var(--ink-soft); font-size: 0.95rem; }
-.account--signed-in .screen .sync-status { font-size: 0.95rem; margin-inline: 0.2rem; }
-.account--signed-in .legal-links, .settings-links { text-align: center; padding-top: 0.7rem; }
+.settings-links { text-align: center; padding-top: 0.7rem; }
+@media (forced-colors: active) {
+  .acct-tile, .acct-fold, .account button.account-tile { border: 1px solid CanvasText; }
+}
 
+/* Settings, simpler (the owner, 2026-11-25): a live sample of the reading text, then plain groups (a small-capital heading on a hairline, its rows
+   under it) with no box inside a box; one row to About, and Reset as a quiet link. The sliders keep their caption and value (the owner likes
+   their accessibility). #/about uses the same groups for what Settings used to carry in two drop-downs. */
 .settings .screen h1 { letter-spacing: 0.01em; text-transform: none; }
-.settings-reading { margin: 0 0 0.9rem; padding: 0.9rem clamp(0.8rem, 4vw, 1.4rem) 0.35rem; }
-.settings-reading__intro { display: flex; align-items: center; gap: 0.75rem; padding-bottom: 0.4rem; color: var(--accent); }
-.screen .settings-reading__heading { margin: 0; color: var(--ink); font-size: 1.08rem; letter-spacing: 0.19em; }
-.settings-row { padding: 0.6rem 0; }
-.settings-row + .settings-row, .settings-row + .settings-reader-footer { border-top: 1px solid var(--folio-line); }
+.settings-sample { min-height: 0; margin: 0 0 0.4rem; padding: 0.9rem clamp(0.9rem, 4vw, 1.4rem); border-radius: 12px; background: var(--folio-fill); }
+.reader.settings-sample .prose[lang] { max-width: none; margin: 0; text-align: start; }
+.reader.settings-sample .prose + .prose { margin-top: 0.35rem; }
+.settings-group { margin: 1.5rem 0 0; }
+.screen .settings-group > h2 { margin: 0; padding-bottom: 0.45rem; border-bottom: 1px solid var(--folio-line); color: var(--ink-soft); font-size: 0.8rem; letter-spacing: 0.18em; }
+.settings-row { padding: 0.7rem 0; }
+.settings-row + .settings-row { border-top: 1px solid var(--rule); }
 .settings-row .field {
   max-width: none;
   grid-template-columns: minmax(5.3rem, 0.65fr) minmax(0, 1.35fr);
@@ -435,21 +534,34 @@ button.pill[aria-pressed='true'] { background: var(--accent); border-color: var(
 .settings-row .field--slider label { display: flex; justify-content: space-between; align-items: baseline; gap: 0.6rem; }
 .settings-row .slider__value { color: var(--accent); white-space: nowrap; }
 .settings-row input[type='range'] { margin: 0; min-height: 1.5rem; cursor: pointer; }
-.settings-row .hint { font-style: italic; }
-.settings-reader-footer { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.55rem 0.65rem; padding: 0.65rem 0 0.3rem; }
-.settings-reader-footer .toggle { margin: 0; min-height: 2.75rem; align-items: center; font-size: 1.05rem; line-height: 1.2; }
-.settings-reader-footer .toggle input { margin: 0 0.32rem 0 0.16rem; }
-.settings-reader-footer .help { display: block; margin-top: 0.12rem; }
-.settings-reader-footer .btn { gap: 0.4rem; padding-inline: 0.65rem; }
-.settings-reader-footer .btn svg { color: var(--accent); width: 1.18rem; height: 1.18rem; }
-.settings-disclosure { padding: 0; margin: 0.65rem 0; }
-.settings-disclosure > summary { color: var(--ink); list-style: none; border-radius: inherit; }
-.settings-disclosure > summary::-webkit-details-marker { display: none; }
-.settings-disclosure[open] > summary { margin-bottom: 0; }
-.settings-disclosure__arrow { color: var(--accent); display: flex; }
-.settings-disclosure[open] .settings-disclosure__arrow { transform: rotate(90deg); }
-.settings-disclosure__body { border-top: 1px solid var(--folio-line); padding: 0.35rem clamp(0.8rem, 4vw, 1.4rem) 0.7rem; }
-.settings-links { width: 100%; font-size: 1rem; }
+/* the familiarity marks: its name at the start of the row, a switch at the end */
+.settings-row .toggle { margin: 0; min-height: 2.75rem; flex-direction: row-reverse; justify-content: space-between; align-items: center; gap: 0.8rem; font-size: 1.15rem; line-height: 1.2; }
+.settings-row .toggle input[role='switch'] {
+  appearance: none; -webkit-appearance: none; transform: none; flex: none; position: relative;
+  width: 2.9rem; height: 1.65rem; margin: 0; border: 1px solid var(--control-line); border-radius: 999px; background: transparent; cursor: pointer;
+}
+.settings-row .toggle input[role='switch']::before {
+  content: ''; position: absolute; top: 50%; inset-inline-start: 0.16rem; width: 1.2rem; height: 1.2rem; margin-top: -0.6rem; border-radius: 50%; background: var(--ink-soft);
+}
+.settings-row .toggle input[role='switch']:checked { background: var(--accent); border-color: var(--accent); }
+.settings-row .toggle input[role='switch']:checked::before { inset-inline-start: calc(100% - 1.36rem); background: var(--accent-ink); }
+.settings-row .toggle input[role='switch']:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+/* one row to About */
+.settings-about {
+  display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 0.8rem;
+  margin-top: 1.6rem; padding: 0.8rem 0; min-height: 3.5rem;
+  border-top: 1px solid var(--folio-line); border-bottom: 1px solid var(--folio-line);
+  color: var(--ink); text-decoration: none; line-height: 1.25;
+}
+.settings-about:hover { text-decoration: none; background: color-mix(in srgb, var(--accent) 6%, transparent); }
+.settings-about__copy { display: grid; gap: 0.15rem; }
+.settings-about__title { font-size: 1.15rem; }
+.settings-about__subtitle { color: var(--ink-soft); font-size: 0.98rem; font-style: italic; }
+.settings-about__arrow { display: flex; color: var(--accent); }
+.screen .settings-reset { margin: 1rem 0 0; max-width: none; text-align: center; }
+.settings-reset button.linklike { display: inline-flex; align-items: center; min-height: 2.75rem; padding: 0 0.5rem; }
+.about .settings-group .sources { margin: 0.6rem 0; font-size: 1rem; color: var(--ink-soft); } /* on its own page the note is read, not glanced at */
+.settings-links { width: 100%; margin-top: 1.4rem; font-size: 1rem; }
 .settings-links a { display: inline-block; padding: 0.45rem 0.4rem; text-decoration: underline; text-underline-offset: 0.18em; }
 @media (max-width: 360px) {
   .settings-row .field:not(.field--slider) { grid-template-columns: minmax(0, 1fr); row-gap: 0.3rem; }

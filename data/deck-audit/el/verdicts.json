@@ -1,0 +1,4067 @@
+{
+ "readBy": "AI models (Claude), not native speakers; each card judged once, in the first sentence it came from, against the brief in docs/ecosystem/DECK-GATE.md. 2026-11-26.",
+ "residual": [],
+ "cards": {
+  "form:el:άφησαν": [
+   {
+    "shown": "They left",
+    "v": "ok"
+   }
+  ],
+  "form:el:έγραφα": [
+   {
+    "shown": "I was writing",
+    "v": "ok"
+   }
+  ],
+  "form:el:έκλεισαν": [
+   {
+    "shown": "They close",
+    "v": "false-meaning",
+    "note": "Aorist (past) form shown with a present-tense gloss: έκλεισαν means \"they closed\""
+   },
+   {
+    "shown": "They closed",
+    "v": "ok"
+   }
+  ],
+  "form:el:έπαιζα": [
+   {
+    "shown": "I was playing",
+    "v": "ok"
+   }
+  ],
+  "form:el:έπαιζαν": [
+   {
+    "shown": "They were playing (with toys",
+    "v": "ok"
+   },
+   {
+    "shown": "They were playing",
+    "v": "ok"
+   }
+  ],
+  "form:el:έρθουν": [
+   {
+    "shown": "They come",
+    "v": "ok"
+   }
+  ],
+  "form:el:έστειλε": [
+   {
+    "shown": "He, she, or it sent",
+    "v": "ok"
+   }
+  ],
+  "form:el:έφτασαν": [
+   {
+    "shown": "They arrived",
+    "v": "ok"
+   }
+  ],
+  "form:el:έφτιαξε": [
+   {
+    "shown": "He, she, or it makes",
+    "v": "false-meaning",
+    "note": "Aorist (past) form shown with a present-tense gloss: έφτιαξε means \"he/she made\""
+   },
+   {
+    "shown": "He, she, or it made",
+    "v": "ok"
+   }
+  ],
+  "form:el:έχω": [
+   {
+    "shown": "I have",
+    "v": "ok"
+   }
+  ],
+  "form:el:έψαχνε": [
+   {
+    "shown": "He, she, or it was looking for",
+    "v": "ok"
+   }
+  ],
+  "form:el:αγοράσαμε": [
+   {
+    "shown": "We buy",
+    "v": "false-meaning",
+    "note": "Aorist (past) form shown with a present-tense gloss: αγοράσαμε means \"we bought\""
+   },
+   {
+    "shown": "We bought",
+    "v": "ok"
+   }
+  ],
+  "form:el:αλλάζουν": [
+   {
+    "shown": "They change",
+    "v": "ok"
+   }
+  ],
+  "form:el:ανέκαμψε": [
+   {
+    "shown": "He, she, or it reappeared",
+    "v": "false-meaning",
+    "note": "ανέκαμψε means it recovered (economically), not reappeared"
+   }
+  ],
+  "form:el:ανακάλυψαν": [
+   {
+    "shown": "They discover",
+    "v": "false-meaning",
+    "note": "Aorist (past) form shown with a present-tense gloss: ανακάλυψαν means \"they discovered\""
+   },
+   {
+    "shown": "They discovered",
+    "v": "ok"
+   }
+  ],
+  "form:el:ανακατέψτε": [
+   {
+    "shown": "Mix! (plural)",
+    "v": "ok"
+   }
+  ],
+  "form:el:αποταμιεύει": [
+   {
+    "shown": "He, she, or it saves",
+    "v": "ok"
+   }
+  ],
+  "form:el:αποφασίσαμε": [
+   {
+    "shown": "We decide",
+    "v": "false-meaning",
+    "note": "Aorist (past) form shown with a present-tense gloss: αποφασίσαμε means \"we decided\""
+   },
+   {
+    "shown": "We decided",
+    "v": "ok"
+   }
+  ],
+  "form:el:αρχίζουν": [
+   {
+    "shown": "They start",
+    "v": "ok"
+   }
+  ],
+  "form:el:αφήστε": [
+   {
+    "shown": "Leave! (plural)",
+    "v": "ok"
+   }
+  ],
+  "form:el:βράχηκε": [
+   {
+    "shown": "He, she, or it is wetted",
+    "v": "false-meaning",
+    "note": "Aorist (past) form shown with a present-tense gloss: βράχηκε means \"he got wet\""
+   },
+   {
+    "shown": "He, she, or it was wetted",
+    "v": "ok"
+   }
+  ],
+  "form:el:γέμισαν": [
+   {
+    "shown": "They have filled",
+    "v": "false-meaning",
+    "note": "γέμισαν is a simple past, they filled, not a perfect"
+   },
+   {
+    "shown": "They filled",
+    "v": "ok"
+   }
+  ],
+  "form:el:γράφτηκε": [
+   {
+    "shown": "He, she, or it is written",
+    "v": "ok"
+   },
+   {
+    "shown": "He, she, or it was written",
+    "v": "ok"
+   }
+  ],
+  "form:el:γράφω": [
+   {
+    "shown": "I write",
+    "v": "ok"
+   }
+  ],
+  "form:el:γράψε": [
+   {
+    "shown": "Write!",
+    "v": "ok"
+   }
+  ],
+  "form:el:διαβάστε": [
+   {
+    "shown": "Read! (plural)",
+    "v": "ok"
+   }
+  ],
+  "form:el:διαβαζει": [
+   {
+    "shown": "He, she, or it reads",
+    "v": "ok"
+   }
+  ],
+  "form:el:διακόπηκε": [
+   {
+    "shown": "He, she, or it was interrupted",
+    "v": "ok"
+   }
+  ],
+  "form:el:διαφωνούν": [
+   {
+    "shown": "They disagree",
+    "v": "ok"
+   }
+  ],
+  "form:el:δουλεύουν": [
+   {
+    "shown": "They work",
+    "v": "ok"
+   }
+  ],
+  "form:el:δώσω": [
+   {
+    "shown": "I give (pass something",
+    "v": "ok"
+   }
+  ],
+  "form:el:είμαι": [
+   {
+    "shown": "I am",
+    "v": "ok"
+   }
+  ],
+  "form:el:ειναι": [
+   {
+    "shown": "He, she, or it is",
+    "v": "ok"
+   }
+  ],
+  "form:el:ελπίζουν": [
+   {
+    "shown": "They hope to",
+    "v": "ok"
+   }
+  ],
+  "form:el:εξετάσω": [
+   {
+    "shown": "I examine",
+    "v": "ok"
+   }
+  ],
+  "form:el:εργάζεται": [
+   {
+    "shown": "He, she, or it works",
+    "v": "ok"
+   }
+  ],
+  "form:el:ετοιμάσαμε": [
+   {
+    "shown": "We prepared",
+    "v": "ok"
+   }
+  ],
+  "form:el:θέλει": [
+   {
+    "shown": "He, she, or it wishes",
+    "v": "ok"
+   }
+  ],
+  "form:el:θέλεις": [
+   {
+    "shown": "You wish",
+    "v": "ok"
+   }
+  ],
+  "form:el:θέλετε": [
+   {
+    "shown": "You (plural) wish",
+    "v": "ok"
+   }
+  ],
+  "form:el:θέλω": [
+   {
+    "shown": "I wish",
+    "v": "ok"
+   }
+  ],
+  "form:el:θέσετε": [
+   {
+    "shown": "You (plural) place",
+    "v": "ok"
+   }
+  ],
+  "form:el:θερμαίνεται": [
+   {
+    "shown": "He, she, or it is heated",
+    "v": "ok"
+   }
+  ],
+  "form:el:ιδρύθηκε": [
+   {
+    "shown": "He, she, or it is founded",
+    "v": "ok"
+   },
+   {
+    "shown": "He, she, or it was founded",
+    "v": "ok"
+   }
+  ],
+  "form:el:κ": [
+   {
+    "shown": "abbreviation of κύριος (kýrios): Mr",
+    "v": "ok"
+   }
+  ],
+  "form:el:καθάρισαν": [
+   {
+    "shown": "They cleaned",
+    "v": "ok"
+   }
+  ],
+  "form:el:καθαρίσαμε": [
+   {
+    "shown": "We cleaned",
+    "v": "ok"
+   }
+  ],
+  "form:el:καθαρίστε": [
+   {
+    "shown": "Clean! (plural)",
+    "v": "ok"
+   }
+  ],
+  "form:el:καθόμουν": [
+   {
+    "shown": "I was sitting",
+    "v": "ok"
+   }
+  ],
+  "form:el:καλούν": [
+   {
+    "shown": "They call",
+    "v": "ok"
+   }
+  ],
+  "form:el:κλείστε": [
+   {
+    "shown": "Close! (plural)",
+    "v": "ok"
+   }
+  ],
+  "form:el:κοιμήθηκες": [
+   {
+    "shown": "You sleep",
+    "v": "false-meaning",
+    "note": "Aorist (past) form shown with a present-tense gloss: κοιμήθηκες means \"you slept\""
+   },
+   {
+    "shown": "You slept",
+    "v": "ok"
+   }
+  ],
+  "form:el:κοιμούνται": [
+   {
+    "shown": "They sleep",
+    "v": "ok"
+   }
+  ],
+  "form:el:κολυμπούσαμε": [
+   {
+    "shown": "We were swimming",
+    "v": "ok"
+   }
+  ],
+  "form:el:κοστίζει": [
+   {
+    "shown": "He, she, or it costs",
+    "v": "ok"
+   }
+  ],
+  "form:el:κόψτε": [
+   {
+    "shown": "Chop! (plural)",
+    "v": "ok"
+   }
+  ],
+  "form:el:μάζεψαν": [
+   {
+    "shown": "They collected",
+    "v": "ok"
+   }
+  ],
+  "form:el:μένει": [
+   {
+    "shown": "He, she, or it stays",
+    "v": "ok"
+   }
+  ],
+  "form:el:μένω": [
+   {
+    "shown": "I stay",
+    "v": "ok"
+   }
+  ],
+  "form:el:μέτρησαν": [
+   {
+    "shown": "They counted",
+    "v": "ok"
+   }
+  ],
+  "form:el:μαγειρεύω": [
+   {
+    "shown": "I cook",
+    "v": "ok"
+   }
+  ],
+  "form:el:μαζέψαμε": [
+   {
+    "shown": "We collect",
+    "v": "false-meaning",
+    "note": "Aorist (past) form shown with a present-tense gloss: μαζέψαμε means \"we gathered\""
+   },
+   {
+    "shown": "We collected",
+    "v": "ok"
+   }
+  ],
+  "form:el:μαλακώσουν": [
+   {
+    "shown": "They have softened",
+    "v": "false-meaning",
+    "note": "μαλακώσουν is a subjunctive after όταν, they soften, not a perfect"
+   },
+   {
+    "shown": "They soften",
+    "v": "ok"
+   }
+  ],
+  "form:el:μείναμε": [
+   {
+    "shown": "We stayed",
+    "v": "ok"
+   }
+  ],
+  "form:el:μείνουμε": [
+   {
+    "shown": "We stay",
+    "v": "ok"
+   }
+  ],
+  "form:el:μειώθηκε": [
+   {
+    "shown": "He, she, or it was reduced",
+    "v": "ok"
+   }
+  ],
+  "form:el:μετακόμισαν": [
+   {
+    "shown": "They moved house",
+    "v": "ok"
+   }
+  ],
+  "form:el:μπορώ": [
+   {
+    "shown": "I am able",
+    "v": "ok"
+   }
+  ],
+  "form:el:νομίζω": [
+   {
+    "shown": "I think",
+    "v": "ok"
+   }
+  ],
+  "form:el:ξέρω": [
+   {
+    "shown": "I know of",
+    "v": "ok"
+   }
+  ],
+  "form:el:ξεκινούσε": [
+   {
+    "shown": "He, she, or it was starting out",
+    "v": "ok"
+   }
+  ],
+  "form:el:ξεχάσεις": [
+   {
+    "shown": "You forget",
+    "v": "ok"
+   }
+  ],
+  "form:el:ονειρεύεται": [
+   {
+    "shown": "He, she, or it dreams",
+    "v": "ok"
+   }
+  ],
+  "form:el:πήγαμε": [
+   {
+    "shown": "We go",
+    "v": "ok"
+   },
+   {
+    "shown": "We went",
+    "v": "ok"
+   }
+  ],
+  "form:el:παίζουν": [
+   {
+    "shown": "They play (with toys",
+    "v": "ok"
+   },
+   {
+    "shown": "They play",
+    "v": "ok"
+   }
+  ],
+  "form:el:παίξουμε": [
+   {
+    "shown": "We play (with toys",
+    "v": "ok"
+   },
+   {
+    "shown": "We play",
+    "v": "ok"
+   }
+  ],
+  "form:el:περιμέναμε": [
+   {
+    "shown": "We were waiting",
+    "v": "ok"
+   }
+  ],
+  "form:el:περιμένατε": [
+   {
+    "shown": "You (plural) were waiting",
+    "v": "ok"
+   }
+  ],
+  "form:el:περπατήσαμε": [
+   {
+    "shown": "We walk",
+    "v": "false-meaning",
+    "note": "Aorist (past) form shown with a present-tense gloss: περπατήσαμε means \"we walked\""
+   },
+   {
+    "shown": "We walked",
+    "v": "ok"
+   }
+  ],
+  "form:el:πλύναμε": [
+   {
+    "shown": "We wash (your body",
+    "v": "false-meaning",
+    "note": "Aorist (past) form shown with a present-tense gloss: πλύναμε means \"we washed\""
+   },
+   {
+    "shown": "We washed",
+    "v": "ok"
+   }
+  ],
+  "form:el:προειδοποιούν": [
+   {
+    "shown": "They forewarn",
+    "v": "ok"
+   }
+  ],
+  "form:el:προχωρήστε": [
+   {
+    "shown": "Move forward! (plural)",
+    "v": "ok"
+   }
+  ],
+  "form:el:ρίξτε": [
+   {
+    "shown": "Drop! (plural)",
+    "v": "ok"
+   }
+  ],
+  "form:el:σ": [
+   {
+    "shown": "The number 200 in Greek numerals.",
+    "v": "false-reading",
+    "note": "Σ' is the elided pronoun σε (you), not the numeral sigma"
+   }
+  ],
+  "form:el:σέβεται": [
+   {
+    "shown": "He, she, or it respects",
+    "v": "ok"
+   }
+  ],
+  "form:el:σβήστε": [
+   {
+    "shown": "Put out! (plural)",
+    "v": "ok"
+   }
+  ],
+  "form:el:στείλετε": [
+   {
+    "shown": "You (plural) send",
+    "v": "ok"
+   }
+  ],
+  "form:el:στείλω": [
+   {
+    "shown": "I send",
+    "v": "ok"
+   }
+  ],
+  "form:el:στολίσαμε": [
+   {
+    "shown": "We adorned",
+    "v": "ok"
+   }
+  ],
+  "form:el:στρίψτε": [
+   {
+    "shown": "Twist! (plural)",
+    "v": "ok"
+   }
+  ],
+  "form:el:συναντηθήκαμε": [
+   {
+    "shown": "We were met",
+    "v": "false-meaning",
+    "note": "συναντηθήκαμε means we met (each other), not we were met"
+   }
+  ],
+  "form:el:ταξιδέψαμε": [
+   {
+    "shown": "We have traveled",
+    "v": "ok"
+   },
+   {
+    "shown": "We traveled",
+    "v": "ok"
+   }
+  ],
+  "form:el:τελείωσαν": [
+   {
+    "shown": "They finished",
+    "v": "ok"
+   }
+  ],
+  "form:el:τελειώνουν": [
+   {
+    "shown": "They finish",
+    "v": "ok"
+   }
+  ],
+  "form:el:τελειώσω": [
+   {
+    "shown": "I finish",
+    "v": "ok"
+   }
+  ],
+  "form:el:τηλεφωνήσεις": [
+   {
+    "shown": "You telephone",
+    "v": "ok"
+   }
+  ],
+  "form:el:τηλεφωνήσω": [
+   {
+    "shown": "I telephone",
+    "v": "ok"
+   }
+  ],
+  "form:el:τηλεφωνούσε": [
+   {
+    "shown": "He, she, or it was telephoning",
+    "v": "ok"
+   }
+  ],
+  "form:el:τρέχοντας": [
+   {
+    "shown": "running",
+    "v": "ok"
+   }
+  ],
+  "form:el:τραγουδάει": [
+   {
+    "shown": "He, she, or it sings",
+    "v": "ok"
+   }
+  ],
+  "form:el:τρυπούσε": [
+   {
+    "shown": "He, she, or it was piercing",
+    "v": "ok"
+   }
+  ],
+  "form:el:φοβούνται": [
+   {
+    "shown": "They fear",
+    "v": "ok"
+   }
+  ],
+  "form:el:φτάσεις": [
+   {
+    "shown": "You arrive",
+    "v": "ok"
+   }
+  ],
+  "form:el:φτάσετε": [
+   {
+    "shown": "You (plural) arrive",
+    "v": "ok"
+   }
+  ],
+  "form:el:φτιάξαμε": [
+   {
+    "shown": "We make",
+    "v": "false-meaning",
+    "note": "Aorist (past) form shown with a present-tense gloss: φτιάξαμε means \"we made\""
+   },
+   {
+    "shown": "We made",
+    "v": "ok"
+   }
+  ],
+  "form:el:φτιάξουμε": [
+   {
+    "shown": "We make",
+    "v": "ok"
+   }
+  ],
+  "form:el:φτιάξω": [
+   {
+    "shown": "I make",
+    "v": "ok"
+   }
+  ],
+  "form:el:χαίρω": [
+   {
+    "shown": "I rejoice",
+    "v": "ok"
+   }
+  ],
+  "form:el:χρειάζομαι": [
+   {
+    "shown": "I need",
+    "v": "ok"
+   }
+  ],
+  "form:el:χρησιμοποιούν": [
+   {
+    "shown": "They use",
+    "v": "ok"
+   }
+  ],
+  "form:el:χτίζεται": [
+   {
+    "shown": "He, she, or it is built",
+    "v": "ok"
+   }
+  ],
+  "form:el:χτυπάει": [
+   {
+    "shown": "He, she, or it strikes",
+    "v": "ok"
+   }
+  ],
+  "form:el:χτυπήστε": [
+   {
+    "shown": "Strike! (plural)",
+    "v": "ok"
+   }
+  ],
+  "form:el:ψάξουμε": [
+   {
+    "shown": "We look for",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:Αθήνα:PROPN": [
+   {
+    "shown": "Athens (the capital city of Greece)",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:Απρίλιος:PROPN": [
+   {
+    "shown": "April",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:Αύγουστος:PROPN": [
+   {
+    "shown": "August (the 8th month)",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:Ελένη:PROPN": [
+   {
+    "shown": "Helen",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:Θεσσαλονίκη:PROPN": [
+   {
+    "shown": "Thessaloniki (a port city, the capital of Central Macedonia, in northern Greece)",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:Ιανουάριος:PROPN": [
+   {
+    "shown": "January",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:Ιούλιος:PROPN": [
+   {
+    "shown": "July",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:Ισπανία:PROPN": [
+   {
+    "shown": "Spain (a country in Southern Europe, including most of the Iberian peninsula)",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:Ιωάννης:PROPN": [
+   {
+    "shown": "a male given name, Giannis, Yiannis, and Yannis, from Hebrew, equivalent to English John, Ian, or Iain",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:Κρήτη:PROPN": [
+   {
+    "shown": "Crete (biggest island in Greece)",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:Μαρία:PROPN": [
+   {
+    "shown": "Mary",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:Νίκος:PROPN": [
+   {
+    "shown": "a diminutive of the male given name Νικόλαος (Nikólaos), equivalent to English Nick.",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:Οκτώβριος:PROPN": [
+   {
+    "shown": "October",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:Πέτρος:PROPN": [
+   {
+    "shown": "a male given name, Petros, equivalent to English Peter",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:Παπαδόπουλος:PROPN": [
+   {
+    "shown": "a male surname",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:Σάββατο:NOUN": [
+   {
+    "shown": "Saturday",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:άνεμος:NOUN": [
+   {
+    "shown": "wind",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:άνθρωπος:NOUN": [
+   {
+    "shown": "a human; person; the species man",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:άνοιξη:NOUN": [
+   {
+    "shown": "spring, springtime, springtide",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:άνω:ADV": [
+   {
+    "shown": "upper, over",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:άσκηση:NOUN": [
+   {
+    "shown": "drill, exercise, practice",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:έκπτωση:NOUN": [
+   {
+    "shown": "discount",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:έναντι:ADV": [
+   {
+    "shown": "towards (in part payment)",
+    "v": "false-meaning",
+    "note": "έναντι means \"against, versus\" (or \"in return for\"), not \"towards\""
+   }
+  ],
+  "lemma:el:έντονος:ADJ": [
+   {
+    "shown": "strong, powerful",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:έξι:NUM": [
+   {
+    "shown": "six",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:έξω:ADV": [
+   {
+    "shown": "out, outside",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:έργο:NOUN": [
+   {
+    "shown": "work, project",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:έρευνα:NOUN": [
+   {
+    "shown": "research, examination (especially scientific or legal)",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:έρχομαι:VERB": [
+   {
+    "shown": "to come",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:έσοδο:NOUN": [
+   {
+    "shown": "revenue, income",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:έχω:VERB": [
+   {
+    "shown": "to have/hold, in the sense of holding (in one's possession) (a [legal/personal/possibly 'undesired']) property",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:ή:CONJ": [
+   {
+    "shown": "or",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:ήδη:ADV": [
+   {
+    "shown": "already (prior to some time)",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:ίδιος:ADJ": [
+   {
+    "shown": "own",
+    "v": "false-meaning",
+    "note": "ίδιος here and mainly means \"same\"; \"own\" is secondary"
+   }
+  ],
+  "lemma:el:ίντερνετ:NOUN": [
+   {
+    "shown": "internet",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:αγαπάω:VERB": [
+   {
+    "shown": "to love",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:αγορά:NOUN": [
+   {
+    "shown": "agora, the ancient square or marketplace, the centre of public life",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:αγοράζω:VERB": [
+   {
+    "shown": "to buy, to purchase",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:αγρότης:NOUN": [
+   {
+    "shown": "farmer, countryman",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:αδελφή:NOUN": [
+   {
+    "shown": "sister (female sibling)",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:αδελφός:NOUN": [
+   {
+    "shown": "brother",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:αθλητής:NOUN": [
+   {
+    "shown": "athlete, sportsman",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:αισθητός:ADJ": [
+   {
+    "shown": "tactile, sensible, perceptible",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:ακριβώς:ADV": [
+   {
+    "shown": "exactly, precisely",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:ακόμα:ADV": [
+   {
+    "shown": "yet, still",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:αλεύρι:NOUN": [
+   {
+    "shown": "flour (ground cereal grains, especially wheat)",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:αλλά:CONJ": [
+   {
+    "shown": "but",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:αλλάζω:VERB": [
+   {
+    "shown": "to change, alter (appearance, content or substance of something)",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:αμετάβλητος:ADJ": [
+   {
+    "shown": "unchangeable, unalterable",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:ανακάμπτω:VERB": [
+   {
+    "shown": "to reappear, recover, revive (after absence or after a recession)",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:ανακαινίζω:VERB": [
+   {
+    "shown": "to renovate, refurbish (especially a building)",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:ανακαλύπτω:VERB": [
+   {
+    "shown": "to discover, uncover",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:ανακατεύω:VERB": [
+   {
+    "shown": "to mix, mingle, mix up, stir",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:ανακοινώνω:VERB": [
+   {
+    "shown": "to announce, declare (make people aware of something)",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:αναφορά:NOUN": [
+   {
+    "shown": "reference",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:ανεβαίνω:VERB": [
+   {
+    "shown": "to go up, climb",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:ανεργία:NOUN": [
+   {
+    "shown": "unemployment, joblessness",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:ανησυχώ:VERB": [
+   {
+    "shown": "to worry, be worried, be concerned",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:ανοίγω:VERB": [
+   {
+    "shown": "to make something accessible: open, undo, unbolt, unzip",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:ανοιχτός:ADJ": [
+   {
+    "shown": "open, not closed, unlocked, uncovered, unfenced",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:ανοιχτόχρωμος:ADJ": [
+   {
+    "shown": "pale, lightly coloured",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:απαγορεύω:VERB": [
+   {
+    "shown": "to forbid, ban, prohibit",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:αποκοιμιέμαι:VERB": [
+   {
+    "shown": "to nod off, fall asleep, drop off",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:αποταμιεύω:VERB": [
+   {
+    "shown": "to save, save up",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:αποφασίζω:VERB": [
+   {
+    "shown": "to decide, resolve, reach a verdict",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:από:ADP": [
+   {
+    "shown": "from",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:απόγευμα:NOUN": [
+   {
+    "shown": "afternoon",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:απόδειξη:NOUN": [
+   {
+    "shown": "proof",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:απόψε:ADV": [
+   {
+    "shown": "tonight, this evening",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:αριθμός:NOUN": [
+   {
+    "shown": "numeral, number",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:αρρωσταίνω:VERB": [
+   {
+    "shown": "to become ill",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:αρχίζω:VERB": [
+   {
+    "shown": "to start, begin",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:αστυνομία:NOUN": [
+   {
+    "shown": "police (law enforcement)",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:αυλή:NOUN": [
+   {
+    "shown": "courtyard",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:αυξάνω:VERB": [
+   {
+    "shown": "to increase, raise, put up",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:αυτοκίνητο:NOUN": [
+   {
+    "shown": "car, motorcar, automobile",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:αφήνω:VERB": [
+   {
+    "shown": "to leave, allow, let, let go, let go of, drop, drop off, abandon",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:αφού:CONJ": [
+   {
+    "shown": "after (having done something)",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:αφράτος:ADJ": [
+   {
+    "shown": "soft, frothy, foamy",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:αχυρώνας:NOUN": [
+   {
+    "shown": "barn, hayloft",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:βάλλω:VERB": [
+   {
+    "shown": "to attack",
+    "v": "false-reading",
+    "note": "Έβαλε is from βάζω (put; scored), not the archaic βάλλω 'attack'"
+   }
+  ],
+  "lemma:el:βάλτος:NOUN": [
+   {
+    "shown": "swamp, quagmire, bog",
+    "v": "false-reading",
+    "note": "Βάλτε is the imperative of βάζω \"put\", not βάλτος \"swamp\""
+   }
+  ],
+  "lemma:el:βαθμός:NOUN": [
+   {
+    "shown": "grade (of job, exams, position in employment)",
+    "v": "ok"
+   },
+   {
+    "shown": "step",
+    "v": "false-meaning",
+    "note": "βαθμός means degree/grade/level; \"step\" is not its first meaning"
+   }
+  ],
+  "lemma:el:βατόμουρο:NOUN": [
+   {
+    "shown": "blackberry, bramble berry",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:βγάζω:VERB": [
+   {
+    "shown": "to take off, remove",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:βγαίνω:VERB": [
+   {
+    "shown": "to go out, come out, exit",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:βιάζω:VERB": [
+   {
+    "shown": "to force, pressure",
+    "v": "false-reading",
+    "note": "βιάσου is the imperative of βιάζομαι, hurry up, not βιάζω to force"
+   }
+  ],
+  "lemma:el:βιβλίο:NOUN": [
+   {
+    "shown": "book",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:βλέπω:VERB": [
+   {
+    "shown": "I look, see",
+    "v": "ok"
+   },
+   {
+    "shown": "to see, watch, look at",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:βοηθάω:VERB": [
+   {
+    "shown": "to help, aid",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:βουνό:NOUN": [
+   {
+    "shown": "mountain",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:βράζω:VERB": [
+   {
+    "shown": "to boil",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:βρέχω:VERB": [
+   {
+    "shown": "to wet, dampen",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:βρίσκω:VERB": [
+   {
+    "shown": "to find, discover, locate",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:βροχή:NOUN": [
+   {
+    "shown": "rain, shower",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:βροχόπτωση:NOUN": [
+   {
+    "shown": "rainfall (the occurrence of liquid precipitation, the fall of rain)",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:βόλτα:NOUN": [
+   {
+    "shown": "turn",
+    "v": "false-meaning",
+    "note": "βόλτα ordinarily means a walk, stroll or ride; turn is a marginal sense"
+   }
+  ],
+  "lemma:el:γείτονας:NOUN": [
+   {
+    "shown": "neighbour (UK), neighbor (US)",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:γειτονιά:NOUN": [
+   {
+    "shown": "neighbourhood (UK), neighborhood (US)",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:γεμίζω:VERB": [
+   {
+    "shown": "to fill, fill up",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:για:ADP": [
+   {
+    "shown": "for",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:γιαγιά:NOUN": [
+   {
+    "shown": "grandmother, grandma, granny, nan, nanna (mother of one's parent)",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:γιατρός:NOUN": [
+   {
+    "shown": "doctor, healer.",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:γκαράζ:NOUN": [
+   {
+    "shown": "garage (place for storing cars; automobile repair workshop)",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:γκολ:NOUN": [
+   {
+    "shown": "goal",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:γνωρίζω:VERB": [
+   {
+    "shown": "to know (something), be aware, recognize",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:γράφω:VERB": [
+   {
+    "shown": "I write",
+    "v": "ok"
+   },
+   {
+    "shown": "to write, pen",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:γρίπη:NOUN": [
+   {
+    "shown": "influenza, flu, 'flu",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:γραφείο:NOUN": [
+   {
+    "shown": "desk",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:γύρος:NOUN": [
+   {
+    "shown": "round, perimeter, rim",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:δάσκαλος:NOUN": [
+   {
+    "shown": "teacher (especially one in a primary school or elementary school)",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:δέκα:NUM": [
+   {
+    "shown": "ten",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:δέντρο:NOUN": [
+   {
+    "shown": "tree",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:δίδωμι:VERB": [
+   {
+    "shown": "I offer, give",
+    "v": "false-reading",
+    "note": "δώσω is Modern Greek δίνω; δίδωμι is the Ancient Greek verb"
+   }
+  ],
+  "lemma:el:δίκιο:NOUN": [
+   {
+    "shown": "that which is right, correct, just",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:δίνω:VERB": [
+   {
+    "shown": "to give (pass something; transfer ownership)",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:δανείζω:VERB": [
+   {
+    "shown": "to lend, to loan",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:δασκάλα:NOUN": [
+   {
+    "shown": "female teacher (especially one in a primary or elementary school)",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:δείπνο:NOUN": [
+   {
+    "shown": "evening meal, supper, dinner",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:δεκαπέντε:NUM": [
+   {
+    "shown": "fifteen",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:δευτερόλεπτο:NOUN": [
+   {
+    "shown": "second (unit of time)",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:δεύτερος:ADJ": [
+   {
+    "shown": "second",
+    "v": "ok"
+   },
+   {
+    "shown": "second, in the second place, for the second time",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:δημόσιος:ADJ": [
+   {
+    "shown": "belonging to the state or people, public",
+    "v": "ok"
+   },
+   {
+    "shown": "public",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:διάλειμμα:NOUN": [
+   {
+    "shown": "pause, break, recess (a rest or pause, usually from work); elevenses (morning break)",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:διαβάζω:VERB": [
+   {
+    "shown": "to read (look at and interpret letters or other information that is written)",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:διαγώνισμα:NOUN": [
+   {
+    "shown": "test, examination (at secondary/high school level)",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:διακόπτω:VERB": [
+   {
+    "shown": "to interrupt; disrupt; stop",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:διασταύρωση:NOUN": [
+   {
+    "shown": "hybridisation, crossbreeding (the act/process)",
+    "v": "false-meaning",
+    "note": "διασταύρωση ordinarily means a crossing or intersection; crossbreeding is marginal"
+   }
+  ],
+  "lemma:el:διατηρώ:VERB": [
+   {
+    "shown": "to have, harbour, keep, retain",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:διαφωνώ:VERB": [
+   {
+    "shown": "to disagree",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:διευθυντής:NOUN": [
+   {
+    "shown": "manager, director",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:δικός:PRON": [
+   {
+    "shown": "mine, yours, his, hers, its, ours, theirs",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:διπλάσιος:ADJ": [
+   {
+    "shown": "double; twofold",
+    "v": "ok"
+   },
+   {
+    "shown": "the proportional number two-fold, double, twice the size",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:δουλειά:NOUN": [
+   {
+    "shown": "employment, work, job",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:δουλεύω:VERB": [
+   {
+    "shown": "to be a slave",
+    "v": "false-meaning",
+    "note": "δουλεύω in modern Greek means to work, not to be a slave"
+   },
+   {
+    "shown": "to work",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:δρομέας:NOUN": [
+   {
+    "shown": "runner",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:δρομολόγιο:NOUN": [
+   {
+    "shown": "itinerary",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:δρόμος:NOUN": [
+   {
+    "shown": "race, running",
+    "v": "false-meaning",
+    "note": "δρόμος means road/street (also race), sentence uses road"
+   },
+   {
+    "shown": "roadway, road, street, way",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:δυνατός:ADJ": [
+   {
+    "shown": "strong, loud",
+    "v": "ok"
+   },
+   {
+    "shown": "strong, mighty",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:δωμάτιο:NOUN": [
+   {
+    "shown": "room (in home or hotel)",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:δόξα:NOUN": [
+   {
+    "shown": "glory, kudos, fame",
+    "v": "ok"
+   },
+   {
+    "shown": "honor, renown, glory splendor",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:δόση:NOUN": [
+   {
+    "shown": "dose, instalment, tranche",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:δύο:ADJ": [
+   {
+    "shown": "two",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:δύο:NOUN": [
+   {
+    "shown": "two (playing card)",
+    "v": "false-meaning",
+    "note": "In this sentence δύο is the numeral two; the playing-card sense is marginal"
+   }
+  ],
+  "lemma:el:δώδεκα:ADJ": [
+   {
+    "shown": "twelve",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:δώδεκα:NUM": [
+   {
+    "shown": "twelve",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:είδηση:NOUN": [
+   {
+    "shown": "news item, piece of news, news story",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:είδος:NOUN": [
+   {
+    "shown": "kind, form, type",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:είκοσι:NUM": [
+   {
+    "shown": "twenty, 20",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:είμαι:VERB": [
+   {
+    "shown": "to be",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:είσοδος:NOUN": [
+   {
+    "shown": "entrance, way in",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:εβδομάδα:NOUN": [
+   {
+    "shown": "week",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:εβδομήντα:NUM": [
+   {
+    "shown": "seventy (70)",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:εγκαίρως:ADV": [
+   {
+    "shown": "in time",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:εγκρίνω:VERB": [
+   {
+    "shown": "to approve, sanction, endorse, adopt",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:εδώ:ADV": [
+   {
+    "shown": "here",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:εθελοντής:NOUN": [
+   {
+    "shown": "volunteer",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:εθνικός:ADJ": [
+   {
+    "shown": "national",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:εκεί:ADV": [
+   {
+    "shown": "there",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:εκτός:ADV": [
+   {
+    "shown": "except",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:ελαιόλαδο:NOUN": [
+   {
+    "shown": "olive oil (oil pressed from olives)",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:ελληνικός:ADJ": [
+   {
+    "shown": "Greek, Hellenic (related to the country, people or language of Greece)",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:ελπίζω:VERB": [
+   {
+    "shown": "to hope to, expect to",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:εμβόλιο:NOUN": [
+   {
+    "shown": "vaccine",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:ενώ:CONJ": [
+   {
+    "shown": "while, as long as, as",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:εξήντα:NUM": [
+   {
+    "shown": "sixty",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:εξετάζω:VERB": [
+   {
+    "shown": "to examine, investigate, question",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:εξηγώ:VERB": [
+   {
+    "shown": "to clarify, explain, illustrate",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:εξοπλισμός:NOUN": [
+   {
+    "shown": "equipment",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:εξωτερικός:ADJ": [
+   {
+    "shown": "outer, external",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:επανάσταση:NOUN": [
+   {
+    "shown": "revolution",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:επείγων:ADJ": [
+   {
+    "shown": "urgent, pressing (requiring immediate attention)",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:επειδή:CONJ": [
+   {
+    "shown": "for, because",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:επιβεβαίωση:NOUN": [
+   {
+    "shown": "confirmation",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:επιτρέπω:VERB": [
+   {
+    "shown": "to allow, permit",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:επιτόκιο:NOUN": [
+   {
+    "shown": "interest rate",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:επόμενος:ADJ": [
+   {
+    "shown": "next, following",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:εργάζομαι:VERB": [
+   {
+    "shown": "to work",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:ερευνητής:NOUN": [
+   {
+    "shown": "research worker, researcher",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:ερώτηση:NOUN": [
+   {
+    "shown": "question (sentence asking for information)",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:ετοιμάζω:VERB": [
+   {
+    "shown": "to prepare",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:ευγενικός:ADJ": [
+   {
+    "shown": "polite",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:ευρώ:NOUN": [
+   {
+    "shown": "euro (the currency)",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:εἰμί:VERB": [
+   {
+    "shown": "I am, exist",
+    "v": "false-reading",
+    "note": "Ancient polytonic headword, not the modern word; modern ειναι is είμαι"
+   }
+  ],
+  "lemma:el:εἷς:ADJ": [
+   {
+    "shown": "one",
+    "v": "false-reading",
+    "note": "Ancient polytonic headword, not the modern word; modern ενα is ένα"
+   }
+  ],
+  "lemma:el:ζάχαρη:NOUN": [
+   {
+    "shown": "sugar, sucrose",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:ζέστη:NOUN": [
+   {
+    "shown": "heat",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:ζεσταίνω:VERB": [
+   {
+    "shown": "to warm, warm up, heat up",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:ζητάω:VERB": [
+   {
+    "shown": "to ask for, request",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:ζω:VERB": [
+   {
+    "shown": "to live",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:ζωή:NOUN": [
+   {
+    "shown": "life",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:ηλιοβασίλεμα:NOUN": [
+   {
+    "shown": "sunset",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:ημέρα:NOUN": [
+   {
+    "shown": "day",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:ημίχρονο:NOUN": [
+   {
+    "shown": "one half of a game.",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:θάλασσα:NOUN": [
+   {
+    "shown": "sea",
+    "v": "ok"
+   },
+   {
+    "shown": "the sea, lake",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:θέλω:VERB": [
+   {
+    "shown": "I will, wish, desire",
+    "v": "ok"
+   },
+   {
+    "shown": "to want, desire, will",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:θα:PART": [
+   {
+    "shown": "added before the present verb forms to form the continuous or imperfective future tense",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:θερμαίνω:VERB": [
+   {
+    "shown": "to heat",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:θερμοκρασία:NOUN": [
+   {
+    "shown": "temperature",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:θυμάμαι:VERB": [
+   {
+    "shown": "I remember",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:ιδίως:ADV": [
+   {
+    "shown": "particularly, in particular, especially",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:ιδρύω:VERB": [
+   {
+    "shown": "to found, establish (a city, society, institution)",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:ιστοσελίδα:NOUN": [
+   {
+    "shown": "web page",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:ισχυρός:ADJ": [
+   {
+    "shown": "powerful, strong, mighty",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:κάθε:PRON": [
+   {
+    "shown": "every, each",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:κάθομαι:VERB": [
+   {
+    "shown": "to sit, sit down",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:κάνω:VERB": [
+   {
+    "shown": "to do",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:κάποιος:PRON": [
+   {
+    "shown": "someone, somebody (substantivally; as a pronoun)",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:κάπου:ADV": [
+   {
+    "shown": "somewhere",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:κάτι:PRON": [
+   {
+    "shown": "something",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:κέικ:NOUN": [
+   {
+    "shown": "baked cake of various flavours, but not layers of fillings",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:κέντρο:NOUN": [
+   {
+    "shown": "centre (UK), center (US): the middle of something or somewhere",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:κήπος:NOUN": [
+   {
+    "shown": "garden (especially one around a house)",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:καθαρίζω:VERB": [
+   {
+    "shown": "to clean, to wash",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:καθαρισμός:NOUN": [
+   {
+    "shown": "scouring, cleaning up",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:καθηγητής:NOUN": [
+   {
+    "shown": "professor, university teacher, lecturer",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:καθόλου:ADV": [
+   {
+    "shown": "at all, a little",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:καθώς:CONJ": [
+   {
+    "shown": "as, while",
+    "v": "ok"
+   },
+   {
+    "shown": "just as, as",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:και:CONJ": [
+   {
+    "shown": "and",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:καινούργιος:ADJ": [
+   {
+    "shown": "new; recently acquired or made",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:καλοκαίρι:NOUN": [
+   {
+    "shown": "summertime, summer",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:καλούπι:NOUN": [
+   {
+    "shown": "mould (UK), mold (US) (anything in/around which something is formed/shaped)",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:καλός:ADJ": [
+   {
+    "shown": "beautiful, good, worthy",
+    "v": "ok"
+   },
+   {
+    "shown": "good",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:καλύτερος:ADJ": [
+   {
+    "shown": "better, nicer, more likeable. comparative degree of καλός (kalós)",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:καναπές:NOUN": [
+   {
+    "shown": "sofa, couch, settee",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:κατά:ADP": [
+   {
+    "shown": "down from, against, according to, throughout, during",
+    "v": "ok"
+   },
+   {
+    "shown": "versus, against",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:καταβάλλω:VERB": [
+   {
+    "shown": "to overcome, defeat, humiliate",
+    "v": "false-meaning",
+    "note": "καταβάλλω ordinarily means to pay (a sum) or to make an effort; overcome is rare"
+   }
+  ],
+  "lemma:el:καταλαβαίνω:VERB": [
+   {
+    "shown": "to understand, realise",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:καταστρέφω:VERB": [
+   {
+    "shown": "to destroy, ruin, wreck",
+    "v": "ok"
+   },
+   {
+    "shown": "to turn down, bring down, subdue",
+    "v": "false-meaning",
+    "note": "καταστρέφω means \"to destroy\""
+   }
+  ],
+  "lemma:el:κατσαρόλα:NOUN": [
+   {
+    "shown": "casserole",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:κεντρικός:ADJ": [
+   {
+    "shown": "central, pivotal, focal, main",
+    "v": "ok"
+   },
+   {
+    "shown": "of or belonging to a cardinal point",
+    "v": "false-meaning",
+    "note": "κεντρικός means \"central\""
+   }
+  ],
+  "lemma:el:κερδίζω:VERB": [
+   {
+    "shown": "to profit, gain, earn (money)",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:κεφάλι:NOUN": [
+   {
+    "shown": "head",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:κιλό:NOUN": [
+   {
+    "shown": "kilo (kilogram)",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:κινηματογράφος:NOUN": [
+   {
+    "shown": "cinema (the film and movie industry)",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:κλείνω:VERB": [
+   {
+    "shown": "to close, shut, close off",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:κοιμάμαι:VERB": [
+   {
+    "shown": "to sleep (to rest in a state of reduced consciousness)",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:κολυμπάω:VERB": [
+   {
+    "shown": "to swim",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:κορωνοϊός:NOUN": [
+   {
+    "shown": "coronavirus",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:κοστίζω:VERB": [
+   {
+    "shown": "to cost (involve expenditure)",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:κουζίνα:NOUN": [
+   {
+    "shown": "kitchen",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:κουράζω:VERB": [
+   {
+    "shown": "to tire, wear out",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:κουτάλα:NOUN": [
+   {
+    "shown": "ladle, large spoon, scoop (wood or metal)",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:κούπα:NOUN": [
+   {
+    "shown": "mug, large cup (drinking vessel)",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:κρεβάτι:NOUN": [
+   {
+    "shown": "bed",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:κρεμμύδι:NOUN": [
+   {
+    "shown": "onion (plant, bulb and vegetable)",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:κρυολόγημα:NOUN": [
+   {
+    "shown": "a cold, a sniffle",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:κρυώνω:VERB": [
+   {
+    "shown": "to feel cold.",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:κυκλοφορία:NOUN": [
+   {
+    "shown": "circulation",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:κυριακάτικος:ADJ": [
+   {
+    "shown": "of Sunday",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:κόβω:VERB": [
+   {
+    "shown": "Ι cut, chop, divide, carve, slice (into parts)",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:κόκαλο:NOUN": [
+   {
+    "shown": "bone",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:κόσμος:NOUN": [
+   {
+    "shown": "Universe, cosmos",
+    "v": "false-meaning",
+    "note": "κόσμος ordinarily means world or people; universe is a secondary sense"
+   },
+   {
+    "shown": "the world, universe",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:κύριος:NOUN": [
+   {
+    "shown": "mister (title conferred on an adult male)",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:λάδι:NOUN": [
+   {
+    "shown": "oil",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:λέω:VERB": [
+   {
+    "shown": "to say, tell",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:λίγος:ADJ": [
+   {
+    "shown": "a little, a few, a bit of",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:λίμνη:NOUN": [
+   {
+    "shown": "lake",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:λεπτός:ADJ": [
+   {
+    "shown": "thin, skinny, slim",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:λεωφορείο:NOUN": [
+   {
+    "shown": "bus, omnibus",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:λιμάνι:NOUN": [
+   {
+    "shown": "harbour, quay, port",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:λουλούδι:NOUN": [
+   {
+    "shown": "flower",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:μέγας:ADJ": [
+   {
+    "shown": "large, great",
+    "v": "false-reading",
+    "note": "μεγάλη belongs to Modern Greek μεγάλος; μέγας is the Ancient/learned form"
+   }
+  ],
+  "lemma:el:μέγεθος:NOUN": [
+   {
+    "shown": "size",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:μέθοδος:NOUN": [
+   {
+    "shown": "following after, pursuit",
+    "v": "false-meaning",
+    "note": "μέθοδος means \"method\"; \"following after, pursuit\" is the ancient sense"
+   },
+   {
+    "shown": "method, system",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:μένω:VERB": [
+   {
+    "shown": "to stay, reside, live (somewhere)",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:μέτριος:ADJ": [
+   {
+    "shown": "medium, mediocre, ordinary, mild",
+    "v": "ok"
+   },
+   {
+    "shown": "moderate, average, mean",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:μέχρι(ς):ADP": [
+   {
+    "shown": "as far as, until",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:μέχρι:ADP": [
+   {
+    "shown": "introduces a limit",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:μήκος:NOUN": [
+   {
+    "shown": "length (the distance between the two ends of an object)",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:μήτηρ:NOUN": [
+   {
+    "shown": "a mother",
+    "v": "false-reading",
+    "note": "Ancient polytonic headword, not the modern word; μητέρα is modern μητέρα/μάνα"
+   }
+  ],
+  "lemma:el:μαγαζί:NOUN": [
+   {
+    "shown": "shop, store, retail outlet",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:μαγειρεύω:VERB": [
+   {
+    "shown": "to cook",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:μαζί:ADV": [
+   {
+    "shown": "together, with (takes the genitive case)",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:μαζεύω:VERB": [
+   {
+    "shown": "to collect, gather, get in, harvest",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:μαθητής:NOUN": [
+   {
+    "shown": "a learner, disciple, pupil",
+    "v": "ok"
+   },
+   {
+    "shown": "pupil; student; schoolboy",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:μαλακώνω:VERB": [
+   {
+    "shown": "to soften (to make something soft or softer)",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:μαμά:NOUN": [
+   {
+    "shown": "mom, mum, ma",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:μαρμελάδα:NOUN": [
+   {
+    "shown": "jam; marmalade",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:μείγμα:NOUN": [
+   {
+    "shown": "mixture, a combination of materials",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:μειώνω:VERB": [
+   {
+    "shown": "to reduce, diminish",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:μελετάω:VERB": [
+   {
+    "shown": "to care for, attend to",
+    "v": "false-meaning",
+    "note": "μελετάω means \"to study\""
+   },
+   {
+    "shown": "to study",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:μελομακάρονο:NOUN": [
+   {
+    "shown": "melomakarono, a honey flavoured dessert",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:μεσημέρι:NOUN": [
+   {
+    "shown": "midday",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:μετά:ADP": [
+   {
+    "shown": "after",
+    "v": "ok"
+   },
+   {
+    "shown": "with, after",
+    "v": "false-meaning",
+    "note": "μετά in Modern Greek means \"after, then\"; \"with\" is the ancient case use"
+   }
+  ],
+  "lemma:el:μετά:ADV": [
+   {
+    "shown": "afterwards, later",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:μετακομίζω:VERB": [
+   {
+    "shown": "to move house",
+    "v": "ok"
+   },
+   {
+    "shown": "to transport",
+    "v": "false-meaning",
+    "note": "μετακομίζω means \"to move house\""
+   }
+  ],
+  "lemma:el:μεταξύ:ADP": [
+   {
+    "shown": "between",
+    "v": "ok"
+   },
+   {
+    "shown": "meanwhile, afterwards, between",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:μεταξύ:ADV": [
+   {
+    "shown": "between, amongst, amid (place)",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:μεταχειρισμένος:ADJ": [
+   {
+    "shown": "used, second hand",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:μετράω:VERB": [
+   {
+    "shown": "to count, measure, include",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:μητέρα:NOUN": [
+   {
+    "shown": "mother",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:μισός:ADJ": [
+   {
+    "shown": "half",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:μουσείο:NOUN": [
+   {
+    "shown": "museum",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:μπάνιο:NOUN": [
+   {
+    "shown": "bath (act of bathing)",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:μπαίνω:VERB": [
+   {
+    "shown": "to enter, go in, come in, get in",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:μπαλκόνι:NOUN": [
+   {
+    "shown": "balcony",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:μπλε:ADJ": [
+   {
+    "shown": "blue",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:μπορώ:VERB": [
+   {
+    "shown": "I can, be able",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:μπουφάν:NOUN": [
+   {
+    "shown": "puffer jacket, down jacket",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:μπροστά:ADV": [
+   {
+    "shown": "in front, in front of",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:μυθιστόρημα:NOUN": [
+   {
+    "shown": "novel (work of prose fiction)",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:μόνος:ADJ": [
+   {
+    "shown": "only, solitary, desolate",
+    "v": "ok"
+   },
+   {
+    "shown": "solitary, alone",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:νερό:NOUN": [
+   {
+    "shown": "water (liquid H₂O)",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:νησί:NOUN": [
+   {
+    "shown": "island",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:νομίζω:VERB": [
+   {
+    "shown": "to think, consider, opine",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:νοσοκομείο:NOUN": [
+   {
+    "shown": "hospital",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:νοσοκόμα:NOUN": [
+   {
+    "shown": "nurse",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:ντομάτα:NOUN": [
+   {
+    "shown": "tomato",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:ντους:NOUN": [
+   {
+    "shown": "shower (device for bathing)",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:νωρίς:ADV": [
+   {
+    "shown": "early (before the expected time)",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:νωρίτερα:ADV": [
+   {
+    "shown": "earlier",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:νόμισμα:NOUN": [
+   {
+    "shown": "a coin",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:νύχτα:NOUN": [
+   {
+    "shown": "night",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:ξέρω:VERB": [
+   {
+    "shown": "to know of, be familiar with (a fact, a person or a language)",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:ξανά:ADV": [
+   {
+    "shown": "again",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:ξεκινάω:VERB": [
+   {
+    "shown": "to start out, start off, set off, pull away",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:ξεκουράζω:VERB": [
+   {
+    "shown": "to rest (give rest to)",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:ξενοδοχείο:NOUN": [
+   {
+    "shown": "hotel (establishment that provides accommodation and other services for paying guests)",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:ξεχειλίζω:VERB": [
+   {
+    "shown": "to overflow, bubble over, run over",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:ξεχνάω:VERB": [
+   {
+    "shown": "I forget",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:ξεχωριστός:ADJ": [
+   {
+    "shown": "separate, distinct",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:ξηρασία:NOUN": [
+   {
+    "shown": "drought",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:ξυπνάω:VERB": [
+   {
+    "shown": "to awake, wake up",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:ξύλινος:ADJ": [
+   {
+    "shown": "wooden",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:ξύπνιος:ADJ": [
+   {
+    "shown": "awake, conscious, wide-awake",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:οδηγία:NOUN": [
+   {
+    "shown": "instruction, command, directive",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:οδός:NOUN": [
+   {
+    "shown": "street, road, way",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:οικογένεια:NOUN": [
+   {
+    "shown": "family",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:ολοκληρώνω:VERB": [
+   {
+    "shown": "to complete, to finish",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:ομάδα:NOUN": [
+   {
+    "shown": "group, bunch, gang (of people or friends)",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:ομπρέλα:NOUN": [
+   {
+    "shown": "umbrella",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:ονειρεύομαι:VERB": [
+   {
+    "shown": "to dream, dream about",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:π.χ.:ADV": [
+   {
+    "shown": "for example (short for παραδείγματος χάριν)",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:πάθηση:NOUN": [
+   {
+    "shown": "disease, malady",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:πάνω:ADV": [
+   {
+    "shown": "above, on, up, upstairs",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:πάρκο:NOUN": [
+   {
+    "shown": "park",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:πάρτι:NOUN": [
+   {
+    "shown": "party (gathering)",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:πέντε:ADJ": [
+   {
+    "shown": "five",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:πέντε:NUM": [
+   {
+    "shown": "five, 5",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:πέρυσι:ADV": [
+   {
+    "shown": "a year ago; last year",
+    "v": "ok"
+   },
+   {
+    "shown": "last year (the year before the present one)",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:πέφτω:VERB": [
+   {
+    "shown": "to fall, fall off, drop",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:πίνω:VERB": [
+   {
+    "shown": "to drink (water, coffee, beers, etc)",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:πίτσα:NOUN": [
+   {
+    "shown": "pizza",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:παίζω:VERB": [
+   {
+    "shown": "to play (with toys, to have fun)",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:παίκτης:NOUN": [
+   {
+    "shown": "player",
+    "v": "ok"
+   },
+   {
+    "shown": "player, sportsman",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:παίρνω:VERB": [
+   {
+    "shown": "to take, get, move",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:παγωτό:NOUN": [
+   {
+    "shown": "ice cream",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:παιδάκι:NOUN": [
+   {
+    "shown": "a small child (diminutive of παιδί (paidí))",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:πανεπιστήμιο:NOUN": [
+   {
+    "shown": "university",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:παραλαμβάνω:VERB": [
+   {
+    "shown": "to receive, take delivery of",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:πατέρας:NOUN": [
+   {
+    "shown": "father; a male parent",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:πατήρ:NOUN": [
+   {
+    "shown": "father, Father, ancestor",
+    "v": "false-reading",
+    "note": "Ancient polytonic headword, not the modern word; πατέρας is modern"
+   }
+  ],
+  "lemma:el:πενήντα:NUM": [
+   {
+    "shown": "fifty",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:περίοδος:NOUN": [
+   {
+    "shown": "period, phase, epoch",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:περίπου:ADV": [
+   {
+    "shown": "approximately, about",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:περαστικός:ADJ": [
+   {
+    "shown": "passer-by",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:περιμένω:VERB": [
+   {
+    "shown": "wait, wait for, expect",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:περιοχή:NOUN": [
+   {
+    "shown": "enclosure; containment",
+    "v": "false-meaning",
+    "note": "περιοχή means \"area, region\""
+   },
+   {
+    "shown": "region; district; area",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:περιστατικό:NOUN": [
+   {
+    "shown": "event, incident",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:πηγαίνω:VERB": [
+   {
+    "shown": "to go",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:πιάτο:NOUN": [
+   {
+    "shown": "plate (tableware)",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:πια:ADV": [
+   {
+    "shown": "any more, no more, no longer, any longer (from a given time onwards)",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:πιο:ADV": [
+   {
+    "shown": "more",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:πισίνα:NOUN": [
+   {
+    "shown": "swimming pool",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:πλένω:VERB": [
+   {
+    "shown": "to wash (your body, dishes, clothes, car, etc)",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:πλαγιά:NOUN": [
+   {
+    "shown": "slope of a landform that extends above the surrounding terrain:",
+    "v": "ok"
+   },
+   {
+    "shown": "slope of a landform that extends above the surrounding terrain",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:πλατφόρμα:NOUN": [
+   {
+    "shown": "platform, podium",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:πληρώνω:VERB": [
+   {
+    "shown": "to pay (give money for work done or goods received)",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:πλοίο:NOUN": [
+   {
+    "shown": "ship, large boat",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:πνευμονικός:ADJ": [
+   {
+    "shown": "pulmonary",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:ποδήλατο:NOUN": [
+   {
+    "shown": "bicycle, cycle; bike (informal)",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:ποδόσφαιρο:NOUN": [
+   {
+    "shown": "football, soccer, association football",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:ποιος:PRON": [
+   {
+    "shown": "who",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:πολυκατοικία:NOUN": [
+   {
+    "shown": "apartment building, block of flats",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:πολύς:ADJ": [
+   {
+    "shown": "much, many, a lot of",
+    "v": "ok"
+   },
+   {
+    "shown": "much, many, often",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:πολύωρος:ADJ": [
+   {
+    "shown": "of many hours, multihour, hours-long (lasting multiple hours)",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:πονάω:VERB": [
+   {
+    "shown": "to ache",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:πονοκέφαλος:NOUN": [
+   {
+    "shown": "headache",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:πονόλαιμος:NOUN": [
+   {
+    "shown": "sore throat",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:πορτοκάλι:NOUN": [
+   {
+    "shown": "orange (fruit)",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:ποτάμι:NOUN": [
+   {
+    "shown": "river, stream",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:ποτήρι:NOUN": [
+   {
+    "shown": "glass (drinking vessel, usually made of glass)",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:πουλόβερ:NOUN": [
+   {
+    "shown": "pullover, jumper, sweater",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:πού:ADV": [
+   {
+    "shown": "anywhere, somewhere",
+    "v": "false-meaning",
+    "note": "πού as 'where' (interrogative); 'anywhere, somewhere' is the indefinite που"
+   },
+   {
+    "shown": "where",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:προαύλιο:NOUN": [
+   {
+    "shown": "yard (enclosed area by a public building)",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:προειδοποιώ:VERB": [
+   {
+    "shown": "to forewarn, warn",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:προλαβαίνω:VERB": [
+   {
+    "shown": "to have time to do something, catch up",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:προπονητής:NOUN": [
+   {
+    "shown": "coach, trainer",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:προχωράω:VERB": [
+   {
+    "shown": "to move forward, advance, progress, proceed",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:προϋπολογισμός:NOUN": [
+   {
+    "shown": "budget",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:πρωί:NOUN": [
+   {
+    "shown": "morning",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:πρόγραμμα:NOUN": [
+   {
+    "shown": "schedule (timed plan of events)",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:πρώτος:ADJ": [
+   {
+    "shown": "first",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:πρῶτος:ADJ": [
+   {
+    "shown": "first, before",
+    "v": "false-reading",
+    "note": "Polytonic Ancient Greek headword for Modern πρώτος"
+   }
+  ],
+  "lemma:el:πόρτα:NOUN": [
+   {
+    "shown": "door (to house or room)",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:πόσιμος:ADJ": [
+   {
+    "shown": "drinkable, fresh (without salt)",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:ρίχνω:VERB": [
+   {
+    "shown": "to drop (anchor)",
+    "v": "false-meaning",
+    "note": "ρίχνω ordinarily means to throw or pour; drop (anchor) is a narrow sense"
+   }
+  ],
+  "lemma:el:ραντεβού:NOUN": [
+   {
+    "shown": "appointment, rendezvous",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:ρεκόρ:NOUN": [
+   {
+    "shown": "record (a supreme achievement)",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:ρεύμα:NOUN": [
+   {
+    "shown": "air current",
+    "v": "false-meaning",
+    "note": "ρεύμα means \"current, electricity\"; \"air current\" is a narrower sense"
+   }
+  ],
+  "lemma:el:σέβομαι:VERB": [
+   {
+    "shown": "to respect",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:σακίδιο:NOUN": [
+   {
+    "shown": "haversack",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:σακούλα:NOUN": [
+   {
+    "shown": "bag (made of plastic or paper)",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:σβήνω:VERB": [
+   {
+    "shown": "to put out, extinguish (candle, fire, cigarette)",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:σε:ADP": [
+   {
+    "shown": "to, at, by, in, on, unto, upon",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:σινεμά:NOUN": [
+   {
+    "shown": "cinema (film/movie theatre)",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:σκέφτομαι:VERB": [
+   {
+    "shown": "to think, to ponder, to consider",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:σκουπίδι:NOUN": [
+   {
+    "shown": "rubbish, garbage, trash",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:σκύλος:NOUN": [
+   {
+    "shown": "dog (Canis lupus familiaris) (general term for both sexes or more specifically, a male)",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:σοβαρός:ADJ": [
+   {
+    "shown": "reliable, serious, humourless, grave",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:σοδειά:NOUN": [
+   {
+    "shown": "harvest (crop gathered in and accumulated)",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:σουπερμάρκετ:NOUN": [
+   {
+    "shown": "supermarket",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:σούπα:NOUN": [
+   {
+    "shown": "soup",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:σούπερ:ADJ": [
+   {
+    "shown": "super, wonderful, awesome",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:σπίτι:NOUN": [
+   {
+    "shown": "house, home (structure built or serving as an abode of human beings)",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:στάθμευση:NOUN": [
+   {
+    "shown": "parking",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:στέλνω:VERB": [
+   {
+    "shown": "to send",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:στήριξη:NOUN": [
+   {
+    "shown": "supporting, support (the act of keeping something/someone from falling)",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:στατιστικός:ADJ": [
+   {
+    "shown": "statistical",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:στενός:ADJ": [
+   {
+    "shown": "narrow",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:στολίζω:VERB": [
+   {
+    "shown": "to adorn, decorate, ornament",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:στρίβω:VERB": [
+   {
+    "shown": "to twist, turn, twirl",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:συγκοινωνία:NOUN": [
+   {
+    "shown": "transport, transportation (means of conveyance)",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:συζήτηση:NOUN": [
+   {
+    "shown": "discussion, debate, conversation (verbal exchange concerning a particular topic)",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:συμβούλιο:NOUN": [
+   {
+    "shown": "board (committee that manages the business of an organization)",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:συμμαθητής:NOUN": [
+   {
+    "shown": "classmate",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:συνάδελφος:NOUN": [
+   {
+    "shown": "colleague",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:συνάντηση:NOUN": [
+   {
+    "shown": "meeting, encounter (a coming together in one place, especially unplanned)",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:συναντάω:VERB": [
+   {
+    "shown": "to meet",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:συνεδρίαση:NOUN": [
+   {
+    "shown": "session, sitting, meeting (of a committee, council, etc. to conduct business)",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:συνοικία:NOUN": [
+   {
+    "shown": "district, quarter, neighbourhood (of town)",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:σχέση:NOUN": [
+   {
+    "shown": "relationship (personal)",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:σχεδόν:ADV": [
+   {
+    "shown": "almost",
+    "v": "ok"
+   },
+   {
+    "shown": "near; nearby",
+    "v": "false-meaning",
+    "note": "σχεδόν means \"almost\""
+   }
+  ],
+  "lemma:el:σχολείο:NOUN": [
+   {
+    "shown": "school",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:σύ:PRON": [
+   {
+    "shown": "you",
+    "v": "false-reading",
+    "note": "Ancient polytonic headword, not the modern word; σε is the clitic object pronoun of εσύ"
+   }
+  ],
+  "lemma:el:σύγκριση:NOUN": [
+   {
+    "shown": "comparison, contrast",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:σύσκεψη:NOUN": [
+   {
+    "shown": "conference, meeting (a gathering of persons for collective consultation and decision-making)",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:τάξη:NOUN": [
+   {
+    "shown": "class (set sharing attributes: people, things, classroom, grade level, etc.)",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:τίποτα:PRON": [
+   {
+    "shown": "nothing",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:ταινία:NOUN": [
+   {
+    "shown": "film (UK), movie (US)",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:ταμείο:NOUN": [
+   {
+    "shown": "cash desk, checkout, cashier's desk",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:ταξίδι:NOUN": [
+   {
+    "shown": "trip, journey, voyage",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:ταξιδεύω:VERB": [
+   {
+    "shown": "to travel, sail",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:ταραμοσαλάτα:NOUN": [
+   {
+    "shown": "taramosalata",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:ταχυδρομείο:NOUN": [
+   {
+    "shown": "post office (building)",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:τελειώνω:VERB": [
+   {
+    "shown": "to finish, complete, end",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:τελευταίος:ADJ": [
+   {
+    "shown": "last",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:τερματίζω:VERB": [
+   {
+    "shown": "to end, terminate, conclude, wind up",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:τηλέφωνο:NOUN": [
+   {
+    "shown": "telephone, phone",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:τηλεφωνώ:VERB": [
+   {
+    "shown": "to telephone, phone",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:τις:PRON": [
+   {
+    "shown": "any one, some one",
+    "v": "false-reading",
+    "note": "Τι here is 'what', not τις 'anyone'"
+   },
+   {
+    "shown": "them (3rd person feminine plural, accusative; used before the verb)",
+    "v": "false-reading",
+    "note": "Τι (what) is not the pronoun τις"
+   }
+  ],
+  "lemma:el:τμήμα:NOUN": [
+   {
+    "shown": "part, section",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:τοίχος:NOUN": [
+   {
+    "shown": "wall (side or division in a building)",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:τουρίστας:NOUN": [
+   {
+    "shown": "tourist (usually male)",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:τουρισμός:NOUN": [
+   {
+    "shown": "tourism",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:τρένο:NOUN": [
+   {
+    "shown": "train (engine and carriages as a whole)",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:τρέχω:VERB": [
+   {
+    "shown": "to run",
+    "v": "ok"
+   },
+   {
+    "shown": "to run, move quickly, sprint",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:τρίμηνο:NOUN": [
+   {
+    "shown": "trimester",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:τρίτος:ADJ": [
+   {
+    "shown": "third",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:τραβάω:VERB": [
+   {
+    "shown": "to pull, pull in, drag, tow",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:τραγουδάω:VERB": [
+   {
+    "shown": "to sing",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:τραπέζι:NOUN": [
+   {
+    "shown": "table (item of furniture with a flat top surface raised above the ground, usually on one or more legs)",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:τρεῖς:ADJ": [
+   {
+    "shown": "three",
+    "v": "false-reading",
+    "note": "Polytonic Ancient Greek τρεῖς standing in for Modern τρία"
+   }
+  ],
+  "lemma:el:τσάι:NOUN": [
+   {
+    "shown": "tea (drink and leaves)",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:τω:DET": [
+   {
+    "shown": "monotonic form of τῷ (tôi), masculine/neuter dative singular of ὁ (o)",
+    "v": "unknown",
+    "note": "shown is only a pointer to another entry (form of ancient τῷ); fixed phrase εν τω μεταξύ"
+   }
+  ],
+  "lemma:el:τώρα:ADV": [
+   {
+    "shown": "now",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:υπάρχω:VERB": [
+   {
+    "shown": "to exist, be, live",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:υπέροχος:ADJ": [
+   {
+    "shown": "excellent, exquisite, marvellous, superb, wonderful",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:υπηρεσία:NOUN": [
+   {
+    "shown": "service",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:υπνοδωμάτιο:NOUN": [
+   {
+    "shown": "bedroom",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:υπολογιστής:NOUN": [
+   {
+    "shown": "self-seeker, selfish person (person who calculates before acting)",
+    "v": "false-meaning",
+    "note": "υπολογιστής means computer/calculator; the shown sense is obscure"
+   }
+  ],
+  "lemma:el:υπουργείο:NOUN": [
+   {
+    "shown": "ministry, department",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:υποχωρώ:VERB": [
+   {
+    "shown": "to retreat, to withdraw, to fall back",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:φάρμακο:NOUN": [
+   {
+    "shown": "medicine, medication",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:φάση:NOUN": [
+   {
+    "shown": "phase, stage (a distinguishable part of a sequence or cycle occurring over time)",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:φέτα:NOUN": [
+   {
+    "shown": "slice",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:φέτος:ADV": [
+   {
+    "shown": "this year",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:φαγητό:NOUN": [
+   {
+    "shown": "food (substance consumed by living organisms to sustain life)",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:φανάρι:NOUN": [
+   {
+    "shown": "traffic lights",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:φαρμακείο:NOUN": [
+   {
+    "shown": "pharmacy, drugstore (US), chemist's (UK)",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:φεύγω:VERB": [
+   {
+    "shown": "to leave, depart, go",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:φθινόπωρο:NOUN": [
+   {
+    "shown": "autumn (UK & US), fall (US) (third of the four seasons, between summer and winter)",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:φοβάμαι:VERB": [
+   {
+    "shown": "to fear, dread, be afraid, be frightened",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:φοράω:VERB": [
+   {
+    "shown": "to wear",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:φούρνος:NOUN": [
+   {
+    "shown": "oven",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:φτάνω:VERB": [
+   {
+    "shown": "to arrive",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:φτιάχνω:VERB": [
+   {
+    "shown": "to make, build, create, construct",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:φυτό:NOUN": [
+   {
+    "shown": "plant (organism)",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:φωτιά:NOUN": [
+   {
+    "shown": "fire",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:φωτογραφία:NOUN": [
+   {
+    "shown": "photography",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:χάνω:VERB": [
+   {
+    "shown": "to lose",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:χαίρω:VERB": [
+   {
+    "shown": "I rejoice, am glad",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:χειμώνας:NOUN": [
+   {
+    "shown": "winter, wintertime",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:χιλιόμετρο:NOUN": [
+   {
+    "shown": "kilometre (UK), kilometer (US)",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:χιονίζει:VERB": [
+   {
+    "shown": "to snow, to be snowing",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:χοντρός:ADJ": [
+   {
+    "shown": "fat, obese, stout, corpulent, heavy (carrying more fat than usual on one's body)",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:χρήση:NOUN": [
+   {
+    "shown": "use, application, usage",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:χρειάζομαι:VERB": [
+   {
+    "shown": "I need, I require",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:χρησιμοποιώ:VERB": [
+   {
+    "shown": "to use, employ, put to use, utilise",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:χρόνος:NOUN": [
+   {
+    "shown": "time (with no plural)",
+    "v": "ok"
+   },
+   {
+    "shown": "time, a particular time, season",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:χτίζω:VERB": [
+   {
+    "shown": "to build, construct",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:χτυπάω:VERB": [
+   {
+    "shown": "to strike, knock, hit, beat",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:χωριό:NOUN": [
+   {
+    "shown": "village",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:ψάχνω:VERB": [
+   {
+    "shown": "to look for, hunt for, search, rummage",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:ψωμί:NOUN": [
+   {
+    "shown": "bread",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:όλος:ADJ": [
+   {
+    "shown": "whole, entire",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:όμορφος:ADJ": [
+   {
+    "shown": "beautiful, pretty, handsome (especially of objects, pictures etc)",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:όνομα:NOUN": [
+   {
+    "shown": "name",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:όρεξη:NOUN": [
+   {
+    "shown": "appetite (desire for food or drink)",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:όροφος:NOUN": [
+   {
+    "shown": "floor, storey, tier",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:όσος:PRON": [
+   {
+    "shown": "as many as, as much as",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:ότι:CONJ": [
+   {
+    "shown": "that",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:ώρα:NOUN": [
+   {
+    "shown": "hour (¹⁄₂₄ of a day)",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:ἐγώ:PRON": [
+   {
+    "shown": "I",
+    "v": "false-reading",
+    "note": "Ancient polytonic headword, not the modern word; modern is εγώ"
+   }
+  ]
+ },
+ "heldResidue": [
+  "form:el:ανέκαμψε",
+  "form:el:συναντηθήκαμε",
+  "lemma:el:βιάζω:VERB",
+  "lemma:el:βόλτα:NOUN",
+  "lemma:el:διασταύρωση:NOUN",
+  "lemma:el:καταβάλλω:VERB",
+  "lemma:el:ρίχνω:VERB"
+ ]
+}

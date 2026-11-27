@@ -16,7 +16,7 @@ import { flushRowsAfterAll, note } from './model.support';
 
 flushRowsAfterAll('listen.voices');
 
-const LANGS = ['sq', 'de', 'es', 'hi', 'th', 'nb', 'nn', 'he', 'el', 'la'] as const;
+const LANGS = ['sq', 'de', 'es', 'hi', 'th', 'nb', 'nn', 'he', 'el', 'la', 'fr'] as const;
 type Lang = (typeof LANGS)[number];
 
 const opts = (o: Partial<GoListenOptions> = {}): GoListenOptions => ({
@@ -98,8 +98,8 @@ describe('§19 device voices are strictly language-matched (shared GoListen, Alb
 
 describe('§19 the extension\'s content-script pronouncer uses the same strict rule for every language of the product', () => {
   /** Voices of languages near to each target; none of them may ever be used for it. */
-  const OTHER_TAGS = ['en-US', 'sq-AL', 'de-DE', 'es-ES', 'hi-IN', 'th-TH', 'nb-NO', 'nn-NO', 'he-IL', 'el-GR', 'da-DK', 'sv-SE', 'nl-NL', 'pt-PT', 'ca-ES', 'ur-IN', 'mr-IN', 'sr-RS', 'mk-MK', 'lo-LA', 'is-IS'];
-  const tagsOf = (l: Lang): string[] => ({ sq: ['sq'], de: ['de'], es: ['es'], hi: ['hi'], th: ['th'], nb: ['nb', 'no'], nn: ['nn'], he: ['he', 'iw'], el: ['el'], la: ['la', 'it'] }[l]); // la: the Italian voice is Latin's registered stand-in (deviceTags.ts)
+  const OTHER_TAGS = ['en-US', 'sq-AL', 'de-DE', 'es-ES', 'hi-IN', 'th-TH', 'nb-NO', 'nn-NO', 'he-IL', 'el-GR', 'da-DK', 'sv-SE', 'nl-NL', 'pt-PT', 'ca-ES', 'ur-IN', 'mr-IN', 'sr-RS', 'mk-MK', 'lo-LA', 'is-IS', 'fr-FR', 'fr-CA', 'it-IT', 'ro-RO'];
+  const tagsOf = (l: Lang): string[] => ({ sq: ['sq'], de: ['de'], es: ['es'], hi: ['hi'], th: ['th'], nb: ['nb', 'no'], nn: ['nn'], he: ['he', 'iw'], el: ['el'], la: ['la', 'it'], fr: ['fr'] }[l]); // la: the Italian voice is Latin's registered stand-in (deviceTags.ts)
   const familyOf = (tag: string): string => tag.toLowerCase().split(/[-_]/)[0]!;
 
   it.each(LANGS)('%s: no voice is used when only other languages\' voices are installed; its own voice is used when present', async (lang) => {
@@ -112,7 +112,7 @@ describe('§19 the extension\'s content-script pronouncer uses the same strict r
     expect(played.ok).toBe(false);
     expect(speech.spoken).toEqual([]);
 
-    const own = voice(`Own ${lang}`, lang === 'nb' ? 'nb-NO' : `${lang}-${lang === 'sq' ? 'AL' : lang === 'de' ? 'DE' : lang === 'es' ? 'ES' : lang === 'hi' ? 'IN' : lang === 'th' ? 'TH' : lang === 'he' ? 'IL' : lang === 'el' ? 'GR' : lang === 'la' ? 'VA' : 'NO'}`);
+    const own = voice(`Own ${lang}`, lang === 'nb' ? 'nb-NO' : `${lang}-${lang === 'sq' ? 'AL' : lang === 'de' ? 'DE' : lang === 'es' ? 'ES' : lang === 'hi' ? 'IN' : lang === 'th' ? 'TH' : lang === 'he' ? 'IL' : lang === 'el' ? 'GR' : lang === 'la' ? 'VA' : lang === 'fr' ? 'FR' : 'NO'}`);
     const speech2 = fakeSpeech([...others, own]);
     const p2 = createDevicePronouncer({ speech: speech2, utterance: fakeUtterance, voiceWaitMs: 0 });
     expect((await p2.availability(lang)).available).toBe(true);
@@ -147,6 +147,7 @@ const PROBE: Record<Lang, string[]> = {
   he: ['he', 'he-IL', 'iw', 'yi', 'ar-SA'],
   el: ['el', 'el-GR', 'el-CY', 'grc', 'tr-TR'],
   la: ['la', 'la-VA', 'it', 'it-IT', 'es-ES', 'fr-FR', 'ro-RO'],
+  fr: ['fr', 'fr-FR', 'fr-CA', 'fr-BE', 'fr-CH', 'fr-LU', 'la', 'it-IT', 'es-ES', 'ro-RO', 'ca-ES'],
 };
 
 async function acceptedTags(lang: Lang): Promise<string[]> {
@@ -229,6 +230,10 @@ describe('§19 per-language voice and audio-quality table (sq, de, es, hi, th, n
     expect(row('el').deviceExt).toBe('el, el-GR');
     expect(row('la').deviceExt).toBe('la, la-VA, it, it-IT'); // the Italian stand-in is registered; Spanish, French, Romanian never serve Latin
     expect(row('sq').deviceExt).toBe('sq, sq-AL');
+    // French accepts its four varieties' voices (fr-FR, fr-CA, fr-BE, fr-CH) and the bare tag, and no neighbour's: Italian, Spanish, Romanian, Catalan and Latin never serve it
+    expect(row('fr').deviceExt).toBe('fr, fr-FR, fr-CA, fr-BE, fr-CH');
+    expect(row('fr').packRemote).toBe(row('fr').remote); // pack and registry name the same Azure voices
+    expect(row('fr').remote).toBe('fr-FR-DeniseNeural, fr-FR-HenriNeural, fr-CA-SylvieNeural');
   });
 
   it('the pack of every language says "no recordings"; the registry holds exactly one demonstration clip (German) — pack and registry disagree only there', () => {
@@ -253,7 +258,7 @@ describe('§19 per-language voice and audio-quality table (sq, de, es, hi, th, n
     const detail: string[] = [];
     const hearable: string[] = [];
     // a typical device voice for each language (a regional tag, as phones and desktops ship them)
-    const TYPICAL: Record<Lang, string> = { sq: 'sq-AL', de: 'de-DE', es: 'es-ES', hi: 'hi-IN', th: 'th-TH', nb: 'nb-NO', nn: 'nn-NO', he: 'he-IL', el: 'el-GR', la: 'it-IT' };
+    const TYPICAL: Record<Lang, string> = { sq: 'sq-AL', de: 'de-DE', es: 'es-ES', hi: 'hi-IN', th: 'th-TH', nb: 'nb-NO', nn: 'nn-NO', he: 'he-IL', el: 'el-GR', la: 'it-IT', fr: 'fr-FR' };
     for (const lang of LANGS) {
       const deps = createAudioDeps({ consent: () => false, registries: defaultRegistries(), speech: fakeSpeech([voice(`Own ${lang}`, TYPICAL[lang])]), audio: fakeAudio(900), voiceWaitMs: 0, utterance: fakeUtterance, objectUrl: fakeObjectUrls() });
       const g = createGoListen(opts({ speech: fakeSpeech([voice(`Own ${lang}`, TYPICAL[lang])]) }));

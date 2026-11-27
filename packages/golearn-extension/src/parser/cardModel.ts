@@ -94,6 +94,12 @@ export function contextLine(c: ContextReport): string {
 }
 
 export interface CardModel {
+  /**
+   * Set when the analyser recognised the sentence as a spoken dialect it does not analyse (a reading's `notes.variety === 'dialect?'`): the plain-words
+   * statement. The card then carries the word and this statement and NOTHING that reads as a meaning (no lemma, gloss, transliteration, form line or
+   * alternatives), and nothing is recorded for the click.
+   */
+  dialect?: string;
   languageId: string;
   packId: string;
   analyzerId: string;
@@ -124,6 +130,19 @@ export interface CardModel {
   pronunciation: string[];
   /** The adapter's rule-based romanization of the selected word, only when the adapter is sure of every unit of it (Hindi, Thai); absent for Latin scripts. Never invented. */
   transliteration?: string;
+  /** The pronunciation in the language's own script and the romanization scheme, when the adapter states them (Korean). */
+  respelling?: string;
+  /** The language's sharded word list could not be loaded for this lookup, so an unconfirmed reading is not evidence that the word is missing from it. */
+  lexiconNotLoaded?: boolean;
+  /**
+   * The language's review gate holds this reading back from review (notes.reviewGate 'yes'): `kind` is its reviewKind ('two-words' when the sentence does not
+   * decide between two headwords, 'unlisted', 'no-meaning', 'undecided-entry', 'low-confidence', 'known-limit', 'other-listed-word', 'unwritten-copula', else 'other'),
+   * `reason` its one plain sentence, `rivals` the other headwords in play, best first, each with its own class and meaning when it has them.
+   */
+  reviewHold?: { kind: string; reason: string; rivals: Array<{ lemma: string; pos?: string; gloss?: string }> };
+  /** The analyser could not tell which of several dictionary entries of this spelling the word is (an undecided homonym): no one entry's record is the word's. */
+  entryUndecided?: boolean;
+  romanizationScheme?: string;
   /** The same for the lemma, when it differs from the selection and the adapter can romanize it on its own. */
   lemmaTransliteration?: string;
   context: ContextReport;

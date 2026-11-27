@@ -8,9 +8,9 @@
  * idempotent: a loaded language resolves at once.
  */
 import type { LanguageAdapter } from '../../../../src/core';
-import { getAnalyser, hasAnalyser, languageMeta, registerAnalyser } from '../parser/registry';
+import { getAnalyser, hasAnalyser, languageMeta, registerAnalyser, type AnalyserExtras } from '../parser/registry';
 
-type AnalyserModule = { adapter: LanguageAdapter };
+type AnalyserModule = { adapter: LanguageAdapter; createShardLoader?: AnalyserExtras['createShardLoader']; /** More data the chunk loads for itself (French: the lemma list); it settles either way. */ ready?: Promise<unknown> };
 
 const IMPORTS: Readonly<Record<string, () => Promise<AnalyserModule>>> = {
   sq: () => import('./sq'),
@@ -24,6 +24,10 @@ const IMPORTS: Readonly<Record<string, () => Promise<AnalyserModule>>> = {
   he: () => import('./he'),
   el: () => import('./el'),
   arc: () => import('./arc'),
+  ru: () => import('./ru'),
+  fr: () => import('./fr'),
+  ko: () => import('./ko'),
+  ar: () => import('./ar'),
 };
 
 /** Loads (once) and registers the analyser of a language; resolves with it, or undefined for a language the parser does not know. A failed import rejects. */
@@ -32,7 +36,8 @@ export async function loadAnalyser(languageId: string): Promise<LanguageAdapter 
   if (hasAnalyser(languageId)) return getAnalyser(languageId);
   const load = Object.prototype.hasOwnProperty.call(IMPORTS, languageId) ? IMPORTS[languageId] : undefined;
   if (!load) return undefined;
-  const { adapter } = await load();
-  registerAnalyser(languageId, adapter);
+  const { adapter, ready, createShardLoader } = await load();
+  if (ready) await ready.catch(() => undefined);
+  registerAnalyser(languageId, adapter, createShardLoader ? { createShardLoader } : undefined);
   return adapter;
 }

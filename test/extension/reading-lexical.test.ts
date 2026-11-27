@@ -20,7 +20,7 @@ import type { ConfirmFormsReply } from '../../packages/golearn-extension/src/pro
 
 registerAllAnalysers();
 
-const LANGS = ['sq', 'es', 'de', 'hi', 'th', 'nb', 'nn', 'la', 'he', 'el', 'arc'] as const;
+const LANGS = ['sq', 'es', 'de', 'hi', 'th', 'nb', 'nn', 'la', 'he', 'el', 'arc', 'ru', 'fr', 'ko', 'ar'] as const;
 const VARIETY: Record<string, string> = { he: 'he-bib', el: 'el-koi' };
 const CORPUS = resolve(process.cwd(), 'data/corpus');
 
@@ -30,18 +30,50 @@ const SAMPLE_FILES: Record<string, string[]> = {
   la: ['ladder-caesar-bg-1'], he: ['bible-gen-1'], el: ['bible-1john-1'], arc: ['daniel-2-10', 'daniel-2-11', 'daniel-2-12'],
 };
 
+/**
+ * The languages with no bundled corpus are sampled from sentences written for this test.
+ * Russian: everyday words, forms of one lemma (книга, книгу, книги), words written alike (стали, мой, три), ё printed as е (шел), a hyphenated word.
+ * Korean (the pack reads web pages): a noun with its particles (학생들이, 학교에서), an honorific past (읽으셨습니다), irregular and regular predicates (들어요,
+ * 추워요, 몰라요, 좋아요), a copula, a progressive construction, a stacked particle, a number with a particle, a Hanja word, and one word written in conjoining jamo.
+ * French (the pack reads web pages): ordinary prose with the present, the passé composé, a passé simple, a negation, pronouns, elision, a
+ * contraction, a hyphenated clitic and compound.
+ */
+const INLINE_SAMPLE: Record<string, string[]> = {
+  ru: [
+    'Она прочитала книгу.', 'У меня есть два года и пять лет, но нет книги.', 'В этом году он жил в лесу.', 'Они стали читать по-русски каждый день.',
+    'Это новый дом, а это мой брат.', 'Я знаю, что он шел домой.', 'Все знают его, и он знает всех.', 'Книга лежит на столе, а книги стоят там.',
+    'Мы говорим и думаем о жизни.', 'Три дня она ждала письмо из города.', 'Кто-то пришёл домой вечером.', 'Дети идут в школу, а мать работает дома.',
+  ],
+  ko: [
+    '학생들이 학교에서 공부했습니다.', '선생님이 책을 읽으셨습니다.', '저는 음악을 들어요.', '오늘은 날씨가 추워요.', '그 사람은 내 이름을 몰라요.',
+    '이것은 좋은 책입니다.', '친구에게만 말했어요.', '지금 밥을 먹고 있어요.', '학교에서부터 집까지 걸어갔어요.', '2024년에 學校를 졸업했습니다.',
+    '한국어를 공부해요.'.normalize('NFD'), '비가 오면 우산을 쓰세요.',
+  ],
+  fr: [
+    'Elle est ici avec un ami.', 'Ils parlent de l’école.', 'C’est un petit livre.', 'Je veux le livre du garçon.', 'Nous avons deux enfants.',
+    'Les enfants vont au marché.', 'Elle est arrivée hier et nous avons mangé ensemble.', 'Je ne sais pas si les chevaux sont dans le jardin.',
+    'Il entra dans la maison et vit sa mère.', 'Donne-le-moi, s’il te plaît.', 'Aujourd’hui il fait beau, peut-être.', 'Les lettres que j’ai écrites sont sur la table.',
+  ],
+  // Arabic (the pack reads web pages): vowelled and unvowelled print, an attached article, conjunction and pronoun, spellings shared by several words (علم, كتب, ذهب), a verb form with a prefix
+  ar: [
+    'كَتَبَ الْوَلَدُ الدَّرْسَ.', 'ذهب الطالب إلى المدرسة.', 'قال الرجل في البيت.', 'هذا كتاب جديد على الطاولة.', 'هو لا يعرف أين ذهبت أمي مع أخيها.',
+    'كان الرجل في الغرفة مع ابنه.', 'لم يذهب إلى المدرسة لأنه مريض.', 'وكتب الدرس ثم نام.', 'العلم نور والجهل ظلام.', 'يكتبون الرسائل كل يوم.', 'الكتب على الطاولة.', 'أحب هذه المدينة.',
+  ],
+};
+
 function sentencesOf(lang: string, file: string): string[] {
   const j = JSON.parse(readFileSync(resolve(CORPUS, lang, file + '.json'), 'utf8')) as { sections?: Array<{ paragraphs?: Array<{ sentences?: Array<{ text?: unknown }> }> }> };
   const out: string[] = [];
   for (const s of j.sections ?? []) for (const p of s.paragraphs ?? []) for (const x of p.sentences ?? []) if (typeof x.text === 'string' && x.text.trim()) out.push(x.text);
   return out;
 }
-const sampleOf = (lang: string, n = 12): string[] => SAMPLE_FILES[lang]!.flatMap((f) => sentencesOf(lang, f)).slice(0, n);
+const sampleOf = (lang: string, n = 12): string[] => (INLINE_SAMPLE[lang] ?? SAMPLE_FILES[lang]!.flatMap((f) => sentencesOf(lang, f))).slice(0, n);
 /** Distinct words of up to `files` corpus files of a language (by whitespace; punctuation trimmed). */
 function vocabularyOf(lang: string, files = 12, cap = 500): string[] {
-  const names = readdirSync(resolve(CORPUS, lang)).filter((f) => f.endsWith('.json')).slice(0, files).map((f) => f.replace(/\.json$/, ''));
+  const inline = INLINE_SAMPLE[lang];
+  const names = inline ? [] : readdirSync(resolve(CORPUS, lang)).filter((f) => f.endsWith('.json')).slice(0, files).map((f) => f.replace(/\.json$/, ''));
   const seen = new Set<string>();
-  for (const f of names) for (const s of sentencesOf(lang, f)) for (const raw of s.split(/\s+/)) {
+  for (const s of inline ?? names.flatMap((f) => sentencesOf(lang, f))) for (const raw of s.split(/\s+/)) {
     const w = raw.replace(/^[^\p{L}\p{M}]+|[^\p{L}\p{M}]+$/gu, '');
     if (w && /^[\p{L}\p{M}]+$/u.test(w) && wordInScript(w, lang)) seen.add(w);
     if (seen.size >= cap) return [...seen];
@@ -66,9 +98,12 @@ const expectedWords = (lang: string, texts: readonly string[], variety?: string)
 /** A nonsense word per script, built from code points (never typed). */
 const cp = (...c: number[]): string => String.fromCodePoint(...c);
 const MADE_UP: Record<string, string> = {
-  sq: 'zqxvkjw', es: 'zqxvkjw', de: 'zqxvkjw', nb: 'zqxvkjw', nn: 'zqxvkjw', la: 'zqxvkjw',
+  sq: 'zqxvkjw', es: 'zqxvkjw', de: 'zqxvkjw', nb: 'zqxvkjw', nn: 'zqxvkjw', la: 'zqxvkjw', fr: 'zqxvkjw',
   he: cp(0x5D6, 0x5D7, 0x5D8, 0x5E1, 0x5E6, 0x5E7), arc: cp(0x5D6, 0x5D7, 0x5D8, 0x5E1, 0x5E6, 0x5E7),
   el: cp(0x3B6, 0x3BE, 0x3C8, 0x3C7, 0x3B8), th: cp(0xE0E, 0xE0F, 0xE10), hi: cp(0x91F, 0x920, 0x921, 0x922, 0x923),
+  ru: cp(0x437, 0x449, 0x445, 0x446, 0x43A, 0x436),
+  ko: cp(0xD6D7, 0xB5A5, 0xC537), // three Hangul syllables nobody has made a word of (built from code points, never typed)
+  ar: cp(0x638, 0x636, 0x62B, 0x630, 0x63A),
 };
 
 const stats: Array<{ lang: string; tokens: number; withReading: number; multi: number; rows: number }> = [];
@@ -79,7 +114,7 @@ afterAll(() => {
 });
 
 describe('the registry', () => {
-  it('lists exactly the eleven languages these tests cover', () => {
+  it('lists exactly the fourteen languages these tests cover', () => {
     expect([...PARSER_LANGUAGES].sort()).toEqual([...LANGS].sort());
     for (const l of LANGS) expect(getAnalyser(l), l).toBeDefined();
   });
@@ -178,13 +213,15 @@ describe('homographs: every creditable reading is carried, best first, while Act
       if (!w || w.readings.length < 2 || w.readings.length > 6) continue;
       homographsFound.push(`${lang}:${surface} (${w.readings.length} readings)`);
       // GoLearn Active's own answer for the word: the form and the single best lemma, no more
-      expect(w.ids).toEqual([w.ids[0], w.readings[0]]);
-      expect(w.ids).toHaveLength(2);
+      // Korean: a best reading the review gate holds back (a two-sided form, an undecided homonym: notes.reviewGate) is credited to its written form only;
+      // Reading Analysis still counts every reading (src/core/review-gate.ts)
+      const held = lang === 'ko' && w.ids.length === 1;
+      expect(w.ids).toEqual(held ? [w.ids[0]] : [w.ids[0], w.readings[0]]);
       expect(new Set(w.readings).size).toBe(w.readings.length);
       const t = await build(lang, [surface], variety ? { varietyId: variety } : {});
       expect(t.words).toHaveLength(1);
       expect(t.words[0]!.word).toEqual([w.ids[0], ...w.readings]);
-      expect(t.words[0]!.word[1]).toBe(w.ids[1]); // best first
+      if (!held) expect(t.words[0]!.word[1]).toBe(w.ids[1]); // best first
       expect(t.words[0]!.occurrences).toBe(1);
       if (++checked >= 15) break;
     }
@@ -215,7 +252,17 @@ describe('a word neither the analyser nor the dictionary has', () => {
     expect(t.dictionary).toBe('asked');
     expect(asked.every(([, l]) => l === lang)).toBe(true);
     expect(asked.flatMap(([f]) => f).sort()).toEqual(t.words.map((w) => w.word[0].slice(`form:${lang}:`.length)).sort());
-    for (const { word } of t.words) expect(word).toEqual([word[0], `lemma:${lang}:zz:NOUN`]);
+    // Arabic: the dictionary files words under a key without vowels, so no lemma id is made from it (a second, unvocalized id for the word): the form stays a form
+    for (const { word } of t.words) expect(word).toEqual(lang === 'ar' ? [word[0]] : [word[0], `lemma:${lang}:zz:NOUN`]);
+  });
+
+  it('ar: a dictionary-confirmed word never gets an unvocalized lemma id (أسبوع, مدرسة, كتاب), whatever the dictionary returns', async () => {
+    const confirmForms = async (forms: string[]): Promise<ConfirmFormsReply | undefined> => ({ ok: true, forms: Object.fromEntries(forms.map((f) => [f, [f, 'NOUN'] as [string, string]])) });
+    const t = await build('ar', ['أسبوع', 'مدرسة', 'كتاب'].map((w) => `${w} ${w}`), { confirmForms });
+    const ids = t.words.flatMap((w) => w.word as unknown as string[]);
+    // no id of the shape lemma:ar:<letters with no vowel mark>:POS appears for a word whose index lemma has vowels
+    const bare = ids.filter((id) => /^lemma:ar:[^:]+:[A-Z]+$/u.test(id) && !/[ً-ْٰ]/u.test(id.split(':')[2]));
+    expect(bare.filter((id) => ['أسبوع', 'مدرسة', 'كتاب'].includes(id.split(':')[2]))).toEqual([]);
   });
 
   it('a lemma with no part of speech is carried without one', async () => {

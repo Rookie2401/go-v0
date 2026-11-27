@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { documentText, fitsTeamLanguage, guessLanguage, guessScandinavian } from '../../src/ingest/language';
+import { documentText, fitsTeamLanguage, guessLanguage, guessScandinavian, looksNotArabic } from '../../src/ingest/language';
 
 // Paragraphs written for these tests (not from any book). Each is well over the 40 words the guesser needs to judge.
 const SPANISH = 'Era una tarde tranquila en el pueblo y los niños jugaban en la plaza mientras sus madres hablaban con las vecinas. El abuelo se sentó bajo el árbol y empezó a contar una historia que todos conocían, '
@@ -19,6 +19,11 @@ const GEORGIAN = 'გამარჯობა მსოფლიო, დღე�
 /** Latin letters, but made-up words: no language's common words lead, so the guesser names none. */
 const UNKNOWN_LATIN = 'Zorpa kelundi mavrek tosil bruvane qelto narvik sumeli dorka vintel opra zakuri melto grivane tolsek brunada keplo viran sodek lumira hakol trebuna wisek ondara felquin murak taloven zibrek hunola priven kasdor velnik orsabu tiflen gormas yelkun darubi splenit vokra '
   + 'mintal ruxen abelo trosk gevidar lonnu piskal ferdun omaki quinzel hobrat';
+
+const ARABIC_TEXT = 'القاهرة هي عاصمة مصر وأكبر مدنها، وهي من المدن التي كان لها دور كبير في التاريخ. في هذه المدينة يعيش ملايين الناس، وبعد الظهر يذهب الزوار الذين يريدون أن يروا الأهرام إلى النيل.';
+const PERSIAN_TEXT = 'تهران پایتخت ایران است و بزرگ‌ترین شهر این کشور. در این شهر میلیون‌ها نفر زندگی می‌کنند و هر روز گردشگران زیادی به اینجا می‌آیند. این شهر چندین دانشگاه و موزه دارد که گردشگران از آن‌ها دیدن می‌کنند.';
+const URDU_TEXT = 'لاہور پاکستان کا دوسرا بڑا شہر ہے۔ اس شہر میں لاکھوں لوگ رہتے ہیں اور ہر روز بہت سے سیاح یہاں آتے ہیں۔ یہ شہر اپنی تاریخی عمارتوں اور باغات کی وجہ سے مشہور ہے۔';
+const ARABIC_TEAM = { lang: 'ar', country: 'Arabic' } as const;
 
 const HONDURAS = { lang: 'es', country: 'Honduras' } as const;
 const THAILAND = { lang: 'th', country: 'Thailand' } as const;
@@ -189,5 +194,35 @@ describe('Norwegian and Danish', () => {
     expect(guessLanguage(GERMAN).lang).toBe('de');
     expect(guessLanguage(ALBANIAN).lang).toBe('sq');
     expect(guessLanguage(ENGLISH).lang).toBe('en');
+  });
+});
+
+describe('the Arabic script is not Arabic', () => {
+  it('names Arabic for Arabic prose, and no language for a text with letters Arabic does not use', () => {
+    expect(guessLanguage(ARABIC_TEXT).lang).toBe('ar');
+    for (const text of [PERSIAN_TEXT, URDU_TEXT]) {
+      const g = guessLanguage(text);
+      expect(g.lang).toBeUndefined();
+      expect(g.script).toBe('ar'); // it is still reported as the Arabic script
+    }
+  });
+
+  it('one Persian name in a long Arabic text does not turn it away', () => {
+    expect(guessLanguage(`${ARABIC_TEXT} ${ARABIC_TEXT} وقال الزائر إن مدينة گرگان جميلة.`).lang).toBe('ar');
+    expect(looksNotArabic('گرگان')).toBe(true);
+  });
+
+  it('an Arabic team takes Arabic and turns Persian and Urdu away, kindly, with the reason', () => {
+    expect(fitsTeamLanguage(ARABIC_TEXT, ARABIC_TEAM).ok).toBe(true);
+    for (const text of [PERSIAN_TEXT, URDU_TEXT]) {
+      const v = fitsTeamLanguage(text, ARABIC_TEAM);
+      expect(v.ok).toBe(false);
+      expect(v.message).toMatch(/letters Arabic does not use/);
+    }
+  });
+
+  it('another team is still turned away from Arabic-script text by its script', () => {
+    expect(fitsTeamLanguage(ARABIC_TEXT, HONDURAS).ok).toBe(false);
+    expect(fitsTeamLanguage(PERSIAN_TEXT, HONDURAS).ok).toBe(false);
   });
 });

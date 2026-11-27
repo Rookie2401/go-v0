@@ -20,7 +20,15 @@ describe('the account page', () => {
     expect(link.getAttribute('href')).toBe('#/account');
     expect(link.getAttribute('aria-label')).toBe('Account');
     expect(link.querySelector('svg circle')).not.toBeNull(); // the person: a head over shoulders, like Biblia's
+    expect(link.previousElementSibling?.id).toBe('header-languages');
     expect(link.nextElementSibling?.id).toBe('settings-link');
+    // the Languages tab is a symbol too (the owner, 2026-11-26): a globe with no words of its own, named by the link and its tip
+    const languages = rig.q<HTMLAnchorElement>('header #header-languages');
+    expect([languages.textContent, languages.getAttribute('aria-label'), languages.title, languages.getAttribute('href')]).toEqual(['', 'Languages', 'Languages', '#/languages']);
+    expect(languages.querySelectorAll('svg[aria-hidden="true"]').length).toBe(1);
+    expect(languages.querySelector('svg circle')!.getAttribute('r')).toBe('9'); // the globe's outline
+    expect(languages.classList.contains('cog')).toBe(true); // the same round target as the person and the cog
+    expect(languages.getAttribute('aria-current')).toBeNull();
     await rig.go('account');
     expect(rig.q('main h1').textContent).toBe('Account');
     expect(rig.q('header #header-account').getAttribute('aria-current')).toBe('page');
@@ -78,6 +86,38 @@ describe('the account page', () => {
     expect(acct.name).toBe('Ana Lima');
     expect(rig.q('#account-status').textContent).toBe('Name saved.');
     expect(rig.q('#account-name-edit').textContent).toBe('Edit');
+  });
+
+  it('a pending deletion’s banner leads the account page, with languages in their own tab', async () => {
+    const acct = new FakeAccountService();
+    acct.scheduledPurgeAt = acct.purgeAt;
+    const rig = await makeRig({ signedIn: true, fetch: acct.fetch });
+    await rig.go('account');
+    await until(() => !!rig.root.querySelector('#deletion-banner'), 'the banner');
+    await flush(8);
+    const parts = [...rig.q('#account-card').children].filter((c) => !c.classList.contains('sr'));
+    expect(parts[0]!.id).toBe('deletion-slot');
+    expect(parts[0]!.querySelector('#deletion-banner')).not.toBeNull();
+    expect(rig.root.querySelector('#account-languages')).toBeNull();
+    expect(rig.q('#header-languages').getAttribute('href')).toBe('#/languages');
+    await rig.go('languages');
+    await until(() => !!rig.root.querySelector('#account-languages'), 'the languages');
+    expect(rig.q('main h1').textContent).toBe('Languages');
+    expect(rig.q('#header-languages').getAttribute('aria-current')).toBe('page');
+    expect(rig.root.querySelector('#deletion-banner')).toBeNull();
+  });
+
+  it('on a device-only copy the account offer and language list stay on separate tabs', async () => {
+    const rig = await makeRig({ local: {} });
+    await rig.go('account');
+    await until(() => !!rig.root.querySelector('#account-device'), 'the account offer');
+    await flush(8);
+    const parts = [...rig.q('#account-card').children].filter((c) => !c.classList.contains('sr'));
+    expect(parts.length).toBeGreaterThan(0);
+    expect(rig.root.querySelector('#account-languages')).toBeNull();
+    await rig.go('languages');
+    await until(() => !!rig.root.querySelector('#account-languages'), 'the languages');
+    expect(rig.qa('#account-languages')).toHaveLength(1);
   });
 
   it('Delete account opens the guided step: what happens, how to restore within 14 days, the password; Keep my account closes it', async () => {

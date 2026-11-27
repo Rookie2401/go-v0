@@ -68,6 +68,9 @@ export interface PackEvidence {
 const GOLD_REPORT = 'docs/ecosystem/linguistics/GOLD-REPORT-2026-10-10.json';
 const LATIN_REPORT = 'data/review/latin-eval/report.json';
 const THAI_BENCHMARKS = 'docs/thai/BENCHMARKS.md';
+const RUSSIAN_REPORT = 'docs/russian/eval.json';
+const FRENCH_REPORT = 'docs/french/EVALUATION.json';
+const ARABIC_EVAL = 'docs/arabic/EVAL.md';
 
 /** The form index of a pack's declared dictionary: form → lemma and part of speech, for the words the hand list does not hold. */
 const formsIndex = (lang: string, id: string): LemmaSource => ({
@@ -161,6 +164,67 @@ export const PACK_EVIDENCE: Readonly<Record<string, PackEvidence>> = Object.free
       { kind: 'attested-form-index', id: 'oshb-aramaic', label: 'the forms of the Aramaic portions of the Hebrew Bible with their Open Scriptures morphology', size: { count: 3151, unit: 'forms' }, source: 'src/adapters/aramaic/seed.ts' },
     ],
     lemmaMeasurements: [],
+  },
+  // every reading is a row of Wiktionary's Russian inflection tables or form-of pages (docs/russian/INDEX.md); the first reading was
+  // scored against three human-annotated treebanks the analyser took nothing from but lemma and form COUNTS of the GSD train split
+  // (docs/russian/EVAL.md; the figures are the report's strict ones: ё must match)
+  ru: {
+    lemmaSources: [
+      { kind: 'attested-form-index', id: 'kaikki-ru-tables', label: 'Wiktionary’s Russian inflection tables and form-of pages', size: { count: 923009, unit: 'forms' }, source: 'public/lexicon/ru/standard/manifest.json' },
+      formsIndex('ru', 'kaikki-ru@2026-10-30'),
+    ],
+    lemmaMeasurements: [
+      { id: 'ud-gsd-test', corpus: 'Russian Wikipedia, blog and news sentences', gold: 'the UD Russian-GSD treebank (test split)', goldKind: 'human-treebank', heldOut: true, items: 8578, lemmaAccuracy: 88.39, analyser: 'adapter-ru@1', measuredOn: '2026-11-18', source: RUSSIAN_REPORT },
+      { id: 'ud-taiga-test', corpus: 'Russian social media, poetry and fiction', gold: 'the UD Russian-Taiga treebank (test split)', goldKind: 'human-treebank', heldOut: true, items: 11302, lemmaAccuracy: 89.36, analyser: 'adapter-ru@1', measuredOn: '2026-11-18', source: RUSSIAN_REPORT },
+      { id: 'ud-pud', corpus: 'a thousand translated news and Wikipedia sentences', gold: 'the UD Russian-PUD treebank', goldKind: 'human-treebank', heldOut: true, items: 15714, lemmaAccuracy: 90.76, analyser: 'adapter-ru@1', measuredOn: '2026-11-18', source: RUSSIAN_REPORT },
+    ],
+  },
+  // Korean: an 어절 is a stem and a chain of particles or endings, so the analyser reads a STEM lexicon (the headwords of the pack's
+  // Wiktionary dictionary and this product's marked supplement rows, filed by stem with their conjugation class): a compiled core of it,
+  // the rest in shards. Measured on the treebank's test part, run once at the end and not looked into (docs/korean/EVAL-TEST.md); the
+  // development part was looked at while the rules were written, so it is not evidence. The treebank's train part gave the lexicon its counts.
+  ko: {
+    lemmaSources: [
+      { kind: 'analyser-lexicon', id: 'kaikki-ko-lexicon', label: 'the headwords of the pack’s Wiktionary dictionary, filed by stem, which the analyser reads itself', size: { count: 37048, unit: 'entries' }, source: 'docs/korean/INDEX.md' },
+      formsIndex('ko', 'kaikki-ko@2026-10-30'),
+    ],
+    lemmaMeasurements: [
+      { id: 'ud-kaist-test', corpus: 'Korean expository prose and literature of the 1990s (the test part of UD Korean-Kaist)', gold: 'the Universal Dependencies Korean-Kaist treebank', goldKind: 'human-treebank', heldOut: true, items: 23865, lemmaAccuracy: 91.58, analyser: 'adapter-ko@1', measuredOn: '2026-11-25', source: 'docs/korean/EVAL-TEST.md' },
+    ],
+  },
+  // French: the analyser reads the lemmas of the pack's own dictionary (lemma, part of speech, gender; no meanings) beside its hand word
+  // list, and the form index answers for the rest. Measured against a treebank annotated by people, with that lemma list loaded as it is in
+  // the extension: the test part was run once, at the end, and not looked into; the dev part was looked at while the context rules were
+  // written, so it is not held out. Pronouns are counted against the treebank's own convention (il under lui), which costs about 2.7 points.
+  fr: {
+    lemmaSources: [
+      { kind: 'analyser-lexicon', id: 'kaikki-fr@2026-10-30', label: 'the lemmas of the pack’s Wiktionary dictionary, which the analyser reads itself', size: { count: 78650, unit: 'entries' }, source: 'src/adapters/french/lexicon-full-data.ts' },
+      formsIndex('fr', 'kaikki-fr@2026-10-30'),
+    ],
+    lemmaMeasurements: [
+      {
+        id: 'ud-gsd-test', corpus: 'French news, encyclopedia and web sentences (the test part of UD French GSD)', gold: 'the Universal Dependencies French GSD treebank', goldKind: 'human-treebank', heldOut: true,
+        items: 8018, lemmaAccuracy: 92.3, analyser: 'adapter-fr@1', measuredOn: '2026-11-17', source: FRENCH_REPORT,
+      },
+      {
+        id: 'ud-gsd-dev', corpus: 'French news, encyclopedia and web sentences (the dev part of UD French GSD)', gold: 'the Universal Dependencies French GSD treebank', goldKind: 'human-treebank', heldOut: false,
+        items: 28889, lemmaAccuracy: 92.43, analyser: 'adapter-fr@1', measuredOn: '2026-11-17', source: FRENCH_REPORT,
+      },
+    ],
+  },
+  // Arabic: every reading is a row of Wiktionary's Arabic tables or form-of pages (docs/arabic/INDEX.md). There is NO human-annotated Arabic
+  // gold here: the two figures are the adapter measured on development sets that were written AND annotated by the machine that built the
+  // analyser (docs/arabic/EVAL.md, "Read this first"), not held out and not a treebank. They are printed there with the undecided share
+  // (15.5 % of the unvocalized set) and the confident-and-wrong share (2.1 %) beside them, because the lemma figure alone rewards a guess.
+  ar: {
+    lemmaSources: [
+      { kind: 'attested-form-index', id: 'kaikki-ar-tables', label: 'Wiktionary’s Arabic conjugation and declension tables and form-of pages', size: { count: 239260, unit: 'forms' }, source: 'public/lexicon/ar/standard/manifest.json' },
+      formsIndex('ar', 'kaikki-ar@2026-09-22'),
+    ],
+    lemmaMeasurements: [
+      { id: 'msa-dev', corpus: 'eighty Modern Standard Arabic sentences without vowels, written for development', gold: 'labels written by the machine that built the analyser, checked by nobody', goldKind: 'ai-labelled', heldOut: false, items: 670, lemmaAccuracy: 91.5, analyser: 'adapter-ar@1', measuredOn: '2026-11-25', source: ARABIC_EVAL },
+      { id: 'msa-dev-vocalized', corpus: 'fifteen of the same sentences with their vowels printed', gold: 'labels written by the machine that built the analyser, checked by nobody', goldKind: 'ai-labelled', heldOut: false, items: 87, lemmaAccuracy: 96.6, analyser: 'adapter-ar@1', measuredOn: '2026-11-25', source: ARABIC_EVAL },
+    ],
   },
 });
 

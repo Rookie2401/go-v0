@@ -18,12 +18,11 @@ const fetchAssets = (async (input: RequestInfo | URL) => {
 }) as typeof fetch;
 const api = { async unit() { return { ok: false, status: 404, error: 'not-found', message: 'missing', body: {} }; } } as unknown as RepositoryApi;
 
-async function card(surface: string) {
+async function card(surface: string, unitId = `form:la:${surface}`) {
   const provider = packFactsFor({ fetch: fetchAssets, baseUrl: 'http://assets.local/' })('la', api)!;
-  const unitId = `form:la:${surface}`;
   const facts = await provider.factsFor(unitId, 'la', 'la-eccl') as ReviewFacts | undefined;
   expect(facts, `facts for ${surface}`).toBeDefined();
-  const built = await writtenRecognition.build({ unitId, unitKind: 'form', languageId: 'la', varietyId: 'la-eccl', dimension: 'written-recognition' }, facts!, { now: '2026-11-13T00:00:00.000Z', random: () => 0 });
+  const built = await writtenRecognition.build({ unitId, unitKind: unitId.startsWith('lemma:') ? 'lemma' : 'form', languageId: 'la', varietyId: 'la-eccl', dimension: 'written-recognition' }, facts!, { now: '2026-11-13T00:00:00.000Z', random: () => 0 });
   const key = (built as { answerKey?: { accepted?: string[]; explanation?: string } }).answerKey ?? {};
   return { facts: facts!, accepted: key.accepted ?? [], explanation: key.explanation ?? '' };
 }
@@ -32,9 +31,11 @@ describe('Latin GoReview cards lead with the Vulgate sense (2cd8872d, checked 20
   it.each([
     ['gratia', /^grace\b/i, 'grace'],
     ['pax', /^peace\b/i, 'peace'],
-    ['peccatum', /^sin\b/i, 'sin'],
-  ])('%s: the facts lead with the Vulgate sense, and the card accepts and explains it', async (surface, lead, answer) => {
-    const { facts, accepted, explanation } = await card(surface);
+    // 2026-11-27 (deck gate, follow-up 2): the written form peccatum is two words (the noun "sin" and the participle of pecco), and a form
+    // card has no sentence to say which, so the form is held; the Vulgate lead is asserted on the word's own card, which is the one made.
+    ['peccatum', /^sin\b/i, 'sin', 'lemma:la:peccatum:NOUN'],
+  ] as Array<[string, RegExp, string, string?]>)('%s: the facts lead with the Vulgate sense, and the card accepts and explains it', async (surface, lead, answer, unitId) => {
+    const { facts, accepted, explanation } = await card(surface, unitId);
     expect(facts.glosses[0]).toMatch(lead);
     expect(facts.glosses[0]).not.toMatch(/popularity|esteem/i);
     expect(accepted).toContain(answer);

@@ -29,7 +29,7 @@ describe('Languages: download your languages', () => {
     expect(rig.q('#my-languages').hidden).toBe(true);
     const cards = [...rig.root.querySelectorAll('#language-cards > .lang')];
     expect(cards.map((c) => c.getAttribute('data-language'))).toEqual(LANGUAGES_FAKE.map((l) => l.languageId));
-    expect(cards.map((c) => c.querySelector('h3')!.firstChild!.textContent)).toEqual(['Norwegian', 'German', 'Albanian', 'Hindi', 'Thai', 'Spanish', 'Latin']);
+    expect(cards.map((c) => c.querySelector('.lang-name')!.firstChild!.textContent)).toEqual(['Norwegian', 'German', 'Albanian', 'Hindi', 'Thai', 'Spanish', 'Latin']);
     const albanian = rig.q('[data-language="sq"]');
     expect(albanian.querySelector('.native')!.textContent).toContain('shqip');
     // the level of the pack, in the pack's own words; the script's code (Latn, Deva) is engineering and is not shown
@@ -41,11 +41,17 @@ describe('Languages: download your languages', () => {
     expect(albanian.querySelector('.audio')!.textContent).toContain('Browser voices');
     expect(rig.q('[data-language="de"]').textContent).toContain('experimental, unreviewed');
     expect(rig.q('[data-language="la"]').textContent).toContain('experimental, unreviewed');
-    // a language with nothing to ask downloads on ONE press: its button is the control, named for the row it is in
+    // GoReview's display (2026-11-26): a language lists its tracks as rows, each row one control with its state at the end of the line.
+    // A language with nothing to ask has one row, and downloads on ONE press of it
     const latin = rig.q<HTMLButtonElement>('[data-language="la"] [data-action="choose"]');
-    expect(rig.root.querySelector('[data-language="la"] details.download')).toBeNull();
-    expect([latin.textContent, latin.getAttribute('aria-label')]).toEqual(['Download', 'Download Latin']);
+    expect(rig.root.querySelector('[data-language="la"] details.download, [data-language="la"] select')).toBeNull();
+    expect(latin.classList.contains('track-row')).toBe(true);
+    expect([latin.querySelector('.track-name')!.textContent, latin.querySelector('small')!.textContent, latin.getAttribute('aria-label')]).toEqual(['Latin', 'Download', 'Download Latin']);
+    expect(latin.closest('ul')!.getAttribute('aria-label')).toBe('Latin tracks');
     expect(latin.classList.contains('primary')).toBe(false); // nine filled buttons in a column was the old page
+    // the face of the box: the name with the native name beside it, and nothing says “Reading now” before a language is read in
+    expect(rig.q('[data-language="la"] .language-box-face .lang-name').textContent).toBe('Latin (Latina)');
+    expect(rig.q('[data-language="la"] .lang-reading').hidden).toBe(true);
     // free choice: no account is needed and no team is asked for; there is no separate install step and no language form any more
     expect(rig.text()).not.toMatch(/sign in first/i);
     expect(rig.root.querySelector('#team')).toBeNull();
@@ -53,11 +59,9 @@ describe('Languages: download your languages', () => {
     expect(rig.root.querySelector('#enrol-form, #language, #pack-info')).toBeNull();
     expect(rig.text()).not.toMatch(/Install the pack|Orientation/);
     expect(rig.root.querySelectorAll('[data-action="choose"]')).toHaveLength(7);
-    // each is a compact row with its Download at the right; one that asks a question first (a written standard, a regional preference)
-    // opens it in the row; what works and what does not sit under a collapsed Details
     expect(cards.every((c) => c.tagName === 'LI')).toBe(true);
-    expect(cards.filter((c) => c.querySelector('details.download')).map((c) => c.getAttribute('data-language'))).toEqual(LANGUAGES_FAKE.filter((l) => l.choice).map((l) => l.languageId));
-    for (const c of cards.filter((x) => x.querySelector('details.download'))) expect(c.querySelector('details.download > summary')!.textContent).toBe('Download');
+    expect(cards.every((c) => c.querySelector('details.language-box > summary'))).toBe(true);
+    expect(cards.every((c) => !(c.querySelector('details.language-box') as HTMLDetailsElement).open)).toBe(true);
     expect(cards.every((c) => !(c.querySelector('details.about') as HTMLDetailsElement).open)).toBe(true);
     expect(albanian.querySelector('details.about > summary')!.textContent).toBe('Details');
     expect(albanian.querySelector('details.about')!.contains(albanian.querySelector('.works'))).toBe(true);
@@ -97,7 +101,8 @@ describe('Languages: download your languages', () => {
     expect(rowsOf(rig, 'sq')[0].getAttribute('data-team')).toBeNull();
     expect(cardOf(rig, 'sq').getAttribute('data-state')).toBe('ready');
     expect(cardOf(rig, 'sq').querySelector('.installed')!.textContent).toMatch(/version 9, verified/);
-    expect(rig.q('#next-note').textContent).toMatch(/Albanian is ready.*open a page in the language and switch on GoLearn Active in the extension popup/);
+    expect(rig.q('#next-note').textContent).toBe('Albanian is ready.'); // for a screen reader; how to start reading is on "How GoLearn reads pages", linked at the foot
+    expect(rig.q('[data-language="sq"] .lang-reading').hidden).toBe(false);
     expect(rig.q('#screen').textContent).toContain('Show the checks');
   });
 
@@ -142,7 +147,7 @@ describe('Languages: download your languages', () => {
     expect(rig.packs.installs).toHaveLength(2);
     expect(rig.local.enrolments).toHaveLength(1); // no second enrolment
     await until(() => rig.root.querySelector('#next-note'));
-    expect(rig.q('#next-note').textContent).toContain('GoLearn Active');
+    expect(rig.q('#next-note').textContent).toBe('Albanian is ready.');
   });
 
   it('an installer that throws leaves the choice saved, says why, and offers Retry', async () => {
@@ -152,7 +157,10 @@ describe('Languages: download your languages', () => {
     expect(said).toMatch(/Albanian pack did not install: disk full/);
     expect(said).toContain('Your choice is saved');
     expect(await choiceOf(rig)).toMatchObject({ languageId: 'sq' });
-    expect(rig.q<HTMLButtonElement>('[data-language="sq"] [data-action="choose"]').disabled).toBe(false);
+    // the language is here (its row says the download did not finish); the way on is Retry, not a second Download
+    expect(rowsOf(rig, 'sq')[0].textContent).toContain('Download not finished');
+    expect(rig.root.querySelector('[data-language="sq"] [data-action="choose"]')).toBeNull();
+    expect(rig.q<HTMLButtonElement>('[data-language="sq"] [data-action="retry"]').disabled).toBe(false);
     rig.packs.nextInstall = passingInstall();
     rig.q('[data-language="sq"] [data-action="retry"]').click();
     await until(() => /is ready/.test(cardStatus(rig, 'sq')));
@@ -161,11 +169,15 @@ describe('Languages: download your languages', () => {
   it('downloading an installed language again does not install it twice; Re-verify and Reinstall are offered under Details', async () => {
     const rig = await makeRig();
     await downloadLanguage(rig, 'sq');
-    expect(cardOf(rig, 'sq').querySelector('[data-action="choose"]')!.getAttribute('aria-label')).toBe('Use Albanian');
+    // a downloaded track's row is no Download any more: it says “Reading now” and offers Remove
+    expect(cardOf(rig, 'sq').querySelector('[data-action="choose"]')).toBeNull();
+    rig.q('[data-language="sq"] .mine [data-action="remove"]').click();
+    await until(() => !!cardOf(rig, 'sq').querySelector('[data-action="choose"]'));
+    // removed, its pack stays installed: downloading it again installs nothing
     const said = await downloadLanguage(rig, 'sq');
     expect(said).toContain('already installed and verified');
     expect(rig.packs.installs).toHaveLength(1);
-    expect(rig.local.enrolments).toHaveLength(1);
+    expect(rig.local.enrolments.filter((e) => !e.endedAt)).toHaveLength(1);
     rig.q('[data-language="sq"] [data-action="verify"]').click();
     await until(() => rig.packs.verifies.length === 1);
     await until(() => /Verified Albanian/.test(cardStatus(rig, 'sq')));
@@ -178,11 +190,14 @@ describe('Languages: download your languages', () => {
   it('Norwegian asks for the written standard: nothing is preselected and nothing is guessed', async () => {
     const rig = await makeRig();
     const card = cardOf(rig, 'nb');
-    const standard = card.querySelector<HTMLSelectElement>('select.variety')!;
-    expect(standard.closest('label')!.textContent).toMatch(/Written standard/);
-    expect(standard.value).toBe('');
-    expect([...standard.options].map((o) => o.value)).toEqual(['', 'nb', 'nn']);
-    expect([...standard.options].map((o) => o.textContent)).toEqual(['Choose the written standard…', 'Bokmål', 'Nynorsk']);
+    // GoReview's question: two words under “Which written standard will you read?”, neither chosen, and the pill under them
+    const standard = card.querySelector<HTMLFieldSetElement>('fieldset.standard-choice')!;
+    expect(card.querySelector('select')).toBeNull();
+    expect(standard.querySelector('legend')!.textContent).toBe('Which written standard will you read?');
+    const words = [...standard.querySelectorAll<HTMLInputElement>('input[type="radio"]')];
+    expect(words.map((i) => [i.value, i.checked, i.closest('label')!.textContent])).toEqual([['nb', false, 'Bokmål'], ['nn', false, 'Nynorsk']]);
+    expect(card.querySelector('[data-action="choose"]')!.textContent).toBe('Download Norwegian');
+    expect(rowsOf(rig, 'nb')).toHaveLength(0);
     expect(card.querySelector('.pack-info')!.textContent).toMatch(/Bokmål \(nb\) and Nynorsk \(nn\)/);
     const said = await downloadLanguage(rig, 'nb');
     expect(said).toMatch(/Bokmål \(nb\) and Nynorsk \(nn\)/);
@@ -193,29 +208,41 @@ describe('Languages: download your languages', () => {
     expect(rig.local.enrolCalls[0]).toMatchObject({ languageId: 'nn', varietyId: 'nn', packId: 'pack:nn' });
     expect(rig.packs.installs.map((p) => p.packId)).toEqual(['pack:nn']);
     expect(await choiceOf(rig)).toMatchObject({ languageId: 'nn', varietyId: 'nn', standard: 'nn', packId: 'pack:nn' });
+    // the standard that is here has its row above the question, and the question shows it chosen
+    await until(() => rowsOf(rig, 'nb').length === 1);
+    expect(rowsOf(rig, 'nb')[0].querySelector('.track-name')!.textContent).toBe('Nynorsk');
+    expect(rowsOf(rig, 'nb')[0].textContent).toContain('Reading now');
+    expect(card.querySelector<HTMLInputElement>('input[value="nn"]')!.checked).toBe(true);
+    expect(card.querySelector('[data-action="choose"]')!.textContent).toBe('Use Norwegian');
+    expect(rig.q('[data-language="nb"] .lang-reading').hidden).toBe(false);
   });
 
   it('Spanish offers a regional preference that may be left alone; Honduras is recorded as the variety', async () => {
     const rig = await makeRig({ packs: withSpanish() });
     rig.packs.nextInstall = passingInstall('2'); // the Spanish fake is version 2
     const card = cardOf(rig, 'es');
-    const variety = card.querySelector<HTMLSelectElement>('select.variety')!;
-    expect(variety.closest('label')!.textContent).toMatch(/Regional preference/);
-    expect([...variety.options].map((o) => o.value)).toEqual(['es-standard', 'es-HN']);
-    expect(variety.value).toBe('es-standard'); // optional: the general variety stands unless one is picked
+    // its tracks are rows, the general one first; none is here yet, so each row offers Download
+    expect(card.querySelector('select, fieldset')).toBeNull();
+    const tracks = [...card.querySelectorAll<HTMLButtonElement>('.track-list > .track > .track-row')];
+    expect(tracks.map((b) => [b.getAttribute('data-option'), b.getAttribute('data-action'), b.querySelector('small')!.textContent])).toEqual([['es-standard', 'choose', 'Download'], ['es-HN', 'choose', 'Download']]);
+    expect(tracks[1].getAttribute('aria-label')).toBe('Download Spanish (Honduras)');
     const said = await downloadLanguage(rig, 'es', 'es-HN');
     expect(rig.local.enrolCalls[0]).toMatchObject({ languageId: 'es', varietyId: 'es-HN', packId: 'pack:es' });
     expect(said).toContain('Spanish is ready');
-    await until(() => /Spanish \(Honduras\)/.test(rowsOf(rig, 'es')[0]?.textContent ?? ''));
-    // a different preference for the same language replaces the earlier one (its events stay under it); picking the same one twice adds nothing
+    await until(() => /Honduras/.test(rowsOf(rig, 'es')[0]?.textContent ?? ''));
+    // The selected track does not close another track. Picking the same track twice adds nothing.
     await downloadLanguage(rig, 'es', 'es-standard');
     await until(() => rig.local.enrolments.length === 2);
-    await until(() => rowsOf(rig, 'es').length === 1 && !/Honduras/.test(rowsOf(rig, 'es')[0].textContent ?? ''));
-    expect(rig.local.enrolments.map((e) => [e.varietyId, !!e.endedAt])).toEqual([['es-HN', true], ['es-419', false]]);
+    await until(() => rowsOf(rig, 'es').length === 2);
+    expect(rig.local.enrolments.map((e) => [e.varietyId, !!e.endedAt])).toEqual([['es-HN', false], ['es-419', false]]);
     expect(rig.local.enrolCalls[1]).toMatchObject({ languageId: 'es', varietyId: 'es-419' }); // “General” is recorded as the pack’s general variety
-    await downloadLanguage(rig, 'es', 'es-standard');
+    // a track that is here offers no second Download: its row switches to it instead
+    expect(card.querySelector('[data-action="choose"]')).toBeNull();
+    expect(rowsOf(rig, 'es').map((li) => [li.getAttribute('data-variety'), li.querySelector('.track-row')!.getAttribute('data-action') ?? 'current'])).toEqual([['es-419', 'current'], ['es-HN', 'use']]);
+    rig.q('[data-language="es"] .mine [data-action="use"]').click();
+    await until(() => rowsOf(rig, 'es')[1]?.querySelector('.track-row')?.getAttribute('aria-current') === 'true');
     expect(rig.local.enrolments).toHaveLength(2);
-    expect(rowsOf(rig, 'es')).toHaveLength(1);
+    expect(rowsOf(rig, 'es')).toHaveLength(2);
     expect(rig.packs.installs).toHaveLength(1); // the Spanish pack is installed once
   });
 
@@ -272,7 +299,19 @@ describe('Languages: download your languages', () => {
     expect(rig.local.selected).toEqual([]);
     expect(cardOf(rig, 'de').getAttribute('data-active')).toBe('true');
     expect(cardOf(rig, 'sq').getAttribute('data-active')).toBe('false');
-    rig.q(`.mine[data-enrolment="${first.enrolmentId}"] [data-action="use"]`).click();
+    // the language being read in stands first under Your languages (as GoReview puts the one being reviewed), with “Reading now” on its face
+    const order = (): Array<string | null> => [...rig.q('#language-cards').children].map((li) => li.id || li.getAttribute('data-language')).slice(0, 4);
+    expect(order()).toEqual(['my-languages', 'de', 'sq', 'more-languages']);
+    expect([rig.q('[data-language="de"] .lang-reading').hidden, rig.q('[data-language="sq"] .lang-reading').hidden]).toEqual([false, true]);
+    const use = rig.q<HTMLButtonElement>(`.mine[data-enrolment="${first.enrolmentId}"] [data-action="use"]`);
+    expect([use.querySelector('.track-name')!.textContent, use.querySelector('small')!.textContent, use.getAttribute('aria-label')]).toEqual(['Albanian', 'Use for reading', 'Use for reading: Albanian']);
+    use.focus();
+    use.click();
+    // the row is rebuilt and its language moves to the top: the focus stays on the track that was pressed
+    await until(() => order()[1] === 'sq');
+    expect(order()).toEqual(['my-languages', 'sq', 'de', 'more-languages']);
+    expect(rig.root.ownerDocument.activeElement).toBe(rig.q(`.mine[data-enrolment="${first.enrolmentId}"] .track-row`));
+    expect(rig.root.ownerDocument.activeElement!.getAttribute('aria-current')).toBe('true');
     await until(async () => (await choiceOf(rig))?.enrolmentId === first.enrolmentId);
     expect(await choiceOf(rig)).toMatchObject({ languageId: 'sq', packId: 'pack:sq' });
     expect(rig.local.selected).toEqual([first.enrolmentId]); // the worker is told to record against it
@@ -312,8 +351,8 @@ describe('Languages: download your languages', () => {
     expect((await choiceOf(rig))!.enrolmentId).toBe(sqEnrolment.enrolmentId);
     expect(rig.q('[data-language="sq"] .mine .tag').textContent).toBe('Reading now');
     // the row offers the download again, and what was removed says so
-    expect(rig.q('[data-language="de"] #download-de').hasAttribute('hidden')).toBe(false);
-    // and stands under Add a language again, after the label
+    expect(rig.q<HTMLButtonElement>('[data-language="de"] [data-action="choose"]').getAttribute('aria-label')).toBe('Download German');
+    // and stands under More languages again, after the label
     const order = [...rig.q('#language-cards').children].map((li) => li.id || li.getAttribute('data-language'));
     expect(order.indexOf('de')).toBeGreaterThan(order.indexOf('more-languages'));
     expect(order.indexOf('sq')).toBeLessThan(order.indexOf('more-languages'));

@@ -10,7 +10,7 @@
 import { reviewFacts } from '../facts/review-facts';
 import { normalizeAnswer } from '../grading/normalize';
 import { defineBuilder } from './builders';
-import { assemble, attributionLine, eligibilityOf, exerciseIdOf, precheck, quote, referenceGloss, refuse } from './shared';
+import { assemble, attributionLine, eligibilityOf, exerciseIdOf, precheck, quote, referenceGloss, refuse, shownLemma } from './shared';
 import type { Planned } from './shared';
 import type { BuildContext, ReviewTarget, UnitFacts } from '../types';
 import { unitIds } from '../../../repository-contract/src';
@@ -25,7 +25,7 @@ function plan(target: ReviewTarget, facts: UnitFacts, _ctx: BuildContext): Plann
   const reference = referenceGloss(facts);
   if (!reference) return refuse('no concise gloss to show as the meaning');
   const isForm = facts.unit.kind === 'form';
-  const lemma = facts.lemma ?? (isForm ? undefined : facts.unit.label);
+  const lemma = facts.lemma !== undefined ? shownLemma(facts, facts.lemma) : isForm ? undefined : shownLemma(facts, facts.unit.label);
   if (!isForm && !lemma) return refuse('the lemma is not known');
 
   let accepted: string[];

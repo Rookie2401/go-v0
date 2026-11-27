@@ -22,9 +22,9 @@ and say only what the learner needs where they stand. Three rules decide most qu
 
 | Before (to 2026-11-10) | After |
 | --- | --- |
-| Top bar: brand, page title, **Status**, a cog | Top bar: brand, **Languages**, **Settings** (words, the current one underlined) |
+| Top bar: brand, page title, **Status**, a cog | Top bar: brand, **Languages**, **Settings** (words, the current one underlined). Since 2026-11-26 three symbols at the top right, in GoReview's manner: a globe (Languages), a person (the account), a cog (Settings) |
 | **Status** page: language, pack, Practise, five buttons to other pages | Gone. `#/home` leads to Languages, which says where the learner stands |
-| **Choose your languages**: two closed sections, LANGUAGE and AUDIO | **Languages** (the home): what you read in; *Your languages*; *Add a language*. Nothing closed |
+| **Choose your languages**: two closed sections, LANGUAGE and AUDIO | **Languages** (the home): what you read in; *Your languages*; *More languages* ("Add a language" until 2026-11-26). Nothing closed |
 | Audio guide: a closed section under the language list | **Audio**: its own page under Settings, four parts that open, the first open |
 | **Settings**: the account, then four links in a sentence each | **Settings**: Account; *Reading* (Audio, Privacy and data, Look up pasted text); *Advanced* (Sync, How GoLearn reads pages, Diagnostics and updates) |
 | Signed-in account: five blocks open down the page | Email confirmation in sight; Sessions, Download my data, Delete my account, Security events each open on request |
@@ -38,7 +38,16 @@ Routes: `signin`, `languages` (home), `settings`, and under Settings `audio`, `p
 
 The popup keeps the owner's cut of 2026-10-28 (greeting, the brand as the one way to setup, the one switch *GoLearn Active*, one line
 about the page, the legend, the language): no link to GoReview, no sync line. The setup app's Languages page carries the one way to
-GoReview ("Review your words"), shown once a language is downloaded.
+GoReview ("Go to GoReview", a gold pill with an arrow; "Review your words" until 2026-11-26), shown once a language is downloaded.
+
+The head of the Languages page (the owner, 2026-11-26: "Keep review, the header, and my account. Cut the rest"; "have it say, go to
+GoReview"; "Move the account settings to the top right in the manner of GoReview"; "Change the language button from text to a
+symbol"): the title and its gold rule, then the pill, then the languages. Cut from the page: the small line above the title, "<language>
+is ready" with how to start reading (the tile of the language being read in says "Reading now"; one line stays for a screen reader),
+the sentence about the account, the first run's two sentences, and "My words". The account is the person in the top bar
+(`#account-link`): signed in it leads to Settings, whose first part is the account, and is named "Account: synced as <email>"; on a
+device of its own it leads to the optional sign-in and is named "Account: on this device only. Sign in to keep your progress across
+devices (optional)". Each symbol of the bar (`.top-icon`) carries its name as `aria-label` and as its tip.
 
 ## Tokens
 
@@ -73,12 +82,22 @@ its own forms.
 - **List of places** (`.settings-links`): each row one link, a name (`.nav-title`) and one line of what is there (`.nav-about`), a `›`.
 - **Language row** (`.lang-row`): name and native name; one quiet line (the pack's level, in the pack's own words); ONE action at the
   right; Details closed under it. Script codes (Latn, Deva) are not shown.
+- **A language's tracks** (`.track-list`, since 2026-11-26; the owner: "Look at the language display of GoReview, please copy it and
+  port it over to GoLearn"): the row is a tile that opens. Its face is GoReview's: the name at the start of the line with the native
+  name beside it in brackets, "Reading now" above the one being read in, a caret at the end. Opened, it lists the language's tracks
+  (Germany, Austria, Switzerland; Biblical, Modern) one to a line under a hairline, the name at the start and the state at the end, the
+  line itself the control (`.track-row`): "Download" for a track that is not here, "Use for reading" for one that is, "Reading now" for
+  the one in force. A language with one track has one line. A track that is here also has Remove (`.linklike`). Norwegian's written
+  standard is GoReview's question (`.standard-choice`): its words, the chosen one underlined in gold, none chosen until the learner
+  chooses, and the gold pill under them. No select anywhere in a row. The language being read in stands first and its tile is lighter;
+  the second group is headed "More languages", as in GoReview.
 - **The Languages page is the exception to this system** (the owner, 2026-11-18: "redesign both of them in line with the design
   philosophy of the homescreen of GoReview"): it wears GoReview's home look in any colour scheme (the stone, leather and brass tokens;
   the title in the home's large serif with a kicker and a short gold rule; each group a kicker between rules; each language a warm tile
   with no outline, the one read in lighter; Download the gold pill; Details and quiet row actions gold links). The rules are the last
   block of `app/styles.css`, scoped to `.screen[data-route="languages"]`; the markup is unchanged. GoReview's own language list
-  (`#/setup`) and Account page use the same look (`packages/goreview/app/styles.css`).
+  (`#/setup`) and Account page use the same look (`packages/goreview/app/styles.css`); on Account the languages are compact rows in a
+  "Your Account Settings" panel at the foot (PR #20, 2026-11-19, kept by the owner: "Keep codex's redesign").
 - **State in a word** (`.tag`): small capitals on a hairline ("Reading now").
 - **Notice** (`.notice`): a rule in the accent at the start of the line; `.notice.warn` adds the warning ground.
 - **Status line** (`.status`, popup `.status-line`): `role="status"`; takes no room when empty; the warning colour only for a warning.

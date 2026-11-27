@@ -1,0 +1,533 @@
+{
+ "readBy": "AI models (Claude), not native speakers; each card judged once, in the first sentence it came from, against the brief in docs/ecosystem/DECK-GATE.md. 2026-11-26.",
+ "residual": [],
+ "cards": {
+  "lemma:arc:אֱדַיִן:ADV": [
+   {
+    "shown": "then (of time)",
+    "v": "ok"
+   }
+  ],
+  "lemma:arc:אֱלָהּ:NOUN": [
+   {
+    "shown": "God",
+    "v": "ok"
+   }
+  ],
+  "lemma:arc:אֱנָשׁ:NOUN": [
+   {
+    "shown": "a man",
+    "v": "ok"
+   }
+  ],
+  "lemma:arc:אֱסָר:NOUN": [
+   {
+    "shown": "an interdict",
+    "v": "ok"
+   }
+  ],
+  "lemma:arc:אֲמַר:VERB": [
+   {
+    "shown": "say",
+    "v": "ok"
+   }
+  ],
+  "lemma:arc:אֲתַר:NOUN": [
+   {
+    "shown": "a place; (adverb) after",
+    "v": "ok"
+   }
+  ],
+  "lemma:arc:אִיתַי:PART": [
+   {
+    "shown": "properly, entity; used only as a particle of affirmation, there is",
+    "v": "ok"
+   }
+  ],
+  "lemma:arc:אִלֵּין:PRON": [
+   {
+    "shown": "these",
+    "v": "ok"
+   }
+  ],
+  "lemma:arc:אִלֵּךְ:PRON": [
+   {
+    "shown": "these",
+    "v": "ok"
+   }
+  ],
+  "lemma:arc:אֶבֶן:NOUN": [
+   {
+    "shown": "stone",
+    "v": "ok"
+   }
+  ],
+  "lemma:arc:אַתּוּן:NOUN": [
+   {
+    "shown": "probably a fire-place, i.e. furnace",
+    "v": "ok"
+   }
+  ],
+  "lemma:arc:אֻמָּה:NOUN": [
+   {
+    "shown": "nation",
+    "v": "ok"
+   }
+  ],
+  "lemma:arc:אׇחֳרִי:ADJ": [
+   {
+    "shown": "other",
+    "v": "ok"
+   }
+  ],
+  "lemma:arc:אׇחֳרָן:ADJ": [
+   {
+    "shown": "other",
+    "v": "ok"
+   }
+  ],
+  "lemma:arc:בְּעָא:VERB": [
+   {
+    "shown": "to seek or ask",
+    "v": "ok"
+   }
+  ],
+  "lemma:arc:בַּר:NOUN": [
+   {
+    "shown": "a son, grandson, etc.",
+    "v": "ok"
+   }
+  ],
+  "lemma:arc:גְּבַר:NOUN": [
+   {
+    "shown": "man",
+    "v": "ok"
+   }
+  ],
+  "lemma:arc:דִּכֵּן:PRON": [
+   {
+    "shown": "this",
+    "v": "ok"
+   }
+  ],
+  "lemma:arc:דָּנִיֵּאל:PROPN": [
+   {
+    "shown": "Danijel, the Hebrew prophet",
+    "v": "ok"
+   }
+  ],
+  "lemma:arc:דּוּרָא:PROPN": [
+   {
+    "shown": "Dura, a place in Babylonia",
+    "v": "ok"
+   }
+  ],
+  "lemma:arc:הֵא:PART": [
+   {
+    "shown": "behold like",
+    "v": "ok"
+   }
+  ],
+  "lemma:arc:זְמָן:NOUN": [
+   {
+    "shown": "time",
+    "v": "ok"
+   }
+  ],
+  "lemma:arc:חֲסַף:NOUN": [
+   {
+    "shown": "a clod",
+    "v": "ok"
+   }
+  ],
+  "lemma:arc:חֵלֶם:NOUN": [
+   {
+    "shown": "a dream",
+    "v": "ok"
+   }
+  ],
+  "lemma:arc:חַיִל:NOUN": [
+   {
+    "shown": "an army, or strength",
+    "v": "ok"
+   }
+  ],
+  "lemma:arc:טְעֵם:NOUN": [
+   {
+    "shown": "properly, flavor; figuratively, judgment (both subjective and objective); hence, account (both subjectively and objectively)",
+    "v": "ok"
+   }
+  ],
+  "lemma:arc:טַעַם:NOUN": [
+   {
+    "shown": "properly, a taste, i.e. a judicial sentence",
+    "v": "ok"
+   }
+  ],
+  "lemma:arc:טָב:ADJ": [
+   {
+    "shown": "good",
+    "v": "ok"
+   }
+  ],
+  "lemma:arc:יְדַע:VERB": [
+   {
+    "shown": "know",
+    "v": "ok"
+   }
+  ],
+  "lemma:arc:יְהַב:VERB": [
+   {
+    "shown": "give",
+    "v": "ok"
+   }
+  ],
+  "lemma:arc:יְהוּד:PROPN": [
+   {
+    "shown": "properly, Judah, hence, Judaea",
+    "v": "ok"
+   }
+  ],
+  "lemma:arc:יַד:NOUN": [
+   {
+    "shown": "hand",
+    "v": "ok"
+   }
+  ],
+  "lemma:arc:יַצִּיב:ADJ": [
+   {
+    "shown": "fixed, sure; concretely, certainty",
+    "v": "ok"
+   }
+  ],
+  "lemma:arc:יַתִּיר:ADJ": [
+   {
+    "shown": "preeminent; as an adverb, very",
+    "v": "ok"
+   }
+  ],
+  "lemma:arc:יוֹם:NOUN": [
+   {
+    "shown": "a day",
+    "v": "ok"
+   }
+  ],
+  "lemma:arc:כְּסַף:NOUN": [
+   {
+    "shown": "silver",
+    "v": "ok"
+   }
+  ],
+  "lemma:arc:כְּעַן:ADV": [
+   {
+    "shown": "now",
+    "v": "ok"
+   }
+  ],
+  "lemma:arc:כֹּל:NOUN": [
+   {
+    "shown": "the whole",
+    "v": "ok"
+   }
+  ],
+  "lemma:arc:לָא:PART": [
+   {
+    "shown": "not",
+    "v": "ok"
+   }
+  ],
+  "lemma:arc:לָהֵן:CONJ": [
+   {
+    "shown": "therefore",
+    "v": "false-meaning",
+    "note": "Aramaic lahen means except/unless/but; therefore is the Hebrew-Ruth sense"
+   }
+  ],
+  "lemma:arc:מְאָה:NUM": [
+   {
+    "shown": "a hundred; also as a multiplicative and a fraction}",
+    "v": "ok"
+   }
+  ],
+  "lemma:arc:מִלָּה:NOUN": [
+   {
+    "shown": "a word, command, discourse, or subject",
+    "v": "ok"
+   }
+  ],
+  "lemma:arc:מֵישַׁךְ:PROPN": [
+   {
+    "shown": "Meshak, the Babylonian",
+    "v": "ok"
+   }
+  ],
+  "lemma:arc:מֶלֶךְ:NOUN": [
+   {
+    "shown": "a king",
+    "v": "ok"
+   }
+  ],
+  "lemma:arc:מַלְכוּ:NOUN": [
+   {
+    "shown": "dominion (abstractly or concretely)",
+    "v": "ok"
+   }
+  ],
+  "lemma:arc:מָדַי:PROPN": [
+   {
+    "shown": "Mede(-s)",
+    "v": "ok"
+   }
+  ],
+  "lemma:arc:נְבוּכַדְנֶצַּר:PROPN": [
+   {
+    "shown": "Nebuchadnezzar",
+    "v": "ok"
+   }
+  ],
+  "lemma:arc:נְחָשׁ:NOUN": [
+   {
+    "shown": "copper",
+    "v": "ok"
+   }
+  ],
+  "lemma:arc:נְפַל:VERB": [
+   {
+    "shown": "fall",
+    "v": "ok"
+   }
+  ],
+  "lemma:arc:נֶגֶד:ADP": [
+   {
+    "shown": "opposite",
+    "v": "ok"
+   }
+  ],
+  "lemma:arc:נוּר:NOUN": [
+   {
+    "shown": "fire",
+    "v": "ok"
+   }
+  ],
+  "lemma:arc:סְגִד:VERB": [
+   {
+    "shown": "do homage",
+    "v": "ok"
+   }
+  ],
+  "lemma:arc:סַבְּכָא:NOUN": [
+   {
+    "shown": "a lyre",
+    "v": "ok"
+   }
+  ],
+  "lemma:arc:עֲבֵד נְגוֹא:PROPN": [
+   {
+    "shown": "Abed-Nego, the name of Azariah",
+    "v": "ok"
+   }
+  ],
+  "lemma:arc:עֲבַד:VERB": [
+   {
+    "shown": "to do, make, prepare, keep, etc.",
+    "v": "ok"
+   }
+  ],
+  "lemma:arc:עִדָּן:NOUN": [
+   {
+    "shown": "a set time; technically, a year",
+    "v": "ok"
+   }
+  ],
+  "lemma:arc:עִלָּה:NOUN": [
+   {
+    "shown": "a pretext (as arising artificially)",
+    "v": "ok"
+   }
+  ],
+  "lemma:arc:עִם:ADP": [
+   {
+    "shown": "with",
+    "v": "ok"
+   }
+  ],
+  "lemma:arc:עַד:ADP": [
+   {
+    "shown": "even to",
+    "v": "ok"
+   }
+  ],
+  "lemma:arc:עַם:NOUN": [
+   {
+    "shown": "people",
+    "v": "ok"
+   }
+  ],
+  "lemma:arc:עָלַם:NOUN": [
+   {
+    "shown": "remote time, i.e. the future or past indefinitely; often adverb, forever",
+    "v": "ok"
+   }
+  ],
+  "lemma:arc:עוֹף:NOUN": [
+   {
+    "shown": "fowl",
+    "v": "ok"
+   }
+  ],
+  "lemma:arc:פְּסַנְטֵרִין:NOUN": [
+   {
+    "shown": "psalterion; a lyre",
+    "v": "ok"
+   }
+  ],
+  "lemma:arc:פְּשַׁר:NOUN": [
+   {
+    "shown": "an interpretation",
+    "v": "ok"
+   }
+  ],
+  "lemma:arc:פַּרְזֶל:NOUN": [
+   {
+    "shown": "iron",
+    "v": "ok"
+   }
+  ],
+  "lemma:arc:קְיָם:NOUN": [
+   {
+    "shown": "an edict (as arising in law)",
+    "v": "ok"
+   }
+  ],
+  "lemma:arc:קְצָת:NOUN": [
+   {
+    "shown": "end",
+    "v": "ok"
+   }
+  ],
+  "lemma:arc:קְרֵב:VERB": [
+   {
+    "shown": "approach",
+    "v": "ok"
+   }
+  ],
+  "lemma:arc:קֳדָם:ADP": [
+   {
+    "shown": "before",
+    "v": "ok"
+   }
+  ],
+  "lemma:arc:קֶרֶן:NOUN": [
+   {
+    "shown": "a horn (literally or for sound)",
+    "v": "ok"
+   }
+  ],
+  "lemma:arc:קַיִט:NOUN": [
+   {
+    "shown": "harvest",
+    "v": "false-meaning",
+    "note": "qayit is summer (summer threshing floors); harvest is inexact"
+   }
+  ],
+  "lemma:arc:קָל:NOUN": [
+   {
+    "shown": "voice",
+    "v": "ok"
+   }
+  ],
+  "lemma:arc:רְשַׁם:VERB": [
+   {
+    "shown": "inscribe",
+    "v": "ok"
+   }
+  ],
+  "lemma:arc:רֵאשׁ:NOUN": [
+   {
+    "shown": "the head; figuratively, the sum",
+    "v": "ok"
+   }
+  ],
+  "lemma:arc:רַב:ADJ": [
+   {
+    "shown": "great",
+    "v": "ok"
+   }
+  ],
+  "lemma:arc:רוּחַ:NOUN": [
+   {
+    "shown": "wind",
+    "v": "ok"
+   }
+  ],
+  "lemma:arc:שְׁלֵט:VERB": [
+   {
+    "shown": "have power",
+    "v": "ok"
+   }
+  ],
+  "lemma:arc:שְׁלַח:VERB": [
+   {
+    "shown": "send",
+    "v": "ok"
+   }
+  ],
+  "lemma:arc:שְׁמַע:VERB": [
+   {
+    "shown": "hear",
+    "v": "ok"
+   }
+  ],
+  "lemma:arc:שְׁפַר:VERB": [
+   {
+    "shown": "to be beautiful",
+    "v": "ok"
+   }
+  ],
+  "lemma:arc:שִׁתִּין:NUM": [
+   {
+    "shown": "sixty",
+    "v": "ok"
+   }
+  ],
+  "lemma:arc:שֵׁת:NUM": [
+   {
+    "shown": "six",
+    "v": "ok"
+   }
+  ],
+  "lemma:arc:שַׁדְרַךְ:PROPN": [
+   {
+    "shown": "Shadrach",
+    "v": "ok"
+   }
+  ],
+  "lemma:arc:שָׁלוּ:NOUN": [
+   {
+    "shown": "a fault",
+    "v": "ok"
+   }
+  ],
+  "lemma:arc:שַׂגִּיא:ADJ": [
+   {
+    "shown": "large (in size, quantity or number, also adverbial)",
+    "v": "ok"
+   }
+  ],
+  "lemma:arc:תְּלָת:NUM": [
+   {
+    "shown": "three or third",
+    "v": "ok"
+   }
+  ],
+  "lemma:arc:תְּלָתִין:NUM": [
+   {
+    "shown": "ten times three",
+    "v": "ok"
+   }
+  ]
+ },
+ "heldResidue": [
+  "lemma:arc:קַיִט:NOUN"
+ ]
+}

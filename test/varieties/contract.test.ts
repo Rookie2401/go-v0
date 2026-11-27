@@ -11,6 +11,7 @@ import {
 import type { GoEvent } from '../../packages/repository-contract/src';
 import { greekManifest } from '../../packages/language-packs/src/packs/el';
 import { hebrewManifest } from '../../packages/language-packs/src/packs/he';
+import { arabicManifest } from '../../packages/language-packs/src/packs/ar';
 
 const base = (over: Partial<GoEvent>): GoEvent => ({
   id: 'e1', v: 3, learnerId: 'L', enrolmentId: 'E', languageId: 'el', at: '2026-11-17T10:00:00.000Z',
@@ -56,7 +57,7 @@ describe('the registry', () => {
   });
 
   it('a language without learning varieties is left exactly as it was', () => {
-    for (const lang of ['sq', 'es', 'de', 'hi', 'th', 'la', 'nb', 'nn', 'arc']) {
+    for (const lang of ['sq', 'es', 'de', 'hi', 'th', 'la', 'nb', 'nn', 'arc', 'ru', 'ko']) {
       expect(hasLearningVarieties(lang)).toBe(false);
       expect(learningVarietiesOf(lang)).toEqual([]);
       expect(canonicalVarietyId(lang, `${lang}-standard`)).toBeUndefined();
@@ -67,8 +68,8 @@ describe('the registry', () => {
     expect(inScope(undefined, 'es-HN')).toBe(true);
   });
 
-  it('agrees with what the Greek and Hebrew packs declare (same ids, same default)', () => {
-    for (const manifest of [greekManifest(), hebrewManifest()]) {
+  it('agrees with what the Greek, Hebrew and Arabic packs declare (same ids, same default)', () => {
+    for (const manifest of [greekManifest(), hebrewManifest(), arabicManifest()]) {
       const known = new Set(learningVarietiesOf(manifest.languageId).map((v) => v.id));
       for (const v of manifest.varieties ?? []) expect(known.has(v.varietyId), `${v.varietyId} is declared by the pack and missing from the registry`).toBe(true);
       expect(defaultVarietyOf(manifest.languageId)).toBe(manifest.varietyId);
@@ -76,6 +77,43 @@ describe('the registry', () => {
       const analysed = (manifest.varieties ?? []).filter((v) => v.analysed && v.varietyId !== 'arc-bib').map((v) => v.varietyId).sort();
       expect(selectableVarietiesOf(manifest.languageId).map((v) => v.id).sort()).toEqual(analysed);
     }
+  });
+});
+
+describe('Arabic: one language, Modern Standard and Classical to learn, six dialects recognised', () => {
+  it('has two selectable varieties, Modern Standard the default, and the dialects as heritage (kept apart, never chosen)', () => {
+    expect(hasLearningVarieties('ar')).toBe(true);
+    expect(learningVarietiesOf('ar').map((v) => v.id)).toEqual(['ar-msa', 'ar-cla', 'arz', 'apc', 'afb', 'acm', 'ary', 'apd']);
+    expect(selectableVarietiesOf('ar').map((v) => v.id)).toEqual(['ar-msa', 'ar-cla']);
+    expect(defaultVarietyOf('ar')).toBe('ar-msa');
+    expect(learningVarietiesOf('ar').filter((v) => v.heritage).map((v) => v.id)).toEqual(['arz', 'apc', 'afb', 'acm', 'ary', 'apd']);
+    expect(varietyRelation('ar', 'ar-msa', 'ar-cla')).toBe('other-group');
+    expect(varietyRelation('ar', 'ar-msa', 'arz')).toBe('heritage');
+    expect(varietyOf('ar', 'ar-msa')?.historicalGroup).toBe('modern-standard');
+    expect(varietyOf('ar', 'ar-cla')?.historicalGroup).toBe('classical');
+  });
+
+  it('knows its aliases and no other language’s variety', () => {
+    expect(canonicalVarietyId('ar', 'arb')).toBe('ar-msa');
+    expect(canonicalVarietyId('ar', 'ar-modern')).toBe('ar-msa');
+    expect(canonicalVarietyId('ar', 'ar-classical')).toBe('ar-cla');
+    expect(canonicalVarietyId('ar', 'classical-arabic')).toBe('ar-cla');
+    expect(canonicalVarietyId('ar', 'he-mod')).toBeUndefined();
+    expect(canonicalVarietyId('he', 'ar-msa')).toBeUndefined();
+  });
+
+  it('the family key of an Arabic lemma ignores its vowel marks; Hebrew’s and Greek’s keys are what they were before Arabic', () => {
+    expect(lexicalFamilyKey('ar', 'lemma:ar:كِتَاب:NOUN')).toBe(lexicalFamilyKey('ar', 'lemma:ar:كتاب:NOUN'));
+    expect(lexicalFamilyKey('ar', 'lemma:ar:عَلَّمَ:VERB')).toBe('ar:علم:VERB');
+    expect(lexicalFamilyKey('ar', 'lemma:ar:عِلْم:NOUN')).not.toBe(lexicalFamilyKey('ar', 'lemma:ar:عِلْم:VERB'));
+    // a hamza seat is a letter, not a mark
+    expect(lexicalFamilyKey('ar', 'lemma:ar:أَب:NOUN')).not.toBe(lexicalFamilyKey('ar', 'lemma:ar:اب:NOUN'));
+    // the same words as test 'the same letters under the spelling conventions of different periods', pinned to the keys they gave before
+    expect(lexicalFamilyKey('he', 'lemma:he:מֶלֶךְ:NOUN')).toBe('he:מלך:NOUN');
+    expect(lexicalFamilyKey('he', 'form:he:בְּרֵאשִׁית')).toBe('he:בראשית');
+    expect(lexicalFamilyKey('el', 'lemma:el:ἄνθρωπος:NOUN')).toBe('el:ανθρωποσ:NOUN');
+    expect(lexicalFamilyKey('el', 'form:el:Λόγος')).toBe('el:λογοσ');
+    expect(lexicalFamilyKey('ru', 'lemma:ru:книга:NOUN')).toBeUndefined(); // a language with no learning varieties has no family key
   });
 });
 

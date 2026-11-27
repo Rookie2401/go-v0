@@ -223,16 +223,24 @@ describe('GoReview exercises over the real Albanian pack facts', () => {
     expect(disagree.length).toBeLessThanOrEqual(7);
   });
 
-  it('can ask about 101 of the 199 lemma and form units drawn from the unseen sentences — almost all of it written recognition; only 2 grammar questions', async () => {
+  it('can ask about 97 of the 199 lemma and form units drawn from the unseen sentences — almost all of it written recognition; only 2 grammar questions', async () => {
     const av = await reviewAvailability(res);
     expect(av.tested).toBeGreaterThanOrEqual(199);
     // d545c547 (2026-10-30): an inflected form is asked only with a meaning of its own, not the lemma's gloss. 63 of the 121 form units have no dictionary form-of sense
     // in this sample and are now refused ("no gloss in the word list or the dictionary"); every lemma unit is unaffected (59 of 78 build, 17 are conflicted, 2 fail their own
     // check). That takes the units that can be asked from the old floor of 150 to 101 and written recognition from the old floor of 150 (91 built + the 63 now refused) to 91.
-    expect(av.withAny).toBeGreaterThanOrEqual(101);
-    expect(av.perFamily['written-recognition']).toBeGreaterThanOrEqual(91);
+    // 2026-11-26, the deck gate (packages/goreview/src/facts/deck-gate.ts; the owner: no false or unknown word in the deck). The facts are now measured as the app
+    // hands them to a builder, through the gate. It holds four form units whose dictionary meaning is not a meaning of their own word: pashë ("to watch, look (at),
+    // observe" under shoh "to see": the 63rd form, which the dictionary had since given a sense of its own, so the old count stood at 62), dhanë ("given" under jap
+    // "to give"), shtrenjtë ("costly, expensive" under i shtrenjtë "expensive") and eshte ("misspelling of është"). The floors move by those four: 101 to 98 and 91 to 88;
+    // forms refused for want of a meaning of their own are counted with the gate's holds (62 + 4).
+    // 2026-11-27: one more form unit is held, a spelling the word list reads as two words (a form card has no sentence to say which): 98 to 97 and 88 to 87.
+    expect(av.withAny).toBeGreaterThanOrEqual(97);
+    expect(av.perFamily['written-recognition']).toBeGreaterThanOrEqual(87);
     const noGloss = Object.entries(av.reasons).find(([k]) => k.startsWith('no gloss in the word list or the dictionary'));
-    expect(noGloss?.[1] ?? 0).toBeGreaterThanOrEqual(63);
+    const gateHeld = Object.entries(av.reasons).find(([k]) => k.startsWith('The dictionary meaning found for this written form is not a meaning of its own word'));
+    expect((noGloss?.[1] ?? 0) + (gateHeld?.[1] ?? 0)).toBeGreaterThanOrEqual(63);
+    expect(gateHeld?.[1] ?? 0).toBeGreaterThanOrEqual(1);
     expect(av.perFamily['grammar-application'] ?? 0).toBeGreaterThanOrEqual(2);
   });
 

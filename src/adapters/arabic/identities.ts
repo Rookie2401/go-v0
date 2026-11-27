@@ -1,0 +1,74 @@
+/**
+ * Which lexeme a bare spelling stands for when several share it (docs/arabic/PLAN.md, "Which lexeme a bare spelling credits").
+ *
+ * Arabic is printed without its short vowels, so about half of all running words are spelled like some other word. Leaving every
+ * such word undecided would keep قال from ever counting as قَالَ; choosing the first reading would credit the wrong lexeme. So the
+ * most frequent ambiguous spellings are settled ONE BY ONE in identities.json:
+ *   "<key>": "<lemma id>"        the main reading: one meaning plainly dominates in ordinary prose (قال → قَالَ|VERB). The other
+ *                                readings are still listed on the card, below it.
+ *   "<key>": "ف+<lemma id>"      the main reading is a chain of attached function words (فقد → ف+قَدْ|PART): proclitic letters,
+ *                                then the lemma id of what follows.
+ *   "<key>": "<lemma id>+ي"      the main reading carries an attached pronoun: the letters after the lemma id (أمي is "my mother",
+ *                                the noun with ي, not the adjective "illiterate"). Proclitics and a pronoun may both be named.
+ *   "<key>": null                reviewed and BALANCED: a reader really has to choose (علم, كتب, ذهب). Nothing is credited until
+ *                                the sentence or printed vowels decide.
+ * A key that is not listed is decided by the analyser's structural rules alone (analyze.ts), or left undecided.
+ *
+ * The list is MACHINE-DRAFTED and reviewed entry by entry by the pack's builder; it has not been reviewed by a native speaker or
+ * an Arabist. It never overrides printed vowels or the sentence: it only says which reading a bare, isolated spelling most likely is.
+ * A lemma id that the installed index does not hold is ignored (the analyser checks), so the list cannot invent a word.
+ */
+import data from './identities.json';
+import { applyVocal, packVocal, splitVocal } from './text';
+
+export const AR_IDENTITIES: Readonly<Record<string, string | null>> = data as Record<string, string | null>;
+
+export interface ArMainReading {
+  /** Proclitic letters written before the stem, in order ("ف", "و", "ب", "ل", "ك", "ال" …); empty for a whole word. */
+  proclitics: string[];
+  /** The lemma id of the main reading ("قَالَ|VERB"). */
+  lemmaId: string;
+  /** Attached pronoun letters written after the word, in order ("ي", "ه", "ها", "نا" …); empty when the main reading has none. */
+  enclitics: string[];
+}
+
+/**
+ * The reviewed decision for a key: a main reading, `null` when the key is reviewed and balanced, `undefined` when it was never
+ * reviewed.
+ */
+let ACTIVE: Readonly<Record<string, string | null>> = AR_IDENTITIES;
+/**
+ * Replaces the table the analyser consults (tests of the structural rules run with an empty one, so that a listed key does not
+ * hide the rule under test); called with nothing, restores the shipped list.
+ */
+export function useArIdentities(table?: Readonly<Record<string, string | null>>): void { ACTIVE = table ?? AR_IDENTITIES; }
+
+export function arMainOf(key: string): ArMainReading | null | undefined {
+  if (!Object.prototype.hasOwnProperty.call(ACTIVE, key)) return undefined;
+  const v = ACTIVE[key];
+  if (v === null) return null;
+  // the part that holds "|" is the lemma id; what stands before it is proclitics, what stands after it attached pronouns
+  const parts = v.split('+');
+  const at = parts.findIndex((p) => p.includes('|'));
+  if (at < 0) return undefined;
+  return { proclitics: parts.slice(0, at), lemmaId: parts[at], enclitics: parts.slice(at + 1) };
+}
+
+/**
+ * The same decision for a word printed WITH its vowels. A fully vocalized word can still belong to two lexemes (ذَهَبَ is "he went"
+ * and, as an accusative, "gold"; لَيْسَ and إِنَّ have several entries), and vocalized text is what a beginner reads, so the list may
+ * also hold a vocalized form as a key (the form in canonical spelling: `applyVocal(arKey(form), packVocal(form))`). Looked up before
+ * the bare key; a vocalized entry speaks only for exactly that vocalization.
+ */
+export function arMainOfVocalized(form: string): ArMainReading | null | undefined {
+  const { key, marks } = splitVocal(form);
+  if (!marks.some((m) => m.vowel || m.shadda || m.dagger)) return undefined;
+  return arMainOf(applyVocal(key, packVocal(form)));
+}
+
+/** How many keys are reviewed, and how many of them have a main reading (for the support notes and INDEX.md). */
+export function arIdentityCounts(): { reviewed: number; main: number; balanced: number } {
+  const values = Object.values(AR_IDENTITIES);
+  const main = values.filter((v) => v !== null).length;
+  return { reviewed: values.length, main, balanced: values.length - main };
+}

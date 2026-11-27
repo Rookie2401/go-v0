@@ -387,14 +387,16 @@ describe('sw.js (run in a sandbox)', () => {
     expect(s.self.skipWaiting).toHaveBeenCalledTimes(1);
   });
 
-  it('activation deletes the shell caches of older builds and keeps the dictionary cache and unrelated caches', async () => {
+  it('activation deletes the shell caches of older builds and an older dictionary cache, and keeps the current dictionary cache and unrelated caches', async () => {
     const s = sandbox();
     await s.fire('install', {});
-    await s.caches.open('goreview-shell-oldbuild'); await s.caches.open('goreview-dict-v1'); await s.caches.open('something-else');
+    await s.caches.open('goreview-shell-oldbuild'); await s.caches.open('goreview-dict-v1'); await s.caches.open('goreview-dict-v2'); await s.caches.open('something-else');
     await s.fire('activate', {});
     const names = await s.caches.keys();
     expect(names).not.toContain('goreview-shell-oldbuild');
-    expect(names).toEqual(expect.arrayContaining(['goreview-dict-v1', 'something-else', ...s.SHELL()]));
+    // v1 named the Russian and French full shards before they were republished gzipped (2026-11-27): it must not outlive the update
+    expect(names).not.toContain('goreview-dict-v1');
+    expect(names).toEqual(expect.arrayContaining(['goreview-dict-v2', 'something-else', ...s.SHELL()]));
   });
 
   it('caches Hebrew and Greek lexicon assets for offline use and removes only obsolete lexicon versions on activation', async () => {
@@ -431,7 +433,7 @@ describe('sw.js (run in a sandbox)', () => {
     const url = 'https://app.test/site/dict/sq/s-ab.json';
     expect(await ((await s.fire('fetch', { request: s.request(url) })) as Response).text()).toBe('shard ' + url);
     await new Promise((r) => setTimeout(r, 5));
-    expect([...s.store.get('goreview-dict-v1')!.keys()]).toEqual([url]);
+    expect([...s.store.get('goreview-dict-v2')!.keys()]).toEqual([url]);
     offline = true;
     expect(await ((await s.fire('fetch', { request: s.request(url) })) as Response).text()).toBe('shard ' + url);
     // not the dictionary: another app of the site, the folder itself, a look-alike name, a service path, anything with a credential
@@ -452,7 +454,7 @@ describe('sw.js (run in a sandbox)', () => {
 
   it('a new build fetches, while it installs, its own analyser files of the languages the build before it had kept, and of no other', async () => {
     const chunks = { sq: ['./assets/lang-sq-NEW1.js'], de: ['./assets/lang-de-NEW2.js', './assets/lang-de-NEW3.js'], es: ['./assets/lang-es-NEW4.js'] };
-    const s = sandbox({ langChunks: chunks, before: { 'goreview-lang-oldbuild': ['./assets/lang-sq-OLD.js', './assets/lang-de-OLD.js'], 'goreview-dict-v1': ['./dict/es/s-a.json'] } });
+    const s = sandbox({ langChunks: chunks, before: { 'goreview-lang-oldbuild': ['./assets/lang-sq-OLD.js', './assets/lang-de-OLD.js'], 'goreview-dict-v2': ['./dict/es/s-a.json'] } });
     await s.fire('install', {});
     const current = (await s.caches.keys()).find((k) => k.startsWith('goreview-lang-') && k !== 'goreview-lang-oldbuild')!;
     expect(current).toMatch(/^goreview-lang-[0-9a-f]{12}$/);
@@ -538,7 +540,7 @@ describe('sw.js (run in a sandbox)', () => {
     const first = (await s.fire('fetch', { request: s.request('./dict/sq/a.json') })) as Response;
     expect(await first.text()).toBe('shard https://app.test/goreview/dict/sq/a.json');
     await new Promise((r) => setTimeout(r, 5));
-    const dict = s.store.get('goreview-dict-v1')!;
+    const dict = s.store.get('goreview-dict-v2')!;
     expect([...dict.keys()]).toEqual(['https://app.test/goreview/dict/sq/a.json']);
     // second read: from the cache, no second network call
     s.fetchFn.mockClear();

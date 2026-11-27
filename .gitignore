@@ -46,3 +46,15 @@ packages/biblia/public/data/
 
 # Biblia standalone edition build (npm run biblia:build-standalone; 49 MB)
 packages/biblia/dist-standalone/
+
+# Biblia translation editions: the assembled public folders and the builds (--mode <id>; packages/biblia/vite.config.ts)
+packages/biblia/.edition-*/
+packages/biblia/dist-hi/
+packages/biblia/dist-th/
+packages/biblia/dist-de/
+packages/biblia/dist-es/
+packages/biblia/dist-standalone-*/
+
+# Chrome Web Store package (scripts/extension-store-package.mjs)
+packages/golearn-extension/dist-store/
+packages/golearn-extension/store/

@@ -46,7 +46,10 @@ function demoteStrayImperatives(s: Sent, cl: Clause): void {
     if (t.rs.some((r) => !r.down && ordinaryWord(r.c))) {
       const next = s.toks[w[k + 1]];
       const object = !!next && anyLive(next, (c) => c.pos === 'DET' || (c.pos === 'PRON' && has(c, 'PronType', 'Prs')));
-      if (!object) prefer(t, (r) => !isImp(r.c), 'a function word or adverb, not the imperative of the verb it is spelled like');
+      // with no article or pronoun behind it the word is the function word or adverb itself (bitte schön, Bitte setzen Sie sich, Mehr Licht): the first person
+      // of the verb it is spelled like is no more a reading here than its imperative is
+      // (a word the word list files under two classes, bitte as interjection and adverb, stays two level readings of one word: the sentence does not choose a class)
+      if (!object && !prefer(t, (r) => !isVerbal(r.c), 'a function word or adverb, not the imperative or the first person of the verb it is spelled like')) prefer(t, (r) => !isImp(r.c), 'a function word or adverb, not the imperative of the verb it is spelled like');
     }
   }
 }

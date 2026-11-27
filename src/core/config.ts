@@ -17,6 +17,10 @@ export const LANGUAGE_ROWS: Language[] = [
   { id: 'el', name: 'Greek', endonym: 'Ελληνικά', script: 'Grek', direction: 'ltr', whitespaceDelimited: true },
   { id: 'la', name: 'Latin', endonym: 'Latina', script: 'Latn', direction: 'ltr', whitespaceDelimited: true },
   { id: 'arc', name: 'Aramaic (Biblical)', endonym: 'אֲרָמִית', script: 'Hebr', direction: 'rtl', whitespaceDelimited: true },
+  { id: 'ru', name: 'Russian', endonym: 'Русский', script: 'Cyrl', direction: 'ltr', whitespaceDelimited: true },
+  { id: 'fr', name: 'French', endonym: 'Français', script: 'Latn', direction: 'ltr', whitespaceDelimited: true },
+  { id: 'ko', name: 'Korean', endonym: '한국어', script: 'Hang', direction: 'ltr', whitespaceDelimited: true },
+  { id: 'ar', name: 'Arabic', endonym: 'العربية', script: 'Arab', direction: 'rtl', whitespaceDelimited: true },
 ];
 
 export const COURSES: Course[] = [
@@ -72,6 +76,30 @@ export const COURSES: Course[] = [
     // No variety policy yet: Classical Latin is the working target; the Vulgate and later Latin are read as Latin of their period.
   },
   { id: 'aramaic-arc', lang: 'arc', country: 'Aramaic', title: 'Biblical Aramaic', primaryReadingKinds: ['scripture'], preferredLocales: [], variety: { target: 'arc-bib', within: [] } },
+  {
+    id: 'russia-ru', lang: 'ru', country: 'Russia', title: 'Russian', preferredLocales: ['ru-RU', 'ru'],
+    // Active target: Modern Standard Russian in today's spelling. Pre-1918 spelling (ѣ, і, a final ъ), Church Slavonic and the other
+    // Cyrillic-script languages (Ukrainian, Belarusian, Bulgarian, Serbian) are not Russian here: they are neither analysed nor credited.
+    variety: { target: 'ru-RU', within: [] },
+  },
+  {
+    id: 'french-fr', lang: 'fr', country: 'France', title: 'French', preferredLocales: ['fr-FR', 'fr-CA', 'fr-BE', 'fr-CH', 'fr'],
+    // Active target: contemporary standard written French. Regional words (Québec, Belgium, Switzerland, Africa) are labelled where the
+    // sources label them; older spelling and the literary tenses are recognised and explained, never suppressed.
+    variety: { target: 'fr-FR', within: [] },
+  },
+  {
+    id: 'korea-ko', lang: 'ko', country: 'Korea', title: 'Korean', preferredLocales: ['ko-KR', 'ko'],
+    // Active target: Modern Standard Korean (South Korean standard spelling). North Korean orthography, historical Korean (Middle Korean,
+    // hunmin jeongeum spelling) and the dialects are not Korean here: they are neither analysed nor credited, and the identity is kept so they can join later.
+    variety: { target: 'ko-KR', within: [] },
+  },
+  {
+    id: 'arabic-ar', lang: 'ar', country: 'Arabic', title: 'Arabic', preferredLocales: ['ar', 'ar-SA', 'ar-EG'],
+    // Active target: Modern Standard Arabic; Classical Arabic (ar-cla) is a second learning variety of the same language (the varieties registry).
+    // The spoken dialects are recognised and kept apart, never read as Standard Arabic.
+    variety: { target: 'ar-msa', within: [] },
+  },
 ];
 
 /** The course for a language: the course whose own language it is; for a companion language (Nynorsk) the course that reads it. */

@@ -1,12 +1,11 @@
 /** Labels, durations and the evidence explanations shared by the screens. No DOM. */
+import { unitIdLabel } from '../../repository-contract/src';
 import { replaysExceeded } from '../src/grading/grade';
 import type { AssessmentDimension, Exercise, ExerciseFamily, Grading, GradeOutcome, Response, ReviewResult } from '../src/types';
 
 /** A readable label from a unit id such as `lemma:sq:shtëpi:NOUN` or `form:sq:shtëpinë`; the id itself when it has no such shape. */
 export function unitLabel(unitId: string): string {
-  const parts = unitId.split(':');
-  if (parts.length >= 3 && parts[2]) return parts[2];
-  return unitId;
+  return unitIdLabel(unitId); // a Korean homonym number (눈²) is identity, not spelling: the label is the headword
 }
 
 /** English names of the languages GoLearn teaches (and a few more); an unknown code is returned as it is. */

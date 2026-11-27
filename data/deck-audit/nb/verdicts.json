@@ -1,0 +1,5151 @@
+{
+ "readBy": "AI models (Claude), not native speakers; each card judged once, in the first sentence it came from, against the brief in docs/ecosystem/DECK-GATE.md. 2026-11-26.",
+ "residual": [],
+ "cards": {
+  "form:nb:alle": [
+   {
+    "shown": "everybody, everyone",
+    "v": "ok"
+   },
+   {
+    "shown": "everyone",
+    "v": "ok"
+   }
+  ],
+  "form:nb:allerede": [
+   {
+    "shown": "already",
+    "v": "ok"
+   }
+  ],
+  "form:nb:alt": [
+   {
+    "shown": "everything, all, anything",
+    "v": "ok"
+   }
+  ],
+  "form:nb:annen": [
+   {
+    "shown": "other, different",
+    "v": "ok"
+   }
+  ],
+  "form:nb:arbeide": [
+   {
+    "shown": "to work",
+    "v": "ok"
+   }
+  ],
+  "form:nb:av": [
+   {
+    "shown": "off (not operating)",
+    "v": "false-meaning",
+    "note": "av here is the preposition (of); \"off (not operating)\" is a marginal adverb sense"
+   }
+  ],
+  "form:nb:bare": [
+   {
+    "shown": "only, merely, just",
+    "v": "ok"
+   }
+  ],
+  "form:nb:barn": [
+   {
+    "shown": "child",
+    "v": "ok"
+   }
+  ],
+  "form:nb:begynne": [
+   {
+    "shown": "to begin",
+    "v": "ok"
+   }
+  ],
+  "form:nb:bestille": [
+   {
+    "shown": "to order (goods)",
+    "v": "ok"
+   },
+   {
+    "shown": "order; book",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
+   }
+  ],
+  "form:nb:bil": [
+   {
+    "shown": "a car, automobile",
+    "v": "ok"
+   }
+  ],
+  "form:nb:blant": [
+   {
+    "shown": "among, amongst",
+    "v": "ok"
+   }
+  ],
+  "form:nb:ble": [
+   {
+    "shown": "browse, leaf through",
+    "v": "false-meaning",
+    "note": "ble is past of bli (became/was); \"browse\" belongs to bla"
+   }
+  ],
+  "form:nb:bli": [
+   {
+    "shown": "become",
+    "v": "ok"
+   },
+   {
+    "shown": "stay, remain",
+    "v": "ok"
+   }
+  ],
+  "form:nb:borte": [
+   {
+    "shown": "away",
+    "v": "ok"
+   }
+  ],
+  "form:nb:bra": [
+   {
+    "shown": "good, fine",
+    "v": "ok"
+   }
+  ],
+  "form:nb:bro": [
+   {
+    "shown": "bridge",
+    "v": "ok"
+   }
+  ],
+  "form:nb:bruke": [
+   {
+    "shown": "to use",
+    "v": "ok"
+   }
+  ],
+  "form:nb:brød": [
+   {
+    "shown": "bread",
+    "v": "ok"
+   }
+  ],
+  "form:nb:by": [
+   {
+    "shown": "town",
+    "v": "ok"
+   }
+  ],
+  "form:nb:bygge": [
+   {
+    "shown": "to build",
+    "v": "ok"
+   }
+  ],
+  "form:nb:da": [
+   {
+    "shown": "then",
+    "v": "ok"
+   }
+  ],
+  "form:nb:dag": [
+   {
+    "shown": "a day",
+    "v": "ok"
+   }
+  ],
+  "form:nb:de": [
+   {
+    "shown": "they",
+    "v": "ok"
+   }
+  ],
+  "form:nb:deg": [
+   {
+    "shown": "thee, you; object form of du",
+    "v": "ok"
+   }
+  ],
+  "form:nb:dem": [
+   {
+    "shown": "them",
+    "v": "ok"
+   }
+  ],
+  "form:nb:den": [
+   {
+    "shown": "it",
+    "v": "ok"
+   }
+  ],
+  "form:nb:denne": [
+   {
+    "shown": "this; this one",
+    "v": "ok"
+   }
+  ],
+  "form:nb:der": [
+   {
+    "shown": "there",
+    "v": "ok"
+   }
+  ],
+  "form:nb:dessuten": [
+   {
+    "shown": "also, besides, furthermore, moreover, in addition",
+    "v": "ok"
+   },
+   {
+    "shown": "besides",
+    "v": "ok"
+   }
+  ],
+  "form:nb:dessverre": [
+   {
+    "shown": "unfortunately, to regret",
+    "v": "ok"
+   }
+  ],
+  "form:nb:det": [
+   {
+    "shown": "it",
+    "v": "ok"
+   }
+  ],
+  "form:nb:din": [
+   {
+    "shown": "your, yours",
+    "v": "ok"
+   }
+  ],
+  "form:nb:dra": [
+   {
+    "shown": "to pull, draw, drag",
+    "v": "ok"
+   }
+  ],
+  "form:nb:drikkevann": [
+   {
+    "shown": "drinking water",
+    "v": "ok"
+   }
+  ],
+  "form:nb:du": [
+   {
+    "shown": "thou, you (second person, singular)",
+    "v": "ok"
+   }
+  ],
+  "form:nb:egen": [
+   {
+    "shown": "own",
+    "v": "ok"
+   },
+   {
+    "shown": "peculiar, odd",
+    "v": "false-meaning",
+    "note": "egen means own/separate here; \"peculiar, odd\" is a marginal sense"
+   }
+  ],
+  "form:nb:egentlig": [
+   {
+    "shown": "actually",
+    "v": "ok"
+   }
+  ],
+  "form:nb:egg": [
+   {
+    "shown": "an egg",
+    "v": "ok"
+   }
+  ],
+  "form:nb:eller": [
+   {
+    "shown": "or",
+    "v": "ok"
+   }
+  ],
+  "form:nb:elv": [
+   {
+    "shown": "river",
+    "v": "ok"
+   }
+  ],
+  "form:nb:en": [
+   {
+    "shown": "a, an (indefinite article)",
+    "v": "ok"
+   }
+  ],
+  "form:nb:ennå": [
+   {
+    "shown": "yet",
+    "v": "ok"
+   }
+  ],
+  "form:nb:et": [
+   {
+    "shown": "a, an (the neuter indefinite article)",
+    "v": "ok"
+   }
+  ],
+  "form:nb:etter": [
+   {
+    "shown": "after",
+    "v": "ok"
+   }
+  ],
+  "form:nb:faktisk": [
+   {
+    "shown": "actually",
+    "v": "ok"
+   }
+  ],
+  "form:nb:feber": [
+   {
+    "shown": "a fever",
+    "v": "ok"
+   }
+  ],
+  "form:nb:feil": [
+   {
+    "shown": "error, mistake",
+    "v": "ok"
+   }
+  ],
+  "form:nb:fem": [
+   {
+    "shown": "five",
+    "v": "ok"
+   }
+  ],
+  "form:nb:femti": [
+   {
+    "shown": "fifty",
+    "v": "ok"
+   }
+  ],
+  "form:nb:ferdig": [
+   {
+    "shown": "finished",
+    "v": "ok"
+   }
+  ],
+  "form:nb:film": [
+   {
+    "shown": "a film, movie (cinematic production)",
+    "v": "ok"
+   }
+  ],
+  "form:nb:finne": [
+   {
+    "shown": "to find",
+    "v": "ok"
+   }
+  ],
+  "form:nb:finnes": [
+   {
+    "shown": "to be, exist, occur, be found",
+    "v": "ok"
+   }
+  ],
+  "form:nb:fire": [
+   {
+    "shown": "four",
+    "v": "ok"
+   }
+  ],
+  "form:nb:fjell": [
+   {
+    "shown": "a mountain",
+    "v": "ok"
+   }
+  ],
+  "form:nb:fjord": [
+   {
+    "shown": "a fjord",
+    "v": "ok"
+   }
+  ],
+  "form:nb:foran": [
+   {
+    "shown": "in front of",
+    "v": "ok"
+   }
+  ],
+  "form:nb:forsiktig": [
+   {
+    "shown": "careful, cautious",
+    "v": "ok"
+   }
+  ],
+  "form:nb:forsinket": [
+   {
+    "shown": "delayed, late",
+    "v": "ok"
+   }
+  ],
+  "form:nb:fotball": [
+   {
+    "shown": "football, association football, soccer (the game)",
+    "v": "ok"
+   }
+  ],
+  "form:nb:fra": [
+   {
+    "shown": "from",
+    "v": "ok"
+   }
+  ],
+  "form:nb:fredag": [
+   {
+    "shown": "Friday",
+    "v": "ok"
+   }
+  ],
+  "form:nb:frem": [
+   {
+    "shown": "forward",
+    "v": "ok"
+   }
+  ],
+  "form:nb:fri": [
+   {
+    "shown": "free, not imprisoned or enslaved",
+    "v": "ok"
+   }
+  ],
+  "form:nb:frisk": [
+   {
+    "shown": "fresh",
+    "v": "ok"
+   },
+   {
+    "shown": "healthy; fresh",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
+   }
+  ],
+  "form:nb:frokost": [
+   {
+    "shown": "breakfast",
+    "v": "ok"
+   }
+  ],
+  "form:nb:full": [
+   {
+    "shown": "full (containing the maximum possible amount)",
+    "v": "ok"
+   }
+  ],
+  "form:nb:få": [
+   {
+    "shown": "to get",
+    "v": "ok"
+   }
+  ],
+  "form:nb:født": [
+   {
+    "shown": "born",
+    "v": "ok"
+   }
+  ],
+  "form:nb:først": [
+   {
+    "shown": "first",
+    "v": "ok"
+   }
+  ],
+  "form:nb:første": [
+   {
+    "shown": "first",
+    "v": "ok"
+   }
+  ],
+  "form:nb:gang": [
+   {
+    "shown": "hall, hallway",
+    "v": "false-meaning",
+    "note": "in this sentence gang means time/occasion; hallway is not the main sense shown for this use"
+   },
+   {
+    "shown": "hallway; time; occasion",
+    "v": "ok"
+   }
+  ],
+  "form:nb:ganske": [
+   {
+    "shown": "quite",
+    "v": "ok"
+   }
+  ],
+  "form:nb:gjerne": [
+   {
+    "shown": "gladly",
+    "v": "ok"
+   }
+  ],
+  "form:nb:god": [
+   {
+    "shown": "good",
+    "v": "ok"
+   }
+  ],
+  "form:nb:godt": [
+   {
+    "shown": "well",
+    "v": "ok"
+   }
+  ],
+  "form:nb:gå": [
+   {
+    "shown": "To walk, go.",
+    "v": "ok"
+   },
+   {
+    "shown": "go; walk",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
+   }
+  ],
+  "form:nb:ha": [
+   {
+    "shown": "To have, own, possess.",
+    "v": "ok"
+   }
+  ],
+  "form:nb:halv": [
+   {
+    "shown": "half",
+    "v": "ok"
+   }
+  ],
+  "form:nb:han": [
+   {
+    "shown": "he, him",
+    "v": "ok"
+   }
+  ],
+  "form:nb:handle": [
+   {
+    "shown": "to act (do something)",
+    "v": "ok"
+   },
+   {
+    "shown": "shop; act",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
+   }
+  ],
+  "form:nb:helgen": [
+   {
+    "shown": "saint",
+    "v": "false-reading",
+    "note": "helgen here is the weekend (helg + definite); helgen the saint is another word"
+   }
+  ],
+  "form:nb:heller": [
+   {
+    "shown": "rather",
+    "v": "ok"
+   }
+  ],
+  "form:nb:helt": [
+   {
+    "shown": "completely, altogether, quite, fully, totally, absolutely",
+    "v": "ok"
+   }
+  ],
+  "form:nb:henne": [
+   {
+    "shown": "her; object form of hun (=she)",
+    "v": "ok"
+   }
+  ],
+  "form:nb:hennes": [
+   {
+    "shown": "her",
+    "v": "ok"
+   }
+  ],
+  "form:nb:her": [
+   {
+    "shown": "here",
+    "v": "ok"
+   }
+  ],
+  "form:nb:hjelpe": [
+   {
+    "shown": "to help; to assist; to aid",
+    "v": "ok"
+   }
+  ],
+  "form:nb:hjem": [
+   {
+    "shown": "home",
+    "v": "ok"
+   }
+  ],
+  "form:nb:hjemme": [
+   {
+    "shown": "at home",
+    "v": "ok"
+   }
+  ],
+  "form:nb:holde": [
+   {
+    "shown": "to hold",
+    "v": "ok"
+   }
+  ],
+  "form:nb:hun": [
+   {
+    "shown": "she",
+    "v": "ok"
+   }
+  ],
+  "form:nb:hundre": [
+   {
+    "shown": "hundred",
+    "v": "ok"
+   }
+  ],
+  "form:nb:hus": [
+   {
+    "shown": "a house",
+    "v": "ok"
+   }
+  ],
+  "form:nb:hvem": [
+   {
+    "shown": "who, whom",
+    "v": "ok"
+   }
+  ],
+  "form:nb:hver": [
+   {
+    "shown": "each",
+    "v": "ok"
+   }
+  ],
+  "form:nb:hverandre": [
+   {
+    "shown": "each other, one another (reciprocal pronoun)",
+    "v": "ok"
+   }
+  ],
+  "form:nb:hvile": [
+   {
+    "shown": "rest, repose",
+    "v": "ok"
+   }
+  ],
+  "form:nb:hvor": [
+   {
+    "shown": "where",
+    "v": "ok"
+   }
+  ],
+  "form:nb:hvordan": [
+   {
+    "shown": "how",
+    "v": "ok"
+   }
+  ],
+  "form:nb:hvorfor": [
+   {
+    "shown": "wherefore, why",
+    "v": "ok"
+   },
+   {
+    "shown": "why",
+    "v": "ok"
+   }
+  ],
+  "form:nb:høre": [
+   {
+    "shown": "to hear",
+    "v": "ok"
+   }
+  ],
+  "form:nb:høres": [
+   {
+    "shown": "sound",
+    "v": "ok"
+   },
+   {
+    "shown": "to be heard",
+    "v": "ok"
+   }
+  ],
+  "form:nb:høy": [
+   {
+    "shown": "high, tall",
+    "v": "ok"
+   },
+   {
+    "shown": "tall; high; loud",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
+   }
+  ],
+  "form:nb:ifølge": [
+   {
+    "shown": "according to",
+    "v": "ok"
+   }
+  ],
+  "form:nb:ikke": [
+   {
+    "shown": "not, no",
+    "v": "ok"
+   }
+  ],
+  "form:nb:innen": [
+   {
+    "shown": "within",
+    "v": "ok"
+   }
+  ],
+  "form:nb:ja": [
+   {
+    "shown": "yes",
+    "v": "ok"
+   }
+  ],
+  "form:nb:jakke": [
+   {
+    "shown": "a jacket",
+    "v": "ok"
+   }
+  ],
+  "form:nb:jo": [
+   {
+    "shown": "yes",
+    "v": "ok"
+   },
+   {
+    "shown": "as you know; yes (to a negative)",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
+   }
+  ],
+  "form:nb:kaffe": [
+   {
+    "shown": "coffee",
+    "v": "ok"
+   }
+  ],
+  "form:nb:kjedelig": [
+   {
+    "shown": "boring, boresome, dull",
+    "v": "ok"
+   }
+  ],
+  "form:nb:kjøpe": [
+   {
+    "shown": "to buy, to purchase",
+    "v": "ok"
+   }
+  ],
+  "form:nb:klokka": [
+   {
+    "shown": "o'clock",
+    "v": "ok"
+   }
+  ],
+  "form:nb:klokken": [
+   {
+    "shown": "o'clock",
+    "v": "ok"
+   }
+  ],
+  "form:nb:koke": [
+   {
+    "shown": "to boil",
+    "v": "ok"
+   }
+  ],
+  "form:nb:komme": [
+   {
+    "shown": "to come",
+    "v": "ok"
+   }
+  ],
+  "form:nb:kopper": [
+   {
+    "shown": "copper (chemical element, symbol Cu)",
+    "v": "false-reading",
+    "note": "kopper here is the plural of kopp (cups); \"copper\" is a different word (kobber)"
+   }
+  ],
+  "form:nb:kunne": [
+   {
+    "shown": "can, could",
+    "v": "ok"
+   }
+  ],
+  "form:nb:kveld": [
+   {
+    "shown": "evening",
+    "v": "ok"
+   }
+  ],
+  "form:nb:la": [
+   {
+    "shown": "to let",
+    "v": "false-meaning",
+    "note": "la here is past of legge (laid/put to bed); \"to let\" is the separate verb la"
+   }
+  ],
+  "form:nb:lang": [
+   {
+    "shown": "long",
+    "v": "ok"
+   }
+  ],
+  "form:nb:langs": [
+   {
+    "shown": "along",
+    "v": "ok"
+   }
+  ],
+  "form:nb:ledig": [
+   {
+    "shown": "free; vacant",
+    "v": "ok"
+   }
+  ],
+  "form:nb:lekte": [
+   {
+    "shown": "to lath",
+    "v": "false-meaning",
+    "note": "lekte is past of leke (to play); \"to lath\" is a different, marginal word"
+   }
+  ],
+  "form:nb:lenge": [
+   {
+    "shown": "for a long time",
+    "v": "ok"
+   },
+   {
+    "shown": "long, for a long time",
+    "v": "ok"
+   }
+  ],
+  "form:nb:lese": [
+   {
+    "shown": "to read",
+    "v": "ok"
+   }
+  ],
+  "form:nb:lett": [
+   {
+    "shown": "easy (requiring little skill or effort)",
+    "v": "ok"
+   },
+   {
+    "shown": "easy; light",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
+   }
+  ],
+  "form:nb:levere": [
+   {
+    "shown": "to deliver",
+    "v": "ok"
+   }
+  ],
+  "form:nb:like": [
+   {
+    "shown": "to like",
+    "v": "false-reading",
+    "note": "\"like etter\" means just/right after (adverb), not the verb like"
+   }
+  ],
+  "form:nb:liten": [
+   {
+    "shown": "small, little (not large)",
+    "v": "ok"
+   }
+  ],
+  "form:nb:litt": [
+   {
+    "shown": "a bit, a little",
+    "v": "ok"
+   },
+   {
+    "shown": "a little",
+    "v": "ok"
+   }
+  ],
+  "form:nb:låve": [
+   {
+    "shown": "a barn",
+    "v": "ok"
+   }
+  ],
+  "form:nb:lære": [
+   {
+    "shown": "education",
+    "v": "false-reading",
+    "note": "lære here is the verb \"to learn\", not the noun"
+   },
+   {
+    "shown": "teaching; doctrine",
+    "v": "false-reading",
+    "note": "lære here is the verb (to learn), not the noun teaching"
+   }
+  ],
+  "form:nb:mamma": [
+   {
+    "shown": "mother",
+    "v": "ok"
+   },
+   {
+    "shown": "mum",
+    "v": "ok"
+   }
+  ],
+  "form:nb:man": [
+   {
+    "shown": "you",
+    "v": "ok"
+   },
+   {
+    "shown": "one, you (generic)",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
+   }
+  ],
+  "form:nb:mandag": [
+   {
+    "shown": "Monday",
+    "v": "ok"
+   }
+  ],
+  "form:nb:mann": [
+   {
+    "shown": "man (an adult male human being)",
+    "v": "ok"
+   },
+   {
+    "shown": "man; husband",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
+   }
+  ],
+  "form:nb:mat": [
+   {
+    "shown": "food",
+    "v": "ok"
+   }
+  ],
+  "form:nb:matpakke": [
+   {
+    "shown": "packed lunch",
+    "v": "ok"
+   }
+  ],
+  "form:nb:med": [
+   {
+    "shown": "with",
+    "v": "ok"
+   }
+  ],
+  "form:nb:mel": [
+   {
+    "shown": "flour, meal",
+    "v": "ok"
+   }
+  ],
+  "form:nb:mer": [
+   {
+    "shown": "more",
+    "v": "ok"
+   }
+  ],
+  "form:nb:middag": [
+   {
+    "shown": "dinner",
+    "v": "ok"
+   },
+   {
+    "shown": "noon, midday",
+    "v": "false-meaning",
+    "note": "middag means dinner (also midday); first meaning should be dinner"
+   }
+  ],
+  "form:nb:min": [
+   {
+    "shown": "my, mine",
+    "v": "ok"
+   }
+  ],
+  "form:nb:mindre": [
+   {
+    "shown": "less",
+    "v": "ok"
+   }
+  ],
+  "form:nb:mot": [
+   {
+    "shown": "against, towards",
+    "v": "ok"
+   },
+   {
+    "shown": "to, towards",
+    "v": "ok"
+   }
+  ],
+  "form:nb:mulighet": [
+   {
+    "shown": "an opportunity",
+    "v": "ok"
+   },
+   {
+    "shown": "possibility",
+    "v": "ok"
+   }
+  ],
+  "form:nb:myk": [
+   {
+    "shown": "soft",
+    "v": "ok"
+   }
+  ],
+  "form:nb:måtte": [
+   {
+    "shown": "must",
+    "v": "ok"
+   }
+  ],
+  "form:nb:møte": [
+   {
+    "shown": "a meeting",
+    "v": "ok"
+   }
+  ],
+  "form:nb:nei": [
+   {
+    "shown": "no",
+    "v": "ok"
+   }
+  ],
+  "form:nb:nesten": [
+   {
+    "shown": "almost",
+    "v": "ok"
+   },
+   {
+    "shown": "nearly, almost",
+    "v": "ok"
+   }
+  ],
+  "form:nb:nett": [
+   {
+    "shown": "a net",
+    "v": "ok"
+   }
+  ],
+  "form:nb:nettopp": [
+   {
+    "shown": "just; moments ago, recently",
+    "v": "ok"
+   }
+  ],
+  "form:nb:ni": [
+   {
+    "shown": "nine",
+    "v": "ok"
+   }
+  ],
+  "form:nb:nitti": [
+   {
+    "shown": "ninety",
+    "v": "ok"
+   }
+  ],
+  "form:nb:noe": [
+   {
+    "shown": "something",
+    "v": "ok"
+   }
+  ],
+  "form:nb:noen": [
+   {
+    "shown": "somebody, someone; anybody, anyone",
+    "v": "ok"
+   },
+   {
+    "shown": "someone, anyone",
+    "v": "ok"
+   }
+  ],
+  "form:nb:nok": [
+   {
+    "shown": "enough",
+    "v": "ok"
+   },
+   {
+    "shown": "probably; enough",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
+   }
+  ],
+  "form:nb:nummer": [
+   {
+    "shown": "a number",
+    "v": "ok"
+   }
+  ],
+  "form:nb:nyhetene": [
+   {
+    "shown": "the news",
+    "v": "ok"
+   }
+  ],
+  "form:nb:og": [
+   {
+    "shown": "and",
+    "v": "ok"
+   }
+  ],
+  "form:nb:om": [
+   {
+    "shown": "around",
+    "v": "ok"
+   }
+  ],
+  "form:nb:omtrent": [
+   {
+    "shown": "approximately, about",
+    "v": "ok"
+   },
+   {
+    "shown": "about, approximately",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
+   }
+  ],
+  "form:nb:oppdage": [
+   {
+    "shown": "to discover",
+    "v": "ok"
+   }
+  ],
+  "form:nb:oss": [
+   {
+    "shown": "us",
+    "v": "ok"
+   }
+  ],
+  "form:nb:pakke": [
+   {
+    "shown": "a parcel, package",
+    "v": "false-reading",
+    "note": "pakke here is the verb (to wrap), not the noun package"
+   }
+  ],
+  "form:nb:penger": [
+   {
+    "shown": "money",
+    "v": "ok"
+   }
+  ],
+  "form:nb:pose": [
+   {
+    "shown": "bag, sack",
+    "v": "ok"
+   }
+  ],
+  "form:nb:pris": [
+   {
+    "shown": "a prize",
+    "v": "ok"
+   },
+   {
+    "shown": "price; prize",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
+   }
+  ],
+  "form:nb:prosent": [
+   {
+    "shown": "per cent, or percent (US)",
+    "v": "ok"
+   }
+  ],
+  "form:nb:prøve": [
+   {
+    "shown": "test",
+    "v": "false-reading",
+    "note": "prøve here is the verb (to try), not the noun test"
+   }
+  ],
+  "form:nb:på": [
+   {
+    "shown": "on",
+    "v": "ok"
+   },
+   {
+    "shown": "turned on; functioning",
+    "v": "false-meaning",
+    "note": "pa is mainly the preposition on; the turned-on sense is a phrasal adverb sense"
+   }
+  ],
+  "form:nb:reise": [
+   {
+    "shown": "to travel",
+    "v": "false-reading",
+    "note": "reise here is the noun (a journey), not the verb"
+   }
+  ],
+  "form:nb:rekke": [
+   {
+    "shown": "to reach, extend",
+    "v": "ok"
+   }
+  ],
+  "form:nb:rense": [
+   {
+    "shown": "to clean, cleanse",
+    "v": "ok"
+   }
+  ],
+  "form:nb:ringe": [
+   {
+    "shown": "to ring (e.g. bell, telephone)",
+    "v": "ok"
+   },
+   {
+    "shown": "ring; phone",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
+   }
+  ],
+  "form:nb:rundt": [
+   {
+    "shown": "around",
+    "v": "ok"
+   }
+  ],
+  "form:nb:råd": [
+   {
+    "shown": "advice",
+    "v": "ok"
+   }
+  ],
+  "form:nb:rør": [
+   {
+    "shown": "pipe, tube",
+    "v": "false-reading",
+    "note": "rør here is the verb \"stir\", not the noun pipe"
+   }
+  ],
+  "form:nb:sammen": [
+   {
+    "shown": "together",
+    "v": "ok"
+   }
+  ],
+  "form:nb:samtidig": [
+   {
+    "shown": "at the same time",
+    "v": "ok"
+   }
+  ],
+  "form:nb:seg": [
+   {
+    "shown": "oneself; itself; himself/herself",
+    "v": "ok"
+   }
+  ],
+  "form:nb:seks": [
+   {
+    "shown": "six",
+    "v": "ok"
+   }
+  ],
+  "form:nb:seksti": [
+   {
+    "shown": "sixty",
+    "v": "ok"
+   }
+  ],
+  "form:nb:selv": [
+   {
+    "shown": "myself, yourself, himself, herself, itself",
+    "v": "ok"
+   }
+  ],
+  "form:nb:sin": [
+   {
+    "shown": "his/her/its/their own (reflexive)",
+    "v": "ok"
+   },
+   {
+    "shown": "indicating possession; 's, of",
+    "v": "false-meaning",
+    "note": "sin is the reflexive possessive his/her/its/their own, not a genitive marker"
+   }
+  ],
+  "form:nb:sjokolade": [
+   {
+    "shown": "chocolate in the shape of bars",
+    "v": "ok"
+   }
+  ],
+  "form:nb:sju": [
+   {
+    "shown": "seven",
+    "v": "ok"
+   }
+  ],
+  "form:nb:skole": [
+   {
+    "shown": "school",
+    "v": "ok"
+   }
+  ],
+  "form:nb:skrive": [
+   {
+    "shown": "to write",
+    "v": "ok"
+   }
+  ],
+  "form:nb:slå": [
+   {
+    "shown": "to beat, punch, hit, strike",
+    "v": "ok"
+   },
+   {
+    "shown": "hit; beat; turn",
+    "v": "ok"
+   }
+  ],
+  "form:nb:små": [
+   {
+    "shown": "small",
+    "v": "ok"
+   }
+  ],
+  "form:nb:snill": [
+   {
+    "shown": "kind",
+    "v": "ok"
+   }
+  ],
+  "form:nb:snø": [
+   {
+    "shown": "snow",
+    "v": "ok"
+   }
+  ],
+  "form:nb:som": [
+   {
+    "shown": "who, which",
+    "v": "ok"
+   }
+  ],
+  "form:nb:sommer": [
+   {
+    "shown": "summer",
+    "v": "ok"
+   }
+  ],
+  "form:nb:spille": [
+   {
+    "shown": "to play (a sport)",
+    "v": "ok"
+   },
+   {
+    "shown": "play",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
+   }
+  ],
+  "form:nb:spørsmål": [
+   {
+    "shown": "a question",
+    "v": "ok"
+   }
+  ],
+  "form:nb:sted": [
+   {
+    "shown": "a place",
+    "v": "ok"
+   }
+  ],
+  "form:nb:stein": [
+   {
+    "shown": "stone, rock (earthen substance)",
+    "v": "ok"
+   }
+  ],
+  "form:nb:sterk": [
+   {
+    "shown": "strong",
+    "v": "ok"
+   }
+  ],
+  "form:nb:stige": [
+   {
+    "shown": "to climb",
+    "v": "false-reading",
+    "note": "stige here is the noun \"ladder\", not the verb climb"
+   },
+   {
+    "shown": "a ladder",
+    "v": "ok"
+   }
+  ],
+  "form:nb:stor": [
+   {
+    "shown": "big",
+    "v": "ok"
+   },
+   {
+    "shown": "large, big, great",
+    "v": "ok"
+   }
+  ],
+  "form:nb:strøm": [
+   {
+    "shown": "current; electricity",
+    "v": "ok"
+   },
+   {
+    "shown": "power, electricity",
+    "v": "ok"
+   }
+  ],
+  "form:nb:stå": [
+   {
+    "shown": "to stand.",
+    "v": "ok"
+   }
+  ],
+  "form:nb:suppe": [
+   {
+    "shown": "soup",
+    "v": "ok"
+   }
+  ],
+  "form:nb:svare": [
+   {
+    "shown": "answer",
+    "v": "ok"
+   }
+  ],
+  "form:nb:syk": [
+   {
+    "shown": "ill",
+    "v": "ok"
+   },
+   {
+    "shown": "sick, ill",
+    "v": "ok"
+   }
+  ],
+  "form:nb:sykdom": [
+   {
+    "shown": "illness, sickness, disease",
+    "v": "ok"
+   }
+  ],
+  "form:nb:sykepleier": [
+   {
+    "shown": "a nurse",
+    "v": "ok"
+   }
+  ],
+  "form:nb:sykkel": [
+   {
+    "shown": "bicycle, cycle",
+    "v": "ok"
+   }
+  ],
+  "form:nb:så": [
+   {
+    "shown": "so",
+    "v": "ok"
+   }
+  ],
+  "form:nb:søndag": [
+   {
+    "shown": "Sunday",
+    "v": "ok"
+   }
+  ],
+  "form:nb:ta": [
+   {
+    "shown": "to take (grab with the hands)",
+    "v": "ok"
+   },
+   {
+    "shown": "take",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
+   }
+  ],
+  "form:nb:takk": [
+   {
+    "shown": "thank you, thanks",
+    "v": "ok"
+   },
+   {
+    "shown": "thanks",
+    "v": "ok"
+   }
+  ],
+  "form:nb:tall": [
+   {
+    "shown": "number, numeral, figure",
+    "v": "ok"
+   }
+  ],
+  "form:nb:te": [
+   {
+    "shown": "tea",
+    "v": "ok"
+   }
+  ],
+  "form:nb:teater": [
+   {
+    "shown": "theatre, theater (US)",
+    "v": "ok"
+   }
+  ],
+  "form:nb:ti": [
+   {
+    "shown": "ten",
+    "v": "ok"
+   }
+  ],
+  "form:nb:tid": [
+   {
+    "shown": "time",
+    "v": "ok"
+   }
+  ],
+  "form:nb:time": [
+   {
+    "shown": "an hour",
+    "v": "ok"
+   },
+   {
+    "shown": "lesson; hour",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
+   }
+  ],
+  "form:nb:tirsdag": [
+   {
+    "shown": "Tuesday",
+    "v": "ok"
+   }
+  ],
+  "form:nb:tjue": [
+   {
+    "shown": "twenty",
+    "v": "ok"
+   }
+  ],
+  "form:nb:to": [
+   {
+    "shown": "two",
+    "v": "ok"
+   }
+  ],
+  "form:nb:tolv": [
+   {
+    "shown": "twelve",
+    "v": "ok"
+   }
+  ],
+  "form:nb:torg": [
+   {
+    "shown": "market square",
+    "v": "ok"
+   }
+  ],
+  "form:nb:torsdag": [
+   {
+    "shown": "Thursday",
+    "v": "ok"
+   }
+  ],
+  "form:nb:torsk": [
+   {
+    "shown": "a cod",
+    "v": "ok"
+   }
+  ],
+  "form:nb:tre": [
+   {
+    "shown": "three",
+    "v": "ok"
+   }
+  ],
+  "form:nb:trøtt": [
+   {
+    "shown": "tired, weary",
+    "v": "ok"
+   }
+  ],
+  "form:nb:tur": [
+   {
+    "shown": "a walk",
+    "v": "ok"
+   },
+   {
+    "shown": "trip; walk",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
+   }
+  ],
+  "form:nb:tusen": [
+   {
+    "shown": "thousand; 1000",
+    "v": "ok"
+   }
+  ],
+  "form:nb:uke": [
+   {
+    "shown": "a week",
+    "v": "ok"
+   }
+  ],
+  "form:nb:under": [
+   {
+    "shown": "wonder, marvel, miracle",
+    "v": "false-reading",
+    "note": "under here is the preposition (under), not the noun wonder"
+   }
+  ],
+  "form:nb:unge": [
+   {
+    "shown": "child",
+    "v": "false-reading",
+    "note": "unge here is the adjective ung (young) used as people; not the noun kid"
+   }
+  ],
+  "form:nb:ute": [
+   {
+    "shown": "outdoors",
+    "v": "ok"
+   },
+   {
+    "shown": "outside, out",
+    "v": "ok"
+   }
+  ],
+  "form:nb:uten": [
+   {
+    "shown": "without",
+    "v": "ok"
+   }
+  ],
+  "form:nb:utenfor": [
+   {
+    "shown": "outside",
+    "v": "ok"
+   },
+   {
+    "shown": "outside of",
+    "v": "ok"
+   }
+  ],
+  "form:nb:utsikt": [
+   {
+    "shown": "a view",
+    "v": "ok"
+   }
+  ],
+  "form:nb:vanlig": [
+   {
+    "shown": "common, usual, typical",
+    "v": "ok"
+   }
+  ],
+  "form:nb:vann": [
+   {
+    "shown": "water",
+    "v": "ok"
+   }
+  ],
+  "form:nb:varme": [
+   {
+    "shown": "warmth, heat, heating",
+    "v": "false-reading",
+    "note": "varme here is the adjective plural (warm), not the noun warmth"
+   }
+  ],
+  "form:nb:ved": [
+   {
+    "shown": "at, by, near",
+    "v": "ok"
+   },
+   {
+    "shown": "by, at, near",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
+   }
+  ],
+  "form:nb:vei": [
+   {
+    "shown": "road, street, path",
+    "v": "ok"
+   }
+  ],
+  "form:nb:veldig": [
+   {
+    "shown": "very, really",
+    "v": "ok"
+   }
+  ],
+  "form:nb:vente": [
+   {
+    "shown": "wait",
+    "v": "ok"
+   }
+  ],
+  "form:nb:vi": [
+   {
+    "shown": "we",
+    "v": "ok"
+   }
+  ],
+  "form:nb:ville": [
+   {
+    "shown": "to want to, be willing to",
+    "v": "ok"
+   },
+   {
+    "shown": "will, want to",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
+   }
+  ],
+  "form:nb:være": [
+   {
+    "shown": "to be",
+    "v": "ok"
+   }
+  ],
+  "form:nb:å": [
+   {
+    "shown": "to",
+    "v": "ok"
+   }
+  ],
+  "form:nb:ånd": [
+   {
+    "shown": "spirit, mind",
+    "v": "ok"
+   }
+  ],
+  "form:nb:år": [
+   {
+    "shown": "a year",
+    "v": "ok"
+   }
+  ],
+  "form:nb:åtte": [
+   {
+    "shown": "eight",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:Bergen:PROPN": [
+   {
+    "shown": "Bergen",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:Norge:PROPN": [
+   {
+    "shown": "Norway",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:Spania:PROPN": [
+   {
+    "shown": "Spain",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:aldri:ADV": [
+   {
+    "shown": "never",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:alle:PRON": [
+   {
+    "shown": "everyone",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:allerede:ADV": [
+   {
+    "shown": "already",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:anbefale:VERB": [
+   {
+    "shown": "recommend",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:annen:ADJ": [
+   {
+    "shown": "other, different, second",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:apotek:NOUN": [
+   {
+    "shown": "pharmacy",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:arbeide:VERB": [
+   {
+    "shown": "work",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:at:SCONJ": [
+   {
+    "shown": "that",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:av:ADP": [
+   {
+    "shown": "of; off; by",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:av:ADV": [
+   {
+    "shown": "off",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:bad:NOUN": [
+   {
+    "shown": "bathroom",
+    "v": "false-reading",
+    "note": "badet is the verb bade/swam, not the noun bad (bathroom)"
+   }
+  ],
+  "lemma:nb:bade:VERB": [
+   {
+    "shown": "bathe",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:bak:ADP": [
+   {
+    "shown": "behind",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:banke:VERB": [
+   {
+    "shown": "knock",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:bare:ADV": [
+   {
+    "shown": "only, just",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:barn:NOUN": [
+   {
+    "shown": "child",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:be:VERB": [
+   {
+    "shown": "ask; pray",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:begynne:VERB": [
+   {
+    "shown": "begin",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:bestemme:VERB": [
+   {
+    "shown": "decide",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:bestille:VERB": [
+   {
+    "shown": "order; book",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:bibliotek:NOUN": [
+   {
+    "shown": "library",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:bil:NOUN": [
+   {
+    "shown": "car",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:bilde:NOUN": [
+   {
+    "shown": "picture; photo",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:billett:NOUN": [
+   {
+    "shown": "ticket",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:billig:ADJ": [
+   {
+    "shown": "cheap",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:bit:NOUN": [
+   {
+    "shown": "piece",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:blant:ADP": [
+   {
+    "shown": "among",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:bli:AUX": [
+   {
+    "shown": "become; be (passive auxiliary)",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:bli:VERB": [
+   {
+    "shown": "become",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:blå:ADJ": [
+   {
+    "shown": "blue",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:bo:VERB": [
+   {
+    "shown": "live; reside",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:bok:NOUN": [
+   {
+    "shown": "book",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:bonde:NOUN": [
+   {
+    "shown": "farmer",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:borte:ADV": [
+   {
+    "shown": "away; over there",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:bra:ADJ": [
+   {
+    "shown": "good; well",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:bro:NOUN": [
+   {
+    "shown": "bridge",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:bror:NOUN": [
+   {
+    "shown": "brother",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:bruke:VERB": [
+   {
+    "shown": "use",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:brukt:ADJ": [
+   {
+    "shown": "used",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:brunost:NOUN": [
+   {
+    "shown": "brown cheese",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:brød:NOUN": [
+   {
+    "shown": "bread",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:burde:AUX": [
+   {
+    "shown": "ought to",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:buss:NOUN": [
+   {
+    "shown": "bus",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:butikk:NOUN": [
+   {
+    "shown": "shop",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:by:NOUN": [
+   {
+    "shown": "town; city",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:bygge:VERB": [
+   {
+    "shown": "build",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:da:ADV": [
+   {
+    "shown": "then; well",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:da:SCONJ": [
+   {
+    "shown": "when (a single past event)",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:dag:NOUN": [
+   {
+    "shown": "day",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:datter:NOUN": [
+   {
+    "shown": "daughter",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:de:DET": [
+   {
+    "shown": "those, the (before an adjective)",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:de:PRON": [
+   {
+    "shown": "they; them",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:den:DET": [
+   {
+    "shown": "that, the (before an adjective)",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:den:PRON": [
+   {
+    "shown": "it (en/ei noun); that",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:denne:DET": [
+   {
+    "shown": "this, these",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:der:ADV": [
+   {
+    "shown": "there",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:dere:PRON": [
+   {
+    "shown": "you (pl)",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:dersom:SCONJ": [
+   {
+    "shown": "if, in case",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:dessuten:ADV": [
+   {
+    "shown": "besides",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:dessverre:ADV": [
+   {
+    "shown": "unfortunately",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:det:DET": [
+   {
+    "shown": "that, the (before an adjective)",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:det:PRON": [
+   {
+    "shown": "it; that; there (dummy subject)",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:din:DET": [
+   {
+    "shown": "your (sg)",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:dit:ADV": [
+   {
+    "shown": "(to) there",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:dra:VERB": [
+   {
+    "shown": "pull; go; travel",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:drikke:NOUN": [
+   {
+    "shown": "drink",
+    "v": "false-reading",
+    "note": "drikke here is the verb \"to drink\", not the noun"
+   }
+  ],
+  "lemma:nb:drikke:VERB": [
+   {
+    "shown": "drink",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:drømme:VERB": [
+   {
+    "shown": "dream",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:du:PRON": [
+   {
+    "shown": "you (sg)",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:dusje:VERB": [
+   {
+    "shown": "shower",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:dyp:ADJ": [
+   {
+    "shown": "deep",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:dør:NOUN": [
+   {
+    "shown": "door",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:egen:ADJ": [
+   {
+    "shown": "own",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:egentlig:ADV": [
+   {
+    "shown": "actually, really",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:elev:NOUN": [
+   {
+    "shown": "pupil",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:eller:CONJ": [
+   {
+    "shown": "or",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:elv:NOUN": [
+   {
+    "shown": "river",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:en:DET": [
+   {
+    "shown": "a, an (the indefinite article)",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:en:NUM": [
+   {
+    "shown": "one",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:enn:SCONJ": [
+   {
+    "shown": "than",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:ennå:ADV": [
+   {
+    "shown": "yet, still",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:eple:NOUN": [
+   {
+    "shown": "apple",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:etasje:NOUN": [
+   {
+    "shown": "floor (storey)",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:etter:ADP": [
+   {
+    "shown": "after, according to",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:ettermiddag:NOUN": [
+   {
+    "shown": "afternoon",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:faktisk:ADV": [
+   {
+    "shown": "actually",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:falle:VERB": [
+   {
+    "shown": "fall",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:familie:NOUN": [
+   {
+    "shown": "family",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:fare:VERB": [
+   {
+    "shown": "travel; go",
+    "v": "false-reading",
+    "note": "\"for\" here is the preposition/particle (decided for), not the verb fare"
+   }
+  ],
+  "lemma:nb:feber:NOUN": [
+   {
+    "shown": "fever",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:feil:NOUN": [
+   {
+    "shown": "mistake; error",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:fem:NUM": [
+   {
+    "shown": "five",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:femti:NUM": [
+   {
+    "shown": "fifty",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:ferdig:ADJ": [
+   {
+    "shown": "finished; ready",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:ferie:NOUN": [
+   {
+    "shown": "holiday",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:fest:NOUN": [
+   {
+    "shown": "party",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:fin:ADJ": [
+   {
+    "shown": "fine; nice",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:finne:VERB": [
+   {
+    "shown": "find",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:finnes:VERB": [
+   {
+    "shown": "exist; be found",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:fire:NUM": [
+   {
+    "shown": "four",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:fisker:NOUN": [
+   {
+    "shown": "fisherman",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:fjell:NOUN": [
+   {
+    "shown": "mountain",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:fjor:ADV": [
+   {
+    "shown": "last year (i fjor)",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:flere:DET": [
+   {
+    "shown": "more (several)",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:flyplass:NOUN": [
+   {
+    "shown": "airport",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:flytte:VERB": [
+   {
+    "shown": "move (house)",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:for:ADV": [
+   {
+    "shown": "too (before an adjective)",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:foran:ADP": [
+   {
+    "shown": "in front of",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:forbudt:ADJ": [
+   {
+    "shown": "forbidden",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:fordi:SCONJ": [
+   {
+    "shown": "because",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:forkjølelse:NOUN": [
+   {
+    "shown": "cold (illness)",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:forrige:ADJ": [
+   {
+    "shown": "previous",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:forsiktig:ADJ": [
+   {
+    "shown": "careful",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:forsinket:ADJ": [
+   {
+    "shown": "delayed",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:forslag:NOUN": [
+   {
+    "shown": "suggestion",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:forsvinne:VERB": [
+   {
+    "shown": "disappear",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:fortelle:VERB": [
+   {
+    "shown": "tell",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:fortsatt:ADV": [
+   {
+    "shown": "still",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:fortsette:VERB": [
+   {
+    "shown": "continue",
+    "v": "false-reading",
+    "note": "fortsatt here is the adverb still, not the verb fortsette"
+   }
+  ],
+  "lemma:nb:fotball:NOUN": [
+   {
+    "shown": "football",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:fra:ADP": [
+   {
+    "shown": "from",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:fram:ADV": [
+   {
+    "shown": "forward",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:fredag:NOUN": [
+   {
+    "shown": "Friday",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:frem:ADV": [
+   {
+    "shown": "forward",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:fri:ADJ": [
+   {
+    "shown": "free",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:frisk:ADJ": [
+   {
+    "shown": "healthy; fresh",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:frokost:NOUN": [
+   {
+    "shown": "breakfast",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:frykte:VERB": [
+   {
+    "shown": "fear",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:fugl:NOUN": [
+   {
+    "shown": "bird",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:få:DET": [
+   {
+    "shown": "few",
+    "v": "false-reading",
+    "note": "få here is the verb \"to get/may\", not the determiner \"few\""
+   }
+  ],
+  "lemma:nb:få:VERB": [
+   {
+    "shown": "get; receive; may",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:født:ADJ": [
+   {
+    "shown": "born",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:følge:VERB": [
+   {
+    "shown": "follow",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:før:ADP": [
+   {
+    "shown": "before",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:før:ADV": [
+   {
+    "shown": "before, earlier",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:før:SCONJ": [
+   {
+    "shown": "before",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:først:ADV": [
+   {
+    "shown": "first, at first",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:første:ADJ": [
+   {
+    "shown": "first",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:gammel:ADJ": [
+   {
+    "shown": "old",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:gang:NOUN": [
+   {
+    "shown": "hallway; time; occasion",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:ganske:ADV": [
+   {
+    "shown": "quite",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:gate:NOUN": [
+   {
+    "shown": "street",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:genser:NOUN": [
+   {
+    "shown": "sweater",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:gi:VERB": [
+   {
+    "shown": "give",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:gjerne:ADV": [
+   {
+    "shown": "gladly, willingly",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:gjøre:VERB": [
+   {
+    "shown": "do; make",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:glemme:VERB": [
+   {
+    "shown": "forget",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:god:ADJ": [
+   {
+    "shown": "good",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:godt:ADV": [
+   {
+    "shown": "well",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:gul:ADJ": [
+   {
+    "shown": "yellow",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:gå ned:ADV": [
+   {
+    "shown": "go down",
+    "v": "false-reading",
+    "note": "ned is an adverb here; no ADV headword \"gå ned\" exists as a word"
+   }
+  ],
+  "lemma:nb:gå ned:VERB": [
+   {
+    "shown": "go down",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:gå:VERB": [
+   {
+    "shown": "go; walk",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:gård:NOUN": [
+   {
+    "shown": "farm",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:ha:AUX": [
+   {
+    "shown": "have (perfect auxiliary)",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:ha:VERB": [
+   {
+    "shown": "have; possess",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:hage:NOUN": [
+   {
+    "shown": "garden",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:hals:NOUN": [
+   {
+    "shown": "neck; throat",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:halv:ADJ": [
+   {
+    "shown": "half",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:han:PRON": [
+   {
+    "shown": "he; him",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:handle:VERB": [
+   {
+    "shown": "shop; act",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:hav:NOUN": [
+   {
+    "shown": "ocean",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:havn:NOUN": [
+   {
+    "shown": "harbour",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:hei:INTJ": [
+   {
+    "shown": "hello",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:hele:DET": [
+   {
+    "shown": "the whole",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:helg:NOUN": [
+   {
+    "shown": "weekend",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:heller:ADV": [
+   {
+    "shown": "rather; either (after not)",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:helt:ADV": [
+   {
+    "shown": "completely",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:henge:VERB": [
+   {
+    "shown": "hang",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:hennes:DET": [
+   {
+    "shown": "her",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:her:ADV": [
+   {
+    "shown": "here",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:hjelp:NOUN": [
+   {
+    "shown": "help",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:hjelpe:VERB": [
+   {
+    "shown": "help",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:hjem:ADV": [
+   {
+    "shown": "(to) home",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:hjemme:ADV": [
+   {
+    "shown": "at home",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:hode:NOUN": [
+   {
+    "shown": "head",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:holde:VERB": [
+   {
+    "shown": "hold; keep",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:hun:PRON": [
+   {
+    "shown": "she; her",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:hund:NOUN": [
+   {
+    "shown": "dog",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:hundre:NUM": [
+   {
+    "shown": "hundred",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:hus:NOUN": [
+   {
+    "shown": "house",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:huske:VERB": [
+   {
+    "shown": "remember",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:hva:PRON": [
+   {
+    "shown": "what",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:hvem:PRON": [
+   {
+    "shown": "who",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:hver:DET": [
+   {
+    "shown": "each, every",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:hverandre:PRON": [
+   {
+    "shown": "each other",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:hvile:VERB": [
+   {
+    "shown": "rest",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:hvilken:DET": [
+   {
+    "shown": "which",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:hvis:SCONJ": [
+   {
+    "shown": "if",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:hvit:ADJ": [
+   {
+    "shown": "white",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:hvor:ADV": [
+   {
+    "shown": "where; how (before an adjective)",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:hvordan:ADV": [
+   {
+    "shown": "how",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:hvorfor:ADV": [
+   {
+    "shown": "why",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:hyggelig:ADJ": [
+   {
+    "shown": "pleasant; nice",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:hytte:NOUN": [
+   {
+    "shown": "cabin",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:håpe:VERB": [
+   {
+    "shown": "hope",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:høre:VERB": [
+   {
+    "shown": "hear",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:høres:VERB": [
+   {
+    "shown": "sound",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:høst:NOUN": [
+   {
+    "shown": "autumn",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:høy:ADJ": [
+   {
+    "shown": "tall; high; loud",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:høyre:ADJ": [
+   {
+    "shown": "right (side)",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:i:ADP": [
+   {
+    "shown": "in; for (duration)",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:ifølge:ADP": [
+   {
+    "shown": "according to",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:ikke:ADV": [
+   {
+    "shown": "not",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:ingen:DET": [
+   {
+    "shown": "no, none",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:inn:ADV": [
+   {
+    "shown": "in (into)",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:innen:ADP": [
+   {
+    "shown": "within, by (a time)",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:inngang:NOUN": [
+   {
+    "shown": "entrance",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:ja:INTJ": [
+   {
+    "shown": "yes",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:jakke:NOUN": [
+   {
+    "shown": "jacket",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:januar:NOUN": [
+   {
+    "shown": "January",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:jeg:PRON": [
+   {
+    "shown": "I; me",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:jo:ADV": [
+   {
+    "shown": "as you know; yes (to a negative)",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:jobb:NOUN": [
+   {
+    "shown": "job",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:jobbe:VERB": [
+   {
+    "shown": "work",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:kaffe:NOUN": [
+   {
+    "shown": "coffee",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:kake:NOUN": [
+   {
+    "shown": "cake",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:kald:ADJ": [
+   {
+    "shown": "cold",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:kamp:NOUN": [
+   {
+    "shown": "match; fight",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:kasse:NOUN": [
+   {
+    "shown": "box; till",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:kilometer:NOUN": [
+   {
+    "shown": "kilometre",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:kirke:NOUN": [
+   {
+    "shown": "church",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:kjedelig:ADJ": [
+   {
+    "shown": "boring",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:kjenne:VERB": [
+   {
+    "shown": "know (a person); feel",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:kjæreste:NOUN": [
+   {
+    "shown": "boyfriend; girlfriend; sweetheart",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:kjøkken:NOUN": [
+   {
+    "shown": "kitchen",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:kjøpe:VERB": [
+   {
+    "shown": "buy",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:kjøre:VERB": [
+   {
+    "shown": "drive",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:klar:ADJ": [
+   {
+    "shown": "clear; ready",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:klare:VERB": [
+   {
+    "shown": "manage",
+    "v": "false-reading",
+    "note": "klar is the adjective clear, not the verb klare (manage)"
+   }
+  ],
+  "lemma:nb:klokke:NOUN": [
+   {
+    "shown": "clock; bell",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:koke:VERB": [
+   {
+    "shown": "boil; cook",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:komme tilbake:ADV": [
+   {
+    "shown": "come back",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:komme tilbake:VERB": [
+   {
+    "shown": "come back",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:komme:VERB": [
+   {
+    "shown": "come",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:kommune:NOUN": [
+   {
+    "shown": "municipality",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:kontor:NOUN": [
+   {
+    "shown": "office",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:kopp:NOUN": [
+   {
+    "shown": "cup",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:korn:NOUN": [
+   {
+    "shown": "grain",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:koste:VERB": [
+   {
+    "shown": "cost",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:kreve:VERB": [
+   {
+    "shown": "demand",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:kunne:AUX": [
+   {
+    "shown": "can, be able to",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:kveld:NOUN": [
+   {
+    "shown": "evening",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:kvittering:NOUN": [
+   {
+    "shown": "receipt",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:kyst:NOUN": [
+   {
+    "shown": "coast",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:lag:NOUN": [
+   {
+    "shown": "team",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:lage:VERB": [
+   {
+    "shown": "make; cook",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:lang:ADJ": [
+   {
+    "shown": "long",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:langs:ADP": [
+   {
+    "shown": "along",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:ledig:ADJ": [
+   {
+    "shown": "free; vacant",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:legge til:ADV": [
+   {
+    "shown": "add",
+    "v": "false-reading",
+    "note": "la ... fram is legge fram (put forward), not legge til"
+   }
+  ],
+  "lemma:nb:legge til:VERB": [
+   {
+    "shown": "add",
+    "v": "false-reading",
+    "note": "la ... fram is legge fram (put forward), not legge til"
+   }
+  ],
+  "lemma:nb:legge:VERB": [
+   {
+    "shown": "lay; put",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:leilighet:NOUN": [
+   {
+    "shown": "flat, apartment",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:leke:VERB": [
+   {
+    "shown": "play",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:lenge:ADV": [
+   {
+    "shown": "for a long time",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:lenger:ADV": [
+   {
+    "shown": "longer; any longer",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:lese:VERB": [
+   {
+    "shown": "read",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:lete:VERB": [
+   {
+    "shown": "look for; search",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:lett:ADJ": [
+   {
+    "shown": "easy; light",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:levere:VERB": [
+   {
+    "shown": "deliver; hand in",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:ligge:VERB": [
+   {
+    "shown": "lie; be located",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:like:ADV": [
+   {
+    "shown": "just, right (before a preposition or adverb)",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:liten:ADJ": [
+   {
+    "shown": "small",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:litt:ADV": [
+   {
+    "shown": "a little",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:luft:NOUN": [
+   {
+    "shown": "air",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:lukke:VERB": [
+   {
+    "shown": "close",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:lunsj:NOUN": [
+   {
+    "shown": "lunch",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:lys:ADJ": [
+   {
+    "shown": "light; bright",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:lys:NOUN": [
+   {
+    "shown": "light; candle",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:lyse:VERB": [
+   {
+    "shown": "shine",
+    "v": "false-reading",
+    "note": "lyst here is the adjective lys (bright), not the verb lyse"
+   }
+  ],
+  "lemma:nb:lyskryss:NOUN": [
+   {
+    "shown": "traffic light",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:låve:NOUN": [
+   {
+    "shown": "barn",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:lære:NOUN": [
+   {
+    "shown": "teaching; doctrine",
+    "v": "false-reading",
+    "note": "lære here is the verb \"to learn\", not the noun teaching"
+   }
+  ],
+  "lemma:nb:lære:VERB": [
+   {
+    "shown": "learn; teach",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:lærer:NOUN": [
+   {
+    "shown": "teacher",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:løk:NOUN": [
+   {
+    "shown": "onion",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:løpe:VERB": [
+   {
+    "shown": "run",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:mamma:NOUN": [
+   {
+    "shown": "mum",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:man:PRON": [
+   {
+    "shown": "one, you (generic)",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:mandag:NOUN": [
+   {
+    "shown": "Monday",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:mange:ADJ": [
+   {
+    "shown": "many",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:mange:DET": [
+   {
+    "shown": "many",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:mann:NOUN": [
+   {
+    "shown": "man; husband",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:marked:NOUN": [
+   {
+    "shown": "market",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:maskin:NOUN": [
+   {
+    "shown": "machine",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:mat:NOUN": [
+   {
+    "shown": "food",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:matpakke:NOUN": [
+   {
+    "shown": "packed lunch",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:med:ADP": [
+   {
+    "shown": "with",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:mel:NOUN": [
+   {
+    "shown": "flour",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:melk:NOUN": [
+   {
+    "shown": "milk",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:men:CONJ": [
+   {
+    "shown": "but",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:mene:VERB": [
+   {
+    "shown": "think; mean",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:menneske:NOUN": [
+   {
+    "shown": "human being",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:mens:SCONJ": [
+   {
+    "shown": "while",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:mer:ADV": [
+   {
+    "shown": "more",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:mer:DET": [
+   {
+    "shown": "more",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:middag:NOUN": [
+   {
+    "shown": "dinner",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:min:DET": [
+   {
+    "shown": "my",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:minutt:NOUN": [
+   {
+    "shown": "minute",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:miste:VERB": [
+   {
+    "shown": "lose",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:mobil:NOUN": [
+   {
+    "shown": "mobile phone",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:mor:NOUN": [
+   {
+    "shown": "mother",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:morgen:NOUN": [
+   {
+    "shown": "morning",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:mot:ADP": [
+   {
+    "shown": "against, towards",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:mulighet:NOUN": [
+   {
+    "shown": "possibility",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:munn:NOUN": [
+   {
+    "shown": "mouth",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:mye:ADV": [
+   {
+    "shown": "much, a lot",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:mye:DET": [
+   {
+    "shown": "much, a lot of",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:myk:ADJ": [
+   {
+    "shown": "soft",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:mål:NOUN": [
+   {
+    "shown": "goal; aim",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:måle:VERB": [
+   {
+    "shown": "measure",
+    "v": "false-reading",
+    "note": "mål here is the noun \"goal\", not the verb måle"
+   }
+  ],
+  "lemma:nb:måtte:AUX": [
+   {
+    "shown": "must, have to",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:møbel:NOUN": [
+   {
+    "shown": "piece of furniture",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:mørk:ADJ": [
+   {
+    "shown": "dark",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:møte:NOUN": [
+   {
+    "shown": "meeting",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:møte:VERB": [
+   {
+    "shown": "meet",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:nabo:NOUN": [
+   {
+    "shown": "neighbour",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:natt:NOUN": [
+   {
+    "shown": "night",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:navn:NOUN": [
+   {
+    "shown": "name",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:ned:ADV": [
+   {
+    "shown": "down",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:nei:INTJ": [
+   {
+    "shown": "no",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:neste:ADJ": [
+   {
+    "shown": "next",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:nesten:ADV": [
+   {
+    "shown": "almost",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:nett:NOUN": [
+   {
+    "shown": "net; internet",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:nettopp:ADV": [
+   {
+    "shown": "just, precisely",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:ni:NUM": [
+   {
+    "shown": "nine",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:nitti:NUM": [
+   {
+    "shown": "ninety",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:noe:PRON": [
+   {
+    "shown": "something, anything",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:noen:DET": [
+   {
+    "shown": "some, any",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:nok:ADV": [
+   {
+    "shown": "probably; enough",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:nordmann:NOUN": [
+   {
+    "shown": "Norwegian (person)",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:nummer:NOUN": [
+   {
+    "shown": "number",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:ny:ADJ": [
+   {
+    "shown": "new",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:nyhet:NOUN": [
+   {
+    "shown": "news item",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:nå:ADV": [
+   {
+    "shown": "now",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:nå:VERB": [
+   {
+    "shown": "reach; catch",
+    "v": "false-reading",
+    "note": "når is the conjunction when, not the verb nå"
+   }
+  ],
+  "lemma:nb:når:ADV": [
+   {
+    "shown": "when (question)",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:når:SCONJ": [
+   {
+    "shown": "when, whenever",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:nøkkel:NOUN": [
+   {
+    "shown": "key",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:og:CONJ": [
+   {
+    "shown": "and",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:om:ADP": [
+   {
+    "shown": "about; around; in (a period)",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:om:SCONJ": [
+   {
+    "shown": "whether; if",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:omtrent:ADV": [
+   {
+    "shown": "about, approximately",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:opp:ADV": [
+   {
+    "shown": "up",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:oppdage:VERB": [
+   {
+    "shown": "discover",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:ovn:NOUN": [
+   {
+    "shown": "oven; stove",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:papir:NOUN": [
+   {
+    "shown": "paper",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:paraply:NOUN": [
+   {
+    "shown": "umbrella",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:parkere:VERB": [
+   {
+    "shown": "park",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:passe:VERB": [
+   {
+    "shown": "fit; look after",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:penger:NOUN": [
+   {
+    "shown": "money",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:planlegge:VERB": [
+   {
+    "shown": "plan",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:politiker:NOUN": [
+   {
+    "shown": "politician",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:pose:NOUN": [
+   {
+    "shown": "bag",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:postkontor:NOUN": [
+   {
+    "shown": "post office",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:potet:NOUN": [
+   {
+    "shown": "potato",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:pris:NOUN": [
+   {
+    "shown": "price; prize",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:prosent:NOUN": [
+   {
+    "shown": "per cent",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:prosjekt:NOUN": [
+   {
+    "shown": "project",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:prøve:VERB": [
+   {
+    "shown": "try",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:på:ADP": [
+   {
+    "shown": "on; at",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:på:ADV": [
+   {
+    "shown": "on",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:regjering:NOUN": [
+   {
+    "shown": "government",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:regn:NOUN": [
+   {
+    "shown": "rain",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:regne:VERB": [
+   {
+    "shown": "rain; calculate",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:regning:NOUN": [
+   {
+    "shown": "bill",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:reise:NOUN": [
+   {
+    "shown": "journey",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:reise:VERB": [
+   {
+    "shown": "travel",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:rekke:VERB": [
+   {
+    "shown": "reach; have time",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:rense:VERB": [
+   {
+    "shown": "clean",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:rett:ADV": [
+   {
+    "shown": "straight; right (before a place)",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:ringe:VERB": [
+   {
+    "shown": "ring; phone",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:rom:NOUN": [
+   {
+    "shown": "room",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:rundt:ADP": [
+   {
+    "shown": "around",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:råd:NOUN": [
+   {
+    "shown": "advice; council",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:rør:NOUN": [
+   {
+    "shown": "pipe",
+    "v": "false-reading",
+    "note": "rør here is the verb \"stir\", not the noun pipe"
+   }
+  ],
+  "lemma:nb:røre:VERB": [
+   {
+    "shown": "stir; move",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:sak:NOUN": [
+   {
+    "shown": "thing; case",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:samme:ADJ": [
+   {
+    "shown": "same",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:sammen:ADV": [
+   {
+    "shown": "together",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:sammenligne:VERB": [
+   {
+    "shown": "compare",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:samtidig:ADV": [
+   {
+    "shown": "at the same time",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:se:VERB": [
+   {
+    "shown": "see; look",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:seg:PRON": [
+   {
+    "shown": "oneself (reflexive)",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:seks:NUM": [
+   {
+    "shown": "six",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:seksti:NUM": [
+   {
+    "shown": "sixty",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:sekund:NOUN": [
+   {
+    "shown": "second",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:selge:VERB": [
+   {
+    "shown": "sell",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:selv:PRON": [
+   {
+    "shown": "self",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:sent:ADV": [
+   {
+    "shown": "late",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:sentrum:NOUN": [
+   {
+    "shown": "centre",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:sette på:ADV": [
+   {
+    "shown": "put on",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:sette på:VERB": [
+   {
+    "shown": "put on",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:sette:VERB": [
+   {
+    "shown": "set; put; seat",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:si:VERB": [
+   {
+    "shown": "say",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:siden:ADP": [
+   {
+    "shown": "since",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:sin:DET": [
+   {
+    "shown": "his/her/its/their own (reflexive)",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:siste:ADJ": [
+   {
+    "shown": "last",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:sitte:VERB": [
+   {
+    "shown": "sit",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:sjef:NOUN": [
+   {
+    "shown": "boss",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:sjokolade:NOUN": [
+   {
+    "shown": "chocolate",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:sju:NUM": [
+   {
+    "shown": "seven",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:sjø:NOUN": [
+   {
+    "shown": "sea",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:skade:VERB": [
+   {
+    "shown": "hurt",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:skilt:NOUN": [
+   {
+    "shown": "sign",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:skje:VERB": [
+   {
+    "shown": "happen",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:skjære:VERB": [
+   {
+    "shown": "cut",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:skjønne:VERB": [
+   {
+    "shown": "understand",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:sko:NOUN": [
+   {
+    "shown": "shoe",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:skog:NOUN": [
+   {
+    "shown": "forest",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:skole:NOUN": [
+   {
+    "shown": "school",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:skrelle:VERB": [
+   {
+    "shown": "peel",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:skrive:VERB": [
+   {
+    "shown": "write",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:skulle:AUX": [
+   {
+    "shown": "shall, should, be going to",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:slutt:NOUN": [
+   {
+    "shown": "end",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:slå av:ADV": [
+   {
+    "shown": "switch off",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:slå av:VERB": [
+   {
+    "shown": "switch off",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:smake:VERB": [
+   {
+    "shown": "taste",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:smør:NOUN": [
+   {
+    "shown": "butter",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:snakke:VERB": [
+   {
+    "shown": "speak; talk",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:snill:ADJ": [
+   {
+    "shown": "kind; nice",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:snø:NOUN": [
+   {
+    "shown": "snow",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:snø:VERB": [
+   {
+    "shown": "snow",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:sol:NOUN": [
+   {
+    "shown": "sun",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:som:PRON": [
+   {
+    "shown": "who, which, that (relative)",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:sommer:NOUN": [
+   {
+    "shown": "summer",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:sove:VERB": [
+   {
+    "shown": "sleep",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:spare:VERB": [
+   {
+    "shown": "save",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:spille:VERB": [
+   {
+    "shown": "play",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:spise:VERB": [
+   {
+    "shown": "eat",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:springe:VERB": [
+   {
+    "shown": "run; jump",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:spørre:VERB": [
+   {
+    "shown": "ask",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:spørsmål:NOUN": [
+   {
+    "shown": "question",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:stasjon:NOUN": [
+   {
+    "shown": "station",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:sted:NOUN": [
+   {
+    "shown": "place",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:stein:NOUN": [
+   {
+    "shown": "stone",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:steke:VERB": [
+   {
+    "shown": "fry",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:stenge:VERB": [
+   {
+    "shown": "close; shut",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:stengt:ADJ": [
+   {
+    "shown": "closed",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:sterk:ADJ": [
+   {
+    "shown": "strong",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:stige:NOUN": [
+   {
+    "shown": "ladder",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:stige:VERB": [
+   {
+    "shown": "rise; climb",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:stille:VERB": [
+   {
+    "shown": "put; set; ask (a question)",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:stor:ADJ": [
+   {
+    "shown": "big",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:strøm:NOUN": [
+   {
+    "shown": "current; electricity",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:stå opp:ADV": [
+   {
+    "shown": "get up",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:stå opp:VERB": [
+   {
+    "shown": "get up",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:stå:VERB": [
+   {
+    "shown": "stand",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:støvel:NOUN": [
+   {
+    "shown": "boot",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:sukker:NOUN": [
+   {
+    "shown": "sugar",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:suppe:NOUN": [
+   {
+    "shown": "soup",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:svak:ADJ": [
+   {
+    "shown": "weak",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:svar:NOUN": [
+   {
+    "shown": "answer",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:svare:VERB": [
+   {
+    "shown": "answer",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:svømmehall:NOUN": [
+   {
+    "shown": "swimming pool",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:syk:ADJ": [
+   {
+    "shown": "ill",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:sykdom:NOUN": [
+   {
+    "shown": "illness",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:sykehus:NOUN": [
+   {
+    "shown": "hospital",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:sykepleier:NOUN": [
+   {
+    "shown": "nurse",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:sykkel:NOUN": [
+   {
+    "shown": "bicycle",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:sykle:VERB": [
+   {
+    "shown": "cycle",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:syltetøy:NOUN": [
+   {
+    "shown": "jam",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:synge:VERB": [
+   {
+    "shown": "sing",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:så:ADV": [
+   {
+    "shown": "then; so, such",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:så:CONJ": [
+   {
+    "shown": "so (main-clause order)",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:søndag:NOUN": [
+   {
+    "shown": "Sunday",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:søster:NOUN": [
+   {
+    "shown": "sister",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:søvn:NOUN": [
+   {
+    "shown": "sleep",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:ta av:ADV": [
+   {
+    "shown": "take off",
+    "v": "false-reading",
+    "note": "\"av\" is part of \"ut av\"; not the phrasal ta av, and no ADV headword"
+   }
+  ],
+  "lemma:nb:ta av:VERB": [
+   {
+    "shown": "take off",
+    "v": "false-reading",
+    "note": "\"tar ... ut av\" is ta ut, not ta av (take off)"
+   }
+  ],
+  "lemma:nb:ta med:ADV": [
+   {
+    "shown": "bring along",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:ta med:VERB": [
+   {
+    "shown": "bring along",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:ta på seg:ADV": [
+   {
+    "shown": "put on (clothes)",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:ta på seg:PRON": [
+   {
+    "shown": "put on (clothes)",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:ta på seg:VERB": [
+   {
+    "shown": "put on (clothes)",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:ta:VERB": [
+   {
+    "shown": "take",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:tak:NOUN": [
+   {
+    "shown": "roof; ceiling",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:takk:INTJ": [
+   {
+    "shown": "thanks",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:tall:NOUN": [
+   {
+    "shown": "number; figure",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:tannlege:NOUN": [
+   {
+    "shown": "dentist",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:te:NOUN": [
+   {
+    "shown": "tea",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:teater:NOUN": [
+   {
+    "shown": "theatre",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:tekst:NOUN": [
+   {
+    "shown": "text",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:tenke:VERB": [
+   {
+    "shown": "think",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:ti:NUM": [
+   {
+    "shown": "ten",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:tid:NOUN": [
+   {
+    "shown": "time",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:tidlig:ADV": [
+   {
+    "shown": "early",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:tidligere:ADV": [
+   {
+    "shown": "earlier, formerly",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:til:ADP": [
+   {
+    "shown": "to; until",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:tilbud:NOUN": [
+   {
+    "shown": "offer",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:tilsette:VERB": [
+   {
+    "shown": "add (an ingredient)",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:time:NOUN": [
+   {
+    "shown": "lesson; hour",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:tirsdag:NOUN": [
+   {
+    "shown": "Tuesday",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:tjue:NUM": [
+   {
+    "shown": "twenty",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:to:NUM": [
+   {
+    "shown": "two",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:tog:NOUN": [
+   {
+    "shown": "train",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:tolv:NUM": [
+   {
+    "shown": "twelve",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:torg:NOUN": [
+   {
+    "shown": "market square",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:torsdag:NOUN": [
+   {
+    "shown": "Thursday",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:torsk:NOUN": [
+   {
+    "shown": "cod",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:tre:NOUN": [
+   {
+    "shown": "tree",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:tre:NUM": [
+   {
+    "shown": "three",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:trene:VERB": [
+   {
+    "shown": "train; exercise",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:trenge:VERB": [
+   {
+    "shown": "need",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:tro:VERB": [
+   {
+    "shown": "believe",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:trøtt:ADJ": [
+   {
+    "shown": "tired",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:tur:NOUN": [
+   {
+    "shown": "trip; walk",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:tusen:NUM": [
+   {
+    "shown": "thousand",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:tydelig:ADJ": [
+   {
+    "shown": "clear; obvious",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:tynn:ADJ": [
+   {
+    "shown": "thin",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:uke:NOUN": [
+   {
+    "shown": "week",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:ulykke:NOUN": [
+   {
+    "shown": "accident",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:under:NOUN": [
+   {
+    "shown": "wonder",
+    "v": "false-reading",
+    "note": "under here is the preposition (under), not the noun wonder"
+   }
+  ],
+  "lemma:nb:ung:ADJ": [
+   {
+    "shown": "young",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:unge:NOUN": [
+   {
+    "shown": "kid; child",
+    "v": "false-reading",
+    "note": "unge here is adjective ung (young) used as people, not noun kid"
+   }
+  ],
+  "lemma:nb:universitet:NOUN": [
+   {
+    "shown": "university",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:unnskyld:INTJ": [
+   {
+    "shown": "excuse me, sorry",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:ut:ADV": [
+   {
+    "shown": "out",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:ute:ADV": [
+   {
+    "shown": "outside, out",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:uten:ADP": [
+   {
+    "shown": "without",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:utenfor:ADP": [
+   {
+    "shown": "outside of",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:utsikt:NOUN": [
+   {
+    "shown": "view",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:utvikle:VERB": [
+   {
+    "shown": "develop",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:vakker:ADJ": [
+   {
+    "shown": "beautiful",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:vanlig:ADJ": [
+   {
+    "shown": "common; usual",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:vann:NOUN": [
+   {
+    "shown": "water",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:vanskelig:ADJ": [
+   {
+    "shown": "difficult",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:varm:ADJ": [
+   {
+    "shown": "warm",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:vaske opp:ADV": [
+   {
+    "shown": "wash up",
+    "v": "false-reading",
+    "note": "\"opp\" is a particle of vaske opp; not an ADV headword"
+   }
+  ],
+  "lemma:nb:vaske opp:VERB": [
+   {
+    "shown": "wash up",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:vaske:VERB": [
+   {
+    "shown": "wash",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:ved:ADP": [
+   {
+    "shown": "by, at, near",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:vegg:NOUN": [
+   {
+    "shown": "wall",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:vei:NOUN": [
+   {
+    "shown": "road; way",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:veldig:ADV": [
+   {
+    "shown": "very",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:vente:VERB": [
+   {
+    "shown": "wait",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:vi:PRON": [
+   {
+    "shown": "we; us",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:viktig:ADJ": [
+   {
+    "shown": "important",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:ville:AUX": [
+   {
+    "shown": "will, want to",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:vind:NOUN": [
+   {
+    "shown": "wind",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:vindu:NOUN": [
+   {
+    "shown": "window",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:vinne:VERB": [
+   {
+    "shown": "win",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:vinter:NOUN": [
+   {
+    "shown": "winter",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:vise:VERB": [
+   {
+    "shown": "show",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:vite:VERB": [
+   {
+    "shown": "know (a fact)",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:vond:ADJ": [
+   {
+    "shown": "painful; bad",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:våkne:VERB": [
+   {
+    "shown": "wake up",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:vår:DET": [
+   {
+    "shown": "our",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:vær:NOUN": [
+   {
+    "shown": "weather",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:være:AUX": [
+   {
+    "shown": "be",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:å:PART": [
+   {
+    "shown": "to (infinitive marker)",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:ånd:NOUN": [
+   {
+    "shown": "spirit",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:åpen:ADJ": [
+   {
+    "shown": "open",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:åpne:VERB": [
+   {
+    "shown": "open",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:år:NOUN": [
+   {
+    "shown": "year",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:åtte:NUM": [
+   {
+    "shown": "eight",
+    "v": "ok"
+   }
+  ],
+  "lemma:nb:øke:VERB": [
+   {
+    "shown": "increase",
+    "v": "ok"
+   }
+  ]
+ },
+ "heldResidue": [
+  "lemma:nb:nå:VERB"
+ ]
+}

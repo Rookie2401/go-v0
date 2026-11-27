@@ -11,3 +11,10 @@ export const GREEK_DEVICE_TAGS = ['el-GR', 'el'] as const;
 // No device ships a Latin voice (checked 2026-10-17). An Italian voice is the REGISTERED stand-in for the Ecclesiastical (Church) reading of the
 // Vulgate texts the course bundles; the registry's gaps and the card say it is a stand-in. A genuine Latin voice (la, la-VA) is preferred when present.
 export const LATIN_DEVICE_TAGS = ['la', 'la-VA', 'it-IT', 'it'] as const;
+export const RUSSIAN_DEVICE_TAGS = ['ru-RU', 'ru'] as const;
+// French: a device voice of any French locale is French (the variety asked for is still matched strictly when one is asked for).
+export const FRENCH_DEVICE_TAGS = ['fr-FR', 'fr-CA', 'fr-BE', 'fr-CH', 'fr'] as const;
+// Korean: a device voice of ko-KR (or plain ko) is Korean. The tag says nothing of North Korean speech; none is claimed.
+export const KOREAN_DEVICE_TAGS = ['ko-KR', 'ko'] as const;
+// Arabic: a device voice of any Arabic locale is Arabic (the variety asked for is still matched strictly when one is asked for). Devices ship Modern Standard voices.
+export const ARABIC_DEVICE_TAGS = ['ar-SA', 'ar-EG', 'ar-AE', 'ar-XA', 'ar'] as const;

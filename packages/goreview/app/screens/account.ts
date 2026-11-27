@@ -3,18 +3,15 @@
  * hero (app.ts: "Your account" between gold rules, the title, the photo of the language being reviewed), then the home's column of warm tiles
  * with no outline.
  *
- *   Your languages   one tile per language the learner has; the one being reviewed says so, any other switches to it at a press. Under them,
- *                    "Add a language" opens #/setup. (The home's language dropdown moved here: "move the Choose your language from the
- *                    dropdown to the Your Account option".)
  *   Name, Email      one tile of facts: the name, editable in place; the address, and only while it is unconfirmed, the note and "send again"
  *   Sign out, Download my data, Delete account   a tile each, like the home's Review Deck; Delete opens the guided deletion below it
- *   Devices signed in   a closed dropdown at the foot
+ *   Devices signed in   a closed dropdown
  *
  * The deletion walks through what happens (nothing for 14 days), how to restore the account in that time (sign in and press Cancel), then asks
  * for the password and deletes. While a deletion is pending the banner with its Cancel sits at the top. Nothing here says learner ids, session
  * expiries or security events: those are the developer's (#/developer).
  *
- * Without an account: on a device-only copy, the languages, then the offer to keep progress across devices and "Clear local data"; on the
+ * Without an account: on a device-only copy, the offer to keep progress across devices and "Clear local data"; on the
  * hosted copy, the way to sign in.
  */
 import { icon, type IconName } from '../icons';
@@ -23,6 +20,7 @@ import { append, button, clear, field, h, p, setStatus, shortDate, statusLine } 
 import { enrolmentName } from '../enrolmentName';
 import { attachRipple } from '../ripple';
 import { ACCOUNT_CHANGED, dataFilename, explainAccountFailure, GRACE_DAYS, mountDeletionBanner, saveFile, sessionsBlock } from './accountSecurity';
+import { languageRow } from './setup';
 import type { View } from './view';
 
 /** A label in the home's manner: the kicker, the title, the caption under it. */
@@ -32,36 +30,151 @@ const tileLabel = (kicker: string | null, title: string, caption?: string, capti
     h('span', { class: 'deck-title' }, title),
     caption ? h('span', { class: 'deck-caption', ...(captionLang ? { lang: captionLang } : {}) }, caption) : null);
 
-/**
- * The learner's languages as tiles, the one being reviewed first and saying so; a press on another makes it the language being reviewed and
- * opens its home. Then "Add a language". Empty (and only the link) when there is none yet.
- */
-async function languageTiles(ctx: AppContext, view: View): Promise<HTMLElement[]> {
-  const [list, id, { languagesOf }] = await Promise.all([ctx.enrolments().catch(() => []), ctx.identity().catch(() => undefined), import('../languageChoices')]);
-  if (!view.alive()) return [];
+export async function languageSettings(ctx: AppContext, view: View): Promise<HTMLElement | undefined> {
+  const [list, id, { languagesOf }, { packFor }] = await Promise.all([
+    ctx.enrolments().catch((): Awaited<ReturnType<AppContext['enrolments']>> => []), ctx.identity().catch(() => undefined),
+    import('../languageChoices'), import('../../../language-packs/src/registry'),
+  ]);
+  if (!view.alive()) return;
   const catalogue = languagesOf();
-  const nativeOf = (languageId: string): string | undefined =>
-    catalogue.find((l) => l.languageId === languageId || l.choice?.options.some((o) => o.languageId === languageId))?.nativeName;
+  const mine = new Set(list.map((e) => e.languageId));
   const active = list.find((e) => e.enrolmentId === id?.enrolmentId) ?? list[0];
-  const ordered = active ? [active, ...list.filter((e) => e !== active)] : [];
-  const tiles = ordered.map((e) => {
-    const current = e === active;
-    const name = enrolmentName(e, list);
-    const face = button('', () => {
-      void (async () => {
-        if (!current && !(await ctx.setLanguage(e.enrolmentId))) return;
-        ctx.go('review');
-      })();
-    }, { class: 'deck-face', 'aria-label': current ? `${name}: being reviewed now. Open its home` : `Review ${name} instead` , ...(current ? { 'aria-current': 'true' } : {}) });
-    face.append(tileLabel(current ? 'Reviewing now' : 'Your language', name, nativeOf(e.languageId), e.languageId), icon(ctx.deps.doc, 'arrow'));
-    const tile = h('div', { class: 'deck-tile account-language', 'data-deck': current ? 'current' : 'language', 'data-enrolment': e.enrolmentId }, face);
-    attachRipple(tile);
-    return tile;
+  type Enrolment = (typeof list)[number];
+  const ordered: Enrolment[] = active ? [active, ...list.filter((e) => e !== active)] : [];
+  const groups = new Map<string, Enrolment[]>();
+  for (const e of ordered) {
+    const parent = catalogue.find((l) => l.languageId === e.languageId || l.choice?.options.some((o) => o.languageId === e.languageId));
+    const key = parent?.languageId ?? e.languageId;
+    const group = groups.get(key);
+    if (group) group.push(e);
+    else groups.set(key, [e]);
+  }
+
+  const activate = async (e: Enrolment): Promise<boolean> => e === active || await ctx.setLanguage(e.enrolmentId);
+  const boxes = Array.from(groups, ([key, members]) => {
+    const language = catalogue.find((l) => l.languageId === key);
+    const reviewing = members.some((e) => e === active);
+    const label = (name: string, status?: string): HTMLElement => h('span', { class: 'deck-label' },
+      status ? h('span', { class: 'deck-kicker' }, status) : null,
+      h('span', { class: 'deck-title account-language-name' }, name,
+        language?.nativeName ? h('small', { lang: key, dir: 'auto' }, ` (${language.nativeName})`) : null));
+    const choice = language?.choice;
+    const languageIds = choice?.kind === 'standard' ? choice.options.map((o) => o.languageId) : [key];
+    const options = languageIds.flatMap((languageId) => {
+      const pack = packFor(languageId);
+      if (pack?.status !== 'installable') return [];
+      return pack.varieties.filter((v) => v.analysed && (v.varietyId === languageId || v.varietyId.startsWith(`${languageId}-`)))
+        .map((v) => ({ languageId, varietyId: v.varietyId, label: v.label }));
+    });
+    if (key === 'he' || key === 'el') options.reverse();
+    const deck = reviewing ? 'current' : 'language';
+    // Norwegian's written standard is an explicit choice on the account card itself.
+    // Keep both enrolled standards available; selecting an unowned one adds it here.
+    if (choice?.kind === 'standard') {
+      const status = statusLine();
+      const chosen = members.find((e) => e === active) ?? members[0];
+      const radios = choice.options.map((o) => h('label', { class: 'setup-option' },
+        h('input', { type: 'radio', name: `account-standard-${key}`, value: o.id,
+          ...(chosen?.languageId === o.languageId ? { checked: true } : {}) }), h('span', {}, o.label)));
+      const picker = h('fieldset', { class: 'setup-choice', 'data-choice': 'standard' },
+        h('legend', {}, choice.label), ...radios);
+      const review = button(`Review ${language?.name ?? key}`, () => {
+        const selected = picker.querySelector<HTMLInputElement>('input:checked');
+        const option = choice.options.find((o) => o.id === selected?.value);
+        if (!option) { setStatus(status, 'Choose the written standard you will read.', 'error'); return; }
+        void (async () => {
+          review.disabled = true;
+          try {
+            const existing = members.find((e) => e.languageId === option.languageId &&
+              (!option.varietyId || (e.varietyId ?? packFor(e.languageId)?.varietyId) === option.varietyId));
+            if (existing) {
+              if (!(await activate(existing))) { if (view.alive()) setStatus(status, 'This track could not be opened. Try again.', 'error'); return; }
+            } else {
+              const result = await ctx.chooseLanguage({ languageId: option.languageId,
+                ...(option.varietyId ? { varietyId: option.varietyId } : {}), keepOtherVarieties: true });
+              if (!result.ok) { if (view.alive()) setStatus(status, result.message, 'error'); return; }
+            }
+            if (view.alive()) ctx.go('review');
+          } finally { review.disabled = false; }
+        })();
+      }, { class: 'account-pill', 'data-action': 'review-language' });
+      const summary = h('summary', { class: 'deck-face' }, label(language?.name ?? key, reviewing ? 'Reviewing now' : undefined),
+        h('span', { class: 'account-language-caret', 'aria-hidden': 'true' }, '▾'));
+      return h('details', { class: 'deck-tile account-language account-language-disclosure account-standard', 'data-deck': deck },
+        summary, h('div', { class: 'account-language-options' }, picker,
+          h('div', { class: 'account-panel-actions' }, review), status));
+    }
+    if (options.length < 2 && members.length === 1) {
+      const e = members[0]!;
+      const face = button('', () => { void activate(e).then((ok) => { if (ok && view.alive()) ctx.go('review'); }); },
+        { class: 'deck-face', 'data-enrolment': e.enrolmentId, ...(reviewing ? { 'aria-current': 'true' } : {}) });
+      face.append(label(language?.name ?? enrolmentName(e, list), reviewing ? 'Reviewing now' : undefined), icon(ctx.deps.doc, 'arrow'));
+      const tile = h('div', { class: 'deck-tile account-language', 'data-deck': deck }, face);
+      attachRipple(tile);
+      return tile;
+    }
+
+    const status = statusLine();
+    const rows: HTMLElement[] = [];
+    const matched = new Set<Enrolment>();
+    let selecting = false;
+    function track(name: string, existing?: Enrolment, target?: { languageId: string; varietyId: string }): HTMLElement {
+      const current = existing === active && !!existing;
+      const control = button('', () => {
+        void (async () => {
+          if (selecting) return;
+          selecting = true;
+          control.disabled = true;
+          try {
+            if (existing) {
+              if (!(await activate(existing))) {
+                if (view.alive()) setStatus(status, 'This track could not be opened. Try again.', 'error');
+                return;
+              }
+            } else if (target) {
+              const result = await ctx.chooseLanguage({ languageId: target.languageId, varietyId: target.varietyId, keepOtherVarieties: true });
+              if (!result.ok) {
+                if (view.alive()) setStatus(status, result.message, 'error');
+                return;
+              }
+            }
+            if (view.alive()) ctx.go('review');
+          } finally {
+            selecting = false;
+            control.disabled = false;
+          }
+        })();
+      }, { class: 'account-language-row', 
+        'data-enrolment': existing?.enrolmentId, ...(current ? { 'aria-current': 'true' } : {}) });
+      control.append(h('span', {}, name), h('small', {}, current ? 'Reviewing now' : existing ? '' : 'Add track'));
+      return h('li', {}, control);
+    }
+
+    const parentName = language?.name ?? enrolmentName(members[0]!, list);
+    for (const option of options) {
+      const existing = members.find((e) => e.languageId === option.languageId &&
+        (e.varietyId ?? packFor(e.languageId)?.varietyId) === option.varietyId);
+      if (existing) matched.add(existing);
+      const name = option.label.replace(/\s*\([^)]*\)\s*$/u, '');
+      const title = name.endsWith(` ${parentName}`) ? name.slice(0, -parentName.length - 1) : name;
+      rows.push(track(title, existing, option));
+    }
+    for (const e of members) {
+      if (!matched.has(e) && !e.varietyId) rows.push(track(enrolmentName(e, list), e));
+    }
+    const summary = h('summary', { class: 'deck-face' }, label(parentName, reviewing ? 'Reviewing now' : undefined),
+      h('span', { class: 'account-language-caret', 'aria-hidden': 'true' }, '▾'));
+    return h('details', { class: 'deck-tile account-language account-language-disclosure', 'data-deck': deck },
+      summary, h('ul', { class: 'account-language-list', 'aria-label': `${parentName} tracks` }, ...rows), status);
   });
-  return [
-    h('div', { class: 'account-group', id: 'account-languages', 'aria-label': 'Your languages' }, ...tiles,
-      h('a', { class: 'home-link account-add-language', id: 'add-language', href: '#/setup' }, list.length ? 'Add a language' : 'Choose your language')),
-  ];
+  const available = catalogue.filter((language) =>
+    language.packIds.some((id) => packFor(id.replace(/^pack:/, '').split(':')[0])?.status === 'installable') &&
+    !groups.has(language.languageId));
+  return h('section', { class: 'account-group', id: 'account-languages', 'aria-label': 'Your languages' },
+    ...boxes,
+    ...(available.length ? [h('h3', { class: 'tiles-heading account-catalogue-heading' }, 'More languages'),
+      h('ul', { class: 'account-catalogue-list', 'aria-label': 'More languages' },
+        ...available.map((language) => languageRow(language, mine, ctx, view, true)))] : []));
 }
 
 /** One of the account's actions as a tile, like the home's Review Deck: an icon, a title and its caption, the arrow. Keeps the button (and its id). */
@@ -77,11 +190,10 @@ function actionTile(ctx: AppContext, action: HTMLButtonElement, glyph: IconName,
 export async function render(el: HTMLElement, ctx: AppContext, view: View): Promise<void> {
   const session = await ctx.state.getSession();
   const mode = await ctx.mode();
+  if (!view.alive()) return;
   // the home's column: tiles with no outline, one under the other (styles.css, "#/account in the home's look")
   const card = h('section', { class: 'home account-page', id: 'account-card', 'aria-labelledby': 'account-h' }, h('h2', { id: 'account-h', class: 'sr' }, 'Account'));
   el.append(card);
-  if (mode !== 'none') append(card, await languageTiles(ctx, view));
-  if (!view.alive()) return;
 
   if (!session) {
     if (mode === 'device') {
@@ -276,8 +388,7 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
   // a closed dropdown at the foot, like the sign-in page's welcome: a tile's kicker with a gold caret
   const devices = h('details', { class: 'signin-about account-devices', id: 'acct-devices' }, h('summary', {}, 'Devices signed in'), sessionsBlock(ctx, view));
 
-  // a pending deletion's banner leads the page, above the languages
-  card.insertBefore(banner, card.children[1] ?? null);
+  card.append(banner);
   append(card, [
     h('div', { class: 'deck-tile account-panel' },
       h('dl', { class: 'account-facts account-profile', 'aria-label': 'Account profile' },
@@ -308,6 +419,7 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
     }
   }
   await paintState();
+  if (!view.alive()) return;
   const onChange = (): void => { if (view.alive()) void paintState(); };
   ctx.deps.doc.addEventListener(ACCOUNT_CHANGED, onChange);
   view.onDispose(() => ctx.deps.doc.removeEventListener(ACCOUNT_CHANGED, onChange));

@@ -221,7 +221,7 @@ describe('source policy: restrictions are capped by the service, never granted b
     }
     for (const id of ['kobo-web', 'kindle-web', 'readawrite', 'mebmarket', 'pratilipi']) expect(SOURCE_POLICY[id].export, id).toBe('forbidden');
     expect(Object.keys(SOURCE_POLICY).sort()).toEqual([
-      'biblegateway', 'clipboard', 'epub-local', 'kanah', 'kindle-web', 'kobo-web', 'libroteka', 'mebmarket', 'play-books', 'pratilipi', 'readawrite',
+      'biblegateway', 'clipboard', 'epub-local', 'euclid-elements', 'kanah', 'kindle-web', 'kobo-web', 'libroteka', 'mebmarket', 'play-books', 'pratilipi', 'readawrite',
       'share-android', 'share-ios', 'share-web', 'tolino-webreader', 'vivlio-casadellibro', 'web-generic', 'youversion',
     ]);
   });

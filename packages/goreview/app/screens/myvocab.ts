@@ -15,7 +15,7 @@
  * Seen to Automatic, never New (the owner, 2026-11-14). A word met only in passing, which the learner never picked, is not in the list
  * at all (`isListedWord`). The rows are kept whole behind the list, so a form the learner did pick still joins a lemma they only passed.
  */
-import { KNOWLEDGE_LEVELS } from '../../../repository-contract/src';
+import { KNOWLEDGE_LEVELS, displayLemma } from '../../../repository-contract/src';
 import type { AppContext } from '../context';
 import { append, button, clear, h, langProps, p, setStatus, statusLine } from '../dom';
 import { reviewFacts } from '../../src/facts/review-facts';
@@ -41,6 +41,8 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
   if (!id) { toggles.remove(); list.replaceWith(p('Choose a language to see the words you have met.', 'muted')); return; }
   const identity = id;
   const tag = identity.varietyId ?? identity.languageId;
+  /** A Korean homonym number (눈²) is identity, not spelling: the list shows the headword (repository-contract lemma-display.ts). */
+  const shownLabel = (label: string): string => displayLemma(identity.languageId, label);
 
   let sort: VocabSort = (await getUiPrefs(ctx)).vocabSort;
   let rows: VocabRow[] = [];
@@ -116,9 +118,9 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
       if (deck?.entries.some((e) => e.unitId === r.unitId)) {
         selectedUnits = new Set([...selectedUnits, ...deck.entries.map((e) => e.unitId)]);
         asking = undefined;
-        setStatus(status, [h('span', langProps(tag), r.label), ` is selected for optional practice. It leads the next deck you start; with “prioritise saved words” on (the default), a word GoReview was already proposing also moves to the front of the automatic batch.`], 'ok');
+        setStatus(status, [h('span', langProps(tag), shownLabel(r.label)), ` is selected for optional practice. It leads the next deck you start; with “prioritise saved words” on (the default), a word GoReview was already proposing also moves to the front of the automatic batch.`], 'ok');
       } else {
-        setStatus(status, [h('span', langProps(tag), r.label), ' is selected for optional practice, but no usable question fits the current session limits. It remains selected for a later practice session.'], 'info');
+        setStatus(status, [h('span', langProps(tag), shownLabel(r.label)), ' is selected for optional practice, but no usable question fits the current session limits. It remains selected for a later practice session.'], 'info');
       }
       paintList();
     } catch (e) { setStatus(status, e instanceof Error ? e.message : 'The word could not be added.', 'error'); } finally { busy = false; }
@@ -134,10 +136,10 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
       button('', () => { asking = open ? undefined : r.unitId; paintList(); void (deckUnits ? Promise.resolve() : refreshDeck()); }, {
         class: 'vocab-row', 'aria-expanded': open ? 'true' : 'false',
       }),
-      h('a', { class: 'vocab-history', href: `#/review/history/${encodeURIComponent(itemOfUnit.get(r.unitId) ?? r.unitId)}`, 'aria-label': `History of ${r.label}` }, 'History'));
+      h('a', { class: 'vocab-history', href: `#/review/history/${encodeURIComponent(itemOfUnit.get(r.unitId) ?? r.unitId)}`, 'aria-label': `History of ${shownLabel(r.label)}` }, 'History'));
     const tap = line.querySelector('button')!;
     append(tap, [
-      h('span', { ...langProps(tag), class: 'vocab-word target-text' }, r.label), gloss,
+      h('span', { ...langProps(tag), class: 'vocab-word target-text' }, shownLabel(r.label)), gloss,
       r.metAs?.length ? h('span', { class: 'vocab-met' }, 'met as: ', h('span', langProps(tag), r.metAs.join(', '))) : null,
       present ? h('span', { class: 'vocab-indeck' }, 'In your deck') : null,
       selected ? h('span', { class: 'vocab-selected' }, 'Selected for optional practice') : null,
@@ -145,12 +147,12 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
     ]);
     const item = h('li', { class: 'vocab-item', 'data-unit-id': r.unitId, 'data-level': r.level, ...(present ? { 'data-in-deck': 'true' } : {}) }, line);
     if (open) {
-      const ask = h('div', { class: 'vocab-ask', role: 'group', 'aria-label': `Add ${r.label} to the current deck` });
-      if (present) ask.append(h('p', { class: 'muted' }, h('span', langProps(tag), r.label), ' is in the current automatic deck.'));
-      else if (selected) ask.append(h('p', { class: 'muted' }, h('span', langProps(tag), r.label), ' is selected for optional practice. It leads the next deck you start; with “prioritise saved words” on (the default), a word GoReview was already proposing also moves to the front of the automatic batch.'));
+      const ask = h('div', { class: 'vocab-ask', role: 'group', 'aria-label': `Add ${shownLabel(r.label)} to the current deck` });
+      if (present) ask.append(h('p', { class: 'muted' }, h('span', langProps(tag), shownLabel(r.label)), ' is in the current automatic deck.'));
+      else if (selected) ask.append(h('p', { class: 'muted' }, h('span', langProps(tag), shownLabel(r.label)), ' is selected for optional practice. It leads the next deck you start; with “prioritise saved words” on (the default), a word GoReview was already proposing also moves to the front of the automatic batch.'));
       else {
         const addBtn = button('Select for optional practice', () => { addBtn.disabled = true; void add(r).finally(() => { addBtn.disabled = false; }); }, { class: 'btn small', 'data-action': 'add-to-deck' });
-        ask.append(h('p', {}, 'Choose ', h('span', langProps(tag), r.label), ' for an optional practice session?'),
+        ask.append(h('p', {}, 'Choose ', h('span', langProps(tag), shownLabel(r.label)), ' for an optional practice session?'),
           h('div', { class: 'entry-actions' }, addBtn, button('Not now', () => { asking = undefined; paintList(); }, { class: 'linklike', 'data-action': 'not-now' })));
       }
       item.append(ask);

@@ -22,27 +22,27 @@ const BASE = 'http://app.test/';
 describe('the pack bindings', () => {
   const b = createPackBindings();
 
-  it('lists every pack with its status and level; Albanian and (at a minimal level) Spanish are installable, German, Hindi, Thai, Latin and the two Norwegian packs are experimental', () => {
+  it('lists every pack with its status and level; Albanian and (at a minimal level) Spanish are installable, German, Hindi, Thai, Latin, Russian and the two Norwegian packs are experimental', () => {
     const packs = b.packs();
-    expect(packs.map((p) => p.languageId).sort()).toEqual(['arc', 'de', 'el', 'es', 'he', 'hi', 'la', 'nb', 'nn', 'sq', 'th']);
+    expect(packs.map((p) => p.languageId).sort()).toEqual(['ar', 'arc', 'de', 'el', 'es', 'fr', 'he', 'hi', 'ko', 'la', 'nb', 'nn', 'ru', 'sq', 'th']);
     const sq = b.packFor('sq')!;
     expect(sq).toMatchObject({ packId: 'pack:sq', status: 'installable', name: 'Albanian', scriptId: 'Latn', defaultVarietyId: 'sq-standard' });
     expect(sq.attribution).toEqual(['Wiktionary, via kaikki.org — CC BY-SA 4.0']);
     expect(sq.licences.length).toBeGreaterThan(0);
     expect(sq.varieties.filter((v) => v.analysed).map((v) => v.varietyId)).toEqual(['sq-standard']);
     expect(sq.remoteVoiceProvider).toBeTruthy();
-    for (const p of packs.filter((x) => ['de', 'hi', 'th', 'nb', 'nn', 'la', 'he', 'el', 'arc'].includes(x.languageId))) expect(p, p.packId).toMatchObject({ status: 'installable', level: 'experimental', levelLabel: 'experimental, unreviewed' });
+    for (const p of packs.filter((x) => ['de', 'hi', 'th', 'nb', 'nn', 'la', 'he', 'el', 'arc', 'ru', 'ko', 'fr', 'ar'].includes(x.languageId))) expect(p, p.packId).toMatchObject({ status: 'installable', level: 'experimental', levelLabel: 'experimental, unreviewed' });
     expect(sq).toMatchObject({ level: 'installable', levelLabel: 'installable' });
     expect(b.packFor('es')).toMatchObject({ packId: 'pack:es', status: 'installable', reviewStatus: 'machine-drafted' });
     expect(b.packFor('xx')).toBeUndefined();
     expect(b.packFor('constructor')).toBeUndefined();
   });
 
-  it('languages: ten, in the catalogue’s order; Norwegian asks for its written standard, Spanish offers a regional preference, and every choice names a pack that exists', () => {
+  it('languages: fourteen, in the catalogue’s order; Norwegian asks for its written standard, Spanish offers a regional preference, and every choice names a pack that exists', () => {
     const languages = b.languages();
-    expect(languages).toHaveLength(10);
+    expect(languages).toHaveLength(14);
     expect(languages.map((l) => l.languageId)).toEqual(LP.LANGUAGE_CATALOGUE.map((e) => e.languageId));
-    expect(languages.map((l) => l.name.split(' ')[0])).toEqual(['Norwegian', 'German', 'Albanian', 'Hindi', 'Thai', 'Spanish', 'Latin', 'Hebrew', 'Greek', 'Aramaic']);
+    expect(languages.map((l) => l.name.split(' ')[0])).toEqual(['Norwegian', 'German', 'Albanian', 'Hindi', 'Thai', 'Spanish', 'Latin', 'Hebrew', 'Greek', 'Aramaic', 'Russian', 'French', 'Korean', 'Arabic']);
     for (const l of languages) {
       expect(l.nativeName, l.name).toBeTruthy();
       expect(l.scriptId, l.name).toBeTruthy();

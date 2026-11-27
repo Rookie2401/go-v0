@@ -42,6 +42,24 @@ describe('written-recognition', () => {
     expect(e.builtFrom.facts).toContain(`unit:${IDS.liber}`);
   });
 
+  it('shows the attested parsing of Koine ὑμῖν alongside its base gloss', async () => {
+    const w = makeWorld();
+    const base = await w.facts(IDS.liber);
+    const id = 'form:el:ὑμῖν';
+    const features = { Case: 'Dat', Number: 'Plur', PronType: 'Prs' };
+    const facts = {
+      ...base,
+      unit: { ...base.unit, unitId: id, kind: 'form' as const, languageId: 'el', label: 'ὑμῖν' },
+      lemma: 'σύ', pos: 'PRON', features, morphDescription: 'personal, dative plural',
+      glosses: ['you'], status: 'high-confidence' as const,
+      lexicalRecognition: { status: 'verified' as const, lemma: 'σύ', pos: 'PRON', glosses: ['you'], source: 'morphgnt-sblgnt', evidence: 'attested-form-reading' as const },
+    };
+    const e = await BUILDERS['written-recognition'].build({ unitId: id, unitKind: 'form', languageId: 'el', dimension: 'written-recognition' }, facts, ctxOf());
+    if ('unavailable' in e) throw new Error(e.reason);
+    expect(e.answerKey.accepted).toContain('you');
+    expect('formParsing' in e ? e.formParsing : undefined).toMatch(/dative plural/i);
+  });
+
   it('a provisional rule-derived form without a supported inflected meaning is withheld from meaning recognition', async () => {
     const w = makeWorld();
     expect(await refused(w, 'written-recognition', IDS.librin)).toContain('no gloss');

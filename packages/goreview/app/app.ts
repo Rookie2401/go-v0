@@ -25,6 +25,7 @@ import * as helpScreen from './screens/help';
 import * as reviewScreen from './screens/review';
 import * as settingsScreen from './screens/settings';
 import * as accountScreen from './screens/account';
+import * as languagesScreen from './screens/languages';
 import * as developerScreen from './screens/developer';
 import * as signinScreen from './screens/signin';
 import * as setupScreen from './screens/setup';
@@ -39,7 +40,7 @@ import { loadingMark } from './loading';
 import { homePhoto, welcomePhoto } from './homePhotos';
 
 export interface RouteDef {
-  id: 'review' | 'tell' | 'vocabulary' | 'settings' | 'account' | 'developer' | 'signin' | 'setup' | 'privacy' | 'terms' | 'help';
+  id: 'review' | 'tell' | 'vocabulary' | 'settings' | 'account' | 'languages' | 'developer' | 'signin' | 'setup' | 'privacy' | 'terms' | 'help';
   title: string;
   render(el: HTMLElement, ctx: AppContext, view: View, params: string[]): void | Promise<void>;
 }
@@ -50,6 +51,7 @@ export const ROUTES: readonly RouteDef[] = [
   { id: 'vocabulary', title: 'My Vocabulary', render: vocabularyScreen.render },
   { id: 'settings', title: 'Settings', render: settingsScreen.render },
   { id: 'account', title: 'Account', render: accountScreen.render },
+  { id: 'languages', title: 'Languages', render: languagesScreen.render },
   { id: 'developer', title: 'Developer', render: developerScreen.render },
   { id: 'signin', title: 'Sign in', render: signinScreen.render },
   { id: 'setup', title: 'Choose your language', render: setupScreen.render },
@@ -69,6 +71,23 @@ function cogIcon(doc: Document): Element {
   const path = doc.createElementNS(ns, 'path');
   path.setAttribute('d', 'M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z');
   svg.append(circle, path);
+  return svg;
+}
+
+/**
+ * The Languages globe (the outline, the equator and one meridian; the same drawing as the GoLearn setup page's, app/barIcons.ts): a plain
+ * SVG, named for assistive technology by the link. The tab was the word "Languages" until the owner, 2026-11-26, after GoLearn's bar took
+ * the symbol: "Change the language icon in GoReview as well."
+ */
+function globeIcon(doc: Document): Element {
+  const ns = 'http://www.w3.org/2000/svg';
+  const svg = doc.createElementNS(ns, 'svg');
+  for (const [k, v] of Object.entries({ viewBox: '0 0 24 24', width: '20', height: '20', fill: 'none', stroke: 'currentColor', 'stroke-width': '1.6', 'stroke-linecap': 'round', 'stroke-linejoin': 'round', 'aria-hidden': 'true', focusable: 'false' })) svg.setAttribute(k, v);
+  const outline = doc.createElementNS(ns, 'circle');
+  for (const [k, v] of Object.entries({ cx: '12', cy: '12', r: '9' })) outline.setAttribute(k, v);
+  const lines = doc.createElementNS(ns, 'path');
+  lines.setAttribute('d', 'M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9s1.3-6.4 3.8-9z');
+  svg.append(outline, lines);
   return svg;
 }
 
@@ -236,7 +255,7 @@ export function createApp(root: HTMLElement, deps: Deps): AppHandle {
     if (id) void flushTermsAcceptance(ctx);
     clear(langWrap);
     if (list.length) {
-      // a quiet kicker: the language's name only. Choosing, switching and adding a language live on the Account page, beside the Settings cog
+      // a quiet kicker: the language's name only. Choosing, switching and adding a language live on the Languages page
       // (the owner, 2026-11-18: "move the Choose your language from the dropdown to the Your Account option"); the home only says which it is
       const current = list.find((e) => e.enrolmentId === id?.enrolmentId) ?? list[0];
       const tip = id?.chosenBy === 'recent-reading' ? `${languageName(current.languageId)}: the language you read most recently` : `${languageName(current.languageId)}${current.varietyId ? ` (${current.varietyId})` : ''}`;
@@ -245,13 +264,13 @@ export function createApp(root: HTMLElement, deps: Deps): AppHandle {
     paintSync(await ctx.syncView(), mode);
     // the account is offered any time, never required
     if (mode !== 'none') {
-      // the account (the person) beside the Settings cog: the account page handles every state, signed in or not
+      // Languages is its own top-right tab alongside Account and Settings.
+      const languages = h('a', { href: '#/languages', id: 'header-languages', class: 'cog header-languages', 'aria-label': 'Languages', title: 'Languages', ...(route === 'languages' ? { 'aria-current': 'page' } : {}) });
+      languages.append(globeIcon(deps.doc));
       const who = h('a', { href: '#/account', id: 'header-account', class: 'cog', 'aria-label': 'Account', title: 'Account', ...(route === 'account' ? { 'aria-current': 'page' } : {}) });
       who.append(personIcon(deps.doc));
       updateCog();
-      acctEl.querySelector('#header-account')?.remove();
-      acctEl.prepend(who);
-      if (cog.parentElement !== acctEl) acctEl.append(cog);
+      acctEl.replaceChildren(languages, who, cog);
     } else clear(acctEl);
   }
 
@@ -270,11 +289,10 @@ export function createApp(root: HTMLElement, deps: Deps): AppHandle {
     const my = ++seq;
     const nextRoute = [id, ...params].join('/');
     if (id === 'settings' && route && route !== 'settings') settingsReturn = route;
-    if (route && route !== nextRoute && (id === 'settings' || route === 'settings')) {
-      main.dataset.settingsMotion = id === 'settings' ? 'enter' : 'leave';
-    } else {
-      delete main.dataset.settingsMotion;
-    }
+    const settingsMotion = route && route !== nextRoute && (id === 'settings' || route === 'settings')
+      ? id === 'settings' ? 'enter' : 'leave'
+      : undefined;
+    delete main.dataset.settingsMotion;
     for (const d of disposers) { try { d(); } catch { /* a screen's cleanup must not stop the next screen */ } }
     disposers = [];
     clear(main);
@@ -299,6 +317,12 @@ export function createApp(root: HTMLElement, deps: Deps): AppHandle {
     let subs = params;
     // the hosted copy needs an account for anything but the sign-in page; inside the extension nothing is behind it
     if (mode === 'none' && target !== 'signin' && target !== 'privacy' && target !== 'terms' && target !== 'help') { target = 'signin'; subs = []; if (win.location.hash !== '#/signin') win.location.hash = '#/signin'; }
+    // Setup remains a first-run entry point. Once enrolled, all language
+    // additions and choices live on the Languages page, including old #/setup links.
+    if (target === 'setup' && (await ctx.enrolments().catch(() => [])).length) {
+      target = 'languages'; subs = [];
+      if (win.location.hash !== '#/languages') win.location.hash = '#/languages';
+    }
     if (my !== seq) return;
     const def = ROUTES.find((r) => r.id === target)!;
     route = [def.id, ...subs].join('/');
@@ -314,8 +338,8 @@ export function createApp(root: HTMLElement, deps: Deps): AppHandle {
     const welcome = def.id === 'signin';
     // Account and the language list wear it too (the owner, 2026-11-18: "in line with the design philosophy of the homescreen"): a kicker between
     // gold rules (what the page is for), the title, the photo of the language being reviewed (the Earth when there is none yet)
-    const hub = def.id === 'account' || def.id === 'setup';
-    const hubKicker = def.id === 'account' ? 'Your account' : 'Choose your language';
+    const hub = def.id === 'account' || def.id === 'setup' || def.id === 'languages';
+    const hubKicker = def.id === 'account' ? 'Your account' : def.id === 'languages' ? 'Your languages' : 'Choose your language';
     const hubTitle = def.id === 'account' ? 'Account' : 'Languages';
     const hero = home || session || welcome || hub
       ? h('div', { class: 'home-hero' },
@@ -355,7 +379,12 @@ export function createApp(root: HTMLElement, deps: Deps): AppHandle {
       if (view.alive()) { clear(body); append(body, [p(`This screen could not be shown: ${e instanceof Error ? e.message : String(e)}`, 'error')]); }
     }
     if (!view.alive()) return;
+    // Animate the one finished destination screen. Capturing both full pages with
+    // the View Transition API made mobile WebKit briefly expose two viewports,
+    // which read as a bounce and a scale snap while Settings opened or closed.
+    if (settingsMotion) main.dataset.settingsMotion = settingsMotion;
     await safeRefreshHeader();
+    if (!view.alive()) return;
     // a screen that put focus on a control of its own (the answer box of a session's first item) keeps it; otherwise the screen itself takes focus
     const held = deps.doc.activeElement;
     if (held && held !== main && main.contains(held)) return;
@@ -372,30 +401,11 @@ export function createApp(root: HTMLElement, deps: Deps): AppHandle {
     await renderDone;
   }
 
-  let activeSettingsTransition: ReturnType<Document['startViewTransition']> | undefined;
   const onHash = (): void => {
-    activeSettingsTransition?.skipTransition();
     const r = parseHash(win.location.hash, deps.enableGoTell);
     if (!r) return;
     if (win.location.hash !== `#/${r.path}`) win.history.replaceState(win.history.state, '', `#/${r.path}`);
-    if (r.path === route) return;
-    const opening = r.id === 'settings';
-    if (route && (opening || route === 'settings') && deps.doc.startViewTransition &&
-        !win.matchMedia?.('(prefers-reduced-motion: reduce)').matches) {
-      const page = deps.doc.documentElement;
-      page.dataset.settingsTransition = opening ? 'enter' : 'leave';
-      const transition = deps.doc.startViewTransition(() => show(r.id, r.params));
-      renderDone = transition.updateCallbackDone;
-      const cleanup = (): void => {
-        if (activeSettingsTransition === transition) {
-          delete page.dataset.settingsTransition;
-          activeSettingsTransition = undefined;
-        }
-      };
-      activeSettingsTransition = transition;
-      void transition.ready.catch(() => {});
-      void transition.finished.then(cleanup, cleanup);
-    } else renderDone = show(r.id, r.params);
+    if (r.path !== route) renderDone = show(r.id, r.params);
   };
   win.addEventListener('hashchange', onHash);
 
@@ -415,7 +425,6 @@ export function createApp(root: HTMLElement, deps: Deps): AppHandle {
     ready: () => renderDone,
     destroy() {
       destroyed = true;
-      activeSettingsTransition?.skipTransition();
       win.removeEventListener('hashchange', onHash);
       win.removeEventListener('goreview:update-ready', onUpdateReady);
       win.removeEventListener('resume', onResume);

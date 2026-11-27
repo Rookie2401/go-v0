@@ -1,0 +1,6525 @@
+{
+ "readBy": "AI models (Claude), not native speakers; each card judged once, in the first sentence it came from, against the brief in docs/ecosystem/DECK-GATE.md. 2026-11-26.",
+ "residual": [],
+ "cards": {
+  "form:la:a": [
+   {
+    "shown": "apocopic form of ab",
+    "v": "unknown",
+    "note": "only a pointer: apocopic form of ab"
+   }
+  ],
+  "form:la:ab": [
+   {
+    "shown": "from, away from, out of",
+    "v": "ok"
+   }
+  ],
+  "form:la:abbas": [
+   {
+    "shown": "an abbot",
+    "v": "ok"
+   }
+  ],
+  "form:la:ad": [
+   {
+    "shown": "toward, to (direction)",
+    "v": "ok"
+   },
+   {
+    "shown": "to, toward, at, near",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
+   }
+  ],
+  "form:la:adversus": [
+   {
+    "shown": "facing, opposite",
+    "v": "ok"
+   }
+  ],
+  "form:la:aes": [
+   {
+    "shown": "money, pay, fee, fare",
+    "v": "false-meaning",
+    "note": "aes is bronze/copper (here \"sounding brass\"); money is a derived sense"
+   }
+  ],
+  "form:la:aestas": [
+   {
+    "shown": "summer",
+    "v": "ok"
+   }
+  ],
+  "form:la:ago": [
+   {
+    "shown": "to act, to behave",
+    "v": "ok"
+   },
+   {
+    "shown": "do, act; drive, lead; spend (time); drive/urge/conduct/act",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
+   }
+  ],
+  "form:la:agricola": [
+   {
+    "shown": "farmer",
+    "v": "ok"
+   }
+  ],
+  "form:la:albus": [
+   {
+    "shown": "white (properly without luster), dull white",
+    "v": "ok"
+   },
+   {
+    "shown": "white, pale, fair, hoary, gray; bright, clear",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
+   }
+  ],
+  "form:la:altare": [
+   {
+    "shown": "altar, fitting for burnt offerings",
+    "v": "ok"
+   }
+  ],
+  "form:la:amicus": [
+   {
+    "shown": "friend",
+    "v": "ok"
+   },
+   {
+    "shown": "male friend",
+    "v": "ok"
+   },
+   {
+    "shown": "friend; friend, ally, disciple; loved one; patron",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
+   }
+  ],
+  "form:la:amo": [
+   {
+    "shown": "to love",
+    "v": "ok"
+   }
+  ],
+  "form:la:anima": [
+   {
+    "shown": "air, breath",
+    "v": "ok"
+   },
+   {
+    "shown": "soul, life",
+    "v": "ok"
+   },
+   {
+    "shown": "soul, life; breath; soul, spirit, vital principle; breathing",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
+   }
+  ],
+  "form:la:apud": [
+   {
+    "shown": "at the house of, among",
+    "v": "ok"
+   },
+   {
+    "shown": "at, by, near, among",
+    "v": "ok"
+   },
+   {
+    "shown": "at the house of, among, in the presence of",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
+   }
+  ],
+  "form:la:aqua": [
+   {
+    "shown": "water",
+    "v": "ok"
+   }
+  ],
+  "form:la:arma": [
+   {
+    "shown": "arms, weapons of war, weaponry",
+    "v": "ok"
+   }
+  ],
+  "form:la:asia": [
+   {
+    "shown": "Asia (Roman province formed from Pergamene)",
+    "v": "ok"
+   }
+  ],
+  "form:la:asinus": [
+   {
+    "shown": "ass, donkey; blockhead, fool, dolt",
+    "v": "ok"
+   }
+  ],
+  "form:la:atque": [
+   {
+    "shown": "and, and also, and besides",
+    "v": "ok"
+   }
+  ],
+  "form:la:aut": [
+   {
+    "shown": "or",
+    "v": "ok"
+   }
+  ],
+  "form:la:autem": [
+   {
+    "shown": "but",
+    "v": "ok"
+   }
+  ],
+  "form:la:autumnus": [
+   {
+    "shown": "autumn, fall",
+    "v": "ok"
+   }
+  ],
+  "form:la:avus": [
+   {
+    "shown": "grandfather",
+    "v": "ok"
+   }
+  ],
+  "form:la:baculus": [
+   {
+    "shown": "alternative form of baculum",
+    "v": "unknown",
+    "note": "only a pointer to baculum"
+   },
+   {
+    "shown": "walking stick, cane, staff",
+    "v": "ok"
+   },
+   {
+    "shown": "stick, walking stick, staff",
+    "v": "ok"
+   }
+  ],
+  "form:la:bellum": [
+   {
+    "shown": "war",
+    "v": "ok"
+   }
+  ],
+  "form:la:bene": [
+   {
+    "shown": "well",
+    "v": "ok"
+   }
+  ],
+  "form:la:bonus": [
+   {
+    "shown": "good, honest, brave, noble, kind, pleasant",
+    "v": "ok"
+   }
+  ],
+  "form:la:brevis": [
+   {
+    "shown": "short, small, little, narrow",
+    "v": "ok"
+   }
+  ],
+  "form:la:caelum": [
+   {
+    "shown": "sky",
+    "v": "ok"
+   },
+   {
+    "shown": "heaven, the heavens; sky; space; air, climate, weather",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
+   }
+  ],
+  "form:la:calix": [
+   {
+    "shown": "cup, chalice",
+    "v": "ok"
+   }
+  ],
+  "form:la:cano": [
+   {
+    "shown": "to sing, recite, play",
+    "v": "ok"
+   }
+  ],
+  "form:la:caput": [
+   {
+    "shown": "the head (of humans and animals)",
+    "v": "ok"
+   },
+   {
+    "shown": "head; top, chief; person; life; leader; source/mouth (river)",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
+   }
+  ],
+  "form:la:caritas": [
+   {
+    "shown": "dearness",
+    "v": "ok"
+   },
+   {
+    "shown": "charity; love, affection, esteem, favor; dearness",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
+   }
+  ],
+  "form:la:carnis": [
+   {
+    "shown": "meat, flesh",
+    "v": "ok"
+   }
+  ],
+  "form:la:caro": [
+   {
+    "shown": "flesh, meat of an animal",
+    "v": "ok"
+   }
+  ],
+  "form:la:castra": [
+   {
+    "shown": "an encampment, military camp",
+    "v": "ok"
+   },
+   {
+    "shown": "camp",
+    "v": "ok"
+   }
+  ],
+  "form:la:celeriter": [
+   {
+    "shown": "quickly, swiftly, immediately",
+    "v": "ok"
+   }
+  ],
+  "form:la:centum": [
+   {
+    "shown": "a hundred; 100",
+    "v": "ok"
+   }
+  ],
+  "form:la:cito": [
+   {
+    "shown": "quickly, fast",
+    "v": "ok"
+   }
+  ],
+  "form:la:concursus": [
+   {
+    "shown": "a convergence of people; an assembly",
+    "v": "ok"
+   }
+  ],
+  "form:la:consilium": [
+   {
+    "shown": "plan, intention, design, purpose",
+    "v": "ok"
+   },
+   {
+    "shown": "counsel, advice; plan, design; council; debate/discussion/deliberation/consultation",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
+   }
+  ],
+  "form:la:consul": [
+   {
+    "shown": "consul (highest elected Roman official - 2/year)",
+    "v": "ok"
+   }
+  ],
+  "form:la:continenter": [
+   {
+    "shown": "unbroken, uninterruptedly",
+    "v": "ok"
+   }
+  ],
+  "form:la:contra": [
+   {
+    "shown": "against",
+    "v": "ok"
+   }
+  ],
+  "form:la:corpus": [
+   {
+    "shown": "body",
+    "v": "ok"
+   }
+  ],
+  "form:la:cras": [
+   {
+    "shown": "tomorrow",
+    "v": "ok"
+   }
+  ],
+  "form:la:crudelitas": [
+   {
+    "shown": "cruelty, severity",
+    "v": "ok"
+   }
+  ],
+  "form:la:cur": [
+   {
+    "shown": "why",
+    "v": "ok"
+   }
+  ],
+  "form:la:cymbalum": [
+   {
+    "shown": "cymbal",
+    "v": "ok"
+   }
+  ],
+  "form:la:de": [
+   {
+    "shown": "down from, concerning, about",
+    "v": "ok"
+   },
+   {
+    "shown": "of; concerning; about",
+    "v": "ok"
+   }
+  ],
+  "form:la:debeo": [
+   {
+    "shown": "\"ought\", \"must\", \"should\"",
+    "v": "ok"
+   },
+   {
+    "shown": "owe",
+    "v": "ok"
+   },
+   {
+    "shown": "owe; ought, must, be bound (with inf.); be due; be indebted/responsible for/obliged/bound/destined",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
+   }
+  ],
+  "form:la:deinde": [
+   {
+    "shown": "afterwards; then; next",
+    "v": "ok"
+   },
+   {
+    "shown": "then, next",
+    "v": "ok"
+   }
+  ],
+  "form:la:deo": [
+   {
+    "shown": "synonym of Cerēs",
+    "v": "false-meaning",
+    "note": "deus is god; the shown gloss is a rare Ceres sense of a different form"
+   }
+  ],
+  "form:la:deus": [
+   {
+    "shown": "god, deity",
+    "v": "ok"
+   }
+  ],
+  "form:la:diligenter": [
+   {
+    "shown": "carefully; attentively; diligently; scrupulously",
+    "v": "ok"
+   }
+  ],
+  "form:la:diu": [
+   {
+    "shown": "for a long time",
+    "v": "ok"
+   },
+   {
+    "shown": "long, a long while, a while",
+    "v": "ok"
+   }
+  ],
+  "form:la:divitiae": [
+   {
+    "shown": "riches, wealth, affluence",
+    "v": "ok"
+   }
+  ],
+  "form:la:dominus": [
+   {
+    "shown": "master, owner, possessor, proprietor",
+    "v": "ok"
+   },
+   {
+    "shown": "lord, master (the Lord, God or Christ); owner; title for ecclesiastics/gentlemen",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
+   }
+  ],
+  "form:la:ecce": [
+   {
+    "shown": "behold, see, look",
+    "v": "ok"
+   },
+   {
+    "shown": "here!, or here am/are/is!",
+    "v": "ok"
+   }
+  ],
+  "form:la:ego": [
+   {
+    "shown": "I",
+    "v": "ok"
+   }
+  ],
+  "form:la:ejus": [
+   {
+    "shown": "alternative spelling of eius",
+    "v": "unknown",
+    "note": "only a spelling pointer to eius"
+   }
+  ],
+  "form:la:enim": [
+   {
+    "shown": "for, indeed",
+    "v": "ok"
+   },
+   {
+    "shown": "truly, verily, really, indeed",
+    "v": "ok"
+   }
+  ],
+  "form:la:episcopus": [
+   {
+    "shown": "overseer, supervisor",
+    "v": "false-meaning",
+    "note": "episcopus is bishop in Church Latin (sentence); overseer is the etymological/classical sense"
+   }
+  ],
+  "form:la:equus": [
+   {
+    "shown": "horse",
+    "v": "ok"
+   }
+  ],
+  "form:la:et": [
+   {
+    "shown": "and",
+    "v": "ok"
+   }
+  ],
+  "form:la:etiam": [
+   {
+    "shown": "and also, and furthermore, also, too",
+    "v": "ok"
+   }
+  ],
+  "form:la:ex": [
+   {
+    "shown": "out of, from",
+    "v": "ok"
+   }
+  ],
+  "form:la:factus": [
+   {
+    "shown": "having become",
+    "v": "ok"
+   }
+  ],
+  "form:la:femina": [
+   {
+    "shown": "woman",
+    "v": "ok"
+   }
+  ],
+  "form:la:fessus": [
+   {
+    "shown": "tired, weary",
+    "v": "ok"
+   }
+  ],
+  "form:la:fidelis": [
+   {
+    "shown": "faithful, loyal",
+    "v": "ok"
+   }
+  ],
+  "form:la:fides": [
+   {
+    "shown": "faith",
+    "v": "ok"
+   }
+  ],
+  "form:la:fili": [
+   {
+    "shown": "genitive/vocative singular of fīlius",
+    "v": "unknown",
+    "note": "shown is only a grammatical pointer (genitive/vocative of filius), not a meaning"
+   }
+  ],
+  "form:la:flumen": [
+   {
+    "shown": "a river",
+    "v": "ok"
+   }
+  ],
+  "form:la:fons": [
+   {
+    "shown": "spring, fountain, well; source/fount; principal cause",
+    "v": "ok"
+   }
+  ],
+  "form:la:fortasse": [
+   {
+    "shown": "perhaps, possibly, maybe",
+    "v": "ok"
+   }
+  ],
+  "form:la:fortiter": [
+   {
+    "shown": "adverb of fortis: strong",
+    "v": "ok"
+   },
+   {
+    "shown": "strongly, powerfully",
+    "v": "ok"
+   }
+  ],
+  "form:la:frater": [
+   {
+    "shown": "brother",
+    "v": "ok"
+   }
+  ],
+  "form:la:frigidus": [
+   {
+    "shown": "cold, cool, chilling, frigid",
+    "v": "ok"
+   }
+  ],
+  "form:la:frumentum": [
+   {
+    "shown": "grain",
+    "v": "ok"
+   }
+  ],
+  "form:la:fuit": [
+   {
+    "shown": "scribal abbreviation of fuerit",
+    "v": "false-meaning",
+    "note": "fuit is a form of sum, was; not an abbreviation of fuerit"
+   }
+  ],
+  "form:la:furor": [
+   {
+    "shown": "frenzy, fury, rage, raving, insanity, madness",
+    "v": "ok"
+   },
+   {
+    "shown": "fury, rage, wrath; madness; madness, rage, fury, frenzy; passionate love",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
+   }
+  ],
+  "form:la:genus": [
+   {
+    "shown": "birth, origin, lineage, descent",
+    "v": "ok"
+   }
+  ],
+  "form:la:habeo": [
+   {
+    "shown": "to have, hold",
+    "v": "ok"
+   }
+  ],
+  "form:la:heri": [
+   {
+    "shown": "yesterday",
+    "v": "ok"
+   }
+  ],
+  "form:la:hiems": [
+   {
+    "shown": "winter",
+    "v": "ok"
+   }
+  ],
+  "form:la:hodie": [
+   {
+    "shown": "today",
+    "v": "ok"
+   }
+  ],
+  "form:la:homo": [
+   {
+    "shown": "human, person, man",
+    "v": "ok"
+   },
+   {
+    "shown": "man, human being",
+    "v": "ok"
+   },
+   {
+    "shown": "man, human being; person; man, human being, person, fellow",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
+   }
+  ],
+  "form:la:hortus": [
+   {
+    "shown": "garden",
+    "v": "ok"
+   }
+  ],
+  "form:la:iacet": [
+   {
+    "shown": "he reclines",
+    "v": "ok"
+   }
+  ],
+  "form:la:iam": [
+   {
+    "shown": "already",
+    "v": "ok"
+   },
+   {
+    "shown": "now, already, soon",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
+   }
+  ],
+  "form:la:ibi": [
+   {
+    "shown": "in that place, there",
+    "v": "ok"
+   },
+   {
+    "shown": "there",
+    "v": "ok"
+   }
+  ],
+  "form:la:ille": [
+   {
+    "shown": "that",
+    "v": "ok"
+   },
+   {
+    "shown": "that one",
+    "v": "ok"
+   }
+  ],
+  "form:la:in": [
+   {
+    "shown": "in, at, on, upon, from (space)",
+    "v": "ok"
+   },
+   {
+    "shown": "into, onto / in, on",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
+   }
+  ],
+  "form:la:inanis": [
+   {
+    "shown": "empty, void, hollow",
+    "v": "ok"
+   }
+  ],
+  "form:la:incendium": [
+   {
+    "shown": "A fire, inferno, conflagration; heat; torch.",
+    "v": "ok"
+   }
+  ],
+  "form:la:inter": [
+   {
+    "shown": "between, among",
+    "v": "ok"
+   }
+  ],
+  "form:la:invenio": [
+   {
+    "shown": "to find",
+    "v": "ok"
+   }
+  ],
+  "form:la:ita": [
+   {
+    "shown": "so",
+    "v": "ok"
+   },
+   {
+    "shown": "thus, so",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
+   }
+  ],
+  "form:la:italia": [
+   {
+    "shown": "Italy",
+    "v": "ok"
+   }
+  ],
+  "form:la:iter": [
+   {
+    "shown": "a route",
+    "v": "ok"
+   },
+   {
+    "shown": "journey, way, road; passage, path; march",
+    "v": "ok"
+   }
+  ],
+  "form:la:iterum": [
+   {
+    "shown": "again, anew, once more, repeatedly",
+    "v": "ok"
+   }
+  ],
+  "form:la:iustitia": [
+   {
+    "shown": "justice, fairness, equity",
+    "v": "ok"
+   },
+   {
+    "shown": "righteousness, justice; equality",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
+   }
+  ],
+  "form:la:iustus": [
+   {
+    "shown": "righteous, just; lawful; just, fair, equitable; right, lawful, justified",
+    "v": "ok"
+   }
+  ],
+  "form:la:joannes": [
+   {
+    "shown": "alternative form of Iōannēs",
+    "v": "unknown",
+    "note": "only a pointer to Ioannes"
+   }
+  ],
+  "form:la:laboro": [
+   {
+    "shown": "labour, toil, work; be in trouble; take pains; work, labor; produce, take pains",
+    "v": "ok"
+   }
+  ],
+  "form:la:lentus": [
+   {
+    "shown": "clinging, tough",
+    "v": "false-meaning",
+    "note": "lentus ordinarily means 'slow, sluggish' (as here) or 'pliant'; 'clinging, tough' is not the main meaning."
+   }
+  ],
+  "form:la:libenter": [
+   {
+    "shown": "willingly, eagerly",
+    "v": "ok"
+   }
+  ],
+  "form:la:liber": [
+   {
+    "shown": "book",
+    "v": "ok"
+   }
+  ],
+  "form:la:lingua": [
+   {
+    "shown": "the tongue",
+    "v": "ok"
+   }
+  ],
+  "form:la:locus": [
+   {
+    "shown": "place (referring to a specific location)",
+    "v": "ok"
+   },
+   {
+    "shown": "place; passage, opportunity; seat, rank, position; soldier's post; quarters",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
+   }
+  ],
+  "form:la:longus": [
+   {
+    "shown": "far, long",
+    "v": "ok"
+   },
+   {
+    "shown": "long",
+    "v": "ok"
+   },
+   {
+    "shown": "long; tall; tedious, taking long time; boundless",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
+   }
+  ],
+  "form:la:lumen": [
+   {
+    "shown": "light, source of light",
+    "v": "ok"
+   }
+  ],
+  "form:la:luna": [
+   {
+    "shown": "a moon",
+    "v": "ok"
+   }
+  ],
+  "form:la:lux": [
+   {
+    "shown": "light (of the sun, stars etc.)",
+    "v": "ok"
+   },
+   {
+    "shown": "light; daylight; light, daylight, light of day; life; world",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
+   }
+  ],
+  "form:la:magister": [
+   {
+    "shown": "master, chief, head, superior, director, president",
+    "v": "ok"
+   },
+   {
+    "shown": "teacher, tutor, master, expert, chief; pilot of a ship",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
+   }
+  ],
+  "form:la:magnus": [
+   {
+    "shown": "great, large, big",
+    "v": "ok"
+   }
+  ],
+  "form:la:major": [
+   {
+    "shown": "alternative spelling of maior",
+    "v": "unknown",
+    "note": "only a spelling pointer to maior"
+   }
+  ],
+  "form:la:malus": [
+   {
+    "shown": "unpleasant, distressing, painful, nasty, bad",
+    "v": "ok"
+   }
+  ],
+  "form:la:mane": [
+   {
+    "shown": "in the morning",
+    "v": "ok"
+   }
+  ],
+  "form:la:mare": [
+   {
+    "shown": "sea",
+    "v": "ok"
+   }
+  ],
+  "form:la:maria": [
+   {
+    "shown": "a female given name",
+    "v": "false-reading",
+    "note": "Maria here is a personal name, not a form of mare; lowercase maria means seas"
+   }
+  ],
+  "form:la:mater": [
+   {
+    "shown": "mother (female parent)",
+    "v": "ok"
+   },
+   {
+    "shown": "mother; mother, foster mother; lady, matron",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
+   }
+  ],
+  "form:la:matrona": [
+   {
+    "shown": "wife; matron",
+    "v": "false-reading",
+    "note": "Matrona here is the river Marne (a proper name), not matrona 'wife, matron'."
+   }
+  ],
+  "form:la:me": [
+   {
+    "shown": "me, myself; accusative singular of ego",
+    "v": "ok"
+   }
+  ],
+  "form:la:medicus": [
+   {
+    "shown": "healing, curative, medical",
+    "v": "false-meaning",
+    "note": "in the sentence medicus is the noun physician, not the adjective 'healing'"
+   }
+  ],
+  "form:la:mensa": [
+   {
+    "shown": "a table",
+    "v": "ok"
+   }
+  ],
+  "form:la:merces": [
+   {
+    "shown": "reward, wages, hire; pay, recompense, hire, salary, reward; rent, price",
+    "v": "false-reading",
+    "note": "multas merces is plural of merx 'goods, wares', not merces 'wages'"
+   }
+  ],
+  "form:la:mille": [
+   {
+    "shown": "thousand; 1000",
+    "v": "ok"
+   }
+  ],
+  "form:la:misericordia": [
+   {
+    "shown": "pity, compassion, mercy, lovingkindness, tenderness, heartedness",
+    "v": "ok"
+   }
+  ],
+  "form:la:mox": [
+   {
+    "shown": "soon",
+    "v": "ok"
+   }
+  ],
+  "form:la:mundus": [
+   {
+    "shown": "mankind (inhabitants of the earth)",
+    "v": "false-meaning",
+    "note": "mundus is the world/universe; mankind is a secondary sense"
+   },
+   {
+    "shown": "world; universe, heavens; world, mankind",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
+   }
+  ],
+  "form:la:nam": [
+   {
+    "shown": "for",
+    "v": "ok"
+   }
+  ],
+  "form:la:navis": [
+   {
+    "shown": "ship, boat, vessel",
+    "v": "ok"
+   }
+  ],
+  "form:la:nemo": [
+   {
+    "shown": "nobody, no one, no man",
+    "v": "ok"
+   },
+   {
+    "shown": "no one, nobody",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
+   }
+  ],
+  "form:la:neque": [
+   {
+    "shown": "not",
+    "v": "ok"
+   },
+   {
+    "shown": "nor, and not; not; and not, not, neither",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
+   }
+  ],
+  "form:la:nescio": [
+   {
+    "shown": "to not know, to be ignorant",
+    "v": "ok"
+   }
+  ],
+  "form:la:nihil": [
+   {
+    "shown": "nothing",
+    "v": "ok"
+   }
+  ],
+  "form:la:nomen": [
+   {
+    "shown": "name",
+    "v": "ok"
+   }
+  ],
+  "form:la:non": [
+   {
+    "shown": "not",
+    "v": "ok"
+   }
+  ],
+  "form:la:nostras": [
+   {
+    "shown": "of us, of our country",
+    "v": "false-meaning",
+    "note": "noster means our; 'of us, of our country' is the gloss of nostras (nostrātis)"
+   }
+  ],
+  "form:la:nostrum": [
+   {
+    "shown": "of us; partitive genitive of nōs",
+    "v": "false-reading",
+    "note": "here nostrum is the adjective noster, our, not the pronoun genitive of nos"
+   }
+  ],
+  "form:la:novus": [
+   {
+    "shown": "new, novel",
+    "v": "ok"
+   }
+  ],
+  "form:la:nox": [
+   {
+    "shown": "night (period of time)",
+    "v": "ok"
+   },
+   {
+    "shown": "night",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
+   }
+  ],
+  "form:la:numquam": [
+   {
+    "shown": "never, at no time",
+    "v": "ok"
+   }
+  ],
+  "form:la:nunc": [
+   {
+    "shown": "right now, at present",
+    "v": "ok"
+   }
+  ],
+  "form:la:nuntius": [
+   {
+    "shown": "a messenger, reporter, courier",
+    "v": "ok"
+   }
+  ],
+  "form:la:nusquam": [
+   {
+    "shown": "nowhere",
+    "v": "ok"
+   }
+  ],
+  "form:la:ob": [
+   {
+    "shown": "in the direction of, to, towards",
+    "v": "false-meaning",
+    "note": "ob mainly means on account of, before; direction-towards is marginal"
+   }
+  ],
+  "form:la:odi": [
+   {
+    "shown": "hate (perfect form, present sense)",
+    "v": "ok"
+   },
+   {
+    "shown": "to feel reluctant to",
+    "v": "false-meaning",
+    "note": "odi means I hate"
+   }
+  ],
+  "form:la:oleum": [
+   {
+    "shown": "oil, olive oil",
+    "v": "ok"
+   }
+  ],
+  "form:la:olim": [
+   {
+    "shown": "formerly, in time past",
+    "v": "ok"
+   },
+   {
+    "shown": "once, formerly",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
+   }
+  ],
+  "form:la:omnis": [
+   {
+    "shown": "every",
+    "v": "ok"
+   },
+   {
+    "shown": "all, every; whole; each, every, every one (of a number)",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
+   }
+  ],
+  "form:la:oportet": [
+   {
+    "shown": "it is right/proper/necessary; it is becoming",
+    "v": "ok"
+   },
+   {
+    "shown": "to be necessary, needful",
+    "v": "ok"
+   }
+  ],
+  "form:la:opus": [
+   {
+    "shown": "work, labor, accomplishment",
+    "v": "ok"
+   }
+  ],
+  "form:la:ora": [
+   {
+    "shown": "border, rim, frontier, limit, edge",
+    "v": "false-meaning",
+    "note": "lemma os means mouth/face; border/shore belongs to ora, a different word"
+   }
+  ],
+  "form:la:oris": [
+   {
+    "shown": "alternative form of auris",
+    "v": "false-reading",
+    "note": "in ab oris the word is ora, shores, not os or auris"
+   }
+  ],
+  "form:la:parochus": [
+   {
+    "shown": "host (of a guest)",
+    "v": "false-meaning",
+    "note": "parochus here is a parish priest, not 'host of a guest'"
+   }
+  ],
+  "form:la:parum": [
+   {
+    "shown": "very little",
+    "v": "ok"
+   },
+   {
+    "shown": "too/very little, not enough/so good, insufficient",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
+   }
+  ],
+  "form:la:pater": [
+   {
+    "shown": "father (male parent)",
+    "v": "ok"
+   },
+   {
+    "shown": "father (also God the Father); ancestor",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
+   }
+  ],
+  "form:la:patientia": [
+   {
+    "shown": "endurance/hardiness; patience/persistence",
+    "v": "ok"
+   },
+   {
+    "shown": "suffering",
+    "v": "ok"
+   }
+  ],
+  "form:la:patres": [
+   {
+    "shown": "the senators; the Senate",
+    "v": "false-meaning",
+    "note": "patres means fathers; senators is a derived sense"
+   }
+  ],
+  "form:la:per": [
+   {
+    "shown": "through, by means of",
+    "v": "ok"
+   }
+  ],
+  "form:la:perperam": [
+   {
+    "shown": "wrongly, incorrectly",
+    "v": "ok"
+   }
+  ],
+  "form:la:pisces": [
+   {
+    "shown": "the Fishes, Pisces (constellation)",
+    "v": "false-meaning",
+    "note": "pisces here is fish (plural of piscis), not the constellation"
+   }
+  ],
+  "form:la:piscis": [
+   {
+    "shown": "fish",
+    "v": "ok"
+   }
+  ],
+  "form:la:plenus": [
+   {
+    "shown": "full; filled; complete",
+    "v": "ok"
+   }
+  ],
+  "form:la:pluvia": [
+   {
+    "shown": "rain",
+    "v": "ok"
+   }
+  ],
+  "form:la:pomum": [
+   {
+    "shown": "any type of fruit",
+    "v": "ok"
+   },
+   {
+    "shown": "fruit tree",
+    "v": "false-meaning",
+    "note": "pomum is fruit, not a fruit tree"
+   }
+  ],
+  "form:la:pons": [
+   {
+    "shown": "bridge",
+    "v": "ok"
+   }
+  ],
+  "form:la:populus": [
+   {
+    "shown": "a people, nation",
+    "v": "ok"
+   }
+  ],
+  "form:la:possum": [
+   {
+    "shown": "be able to, can, may",
+    "v": "ok"
+   }
+  ],
+  "form:la:post": [
+   {
+    "shown": "behind (of space)",
+    "v": "ok"
+   },
+   {
+    "shown": "after, behind",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
+   }
+  ],
+  "form:la:postulo": [
+   {
+    "shown": "to demand, ask, request, desire",
+    "v": "ok"
+   }
+  ],
+  "form:la:praeclarus": [
+   {
+    "shown": "very clear; splendid; famous",
+    "v": "ok"
+   }
+  ],
+  "form:la:praesidium": [
+   {
+    "shown": "defence, protection, guardianship",
+    "v": "ok"
+   },
+   {
+    "shown": "protection; help; guard; garrison, detachment",
+    "v": "ok"
+   }
+  ],
+  "form:la:prius": [
+   {
+    "shown": "previously",
+    "v": "ok"
+   }
+  ],
+  "form:la:pro": [
+   {
+    "shown": "for",
+    "v": "ok"
+   },
+   {
+    "shown": "in front of, on behalf of",
+    "v": "ok"
+   },
+   {
+    "shown": "in front of, on behalf of, instead of",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
+   }
+  ],
+  "form:la:proelium": [
+   {
+    "shown": "a battle, combat, conflict",
+    "v": "ok"
+   }
+  ],
+  "form:la:progenies": [
+   {
+    "shown": "race, family, progeny, lineage, descent",
+    "v": "ok"
+   }
+  ],
+  "form:la:prope": [
+   {
+    "shown": "near",
+    "v": "ok"
+   }
+  ],
+  "form:la:propter": [
+   {
+    "shown": "near, close to, hard by",
+    "v": "false-meaning",
+    "note": "propter ordinarily means on account of; near is archaic"
+   },
+   {
+    "shown": "on account of, near",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
+   }
+  ],
+  "form:la:propterea": [
+   {
+    "shown": "therefore; for that reason",
+    "v": "ok"
+   }
+  ],
+  "form:la:puella": [
+   {
+    "shown": "girl, lass, maiden (female child)",
+    "v": "ok"
+   }
+  ],
+  "form:la:puer": [
+   {
+    "shown": "a child; chit",
+    "v": "ok"
+   },
+   {
+    "shown": "boy, child; servant, young man; boy, lad, young man",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
+   }
+  ],
+  "form:la:quam": [
+   {
+    "shown": "in what (which) way",
+    "v": "ok"
+   }
+  ],
+  "form:la:quando": [
+   {
+    "shown": "\"When?\"",
+    "v": "ok"
+   },
+   {
+    "shown": "when; at what time; since, because",
+    "v": "ok"
+   }
+  ],
+  "form:la:quare": [
+   {
+    "shown": "by what means, how",
+    "v": "false-meaning",
+    "note": "quare ordinarily means why/wherefore/therefore"
+   },
+   {
+    "shown": "why?, wherefore?",
+    "v": "ok"
+   },
+   {
+    "shown": "why?, wherefore?; for which reason, therefore; in what way? how? by which means, whereby",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
+   }
+  ],
+  "form:la:quattuor": [
+   {
+    "shown": "four; 4",
+    "v": "ok"
+   }
+  ],
+  "form:la:qui": [
+   {
+    "shown": "who, that, which, what",
+    "v": "ok"
+   }
+  ],
+  "form:la:quid": [
+   {
+    "shown": "what, how?",
+    "v": "ok"
+   }
+  ],
+  "form:la:quidam": [
+   {
+    "shown": "someone, a certain one/thing; something",
+    "v": "ok"
+   }
+  ],
+  "form:la:quinque": [
+   {
+    "shown": "five; 5",
+    "v": "ok"
+   }
+  ],
+  "form:la:quis": [
+   {
+    "shown": "who?",
+    "v": "ok"
+   }
+  ],
+  "form:la:quomodo": [
+   {
+    "shown": "in what manner or way?; how?",
+    "v": "ok"
+   }
+  ],
+  "form:la:quoque": [
+   {
+    "shown": "also, likewise, besides, too",
+    "v": "ok"
+   }
+  ],
+  "form:la:regnum": [
+   {
+    "shown": "royal power, power, control, reign",
+    "v": "ok"
+   },
+   {
+    "shown": "kingdom; reign; royal power; power; control",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
+   }
+  ],
+  "form:la:remedium": [
+   {
+    "shown": "remedy, cure",
+    "v": "ok"
+   }
+  ],
+  "form:la:rex": [
+   {
+    "shown": "king, ruler",
+    "v": "ok"
+   }
+  ],
+  "form:la:roma": [
+   {
+    "shown": "Rome",
+    "v": "ok"
+   }
+  ],
+  "form:la:sacerdos": [
+   {
+    "shown": "priest, priestess, cleric",
+    "v": "ok"
+   }
+  ],
+  "form:la:saepe": [
+   {
+    "shown": "often, frequently",
+    "v": "ok"
+   }
+  ],
+  "form:la:sapientia": [
+   {
+    "shown": "wisdom, discernment, memory",
+    "v": "ok"
+   }
+  ],
+  "form:la:satis": [
+   {
+    "shown": "adequately, sufficiently, satisfactorily, amply",
+    "v": "ok"
+   },
+   {
+    "shown": "enough, sufficiently",
+    "v": "ok"
+   }
+  ],
+  "form:la:scientia": [
+   {
+    "shown": "knowledge, awareness",
+    "v": "ok"
+   }
+  ],
+  "form:la:sed": [
+   {
+    "shown": "but",
+    "v": "ok"
+   }
+  ],
+  "form:la:semel": [
+   {
+    "shown": "once, a single time",
+    "v": "ok"
+   }
+  ],
+  "form:la:semper": [
+   {
+    "shown": "always, ever, forever, at all times",
+    "v": "ok"
+   }
+  ],
+  "form:la:sentio": [
+   {
+    "shown": "to feel, to sense",
+    "v": "ok"
+   },
+   {
+    "shown": "perceive, feel, experience; think, realize, see, understand",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
+   }
+  ],
+  "form:la:sepulcrum": [
+   {
+    "shown": "grave; burial place",
+    "v": "ok"
+   }
+  ],
+  "form:la:sero": [
+   {
+    "shown": "wreath; join, entwine, interweave, bind together",
+    "v": "false-reading",
+    "note": "sero here is the adverb 'late', not the verb 'join, entwine'"
+   }
+  ],
+  "form:la:servos": [
+   {
+    "shown": "alternative form of servus",
+    "v": "unknown",
+    "note": "shown is only 'alternative form of servus', a pointer"
+   }
+  ],
+  "form:la:servus": [
+   {
+    "shown": "a slave",
+    "v": "ok"
+   },
+   {
+    "shown": "servant, slave",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
+   }
+  ],
+  "form:la:sic": [
+   {
+    "shown": "yes, indeed (If answering a question)",
+    "v": "false-meaning",
+    "note": "sic means thus, so; the yes sense is marginal"
+   }
+  ],
+  "form:la:sicut": [
+   {
+    "shown": "as, just as, like",
+    "v": "ok"
+   }
+  ],
+  "form:la:signum": [
+   {
+    "shown": "visible indication: sign, mark, signal",
+    "v": "ok"
+   }
+  ],
+  "form:la:silva": [
+   {
+    "shown": "wood; forest",
+    "v": "ok"
+   }
+  ],
+  "form:la:simul": [
+   {
+    "shown": "at the same time; simultaneously",
+    "v": "ok"
+   },
+   {
+    "shown": "together, at the same time; at once; likewise; also; simultaneously",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
+   }
+  ],
+  "form:la:sine": [
+   {
+    "shown": "without",
+    "v": "ok"
+   }
+  ],
+  "form:la:sol": [
+   {
+    "shown": "the Sun",
+    "v": "ok"
+   }
+  ],
+  "form:la:soror": [
+   {
+    "shown": "sister",
+    "v": "ok"
+   }
+  ],
+  "form:la:spes": [
+   {
+    "shown": "expectation, anticipation",
+    "v": "ok"
+   },
+   {
+    "shown": "hope; hope/anticipation/expectation; prospect/hope/promise",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
+   }
+  ],
+  "form:la:statim": [
+   {
+    "shown": "stably, in a constant manner",
+    "v": "false-meaning",
+    "note": "statim means immediately, at once"
+   }
+  ],
+  "form:la:stultus": [
+   {
+    "shown": "foolish, fatuous, stupid, ill-considered",
+    "v": "ok"
+   }
+  ],
+  "form:la:sub": [
+   {
+    "shown": "under, beneath",
+    "v": "ok"
+   }
+  ],
+  "form:la:sum": [
+   {
+    "shown": "to be, exist",
+    "v": "ok"
+   }
+  ],
+  "form:la:super": [
+   {
+    "shown": "[of place] above",
+    "v": "ok"
+   },
+   {
+    "shown": "over (space), above, upon, in addition to",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
+   }
+  ],
+  "form:la:tabula": [
+   {
+    "shown": "writing tablet (wax covered board); records (pl.)",
+    "v": "ok"
+   }
+  ],
+  "form:la:tam": [
+   {
+    "shown": "so, so much",
+    "v": "ok"
+   }
+  ],
+  "form:la:tandem": [
+   {
+    "shown": "at length, at last, finally, eventually",
+    "v": "ok"
+   }
+  ],
+  "form:la:tantum": [
+   {
+    "shown": "so much",
+    "v": "ok"
+   }
+  ],
+  "form:la:te": [
+   {
+    "shown": "accusative/ablative singular of tū",
+    "v": "ok"
+   }
+  ],
+  "form:la:tempestas": [
+   {
+    "shown": "portion, point, or space of time",
+    "v": "false-meaning",
+    "note": "tempestas first means storm/weather; shown time-portion sense is marginal"
+   }
+  ],
+  "form:la:templum": [
+   {
+    "shown": "an open space for augural observation",
+    "v": "false-meaning",
+    "note": "templum means temple; 'open space for augural observation' is a technical sense"
+   }
+  ],
+  "form:la:tenebrae": [
+   {
+    "shown": "darkness, especially the darkness of night",
+    "v": "ok"
+   }
+  ],
+  "form:la:terra": [
+   {
+    "shown": "ground",
+    "v": "ok"
+   },
+   {
+    "shown": "earth, land; ground; country, region",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
+   }
+  ],
+  "form:la:testimonium": [
+   {
+    "shown": "testimony, witness",
+    "v": "ok"
+   }
+  ],
+  "form:la:tibi": [
+   {
+    "shown": "to you, dative of tū",
+    "v": "ok"
+   }
+  ],
+  "form:la:timor": [
+   {
+    "shown": "fear, dread",
+    "v": "ok"
+   }
+  ],
+  "form:la:trans": [
+   {
+    "shown": "across, beyond",
+    "v": "ok"
+   }
+  ],
+  "form:la:tres": [
+   {
+    "shown": "three; 3",
+    "v": "ok"
+   }
+  ],
+  "form:la:tristis": [
+   {
+    "shown": "sad, unhappy, melancholy, morose",
+    "v": "ok"
+   }
+  ],
+  "form:la:tu": [
+   {
+    "shown": "you (singular); thou",
+    "v": "ok"
+   },
+   {
+    "shown": "you",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
+   }
+  ],
+  "form:la:unde": [
+   {
+    "shown": "of what origin, country, family, stock",
+    "v": "false-meaning",
+    "note": "unde means from where, whence"
+   }
+  ],
+  "form:la:unus": [
+   {
+    "shown": "one; 1",
+    "v": "ok"
+   }
+  ],
+  "form:la:urbs": [
+   {
+    "shown": "a city, walled town",
+    "v": "ok"
+   }
+  ],
+  "form:la:usque": [
+   {
+    "shown": "as far as, up to",
+    "v": "ok"
+   },
+   {
+    "shown": "constantly, continuously",
+    "v": "ok"
+   },
+   {
+    "shown": "as far as, up to, until (usque ad); all the way, continuously; all the way, right on",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
+   }
+  ],
+  "form:la:valeo": [
+   {
+    "shown": "to have strength, influence, power",
+    "v": "ok"
+   }
+  ],
+  "form:la:velut": [
+   {
+    "shown": "even as, as, just as, like",
+    "v": "ok"
+   }
+  ],
+  "form:la:ventus": [
+   {
+    "shown": "a wind",
+    "v": "ok"
+   }
+  ],
+  "form:la:verbum": [
+   {
+    "shown": "word",
+    "v": "ok"
+   }
+  ],
+  "form:la:verus": [
+   {
+    "shown": "true, real",
+    "v": "ok"
+   }
+  ],
+  "form:la:via": [
+   {
+    "shown": "road, street, path",
+    "v": "ok"
+   },
+   {
+    "shown": "way, road; journey; way of life, conduct; way, road, street",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
+   }
+  ],
+  "form:la:viator": [
+   {
+    "shown": "traveler",
+    "v": "ok"
+   }
+  ],
+  "form:la:vicinus": [
+   {
+    "shown": "nearby, neighboring",
+    "v": "ok"
+   }
+  ],
+  "form:la:vinum": [
+   {
+    "shown": "wine",
+    "v": "ok"
+   }
+  ],
+  "form:la:vir": [
+   {
+    "shown": "man (adult male human)",
+    "v": "ok"
+   },
+   {
+    "shown": "man, husband; hero; person of courage, honor, and nobility",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
+   }
+  ],
+  "form:la:virga": [
+   {
+    "shown": "twig, young shoot",
+    "v": "ok"
+   },
+   {
+    "shown": "rod, staff; twig; twig, sprout, stalk; switch, rod; staff, wand",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
+   }
+  ],
+  "form:la:virgo": [
+   {
+    "shown": "a maiden, maid",
+    "v": "ok"
+   }
+  ],
+  "form:la:virtus": [
+   {
+    "shown": "manhood, manliness, virility",
+    "v": "ok"
+   },
+   {
+    "shown": "power, might, strength",
+    "v": "ok"
+   },
+   {
+    "shown": "power, might, strength; virtue; (pl.) mighty works, hosts; courage/bravery",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
+   }
+  ],
+  "form:la:vita": [
+   {
+    "shown": "life",
+    "v": "ok"
+   }
+  ],
+  "form:la:vitium": [
+   {
+    "shown": "flaw, defect, blemish, imperfection",
+    "v": "ok"
+   }
+  ],
+  "form:la:volo": [
+   {
+    "shown": "to wish, to please",
+    "v": "ok"
+   },
+   {
+    "shown": "to want, wish, be willing",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
+   }
+  ],
+  "form:la:voluntas": [
+   {
+    "shown": "will, free will, choice",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:Aquitanus:ADJ": [
+   {
+    "shown": "of Aquitania (southwest Gaul/France)",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:Asia:PROPN": [
+   {
+    "shown": "Asia (Roman province formed from Pergamene)",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:Belga:PROPN": [
+   {
+    "shown": "Belgae (pl.)",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:Catilina:PROPN": [
+   {
+    "shown": "Catiline",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:Celer:PROPN": [
+   {
+    "shown": "knights (pl.) (old name/precursor of equestrian order)",
+    "v": "false-reading",
+    "note": "celer in 'equus albus celer est' is the adjective 'swift', not the proper name Celer or the old term for knights."
+   }
+  ],
+  "lemma:la:Celtus:ADJ": [
+   {
+    "shown": "Celts; (inhabitants of central Gaul)",
+    "v": "false-reading",
+    "note": "Celtae is the plural noun Celtae, -arum (sing. Celta) 'Celts', not a form of an adjective 'Celtus'."
+   }
+  ],
+  "lemma:la:Christianus:PROPN": [
+   {
+    "shown": "Christian/follower of Christ",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:Christus:PROPN": [
+   {
+    "shown": "Christ",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:Gallia:PROPN": [
+   {
+    "shown": "Gaul",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:Gallus:PROPN": [
+   {
+    "shown": "Gaul; the Gauls (pl.)",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:Graecia:PROPN": [
+   {
+    "shown": "Greece",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:Ioannes:PROPN": [
+   {
+    "shown": "John",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:Israel:PROPN": [
+   {
+    "shown": "Israel (Jacob, and his people)",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:Italia:PROPN": [
+   {
+    "shown": "Italy",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:Iuno:PROPN": [
+   {
+    "shown": "Juno; (Roman goddess, wife of Jupiter)",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:Marcus:PROPN": [
+   {
+    "shown": "Marcus (Roman praenomen); (abb. M.)",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:Maria:PROPN": [
+   {
+    "shown": "Mary",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:Papa:PROPN": [
+   {
+    "shown": "pope",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:Petrus:PROPN": [
+   {
+    "shown": "Peter",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:Rhenus:PROPN": [
+   {
+    "shown": "Rhine",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:Roma:PROPN": [
+   {
+    "shown": "Rome",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:Sequana:PROPN": [
+   {
+    "shown": "Seine, river in N Cen. Gaul - in Caesar's \"Gallic War\"",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:ab:ADP": [
+   {
+    "shown": "away from, by",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:abbas:NOUN": [
+   {
+    "shown": "abbot; head of an ecclesiastical community",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:absum:VERB": [
+   {
+    "shown": "be away, be absent",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:abutor:VERB": [
+   {
+    "shown": "waste, squander; abuse; misuse",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:abyssus:NOUN": [
+   {
+    "shown": "deep, sea; abyss; hell, infernal pit; bowels of the earth",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:accendo:VERB": [
+   {
+    "shown": "kindle, set on fire, light; illuminate; inflame, stir up, arouse",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:acutus:ADJ": [
+   {
+    "shown": "sharp, sharpened, pointed/tapering",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:ad:ADP": [
+   {
+    "shown": "to, toward, at, near",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:addo:VERB": [
+   {
+    "shown": "add; join; (addere ut) to continue to, to go on to; add, insert, bring/attach to, say in addition",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:adiuvo:VERB": [
+   {
+    "shown": "help, aid, abet, encourage, favor; cherish, sustain",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:adsum:VERB": [
+   {
+    "shown": "be present, be near; help",
+    "v": "false-reading",
+    "note": "assis is from as (a coin), not adsum"
+   }
+  ],
+  "lemma:la:adveho:VERB": [
+   {
+    "shown": "carry, bring, convey (to)",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:advenio:VERB": [
+   {
+    "shown": "come to, arrive; arrive at, reach, be brought",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:adversus:ADJ": [
+   {
+    "shown": "opposite, directly facing, ranged against",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:adversus:ADP": [
+   {
+    "shown": "facing, opposite, against, towards; contrary to",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:aedificium:NOUN": [
+   {
+    "shown": "building; edifice, structure",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:aedifico:VERB": [
+   {
+    "shown": "build, erect; edify; build, erect, construct, make; create; establish",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:aegroto:VERB": [
+   {
+    "shown": "be sick",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:aemulor:VERB": [
+   {
+    "shown": "ape, imitate, emulate",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:aes:NOUN": [
+   {
+    "shown": "money, pay, fee, fare; copper/bronze/brass, base metal",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:aestas:NOUN": [
+   {
+    "shown": "summer; summer heat/weather; a year",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:aestimo:VERB": [
+   {
+    "shown": "value, assess; estimate; reckon; consider, judge (situation)",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:aeternus:ADJ": [
+   {
+    "shown": "eternal, everlasting; eternal/everlasting/imperishable; perpetual, w/out start/end",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:affero:VERB": [
+   {
+    "shown": "bring to, bring",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:ager:NOUN": [
+   {
+    "shown": "field; land; field, ground; farm, land, estate, park; territory, country",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:ago:VERB": [
+   {
+    "shown": "do, act; drive, lead; spend (time); drive/urge/conduct/act",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:agricola:NOUN": [
+   {
+    "shown": "farmer, cultivator, gardener, agriculturist",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:albanus:ADJ": [
+   {
+    "shown": "Pertaining to the town of Alba",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:albus:ADJ": [
+   {
+    "shown": "white, pale, fair, hoary, gray; bright, clear",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:alius:ADJ": [
+   {
+    "shown": "other, another",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:altare:NOUN": [
+   {
+    "shown": "altar; altar (usu. pl.), fitting for burnt offerings",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:alter:ADJ": [
+   {
+    "shown": "the other",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:altus:ADJ": [
+   {
+    "shown": "high, lofty; deep; deep/profound; shrill; lofty/noble",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:ambitiosus:ADJ": [
+   {
+    "shown": "ambitious, eager to please/for advancement/favor",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:ambulo:VERB": [
+   {
+    "shown": "walk; travel; walk, take a walk, go on foot; travel, march",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:amicus:NOUN": [
+   {
+    "shown": "friend; friend, ally, disciple; loved one; patron",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:amitto:VERB": [
+   {
+    "shown": "lose; lose by death; send away, dismiss",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:amo:VERB": [
+   {
+    "shown": "love, like; fall in love with; be fond of",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:ancilla:NOUN": [
+   {
+    "shown": "maidservant, handmaid; slave girl; maid servant; (opprobrious of man)",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:angelus:NOUN": [
+   {
+    "shown": "angel; messenger",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:angustus:ADJ": [
+   {
+    "shown": "narrow, steep, close, confined",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:anima:NOUN": [
+   {
+    "shown": "soul, life; breath; soul, spirit, vital principle; breathing",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:animus:NOUN": [
+   {
+    "shown": "mind, spirit; soul, courage; intellect; feelings; heart",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:ante:ADP": [
+   {
+    "shown": "before, in front of",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:antequam:SCONJ": [
+   {
+    "shown": "before",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:antiquus:ADJ": [
+   {
+    "shown": "old/ancient/aged; time-honored; simple/classic",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:aperio:VERB": [
+   {
+    "shown": "open; reveal, disclose; uncover, open, disclose; explain, recount",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:appello:VERB": [
+   {
+    "shown": "call (upon); address; dun; solicit; appeal (to)",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:appropinquo:VERB": [
+   {
+    "shown": "approach (w/DAT or ad+ACC); come near to, draw near/nigh (space/time)",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:apud:ADP": [
+   {
+    "shown": "at the house of, among, in the presence of",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:aqua:NOUN": [
+   {
+    "shown": "water; sea, lake; river, stream; rain, rainfall (pl.), rainwater",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:arbitror:VERB": [
+   {
+    "shown": "observe, witness; testify; decide, judge, sentence",
+    "v": "false-meaning",
+    "note": "arbitror ordinarily means 'think, consider, suppose' (as in this sentence); the shown senses omit it and lead with the archaic 'observe, witness'."
+   }
+  ],
+  "lemma:la:arbor:NOUN": [
+   {
+    "shown": "tree; tree trunk; mast; oar; ship; gallows",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:ardeo:VERB": [
+   {
+    "shown": "be on fire; burn, blaze; flash; glow, sparkle",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:arma:NOUN": [
+   {
+    "shown": "arms (pl.), weapons, armor, shield; close fighting weapons",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:asinus:NOUN": [
+   {
+    "shown": "ass, donkey; blockhead, fool, dolt",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:assentio:VERB": [
+   {
+    "shown": "assent, approve, agree in opinion",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:assis:NOUN": [
+   {
+    "shown": "penny, copper coin; a pound; one, whole",
+    "v": "false-reading",
+    "note": "assis here is the genitive of as, assis (the copper coin); the dictionary headword is 'as', and nominative 'assis' is only a marginal by-form."
+   }
+  ],
+  "lemma:la:atque:CONJ": [
+   {
+    "shown": "and, and moreover",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:audacia:NOUN": [
+   {
+    "shown": "boldness, daring, courage, confidence",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:audeo:VERB": [
+   {
+    "shown": "intend, be prepared",
+    "v": "false-reading",
+    "note": "avus 'grandfather' is not audeo"
+   }
+  ],
+  "lemma:la:audio:VERB": [
+   {
+    "shown": "hear, listen; obey; hear, listen, accept, agree with; harken, pay attention",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:aut:CONJ": [
+   {
+    "shown": "or",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:autem:CONJ": [
+   {
+    "shown": "but, moreover; and; however, moreover",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:autumnus:ADJ": [
+   {
+    "shown": "of autumn, autumnal",
+    "v": "false-reading",
+    "note": "Autumnus here is the noun 'autumn' (subject of 'dat'), not the adjective 'autumnal'."
+   }
+  ],
+  "lemma:la:avis:NOUN": [
+   {
+    "shown": "bird; sign, omen, portent",
+    "v": "false-reading",
+    "note": "avi is dative of avus 'grandfather', not avis 'bird'"
+   }
+  ],
+  "lemma:la:avus:NOUN": [
+   {
+    "shown": "grandfather; forefather, ancestor",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:baculus:NOUN": [
+   {
+    "shown": "stick, walking stick, staff",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:baptizo:VERB": [
+   {
+    "shown": "baptize; immerse",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:basium:NOUN": [
+   {
+    "shown": "kiss; kiss of the hand",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:beatus:ADJ": [
+   {
+    "shown": "blessed, happy; happy, fortunate, bringing happiness",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:bellum:NOUN": [
+   {
+    "shown": "war; battle, fight; war, warfare; battle, combat, fight",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:bene:ADV": [
+   {
+    "shown": "well; rightly; (bene est) it is well; well, very, quite, rightly, agreeably, cheaply, in good style",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:benedico:VERB": [
+   {
+    "shown": "bless; speak well of; praise; speak kindly of (classically 2 words)",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:benignus:ADJ": [
+   {
+    "shown": "kind, favorable, obliging; kindly, mild, affable",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:bibo:VERB": [
+   {
+    "shown": "drink; toast; visit, frequent (w/river name)",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:bonus:ADJ": [
+   {
+    "shown": "good; kind, useful; good, honest, brave, noble, kind, pleasant, right, useful",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:bos:NOUN": [
+   {
+    "shown": "ox, bull, cow; (pl.) oxen, cattle; ox; ox-ray; (ox-like animals)",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:bracchium:NOUN": [
+   {
+    "shown": "arm; lower arm, forearm; claw; branch, shoot",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:brachium:NOUN": [
+   {
+    "shown": "arm; lower arm, forearm; claw",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:brevis:ADJ": [
+   {
+    "shown": "short, little, small, stunted",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:cado:VERB": [
+   {
+    "shown": "fall; die; fall, sink, drop, plummet, topple; be slain, die",
+    "v": "false-reading",
+    "note": "casa (hut, house) is a noun, not a form of cado"
+   }
+  ],
+  "lemma:la:caedo:VERB": [
+   {
+    "shown": "strike, beat; cut down, hew; slay, kill; chop, hew, cut out/down/to pieces; strike, smite, murder",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:caelum:NOUN": [
+   {
+    "shown": "heaven, the heavens; sky; space; air, climate, weather",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:calix:NOUN": [
+   {
+    "shown": "cup, goblet, a vessel for drinking; chalice",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:campanus:ADJ": [
+   {
+    "shown": "flat; level",
+    "v": "false-reading",
+    "note": "Campanae ecclesiae are the church bells (noun campana), not the adjective campanus 'flat, level'."
+   }
+  ],
+  "lemma:la:canis:NOUN": [
+   {
+    "shown": "dog; hound; subordinate; \"jackal\"",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:cano:VERB": [
+   {
+    "shown": "sing, celebrate, chant; crow; recite; play (music)/sound (horn)",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:canto:VERB": [
+   {
+    "shown": "sing; play (roles/music); recite; praise, celebrate",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:capio:VERB": [
+   {
+    "shown": "take, seize; capture; contain; take hold, seize; grasp; take bribe; arrest/capture",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:caput:NOUN": [
+   {
+    "shown": "head; top, chief; person; life; leader; source/mouth (river)",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:caritas:NOUN": [
+   {
+    "shown": "charity; love, affection, esteem, favor; dearness",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:caro:NOUN": [
+   {
+    "shown": "flesh; the body, human nature; meat, flesh; pulpy/fleshy/soft parts (plant), sapwood",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:carpo:VERB": [
+   {
+    "shown": "seize/pick/pluck/gather/browse/tear off",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:carus:ADJ": [
+   {
+    "shown": "dear, beloved; costly, precious, valued",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:casa:NOUN": [
+   {
+    "shown": "cottage/small humble dwelling, hut/hovel",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:castra:NOUN": [
+   {
+    "shown": "camp; fortress; camp, military camp/field; army; fort, fortress",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:catechismus:NOUN": [
+   {
+    "shown": "catechism, book of elementary Christian instruction",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:causa:NOUN": [
+   {
+    "shown": "cause, reason; case, matter; (abl.) for the sake of; cause/reason/motive; origin, source, derivation",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:caveo:VERB": [
+   {
+    "shown": "beware, avoid, take precautions/defensive action",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:celebro:VERB": [
+   {
+    "shown": "celebrate/perform; frequent; honor/glorify",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:celeriter:ADV": [
+   {
+    "shown": "quickly/rapidly/speedily; hastily",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:cena:NOUN": [
+   {
+    "shown": "dinner/supper, principal Roman meal (evening)",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:centum:NUM": [
+   {
+    "shown": "a hundred",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:cibus:NOUN": [
+   {
+    "shown": "food; fare, rations; nutriment, sustenance, fuel",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:circus:NOUN": [
+   {
+    "shown": "race course; circus in Rome, celebration of games",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:cito:ADV": [
+   {
+    "shown": "quickly/fast/speedily, with speed; soon, before long",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:civis:NOUN": [
+   {
+    "shown": "fellow citizen; countryman/woman",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:clarus:ADJ": [
+   {
+    "shown": "clear, bright, gleaming; loud, distinct",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:claudo:VERB": [
+   {
+    "shown": "close, shut, block up; conclude, finish; blockade, besiege",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:clausus:ADJ": [
+   {
+    "shown": "closed, inaccessible (places)",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:clavis:NOUN": [
+   {
+    "shown": "door-key; bar/key for turning a press, lever",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:coepi:VERB": [
+   {
+    "shown": "begin (perfect forms only)",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:cogito:VERB": [
+   {
+    "shown": "think, consider; plan, devise, intend; consider, reflect on, ponder; imagine, picture",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:cognosco:VERB": [
+   {
+    "shown": "know, learn; recognise; become acquainted with/aware of; recognize",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:collis:NOUN": [
+   {
+    "shown": "hill, hillock, eminence, hill-top; mound",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:colloco:VERB": [
+   {
+    "shown": "place/put/set in order/proper position, arrange",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:colo:VERB": [
+   {
+    "shown": "worship, honour; cultivate, till; dwell in; live in (place), inhabit; till, cultivate, promote growth",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:commeo:VERB": [
+   {
+    "shown": "go to, visit, travel; pass; resort to",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:comprehendo:VERB": [
+   {
+    "shown": "catch/seize/grasp firmly; arrest; take hold/root/fire, ignite",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:concursus:NOUN": [
+   {
+    "shown": "running to and fro/together, collision, charge/attack",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:condo:VERB": [
+   {
+    "shown": "put/insert (into)",
+    "v": "false-meaning",
+    "note": "condo ordinarily means 'found, build' (as here) or 'store away, hide, bury'; 'put/insert (into)' is a marginal sense."
+   }
+  ],
+  "lemma:la:congaudeo:VERB": [
+   {
+    "shown": "rejoice with one/together",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:coniuratio:NOUN": [
+   {
+    "shown": "conspiracy, plot, intrigue; alliance",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:consido:VERB": [
+   {
+    "shown": "sit down/be seated; hold sessions, sit (judge), try",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:consilium:NOUN": [
+   {
+    "shown": "counsel, advice; plan, design; council; debate/discussion/deliberation/consultation",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:consolor:VERB": [
+   {
+    "shown": "console, (be source of) comfort/solace; soothe",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:conspectus:NOUN": [
+   {
+    "shown": "sight, presence; view; aspect/appearance/look",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:consto:VERB": [
+   {
+    "shown": "agree/correspond/fit, be correct",
+    "v": "false-meaning",
+    "note": "consto ordinarily means 'stand firm; consist of; cost' (cost in this sentence); 'agree, correspond, fit' as the only meaning misleads."
+   }
+  ],
+  "lemma:la:constringo:VERB": [
+   {
+    "shown": "bind fast/tight, tie up/together",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:consul:NOUN": [
+   {
+    "shown": "consul (highest elected Roman official - 2/year)",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:consulo:VERB": [
+   {
+    "shown": "ask information/advice of; consult, take counsel",
+    "v": "false-reading",
+    "note": "consules is plural of consul, not consulo"
+   }
+  ],
+  "lemma:la:consumo:VERB": [
+   {
+    "shown": "consume, destroy; spend; burn up, destroy/kill; put end to; reduce/wear away",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:contendo:VERB": [
+   {
+    "shown": "stretch, draw tight, make taut",
+    "v": "false-meaning",
+    "note": "contendo ordinarily means 'strive, hasten (march), compete' (hasten here); 'stretch, draw tight' is only the literal minor sense."
+   }
+  ],
+  "lemma:la:contentus:ADJ": [
+   {
+    "shown": "content, satisfied (w/ABL); content with, pleased",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:continenter:ADV": [
+   {
+    "shown": "unbroken/continuously/without pause, uninterruptedly",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:contineo:VERB": [
+   {
+    "shown": "secure, maintain, sustain; fasten/hold in position",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:contra:ADP": [
+   {
+    "shown": "against, opposite",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:conturbo:VERB": [
+   {
+    "shown": "confuse, disquiet/confound/derange/dismay, upset/mix up",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:convenio:VERB": [
+   {
+    "shown": "come together, assemble; suit; be appropriate to, fit, be correctly shaped/consistent",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:converto:VERB": [
+   {
+    "shown": "turn, turn back; convert; turn upside down/side-to-side; invert/transpose/convulse",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:convoco:VERB": [
+   {
+    "shown": "call/bring together; assemble; convoke/convene",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:coque:ADV": [
+   {
+    "shown": "likewise; no less; besides, as well, also/too",
+    "v": "false-reading",
+    "note": "coque here is the imperative of coquo 'cook', not an adverb 'likewise'."
+   }
+  ],
+  "lemma:la:coquo:VERB": [
+   {
+    "shown": "cook; boil, fry, bake; burn, parch (sun)",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:cor:NOUN": [
+   {
+    "shown": "heart; mind; mind/soul/spirit; intellect/judgment",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:corpus:NOUN": [
+   {
+    "shown": "body; person; person, self; virility; flesh; corpse",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:cras:ADV": [
+   {
+    "shown": "tomorrow",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:credo:VERB": [
+   {
+    "shown": "believe; trust, entrust; commit/consign; believe, trust in, rely on, confide",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:creo:VERB": [
+   {
+    "shown": "create/bring into being/make; procreate; beget/sire",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:crudelitas:NOUN": [
+   {
+    "shown": "cruelty/barbarity, harshness/severity, savagery/inhumanity",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:crux:NOUN": [
+   {
+    "shown": "cross; hanging tree; impaling stake; crucifixion",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:culter:NOUN": [
+   {
+    "shown": "knife; (weapon/sacrificial/hunt)",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:cultus:NOUN": [
+   {
+    "shown": "habitation; cultivation (land)",
+    "v": "false-meaning",
+    "note": "cultus ordinarily means 'care, cultivation; way of life, refinement; worship; dress'; 'habitation' as first meaning is misleading."
+   }
+  ],
+  "lemma:la:cum:ADP": [
+   {
+    "shown": "with",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:cum:SCONJ": [
+   {
+    "shown": "when, since, although",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:cur:ADV": [
+   {
+    "shown": "why, wherefore; for what reason/purpose?",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:curo:VERB": [
+   {
+    "shown": "arrange/see/attend to; take care of; provide for",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:curro:VERB": [
+   {
+    "shown": "run; hasten; (of a course) go, flow; run/trot/gallop, hurry/hasten/speed, move/travel/proceed/flow swiftly/quickly",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:currus:NOUN": [
+   {
+    "shown": "chariot; chariot, light horse vehicle; triumphal chariot",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:custodio:VERB": [
+   {
+    "shown": "keep, guard, watch over; observe (commandments); guard/protect/preserve, watch over, keep safe",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:custos:NOUN": [
+   {
+    "shown": "guard; sentry/watch; guardian/protector/keeper",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:cymbalum:NOUN": [
+   {
+    "shown": "cymbal; (term for tedious/stupid speaker)",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:de:ADP": [
+   {
+    "shown": "down from, concerning, about",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:debeo:VERB": [
+   {
+    "shown": "owe; ought, must, be bound (with inf.); be due; be indebted/responsible for/obliged/bound/destined",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:debitor:NOUN": [
+   {
+    "shown": "debtor, one who owes; one under obligation to pay",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:deduco:VERB": [
+   {
+    "shown": "lead down, bring down; lead away, conduct; bring, lead; lead/draw//pull/bring/stretch down/away/out/off",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:defendo:VERB": [
+   {
+    "shown": "defend/guard/protect, look after",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:dein:ADV": [
+   {
+    "shown": "then/next/afterward",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:deinde:ADV": [
+   {
+    "shown": "then, next",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:deleo:VERB": [
+   {
+    "shown": "blot out, wipe out; destroy, efface; erase, wipe/scratch/remove (letters/marks), wipe/blot out, expunge, delete",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:densus:ADJ": [
+   {
+    "shown": "thick/dense/solid; (cloud/shadow)",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:depono:VERB": [
+   {
+    "shown": "put/lay down/aside/away; let drop/fall; give up",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:desum:VERB": [
+   {
+    "shown": "be wanting, fail",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:deus:NOUN": [
+   {
+    "shown": "God; a god; the God of Scripture",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:devote:ADV": [
+   {
+    "shown": "devotedly, faithfully; devoutly",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:dico:VERB": [
+   {
+    "shown": "say, speak, tell; call, name; say, declare, state; allege, declare positively",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:dies:NOUN": [
+   {
+    "shown": "day; time; daylight; (sunlit hours); (24 hours from midnight)",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:differo:VERB": [
+   {
+    "shown": "scatter, spread abroad; put off, delay; differ",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:difficilis:ADJ": [
+   {
+    "shown": "difficult, troublesome; hard",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:diligenter:ADV": [
+   {
+    "shown": "carefully; attentively; diligently; scrupulously",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:diligo:VERB": [
+   {
+    "shown": "love; esteem, hold dear; value/esteem/favor; have special regard for",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:dimitto:VERB": [
+   {
+    "shown": "send away, dismiss; forgive, let go; send away/off; allow to go, let go/off",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:discipulus:NOUN": [
+   {
+    "shown": "disciple; pupil; student, pupil, trainee; follower, disciple",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:disco:VERB": [
+   {
+    "shown": "learn; hear, get to know, become acquainted with",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:dispergo:VERB": [
+   {
+    "shown": "scatter, disperse; spread about",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:disputo:VERB": [
+   {
+    "shown": "discuss, debate, argue",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:distribuo:VERB": [
+   {
+    "shown": "divide, distribute, assign",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:diu:ADV": [
+   {
+    "shown": "for a long time",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:dives:ADJ": [
+   {
+    "shown": "rich/wealthy; costly; fertile/productive (land)",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:divido:VERB": [
+   {
+    "shown": "divide; separate, break up; share, distribute",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:divitiae:NOUN": [
+   {
+    "shown": "riches (pl.), wealth",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:do:VERB": [
+   {
+    "shown": "give; grant, offer; put, place",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:doceo:VERB": [
+   {
+    "shown": "teach, instruct; teach, show, point out",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:doleo:VERB": [
+   {
+    "shown": "hurt; feel/suffer pain; grieve; be afflicted/pained/sorry",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:dominicus:ADJ": [
+   {
+    "shown": "of/belonging to master/owner",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:dominus:NOUN": [
+   {
+    "shown": "lord, master (the Lord, God or Christ); owner; title for ecclesiastics/gentlemen",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:domus:NOUN": [
+   {
+    "shown": "house; household, family; house, building; home, household",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:donum:NOUN": [
+   {
+    "shown": "gift, present; offering",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:dormio:VERB": [
+   {
+    "shown": "sleep; fall asleep; lie down; die (figuratively); sleep, rest; behave as if asleep",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:duco:VERB": [
+   {
+    "shown": "lead, bring; consider; lead, command; think, consider, regard; prolong",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:dulcis:ADJ": [
+   {
+    "shown": "pleasant, charming; sweet; kind, dear",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:dum:SCONJ": [
+   {
+    "shown": "while, until, as long as",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:dux:NOUN": [
+   {
+    "shown": "leader, chief, commander; leader, guide; commander, general; Duke (medieval, Bee)",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:ecce:INTJ": [
+   {
+    "shown": "behold, see, look",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:educo:VERB": [
+   {
+    "shown": "lead out, bring out; train; educate; rear",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:effemino:VERB": [
+   {
+    "shown": "weaken, enervate, make effeminate, emasculate, unman",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:effrenatus:ADJ": [
+   {
+    "shown": "unbridled; unrestrained, unruly, headstrong, violent",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:ego:PRON": [
+   {
+    "shown": "I",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:eleemosyna:NOUN": [
+   {
+    "shown": "alms, almshouse",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:eludo:VERB": [
+   {
+    "shown": "elude, escape from; parry; baffle",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:emo:VERB": [
+   {
+    "shown": "buy, purchase; gain, acquire, obtain",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:enim:CONJ": [
+   {
+    "shown": "for, indeed",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:eo:VERB": [
+   {
+    "shown": "to go",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:episcopus:NOUN": [
+   {
+    "shown": "bishop; patriarch",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:epistola:NOUN": [
+   {
+    "shown": "letter/dispatch/written communication; imperial rescript",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:epistula:NOUN": [
+   {
+    "shown": "letter/dispatch/written communication",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:equus:NOUN": [
+   {
+    "shown": "horse; steed",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:esurio:VERB": [
+   {
+    "shown": "be hungry, hunger; want to eat, desire food",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:et:CONJ": [
+   {
+    "shown": "and; also, even; and",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:etiam:ADV": [
+   {
+    "shown": "even, also, still",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:ex:ADP": [
+   {
+    "shown": "out of, from",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:exalto:VERB": [
+   {
+    "shown": "exalt, raise up; exalt, elevate, raise; praise; deepen",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:exaudio:VERB": [
+   {
+    "shown": "hear, listen to (a prayer); hear clearly; comply with, heed; hear from afar",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:excido:VERB": [
+   {
+    "shown": "perish; disappear; escape, fall out",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:excrucio:VERB": [
+   {
+    "shown": "torture; torment",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:exercitus:NOUN": [
+   {
+    "shown": "army; host; army, infantry; swarm, flock",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:expecto:VERB": [
+   {
+    "shown": "await, expect; anticipate; hope for",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:exspecto:VERB": [
+   {
+    "shown": "lookout for, await; expect, anticipate, hope for",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:exstinguo:VERB": [
+   {
+    "shown": "put out, extinguish, quench; kill, destroy",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:exsulto:VERB": [
+   {
+    "shown": "rejoice; boast; exalt; jump about, let oneself go",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:fabula:NOUN": [
+   {
+    "shown": "story, tale, fable; play, drama",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:facies:NOUN": [
+   {
+    "shown": "face; appearance; shape, face, look; presence, appearance; beauty",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:facio:VERB": [
+   {
+    "shown": "make, do; cause, act; make/build/construct/create/cause/do; have built/made",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:facultas:NOUN": [
+   {
+    "shown": "means; ability, skill; opportunity, chance",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:familia:NOUN": [
+   {
+    "shown": "household, family; servants; household of slaves; clan",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:farina:NOUN": [
+   {
+    "shown": "flour/meal (for dough/pastry)",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:fatum:NOUN": [
+   {
+    "shown": "utterance, oracle; fate, destiny",
+    "v": "false-meaning",
+    "note": "The ordinary meaning of fatum is 'fate, destiny'; the card leads with the less usual etymological 'utterance, oracle' (borderline: 'fate' is shown second)."
+   }
+  ],
+  "lemma:la:febris:NOUN": [
+   {
+    "shown": "fever, attack of fever",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:femina:NOUN": [
+   {
+    "shown": "woman; female",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:fero:VERB": [
+   {
+    "shown": "to carry, bear, bring",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:fessus:ADJ": [
+   {
+    "shown": "tired, wearied, fatigued, exhausted",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:fidelis:ADJ": [
+   {
+    "shown": "faithful; believing, trustworthy; faithful/loyal/devoted; true/trustworthy/dependable/reliable",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:fides:NOUN": [
+   {
+    "shown": "faith, belief; trust, fidelity; faith, loyalty; honesty; credit; confidence, trust, belief",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:filia:NOUN": [
+   {
+    "shown": "daughter",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:filius:NOUN": [
+   {
+    "shown": "son; (pl.) children, descendants",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:finio:VERB": [
+   {
+    "shown": "limit, end; finish; determine, define",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:finis:NOUN": [
+   {
+    "shown": "end, limit; border, boundary; (pl.) territory, coasts; boundary, end, limit, goal; (pl.) country, territory, land",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:finitimus:ADJ": [
+   {
+    "shown": "neighboring, bordering, adjoining",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:fio:VERB": [
+   {
+    "shown": "to become, be made, happen",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:firmus:ADJ": [
+   {
+    "shown": "firm/steady; substantial/solid/secure/safe",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:flecto:VERB": [
+   {
+    "shown": "bend, curve, bow; turn, curl",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:flos:NOUN": [
+   {
+    "shown": "flower, blossom; youthful prime",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:flumen:NOUN": [
+   {
+    "shown": "river, stream; flood; any flowing fluid; onrush",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:fluo:VERB": [
+   {
+    "shown": "flow, stream; emanate, proceed from; fall gradually",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:fluvius:NOUN": [
+   {
+    "shown": "river, stream; running water",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:fons:NOUN": [
+   {
+    "shown": "spring, fountain, well; source/fount; principal cause",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:fortasse:ADV": [
+   {
+    "shown": "perhaps, possibly; it may be",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:fortis:ADJ": [
+   {
+    "shown": "strong, mighty; brave, valiant; firm; strong, powerful, mighty, vigorous, firm, steadfast, courageous, brave, bold",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:fortiter:ADV": [
+   {
+    "shown": "adverb of fortis: strong",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:frango:VERB": [
+   {
+    "shown": "break, shatter, crush; dishearten, subdue, weaken",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:frater:NOUN": [
+   {
+    "shown": "brother; fellow believer; cousin",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:frigidus:ADJ": [
+   {
+    "shown": "cold, cool, chilly, frigid",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:fructus:NOUN": [
+   {
+    "shown": "fruit; produce, profit; produce, crops; enjoyment",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:frumentum:NOUN": [
+   {
+    "shown": "grain; crops",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:fugio:VERB": [
+   {
+    "shown": "flee, escape; avoid; flee, fly, run away; avoid, shun; go into exile",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:fundo:VERB": [
+   {
+    "shown": "pour, pour out, shed; scatter; cast (metal); scatter, shed, rout",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:furor:NOUN": [
+   {
+    "shown": "fury, rage, wrath; madness; madness, rage, fury, frenzy; passionate love",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:gaudeo:VERB": [
+   {
+    "shown": "rejoice, be glad; delight in",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:generatio:NOUN": [
+   {
+    "shown": "generation; descendants, race; begetting; generation, action/process of procreating, begetting",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:gens:NOUN": [
+   {
+    "shown": "nation, people (the Gentiles); family; tribe, clan; Gentiles",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:genu:NOUN": [
+   {
+    "shown": "knee",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:genus:NOUN": [
+   {
+    "shown": "kind, race, family; offspring; birth/descent/origin; race/family/house/stock/ancestry",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:gero:VERB": [
+   {
+    "shown": "bear, carry, wear; carry on; manage, govern",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:gloria:NOUN": [
+   {
+    "shown": "glory; fame; ambition; renown; vainglory, boasting",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:gratia:NOUN": [
+   {
+    "shown": "grace; favour, thanks; popularity/esteem/credit (w/bona); partiality/favoritism",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:habeo:VERB": [
+   {
+    "shown": "have, hold; consider; have, hold, consider, think, reason; manage, keep",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:heri:ADV": [
+   {
+    "shown": "yesterday",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:hesternus:ADJ": [
+   {
+    "shown": "of yesterday",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:hiems:NOUN": [
+   {
+    "shown": "winter, winter time; rainy season",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:hodie:ADV": [
+   {
+    "shown": "today",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:homo:NOUN": [
+   {
+    "shown": "man, human being; person; man, human being, person, fellow",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:hora:NOUN": [
+   {
+    "shown": "hour; time; season",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:hortor:VERB": [
+   {
+    "shown": "encourage; cheer; incite; urge",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:hortus:NOUN": [
+   {
+    "shown": "garden, fruit/kitchen garden; pleasure garden",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:hostis:NOUN": [
+   {
+    "shown": "enemy (of the state); stranger, foreigner",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:humanitas:NOUN": [
+   {
+    "shown": "human nature/character/feeling",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:humilis:ADJ": [
+   {
+    "shown": "low, lowly, small, slight, base, mean, humble, obscure, poor, insignificant",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:humilitas:NOUN": [
+   {
+    "shown": "insignificance/unimportance/degradation/debasement/humiliation",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:iaceo:VERB": [
+   {
+    "shown": "lie; lie down; lie ill/in ruins/prostrate/dead",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:iam:ADV": [
+   {
+    "shown": "now, already, soon",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:ianua:NOUN": [
+   {
+    "shown": "door, entrance",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:ibi:ADV": [
+   {
+    "shown": "there",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:ieiuno:VERB": [
+   {
+    "shown": "fast; abstain form",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:ignis:NOUN": [
+   {
+    "shown": "fire; fire, brightness; passion, glow of passion",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:ignoro:VERB": [
+   {
+    "shown": "not know, be ignorant of; disregard; be unfamiliar with; ignore",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:ignosco:VERB": [
+   {
+    "shown": "pardon, forgive (with DAT)",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:ille:PRON": [
+   {
+    "shown": "that",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:illumino:VERB": [
+   {
+    "shown": "illuminate, give light to; light up; reveal/throw light on",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:impetro:VERB": [
+   {
+    "shown": "obtain/procure (by asking/request/entreaty)",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:impinguo:VERB": [
+   {
+    "shown": "fatten, make fat/sleek; become fat/thick",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:impleo:VERB": [
+   {
+    "shown": "fill; fulfil; satisfy, fulfill; fill, finish, complete",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:importo:VERB": [
+   {
+    "shown": "bring in, convey; import; bring about, cause",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:in:ADP": [
+   {
+    "shown": "into, onto / in, on",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:inanis:ADJ": [
+   {
+    "shown": "void, empty, hollow; vain; inane, foolish",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:incendium:NOUN": [
+   {
+    "shown": "fire, conflagration; fiery heat",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:incolo:VERB": [
+   {
+    "shown": "live, dwell/reside (in); inhabit",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:inconstans:ADJ": [
+   {
+    "shown": "changeable, fickle",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:induco:VERB": [
+   {
+    "shown": "lead in, bring in (performers); induce, influence",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:inebrio:VERB": [
+   {
+    "shown": "intoxicate, make drunk; saturate/drench (with any liquid)",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:infans:NOUN": [
+   {
+    "shown": "infant; child (Bee)",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:infirmus:ADJ": [
+   {
+    "shown": "fragile/frail/feeble; unwell/sick/infirm",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:inflo:VERB": [
+   {
+    "shown": "blow into/upon; puff out",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:infundo:VERB": [
+   {
+    "shown": "pour in, pour on, pour out",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:inhabito:VERB": [
+   {
+    "shown": "dwell in, inhabit, occupy; wear (garments) (L+S)",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:iniquitas:NOUN": [
+   {
+    "shown": "iniquity, wickedness, sin; injustice; unfairness, inequality, unevenness (of terrain)",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:intellego:VERB": [
+   {
+    "shown": "understand; realize",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:inter:ADP": [
+   {
+    "shown": "between, among, during",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:intro:VERB": [
+   {
+    "shown": "enter, go in; go into, penetrate; reach",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:inundo:VERB": [
+   {
+    "shown": "overflow, inundate, flood; swarm",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:invenio:VERB": [
+   {
+    "shown": "find; discover, come upon; invent, contrive",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:invideo:VERB": [
+   {
+    "shown": "envy, regard with envy/ill will",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:ipse:PRON": [
+   {
+    "shown": "himself, herself, itself",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:ira:NOUN": [
+   {
+    "shown": "anger, wrath; ire, wrath; resentment; indignation",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:is:PRON": [
+   {
+    "shown": "this, that; he, she, it",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:iste:PRON": [
+   {
+    "shown": "that",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:ita:ADV": [
+   {
+    "shown": "thus, so",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:iter:NOUN": [
+   {
+    "shown": "journey, way, road; passage, path; march",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:iterum:ADV": [
+   {
+    "shown": "again, a second time; once more",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:iubeo:VERB": [
+   {
+    "shown": "command, order, bid; order/tell/command/direct; enjoin/command",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:iudex:NOUN": [
+   {
+    "shown": "judge; juror",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:iudico:VERB": [
+   {
+    "shown": "judge; decide, condemn; judge, give judgment; sentence; conclude, decide",
+    "v": "false-reading",
+    "note": "iudices is plural of iudex 'judge', not iudico"
+   }
+  ],
+  "lemma:la:iustitia:NOUN": [
+   {
+    "shown": "righteousness, justice; equality",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:iustus:ADJ": [
+   {
+    "shown": "righteous, just; lawful; just, fair, equitable; right, lawful, justified",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:laboro:VERB": [
+   {
+    "shown": "labour, toil, work; be in trouble; take pains; work, labor; produce, take pains",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:laetus:ADJ": [
+   {
+    "shown": "happy/cheerful/joyful/glad; favorable/propitious",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:lamentor:VERB": [
+   {
+    "shown": "lament; utter cries of grief",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:laudo:VERB": [
+   {
+    "shown": "praise; recommend; praise, approve, extol; call upon, name",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:lavo:VERB": [
+   {
+    "shown": "wash; bathe; cleanse; soak",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:legatus:NOUN": [
+   {
+    "shown": "envoy, ambassador, legate; commander of a legion",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:lego:VERB": [
+   {
+    "shown": "read; gather, choose; gather, collect (cremated bones); furl (sail), weigh (anchor)",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:lente:ADV": [
+   {
+    "shown": "slowly",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:lentus:ADJ": [
+   {
+    "shown": "clinging, tough",
+    "v": "false-meaning",
+    "note": "lentus ordinarily means 'slow, sluggish' (as here) or 'pliant'; 'clinging, tough' is not the main meaning."
+   }
+  ],
+  "lemma:la:lex:NOUN": [
+   {
+    "shown": "law (esp. the Law of Moses); rule; motion, bill, statute; principle; condition",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:libenter:ADV": [
+   {
+    "shown": "willingly; gladly, with pleasure",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:liber:ADJ": [
+   {
+    "shown": "free (man); unimpeded; void of",
+    "v": "false-reading",
+    "note": "libera in 'libera nos a malo' is the imperative of the verb libero 'set free', not the adjective liber."
+   }
+  ],
+  "lemma:la:liber:NOUN": [
+   {
+    "shown": "book, scroll; children (pl.); (sg. VOC) child",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:lingua:NOUN": [
+   {
+    "shown": "tongue; language; speech; people (speaking a language); dialect",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:littera:NOUN": [
+   {
+    "shown": "letter (alphabet); (pl.) letter, epistle",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:litus:NOUN": [
+   {
+    "shown": "shore, seashore, coast, strand",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:locus:NOUN": [
+   {
+    "shown": "place; passage, opportunity; seat, rank, position; soldier's post; quarters",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:longitudo:NOUN": [
+   {
+    "shown": "length",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:longus:ADJ": [
+   {
+    "shown": "long; tall; tedious, taking long time; boundless",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:loquor:VERB": [
+   {
+    "shown": "speak, talk; speak, tell; mention; say, utter; phrase",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:luceo:VERB": [
+   {
+    "shown": "shine, emit light (heavenly body); dawn; cause to shine",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:lucerna:NOUN": [
+   {
+    "shown": "oil lamp; midnight oil",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:ludo:VERB": [
+   {
+    "shown": "play, mock, tease, trick",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:ludus:NOUN": [
+   {
+    "shown": "game, play, sport, pastime, entertainment, fun",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:lumen:NOUN": [
+   {
+    "shown": "light; lamp, torch; eye (of a person); life",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:luna:NOUN": [
+   {
+    "shown": "moon; month",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:lux:NOUN": [
+   {
+    "shown": "light; daylight; light, daylight, light of day; life; world",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:magis:ADV": [
+   {
+    "shown": "more, rather; more greatly; (magis ac magis) more and more; to greater extent, more nearly; rather, instead",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:magister:NOUN": [
+   {
+    "shown": "teacher, tutor, master, expert, chief; pilot of a ship",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:magnifico:VERB": [
+   {
+    "shown": "magnify, praise highly; esteem; prize, esteem greatly; praise, extol",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:magnus:ADJ": [
+   {
+    "shown": "great, large; important; large/great/big/vast/huge; much; powerful",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:malus:ADJ": [
+   {
+    "shown": "bad, evil; wicked; ugly; unlucky",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:mane:ADV": [
+   {
+    "shown": "in the morning, early; (as noun) morning",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:maneo:VERB": [
+   {
+    "shown": "remain, stay; abide; wait for; continue, endure, last",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:manus:NOUN": [
+   {
+    "shown": "hand; power, band of men; hand, fist; team; gang, band of soldiers",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:mare:NOUN": [
+   {
+    "shown": "sea; the sea (Mediterranean, Red Sea, Sea of Galilee); sea water",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:mater:NOUN": [
+   {
+    "shown": "mother; mother, foster mother; lady, matron",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:matrona:NOUN": [
+   {
+    "shown": "wife; matron",
+    "v": "false-reading",
+    "note": "Matrona here is the river Marne (a proper name), not matrona 'wife, matron'."
+   }
+  ],
+  "lemma:la:medius:ADJ": [
+   {
+    "shown": "middle, the middle of; in the midst (in medio); middle, middle of, mid; common, neutral, ordinary, moderate",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:memor:ADJ": [
+   {
+    "shown": "remembering; mindful (of w/GEN), grateful",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:mens:NOUN": [
+   {
+    "shown": "mind; reason, intellect, judgment; plan, intention, frame of mind",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:mensa:NOUN": [
+   {
+    "shown": "table; course, meal; banker's counter",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:mercator:NOUN": [
+   {
+    "shown": "trader, merchant",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:merces:NOUN": [
+   {
+    "shown": "reward, wages, hire; pay, recompense, hire, salary, reward; rent, price",
+    "v": "false-reading",
+    "note": "multas merces is plural of merx 'goods, wares', not merces 'wages'"
+   }
+  ],
+  "lemma:la:meridies:NOUN": [
+   {
+    "shown": "noon; midday; south",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:metior:VERB": [
+   {
+    "shown": "measure, estimate; distribute, mete; traverse, sail/walk through",
+    "v": "false-reading",
+    "note": "mensam is from mensa, table, not metior"
+   }
+  ],
+  "lemma:la:meto:VERB": [
+   {
+    "shown": "reap; mow, cut off",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:meus:ADJ": [
+   {
+    "shown": "my, mine",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:miles:NOUN": [
+   {
+    "shown": "soldier; foot soldier; soldiery; knight (Latham)",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:milia:NUM": [
+   {
+    "shown": "thousands",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:milium:NOUN": [
+   {
+    "shown": "millet",
+    "v": "false-reading",
+    "note": "milia in 'milia multa' is the plural of mille 'thousands', not milium 'millet'."
+   }
+  ],
+  "lemma:la:mille:NUM": [
+   {
+    "shown": "a thousand",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:misceo:VERB": [
+   {
+    "shown": "mix, mingle; embroil; confound",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:misericordia:NOUN": [
+   {
+    "shown": "mercy, compassion; pity, sympathy; pathos",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:misericors:ADJ": [
+   {
+    "shown": "merciful, tenderhearted",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:mitto:VERB": [
+   {
+    "shown": "send; throw, let go; send, throw, hurl, cast; let out, release, dismiss",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:moene:NOUN": [
+   {
+    "shown": "defensive/town walls (pl.), bulwarks",
+    "v": "unknown",
+    "note": "The word is the plural-only noun moenia, -ium 'city walls'; a singular headword 'moene' is not a normal dictionary word."
+   }
+  ],
+  "lemma:la:monachus:NOUN": [
+   {
+    "shown": "monk",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:monasterium:NOUN": [
+   {
+    "shown": "monastery",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:mons:NOUN": [
+   {
+    "shown": "mountain, hill; huge rock; towering heap",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:monstro:VERB": [
+   {
+    "shown": "show; point out, reveal; advise, teach",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:mors:NOUN": [
+   {
+    "shown": "death; corpse; annihilation",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:mos:NOUN": [
+   {
+    "shown": "custom, habit; mood, manner, fashion",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:moveo:VERB": [
+   {
+    "shown": "move; stir, shake; remove; (pass.) be moved, be troubled; move, stir, agitate, affect, provoke, disturb",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:mox:ADV": [
+   {
+    "shown": "soon",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:multus:ADJ": [
+   {
+    "shown": "much, many; numerous; much, many, great, many a; large, intense, assiduous",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:mundus:NOUN": [
+   {
+    "shown": "world; universe, heavens; world, mankind",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:munio:VERB": [
+   {
+    "shown": "fortify; strengthen; protect, defend, safeguard",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:munitus:ADJ": [
+   {
+    "shown": "defended, fortified; protected, secured, safe",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:murus:NOUN": [
+   {
+    "shown": "wall; wall, city wall",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:mysterium:NOUN": [
+   {
+    "shown": "mystery, secret service/rite/worship (usu. pl.)",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:nam:CONJ": [
+   {
+    "shown": "for",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:narro:VERB": [
+   {
+    "shown": "tell, relate; tell, tell about, relate, narrate, recount, describe",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:nascor:VERB": [
+   {
+    "shown": "be born; arise, spring up; be produced; be produced spontaneously, come into existence/being",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:natio:NOUN": [
+   {
+    "shown": "nation, people; birth; race, class, set; gentiles",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:nato:VERB": [
+   {
+    "shown": "swim; float",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:nauta:NOUN": [
+   {
+    "shown": "sailor, seaman, mariner",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:navigo:VERB": [
+   {
+    "shown": "sail; navigate",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:navis:NOUN": [
+   {
+    "shown": "ship",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:ne:SCONJ": [
+   {
+    "shown": "that not, lest",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:nemo:NOUN": [
+   {
+    "shown": "no one, nobody",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:nemo:PRON": [
+   {
+    "shown": "no one, nobody",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:neque:ADV": [
+   {
+    "shown": "nor, and not; not; and not, not, neither",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:nescio:VERB": [
+   {
+    "shown": "not know, be ignorant of; (nescio quis) someone or other",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:nihil:NOUN": [
+   {
+    "shown": "nothing; no; trifle/thing not worth mentioning",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:nihil:PRON": [
+   {
+    "shown": "nothing",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:nix:NOUN": [
+   {
+    "shown": "snow",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:nocturnus:ADJ": [
+   {
+    "shown": "nocturnal, of night, at night, by night",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:nolo:VERB": [
+   {
+    "shown": "to not want, be unwilling, refuse",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:nomen:NOUN": [
+   {
+    "shown": "name; reputation; name, family name; noun; account, entry in debt ledger",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:non:PART": [
+   {
+    "shown": "not",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:nosco:VERB": [
+   {
+    "shown": "learn, come to know; get to know; learn, find out",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:noster:ADJ": [
+   {
+    "shown": "our, ours",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:novus:ADJ": [
+   {
+    "shown": "new; fresh, young; the New (Testament, covenant); unusual, extraordinary",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:nox:NOUN": [
+   {
+    "shown": "night",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:numquam:ADV": [
+   {
+    "shown": "never",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:nunc:ADV": [
+   {
+    "shown": "now",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:nuntius:NOUN": [
+   {
+    "shown": "messenger; message, news; messenger/herald/envoy; message (oral), warning",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:nuper:ADV": [
+   {
+    "shown": "recently, not long ago; in recent years/our own time",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:nusquam:ADV": [
+   {
+    "shown": "nowhere; on no occasion",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:o:INTJ": [
+   {
+    "shown": "oh!",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:ob:ADP": [
+   {
+    "shown": "on account of, in front of",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:obscurus:ADJ": [
+   {
+    "shown": "dim, dark, obscure",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:obsideo:VERB": [
+   {
+    "shown": "blockade, besiege, invest, beset; take possession of",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:occido:VERB": [
+   {
+    "shown": "kill, slay; put to death; kill, murder, slaughter, slay; cut/knock down",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:odi:VERB": [
+   {
+    "shown": "hate (perfect form, present sense)",
+    "v": "ok"
+   },
+   {
+    "shown": "hate (PERF form, PRES force), dislike",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:oleum:NOUN": [
+   {
+    "shown": "oil, olive oil",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:olim:ADV": [
+   {
+    "shown": "once, formerly",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:oliva:NOUN": [
+   {
+    "shown": "olive; olive tree",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:olla:NOUN": [
+   {
+    "shown": "pot, jar",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:omnis:ADJ": [
+   {
+    "shown": "all, every; whole; each, every, every one (of a number)",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:oportet:VERB": [
+   {
+    "shown": "it is right/proper/necessary; it is becoming",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:oppidum:NOUN": [
+   {
+    "shown": "town",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:oppugno:VERB": [
+   {
+    "shown": "attack, assault, storm, besiege",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:opus:NOUN": [
+   {
+    "shown": "work, deed; labour; need; fortifications (pl.), works",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:oratio:NOUN": [
+   {
+    "shown": "prayer; speech, discourse; speech, oration; eloquence",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:oro:VERB": [
+   {
+    "shown": "pray; beg, plead; beg, ask for, pray; beseech, plead, entreat",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:os:NOUN": [
+   {
+    "shown": "mouth; face; speech, words; mouth, speech, expression; pronunciation",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:ostendo:VERB": [
+   {
+    "shown": "show, point out; reveal, make known; make clear, point out, display, exhibit",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:ovis:NOUN": [
+   {
+    "shown": "sheep",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:pagina:NOUN": [
+   {
+    "shown": "page, sheet",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:palor:VERB": [
+   {
+    "shown": "wander abroad stray; scatter",
+    "v": "false-reading",
+    "note": "Palati is the genitive of Palatium, the Palatine hill, not a form of palor 'wander'."
+   }
+  ],
+  "lemma:la:panis:NOUN": [
+   {
+    "shown": "bread; loaf; food",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:paro:VERB": [
+   {
+    "shown": "prepare; get, provide; furnish/supply/provide; produce",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:parochus:NOUN": [
+   {
+    "shown": "commissary",
+    "v": "false-meaning",
+    "note": "In Church Latin (as here) parochus is the parish priest; 'commissary' is a rare classical technical sense."
+   }
+  ],
+  "lemma:la:pars:NOUN": [
+   {
+    "shown": "part, portion, share; side, region; (pl.) parts, direction; portion, piece",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:parum:ADV": [
+   {
+    "shown": "too/very little, not enough/so good, insufficient",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:parvus:ADJ": [
+   {
+    "shown": "small, little; (pl. as noun) the little ones, the lowly; small, little, cheap; unimportant; (SUPER) smallest, least",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:pascuus:ADJ": [
+   {
+    "shown": "used/suitable for pasture/grazing/pasture-land",
+    "v": "false-reading",
+    "note": "pascuae in 'in loco pascuae' is the genitive of the noun pascua, -ae 'pasture', not the adjective pascuus."
+   }
+  ],
+  "lemma:la:pastor:NOUN": [
+   {
+    "shown": "shepherd, herdsman",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:pater:NOUN": [
+   {
+    "shown": "father (also God the Father); ancestor",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:patientia:NOUN": [
+   {
+    "shown": "endurance/hardiness; patience/persistence",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:patior:VERB": [
+   {
+    "shown": "suffer, endure, bear; allow, permit; undergo",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:paucus:ADJ": [
+   {
+    "shown": "little, small in quantity/extent; few (usu. pl.)",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:pauper:ADJ": [
+   {
+    "shown": "poor; (as noun) a poor man, the poor; poor/meager/unproductive; scantily endowed",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:pax:NOUN": [
+   {
+    "shown": "peace; harmony",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:peccator:NOUN": [
+   {
+    "shown": "sinner; transgressor",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:peccatum:NOUN": [
+   {
+    "shown": "sin; fault; moral offense; error, mistake; lapse, misdemeanor",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:pecunia:NOUN": [
+   {
+    "shown": "money; wealth, property",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:per:ADP": [
+   {
+    "shown": "through, by means of",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:perdo:VERB": [
+   {
+    "shown": "destroy, ruin; lose; waste; (pass.) perish",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:peregrinus:NOUN": [
+   {
+    "shown": "foreigner, stranger, alien; foreign woman (F)",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:pereo:VERB": [
+   {
+    "shown": "perish, be lost",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:perhibeo:VERB": [
+   {
+    "shown": "present, give, bestow; regard, hold; name",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:perperam:ADV": [
+   {
+    "shown": "wrongly, incorrectly",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:perpetuus:ADJ": [
+   {
+    "shown": "continuous, uninterpreted; whole; perpetual, lasting",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:pertineo:VERB": [
+   {
+    "shown": "reach; extend; relate to; concerns, pertain to",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:pervenio:VERB": [
+   {
+    "shown": "come to; reach; arrive",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:peto:VERB": [
+   {
+    "shown": "ask, seek; make for; attack; aim at; desire; beg, entreat, ask (for)",
+    "v": "false-reading",
+    "note": "poetas is poeta (poets), not a form of peto"
+   }
+  ],
+  "lemma:la:piscis:NOUN": [
+   {
+    "shown": "fish",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:plenus:ADJ": [
+   {
+    "shown": "full, full of; filled; complete; full, plump; satisfied",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:pluvia:NOUN": [
+   {
+    "shown": "rain, shower",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:poeta:NOUN": [
+   {
+    "shown": "poet",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:pomum:NOUN": [
+   {
+    "shown": "fruit, apple; fruit-tree",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:pono:VERB": [
+   {
+    "shown": "put, place, set; lay down; appoint, make; station/post (troops); pitch (camp)",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:pons:NOUN": [
+   {
+    "shown": "bridge",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:pontifex:NOUN": [
+   {
+    "shown": "high priest/pontiff; (of Roman supreme college of priests)",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:populus:NOUN": [
+   {
+    "shown": "people, nation; crowd; people, nation, State; public/populace/multitude/crowd",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:porta:NOUN": [
+   {
+    "shown": "gate; door, entrance; city gates; avenue",
+    "v": "false-reading",
+    "note": "portum is portus (harbour), not porta (gate)"
+   }
+  ],
+  "lemma:la:porto:VERB": [
+   {
+    "shown": "carry, bear; bring",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:portus:NOUN": [
+   {
+    "shown": "port, harbor; refuge, haven, place of refuge",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:possum:VERB": [
+   {
+    "shown": "to be able, can",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:post:ADP": [
+   {
+    "shown": "after, behind",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:postquam:SCONJ": [
+   {
+    "shown": "after",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:postulo:VERB": [
+   {
+    "shown": "demand, claim; require; ask/pray for",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:potens:ADJ": [
+   {
+    "shown": "powerful, mighty; able; (as noun) the mighty, a ruler; powerful, strong; capable",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:potentia:NOUN": [
+   {
+    "shown": "force, power, political power",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:potestas:NOUN": [
+   {
+    "shown": "power, authority; dominion, might; (pl.) powers, authorities; power, rule, force; strength, ability; chance, opportunity",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:praeclarus:ADJ": [
+   {
+    "shown": "very clear; splendid; famous",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:praelium:NOUN": [
+   {
+    "shown": "battle, fight, combat; battle/fight/bout/conflict/dispute; armed/hostile encounter",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:praesidium:NOUN": [
+   {
+    "shown": "protection; help; guard; garrison, detachment",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:praesto:VERB": [
+   {
+    "shown": "excel, surpass, be outstanding/superior/best/greater/preferable (to)",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:praeteritum:NOUN": [
+   {
+    "shown": "past (pl.); past times; bygone events",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:prex:NOUN": [
+   {
+    "shown": "prayer, request",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:primus:NUM": [
+   {
+    "shown": "first",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:principium:NOUN": [
+   {
+    "shown": "beginning",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:prius:ADV": [
+   {
+    "shown": "before, first, previously; sooner; (priusquam) before; earlier, before, previously, first",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:pro:ADP": [
+   {
+    "shown": "in front of, on behalf of, instead of",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:procedo:VERB": [
+   {
+    "shown": "go forth, come forth; proceed; advance, go on; appear",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:proelium:NOUN": [
+   {
+    "shown": "battle/fight/bout/conflict/dispute",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:profugus:ADJ": [
+   {
+    "shown": "fugitive/fleeing/escaping; exiled",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:progenies:NOUN": [
+   {
+    "shown": "race, family, progeny",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:promitto:VERB": [
+   {
+    "shown": "promise",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:prope:ADP": [
+   {
+    "shown": "near",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:prope:ADV": [
+   {
+    "shown": "near, nearly; close by; almost",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:prophetia:NOUN": [
+   {
+    "shown": "prophecy; prediction; body of prophets/singers",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:proprius:ADJ": [
+   {
+    "shown": "own, very own; individual; special, particular, characteristic",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:propter:ADP": [
+   {
+    "shown": "on account of, near",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:propterea:ADV": [
+   {
+    "shown": "therefore, for this reason; (propterea quod) because",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:prospicio:VERB": [
+   {
+    "shown": "foresee; see far off",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:prosum:VERB": [
+   {
+    "shown": "be useful, do good",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:provincia:NOUN": [
+   {
+    "shown": "province; office; duty; command",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:proximus:ADJ": [
+   {
+    "shown": "nearest, next; (as noun) neighbour",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:prudens:ADJ": [
+   {
+    "shown": "aware, skilled; sensible, prudent; farseeing",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:psalmus:NOUN": [
+   {
+    "shown": "psalm; Psalm of David",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:puella:NOUN": [
+   {
+    "shown": "girl, (female) child/daughter; maiden; young woman/wife",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:puer:NOUN": [
+   {
+    "shown": "boy, child; servant, young man; boy, lad, young man",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:pugno:VERB": [
+   {
+    "shown": "fight; contend, struggle; dispute",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:pulcher:ADJ": [
+   {
+    "shown": "pretty; beautiful; handsome; noble, illustrious",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:quadragesimus:NUM": [
+   {
+    "shown": "ordinal: forty",
+    "v": "false-reading",
+    "note": "Quadragesima here is the noun 'Lent'; the card gives the numeral quadragesimus with a garbled gloss ('ordinal: forty' rather than 'fortieth')."
+   }
+  ],
+  "lemma:la:quaero:VERB": [
+   {
+    "shown": "seek, look for; ask; search for, seek, strive for; obtain; ask, inquire, demand",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:quaeso:VERB": [
+   {
+    "shown": "beg, ask, ask for, seek",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:quando:ADV": [
+   {
+    "shown": "when; at what time; since, because",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:quantus:ADJ": [
+   {
+    "shown": "how great, how much; as great as, as much as",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:quare:ADV": [
+   {
+    "shown": "why?, wherefore?; for which reason, therefore; in what way? how? by which means, whereby",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:quasi:ADV": [
+   {
+    "shown": "as if, as though; about, nearly; like; as if, just as if, as though; as it were",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:quattuor:NUM": [
+   {
+    "shown": "four",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:qui:PRON": [
+   {
+    "shown": "who, which, that; which? what kind of?",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:quia:SCONJ": [
+   {
+    "shown": "because",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:quidam:PRON": [
+   {
+    "shown": "a certain one, a certain",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:quiesco:VERB": [
+   {
+    "shown": "rest, keep quiet/calm, be at peace/rest; be inactive/neutral",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:quinque:NUM": [
+   {
+    "shown": "five",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:quis:PRON": [
+   {
+    "shown": "who? what?",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:quomodo:ADV": [
+   {
+    "shown": "how, in what way; as, just as",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:quoniam:SCONJ": [
+   {
+    "shown": "since, seeing that",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:quoque:ADV": [
+   {
+    "shown": "also, too",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:quotidianus:ADJ": [
+   {
+    "shown": "daily, everyday; usual/habitual, normal/regular",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:quotquot:NUM": [
+   {
+    "shown": "however many",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:rarus:ADJ": [
+   {
+    "shown": "thin, scattered; few, infrequent",
+    "v": "false-reading",
+    "note": "raro here is the adverb 'seldom, rarely', not the adjective rarus shown as 'thin, scattered'."
+   }
+  ],
+  "lemma:la:recipio:VERB": [
+   {
+    "shown": "receive, accept, take back; recover; (se recipere) withdraw; keep back; undertake; guarantee",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:recordor:VERB": [
+   {
+    "shown": "remember, call to mind; be mindful of; think over",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:rector:NOUN": [
+   {
+    "shown": "guide, director, helmsman; horseman",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:rectus:ADJ": [
+   {
+    "shown": "right, proper; straight; honest",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:redeo:VERB": [
+   {
+    "shown": "go back, return",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:refectio:NOUN": [
+   {
+    "shown": "restoration/repair; remaking",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:regno:VERB": [
+   {
+    "shown": "reign, rule, be king; play the lord, be master",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:regnum:NOUN": [
+   {
+    "shown": "kingdom; reign; royal power; power; control",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:rego:VERB": [
+   {
+    "shown": "rule, guide; manage, direct",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:religo:VERB": [
+   {
+    "shown": "tie out of the way; bind fast",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:remedium:NOUN": [
+   {
+    "shown": "remedy, cure; medicine",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:reparo:VERB": [
+   {
+    "shown": "prepare again; renew, revive",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:requiro:VERB": [
+   {
+    "shown": "require, seek, ask for; need; miss, pine for",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:res:NOUN": [
+   {
+    "shown": "thing, matter, affair; deed; (pl.) things, possessions, events; event/affair/business; fact; cause",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:respicio:VERB": [
+   {
+    "shown": "look upon, regard; look back; have regard for, consider; gaze at; respect",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:rex:NOUN": [
+   {
+    "shown": "king",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:rigo:VERB": [
+   {
+    "shown": "moisten, wet, water, irrigate",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:ripa:NOUN": [
+   {
+    "shown": "bank",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:rogo:VERB": [
+   {
+    "shown": "ask, beg, pray; request; invite; introduce",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:romanus:ADJ": [
+   {
+    "shown": "Roman",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:rota:NOUN": [
+   {
+    "shown": "wheel (rotate)",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:sacerdos:NOUN": [
+   {
+    "shown": "priest; priest, priestess",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:saeculum:NOUN": [
+   {
+    "shown": "age, generation; the world; for ever (in saecula saeculorum); generation, people born at a time; breed, race",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:saepe:ADV": [
+   {
+    "shown": "often",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:saevus:ADJ": [
+   {
+    "shown": "savage; fierce/ferocious; violent/wild/raging",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:salutare:NOUN": [
+   {
+    "shown": "salvation",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:salutaris:ADJ": [
+   {
+    "shown": "healthful; useful; helpful; advantageous",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:salveo:VERB": [
+   {
+    "shown": "be well/in good health",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:salvus:ADJ": [
+   {
+    "shown": "safe, saved; well, unharmed; (salvum facere) to save; well, unharmed, sound; alive",
+    "v": "false-reading",
+    "note": "Salve is the greeting (hail), not the adjective salvus"
+   }
+  ],
+  "lemma:la:sanctifico:VERB": [
+   {
+    "shown": "sanctify, make holy; hallow; consecrate; sanctify, treat as holy",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:sanctus:ADJ": [
+   {
+    "shown": "holy, sacred; saintly; consecrated, sacred, inviolable",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:sanguis:NOUN": [
+   {
+    "shown": "blood; bloodshed, kinship; family",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:sapiens:ADJ": [
+   {
+    "shown": "wise; (as noun) a wise man; rational; sane, of sound mind; wise, judicious, understanding",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:sapientia:NOUN": [
+   {
+    "shown": "wisdom; prudence, understanding",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:satis:ADV": [
+   {
+    "shown": "enough, sufficiently",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:schola:NOUN": [
+   {
+    "shown": "school; followers of a system/teacher/subject",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:scientia:NOUN": [
+   {
+    "shown": "knowledge; knowledge, science; skill",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:scio:VERB": [
+   {
+    "shown": "know; know how to; know, understand",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:scribo:VERB": [
+   {
+    "shown": "write; write down, record; compose",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:secundus:NUM": [
+   {
+    "shown": "second",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:sed:CONJ": [
+   {
+    "shown": "but",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:sedeo:VERB": [
+   {
+    "shown": "sit, be seated; remain; settle; encamp",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:sedes:NOUN": [
+   {
+    "shown": "seat; home, residence; settlement, habitation",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:semel:ADV": [
+   {
+    "shown": "once, a single time",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:semita:NOUN": [
+   {
+    "shown": "path",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:semper:ADV": [
+   {
+    "shown": "always",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:senatus:NOUN": [
+   {
+    "shown": "senate",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:senex:ADJ": [
+   {
+    "shown": "old, aged; (as noun) old man, elder",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:sentio:VERB": [
+   {
+    "shown": "perceive, feel, experience; think, realize, see, understand",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:sentus:ADJ": [
+   {
+    "shown": "rough, rugged, uneven",
+    "v": "false-reading",
+    "note": "sentis in 'non sentis' is 'you (do not) perceive' from sentio, not the adjective sentus 'rough'."
+   }
+  ],
+  "lemma:la:sepulcrum:NOUN": [
+   {
+    "shown": "grave, tomb",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:sequor:VERB": [
+   {
+    "shown": "follow; go after; pursue; escort/attend/accompany",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:sero:ADV": [
+   {
+    "shown": "late, at a late hour, tardily",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:sero:VERB": [
+   {
+    "shown": "wreath; join, entwine, interweave, bind together",
+    "v": "false-reading",
+    "note": "sero here is the adverb 'late', not the verb 'join, entwine'"
+   }
+  ],
+  "lemma:la:servo:VERB": [
+   {
+    "shown": "keep, preserve, observe (a law, a covenant); save, protect; watch; watch over; protect, store, keep, guard, preserve, save",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:servus:NOUN": [
+   {
+    "shown": "servant, slave",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:severus:ADJ": [
+   {
+    "shown": "stern, strict, severe; grave, austere",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:si:SCONJ": [
+   {
+    "shown": "if",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:sic:ADV": [
+   {
+    "shown": "thus, so",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:siccitas:NOUN": [
+   {
+    "shown": "dryness; drought; dried up condition",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:sicut:ADV": [
+   {
+    "shown": "as, just as, like; in same way; as if; as it certainly is",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:signum:NOUN": [
+   {
+    "shown": "sign, mark; signal, standard; battle standard; indication; seal; sign, proof",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:silva:NOUN": [
+   {
+    "shown": "wood, forest (sylvan)",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:simul:ADV": [
+   {
+    "shown": "together, at the same time; at once; likewise; also; simultaneously",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:sine:ADP": [
+   {
+    "shown": "without",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:sinistra:NOUN": [
+   {
+    "shown": "left hand",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:sol:NOUN": [
+   {
+    "shown": "sun; sunrise, east (ad solis ortum)",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:soleo:VERB": [
+   {
+    "shown": "be in the habit of; become accustomed to",
+    "v": "false-reading",
+    "note": "Soles here is 'suns', plural of sol, not a form of soleo 'be accustomed'."
+   }
+  ],
+  "lemma:la:sono:VERB": [
+   {
+    "shown": "make a noise/sound; speak/utter, emit sound",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:soror:NOUN": [
+   {
+    "shown": "sister; (applied also to half sister, sister-in-law, and mistress!)",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:specto:VERB": [
+   {
+    "shown": "observe, watch, look at, see",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:spero:VERB": [
+   {
+    "shown": "hope, hope for; trust in (with in + abl.); look forward to",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:spes:NOUN": [
+   {
+    "shown": "hope; hope/anticipation/expectation; prospect/hope/promise",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:spiritus:NOUN": [
+   {
+    "shown": "spirit, the Spirit (of God); breath, wind; breath, breathing, air, soul, life",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:statim:ADV": [
+   {
+    "shown": "at once, immediately, straightway",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:stilus:NOUN": [
+   {
+    "shown": "stylus, pencil, iron pen; column, pillar",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:sto:VERB": [
+   {
+    "shown": "stand; stay, remain; stand, stand still, stand firm; remain, rest",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:stultus:ADJ": [
+   {
+    "shown": "foolish; (as noun) a fool; foolish, stupid",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:sub:ADP": [
+   {
+    "shown": "under, up to / under, beneath",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:subeo:VERB": [
+   {
+    "shown": "go under, come up to",
+    "v": "false-reading",
+    "note": "subito is the adverb 'suddenly', not a form of subeo"
+   }
+  ],
+  "lemma:la:subito:ADV": [
+   {
+    "shown": "suddenly, unexpectedly",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:subsequor:VERB": [
+   {
+    "shown": "follow close after; pursue; support",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:subvenio:VERB": [
+   {
+    "shown": "come to help, assist; rescue",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:suffero:VERB": [
+   {
+    "shown": "bear, endure; lift up",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:sui:PRON": [
+   {
+    "shown": "himself, herself, itself, themselves",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:sum:AUX": [
+   {
+    "shown": "to be, exist",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:summus:ADJ": [
+   {
+    "shown": "highest, top of; greatest",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:super:ADP": [
+   {
+    "shown": "over (space), above, upon, in addition to",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:superbus:ADJ": [
+   {
+    "shown": "arrogant, overbearing, haughty, proud",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:superus:ADJ": [
+   {
+    "shown": "above, high; higher, upper, of this world",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:surgo:VERB": [
+   {
+    "shown": "rise, get up; arise; rise, lift; grow",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:suscipio:VERB": [
+   {
+    "shown": "receive, take up; undertake; support, uphold; accept, receive, take up",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:sustineo:VERB": [
+   {
+    "shown": "sustain, uphold; bear, endure; wait for, await (the Lord); support; check; put off; put up with",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:suus:ADJ": [
+   {
+    "shown": "his, her, its, their own",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:taberna:NOUN": [
+   {
+    "shown": "tavern, inn; wood hut/cottage, shed/hovel",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:tabula:NOUN": [
+   {
+    "shown": "writing tablet (wax covered board); records (pl.)",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:taceo:VERB": [
+   {
+    "shown": "be silent; pass over in silence",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:tam:ADV": [
+   {
+    "shown": "so, to such a degree",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:tamen:ADV": [
+   {
+    "shown": "yet, nevertheless, still",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:tamen:CONJ": [
+   {
+    "shown": "nevertheless, still",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:tandem:ADV": [
+   {
+    "shown": "at last, finally",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:tantum:ADV": [
+   {
+    "shown": "only; so much, so greatly; (tantum ... quantum) as much as; so much, so far; hardly, only",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:tego:VERB": [
+   {
+    "shown": "cover, protect; defend; hide",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:tempestas:NOUN": [
+   {
+    "shown": "season, time, weather; storm",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:templum:NOUN": [
+   {
+    "shown": "temple; temple, church; shrine; holy place",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:tempus:NOUN": [
+   {
+    "shown": "time; season; time, condition, right time; season, occasion",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:tenebrae:NOUN": [
+   {
+    "shown": "darkness; shadows; darkness (pl.), obscurity; night; dark corner",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:teneo:VERB": [
+   {
+    "shown": "hold, keep, possess; hold fast, grasp; detain; comprehend; master; preserve",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:tentatio:NOUN": [
+   {
+    "shown": "temptation; trial",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:terra:NOUN": [
+   {
+    "shown": "earth, land; ground; country, region",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:tertius:NUM": [
+   {
+    "shown": "third",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:testimonium:NOUN": [
+   {
+    "shown": "testimony, witness; evidence; the Testimony (the law, the ark); deposition",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:theatrum:NOUN": [
+   {
+    "shown": "theater",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:timeo:VERB": [
+   {
+    "shown": "fear, be afraid of; revere (the Lord); fear, dread, be afraid (ne + SUB = lest",
+    "v": "ok"
+   },
+   {
+    "shown": "fear, be afraid of; revere (the Lord); fear, dread, be afraid",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:timor:NOUN": [
+   {
+    "shown": "fear, dread; the fear (of the Lord), reverence",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:tinnio:VERB": [
+   {
+    "shown": "ring/clang/jangle (metal); ring (ears)",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:totus:ADJ": [
+   {
+    "shown": "whole, entire",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:trado:VERB": [
+   {
+    "shown": "hand over, deliver up, betray; give, entrust; hand down; hand over, surrender; bequeath; relate",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:trans:ADP": [
+   {
+    "shown": "across",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:transfero:VERB": [
+   {
+    "shown": "carry across, transfer",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:tres:NUM": [
+   {
+    "shown": "three",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:tribulo:VERB": [
+   {
+    "shown": "press, squeeze; exact (dues/payment); trouble",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:tristis:ADJ": [
+   {
+    "shown": "sad, sorrowful; gloomy",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:tu:PRON": [
+   {
+    "shown": "you",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:tuus:ADJ": [
+   {
+    "shown": "your, yours (singular)",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:ubi:SCONJ": [
+   {
+    "shown": "when, where",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:ullus:ADJ": [
+   {
+    "shown": "any",
+    "v": "false-reading",
+    "note": "ollam is accusative of olla 'pot', not ullus"
+   }
+  ],
+  "lemma:la:umbra:NOUN": [
+   {
+    "shown": "shade; ghost; shadow",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:unde:ADV": [
+   {
+    "shown": "from where, whence",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:unigenitus:ADJ": [
+   {
+    "shown": "only begotten; only",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:unus:NUM": [
+   {
+    "shown": "one",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:urbs:NOUN": [
+   {
+    "shown": "city; Jerusalem; City of Rome",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:usque:ADV": [
+   {
+    "shown": "as far as, up to, until (usque ad); all the way, continuously; all the way, right on",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:ut:SCONJ": [
+   {
+    "shown": "that, so that, as",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:utilis:ADJ": [
+   {
+    "shown": "useful, profitable, practical, helpful, advantageous",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:vacuus:ADJ": [
+   {
+    "shown": "empty, vacant, unoccupied; devoid of, free of",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:vado:VERB": [
+   {
+    "shown": "go, walk, proceed; depart; go, advance, rush, hurry",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:valeo:VERB": [
+   {
+    "shown": "be strong/powerful/influential/healthy; prevail",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:velut:ADV": [
+   {
+    "shown": "just as, as if",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:vendo:VERB": [
+   {
+    "shown": "sell",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:venio:VERB": [
+   {
+    "shown": "come; arrive",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:ventus:NOUN": [
+   {
+    "shown": "wind",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:verbum:NOUN": [
+   {
+    "shown": "word; the Word (Christ); saying, thing, matter; proverb",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:veritas:NOUN": [
+   {
+    "shown": "truth; faithfulness, truthfulness; truth, fact, accuracy; honesty, truthfulness, frankness",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:verus:ADJ": [
+   {
+    "shown": "true, real, genuine, actual; properly named",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:vesper:NOUN": [
+   {
+    "shown": "evening; evening star; west",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:vespera:NOUN": [
+   {
+    "shown": "evening, even-tide",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:vestis:NOUN": [
+   {
+    "shown": "garment, clothing, robe; (pl.) clothes; garment, clothing, blanket",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:vetulus:ADJ": [
+   {
+    "shown": "elderly, aging",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:vetus:ADJ": [
+   {
+    "shown": "old, aged, ancient; former; veteran, experienced",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:via:NOUN": [
+   {
+    "shown": "way, road; journey; way of life, conduct; way, road, street",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:viator:NOUN": [
+   {
+    "shown": "traveler",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:vicinus:ADJ": [
+   {
+    "shown": "nearby, neighboring",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:vicis:NOUN": [
+   {
+    "shown": "turn, change, succession; exchange, interchange, repayment",
+    "v": "false-reading",
+    "note": "vitium is its own noun (flaw), not a form of vicis"
+   }
+  ],
+  "lemma:la:video:VERB": [
+   {
+    "shown": "see; look at, perceive; consider; (PASS) seem, seem good, appear, be seen",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:vigilia:NOUN": [
+   {
+    "shown": "watch (fourth part of the night), vigil, wakefulness",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:vinco:VERB": [
+   {
+    "shown": "conquer, defeat, excel; outlast; succeed",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:vinum:NOUN": [
+   {
+    "shown": "wine",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:vir:NOUN": [
+   {
+    "shown": "man, husband; hero; person of courage, honor, and nobility",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:virga:NOUN": [
+   {
+    "shown": "rod, staff; twig; twig, sprout, stalk; switch, rod; staff, wand",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:virgo:NOUN": [
+   {
+    "shown": "maiden, young woman, girl of marriageable age",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:virtus:NOUN": [
+   {
+    "shown": "power, might, strength; virtue; (pl.) mighty works, hosts; courage/bravery",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:vis:NOUN": [
+   {
+    "shown": "strength (sg. only), force, power, might, violence",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:visito:VERB": [
+   {
+    "shown": "visit; punish; visit, call upon; see frequently/habitually",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:vita:NOUN": [
+   {
+    "shown": "life; life, career, livelihood; mode of life",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:vitium:NOUN": [
+   {
+    "shown": "fault, vice, crime, sin; defect",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:vivo:VERB": [
+   {
+    "shown": "live, be alive; dwell; survive; reside",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:voco:VERB": [
+   {
+    "shown": "call, name; summon; invite; call upon",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:volo:VERB": [
+   {
+    "shown": "to want, wish, be willing",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:voltus:NOUN": [
+   {
+    "shown": "face, expression; looks",
+    "v": "ok"
+   }
+  ],
+  "lemma:la:voluntas:NOUN": [
+   {
+    "shown": "will; wish, desire; good will, favour; purpose; wish, favor, consent",
+    "v": "ok"
+   }
+  ]
+ },
+ "heldResidue": [
+  "form:la:lentus",
+  "lemma:la:Celer:PROPN",
+  "lemma:la:autumnus:ADJ",
+  "lemma:la:avis:NOUN",
+  "lemma:la:contendo:VERB",
+  "lemma:la:coque:ADV",
+  "lemma:la:lentus:ADJ",
+  "lemma:la:merces:NOUN",
+  "lemma:la:porta:NOUN"
+ ]
+}

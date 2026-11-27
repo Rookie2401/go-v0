@@ -1,0 +1,95 @@
+# SECOND DEVELOPMENT half (nn): the held-out half until 2026-11-26, read since to fix what it showed. Written for the deck audit by an AI model (not a native speaker); no rights are claimed by anyone else. One sentence per line.
+# everyday narrative
+Onkelen min dyrkar poteter og gulrøter på ein liten gard ved fjorden.
+Då vi kom fram til hytta, hadde det alt snødd i to dagar.
+Eg har alltid vore redd for høgder, men eg prøvde klatrevegg i går.
+Ho kjøpte ei ny sykkel fordi den gamle var full av rust.
+Medan han ventar på bussen, les han gjerne avisa.
+Barnebarna kjem på besøk kvar sommar og blir verande i tre veker.
+Eg skal reise til Trondheim neste månad for å treffe ein gammal ven.
+Ho sat ved vindauget og såg på regnet som fall over taka.
+Vi hadde ikkje rekna med at turen skulle ta så lang tid.
+Faren min fortel ofte om då han var fiskar i Nord-Noreg.
+Eg gløymde å betale straumrekninga, og no må eg betale ekstra.
+Dei to søstrene liknar kvarandre så mykje at folk trur dei er tvillingar.
+Han lærte seg å symje då han var femten år gammal.
+Etter at ho vart pensjonist, har ho hatt meir tid til å male.
+Eg plar ta trappa i staden for heisen kvar dag.
+Guten kasta ballen så høgt at han vart hengande i treet.
+Vi sat oppe til midnatt og snakka om alt og ingenting.
+Kvar laurdag handlar mora mi på torget, for der er grønsakene ferskast.
+Ho trur ikkje at ho kjem til å klare eksamen utan hjelp.
+Eg såg ein stor elg medan eg køyrde heim frå jobb i går.
+Fyrst la vi ut på tur, og så byrja det å blåse.
+Det beste eg veit, er å sitje ute og høyre på fuglane om morgonen.
+Naboane hadde ein fest som varte til tre om natta.
+Han måtte skrive oppgåva om igjen fordi han hadde mista fila.
+Vi bytte plass slik at dei minste borna kunne sjå betre.
+Bestemora mi strikkar alltid ei ny lue til meg før jul.
+Eg har aldri vore i Island, men eg håpar å reise dit snart.
+Ho smilte då ho opna pakka og fann ei gamal bok.
+Dei flytta til ein mindre by fordi livet i storbyen var for hektisk.
+Medan eg venta på legen, bladde eg i eit gammalt blad.
+# news register
+Prisane på bustader har stige med nesten ti prosent berre dei siste tolv månadene.
+Næringslivet ber regjeringa om å senke skattane for små bedrifter.
+Ein kraftig storm har ført til at fleire ferjer er innstilte på Vestlandet.
+Ordføraren opna den nye brua over fjorden under ei lita markering i går.
+Kommunen vil ta i bruk elektriske bussar på alle rutene innan fem år.
+Handballandslaget tapte finalen etter ei dramatisk forlenging.
+Utøvaren seier at ho ikkje har tenkt å gi seg før ho har vunne gull.
+Astronomar har oppdaga ei ukjend stjerne som lyser sterkare enn sola.
+Ei ny studie viser at dei som går tretti minutt kvar dag, lever lenger.
+Legeforeininga åtvarar mot at mange pasientar må vente for lenge på time.
+Talet på sjukmeldingar har auka sterkt sidan sist vinter.
+Fiskeria melder om rekordhøge fangstar av torsk i Barentshavet.
+Mange bedrifter får problem fordi dei ikkje finn nok kvalifisert arbeidskraft.
+Ein tolv år gammal gut fekk pris for å ha redda ein hund frå isen.
+Folk som bur nær elva, vart bedne om å flytte verdisakene til øvste etasje.
+Skuleelevane har fått ein ny nettstad der dei kan lese læreboka gratis.
+Fylkeskommunen har sett av tjue millionar kroner til vedlikehald av vegane.
+Snøen kjem truleg tidlegare i år enn normalt, ifølgje det siste varselet.
+Forskarane meiner at nye batteri kan halde dobbelt så lenge.
+Det blir ein open dag på brannstasjonen for alle som er nysgjerrige på arbeidet.
+# conversation
+Kor lenge har du budd her i byen?
+I snart ti år, men eg kjem opphavleg frå ei lita bygd nord i landet.
+Kan du låne meg ein penn? Eg har gløymt pennalet heime.
+Her har du ein, men du må gi han tilbake etterpå.
+Kva tid opnar apoteket i dag?
+Eg trur dei opnar klokka ni, men dei stenger tidleg på laurdagar.
+Eg treng ein time hos tannlegen, for eg har hatt vondt i ei tann lenge.
+Vi har ledig tid onsdag føremiddag, passar det for deg?
+Det går fint, takk. Eg skal berre ringe sjefen min først.
+Orsak, men eg trur du sit på plassen min.
+Å nei, det er eg lei for! Eg såg ikkje billetten din.
+Skal vi ta bussen eller gå til sentrum?
+La oss gå, for det er fint vêr og vi har god tid.
+Har du sett mobilen min nokon stad?
+Ja, han ligg på kjøkenbenken ved sida av brødboksa.
+Eg vil gjerne ha to billettar til førestillinga i kveld.
+Då må eg dessverre seie at det berre er ståplassar att.
+Kva meiner du om den nye læraren?
+Eg synest ho forklarar tydeleg, men ho snakkar litt fort.
+Kor mange timar jobbar du i veka?
+Vanlegvis trettiseks, men denne veka har eg teke ekstra vakter.
+Gler du deg til ferien?
+Ja, vi skal vere to veker på ei lita øy i Hellas.
+Kan du hjelpe meg å bere denne tunge kassa opp trappa?
+Sjølvsagt, berre sei frå kvar du vil ha ho.
+# description and instructions
+Hakk løken fint og stek han i smør til han blir blank.
+Ha i hakka tomatar, salt og pepar, og la sausen koke i femten minutt.
+Server pastaen varm med revet ost og litt friske urter på toppen.
+Gå ned gata til du ser ei stor kyrkje, og sving så til høgre.
+Stasjonen ligg bak torget, berre nokre få minutt frå hovudgata.
+Landsbyen ligg langt inne i ein dal og har knapt tre hundre innbyggjarar.
+Om vinteren er det kaldt og mørkt, men sommarkveldane er lange og lyse.
+Klasserommet er lyst og romsleg, med store vindauge mot skogen.
+Alle elevane må ha på seg innesko når dei kjem inn i bygget.
+Det er ikkje lov å ta med mat eller drikke inn i lesesalen.
+Fyll vatn i kjelen og set han på ei varm kokeplate.
+Les nøye gjennom rettleiinga før du set saman hylla.
+Ved brannalarm skal alle forlate bygget roleg og samle seg på parkeringsplassen.
+Museet viser gamle reiskapar som bøndene brukte for over to hundre år sidan.
+Hamna er full av små fiskebåtar, og lufta luktar salt og tang.

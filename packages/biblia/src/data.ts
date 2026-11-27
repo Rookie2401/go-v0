@@ -3,6 +3,8 @@
  *   Hebrew  { book, chapters: [{ n, verses: [{ n, t, w, kq?, pe?, s?, nun?, note?, absent? }] }] }   t = the verse as MAM prints it; w = one
  *           Open Scriptures reading per maqaf-split content word: [lemma chain, morph code, segmented form?] or null (unaligned)
  *   Greek   { book, chapters: [{ n, verses: [{ n, w: [[printed, lemma, pos, parse?], …] }] }] }   MorphGNT per printed token
+ *   a translation edition (Hindi, Thai, German, Spanish)   { book, chapters: [{ n, verses: [{ n, t, p?, d? }] }] }   the edition's wording read from
+ *           its publisher's USFM (src/usfm.ts), written by that edition's build
  * The reader shows `t` (Hebrew) or the printed tokens joined by spaces (Greek); the `w` columns are the sources' own readings of those
  * very words, not analysed here (PLAN14 §6: the Go analysers read the text; the full indexes carry the same readings).
  */
@@ -10,7 +12,12 @@ import { installHebrewIndex, type HebrewFormIndex } from '../../../src/adapters/
 import { installGreekIndex, type GreekFormIndex } from '../../../src/adapters/greek/index-store';
 import { createGreekShardLoader, type GreekShardLoader } from '../../../src/adapters/greek/shards';
 import { createHebrewShardLoader, type HebrewShardLoader } from '../../../src/adapters/hebrew/shards';
-import type { BibliaLang } from './canon';
+import type { BibliaLang, TranslationLang } from './canon';
+import type { TextBook, TextVerse } from './usfm';
+
+export type HiBook = TextBook;
+export type HiVerse = TextVerse;
+export type { TextBook, TextVerse };
 
 export type HeTok = [lemma: string, morph: string, seg?: string];
 export type GrTok = [printed: string, lemma: string, pos: string, parse?: string];
@@ -19,7 +26,7 @@ export interface GrVerse { n: number; w: GrTok[] }
 export interface Chapter<V> { n: number; verses: V[] }
 export interface HeBook { book: string; chapters: Chapter<HeVerse>[] }
 export interface GrBook { book: string; chapters: Chapter<GrVerse>[] }
-export type AnyBook = ({ lang: 'he' } & HeBook) | ({ lang: 'el' } & GrBook);
+export type AnyBook = ({ lang: 'he' } & HeBook) | ({ lang: 'el' } & GrBook) | ({ lang: TranslationLang } & TextBook);
 
 export interface DataSource { fetchJson(path: string): Promise<unknown>; fetchBytes?(path: string): Promise<Uint8Array> }
 
@@ -46,7 +53,7 @@ export class Texts {
       p = this.src.fetchJson(`data/${lang}/${id}.json`).then((j) => {
         const b = j as { book?: string; chapters?: unknown };
         if (!b || b.book !== id || !Array.isArray(b.chapters)) throw new Error(`${key}: not a book file`);
-        return { lang, ...(b as HeBook | GrBook) } as AnyBook;
+        return { lang, ...(b as HeBook | GrBook | HiBook) } as AnyBook;
       });
       this.books.set(key, p);
       p.catch(() => this.books.delete(key));

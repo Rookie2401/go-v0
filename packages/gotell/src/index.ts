@@ -10,6 +10,7 @@
  * packs. Never GoReview: the two workspaces are siblings. The module has no DOM; the GoReview shell renders it.
  */
 import type { PrivateDocument, UnitKnowledge } from '../../repository-contract/src';
+import { unitIdLabel } from '../../repository-contract/src';
 import type { ApiResult, DocumentMeta, RepositoryApi } from '../../repository-service/src/api';
 
 export type GoTellApi = Pick<RepositoryApi, 'knowledge' | 'listDocuments' | 'getDocument' | 'putDocument' | 'deleteDocument'>;
@@ -75,8 +76,7 @@ const PRODUCTION = ['productiveRetrieval', 'contextualProduction'] as const;
 
 /** A readable label from a unit id such as `lemma:sq:shtëpi:NOUN`. */
 export function unitLabel(unitId: string): string {
-  const parts = unitId.split(':');
-  return parts.length >= 3 && parts[2] ? parts[2] : unitId;
+  return unitIdLabel(unitId); // a Korean homonym number (눈²) is identity, not spelling
 }
 
 /** Items with production evidence in one language, strongest first. Pure. */

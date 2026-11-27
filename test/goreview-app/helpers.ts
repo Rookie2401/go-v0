@@ -524,20 +524,29 @@ export async function makeRig(opts: RigOptions = {}): Promise<Rig> {
 /** The enrolment the home says is being reviewed (its kicker, #language-name). The header has no dropdown since 2026-11-18. */
 export const shownEnrolment = (rig: Rig): string | undefined => rig.root.querySelector<HTMLElement>('#language-name')?.dataset.enrolment;
 
-/** The learner's languages as Account lists them, in order (the one being reviewed first): their enrolment ids and names. */
+/** The learner's languages as the Languages tab lists them, in order (the one being reviewed first): their enrolment ids and names.
+ * Since PR #20 (2026-11-19, kept by the owner: "Keep codex's redesign") each is a compact row, its name the first text of .account-language-name.
+ * Since #26 the list (#account-languages) is on its own tab, #/languages (the header's globe), no longer on the Account page, and each language
+ * is a tile (.account-language): one button (.deck-face) for a language with one track, else a disclosure whose track rows
+ * (.account-language-row) carry the enrolments. Every control that opens an enrolment carries data-enrolment; the language's name
+ * is the tile's .account-language-name. */
+export const ENROLMENT_CONTROL = '#account-languages .account-language [data-enrolment]';
 export async function accountLanguages(rig: Rig): Promise<Array<{ enrolmentId: string; name: string; current: boolean }>> {
-  if (rig.app.current() === 'account') await rig.go('settings'); // a route already shown is not drawn again
-  await rig.go('account');
-  await until(() => !!rig.root.querySelector('#account-languages'), 'the languages on the Account page');
-  return rig.qa<HTMLElement>('#account-languages .account-language').map((t) => ({
-    enrolmentId: t.dataset.enrolment ?? '', name: t.querySelector('.deck-title')?.textContent ?? '', current: t.dataset.deck === 'current',
+  if (rig.app.current() === 'languages') await rig.go('settings'); // a route already shown is not drawn again
+  await rig.go('languages');
+  await until(() => !!rig.root.querySelector('#account-languages'), 'the languages on the Languages tab');
+  return rig.qa<HTMLElement>(ENROLMENT_CONTROL).filter((t) => !!t.dataset.enrolment).map((t) => ({
+    enrolmentId: t.dataset.enrolment!, name: languageRowName(t.closest('.account-language') ?? t), current: t.getAttribute('aria-current') === 'true',
   }));
 }
 
-/** Switches the language being reviewed the way a learner does it (2026-11-18): Account, a press on that language's tile; back on its home. */
+/** A language tile's name without its native name (the <small> inside .account-language-name). */
+export const languageRowName = (row: Element): string => row.querySelector('.account-language-name')?.firstChild?.textContent ?? '';
+
+/** Switches the language being reviewed the way a learner does it: the Languages tab, a press on that language (or track); back on its home. */
 export async function switchLanguage(rig: Rig, enrolmentId: string): Promise<void> {
   await accountLanguages(rig);
-  rig.q<HTMLButtonElement>(`#account-languages [data-enrolment="${enrolmentId}"] .deck-face`).click();
+  rig.q<HTMLButtonElement>(`#account-languages .account-language [data-enrolment="${enrolmentId}"]`).click();
   await until(() => rig.app.current() === 'review' && shownEnrolment(rig) === enrolmentId, `the home of ${enrolmentId}`, 400);
 }
 

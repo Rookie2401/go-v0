@@ -16,10 +16,14 @@ import { hiAdapter } from '../../../src/adapters/hi';
 import { thAdapter } from '../../../src/adapters/th';
 import { nbAdapter } from '../../../src/adapters/nb';
 import { nnAdapter } from '../../../src/adapters/nn';
-import { laAdapter } from '../../../src/adapters/la';
+import { laAdapter, loadLatinLexicon } from '../../../src/adapters/la';
 import { arcAdapter } from '../../../src/adapters/arc';
 import { heAdapter } from '../../../src/adapters/he';
 import { elAdapter } from '../../../src/adapters/el';
+import { ruAdapter } from '../../../src/adapters/ru';
+import { frAdapter, loadFrenchLexicon } from '../../../src/adapters/fr';
+import { koAdapter } from '../../../src/adapters/ko';
+import { arAdapter } from '../../../src/adapters/ar';
 import type { LanguageAdapter } from '../../../src/core';
 
 /**
@@ -27,7 +31,8 @@ import type { LanguageAdapter } from '../../../src/core';
  * packs (German, Hindi, Thai, Norwegian Bokmål and Nynorsk, Hebrew, Greek). A language outside this set falls back to the
  * tokenize-only analyser.
  */
-const BUILT_IN: Readonly<Record<string, LanguageAdapter>> = Object.freeze({ sq: sqAdapter, es: esAdapter, de: deAdapter, hi: hiAdapter, th: thAdapter, nb: nbAdapter, nn: nnAdapter, la: laAdapter, he: heAdapter, el: elAdapter, arc: arcAdapter });
+const BUILT_IN: Readonly<Record<string, LanguageAdapter>> = Object.freeze({ sq: sqAdapter, es: esAdapter, de: deAdapter, hi: hiAdapter, th: thAdapter, nb: nbAdapter, nn: nnAdapter, la: laAdapter, he: heAdapter, el: elAdapter, arc: arcAdapter, ru: ruAdapter, fr: frAdapter, ko: koAdapter,
+  ar: arAdapter });
 
 /** The analyser the runtime bundles for a language, if any. */
 export function builtInAdapter(languageId: string): LanguageAdapter | undefined {
@@ -40,6 +45,11 @@ export function builtInAdapter(languageId: string): LanguageAdapter | undefined 
  * must not use an analyser before it is loaded awaits this first (and `builtInAdapter` then answers synchronously, as before).
  */
 export function loadBuiltInAdapter(languageId: string): Promise<LanguageAdapter | undefined> {
+  // French reads a lemma list beside its hand word list (a lazily loaded module: src/adapters/french/lexicon-full). Whoever waits for the
+  // analyser waits for that list too, here as in the lean loaders, so every path reads a French word the same way; it settles either way.
+  if (languageId === 'fr') return loadFrenchLexicon().catch(() => undefined).then(() => builtInAdapter(languageId));
+  // Latin likewise reads its full lexicon beside the seed list (the owner, 2026-11-27)
+  if (languageId === 'la') return loadLatinLexicon().catch(() => undefined).then(() => builtInAdapter(languageId));
   return Promise.resolve(builtInAdapter(languageId));
 }
 

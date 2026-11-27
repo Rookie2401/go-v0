@@ -40,6 +40,18 @@ function rowVarieties(hit: ElIndexHit, tags: string[], lemmaLabels: string[]): s
   return [hit.index.period];
 }
 
+/**
+ * Two New Testament words that MorphGNT files under another word's lemma, so that the lemma's meaning was shown for them: the impersonal δεῖ ("it is necessary":
+ * δεῖ, ἔδει, δέῃ, δεῖν, δέον, 100 occurrences) under δέω "I bind", and the middle ἄρχομαι ("I begin": ἤρξατο, ἤρξαντο …, 84 occurrences) under ἄρχω "I reign, rule".
+ * The lexicons list both as words of their own; a reading of one of them names that word and its meaning. Nothing else of the source's lemmas is touched.
+ */
+const KOINE_IMPERSONAL_DEI = new Set(['δεῖ', 'ἔδει', 'δέῃ', 'δεῖν', 'δέον'].map((f) => elKeyOf(f)));
+function koineOwnWord(lemmaId: string, key: string, morph: Readonly<Record<string, string>>): { lemma: string; gloss: string; why: string } | undefined {
+  if (lemmaId === 'δέω' && KOINE_IMPERSONAL_DEI.has(key)) return { lemma: 'δεῖ', gloss: 'it is necessary, one must', why: 'the impersonal δεῖ, which the source files under δέω' };
+  if (lemmaId === 'ἄρχω' && (morph.Voice ?? '').split(',').includes('Mid')) return { lemma: 'ἄρχομαι', gloss: 'I begin', why: 'the middle ἄρχομαι, which the source files under ἄρχω' };
+  return undefined;
+}
+
 function fromHit(hit: ElIndexHit, share: number): AnalysisCandidate | undefined {
   const [lemmaId, code, count] = hit.row;
   const idx = hit.index;
@@ -49,9 +61,11 @@ function fromHit(hit: ElIndexHit, share: number): AnalysisCandidate | undefined 
     const notes: Record<string, string | string[]> = { source: 'morphgnt', code, lemmaId, attested: `${count}× in the New Testament as this reading` };
     if (row?.[6]) notes.septuagint = `the lemma occurs ${row[6]}× in the Septuagint`;
     if (hit.viaBare) notes.accents = 'inferred';
+    const own = koineOwnWord(lemmaId, hit.key, r.morph);
+    if (own) notes.rule = own.why;
     const c: AnalysisCandidate = {
-      lemma: row?.[0] ?? lemmaId, pos: r.pos, morph: r.morph, notes, varieties: ['el-koi'], origin: 'dictionary', sourceId: EL_SOURCE_IDS.morphgnt,
-      confidence: hit.viaBare ? 0.6 : 0.92, ...(row?.[1] ? { gloss: row[1] } : {}),
+      lemma: own?.lemma ?? row?.[0] ?? lemmaId, pos: r.pos, morph: r.morph, notes, varieties: ['el-koi'], origin: 'dictionary', sourceId: EL_SOURCE_IDS.morphgnt,
+      confidence: hit.viaBare ? 0.6 : 0.92, ...(own ? { gloss: own.gloss } : row?.[1] ? { gloss: row[1] } : {}),
     };
     c.confidence = Math.round(c.confidence * (0.55 + 0.45 * share) * 100) / 100;
     return c;
@@ -335,15 +349,77 @@ function decidePeriod(tokens: RawToken[], base: AnalysisCandidate[][], opts?: An
 const WEAK_HOMERIC_MARK = /^(?:ἄρα|ἄρ|ἄρ᾽|τοι)$/u;
 const HOMERIC_MARK = /(?:οιο|εσσι(?:ν)?|ῃσι(?:ν)?|οισι(?:ν)?|φι(?:ν)?)$|^(?:κε|κεν|κ᾽|ῥα|ῥ᾽|ἠδέ|ἠδ᾽|ἠμέν|ἀτάρ|αὐτάρ|μιν|σφι|σφιν|ἔην|ἦεν|ἔσσι|εἰμέν|ἔνθα|ἔπειτα|αὖτε|ἦμος)$/u;
 
+/**
+ * A word written with a capital INSIDE a Modern Greek sentence (not its first word) is the common noun whose headword is written with a capital, when the word list has one
+ * (a weekday, a month; a proper name is left alone: της Μέσης Ανατολής is the adjective μέσος inside a name): την Τρίτη is
+ * Tuesday, not the feminine of τρίτος "third"; τη Δευτέρα is Monday. Such readings take the best certainty among the word's Modern readings, and the lower-case
+ * headwords are kept outside the band in which readings compete. A sentence's first word is capital whatever it is, so nothing is decided there.
+ */
+function capitalised(tokens: RawToken[], i: number, cands: AnalysisCandidate[]): AnalysisCandidate[] | undefined {
+  const upper = (w: string | undefined): boolean => !!w && w[0] !== w[0].toLowerCase() && w[0] === w[0].toUpperCase();
+  const surface = tokens[i].surface.normalize('NFC');
+  if (!upper(surface) || surface === surface.toUpperCase()) return undefined;
+  let first = true;
+  for (let j = i - 1; j >= 0; j--) {
+    if (tokens[j].isWord) { first = false; break; }
+    if (/[.;!?…·:»«"“”(\n]/u.test(tokens[j].surface)) break;
+  }
+  if (first) return undefined;
+  const own = cands.filter((c) => c.pos === 'NOUN' && upper(c.lemma?.normalize('NFC')));
+  if (!own.length || own.length === cands.length || !own.every((c) => c.lemma === own[0].lemma && c.pos === own[0].pos)) return undefined;
+  const top = cands.reduce((m, c) => Math.max(m, c.confidence), 0);
+  const ownTop = own.reduce((m, c) => Math.max(m, c.confidence), 0);
+  const lift = Math.max(0, top - ownTop);
+  const ceiling = Math.round((top - PERIOD_GAP) * 100) / 100;
+  return cands.map((c) => (own.includes(c) ? { ...c, confidence: Math.round((c.confidence + lift) * 100) / 100, notes: { ...c.notes, context: 'written with a capital inside the sentence: the capitalised headword' } } : c.confidence > ceiling ? { ...c, confidence: Math.max(0.05, ceiling) } : c))
+    .sort((a, b) => Number(own.includes(b) || upper(b.lemma?.normalize('NFC'))) - Number(own.includes(a) || upper(a.lemma?.normalize('NFC'))));
+}
+
+/** How far below the best reading of the sentence's own period a reading of another period is kept when the text's spelling decided the period: just outside the 0.15 band in which readings compete. */
+const PERIOD_GAP = 0.16;
+
 export function orderElSentence(tokens: RawToken[], base: AnalysisCandidate[][], opts?: AnalyzeOptions): AnalysisCandidate[][] {
   const { period, basis, evidence } = sentencePeriod(tokens, base, opts);
   const fits = (c: AnalysisCandidate): boolean => (c.varieties ?? []).includes(period);
+  const wordTokens = tokens.filter((t) => t.isWord);
+  const plainModern = period === 'el-mod' && wordTokens.length >= 3 && !wordTokens.some((t) => isPolytonic(t.surface));
   return base.map((cands, i) => {
     if (!tokens[i].isWord) return cands;
     const first = cands.filter(fits);
     const rest = cands.filter((c) => !fits(c));
     const changed = first.length > 0 && rest.length > 0 && cands[0] && !fits(cands[0]);
-    return [...first, ...rest].map((c, k) => ({ ...c, notes: { ...c.notes, period, periodBasis: basis, periodEvidence: evidence, ...(changed && k === 0 ? { context: `put first because the sentence is read as ${label(period)}` } : {}) } }));
+    // The ORDER alone does not reach the callers that choose by confidence (the page scan and the word card credit the reading of the highest confidence):
+    // in a Modern sentence με and σε were credited as the Koine pronouns ἐγώ and σύ (0.9) over the Modern prepositions, and Δευτέρα as δεύτερος.
+    // So a reading from the other side of the ancient / modern divide is kept below the best reading of the sentence's own period: outside the band in which two readings compete
+    // (0.15) when the spelling of the text itself decided the period, just below it when the period was only declared. A period taken by default changes nothing.
+    const top = first.reduce((m, c) => Math.max(m, c.confidence), 0);
+    // (ancient spelling shows a breathing, a circumflex, a grave or an iota subscript somewhere in any sentence of a few words; a sentence with none, read as Modern, is Modern by its spelling)
+    const gap = evidence === 'text' || plainModern ? PERIOD_GAP : evidence === 'declared' ? 0.01 : undefined;
+    // only across the divide between the ancient language and the modern one: within the ancient stages (an Attic sentence, a reading the New Testament attests) the
+    // readings stand as they were, in the order above
+    const sameSide = (c: AnalysisCandidate): boolean => (c.varieties ?? []).some((v) => ANCIENT.has(v) === ANCIENT.has(period));
+    // The word was recognised with the certainty of its best reading, whichever period that reading is of. When the readings of the sentence's own period all
+    // name ONE word (one lemma, one class), that word takes the certainty over: otherwise a Modern word known to the New Testament too (its Modern reading
+    // split three ways by case, 0.44 each) would fall under the floor at which a word counts as read, and stop being credited at all.
+    const across = gap !== undefined && first.length > 0 ? rest.filter((c) => !sameSide(c)) : [];
+    const otherBest = across.reduce<AnalysisCandidate | undefined>((m, c) => (!m || c.confidence > m.confidence ? c : m), undefined);
+    const otherTop = otherBest?.confidence ?? 0;
+    const oneWord = first.length > 0 && first.every((c) => c.lemma === first[0].lemma && c.pos === first[0].pos);
+    // ... or, where they name several words, the one that IS the other period's best reading (μετά, δύο, φέρω, πολύς are the same word in both periods;
+    // μεγάλος is not μέγας): the letters of the headword decide, whatever accents and breathings each period writes
+    const letters = (lemma: string | undefined): string => (lemma ?? '').normalize('NFD').replace(/\p{M}/gu, '').toLowerCase();
+    const sameLetters = oneWord ? first : first.filter((c) => !!otherBest && letters(c.lemma) === letters(otherBest.lemma));
+    // of those, the readings of the other period's own class where there are any (δύο the numeral, which the New Testament index calls an adjective, not δύο the playing card)
+    const klass = (pos: string | undefined): string => (pos === 'NUM' || pos === 'ADJ' || pos === 'DET' ? 'ADJ' : pos === 'AUX' ? 'VERB' : pos === 'PROPN' ? 'NOUN' : pos ?? '');
+    const sameClass = oneWord || !otherBest ? sameLetters : sameLetters.filter((c) => klass(c.pos) === klass(otherBest.pos));
+    const takers = sameClass.length ? sameClass : sameLetters;
+    const takersTop = takers.reduce((m, c) => Math.max(m, c.confidence), 0);
+    const lift = takers.length > 0 && otherTop > takersTop ? otherTop - takersTop : 0;
+    const lifted = lift > 0 ? first.map((c) => (takers.includes(c) ? { ...c, confidence: Math.min(0.99, Math.round((c.confidence + lift) * 100) / 100) } : c)) : first;
+    const ceiling = Math.max(top, takersTop + lift) - (gap ?? 0);
+    const held = (c: AnalysisCandidate): AnalysisCandidate => (gap !== undefined && first.length > 0 && !fits(c) && !sameSide(c) && c.confidence > ceiling ? { ...c, confidence: Math.max(0.05, Math.round(ceiling * 100) / 100) } : c);
+    const capital = period === 'el-mod' ? capitalised(tokens, i, lifted) : undefined;
+    return [...(capital ?? lifted), ...rest.map(held)].map((c, k) => ({ ...c, notes: { ...c.notes, period, periodBasis: basis, periodEvidence: evidence, ...(changed && k === 0 ? { context: `put first because the sentence is read as ${label(period)}` } : {}) } }));
   });
 }
 

@@ -5,23 +5,21 @@ import type { PackManifest, ValidationCase } from '../manifest';
 /** Experimental Biblical Aramaic only. Adapter version 2. */
 export const ARC_VERSION = '2';
 
-const DAN_2_4B = "מַלְכָּא֙ לְעָלְמִ֣ין חֱיִ֔י אֱמַ֥ר חֶלְמָ֛א לְעַבְדָ֖ךְ וּפִשְׁרָ֥א נְחַוֵּֽא׃";
-const DAN_2_20 = "עָנֵ֤ה דָֽנִיֵּאל֙ וְאָמַ֔ר לֶהֱוֵ֨א שְׁמֵ֤הּ דִּֽי־אֱלָהָא֙ מְבָרַ֔ךְ מִן־עָלְמָ֖א וְעַ֣ד־עָלְמָ֑א דִּ֧י חָכְמְתָ֛א וּגְבוּרְתָ֖א דִּ֥י לֵֽהּ־הִֽיא׃";
 
 export const ARC_VALIDATION: ValidationCase[] = [
-  { id: 'v-mal-ka', surface: 'מַלְכָּא֙', sentence: DAN_2_4B, expect: { lemma: 'מֶלֶךְ', pos: 'NOUN', features: { Gender: 'Masc', Number: 'Sing', State: 'Det', Definite: 'Def' } } },
-  { id: 'v-almin', surface: 'לְעָלְמִ֣ין', sentence: DAN_2_4B, expect: { pos: 'NOUN', features: { Number: 'Plur' } } },
-  { id: 'v-hayi', surface: 'חֱיִ֔י', sentence: DAN_2_4B, expect: { lemma: 'חֲיָא', pos: 'VERB', features: { Binyan: 'Peal', Conj: 'Imp', Person: '2', Gender: 'Masc', Number: 'Sing' } } },
-  { id: 'v-emar', surface: 'אֱמַ֥ר', sentence: DAN_2_4B, expect: { lemma: 'אֲמַר', pos: 'VERB', features: { Binyan: 'Peal', Conj: 'Imp', Person: '2', Gender: 'Masc', Number: 'Sing' } } },
-  { id: 'v-helma', surface: 'חֶלְמָ֛א', sentence: DAN_2_4B, expect: { pos: 'NOUN', features: { Gender: 'Masc', Number: 'Sing', State: 'Det', Definite: 'Def' } } },
-  { id: 'v-pishra', surface: 'וּפִשְׁרָ֥א', sentence: DAN_2_4B, expect: { pos: 'NOUN', features: { Gender: 'Masc', Number: 'Sing', State: 'Det', Definite: 'Def' } } },
-  { id: 'v-nechavve', surface: 'נְחַוֵּֽא', sentence: DAN_2_4B, expect: { lemma: 'חֲוָא', pos: 'VERB', features: { Binyan: 'Pael', Conj: 'Impf', Person: '1', Gender: 'Com', Number: 'Plur' } } },
-  { id: 'v-daniel', surface: 'דָֽנִיֵּאל֙', sentence: DAN_2_20, expect: { lemma: 'דָּנִיֵּאל', pos: 'PROPN' } },
-  { id: 'v-amar', surface: 'וְאָמַ֔ר', sentence: DAN_2_20, expect: { pos: 'VERB', features: { Binyan: 'Peal', Conj: 'Part', Gender: 'Masc', Number: 'Sing' } } },
-  { id: 'v-leheve', surface: 'לֶהֱוֵ֨א', sentence: DAN_2_20, expect: { pos: 'VERB', features: { Binyan: 'Peal', Conj: 'Impf', Person: '3', Gender: 'Masc', Number: 'Sing' } } },
-  { id: 'v-shemeh', surface: 'שְׁמֵ֤הּ', sentence: DAN_2_20, expect: { pos: 'NOUN', features: { Gender: 'Masc', Number: 'Sing', State: 'Cons' } } },
-  { id: 'v-di', surface: 'דִּֽי', sentence: DAN_2_20, expect: { lemma: 'דִּי' } },
-  { id: 'v-elaha', surface: 'אֱלָהָא֙', sentence: DAN_2_20, expect: { pos: 'NOUN', features: { Gender: 'Masc', Number: 'Sing', State: 'Det', Definite: 'Def' } } },
+  { id: 'v-mal-ka', surface: 'מַלְכָּא֙', sentence: "מַלְכָּא֙ לְעָלְמִ֣ין", expect: { lemma: 'מֶלֶךְ', pos: 'NOUN', features: { Gender: 'Masc', Number: 'Sing', State: 'Det', Definite: 'Def' } } },
+  { id: 'v-almin', surface: 'לְעָלְמִ֣ין', sentence: "מַלְכָּא֙ לְעָלְמִ֣ין", expect: { pos: 'NOUN', features: { Number: 'Plur' } } },
+  { id: 'v-hayi', surface: 'חֱיִ֔י', sentence: "לְעָלְמִ֣ין חֱיִ֔י", expect: { lemma: 'חֲיָא', pos: 'VERB', features: { Binyan: 'Peal', Conj: 'Imp', Person: '2', Gender: 'Masc', Number: 'Sing' } } },
+  { id: 'v-emar', surface: 'אֱמַ֥ר', sentence: "חֱיִ֔י אֱמַ֥ר", expect: { lemma: 'אֲמַר', pos: 'VERB', features: { Binyan: 'Peal', Conj: 'Imp', Person: '2', Gender: 'Masc', Number: 'Sing' } } },
+  { id: 'v-helma', surface: 'חֶלְמָ֛א', sentence: "חֶלְמָ֛א לְעַבְדָ֖ךְ", expect: { pos: 'NOUN', features: { Gender: 'Masc', Number: 'Sing', State: 'Det', Definite: 'Def' } } },
+  { id: 'v-pishra', surface: 'וּפִשְׁרָ֥א', sentence: "לְעַבְדָ֖ךְ וּפִשְׁרָ֥א", expect: { pos: 'NOUN', features: { Gender: 'Masc', Number: 'Sing', State: 'Det', Definite: 'Def' } } },
+  { id: 'v-nechavve', surface: 'נְחַוֵּֽא', sentence: "וּפִשְׁרָ֥א נְחַוֵּֽא׃", expect: { lemma: 'חֲוָא', pos: 'VERB', features: { Binyan: 'Pael', Conj: 'Impf', Person: '1', Gender: 'Com', Number: 'Plur' } } },
+  { id: 'v-daniel', surface: 'דָֽנִיֵּאל֙', sentence: "דָֽנִיֵּאל֙ וְאָמַ֔ר", expect: { lemma: 'דָּנִיֵּאל', pos: 'PROPN' } },
+  { id: 'v-amar', surface: 'וְאָמַ֔ר', sentence: "דָֽנִיֵּאל֙ וְאָמַ֔ר", expect: { pos: 'VERB', features: { Binyan: 'Peal', Conj: 'Part', Gender: 'Masc', Number: 'Sing' } } },
+  { id: 'v-leheve', surface: 'לֶהֱוֵ֨א', sentence: "וְאָמַ֔ר לֶהֱוֵ֨א", expect: { pos: 'VERB', features: { Binyan: 'Peal', Conj: 'Impf', Person: '3', Gender: 'Masc', Number: 'Sing' } } },
+  { id: 'v-shemeh', surface: 'שְׁמֵ֤הּ', sentence: "לֶהֱוֵ֨א שְׁמֵ֤הּ", expect: { pos: 'NOUN', features: { Gender: 'Masc', Number: 'Sing', State: 'Cons' } } },
+  { id: 'v-di', surface: 'דִּֽי', sentence: "שְׁמֵ֤הּ דִּֽי־אֱלָהָא֙", expect: { lemma: 'דִּי' } },
+  { id: 'v-elaha', surface: 'אֱלָהָא֙', sentence: "שְׁמֵ֤הּ דִּֽי־אֱלָהָא֙", expect: { pos: 'NOUN', features: { Gender: 'Masc', Number: 'Sing', State: 'Det', Definite: 'Def' } } },
 ];
 
 export function aramaicManifest(): PackManifest {

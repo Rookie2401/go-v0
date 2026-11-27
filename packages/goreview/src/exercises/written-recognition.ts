@@ -10,7 +10,7 @@ import { reviewFacts } from '../facts/review-facts';
 import { normalizeAnswer } from '../grading/normalize';
 import { defineBuilder } from './builders';
 import {
-  acceptedMeanings, assemble, attributionLine, CONFLICTED_LEXICAL_EXCEPTION, contextOf, eligibilityOf, exerciseIdOf, glossSplit, occurrences, precheck, quote, referenceGloss, refuse, rnd, shuffle,
+  acceptedMeanings, assemble, attributionLine, CONFLICTED_LEXICAL_EXCEPTION, contextOf, eligibilityOf, exerciseIdOf, glossSplit, occurrences, precheck, quote, referenceGloss, refuse, rnd, shuffle, shownLemma,
 } from './shared';
 import type { Planned } from './shared';
 import type { BuildContext, UnitFacts } from '../types';
@@ -47,7 +47,7 @@ function plan(target: Parameters<typeof precheck>[1], facts: UnitFacts, ctx: Bui
   if (!eligibility.eligible) return refuse(eligibility.reason);
 
   const isForm = facts.unit.kind === 'form';
-  const shown = isForm ? facts.unit.label : facts.lemma ?? facts.unit.label;
+  const shown = isForm ? facts.unit.label : shownLemma(facts, facts.lemma ?? facts.unit.label);
   const occurrence = occurrences(facts)[0];
   const context = occurrence ? contextOf(occurrence) : undefined;
   const contextualTarget = context?.surface ?? shown;
@@ -68,13 +68,13 @@ function plan(target: Parameters<typeof precheck>[1], facts: UnitFacts, ctx: Bui
   const distractors = glossDistractors(ctx.pool, facts, accepted, random, 3);
   const choice = distractors.length >= 3;
 
-  const descr = isForm && f.morphDescription && facts.lemma ? ` It is the ${f.morphDescription} of ${quote(facts.lemma)}.` : '';
+  const descr = isForm && f.morphDescription && facts.lemma ? ` It is the ${f.morphDescription} of ${quote(shownLemma(facts, facts.lemma))}.` : '';
   const caveat = facts.status === 'provisional' ? ' (This reading comes from the pack’s word-form rules and has not been reviewed.)' : '';
   const explanation = lexical
-    ? `${quote(shown)} is an attested form of ${quote(lexical.lemma!)}. This asks for the base meaning ${quote(reference)}; its inflected or contextual meaning was not assessed.${facts.status === 'provisional' ? ' The form analysis is provisional.' : ''} Source: ${lexical.attribution ?? lexical.source ?? 'the pack dictionary'}.`
+    ? `${quote(shown)} is an attested form of ${quote(shownLemma(facts, lexical.lemma!))}. This asks for the base meaning ${quote(reference)}; its inflected or contextual meaning was not assessed.${facts.status === 'provisional' ? ' The form analysis is provisional.' : ''} Source: ${lexical.attribution ?? lexical.source ?? 'the pack dictionary'}.`
     : `${quote(shown)} means ${quote(reference)}.${descr}${attributionLine(facts, [reference])}${caveat}`;
 
-  const alternatives = (f.alternativeReadings ?? []).flatMap((r) => r.glosses.map((g) => ({ answer: g, sense: `${r.lemma}${r.pos ? ` (${r.pos})` : ''}` })))
+  const alternatives = (f.alternativeReadings ?? []).flatMap((r) => r.glosses.map((g) => ({ answer: g, sense: `${shownLemma(facts, r.lemma)}${r.pos ? ` (${r.pos})` : ''}` })))
     .filter((a) => !accepted.some((x) => normalizeAnswer(x, 'loose') === normalizeAnswer(a.answer, 'loose')));
 
   const variant = choice ? 'choice' : 'typed';
@@ -103,6 +103,7 @@ function plan(target: Parameters<typeof precheck>[1], facts: UnitFacts, ctx: Bui
         },
       hiddenBeforeAnswer: [],
       responseMode: choice ? 'choice' : 'typed-or-self',
+      ...(isForm && f.morphDescription ? { formParsing: f.morphDescription } : {}),
       eligibility,
       builtFrom: { facts: [...new Set(tags)], ...(!lexical && occurrence ? { sentenceSource: occurrence.example.source } : {}) },
       ...(!lexical && occurrence ? { context } : {}),

@@ -1,0 +1,726 @@
+{
+ "_about": "DEVELOPMENT set for the same sentences, FULLY VOCALIZED (a subset of msa-dev.json: tokens, lemmas and parts are the same; only the printed form carries its vowels). Original: unvocalized Modern Standard Arabic prose (news, encyclopedia and simple narrative register). MACHINE-WRITTEN and MACHINE-ANNOTATED by the Arabic pack's builder (an AI model), NOT a human gold standard: lemmas, parts of speech and clitic breakdowns were written one token at a time from grammar knowledge and may contain mistakes. Every sentence is original; none is copied from a corpus. FROZEN on 2026-11-25, before the analyser read it. An independent auditor holds a separate held-out set. Tokens with \"skip\": true (proper names and words whose vocalized lemma the annotator was not sure of) are not scored. See docs/arabic/EVAL.md.",
+ "frozen": "2026-11-25",
+ "annotator": "the pack builder (AI), not a human",
+ "sentences": [
+  {
+   "id": "s10v",
+   "of": "s10",
+   "text": "تَقَعُ الْمَدِينَةُ الْقَدِيمَةُ عَلَى ضِفَّةِ النَّهْرِ الشَّرْقِيَّةِ.",
+   "tokens": [
+    {
+     "surface": "تَقَعُ",
+     "lemma": "وَقَعَ",
+     "pos": "VERB"
+    },
+    {
+     "surface": "الْمَدِينَةُ",
+     "lemma": "مَدِينَة",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "مدينة"
+     ]
+    },
+    {
+     "surface": "الْقَدِيمَةُ",
+     "lemma": "قَدِيم",
+     "pos": "ADJ",
+     "parts": [
+      "ال",
+      "قديمة"
+     ]
+    },
+    {
+     "surface": "عَلَى",
+     "lemma": "عَلَى",
+     "pos": "ADP"
+    },
+    {
+     "surface": "ضِفَّةِ",
+     "lemma": "ضِفَّة",
+     "pos": "NOUN"
+    },
+    {
+     "surface": "النَّهْرِ",
+     "lemma": "نَهْر",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "نهر"
+     ]
+    },
+    {
+     "surface": "الشَّرْقِيَّةِ",
+     "lemma": "شَرْقِيّ",
+     "pos": "ADJ",
+     "parts": [
+      "ال",
+      "شرقية"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "s14v",
+   "of": "s14",
+   "text": "تَزْدَادُ دَرَجَاتُ الْحَرَارَةِ فِي فَصْلِ الصَّيْفِ.",
+   "tokens": [
+    {
+     "surface": "تَزْدَادُ",
+     "lemma": "اِزْدَادَ",
+     "pos": "VERB"
+    },
+    {
+     "surface": "دَرَجَاتُ",
+     "lemma": "دَرَجَة",
+     "pos": "NOUN"
+    },
+    {
+     "surface": "الْحَرَارَةِ",
+     "lemma": "حَرَارَة",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "حرارة"
+     ]
+    },
+    {
+     "surface": "فِي",
+     "lemma": "فِي",
+     "pos": "ADP"
+    },
+    {
+     "surface": "فَصْلِ",
+     "lemma": "فَصْل",
+     "pos": "NOUN"
+    },
+    {
+     "surface": "الصَّيْفِ",
+     "lemma": "صَيْف",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "صيف"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "s20v",
+   "of": "s20",
+   "text": "سَقَطَ الْمَطَرُ بِغَزَارَةٍ طَوَالَ اللَّيْلِ.",
+   "tokens": [
+    {
+     "surface": "سَقَطَ",
+     "lemma": "سَقَطَ",
+     "pos": "VERB"
+    },
+    {
+     "surface": "الْمَطَرُ",
+     "lemma": "مَطَر",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "مطر"
+     ]
+    },
+    {
+     "surface": "بِغَزَارَةٍ",
+     "lemma": "غَزَارَة",
+     "pos": "NOUN",
+     "parts": [
+      "ب",
+      "غزارة"
+     ]
+    },
+    {
+     "surface": "طَوَالَ",
+     "lemma": null,
+     "pos": "ADP",
+     "skip": true
+    },
+    {
+     "surface": "اللَّيْلِ",
+     "lemma": "لَيْل",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "ليل"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "s26v",
+   "of": "s26",
+   "text": "يَعْتَمِدُ اقْتِصَادُهَا عَلَى الزِّرَاعَةِ وَالسِّيَاحَةِ.",
+   "tokens": [
+    {
+     "surface": "يَعْتَمِدُ",
+     "lemma": "اِعْتَمَدَ",
+     "pos": "VERB"
+    },
+    {
+     "surface": "اقْتِصَادُهَا",
+     "lemma": "اِقْتِصَاد",
+     "pos": "NOUN",
+     "parts": [
+      "اقتصاد",
+      "ها"
+     ]
+    },
+    {
+     "surface": "عَلَى",
+     "lemma": "عَلَى",
+     "pos": "ADP"
+    },
+    {
+     "surface": "الزِّرَاعَةِ",
+     "lemma": "زِرَاعَة",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "زراعة"
+     ]
+    },
+    {
+     "surface": "وَالسِّيَاحَةِ",
+     "lemma": "سِيَاحَة",
+     "pos": "NOUN",
+     "parts": [
+      "و",
+      "ال",
+      "سياحة"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "s35v",
+   "of": "s35",
+   "text": "سَمِعَ الرَّجُلُ صَوْتًا غَرِيبًا خَلْفَ الْبَابِ.",
+   "tokens": [
+    {
+     "surface": "سَمِعَ",
+     "lemma": "سَمِعَ",
+     "pos": "VERB"
+    },
+    {
+     "surface": "الرَّجُلُ",
+     "lemma": "رَجُل",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "رجل"
+     ]
+    },
+    {
+     "surface": "صَوْتًا",
+     "lemma": "صَوْت",
+     "pos": "NOUN"
+    },
+    {
+     "surface": "غَرِيبًا",
+     "lemma": "غَرِيب",
+     "pos": "ADJ"
+    },
+    {
+     "surface": "خَلْفَ",
+     "lemma": "خَلْفَ",
+     "pos": "ADP"
+    },
+    {
+     "surface": "الْبَابِ",
+     "lemma": "بَاب",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "باب"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "s36v",
+   "of": "s36",
+   "text": "فَتَحَتِ الْبِنْتُ النَّافِذَةَ وَنَظَرَتْ إِلَى الْحَدِيقَةِ.",
+   "tokens": [
+    {
+     "surface": "فَتَحَتِ",
+     "lemma": "فَتَحَ",
+     "pos": "VERB"
+    },
+    {
+     "surface": "الْبِنْتُ",
+     "lemma": "بِنْت",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "بنت"
+     ]
+    },
+    {
+     "surface": "النَّافِذَةَ",
+     "lemma": "نَافِذَة",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "نافذة"
+     ]
+    },
+    {
+     "surface": "وَنَظَرَتْ",
+     "lemma": "نَظَرَ",
+     "pos": "VERB",
+     "parts": [
+      "و",
+      "نظرت"
+     ]
+    },
+    {
+     "surface": "إِلَى",
+     "lemma": "إِلَى",
+     "pos": "ADP"
+    },
+    {
+     "surface": "الْحَدِيقَةِ",
+     "lemma": "حَدِيقَة",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "حديقة"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "s37v",
+   "of": "s37",
+   "text": "كَانَ الْجَوُّ بَارِدًا وَالسَّمَاءُ مُلَبَّدَةً بِالْغُيُومِ.",
+   "tokens": [
+    {
+     "surface": "كَانَ",
+     "lemma": "كَانَ",
+     "pos": "VERB"
+    },
+    {
+     "surface": "الْجَوُّ",
+     "lemma": "جَوّ",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "جو"
+     ]
+    },
+    {
+     "surface": "بَارِدًا",
+     "lemma": "بَارِد",
+     "pos": "ADJ"
+    },
+    {
+     "surface": "وَالسَّمَاءُ",
+     "lemma": "سَمَاء",
+     "pos": "NOUN",
+     "parts": [
+      "و",
+      "ال",
+      "سماء"
+     ]
+    },
+    {
+     "surface": "مُلَبَّدَةً",
+     "lemma": null,
+     "pos": "ADJ",
+     "skip": true
+    },
+    {
+     "surface": "بِالْغُيُومِ",
+     "lemma": "غَيْم",
+     "pos": "NOUN",
+     "parts": [
+      "ب",
+      "ال",
+      "غيوم"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "s41v",
+   "of": "s41",
+   "text": "لَمْ يَعْرِفْ أَحَدٌ سَبَبَ غِيَابِ الرَّجُلِ.",
+   "tokens": [
+    {
+     "surface": "لَمْ",
+     "lemma": "لَمْ",
+     "pos": "PART"
+    },
+    {
+     "surface": "يَعْرِفْ",
+     "lemma": "عَرَفَ",
+     "pos": "VERB"
+    },
+    {
+     "surface": "أَحَدٌ",
+     "lemma": "أَحَد",
+     "pos": "NOUN"
+    },
+    {
+     "surface": "سَبَبَ",
+     "lemma": "سَبَب",
+     "pos": "NOUN"
+    },
+    {
+     "surface": "غِيَابِ",
+     "lemma": "غِيَاب",
+     "pos": "NOUN"
+    },
+    {
+     "surface": "الرَّجُلِ",
+     "lemma": "رَجُل",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "رجل"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "s45v",
+   "of": "s45",
+   "text": "رَأَى الطِّفْلُ قِطَّةً صَغِيرَةً تَحْتَ الشَّجَرَةِ.",
+   "tokens": [
+    {
+     "surface": "رَأَى",
+     "lemma": "رَأَى",
+     "pos": "VERB"
+    },
+    {
+     "surface": "الطِّفْلُ",
+     "lemma": "طِفْل",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "طفل"
+     ]
+    },
+    {
+     "surface": "قِطَّةً",
+     "lemma": "قِطَّة",
+     "pos": "NOUN"
+    },
+    {
+     "surface": "صَغِيرَةً",
+     "lemma": "صَغِير",
+     "pos": "ADJ"
+    },
+    {
+     "surface": "تَحْتَ",
+     "lemma": "تَحْتَ",
+     "pos": "ADP"
+    },
+    {
+     "surface": "الشَّجَرَةِ",
+     "lemma": "شَجَرَة",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "شجرة"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "s46v",
+   "of": "s46",
+   "text": "سَأَلَتِ الْمُعَلِّمَةُ التَّلَامِيذَ عَنْ وَاجِبَاتِهِمْ.",
+   "tokens": [
+    {
+     "surface": "سَأَلَتِ",
+     "lemma": "سَأَلَ",
+     "pos": "VERB"
+    },
+    {
+     "surface": "الْمُعَلِّمَةُ",
+     "lemma": "مُعَلِّمَة",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "معلمة"
+     ]
+    },
+    {
+     "surface": "التَّلَامِيذَ",
+     "lemma": "تِلْمِيذ",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "تلاميذ"
+     ]
+    },
+    {
+     "surface": "عَنْ",
+     "lemma": "عَنْ",
+     "pos": "ADP"
+    },
+    {
+     "surface": "وَاجِبَاتِهِمْ",
+     "lemma": "وَاجِب",
+     "pos": "NOUN",
+     "parts": [
+      "واجبات",
+      "هم"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "s52v",
+   "of": "s52",
+   "text": "يَقِفُ الزُّوَّارُ فِي طَابُورٍ طَوِيلٍ أَمَامَ الْمَتْحَفِ.",
+   "tokens": [
+    {
+     "surface": "يَقِفُ",
+     "lemma": "وَقَفَ",
+     "pos": "VERB"
+    },
+    {
+     "surface": "الزُّوَّارُ",
+     "lemma": "زَائِر",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "زوار"
+     ]
+    },
+    {
+     "surface": "فِي",
+     "lemma": "فِي",
+     "pos": "ADP"
+    },
+    {
+     "surface": "طَابُورٍ",
+     "lemma": "طَابُور",
+     "pos": "NOUN"
+    },
+    {
+     "surface": "طَوِيلٍ",
+     "lemma": "طَوِيل",
+     "pos": "ADJ"
+    },
+    {
+     "surface": "أَمَامَ",
+     "lemma": "أَمَامَ",
+     "pos": "ADP"
+    },
+    {
+     "surface": "الْمَتْحَفِ",
+     "lemma": "مَتْحَف",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "متحف"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "s58v",
+   "of": "s58",
+   "text": "يَعْمَلُ وَالِدِي مُهَنْدِسًا فِي شَرِكَةٍ كَبِيرَةٍ.",
+   "tokens": [
+    {
+     "surface": "يَعْمَلُ",
+     "lemma": "عَمِلَ",
+     "pos": "VERB"
+    },
+    {
+     "surface": "وَالِدِي",
+     "lemma": "وَالِد",
+     "pos": "NOUN",
+     "parts": [
+      "والد",
+      "ي"
+     ]
+    },
+    {
+     "surface": "مُهَنْدِسًا",
+     "lemma": "مُهَنْدِس",
+     "pos": "NOUN"
+    },
+    {
+     "surface": "فِي",
+     "lemma": "فِي",
+     "pos": "ADP"
+    },
+    {
+     "surface": "شَرِكَةٍ",
+     "lemma": "شَرِكَة",
+     "pos": "NOUN"
+    },
+    {
+     "surface": "كَبِيرَةٍ",
+     "lemma": "كَبِير",
+     "pos": "ADJ"
+    }
+   ]
+  },
+  {
+   "id": "s62v",
+   "of": "s62",
+   "text": "تَنْتَهِي الدِّرَاسَةُ فِي شَهْرِ يُونْيُو وَتَبْدَأُ الْعُطْلَةُ الصَّيْفِيَّةُ.",
+   "tokens": [
+    {
+     "surface": "تَنْتَهِي",
+     "lemma": "اِنْتَهَى",
+     "pos": "VERB"
+    },
+    {
+     "surface": "الدِّرَاسَةُ",
+     "lemma": "دِرَاسَة",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "دراسة"
+     ]
+    },
+    {
+     "surface": "فِي",
+     "lemma": "فِي",
+     "pos": "ADP"
+    },
+    {
+     "surface": "شَهْرِ",
+     "lemma": "شَهْر",
+     "pos": "NOUN"
+    },
+    {
+     "surface": "يُونْيُو",
+     "lemma": null,
+     "pos": "PROPN",
+     "skip": true
+    },
+    {
+     "surface": "وَتَبْدَأُ",
+     "lemma": "بَدَأَ",
+     "pos": "VERB",
+     "parts": [
+      "و",
+      "تبدأ"
+     ]
+    },
+    {
+     "surface": "الْعُطْلَةُ",
+     "lemma": "عُطْلَة",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "عطلة"
+     ]
+    },
+    {
+     "surface": "الصَّيْفِيَّةُ",
+     "lemma": "صَيْفِيّ",
+     "pos": "ADJ",
+     "parts": [
+      "ال",
+      "صيفية"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "s68v",
+   "of": "s68",
+   "text": "سَيَبْقَى الطَّقْسُ حَارًّا حَتَّى نِهَايَةِ الْأُسْبُوعِ.",
+   "tokens": [
+    {
+     "surface": "سَيَبْقَى",
+     "lemma": "بَقِيَ",
+     "pos": "VERB",
+     "parts": [
+      "س",
+      "يبقى"
+     ]
+    },
+    {
+     "surface": "الطَّقْسُ",
+     "lemma": "طَقْس",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "طقس"
+     ]
+    },
+    {
+     "surface": "حَارًّا",
+     "lemma": "حَارّ",
+     "pos": "ADJ"
+    },
+    {
+     "surface": "حَتَّى",
+     "lemma": "حَتَّى",
+     "pos": "ADP"
+    },
+    {
+     "surface": "نِهَايَةِ",
+     "lemma": "نِهَايَة",
+     "pos": "NOUN"
+    },
+    {
+     "surface": "الْأُسْبُوعِ",
+     "lemma": "أُسْبُوع",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "أسبوع"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "s70v",
+   "of": "s70",
+   "text": "وَصَلَ الْمُسَافِرُونَ مُتْعَبِينَ بَعْدَ رِحْلَةٍ طَوِيلَةٍ.",
+   "tokens": [
+    {
+     "surface": "وَصَلَ",
+     "lemma": "وَصَلَ",
+     "pos": "VERB"
+    },
+    {
+     "surface": "الْمُسَافِرُونَ",
+     "lemma": "مُسَافِر",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "مسافرون"
+     ]
+    },
+    {
+     "surface": "مُتْعَبِينَ",
+     "lemma": null,
+     "pos": "ADJ",
+     "skip": true
+    },
+    {
+     "surface": "بَعْدَ",
+     "lemma": "بَعْدَ",
+     "pos": "ADP"
+    },
+    {
+     "surface": "رِحْلَةٍ",
+     "lemma": "رِحْلَة",
+     "pos": "NOUN"
+    },
+    {
+     "surface": "طَوِيلَةٍ",
+     "lemma": "طَوِيل",
+     "pos": "ADJ"
+    }
+   ]
+  }
+ ]
+}

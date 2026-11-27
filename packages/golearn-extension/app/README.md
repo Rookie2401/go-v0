@@ -11,8 +11,9 @@ Plain TypeScript and DOM, one hash router, one stylesheet. No framework.
 
 ## Screens
 
-A slim top bar on every page (the brand **GoLearn**, the page title, **Status**, and a cog wheel, `#settings-link`, at the top right that opens
-Settings; there is no left rail). **Sign in** (`#/signin`) is the first page on a first run (no language chosen and nobody signed in);
+A slim top bar on every page: the brand **GoLearn** and, at the top right, three symbols in GoReview's manner (since 2026-11-26): a globe
+(`#languages-link`, Languages), a person (`#account-link`, the account: Settings when signed in, the optional sign-in when not) and a cog
+(`#settings-link`, Settings). There is no left rail. **Sign in** (`#/signin`) is the first page on a first run (no language chosen and nobody signed in);
 **Choose your languages** (`#/languages`) is the main page and the default once a language is chosen or someone is signed in; **Settings**
 (`#/settings`) holds the account and the links to the advanced screens (`#/sync`, `#/privacy`, `#/diagnostics`, `#/reader`); `#/home` is the
 compact status (link in the top bar) and `#/share` is the share target. Three more pages are reached from links, not from the navigation: `#/verify?token=…` and `#/reset?token=…` (the links in the emails the service sends; the token is read from the address, then taken out of it) and `#/terms`. Setup is complete when at least one language is downloaded with its

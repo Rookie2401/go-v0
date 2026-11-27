@@ -35,6 +35,16 @@ const ROWS: ThaiRow[] = [
   ['เกาะ', 'VERB', 'to cling to; to perch on; to grip'],
   ['ปู', 'NOUN', 'crab'],
   ['ปู', 'VERB', 'to spread out (a mat, a cloth); to lay (a floor)'],
+  // ── compounds ICU cuts into pieces whose own meaning is the wrong card (deck-gate follow-up, adapter-th@5): kept whole (BASE_COMPOUNDS, text.ts)
+  ['รับประทาน', 'VERB', 'to eat (polite or formal)'],
+  ['เจ้าหน้าที่', 'NOUN', 'official, officer, staff member'],
+  ['เบาหวาน', 'NOUN', 'diabetes'],
+  ['ท้องถิ่น', 'NOUN', 'locality, local area (as a modifier: local)'],
+  ['เสมอภาค', 'ADJ', 'equal (in standing or rights); equality'],
+  ['หาความ', 'VERB', 'to pick a quarrel with; to find fault with (someone)'],
+  // ── second readings of two particles the sentence decides (contextualWord in th.ts)
+  ['ละ', 'DET', 'each, per (วันละสามครั้ง "three times a day")'],
+  ['ว่า', 'VERB', 'to scold, to blame; to say (about someone)'],
   // ── days of the week (the dictionary gives the planet or the god first)
   ['จันทร์', 'NOUN', 'Monday (in วันจันทร์); the moon'],
   ['อังคาร', 'NOUN', 'Tuesday (in วันอังคาร); Mars'],

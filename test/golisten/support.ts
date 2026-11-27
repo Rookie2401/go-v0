@@ -134,6 +134,14 @@ export const STORY: Record<LanguageCode, FixtureSentence[]> = {
     { tokens: ['Deus', 'mihi', 'remisit'].map(w).concat(dot()) },
     { tokens: ['Intellego', 'cor', 'meum'].map(w).concat(dot()) },
   ],
+  ru: [{ tokens: ['Она', 'читает', 'книгу'].map(w).concat(dot()) }],
+  fr: [
+    { tokens: ['Je', 'crois', 'en', 'Dieu'].map(w).concat(dot()) },
+    { tokens: ['Dieu', 'me', 'pardonne'].map(w).concat(dot()) },
+    { tokens: ['Je', 'comprends', 'mon', 'cœur'].map(w).concat(dot()) },
+  ],
+  ko: [{ tokens: ['학생이', '책을', '읽습니다'].map(w).concat(dot()) }],
+  ar: [{ tokens: ['كَتَبَ', 'الْوَلَدُ', 'الدَّرْسَ'].map(w).concat(dot()) }],
 };
 
 /** Scripture: verse numbers are metadata (verseRefs), never in the sentence text. */
@@ -179,6 +187,19 @@ export const SCRIPTURE: Record<LanguageCode, FixtureSentence[]> = {
     { tokens: ['Sic', 'enim', 'Deus', 'dilexit', 'mundum'].map(w).concat(dot()), verseRefs: ['JHN.3.16'] },
     { tokens: ['Si', 'confiteamur', 'peccata', 'nostra'].map(w).concat(dot()), verseRefs: ['1JN.1.9'] },
   ],
+  ru: [
+    { tokens: ['Ибо', 'так', 'возлюбил', 'Бог', 'мир'].map(w).concat(dot()), verseRefs: ['JHN.3.16'] },
+    { tokens: ['Если', 'исповедуем', 'грехи', 'наши'].map(w).concat(dot()), verseRefs: ['1JN.1.9'] },
+  ],
+  fr: [
+    { tokens: ['Car', 'Dieu', 'a', 'tant', 'aimé', 'le', 'monde'].map(w).concat(dot()), verseRefs: ['JHN.3.16'] },
+    { tokens: ['Si', 'nous', 'confessons', 'nos', 'péchés'].map(w).concat(dot()), verseRefs: ['1JN.1.9'] },
+  ],
+  ko: [
+    { tokens: ['하나님이', '세상을', '이처럼', '사랑하사'].map(w).concat(dot()), verseRefs: ['JHN.3.16'] },
+    { tokens: ['만일', '우리가', '우리', '죄를', '자백하면'].map(w).concat(dot()), verseRefs: ['1JN.1.9'] },
+  ],
+  ar: [{ tokens: ['كَتَبَ', 'الْوَلَدُ', 'الدَّرْسَ'].map(w).concat(dot()), verseRefs: ['JHN.3.16'] }],
 };
 
 /** Rewrites one sentence like the v2 importer: the old sentence is retired, a new one (new key) takes its place; bumps contentVersion. */

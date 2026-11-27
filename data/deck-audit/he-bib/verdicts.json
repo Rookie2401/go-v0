@@ -1,0 +1,1150 @@
+{
+ "readBy": "AI models (Claude), not native speakers; each card judged once, in the first sentence it came from, against the brief in docs/ecosystem/DECK-GATE.md. 2026-11-26.",
+ "residual": [],
+ "cards": {
+  "form:he:אִשָּׁה": [
+   {
+    "shown": "woman, wife",
+    "v": "ok"
+   }
+  ],
+  "form:he:אַיִל": [
+   {
+    "shown": "ram",
+    "v": "ok"
+   }
+  ],
+  "form:he:דָּבָר": [
+   {
+    "shown": "word, speech, thing, matter",
+    "v": "ok"
+   }
+  ],
+  "form:he:חָזוֹן": [
+   {
+    "shown": "vision, divine communication in a vision, oracle",
+    "v": "ok"
+   }
+  ],
+  "form:he:מְאוּמָה": [
+   {
+    "shown": "anything",
+    "v": "ok"
+   }
+  ],
+  "form:he:מְנוּחָה": [
+   {
+    "shown": "resting-place, rest",
+    "v": "ok"
+   }
+  ],
+  "form:he:עֹלָה": [
+   {
+    "shown": "whole burnt-offering",
+    "v": "ok"
+   }
+  ],
+  "form:he:עוֹלָם": [
+   {
+    "shown": "forever, eternity; ancient time",
+    "v": "ok"
+   }
+  ],
+  "form:he:רָעָב": [
+   {
+    "shown": "famine, hunger",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:אֱלִימֶלֶךְ:PROPN": [
+   {
+    "shown": "Elimelech",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:אֱלֹהִים:NOUN": [
+   {
+    "shown": "God; gods",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:אֲנִי:PRON": [
+   {
+    "shown": "I",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:אֲשֶׁר:SCONJ": [
+   {
+    "shown": "who, which, that",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:אִישׁ:NOUN": [
+   {
+    "shown": "man, husband; each",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:אִשָּׁה:NOUN": [
+   {
+    "shown": "woman, wife",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:אֵלֶּה:PRON": [
+   {
+    "shown": "these",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:אֵם:NOUN": [
+   {
+    "shown": "mother",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:אֵשׁ:NOUN": [
+   {
+    "shown": "fire",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:אֵת:ADP": [
+   {
+    "shown": "with, beside",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:אֵת:PART": [
+   {
+    "shown": "(marks the definite direct object)",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:אֶחָד:NUM": [
+   {
+    "shown": "one; each; a certain",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:אֶפְרָתִי:NOUN": [
+   {
+    "shown": "Ephrathite",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:אֶרֶץ:NOUN": [
+   {
+    "shown": "earth, land, ground",
+    "v": "ok"
+   },
+   {
+    "shown": "country, land",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:אַבְרָהָם:PROPN": [
+   {
+    "shown": "a male given name, Avraham",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:אַחַר:ADP": [
+   {
+    "shown": "after, behind",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:אַיִל:NOUN": [
+   {
+    "shown": "ram",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:אַיִן:PART": [
+   {
+    "shown": "there is not, without",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:אַיֵּה:PART": [
+   {
+    "shown": "where",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:אַל:PART": [
+   {
+    "shown": "do not (with a wish or command)",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:אַתָּה:PRON": [
+   {
+    "shown": "you (masculine singular)",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:אָב:NOUN": [
+   {
+    "shown": "father",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:אָהַב:VERB": [
+   {
+    "shown": "love, lovely, loveable",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:אָמַר:VERB": [
+   {
+    "shown": "to say",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:אָנֹכִי:PRON": [
+   {
+    "shown": "I",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:אָרוֹן:NOUN": [
+   {
+    "shown": "cupboard, closet, cabinet, or similar piece of furniture",
+    "v": "false-meaning",
+    "note": "aron here is the Ark (chest); 'cupboard' is the modern sense"
+   }
+  ],
+  "lemma:he:אֹזֶן:NOUN": [
+   {
+    "shown": "ear, organ of hearing, open ears of",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:אֹיֵב:VERB": [
+   {
+    "shown": "be hostile to, enemy",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:בִּלְתִּי:CONJ": [
+   {
+    "shown": "failure, not, except",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:בֵּין:ADP": [
+   {
+    "shown": "between",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:בֵּן:NOUN": [
+   {
+    "shown": "son; child; member of a class",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:בַּיִת:NOUN": [
+   {
+    "shown": "house, household",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:בַּת:NOUN": [
+   {
+    "shown": "daughter",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:בָּכָה:VERB": [
+   {
+    "shown": "weep, bewail, weep bitterly",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:בָּנָה:VERB": [
+   {
+    "shown": "build, be built, be rebuilt",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:בָּקַע:VERB": [
+   {
+    "shown": "cleave, break open, through",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:בֹּקֶר:NOUN": [
+   {
+    "shown": "morning, morrow, next day",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:בּוֹא:VERB": [
+   {
+    "shown": "to come, go in, enter",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:גַּם:ADV": [
+   {
+    "shown": "Also, too, additionally; used to connect details in a list.",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:גַּם:PART": [
+   {
+    "shown": "also, even, moreover",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:גָּדַל:VERB": [
+   {
+    "shown": "to be big, large, great",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:גָּלָה:VERB": [
+   {
+    "shown": "uncover, remove, uncover the ear",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:גּוֹי:NOUN": [
+   {
+    "shown": "nation, people",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:דֶּלֶת:NOUN": [
+   {
+    "shown": "door, gates of city",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:דֶּרֶךְ:NOUN": [
+   {
+    "shown": "way, road; journey; manner",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:דָּבַק:VERB": [
+   {
+    "shown": "cling, cleave, keep close",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:דָּבָר:NOUN": [
+   {
+    "shown": "word, speech, thing, matter",
+    "v": "ok"
+   },
+   {
+    "shown": "thing",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:הִנֵּה:PART": [
+   {
+    "shown": "behold, look, here is",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:הֵיכָל:NOUN": [
+   {
+    "shown": "palace, temple, house of God",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:הֵם:PRON": [
+   {
+    "shown": "they, those",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:הַר:NOUN": [
+   {
+    "shown": "mountain, hill",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:הָיָה:VERB": [
+   {
+    "shown": "to be, become, happen",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:הוּא:PRON": [
+   {
+    "shown": "he, it; that",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:זֶה:PRON": [
+   {
+    "shown": "this (masculine)",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:זֶרַע:NOUN": [
+   {
+    "shown": "sowing, seed, offspring",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:חָדַל:VERB": [
+   {
+    "shown": "cease, come to an end, leave off",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:חָזוֹן:NOUN": [
+   {
+    "shown": "vision, divine communication in a vision, oracle",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:חָלַל:VERB": [
+   {
+    "shown": "bore, pierce, my heart is pierced",
+    "v": "false-reading",
+    "note": "hehel here is hiphil of halal meaning began; the pierce homograph is a different word"
+   }
+  ],
+  "lemma:he:חָשַׂךְ:VERB": [
+   {
+    "shown": "withhold, refrain, keep back",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:חוֹל:NOUN": [
+   {
+    "shown": "sand, whirling",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:טֶרֶם:ADV": [
+   {
+    "shown": "not yet, ere, before that",
+    "v": "ok"
+   },
+   {
+    "shown": "before",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:טוֹב:ADJ": [
+   {
+    "shown": "good, pleasant",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:יְהֹוָה:PROPN": [
+   {
+    "shown": "the LORD (YHWH)",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:יְהוּדָה:PROPN": [
+   {
+    "shown": "Judah",
+    "v": "ok"
+   },
+   {
+    "shown": "a male given name",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:יִצְחָק:PROPN": [
+   {
+    "shown": "Isaac, he laugheth",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:יִשְׂרָאֵל:PROPN": [
+   {
+    "shown": "Israel",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:יֵשׁ:PART": [
+   {
+    "shown": "there is, exists",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:יַחַד:ADV": [
+   {
+    "shown": "unitedness, in union, together",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:יַעַן:CONJ": [
+   {
+    "shown": "purpose, intention, on account of",
+    "v": "false-meaning",
+    "note": "ya'an is because/on account of; 'purpose, intention' is not its meaning"
+   }
+  ],
+  "lemma:he:יָד:NOUN": [
+   {
+    "shown": "hand; power; side",
+    "v": "ok"
+   },
+   {
+    "shown": "arm",
+    "v": "false-meaning",
+    "note": "yad is hand; arm is a secondary sense"
+   },
+   {
+    "shown": "hand",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:יָדַע:VERB": [
+   {
+    "shown": "to know",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:יָחִיד:ADJ": [
+   {
+    "shown": "only, only one, solitary",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:יָכֹל:VERB": [
+   {
+    "shown": "be able, have power, prevail",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:יָלַד:VERB": [
+   {
+    "shown": "to bear, beget, bring forth",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:יָם:NOUN": [
+   {
+    "shown": "sea",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:יָסַף:VERB": [
+   {
+    "shown": "add, join, join oneself to",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:יָצָא:VERB": [
+   {
+    "shown": "to go out, come out",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:יָקָר:ADJ": [
+   {
+    "shown": "precious, rare, splendid",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:יָרַשׁ:VERB": [
+   {
+    "shown": "to inherit",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:יָשַׁב:VERB": [
+   {
+    "shown": "to sit, dwell, remain",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:יוֹם:NOUN": [
+   {
+    "shown": "day; time",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:כִּי:CONJ": [
+   {
+    "shown": "that, because, for, when",
+    "v": "ok"
+   },
+   {
+    "shown": "because, for, since",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:כֵּהֶה:ADJ": [
+   {
+    "shown": "dark (deep in hue)",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:כֵּן:ADV": [
+   {
+    "shown": "yes",
+    "v": "false-meaning",
+    "note": "lachen is 'therefore'; 'yes' is the modern sense of ken"
+   }
+  ],
+  "lemma:he:כַּאֲשֶׁר:SCONJ": [
+   {
+    "shown": "as, according as, when",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:כַּלָּה:NOUN": [
+   {
+    "shown": "daughter-in-law, bride",
+    "v": "ok"
+   },
+   {
+    "shown": "bride",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:כֹּה:ADV": [
+   {
+    "shown": "thus, so; here",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:כֹּל:NOUN": [
+   {
+    "shown": "all, every, the whole",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:כּוֹכָב:NOUN": [
+   {
+    "shown": "star",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:לַיִל:NOUN": [
+   {
+    "shown": "night",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:לָהֵן:CONJ": [
+   {
+    "shown": "except, but",
+    "v": "false-meaning",
+    "note": "in Ruth 1:13 lahen means therefore; except/but is the Aramaic sense"
+   }
+  ],
+  "lemma:he:לָקַח:VERB": [
+   {
+    "shown": "to take",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:לֹא:PART": [
+   {
+    "shown": "not, no",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:מְאֹד:ADV": [
+   {
+    "shown": "muchness, force, abundance",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:מְאוּמָה:NOUN": [
+   {
+    "shown": "anything",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:מְנוּחָה:NOUN": [
+   {
+    "shown": "resting-place, rest",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:מִזְבֵּחַ:NOUN": [
+   {
+    "shown": "altar",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:מִן:ADP": [
+   {
+    "shown": "from, out of; than",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:מִנְחָה:NOUN": [
+   {
+    "shown": "gift, tribute, offering",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:מֵעֶה:NOUN": [
+   {
+    "shown": "coins, change",
+    "v": "false-meaning",
+    "note": "me'eh is bowels/belly/inward parts; coins is modern Hebrew"
+   },
+   {
+    "shown": "inward parts, innards, internal organs",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:מַחְלוֹן:PROPN": [
+   {
+    "shown": "Mahlon",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:מַר:ADJ": [
+   {
+    "shown": "bitter, bitterness",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:מָה:PART": [
+   {
+    "shown": "what? how? why?",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:מָוֶת:NOUN": [
+   {
+    "shown": "death, death by violence, state of death",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:מָצָא:VERB": [
+   {
+    "shown": "to find, attain",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:מָקוֹם:NOUN": [
+   {
+    "shown": "standing-place, place, station",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:מוֹאָב:PROPN": [
+   {
+    "shown": "Moab",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:נְאֻם:NOUN": [
+   {
+    "shown": "utterance",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:נַעַר:NOUN": [
+   {
+    "shown": "boy, lad, youth",
+    "v": "ok"
+   },
+   {
+    "shown": "non-infant child",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:נָא:PART": [
+   {
+    "shown": "I, we, pray",
+    "v": "false-meaning",
+    "note": "na is the particle please/I pray; 'I, we' is wrong"
+   }
+  ],
+  "lemma:he:נָגַד:VERB": [
+   {
+    "shown": "to oppose",
+    "v": "false-meaning",
+    "note": "higgid is 'to tell, declare', not 'to oppose'"
+   }
+  ],
+  "lemma:he:נָשַׁק:VERB": [
+   {
+    "shown": "kiss, gently touching",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:נָשָׂא:VERB": [
+   {
+    "shown": "to lift, carry, bear",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:נָתַן:VERB": [
+   {
+    "shown": "to give, put, set",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:נׇעֳמִי:PROPN": [
+   {
+    "shown": "Naomi",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:עִם:ADP": [
+   {
+    "shown": "with, together with",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:עֵלִי:PROPN": [
+   {
+    "shown": "Eli",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:עֵץ:NOUN": [
+   {
+    "shown": "tree, wood",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:עֵקֶב:NOUN": [
+   {
+    "shown": "consequence, as a consequence of, because",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:עֶשֶׂר:NUM": [
+   {
+    "shown": "ten",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:עַד:ADP": [
+   {
+    "shown": "until, as far as, while",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:עַיִן:NOUN": [
+   {
+    "shown": "eye; spring",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:עַל:ADP": [
+   {
+    "shown": "on, upon, over, against, concerning",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:עַם:NOUN": [
+   {
+    "shown": "people, nation",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:עַתָּה:ADV": [
+   {
+    "shown": "now",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:עָגַן:VERB": [
+   {
+    "shown": "to anchor",
+    "v": "false-meaning",
+    "note": "עגן in Ruth 1:13 means to be shut off / remain unmarried; \"to anchor\" is modern"
+   }
+  ],
+  "lemma:he:עָוֺן:NOUN": [
+   {
+    "shown": "iniquity, guilt, punishment of iniquity",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:עָזַב:VERB": [
+   {
+    "shown": "leave, forsake, loose",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:עָלָה:VERB": [
+   {
+    "shown": "to go up, ascend",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:עָרַךְ:VERB": [
+   {
+    "shown": "arrange, set in order, arrange in order",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:עָשָׂה:VERB": [
+   {
+    "shown": "to do, make",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:עֹלָה:NOUN": [
+   {
+    "shown": "whole burnt-offering",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:עׇרְפָּה:PROPN": [
+   {
+    "shown": "Orpah",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:עוֹד:ADV": [
+   {
+    "shown": "still, yet, again, more",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:עוֹלָם:NOUN": [
+   {
+    "shown": "forever, eternity; ancient time",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:פַּעַם:NOUN": [
+   {
+    "shown": "beat, foot, anvil",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:פָּגַע:VERB": [
+   {
+    "shown": "meet, encounter, reach",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:פָּנִים:NOUN": [
+   {
+    "shown": "face; before, in front of",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:פָּקַד:VERB": [
+   {
+    "shown": "attend to, visit, muster",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:פָּרַץ:VERB": [
+   {
+    "shown": "break through, break, burst out",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:פֹּה:ADV": [
+   {
+    "shown": "here, hither",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:צָלַל:VERB": [
+   {
+    "shown": "to dive (to swim under water, to descend sharply or steeply)",
+    "v": "false-meaning",
+    "note": "tzalal here means 'to tingle', not 'to dive'"
+   }
+  ],
+  "lemma:he:קָלַל:VERB": [
+   {
+    "shown": "to decrease, diminish",
+    "v": "false-meaning",
+    "note": "megallelim is 'cursing', not 'diminishing'"
+   }
+  ],
+  "lemma:he:קָרָא:VERB": [
+   {
+    "shown": "to call, proclaim, read aloud",
+    "v": "ok"
+   },
+   {
+    "shown": "to read",
+    "v": "false-meaning",
+    "note": "qara is to call/cry out (also read); first meaning should be call"
+   }
+  ],
+  "lemma:he:קוֹל:NOUN": [
+   {
+    "shown": "voice, sound",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:קוּם:VERB": [
+   {
+    "shown": "to arise, stand up",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:רָאָה:VERB": [
+   {
+    "shown": "to see",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:רָחוֹק:ADJ": [
+   {
+    "shown": "distant, far, distance",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:רָעָב:NOUN": [
+   {
+    "shown": "famine, hunger",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:רוּץ:VERB": [
+   {
+    "shown": "run, the runners, out-runners",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:רוּת:PROPN": [
+   {
+    "shown": "Ruth",
+    "v": "ok"
+   },
+   {
+    "shown": "a female given name, Ruth",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:שְׁלִישִׁי:ADJ": [
+   {
+    "shown": "third",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:שְׁמוּאֵל:PROPN": [
+   {
+    "shown": "Samuel",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:שְׁנַיִם:NUM": [
+   {
+    "shown": "two",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:שֵׁנִי:ADJ": [
+   {
+    "shown": "second",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:שֶׂה:NOUN": [
+   {
+    "shown": "one of a flock, sheep, goat",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:שַׁעַר:NOUN": [
+   {
+    "shown": "gate",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:שָׁאַר:VERB": [
+   {
+    "shown": "remain, be left over, remains",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:שָׁחַט:VERB": [
+   {
+    "shown": "slaughter, beat, be slaughtered",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:שָׁכַב:VERB": [
+   {
+    "shown": "lie down, lodge, lie",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:שָׁלַח:VERB": [
+   {
+    "shown": "to send, stretch out",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:שָׁם:ADV": [
+   {
+    "shown": "there",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:שָׁמַיִם:NOUN": [
+   {
+    "shown": "heavens, sky",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:שָׁמַע:VERB": [
+   {
+    "shown": "to hear, listen, obey",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:שָׁפַט:VERB": [
+   {
+    "shown": "to judge, govern",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:שָׂדֶה:NOUN": [
+   {
+    "shown": "field, land",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:שָׂפָה:NOUN": [
+   {
+    "shown": "lip, speech, edge",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:שׁוּב:VERB": [
+   {
+    "shown": "to return, turn back",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:שׂוּם:VERB": [
+   {
+    "shown": "put, place, set",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:תִּקְוָה:NOUN": [
+   {
+    "shown": "hope, things hoped for, outcome",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:תַּחַת:ADP": [
+   {
+    "shown": "under, beneath, instead of",
+    "v": "ok"
+   }
+  ]
+ },
+ "heldResidue": [
+  "lemma:he:יַעַן:CONJ"
+ ]
+}

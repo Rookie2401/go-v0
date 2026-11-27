@@ -12,12 +12,21 @@
  *          shell's precache list) and its registration, inlined into index.html. The texts and lexicon are not precached: the worker keeps each file once read.
  *   BIBLIA_OUT=<folder> puts any of the builds in that folder instead; BIBLIA_SERVICE_URL=https://repo.example.org sets the standalone edition's service address.
  *   vite -c packages/biblia/vite.config.ts   serves the app for development (port 5199) with the repository's public/lexicon.
+ *
+ *   --mode <id> / --mode standalone-<id> (or BIBLIA_EDITION=<id>), id one of hi, th, de, es: a translation edition (src/edition.ts;
+ *          docs/ecosystem/BIBLIA-EDITIONS.md) into dist-<id>/ or dist-standalone-<id>/: the same app over that Bible, a separate system on its own
+ *          site. Its public folder is assembled in packages/biblia/.edition-<id>/ (git-ignored) from public/ without the original texts (data/),
+ *          its own manifest (from edition.site), what editions/<id>/ holds (a stylesheet edition-<id>.css with its face, fonts/) and data/<id>/ —
+ *          the 66 books, canon.json and SOURCES.json — read from the committed USFM (edition.translation.usfm) by src/usfm.ts at every build
+ *          and serve. No lexicon is copied: the language's analyser carries its word list in the bundle, as in the GoLearn extension.
  */
 import crypto from 'node:crypto';
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { defineConfig, type Plugin } from 'vite';
+import { TRANSLATION_EDITIONS, editionOf, type Edition } from './src/edition';
+import { buildEditionText } from './src/usfm';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const repoRoot = path.resolve(here, '../..');
@@ -110,8 +119,9 @@ function hashFiles(outDir: string, files: string[]): string {
   return hash.digest('hex').slice(0, 12);
 }
 
-/** Standalone build only: config.json (with the service address), the manifest and icons, and sw.js stamped with the shell's build id, the data id and the precache list. */
-function writeStandalone(outDir: string): void {
+/** Standalone build only: config.json (with the service address), the manifest and icons, and sw.js stamped with the shell's build id, the data id, the precache list and the
+ * prefix of its caches (the Hindi edition's worker keeps its own caches, so the two editions on one site never delete each other's). */
+function writeStandalone(outDir: string, pwaSource: string, cachePrefix: string): void {
   const config = JSON.parse(fs.readFileSync(path.join(here, 'config.json'), 'utf8')) as { serviceUrl: string; assetBaseUrl: string };
   const serviceUrl = resolveServiceUrl(process.env.BIBLIA_SERVICE_URL, config.serviceUrl);
   if (!process.env.BIBLIA_SERVICE_URL) console.warn(`[biblia] BIBLIA_SERVICE_URL is not set: config.json keeps ${config.serviceUrl}, an address only this computer can reach (set it to the https address of the Repository service to publish)`);
@@ -125,15 +135,16 @@ function writeStandalone(outDir: string): void {
   const worker = fs.readFileSync(path.join(pwaSource, 'sw.js'), 'utf8')
     .split('__BUILD_ID__').join(buildId)
     .split('__DATA_ID__').join(dataId)
-    .split('__PRECACHE__').join(JSON.stringify(list, null, 2));
+    .split('__PRECACHE__').join(JSON.stringify(list, null, 2))
+    .split('__CACHE_PREFIX__').join(cachePrefix);
   fs.writeFileSync(path.join(outDir, 'sw.js'), worker);
   // register.js is inlined into index.html; the copy Vite made from public/ is not needed
   fs.rmSync(path.join(outDir, 'register.js'), { force: true });
 }
 
 /** Runs after copyIndexes (plugin order), so the lexicon files are already in the output when the data id is computed. */
-function standaloneFiles(outDir: string): Plugin {
-  return { name: 'biblia-standalone-files', apply: 'build', closeBundle() { writeStandalone(outDir); } };
+function standaloneFiles(outDir: string, pwaSource: string, cachePrefix: string): Plugin {
+  return { name: 'biblia-standalone-files', apply: 'build', closeBundle() { writeStandalone(outDir, pwaSource, cachePrefix); } };
 }
 
 /** The default and extension builds: public/ also holds the standalone edition's files (manifest, worker, icons); they stay out of those outputs. */
@@ -142,7 +153,7 @@ function withoutStandaloneFiles(outDir: string): Plugin {
 }
 
 /** Standalone build only: the edition marker the app reads, the manifest and iOS tags, and the worker's registration (inline, runs after load). */
-function standaloneHtml(): Plugin {
+function standaloneHtml(appTitle: string): Plugin {
   const register = fs.readFileSync(path.join(pwaSource, 'register.js'), 'utf8');
   return {
     name: 'biblia-standalone-html',
@@ -155,7 +166,7 @@ function standaloneHtml(): Plugin {
           '<meta name="apple-mobile-web-app-capable" content="yes">',
           '<meta name="mobile-web-app-capable" content="yes">',
           '<meta name="apple-mobile-web-app-status-bar-style" content="default">',
-          '<meta name="apple-mobile-web-app-title" content="Biblia">',
+          `<meta name="apple-mobile-web-app-title" content="${appTitle}">`,
           '<link rel="apple-touch-icon" href="./icons/apple-touch-icon.png">',
           '<link rel="icon" type="image/svg+xml" href="./icons/icon.svg">',
         ].join('\n');
@@ -171,19 +182,97 @@ function standaloneHtml(): Plugin {
   };
 }
 
+// ---- the translation editions -----------------------------------------------------------------------------------------------------------
+
+const editionPublic = (e: Edition): string => path.join(here, `.edition-${e.id}`);
+
+/**
+ * A translation edition's public folder, assembled afresh: public/ without the original texts, its manifest, what editions/<id>/ holds
+ * (stylesheet, face) and its text as Biblia's JSON (data/<id>/<Book>.json, canon.json, SOURCES.json with the attribution, the licence and the
+ * changes, as the licence asks). Throws when the USFM is missing or a book does not parse, so a broken text cannot ship.
+ */
+export function assembleEditionPublic(e: Edition, out: string = editionPublic(e)): { books: number; verses: number } {
+  const tr = e.translation;
+  if (!tr) throw new Error(`${e.id} is not a translation edition`);
+  fs.rmSync(out, { recursive: true, force: true });
+  fs.mkdirSync(out, { recursive: true });
+  for (const d of fs.readdirSync(pwaSource, { withFileTypes: true })) {
+    if (d.name === 'data' || d.name === 'manifest.webmanifest') continue;
+    fs.cpSync(path.join(pwaSource, d.name), path.join(out, d.name), { recursive: true });
+  }
+  const manifest = JSON.parse(fs.readFileSync(path.join(pwaSource, 'manifest.webmanifest'), 'utf8')) as Record<string, unknown>;
+  fs.writeFileSync(path.join(out, 'manifest.webmanifest'), JSON.stringify({ ...manifest, name: e.site.title, short_name: e.site.appName, description: e.site.description }, null, 2) + '\n');
+  const own = path.join(here, 'editions', e.id);
+  if (fs.existsSync(own)) {
+    for (const d of fs.readdirSync(own, { withFileTypes: true })) {
+      if (d.isDirectory()) fs.cpSync(path.join(own, d.name), path.join(out, d.name), { recursive: true });
+      else if (d.name.endsWith('.css')) fs.copyFileSync(path.join(own, d.name), path.join(out, d.name));
+    }
+  }
+  const dir = path.join(repoRoot, tr.usfm.dir);
+  const files = new Map<string, string>();
+  for (const f of fs.readdirSync(dir)) {
+    const m = tr.usfm.file.exec(f);
+    if (m) files.set(m[1], fs.readFileSync(path.join(dir, f), 'utf8'));
+  }
+  const { canon, books } = buildEditionText(files, tr.lang, tr.usfm.options);
+  const data = path.join(out, 'data', tr.lang);
+  fs.mkdirSync(data, { recursive: true });
+  for (const b of books) fs.writeFileSync(path.join(data, `${b.book}.json`), JSON.stringify({ lang: tr.lang, ...b }));
+  fs.writeFileSync(path.join(data, 'canon.json'), JSON.stringify(canon));
+  const { shareAlike, ...text } = tr.attribution;
+  const filesNote = shareAlike ? `The JSON files of this folder are the verses as Biblia reads them, shared under the same licence (${tr.attribution.licence}).`
+    : tr.attribution.licenceUrl ? `The JSON files of this folder are the verses as Biblia reads them, under the licence of the text (${tr.attribution.licence}).`
+    : 'The JSON files of this folder are the verses as Biblia reads them; the text is in the public domain.';
+  fs.writeFileSync(path.join(data, 'SOURCES.json'), JSON.stringify({ text, files: filesNote }, null, 2) + '\n');
+  return { books: books.length, verses: canon.reduce((n, r) => n + r.verses.reduce((a, b) => a + b, 0), 0) };
+}
+
+/** A translation edition's page: its name in the tab, and its own stylesheet (when editions/<id>/ has one) after styles.css. */
+function editionHtml(e: Edition): Plugin {
+  const css = fs.existsSync(path.join(here, 'editions', e.id, `edition-${e.id}.css`));
+  return {
+    name: 'biblia-edition-html',
+    transformIndexHtml: {
+      // after Vite's own pass: the stylesheet is a public file, copied as it is, not a module to bundle
+      order: 'post',
+      handler(html) {
+        const titled = html.replace('<title>Biblia</title>', () => `<title>${e.site.title}</title>`);
+        // last in <head>, after the bundled styles.css
+        return css ? titled.replace('</head>', () => `<link rel="stylesheet" href="./edition-${e.id}.css">\n</head>`) : titled;
+      },
+    },
+  };
+}
+
 export default defineConfig(({ mode }) => {
-  const standalone = mode === 'standalone';
+  // --mode <id> / standalone-<id> (the npm scripts) or BIBLIA_EDITION=<id>: a translation edition
+  const ids = TRANSLATION_EDITIONS.map((e) => e.id as string);
+  const modeId = mode.replace(/^standalone-/, '');
+  const id = process.env.BIBLIA_EDITION || (ids.includes(modeId) ? modeId : '');
+  if (id && !ids.includes(id)) throw new Error(`BIBLIA_EDITION must be one of ${ids.join(', ')} or unset: ${id}`);
+  const edition = id ? editionOf(id) : undefined;
+  const standalone = mode === 'standalone' || (mode.startsWith('standalone-') && !!edition);
   // BIBLIA_OUT=<folder> puts the build there instead (the GoReview iPhone stage builds Biblia into its web/biblia/)
   const outDir = process.env.BIBLIA_OUT ? path.resolve(repoRoot, process.env.BIBLIA_OUT)
-    : mode === 'extension' ? path.join(repoRoot, 'packages', 'golearn-extension', 'dist', 'biblia')
-    : path.join(here, standalone ? 'dist-standalone' : 'dist');
+    : mode === 'extension' ? path.join(repoRoot, 'packages', 'golearn-extension', 'dist', edition ? `biblia-${edition.id}` : 'biblia')
+    : path.join(here, `${standalone ? 'dist-standalone' : 'dist'}${edition ? `-${edition.id}` : ''}`);
   // a bad BIBLIA_SERVICE_URL stops the build before anything is bundled
   if (standalone) resolveServiceUrl(process.env.BIBLIA_SERVICE_URL, '');
+  if (edition) {
+    const { books, verses } = assembleEditionPublic(edition);
+    console.log(`[biblia] ${edition.translation!.languageName} edition: ${books} books, ${verses} verses in ${path.relative(repoRoot, editionPublic(edition))}`);
+  }
+  const publicDir = edition ? editionPublic(edition) : pwaSource;
   return {
     root: here,
     base: './',
-    publicDir: path.join(here, 'public'),
-    plugins: [devLexicon(), copyIndexes(outDir), ...(standalone ? [standaloneFiles(outDir), standaloneHtml()] : [withoutStandaloneFiles(outDir)])],
+    publicDir,
+    define: { __BIBLIA_EDITION__: JSON.stringify(edition ? edition.id : 'original') },
+    plugins: [
+      ...(edition ? [editionHtml(edition)] : [devLexicon(), copyIndexes(outDir)]),
+      ...(standalone ? [standaloneFiles(outDir, publicDir, edition ? `${edition.site.slug}-` : 'biblia-'), standaloneHtml(edition ? edition.site.appName : 'Biblia')] : [withoutStandaloneFiles(outDir)]),
+    ],
     build: { outDir, emptyOutDir: true, target: 'es2022', sourcemap: false, rollupOptions: { input: path.join(here, 'index.html') } },
     server: { port: 5199, strictPort: true, host: '127.0.0.1', fs: { allow: [repoRoot] } },
   };

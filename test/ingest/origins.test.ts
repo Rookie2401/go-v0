@@ -260,7 +260,11 @@ describe('the other languages retain analysis facts and persist source descripto
       }
       kinds.add(`${a.lang}:${a.origin}`);
     }
-    for (const lang of LANGUAGES.filter((l) => !EXTERNAL_INSIDE_ADAPTER.has(l))) expect([...kinds].some((k) => k.startsWith(`${lang}:`)), lang).toBe(true);
+    // Russian and French bundle no course texts at all (their packs read web pages; there is no data/corpus/ru or data/corpus/fr), so no bundled reading of it can be checked here;
+    // the assertion below makes this exemption fail loudly if a French text is ever bundled.
+    const NO_BUNDLED_TEXT = new Set(['ru', 'fr', 'ko', 'ar']);
+    for (const lang of NO_BUNDLED_TEXT) expect(docs.some((d) => d.lang === lang), `${lang} now bundles a text: drop it from NO_BUNDLED_TEXT`).toBe(false);
+    for (const lang of LANGUAGES.filter((l) => !EXTERNAL_INSIDE_ADAPTER.has(l) && !NO_BUNDLED_TEXT.has(l))) expect([...kinds].some((k) => k.startsWith(`${lang}:`)), lang).toBe(true);
   });
 
   it('a Spanish text imports identically with and without an installed (here empty) dictionary for another language', async () => {

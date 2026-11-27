@@ -78,6 +78,9 @@ select.language-kicker:hover { color: var(--ink); }
 .cog { display: inline-flex; align-items: center; justify-content: center; width: 2.4rem; height: 2.4rem; border-radius: 999px; color: var(--ink-soft); }
 .cog:hover { color: var(--ink); background: color-mix(in srgb, var(--ink) 5%, transparent); text-decoration: none; }
 .cog[aria-current="page"] { color: var(--accent); }
+/* the Languages tab: a globe in the round target of the bar's other symbols (.cog); on its own page it carries a rule under it */
+.header-languages:hover, .header-languages[aria-current="page"] { color: var(--accent); text-decoration: none; }
+.header-languages[aria-current="page"] { border-radius: 0; box-shadow: inset 0 -2px var(--accent); }
 
 /* page */
 .screen { width: 100%; padding: 1.75rem clamp(1rem, 4vw, 3rem) 4rem; max-width: 52rem; margin: 0 auto; overflow-wrap: anywhere; }
@@ -166,7 +169,9 @@ details > summary:hover { color: var(--ink); }
 .reasons { margin: .3rem 0 .3rem 1.2rem; padding: 0; color: var(--muted); }
 
 /* target-language text: the same serif, slightly larger; the Noto faces cover scripts EB Garamond does not; bidirectional text isolated */
-.target-text { unicode-bidi: plaintext; font-family: 'EB Garamond', 'Iowan Old Style', 'Palatino Linotype', 'Noto Sans Devanagari', 'Noto Sans Thai', 'Noto Naskh Arabic', 'Noto Sans', Georgia, serif; font-size: 1.06em; }
+.target-text { unicode-bidi: plaintext; font-family: 'EB Garamond', 'Iowan Old Style', 'Palatino Linotype', 'Noto Sans Devanagari', 'Noto Sans Thai', 'Noto Naskh Arabic', 'Amiri', 'Scheherazade New', 'Traditional Arabic', 'Arabic Typesetting', 'Geeza Pro', 'Al Bayan', 'Times New Roman', 'Noto Sans', Georgia, serif; font-size: 1.06em; }
+/* Arabic: room above and below for the vowel marks */
+.target-text[lang|='ar'] { line-height: 1.9; }
 .stimulus { font-size: clamp(1.7rem, 5vw, 2.3rem); line-height: 1.25; margin: .6rem 0; }
 input.target-text, textarea.target-text { font-size: 1.15rem; }
 
@@ -256,7 +261,7 @@ table.paradigm td.sel > span:first-child, .forms-list li.sel > span:first-child 
 }
 
 /* The review home uses the colors of stone, leather and brass. The photograph is bundled with the app. */
-body:has(#screen:is([data-route="review"], [data-route="review/session"], [data-route="review/decks"], [data-route="settings"], [data-route="account"], [data-route="signin"], [data-route="setup"])) {
+body:has(#screen:is([data-route="review"], [data-route="review/session"], [data-route="review/decks"], [data-route="settings"], [data-route="account"], [data-route="languages"], [data-route="signin"], [data-route="setup"])) {
   color-scheme: dark;
   --paper: #211a15;
   --paper-raised: #30251c;
@@ -280,9 +285,9 @@ body:has(#screen:is([data-route="review"], [data-route="review/session"], [data-
   --focus: var(--accent);
   background: var(--paper);
 }
-body:has(#screen:is([data-route="review"], [data-route="review/session"], [data-route="review/decks"], [data-route="settings"], [data-route="account"], [data-route="signin"], [data-route="setup"])) .topbar { background: #211a15; border-bottom-color: var(--rule); }
-html[data-edition="review"] body:has(#screen:is([data-route="review"], [data-route="review/session"], [data-route="review/decks"], [data-route="settings"], [data-route="account"], [data-route="signin"], [data-route="setup"]))::before { background: var(--paper); }
-.screen:is([data-route="review"], [data-route="review/session"], [data-route="signin"], [data-route="account"], [data-route="setup"]) {
+body:has(#screen:is([data-route="review"], [data-route="review/session"], [data-route="review/decks"], [data-route="settings"], [data-route="account"], [data-route="languages"], [data-route="signin"], [data-route="setup"])) .topbar { background: #211a15; border-bottom-color: var(--rule); }
+html[data-edition="review"] body:has(#screen:is([data-route="review"], [data-route="review/session"], [data-route="review/decks"], [data-route="settings"], [data-route="account"], [data-route="languages"], [data-route="signin"], [data-route="setup"]))::before { background: var(--paper); }
+.screen:is([data-route="review"], [data-route="review/session"], [data-route="signin"], [data-route="account"], [data-route="languages"], [data-route="setup"]) {
   --home-gutter: clamp(1.125rem, 5vw, 2rem);
   max-width: none;
   padding: 0 0 calc(1.25rem + env(safe-area-inset-bottom, 0px));
@@ -1029,6 +1034,7 @@ img, svg, video, canvas { max-width: 100%; }
 }
 .flashcard-back .stimulus { font-size: clamp(1.65rem, 6vw, 2.35rem); color: var(--ink-soft); }
 .flashcard-back .reference { margin: 0; font-size: clamp(1.75rem, 6.5vw, 2.65rem); line-height: 1.15; }
+.flashcard-back .flashcard-parsing { margin: .2rem 0 0; color: var(--ink-soft); font-size: clamp(.95rem, 3.5vw, 1.15rem); line-height: 1.35; }
 .flashcard .pronunciation { top: .55rem; right: .65rem; }
 .flashcard .icon-btn { width: 2.75rem; height: 2.75rem; }
 .flashcard .icon-btn svg { width: 1.45rem; height: 1.45rem; }
@@ -1122,20 +1128,10 @@ img, svg, video, canvas { max-width: 100%; }
   #settings-link svg { transition: transform .32s cubic-bezier(.22, .7, .25, 1); }
   .screen[data-settings-motion="enter"] { animation: settings-slide-in .32s cubic-bezier(.22, .7, .25, 1) both; }
   .screen[data-settings-motion="leave"] { animation: settings-slide-back .32s cubic-bezier(.22, .7, .25, 1) both; }
-  html[data-settings-transition] #screen { view-transition-name: settings-screen; animation: none; }
-  html[data-settings-transition] #screen > :is(h1, .body) { animation: none; }
-  html[data-settings-transition]::view-transition-old(root) { display: none; }
-  html[data-settings-transition]::view-transition-new(root) { animation: none; }
-  ::view-transition-group(settings-screen) { animation-duration: .32s; pointer-events: none; }
-  html[data-settings-transition="enter"]::view-transition-old(settings-screen) { animation: settings-pull-left .32s ease-in both; }
-  html[data-settings-transition="enter"]::view-transition-new(settings-screen) { animation: settings-slide-in .32s cubic-bezier(.22, .7, .25, 1) both; }
-  html[data-settings-transition="leave"]::view-transition-old(settings-screen) { animation: settings-pull-right .32s ease-in both; }
-  html[data-settings-transition="leave"]::view-transition-new(settings-screen) { animation: settings-slide-back .32s cubic-bezier(.22, .7, .25, 1) both; }
+  .screen[data-settings-motion] > :is(h1, .body) { animation: none; }
 }
-@keyframes settings-slide-in { from { transform: translateX(100%); } }
-@keyframes settings-slide-back { from { transform: translateX(-100%); } }
-@keyframes settings-pull-left { to { transform: translateX(-100%); } }
-@keyframes settings-pull-right { to { transform: translateX(100%); } }
+@keyframes settings-slide-in { from { transform: translateX(1.5rem); opacity: .82; } }
+@keyframes settings-slide-back { from { transform: translateX(-1.5rem); opacity: .82; } }
 
 /* #/account and #/setup in the home's look (the owner, 2026-11-18: "in line with the design philosophy of the homescreen"). Both wear the home's
    hero (app.ts: a kicker between gold rules, the title, the photo of the language being reviewed) and then the home's column of warm tiles with no
@@ -1150,6 +1146,38 @@ img, svg, video, canvas { max-width: 100%; }
 }
 [data-home-photo] .account-page, [data-home-photo] .setup-page { margin-top: -1.25rem; }
 .account-group { display: grid; gap: .8rem; }
+.account-language-list { list-style: none; padding: 0 var(--deck-inset) .65rem; margin: 0; }
+.account-language-list li { border-top: 1px solid var(--control-line); }
+.account-language-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: .5rem 1rem;
+  width: 100%;
+  min-height: 2.75rem;
+  padding: .45rem .25rem;
+  border: 0;
+  background: transparent;
+  color: var(--ink);
+  font: 1.15rem/1.25 var(--serif);
+  text-align: start;
+  cursor: pointer;
+}
+.account-language-row:hover:not(:disabled) { background: color-mix(in srgb, var(--accent) 8%, transparent); }
+.account-language-row:disabled { cursor: default; color: var(--ink-soft); }
+.account-language-row small { color: var(--ink-soft); text-align: end; }
+.account-language-disclosure summary { list-style: none; cursor: pointer; }
+.account-language-disclosure summary::-webkit-details-marker { display: none; }
+.account-language-caret { color: var(--accent); }
+.account-language-disclosure[open] .account-language-caret { transform: rotate(180deg); }
+.account-language-name { overflow-wrap: anywhere; }
+.account-language-name small { color: var(--ink-soft); }
+.account-language-options { padding: 0 var(--deck-inset) 1.15rem; }
+.account-language-options .setup-choice { margin: .3rem 0 0; }
+.account-language-options .account-panel-actions { margin-top: 1rem; }
+.account-catalogue-heading { margin-top: 1rem; }
+.account-catalogue-list { display: grid; gap: .8rem; list-style: none; margin: 0; padding: 0; }
+.account-catalogue-list > .setup-language { display: grid; gap: .3rem; }
 .account-page > .home-link, .account-group > .home-link { margin-top: .2rem; }
 .deck-tile[data-deck="danger"] .deck-title { color: var(--bad); }
 .deck-tile[data-deck="danger"] .deck-face .ec-icon { color: var(--bad); }
@@ -1302,3 +1330,8 @@ img, svg, video, canvas { max-width: 100%; }
   font: 600 .95rem/1.3 var(--serif); text-decoration: underline; text-underline-offset: .23em;
 }
 .account-page #acct-sessions .btn:hover:not(:disabled) { color: var(--ink); background: color-mix(in srgb, var(--accent) 8%, transparent); }
+
+/* Arabic: EVERY element that carries an Arabic lang (the card front and back, list rows, the Sprint cards, the answer) takes the naskh stack and room for the vowel marks.
+   The doubled attribute raises the specificity above the card rules (.flashcard-back .reference, .stimulus ...) without !important. */
+body [lang|='ar'][lang] { font-family: 'Noto Naskh Arabic', 'Amiri', 'Scheherazade New', 'Traditional Arabic', 'Arabic Typesetting', 'Geeza Pro', 'Al Bayan', 'Times New Roman', 'Noto Sans', Georgia, serif; line-height: 1.9; }
+body .stimulus[lang|='ar'][lang], body .flashcard-face .stimulus[lang|='ar'][lang], body .flashcard-back .reference [lang|='ar'][lang] { line-height: 2; padding-block: .1em; overflow: visible; }

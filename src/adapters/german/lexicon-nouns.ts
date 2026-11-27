@@ -714,6 +714,7 @@ Klasse/f, -, -n = class
 Unterricht/m, -s, 0 = lessons; teaching
 Lektion/f, -, -en = lesson (unit)
 Aufgabe/f, -, -n = task; exercise
+Verfahren/n, -s, - = procedure; process
 Prüfung/f, -, -en = exam; test
 Note/f, -, -n = mark; grade; note
 Zeugnis/n, -ses, -se = report; certificate

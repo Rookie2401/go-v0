@@ -1,0 +1,95 @@
+# HELD-OUT half (de), written 2026-11-27: never read while a rule or a known-limits list was written. Written for the deck audit by an AI model (not a native speaker); no rights are claimed by anyone else. One sentence per line.
+# everyday narrative
+Heute Morgen stand ich früh auf und machte das Fenster weit auf.
+Meine Schwester ruft mich jeden Sonntag an, weil sie gern von ihrer Arbeit erzählt.
+Gestern kaufte ich im Supermarkt ein und nahm viel zu viel Obst mit.
+Als der Film anfing, hörte es draußen gerade auf zu regnen.
+Wir laden morgen alle Nachbarn ein, denn das Essen ist schon fertig geplant.
+Er stellte seine neue Freundin den Eltern vor und blieb den ganzen Abend ruhig.
+Ich muss noch meine Tante vom Bahnhof abholen, bevor das Wetter schlechter wird.
+Das Leben in einer kleinen Stadt ist ruhiger, aber manchmal auch etwas langweilig.
+Sie kam erst spät am Abend zurück und war sehr müde.
+Seine Fragen waren schwer, und niemand wusste sofort eine Antwort.
+Ich habe vergessen, das Licht auszumachen und die Tür zuzumachen.
+Nach der Arbeit gehe ich lieber zu Fuß nach Hause, als den Bus zu nehmen.
+Im Sommer reisen wir oft ans Meer, und die Reisen dauern meistens zwei Tage.
+Meine Großmutter hörte vor einem Jahr mit dem Rauchen auf und fühlt sich besser.
+Das Wissen über alte Handwerke geht langsam verloren, weil kaum jemand es weitergibt.
+Ich stehe jeden Tag um sechs Uhr auf, weil mein Zug um sieben fährt.
+Der Lehrer teilte uns mit, dass die Arbeiten erst nächste Woche zurückgegeben werden.
+Wir wollten gestern Abend ins Kino gehen, aber der Bus kam nicht.
+Er hat keine Lust, so früh aufzustehen, wenn er am Wochenende frei hat.
+Die Kinder spielten im Garten, während ihre Mutter das Essen vorbereitete.
+Ich rufe dich heute Abend an, sobald ich zu Hause angekommen bin.
+Mein Bruder wohnt seit drei Jahren in Hamburg und kommt nur selten zu Besuch.
+Sie nahm an dem Wettbewerb teil, obwohl sie vorher nie gewonnen hatte.
+Bei dem Gewitter machte der Wirt die Fenster zu und zündete eine Kerze an.
+Der Hund lief durch den Wald, bis er einen kleinen See fand.
+Ich fahre morgen früh nach Köln, und mein Freund holt mich dort ab.
+Sie hat mir erzählt, dass sie lieber im Winter reist als im Sommer.
+Wir haben lange gewartet, aber der Zug kam mit einer Stunde Verspätung.
+Er kündigte seinen Besuch schon vor einer Woche an und brachte Kuchen mit.
+Es gibt nichts Besseres als ein warmes Essen nach einem langen Tag.
+# news register
+Die Preise für Gemüse sind im vergangenen Monat deutlich gestiegen, teilte der Verband mit.
+Der Wetterdienst kündigt für das Wochenende starken Regen und Wind im Norden an.
+Der Stadtrat hat gestern beschlossen, eine neue Grundschule im Zentrum zu bauen.
+Die Mannschaft gewann das Spiel mit drei zu eins und steht nun im Finale.
+Forscher haben herausgefunden, dass guter Schlaf die Arbeit des Gehirns erheblich verbessert.
+Viele Betriebe suchen Fachkräfte, aber nur wenige Bewerber nehmen die Stellen an.
+Die Ärzte raten älteren Menschen, sich im Herbst gegen Grippe impfen zu lassen.
+Die Zahl der Arbeitslosen ist im Oktober leicht gesunken, wie das Amt mitteilte.
+Die Gemeinde will weniger Geld für Straßen ausgeben und mehr in Busse investieren.
+Die Mieten steigen in den großen Städten schneller als auf dem Land.
+Immer mehr Kunden kaufen Lebensmittel im Internet ein, zeigt eine neue Umfrage.
+Wegen des frühen Schnees bleiben mehrere Bergstraßen bis auf Weiteres gesperrt.
+Die Läuferin lief den Halbmarathon in weniger als achtzig Minuten und stellte einen Rekord auf.
+Das Krankenhaus eröffnet im nächsten Jahr eine neue Station für Kinder.
+Die Politiker streiten darüber, wie viel Geld in den Nahverkehr fließen soll.
+Ein Team der Universität hat ein Verfahren entwickelt, das Krankheiten früher erkennt.
+Die Fischer befürchten, dass der Bestand kleiner wird, wenn die Quoten nicht sinken.
+In den Ferien fahren die Busse seltener, und die Fahrpläne ändern sich ab Montag.
+Am Ende der Woche wird es milder, doch am Morgen kann es noch Nebel geben.
+Der Bauernverband fordert höhere Preise für Getreide, damit die Höfe überleben.
+# conversation
+Guten Morgen! Hast du gut geschlafen?
+Ja, danke, aber ich bin heute Morgen etwas zu früh aufgewacht.
+Kannst du bitte Milch mitnehmen, wenn du einkaufen gehst?
+Natürlich, brauchen wir sonst noch etwas?
+Ja, bring bitte Brot und drei Äpfel mit.
+Guten Tag, womit kann ich Ihnen helfen?
+Ich suche eine warme Jacke für den Winter.
+Diese hier ist billiger, aber die andere ist leichter.
+Ich nehme die leichte, und packen Sie sie bitte ein.
+Wie geht es dir? Du siehst blass aus.
+Ich habe seit gestern Halsschmerzen und Kopfweh.
+Machen Sie bitte den Mund auf, dann sehe ich mir den Hals an.
+Sie sollten sich ausruhen und viel Wasser trinken.
+Wollen wir heute Abend Karten spielen oder lieber einen Film sehen?
+Ich gehe lieber spazieren, wenn es nicht regnet.
+Wann fängst du mit dem neuen Projekt an?
+Wir fangen am Montag an, aber der Plan ist noch nicht fertig.
+Können Sie mir die Antwort bis Freitag mitteilen?
+Tut mir leid, vor nächster Woche schaffe ich das nicht.
+Entschuldigung, fährt dieser Zug nach Dresden?
+Nein, Sie müssen am Bahnhof umsteigen und eine Stunde warten.
+Was kostet eine Fahrkarte zum Flughafen?
+Für Erwachsene kostet sie zwölf Euro.
+Haben Sie noch ein Zimmer für zwei Nächte frei?
+Ja, Zimmer vier liegt im ersten Stock und hat Blick auf den Hafen.
+# description and instructions
+Schneide die Zwiebel in kleine Stücke und brate sie in Butter weich.
+Gib das Mehl dazu, rühre gut um und gieße dann langsam die Milch hinein.
+Lass die Suppe zehn Minuten kochen und schmecke sie mit Salz und Pfeffer ab.
+Gehen Sie geradeaus bis zur Ampel und biegen Sie dort links ab.
+Folgen Sie der Straße am Fluss entlang, bis Sie eine große Brücke sehen.
+Die Stadt liegt an einem See und ist von hohen Bergen umgeben.
+Im Zentrum gibt es einen kleinen Markt, mehrere Cafés und ein altes Theater.
+Die Schule hat dreihundert Schüler und liegt direkt neben dem Sportplatz.
+Der Unterricht beginnt um acht Uhr und endet am Nachmittag um drei.
+Alle müssen die Schuhe ausziehen, bevor sie die Turnhalle betreten.
+Es ist verboten, vor dem Eingang zu parken.
+Mach bitte das Licht aus und die Tür zu, wenn du den Raum verlässt.
+Lesen Sie den Text genau durch und beantworten Sie alle Fragen auf dem Blatt.
+Nimm ein weiches Tuch und lauwarmes Wasser, wenn du die Fenster putzt.
+Bringen Sie Ihren Ausweis mit und warten Sie, bis man Ihren Namen aufruft.

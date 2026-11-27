@@ -248,7 +248,7 @@ export interface Deps {
   /** Offers a file to the learner (the data export); default: the share sheet on a phone, else a link click. */
   download?(filename: string, blob: Blob): void;
   /** Where the neighbouring pages are, when this copy knows them (relative links inside the extension; the extension page for the hosted copy, from config.json). */
-  links?: { setup?: string; extension?: string; /** The address on the Help page. */ support?: string; /** Biblia, when it ships beside this app (the iPhone edition, the extension) */ biblia?: string };
+  links?: { setup?: string; extension?: string; /** The address on the Help page. */ support?: string; /** Biblia, when it ships beside this app (the iPhone edition; the extension links to none since 2026-11-19) */ biblia?: string };
   /** 'review' in the GoReview (iPhone) build: its own title, its first-launch message, and the update link. Absent elsewhere. */
   edition?: 'review';
   /** Explicit opt-in for GoTell development and tests. */

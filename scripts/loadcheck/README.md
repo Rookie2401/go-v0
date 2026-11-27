@@ -12,6 +12,7 @@ golearn/
 - `he-signed.mjs`: same Hebrew probe, signed in to a local account behind a proxy with phases quick (200 ms per request), slow (6 s per request) and hung.
 - `stress.mjs`: stability probe. Setup-page downloads, popup language switching, lookups on pages, then repeats after the worker is stopped and after a reload.
 - `signed.mjs`: signed in with the service behind a fault proxy: ok / slow / hanging / down.
+- `fr.mjs`: French acceptance journey (docs/french/BROWSER-RUN.md). Starts its own throw-away local service, installs French on the setup page, reads every card on the `fr-pages/` fixtures (prose, literary, mixed-language, `lang="en"` with a French paragraph), marks, reloads, Active, two real French wiki pages (read-only GET; `FR_NO_WEB=1` skips them), a generated local account, a second profile, GoReview, Spanish and Albanian. `node scripts/loadcheck/golearn/fr.mjs [dist] [outDir] [steps]`; needs the setup page built with `GOLEARN_APP_DICT=sq,fr` and GoReview's extension mode; report and screenshots in `<LOADCHECK_TMP>/out`.
 - `reload.mjs`: what happens to a page's GoLearn after the extension reloads (is the old content script's world reused, does a lookup still work).
 
 golearn-history/

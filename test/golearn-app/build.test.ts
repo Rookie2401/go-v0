@@ -47,7 +47,14 @@ describe.skipIf(!has('dist/app/app.js'))('the options-page build (dist/app)', ()
     // 2026-11-08: 760 -> 800 KB, with test/extension/bundle.test.ts (master already measured 779 KB)
     // 2026-11-17: 800 -> 840 KB, the ceiling test/extension/bundle.test.ts has kept since 2026-11-13 (the packs' self-report, 467d2b6c); this
     // duplicate was missed then. Master 985c742b measured 847,520 characters (857,670 bytes). A ceiling again, not a target.
-    expect(code.length).toBeLessThan(840 * 1024);
+    // 2026-11-19: 840 -> 910 KB with test/extension/bundle.test.ts, for the Russian and French packs (release/ru-fr): their manifests,
+    // construction explanations, validation cases and tutorials reach the setup page as every pack's do. Measured 913,357 characters
+    // (926,340 bytes) on master 3d92b264 with both packs merged.
+    // 2026-11-25: 910 -> 931 KB with test/extension/bundle.test.ts, for the Arabic pack (its manifest, explanations, validation cases and orientation). Measured 953,190 characters.
+    // 2026-11-26: 931 -> 983 KB with Korean and Arabic (each pack's manifest, explanations, validation cases and orientation, as in test/extension/bundle.test.ts).
+    // Measured 1,005,828 bytes = 982.3 KB on the ko + ar tree.
+    // 2026-11-27: 983 -> 1005 KB on the ko + ar tree after the merge of Korean 63205859 (master 7a8ced80): measured 1,028,278 bytes = 1,004.2 KB (Korean alone 988,236).
+    expect(code.length).toBeLessThan(1005 * 1024);
   });
 
   it('carries the dictionary the installer fetches, and nothing of a planned language', () => {

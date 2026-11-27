@@ -127,8 +127,12 @@ function assemble(hits: Reading[], key: string): AnalysisCandidate[] {
     byLex.set(h.lex, l);
   }
   const all: Array<{ lex: Lexeme; f: Feats; w: number; readings: number }> = [];
+  // a form that is an ordinary cell of one word and only the shortened genitive plural (poetic -um for -arum, -orum: portum of porta beside portus) of another is the first word's
+  const isVariant = (r: Reading): boolean => r.cell.note === 'variant' && r.cell.features.Case === 'Gen' && r.cell.features.Number === 'Plur' && /um$/.test(r.cell.form);
+  const regularElsewhere = (lex: Lexeme): boolean => [...byLex].some(([other, rs]) => other !== lex && rs.some((r) => !isVariant(r)));
   for (const [lex, list] of byLex) {
-    const merged = mergeWeighted(list.map((r) => ({ f: r.cell.features, w: (lex.count + 3) * cellWeight(r.cell, lex, key) * priorBoost(key, lex.lemma, lex.pos) })));
+    const variantOnly = list.every(isVariant) && regularElsewhere(lex);
+    const merged = mergeWeighted(list.map((r) => ({ f: r.cell.features, w: (lex.count + 3) * cellWeight(r.cell, lex, key) * priorBoost(key, lex.lemma, lex.pos) * (variantOnly ? 0.1 : 1) })));
     for (const x of merged) all.push({ lex, f: x.f, w: x.w, readings: merged.length });
   }
   // a participle that spells like a noun or adjective of the lexicon (mortuis, ventus, scriptura) is read as the noun or adjective

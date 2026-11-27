@@ -18,6 +18,7 @@ import type { ConfirmFormsReply } from '../protocol';
 import { coverageOf, type CountedVerdict } from './coverage';
 import { declaredVariety, extractReadingText } from './extract';
 import { buildLexicalTable, type LexicalTable } from './lexical';
+import { PREPARE_BEFORE_SCAN } from '../lexicon/prepare';
 import {
   MAX_WORDS_PER_MESSAGE, type KnowledgeSnapshot, type ReadingErrorCode, type ReadingKnowledgeReply, type ReadingRequest, type ReadingResult, type ReadingStage, type ReadingStatus, type WireVerdict, type WireWord,
 } from './protocol';
@@ -29,6 +30,8 @@ export interface ReadingSessionDeps {
   languages: readonly string[];
   adapterOf(languageId: string): LanguageAdapter | undefined;
   loadAnalyser?(languageId: string): Promise<unknown>;
+  /** Loads the language's sharded word list for the text about to be analysed (a failure is remembered by the preparer; the run goes on with the compiled core). */
+  prepareLexicon?(languageId: string, text: string): Promise<unknown>;
   /** The learner's reading language, when the popup did not say one. */
   defaultLanguage?(): Promise<string | undefined>;
   confirmForms?: (forms: string[], languageId: string) => Promise<ConfirmFormsReply | undefined>;
@@ -149,6 +152,8 @@ export function createReadingSession(d: ReadingSessionDeps) {
       stage = 'resolving';
       progress = { done: 0, total: x.scope.characters };
       table = undefined;
+      // the same word list the card reads, loaded for this text once, before its words are analysed
+      if (d.prepareLexicon && PREPARE_BEFORE_SCAN.has(languageId)) { try { await d.prepareLexicon(languageId, x.nodes.map((n) => n.data).join('\n')); } catch { /* the table is made with what is loaded */ } signal.throwIfAborted(); }
       table = await buildLexicalTable({
         nodes: x.nodes, fingerprint: x.fingerprint, adapter, languageId, ...(varietyId ? { varietyId } : {}), signal,
         onProgress: (done, total) => { progress = { done, total }; }, ...(d.confirmForms ? { confirmForms: d.confirmForms } : {}),
@@ -172,7 +177,8 @@ export function createReadingSession(d: ReadingSessionDeps) {
       languageId, ...(varietyId ? { varietyId } : {}), coverage,
       scope: { ...x.scope, complete: t.complete, analysedCharacters: t.analysedCharacters },
       snapshot: k.snapshot, lookups: { asked: k.asked, answered: k.answered },
-      dictionary: t.dictionary === 'asked' ? 'asked' : t.dictionary === 'not-needed' ? 'not-needed' : 'unavailable',
+      // `no-index`: the language has no forms index at all (Hebrew today), so there was nothing to ask; that is not "offline or not downloaded"
+      dictionary: t.dictionary === 'asked' ? 'asked' : t.dictionary === 'not-needed' || t.dictionary === 'no-index' ? 'not-needed' : 'unavailable',
       reusedText, at: now(),
     };
     resultFingerprint = x.fingerprint;

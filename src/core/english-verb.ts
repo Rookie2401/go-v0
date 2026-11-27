@@ -119,7 +119,9 @@ export function isEnglishBaseVerb(w: string): boolean {
  * English verb (a determiner, a pronoun, a modal) is left out; a citation with no usable sense gives [].
  */
 export function verbSensesOfCitation(gloss: string | undefined): VerbSense[] {
-  const whole = (gloss ?? '').normalize('NFC').replace(/\s+/g, ' ').trim();
+  // a parenthetical note is dropped BEFORE the senses are split: its own commas and semicolons are not sense breaks ("to wash (your body, clothes, dishes)"
+  // gave the sense "wash (your body"); the "(PASS)" marker at the head of a group is kept for the split below
+  const whole = (gloss ?? '').normalize('NFC').replace(/\((?!(?:PASS|pass\.?|passive)\))[^()]*\)/g, ' ').replace(/\s+/g, ' ').replace(/\s+([,;])/g, '$1').trim();
   if (!whole) return [];
   const firstPerson = /^I\s/.test(whole);
   const out: VerbSense[] = [];
@@ -143,7 +145,8 @@ export function verbSensesOfCitation(gloss: string | undefined): VerbSense[] {
       if (isAdverb(head) && words.length > 1) { words = words.slice(1); head = words[0].toLowerCase().replace(/[^a-z'-]/g, ''); }
       if (firstPerson && FIRST_PERSON_BASE[head]) head = FIRST_PERSON_BASE[head];
       if (!/^[a-z][a-z'-]*$/.test(head) || head.length < 2 || STOP.has(head) || MODAL.has(head)) continue;
-      const tail = words.slice(1).join(' ').replace(/[.:]+$/, '').trim();
+      // "come or go away from": the second verb of the pair is dropped, the first keeps what follows it ("come away from")
+      const tail = words.slice(1).join(' ').replace(/[.:]+$/, '').trim().replace(/^or [a-z]+\b\s*/i, '');
       const pass = passive ? { passive: true } : {};
       if (head === 'be' || head === 'become') {
         const sense: VerbSense = { head, tail, ...pass };

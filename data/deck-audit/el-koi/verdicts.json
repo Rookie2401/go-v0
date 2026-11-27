@@ -1,0 +1,1760 @@
+{
+ "readBy": "AI models (Claude), not native speakers; each card judged once, in the first sentence it came from, against the brief in docs/ecosystem/DECK-GATE.md. 2026-11-26.",
+ "residual": [
+  "form:el:δεῖ",
+  "form:el:θεωροῦντες",
+  "form:el:ἐγγίζειν",
+  "lemma:el:θεωρέω:VERB",
+  "lemma:el:ἀπειλή:NOUN",
+  "lemma:el:ἄρχω:VERB",
+  "lemma:el:ῥύμη:NOUN"
+ ],
+ "cards": {
+  "form:el:αὐξανόμενα": [
+   {
+    "shown": "being made grow",
+    "v": "ok"
+   }
+  ],
+  "form:el:βαστάσαι": [
+   {
+    "shown": "to carry",
+    "v": "ok"
+   }
+  ],
+  "form:el:βλέποντες": [
+   {
+    "shown": "looking",
+    "v": "ok"
+   }
+  ],
+  "form:el:βλέπων": [
+   {
+    "shown": "looking",
+    "v": "ok"
+   }
+  ],
+  "form:el:βλέπωσι": [
+   {
+    "shown": "They may look",
+    "v": "ok"
+   }
+  ],
+  "form:el:γίνεται": [
+   {
+    "shown": "He, she, or it becomes",
+    "v": "ok"
+   },
+   {
+    "shown": "He, she, or it ionics",
+    "v": "unknown",
+    "note": "'ionics' is not a meaning; γίνεται means 'it becomes/happens'"
+   }
+  ],
+  "form:el:γενομένης": [
+   {
+    "shown": "having become",
+    "v": "ok"
+   },
+   {
+    "shown": "having ioniced",
+    "v": "unknown",
+    "note": "'ioniced' is not a meaning; γενομένης means 'having become'"
+   }
+  ],
+  "form:el:γνώσεσθε": [
+   {
+    "shown": "You (plural) will come to know",
+    "v": "ok"
+   }
+  ],
+  "form:el:δέδοται": [
+   {
+    "shown": "He, she, or it has been offered",
+    "v": "ok"
+   }
+  ],
+  "form:el:δαμασκόν": [
+   {
+    "shown": "Damascus",
+    "v": "ok"
+   }
+  ],
+  "form:el:δαμασκῷ": [
+   {
+    "shown": "Damascus",
+    "v": "ok"
+   }
+  ],
+  "form:el:δεδεμένους": [
+   {
+    "shown": "bound",
+    "v": "ok"
+   }
+  ],
+  "form:el:δεῖ": [
+   {
+    "shown": "He, she, or it binds",
+    "v": "false-reading",
+    "note": "δεῖ here is the impersonal \"it is necessary\" (δεῖ), not a form of δέω \"bind\""
+   }
+  ],
+  "form:el:διδάσκειν": [
+   {
+    "shown": "to teach",
+    "v": "ok"
+   }
+  ],
+  "form:el:διώκεις": [
+   {
+    "shown": "You pursue",
+    "v": "ok"
+   }
+  ],
+  "form:el:δῆσαι": [
+   {
+    "shown": "to bind",
+    "v": "ok"
+   }
+  ],
+  "form:el:εἰμι": [
+   {
+    "shown": "I am",
+    "v": "ok"
+   }
+  ],
+  "form:el:εἰσήγαγον": [
+   {
+    "shown": "They led in or into",
+    "v": "ok"
+   }
+  ],
+  "form:el:εἰσίν": [
+   {
+    "shown": "They are",
+    "v": "ok"
+   }
+  ],
+  "form:el:εἰσιν": [
+   {
+    "shown": "They are",
+    "v": "ok"
+   }
+  ],
+  "form:el:εἰσπορευόμεναι": [
+   {
+    "shown": "I journey into, go into",
+    "v": "ok"
+   }
+  ],
+  "form:el:εἰσῆλθεν": [
+   {
+    "shown": "He, she, or it went into",
+    "v": "ok"
+   }
+  ],
+  "form:el:εἱστήκεισαν": [
+   {
+    "shown": "They had stood",
+    "v": "ok"
+   }
+  ],
+  "form:el:εἴσελθε": [
+   {
+    "shown": "Go into!",
+    "v": "ok"
+   }
+  ],
+  "form:el:εἶ": [
+   {
+    "shown": "You are",
+    "v": "ok"
+   }
+  ],
+  "form:el:εἶδεν": [
+   {
+    "shown": "He, she, or it looked with the eyes",
+    "v": "ok"
+   }
+  ],
+  "form:el:εἶπεν": [
+   {
+    "shown": "He, she, or it said",
+    "v": "ok"
+   }
+  ],
+  "form:el:εἶχεν": [
+   {
+    "shown": "He, she, or it had",
+    "v": "ok"
+   }
+  ],
+  "form:el:εὕρῃ": [
+   {
+    "shown": "He, she, or it may find",
+    "v": "ok"
+   }
+  ],
+  "form:el:ζήτησον": [
+   {
+    "shown": "Seek!",
+    "v": "ok"
+   }
+  ],
+  "form:el:θεωροῦντες": [
+   {
+    "shown": "being sent ) to consult an oracle",
+    "v": "false-meaning",
+    "note": "θεωρέω means \"to look at, behold, observe\"; the oracle-envoy sense is a rare technical one"
+   }
+  ],
+  "form:el:καθῆσθαι": [
+   {
+    "shown": "to sit",
+    "v": "ok"
+   }
+  ],
+  "form:el:καλουμένην": [
+   {
+    "shown": "being called",
+    "v": "ok"
+   }
+  ],
+  "form:el:καρποφοροῦσιν": [
+   {
+    "shown": "I bear fruit",
+    "v": "ok"
+   }
+  ],
+  "form:el:κατέφαγεν": [
+   {
+    "shown": "I eat till it is finished",
+    "v": "ok"
+   }
+  ],
+  "form:el:λέγει": [
+   {
+    "shown": "He, she, or it says",
+    "v": "ok"
+   }
+  ],
+  "form:el:λέγουσαν": [
+   {
+    "shown": "saying",
+    "v": "ok"
+   }
+  ],
+  "form:el:λαβών": [
+   {
+    "shown": "having received",
+    "v": "ok"
+   }
+  ],
+  "form:el:λαληθήσεταί": [
+   {
+    "shown": "He, she, or it will be talked",
+    "v": "ok"
+   }
+  ],
+  "form:el:λαμβάνουσιν": [
+   {
+    "shown": "They receive",
+    "v": "ok"
+   }
+  ],
+  "form:el:μέριμναι": [
+   {
+    "shown": "care, worry, anxiety",
+    "v": "ok"
+   }
+  ],
+  "form:el:οἴδατε": [
+   {
+    "shown": "You (plural) know",
+    "v": "ok"
+   }
+  ],
+  "form:el:παθεῖν": [
+   {
+    "shown": "to be acted upon",
+    "v": "ok"
+   }
+  ],
+  "form:el:περιήστραψεν": [
+   {
+    "shown": "I flash around like lightning",
+    "v": "ok"
+   }
+  ],
+  "form:el:πετρώδη": [
+   {
+    "shown": "rocky ground",
+    "v": "ok"
+   }
+  ],
+  "form:el:πετρῶδες": [
+   {
+    "shown": "rocky ground",
+    "v": "ok"
+   }
+  ],
+  "form:el:ποιεῖν": [
+   {
+    "shown": "to make",
+    "v": "ok"
+   }
+  ],
+  "form:el:πορεύεσθαι": [
+   {
+    "shown": "to travel",
+    "v": "ok"
+   }
+  ],
+  "form:el:πορεύθητι": [
+   {
+    "shown": "Travel!",
+    "v": "ok"
+   }
+  ],
+  "form:el:πορεύου": [
+   {
+    "shown": "Travel!",
+    "v": "ok"
+   }
+  ],
+  "form:el:προσελθών": [
+   {
+    "shown": "having arrived",
+    "v": "ok"
+   }
+  ],
+  "form:el:προσεύχεται": [
+   {
+    "shown": "He, she, or it prays",
+    "v": "ok"
+   }
+  ],
+  "form:el:πρόσκαιροί": [
+   {
+    "shown": "temporary",
+    "v": "ok"
+   }
+  ],
+  "form:el:σκανδαλίζονται": [
+   {
+    "shown": "They are snared",
+    "v": "ok"
+   }
+  ],
+  "form:el:σπαρέντες": [
+   {
+    "shown": "having been sown",
+    "v": "ok"
+   }
+  ],
+  "form:el:σπείρειν": [
+   {
+    "shown": "to sow",
+    "v": "ok"
+   }
+  ],
+  "form:el:σπείρεται": [
+   {
+    "shown": "He, she, or it is sown",
+    "v": "ok"
+   }
+  ],
+  "form:el:σπείρων": [
+   {
+    "shown": "sowing",
+    "v": "ok"
+   }
+  ],
+  "form:el:σπειρόμενοι": [
+   {
+    "shown": "being sown",
+    "v": "ok"
+   }
+  ],
+  "form:el:συμπνίγουσιν": [
+   {
+    "shown": "I choke utterly, crowd upon",
+    "v": "ok"
+   }
+  ],
+  "form:el:συνάγεται": [
+   {
+    "shown": "He, she, or it is gathered together",
+    "v": "ok"
+   }
+  ],
+  "form:el:συνέπνιξαν": [
+   {
+    "shown": "I choke utterly, crowd upon",
+    "v": "ok"
+   }
+  ],
+  "form:el:συνιῶσιν": [
+   {
+    "shown": "They may send together",
+    "v": "false-meaning",
+    "note": "συνιῶσιν is from συνίημι 'understand'; 'send together' is only the etymology"
+   }
+  ],
+  "form:el:συνοδεύοντες": [
+   {
+    "shown": "accompanying",
+    "v": "ok"
+   }
+  ],
+  "form:el:ταρσέα": [
+   {
+    "shown": "belonging to Tarsus",
+    "v": "ok"
+   }
+  ],
+  "form:el:χειραγωγοῦντες": [
+   {
+    "shown": "I lead by the hand",
+    "v": "ok"
+   }
+  ],
+  "form:el:ἀγάγῃ": [
+   {
+    "shown": "He, she, or it may lead",
+    "v": "ok"
+   }
+  ],
+  "form:el:ἀκάνθας": [
+   {
+    "shown": "a thorn-bush",
+    "v": "ok"
+   }
+  ],
+  "form:el:ἀκουέτω": [
+   {
+    "shown": "Let him, her, or it hear",
+    "v": "ok"
+   }
+  ],
+  "form:el:ἀκούειν": [
+   {
+    "shown": "to hear",
+    "v": "ok"
+   }
+  ],
+  "form:el:ἀκούοντες": [
+   {
+    "shown": "hearing",
+    "v": "ok"
+   }
+  ],
+  "form:el:ἀκούσαντες": [
+   {
+    "shown": "having heard",
+    "v": "ok"
+   }
+  ],
+  "form:el:ἀκούσωσιν": [
+   {
+    "shown": "They may hear",
+    "v": "ok"
+   }
+  ],
+  "form:el:ἀκούωσι": [
+   {
+    "shown": "They may hear",
+    "v": "ok"
+   }
+  ],
+  "form:el:ἀνάστηθι": [
+   {
+    "shown": "Active of the present!",
+    "v": "false-meaning",
+    "note": "ἀνάστηθι means \"Rise! Get up!\"; the shown text is a grammar label, not a meaning"
+   }
+  ],
+  "form:el:ἀνέβησαν": [
+   {
+    "shown": "They went up",
+    "v": "ok"
+   }
+  ],
+  "form:el:ἀνέβλεψέν": [
+   {
+    "shown": "He, she, or it looked up",
+    "v": "ok"
+   }
+  ],
+  "form:el:ἀνέτειλεν": [
+   {
+    "shown": "He, she, or it raised up",
+    "v": "ok"
+   }
+  ],
+  "form:el:ἀναβλέψῃ": [
+   {
+    "shown": "He, she, or it may look up",
+    "v": "ok"
+   }
+  ],
+  "form:el:ἀναβλέψῃς": [
+   {
+    "shown": "You may look up",
+    "v": "ok"
+   }
+  ],
+  "form:el:ἀναστάς": [
+   {
+    "shown": "having actived of the present",
+    "v": "false-meaning",
+    "note": "ἀναστάς means \"having risen/stood up\"; the shown text is garbled grammar"
+   }
+  ],
+  "form:el:ἀνεῳγμένων": [
+   {
+    "shown": "opened",
+    "v": "ok"
+   }
+  ],
+  "form:el:ἀπέπεσαν": [
+   {
+    "shown": "I fall away from, fall off",
+    "v": "ok"
+   }
+  ],
+  "form:el:ἀπέσταλκέν": [
+   {
+    "shown": "He, she, or it has sent forth",
+    "v": "ok"
+   }
+  ],
+  "form:el:ἀπῆλθεν": [
+   {
+    "shown": "He, she, or it went away from",
+    "v": "ok"
+   }
+  ],
+  "form:el:ἀφεθῇ": [
+   {
+    "shown": "He, she, or it may be sent away",
+    "v": "ok"
+   }
+  ],
+  "form:el:ἁνανία": [
+   {
+    "shown": "Ananias",
+    "v": "ok"
+   }
+  ],
+  "form:el:ἁνανίαν": [
+   {
+    "shown": "Ananias",
+    "v": "ok"
+   }
+  ],
+  "form:el:ἁνανίας": [
+   {
+    "shown": "Ananias",
+    "v": "ok"
+   }
+  ],
+  "form:el:ἄκανθαι": [
+   {
+    "shown": "a thorn-bush",
+    "v": "ok"
+   }
+  ],
+  "form:el:ἐβαπτίσθη": [
+   {
+    "shown": "He, she, or it was dipped",
+    "v": "ok"
+   }
+  ],
+  "form:el:ἐγένετο": [
+   {
+    "shown": "He, she, or it ioniced",
+    "v": "unknown",
+    "note": "'ioniced' is not a meaning; ἐγένετο means 'it became/happened'"
+   }
+  ],
+  "form:el:ἐγγίζειν": [
+   {
+    "shown": "to bring near",
+    "v": "false-meaning",
+    "note": "here ἐγγίζω is intransitive \"to draw near, approach\", not \"bring near\""
+   }
+  ],
+  "form:el:ἐδίδασκεν": [
+   {
+    "shown": "He, she, or it was teaching",
+    "v": "ok"
+   }
+  ],
+  "form:el:ἐδίδου": [
+   {
+    "shown": "He, she, or it was offering",
+    "v": "ok"
+   }
+  ],
+  "form:el:ἐκαυματίσθη": [
+   {
+    "shown": "I burn, scorch",
+    "v": "ok"
+   }
+  ],
+  "form:el:ἐμβάντα": [
+   {
+    "shown": "having stepped into",
+    "v": "ok"
+   }
+  ],
+  "form:el:ἐνίσχυσεν": [
+   {
+    "shown": "I invigorate, strengthen",
+    "v": "ok"
+   }
+  ],
+  "form:el:ἐνεοί": [
+   {
+    "shown": "dumb, speechless",
+    "v": "ok"
+   }
+  ],
+  "form:el:ἐξανέτειλεν": [
+   {
+    "shown": "I spring up out",
+    "v": "ok"
+   }
+  ],
+  "form:el:ἐξῆλθεν": [
+   {
+    "shown": "He, she, or it went out",
+    "v": "ok"
+   }
+  ],
+  "form:el:ἐπιθείς": [
+   {
+    "shown": "having laid",
+    "v": "ok"
+   }
+  ],
+  "form:el:ἐπικαλουμένους": [
+   {
+    "shown": "calling upon a god",
+    "v": "ok"
+   }
+  ],
+  "form:el:ἐπιστρέψωσιν": [
+   {
+    "shown": "They may turn about",
+    "v": "ok"
+   }
+  ],
+  "form:el:ἐποίησεν": [
+   {
+    "shown": "He, she, or it made",
+    "v": "ok"
+   }
+  ],
+  "form:el:ἐστίν": [
+   {
+    "shown": "He, she, or it is",
+    "v": "ok"
+   }
+  ],
+  "form:el:ἔβλεπεν": [
+   {
+    "shown": "He, she, or it was looking",
+    "v": "ok"
+   }
+  ],
+  "form:el:ἔδωκεν": [
+   {
+    "shown": "He, she, or it offered",
+    "v": "ok"
+   }
+  ],
+  "form:el:ἔλεγεν": [
+   {
+    "shown": "He, she, or it was saying",
+    "v": "ok"
+   }
+  ],
+  "form:el:ἔπιεν": [
+   {
+    "shown": "He, she, or it drank",
+    "v": "ok"
+   }
+  ],
+  "form:el:ἔρχεται": [
+   {
+    "shown": "He, she, or it comes",
+    "v": "ok"
+   }
+  ],
+  "form:el:ἔφαγεν": [
+   {
+    "shown": "He, she, or it ate",
+    "v": "ok"
+   }
+  ],
+  "form:el:ἔχει": [
+   {
+    "shown": "He, she, or it has",
+    "v": "ok"
+   }
+  ],
+  "form:el:ἔχειν": [
+   {
+    "shown": "to have",
+    "v": "ok"
+   }
+  ],
+  "form:el:ἔχουσιν": [
+   {
+    "shown": "They have",
+    "v": "ok"
+   }
+  ],
+  "form:el:ἠγέρθη": [
+   {
+    "shown": "He, she, or it was awakened",
+    "v": "ok"
+   }
+  ],
+  "form:el:ἠρώτων": [
+   {
+    "shown": "They were asking",
+    "v": "ok"
+   }
+  ],
+  "form:el:ἤκουσα": [
+   {
+    "shown": "I heard",
+    "v": "ok"
+   }
+  ],
+  "form:el:ἤκουσεν": [
+   {
+    "shown": "He, she, or it heard",
+    "v": "ok"
+   }
+  ],
+  "form:el:ἦλθεν": [
+   {
+    "shown": "He, she, or it came",
+    "v": "ok"
+   }
+  ],
+  "form:el:ἦν": [
+   {
+    "shown": "He, she, or it was",
+    "v": "ok"
+   }
+  ],
+  "form:el:ἦσαν": [
+   {
+    "shown": "They were",
+    "v": "ok"
+   }
+  ],
+  "form:el:ἴδωσιν": [
+   {
+    "shown": "They may look with the eyes",
+    "v": "ok"
+   }
+  ],
+  "form:el:ὄντας": [
+   {
+    "shown": "being",
+    "v": "ok"
+   }
+  ],
+  "form:el:ὑποδείξω": [
+   {
+    "shown": "I will show",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:Πλοῦτος:PROPN": [
+   {
+    "shown": "Plutus",
+    "v": "false-reading",
+    "note": "πλούτου is genitive of πλοῦτος 'wealth', not the god Plutus"
+   }
+  ],
+  "lemma:el:Σατανᾶς:PROPN": [
+   {
+    "shown": "an adversary, Satan",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:Σαῦλος:PROPN": [
+   {
+    "shown": "Saul, the apostle",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:αὐτός:PRON": [
+   {
+    "shown": "he, she, it, they, them, same",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:βαπτίζω:VERB": [
+   {
+    "shown": "I dip, submerge, baptize",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:βασιλεία:NOUN": [
+   {
+    "shown": "kingship, sovereignty, authority, rule, kingdom",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:βασιλεύς:NOUN": [
+   {
+    "shown": "a king, ruler, emperor",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:βλέπω:VERB": [
+   {
+    "shown": "I look, see",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:γάρ:CONJ": [
+   {
+    "shown": "for",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:γινώσκω:VERB": [
+   {
+    "shown": "I come to know, learn, realize",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:γυνή:NOUN": [
+   {
+    "shown": "a woman, wife, my lady",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:γῆ:NOUN": [
+   {
+    "shown": "the earth, soil, land",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:δέ:CONJ": [
+   {
+    "shown": "but, on the other hand, and",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:δέω:VERB": [
+   {
+    "shown": "to bind, tie, fasten, fetter",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:δίδωμι:VERB": [
+   {
+    "shown": "I offer, give",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:διά:ADP": [
+   {
+    "shown": "through, on account of",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:διδάσκω:VERB": [
+   {
+    "shown": "I teach",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:διδαχή:NOUN": [
+   {
+    "shown": "teaching, doctrine",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:διωγμός:NOUN": [
+   {
+    "shown": "persecution",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:διώκω:VERB": [
+   {
+    "shown": "I pursue, persecute",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:εἰμί:VERB": [
+   {
+    "shown": "I am, exist",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:εἰς:ADP": [
+   {
+    "shown": "into, in, among, till, for",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:εἰσέρχομαι:VERB": [
+   {
+    "shown": "to go into; to enter; to invade",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:εἶτα:ADV": [
+   {
+    "shown": "then, thereafter, next",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:εἷς:ADJ": [
+   {
+    "shown": "one",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:εὐθέως:ADV": [
+   {
+    "shown": "immediately, soon",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:εὐθύς:ADJ": [
+   {
+    "shown": "straight, immediately",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:εὑρίσκω:VERB": [
+   {
+    "shown": "I find",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:θάλασσα:NOUN": [
+   {
+    "shown": "the sea, lake",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:θεωρέω:VERB": [
+   {
+    "shown": "to be sent (as a θεωρός (theōrós)) to consult an oracle",
+    "v": "false-meaning",
+    "note": "θεωρέω means \"to look at, behold, observe\"; the oracle-envoy sense is a rare technical one"
+   }
+  ],
+  "lemma:el:θεός:NOUN": [
+   {
+    "shown": "God, a god",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:θλῖψις:NOUN": [
+   {
+    "shown": "persecution, affliction, distress",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:καί:CONJ": [
+   {
+    "shown": "and, even, also, namely",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:κακός:ADJ": [
+   {
+    "shown": "bad, evil",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:καλέω:VERB": [
+   {
+    "shown": "to call, summon",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:καλός:ADJ": [
+   {
+    "shown": "beautiful, good, worthy",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:καρπός:NOUN": [
+   {
+    "shown": "fruit, result, gain",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:κατά:ADP": [
+   {
+    "shown": "down from, against, according to, throughout, during",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:κύριος:NOUN": [
+   {
+    "shown": "lord, Lord, master, sir",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:λέγω:VERB": [
+   {
+    "shown": "I say, speak",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:λαλέω:VERB": [
+   {
+    "shown": "to talk, chat, prattle",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:λαμβάνω:VERB": [
+   {
+    "shown": "I receive, take",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:λοιπός:ADJ": [
+   {
+    "shown": "remaining, the rest of, other",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:λόγος:NOUN": [
+   {
+    "shown": "a word, speech, divine utterance, analogy",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:μέν:CONJ": [
+   {
+    "shown": "truly, indeed",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:μή:ADV": [
+   {
+    "shown": "not, lest",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:μαθητής:NOUN": [
+   {
+    "shown": "a learner, disciple, pupil",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:μετά:ADP": [
+   {
+    "shown": "with, after",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:μηδείς:ADJ": [
+   {
+    "shown": "no one, nothing",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:μυστήριον:NOUN": [
+   {
+    "shown": "anything hidden, a mystery",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:μόνος:ADJ": [
+   {
+    "shown": "only, solitary, desolate",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:οἰκία:NOUN": [
+   {
+    "shown": "a house, household",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:οἶδα:VERB": [
+   {
+    "shown": "I know, remember",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:οὐ:ADV": [
+   {
+    "shown": "no, not",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:οὐδείς:ADJ": [
+   {
+    "shown": "no one, none, nothing",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:οὐρανός:NOUN": [
+   {
+    "shown": "the sky, the heaven",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:οὖς:NOUN": [
+   {
+    "shown": "the ear",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:οὗτος:PRON": [
+   {
+    "shown": "this, he, she, it",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:πάλιν:ADV": [
+   {
+    "shown": "again, further, on the other hand",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:πάσχω:VERB": [
+   {
+    "shown": "I am acted upon, suffer",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:πίνω:VERB": [
+   {
+    "shown": "I drink, imbibe",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:παρά:ADP": [
+   {
+    "shown": "from, in the presence of",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:παραβολή:NOUN": [
+   {
+    "shown": "a parable, comparison",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:παραδέχομαι:VERB": [
+   {
+    "shown": "to admit, accept, concede, allow (confess to be true or to be the case, typically with reluctance)",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:περί:ADP": [
+   {
+    "shown": "about, concerning, around",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:πλεῖστος:ADJ": [
+   {
+    "shown": "most, very much",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:πλοῖον:NOUN": [
+   {
+    "shown": "a ship, vessel",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:πνεῦμα:NOUN": [
+   {
+    "shown": "wind, breath, spirit",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:ποιέω:VERB": [
+   {
+    "shown": "to make",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:πολύς:ADJ": [
+   {
+    "shown": "much, many, often",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:πορεύομαι:VERB": [
+   {
+    "shown": "I travel, journey, go",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:προσέρχομαι:VERB": [
+   {
+    "shown": "to arrive, show up (formal)",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:προσεύχομαι:VERB": [
+   {
+    "shown": "I pray, pray for",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:πρός:ADP": [
+   {
+    "shown": "to, towards, with",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:πόλις:NOUN": [
+   {
+    "shown": "a city",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:πᾶς:ADJ": [
+   {
+    "shown": "all, the whole, every kind of",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:πῶς:ADV": [
+   {
+    "shown": "how, in what manner",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:σκεῦος:NOUN": [
+   {
+    "shown": "a vessel to contain liquid, utensil, tackle",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:συναγωγή:NOUN": [
+   {
+    "shown": "an assembly, congregation, synagogue",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:σύ:PRON": [
+   {
+    "shown": "you",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:σύν:ADP": [
+   {
+    "shown": "with",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:σύνειμι:VERB": [
+   {
+    "shown": "to be with, be joined or linked",
+    "v": "false-reading",
+    "note": "συνιῶσιν is from συνίημι 'understand', not σύνειμι 'be with'"
+   }
+  ],
+  "lemma:el:τίς:PRON": [
+   {
+    "shown": "who, which, what",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:τις:PRON": [
+   {
+    "shown": "any one, some one",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:τρεῖς:ADJ": [
+   {
+    "shown": "three",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:τριάκοντα:NUM": [
+   {
+    "shown": "thirty",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:τροφή:NOUN": [
+   {
+    "shown": "food, nourishment",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:υἱός:NOUN": [
+   {
+    "shown": "a son, descendant",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:φωνή:NOUN": [
+   {
+    "shown": "a sound, noise, voice",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:φῶς:NOUN": [
+   {
+    "shown": "light, a source of light",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:χαρά:NOUN": [
+   {
+    "shown": "joy, gladness",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:χείρ:NOUN": [
+   {
+    "shown": "a hand",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:ἀδελφός:NOUN": [
+   {
+    "shown": "a brother",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:ἀκούω:VERB": [
+   {
+    "shown": "I hear, listen",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:ἀλλά:CONJ": [
+   {
+    "shown": "but, except",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:ἀνήρ:NOUN": [
+   {
+    "shown": "a male human being, a man",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:ἀνίστημι:VERB": [
+   {
+    "shown": "active of the present, imperfect, future, and first aorist, and the perfect active ᾰ̓νέστᾰκᾰ (ănéstăkă)",
+    "v": "false-meaning",
+    "note": "ἀνίστημι means \"to raise up; to rise\"; shown text is a grammar label"
+   }
+  ],
+  "lemma:el:ἀναβαίνω:VERB": [
+   {
+    "shown": "I go up, mount, ascend",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:ἀπάτη:NOUN": [
+   {
+    "shown": "deceit, deception",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:ἀπέρχομαι:VERB": [
+   {
+    "shown": "to go away from, depart from",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:ἀπειλή:NOUN": [
+   {
+    "shown": "boastful promises, boasts",
+    "v": "false-meaning",
+    "note": "ἀπειλή means \"threat, threatening\"; boasts is a marginal sense"
+   }
+  ],
+  "lemma:el:ἀποστέλλω:VERB": [
+   {
+    "shown": "I send forth, send, send away, dismiss",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:ἀπό:ADP": [
+   {
+    "shown": "from, away from",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:ἀρχιερεύς:NOUN": [
+   {
+    "shown": "high priest, chief priest",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:ἀφίημι:VERB": [
+   {
+    "shown": "I send away, release, remit, forgive, permit",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:ἄκαρπος:ADJ": [
+   {
+    "shown": "unfruitful, barren",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:ἄλλος:ADJ": [
+   {
+    "shown": "other, another, different",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:ἄρχω:VERB": [
+   {
+    "shown": "to begin",
+    "v": "false-reading",
+    "note": "ἤρχου is imperfect of ἔρχομαι \"you were coming\", not ἄρχω \"begin\""
+   }
+  ],
+  "lemma:el:ἅγιος:ADJ": [
+   {
+    "shown": "set apart, holy, sacred",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:Ἀνανίας:PROPN": [
+   {
+    "shown": "a male given name from Hebrew, equivalent to English Ananias",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:ἐγείρω:VERB": [
+   {
+    "shown": "to awaken, wake up, rouse, stir",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:ἐγώ:PRON": [
+   {
+    "shown": "I",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:ἐκ:ADP": [
+   {
+    "shown": "from out, out from among, from",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:ἐκεῖνος:PRON": [
+   {
+    "shown": "that, that one there, yonder",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:ἐκλογή:NOUN": [
+   {
+    "shown": "a choosing out, selecting, choice by God",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:ἐμπνέω:VERB": [
+   {
+    "shown": "to blow or breathe upon",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:ἐν:ADP": [
+   {
+    "shown": "in, on, among",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:ἐνώπιον:ADP": [
+   {
+    "shown": "before the face of, in the presence of",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:ἐξέρχομαι:VERB": [
+   {
+    "shown": "to go out, come out (usually with genitive)",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:ἐξαπίνης:ADV": [
+   {
+    "shown": "suddenly, all of a sudden",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:ἐξουσία:NOUN": [
+   {
+    "shown": "power, authority, weight",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:ἐπί:ADP": [
+   {
+    "shown": "on, to, against, on the basis of, at",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:ἐπιστολή:NOUN": [
+   {
+    "shown": "a letter, dispatch, epistle",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:ἐπιτίθημι:VERB": [
+   {
+    "shown": "to lay, put or place upon",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:ἐρωτάω:VERB": [
+   {
+    "shown": "to ask",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:ἐσθίω:VERB": [
+   {
+    "shown": "to eat; to devour; to consume",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:ἑαυτοῦ:PRON": [
+   {
+    "shown": "himself, herself, itself",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:ἑκατόν:NUM": [
+   {
+    "shown": "hundred",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:ἔθνος:NOUN": [
+   {
+    "shown": "a race, people, the Gentiles",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:ἔρχομαι:VERB": [
+   {
+    "shown": "I come, go",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:ἔτι:ADV": [
+   {
+    "shown": "still, yet, even now",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:ἔχω:VERB": [
+   {
+    "shown": "I have, hold, possess",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:ἡμέρα:NOUN": [
+   {
+    "shown": "a day",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:ἤ:CONJ": [
+   {
+    "shown": "or, than",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:ἥλιος:NOUN": [
+   {
+    "shown": "the sun, sunlight",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:ἰδού:PART": [
+   {
+    "shown": "See! Lo! Behold! Look!",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:ἵνα:CONJ": [
+   {
+    "shown": "in order that, so that",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:ἵστημι:VERB": [
+   {
+    "shown": "to stand; to set (to make stand)",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:Ἰερουσαλήμ:PROPN": [
+   {
+    "shown": "Jerusalem",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:Ἰησοῦς:PROPN": [
+   {
+    "shown": "Jesus",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:Ἰούδας:PROPN": [
+   {
+    "shown": "Judah, Judas, Jude",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:Ἰσραήλ:PROPN": [
+   {
+    "shown": "Israel",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:ὀφθαλμός:NOUN": [
+   {
+    "shown": "the eye",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:ὁ:DET": [
+   {
+    "shown": "the",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:ὁδός:NOUN": [
+   {
+    "shown": "a way, road, journey",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:ὁμοίως:ADV": [
+   {
+    "shown": "in like manner",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:ὁράω:VERB": [
+   {
+    "shown": "to look with the eyes",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:ὄνομα:NOUN": [
+   {
+    "shown": "name, character, reputation",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:ὄχλος:NOUN": [
+   {
+    "shown": "a crowd",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:ὅπως:CONJ": [
+   {
+    "shown": "how, in order that, so that",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:ὅραμα:NOUN": [
+   {
+    "shown": "a spectacle, vision",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:ὅς:PRON": [
+   {
+    "shown": "who, which, what, that",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:ὅστις:PRON": [
+   {
+    "shown": "whosoever, whichsoever, whatsoever",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:ὅταν:CONJ": [
+   {
+    "shown": "when, whensoever",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:ὅτι:CONJ": [
+   {
+    "shown": "that, since, because",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:ὑπέρ:ADP": [
+   {
+    "shown": "in behalf of, above",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:ὑποδείκνυμι:VERB": [
+   {
+    "shown": "to show",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:ὡς:CONJ": [
+   {
+    "shown": "as, like as, how, while, so that",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:ὥστε:CONJ": [
+   {
+    "shown": "so that, therefore",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:ὧδε:ADV": [
+   {
+    "shown": "here",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:ῥίζα:NOUN": [
+   {
+    "shown": "a root, that which comes from the root",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:ῥύμη:NOUN": [
+   {
+    "shown": "force, swing, rush of a body in motion",
+    "v": "false-meaning",
+    "note": "in the NT ῥύμη is \"lane, street\"; \"force, rush\" is a marginal classical sense"
+   }
+  ]
+ }
+}

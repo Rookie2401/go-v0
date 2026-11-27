@@ -44,6 +44,12 @@ export interface ReviewFacts extends UnitFacts {
   source?: ProvenanceSource;
   /** The lemma (not only the form) is an entry of the pack's word list: the adapter reads it as a non-guessed, non-rule reading. */
   lemmaInWordList?: boolean;
+  /**
+   * A lemma read for a learner of one PERIOD variety (Koine Greek, Modern Hebrew …), when the analyser labels its readings by period: `attested` = some reading of this
+   * lemma belongs to the learner's period; `inPeriod` = the reading the facts were built from does; `gloss` = the meaning of the best reading that does. The deck gate
+   * (deck-gate.ts) reads it: a word of another period is not carded, and a meaning from another period gives way to the period's own.
+   */
+  periodReading?: { attested: boolean; inPeriod: boolean; gloss?: string };
   /** The first N entries of `glosses` come from the word list; the rest are dictionary senses. */
   lexiconGlossCount?: number;
   /** The adapter's plain description of the form's features ("definite masculine accusative singular"). */

@@ -1,0 +1,4724 @@
+{
+ "readBy": "AI models (Claude), not native speakers; each card judged once, in the first sentence it came from, against the brief in docs/ecosystem/DECK-GATE.md. 2026-11-26.",
+ "residual": [
+  "form:de:autobahn",
+  "form:de:gebühren",
+  "form:de:kündigte",
+  "form:de:linken",
+  "form:de:verfahren",
+  "form:de:zwiebeln",
+  "lemma:de:bitten:VERB",
+  "lemma:de:lieb:ADJ"
+ ],
+ "cards": {
+  "form:de:ab": [
+   {
+    "shown": "beginning at that time or location",
+    "v": "false-reading",
+    "note": "geht ab: ab is the separable verb prefix of abgehen, not the preposition"
+   }
+  ],
+  "form:de:abend": [
+   {
+    "shown": "evening",
+    "v": "ok"
+   }
+  ],
+  "form:de:abgeschickt": [
+   {
+    "shown": "to submit; to send, send off",
+    "v": "ok"
+   }
+  ],
+  "form:de:abkühlen": [
+   {
+    "shown": "to cool off, to cool down",
+    "v": "ok"
+   }
+  ],
+  "form:de:ahnung": [
+   {
+    "shown": "anticipation, inkling",
+    "v": "ok"
+   }
+  ],
+  "form:de:als": [
+   {
+    "shown": "at (approximately) the same moment, when",
+    "v": "ok"
+   }
+  ],
+  "form:de:also": [
+   {
+    "shown": "then, thus, so",
+    "v": "ok"
+   }
+  ],
+  "form:de:an": [
+   {
+    "shown": "on, upon, at, in, against",
+    "v": "false-reading",
+    "note": "\"an\" here is the separable prefix of anziehen, not the preposition"
+   }
+  ],
+  "form:de:angebaut": [
+   {
+    "shown": "to grow, to cultivate",
+    "v": "ok"
+   }
+  ],
+  "form:de:angebot": [
+   {
+    "shown": "offer, proposition",
+    "v": "ok"
+   }
+  ],
+  "form:de:anhaltenden": [
+   {
+    "shown": "persistent, unrelenting",
+    "v": "ok"
+   }
+  ],
+  "form:de:anna": [
+   {
+    "shown": "a female given name",
+    "v": "ok"
+   }
+  ],
+  "form:de:arbeitslosigkeit": [
+   {
+    "shown": "unemployment, joblessness, worklessness",
+    "v": "ok"
+   }
+  ],
+  "form:de:astronomen": [
+   {
+    "shown": "astronomer",
+    "v": "ok"
+   }
+  ],
+  "form:de:auf": [
+   {
+    "shown": "[with dative] on",
+    "v": "ok"
+   }
+  ],
+  "form:de:aufstehen": [
+   {
+    "shown": "to rise up, to rebel",
+    "v": "false-meaning",
+    "note": "aufstehen mainly means to get up; \"rise up, rebel\" is secondary"
+   }
+  ],
+  "form:de:aus": [
+   {
+    "shown": "out of",
+    "v": "ok"
+   }
+  ],
+  "form:de:ausruhen": [
+   {
+    "shown": "to rest",
+    "v": "ok"
+   }
+  ],
+  "form:de:aussieht": [
+   {
+    "shown": "to look, seem",
+    "v": "ok"
+   }
+  ],
+  "form:de:ausweis": [
+   {
+    "shown": "identity document",
+    "v": "ok"
+   }
+  ],
+  "form:de:autobahn": [
+   {
+    "shown": "motorway (Britain, Ireland, New Zealand)",
+    "v": "false-meaning",
+    "note": "Autobahn is the German motorway; the Britain/Ireland/NZ gloss is a marginal sense"
+   }
+  ],
+  "form:de:außer": [
+   {
+    "shown": "except; besides; apart from",
+    "v": "ok"
+   }
+  ],
+  "form:de:außerdem": [
+   {
+    "shown": "besides; moreover",
+    "v": "ok"
+   },
+   {
+    "shown": "in addition; furthermore, besides",
+    "v": "ok"
+   }
+  ],
+  "form:de:bahnhof": [
+   {
+    "shown": "railway depot, railroad station, railway station",
+    "v": "ok"
+   },
+   {
+    "shown": "railway station",
+    "v": "ok"
+   }
+  ],
+  "form:de:bauernhof": [
+   {
+    "shown": "A farm.",
+    "v": "ok"
+   }
+  ],
+  "form:de:befindet": [
+   {
+    "shown": "to occupy a place; to be located; to be situated",
+    "v": "ok"
+   }
+  ],
+  "form:de:bei": [
+   {
+    "shown": "at",
+    "v": "ok"
+   },
+   {
+    "shown": "by, near",
+    "v": "ok"
+   }
+  ],
+  "form:de:bein": [
+   {
+    "shown": "leg of a person, animal",
+    "v": "ok"
+   }
+  ],
+  "form:de:besonders": [
+   {
+    "shown": "especially, particularly",
+    "v": "ok"
+   }
+  ],
+  "form:de:bestreuen": [
+   {
+    "shown": "to sprinkle",
+    "v": "ok"
+   }
+  ],
+  "form:de:bibliothek": [
+   {
+    "shown": "library",
+    "v": "ok"
+   }
+  ],
+  "form:de:bildschirm": [
+   {
+    "shown": "screen",
+    "v": "ok"
+   }
+  ],
+  "form:de:bin": [
+   {
+    "shown": "forms the present perfect and past perfect tenses of certain verbs",
+    "v": "false-meaning",
+    "note": "bin means \"am\"; shown gloss is the auxiliary function, not the meaning of sein"
+   }
+  ],
+  "form:de:bis": [
+   {
+    "shown": "until, to, (US) through",
+    "v": "ok"
+   }
+  ],
+  "form:de:blick": [
+   {
+    "shown": "glance, look",
+    "v": "ok"
+   }
+  ],
+  "form:de:blitzlicht": [
+   {
+    "shown": "flash, flashlight",
+    "v": "ok"
+   }
+  ],
+  "form:de:bringe": [
+   {
+    "shown": "to bring",
+    "v": "ok"
+   },
+   {
+    "shown": "to bring, to fetch, to take, to convey, to bear",
+    "v": "ok"
+   }
+  ],
+  "form:de:brüderlichkeit": [
+   {
+    "shown": "brotherhood, brotherliness, fraternity",
+    "v": "ok"
+   }
+  ],
+  "form:de:buch": [
+   {
+    "shown": "books (accounting records)",
+    "v": "false-meaning",
+    "note": "Buch is book; accounting records is a marginal plural sense"
+   }
+  ],
+  "form:de:bundesagentur": [
+   {
+    "shown": "federal agency",
+    "v": "ok"
+   }
+  ],
+  "form:de:bundesamtes": [
+   {
+    "shown": "federal office",
+    "v": "ok"
+   }
+  ],
+  "form:de:bundesregierung": [
+   {
+    "shown": "federal government",
+    "v": "ok"
+   }
+  ],
+  "form:de:bürgermeisterin": [
+   {
+    "shown": "mayor (female)",
+    "v": "ok"
+   }
+  ],
+  "form:de:dafür": [
+   {
+    "shown": "for it; in favour; in return",
+    "v": "ok"
+   },
+   {
+    "shown": "for that, for it",
+    "v": "ok"
+   }
+  ],
+  "form:de:danach": [
+   {
+    "shown": "after it, after that",
+    "v": "ok"
+   },
+   {
+    "shown": "afterwards",
+    "v": "ok"
+   }
+  ],
+  "form:de:dank": [
+   {
+    "shown": "thanks to, because of, courtesy of",
+    "v": "false-reading",
+    "note": "Dank here is the noun (thanks), not the preposition dank"
+   }
+  ],
+  "form:de:dann": [
+   {
+    "shown": "then, after that",
+    "v": "ok"
+   }
+  ],
+  "form:de:darf": [
+   {
+    "shown": "to be allowed (to do something); to be permitted (to do something); may",
+    "v": "ok"
+   }
+  ],
+  "form:de:dass": [
+   {
+    "shown": "that",
+    "v": "ok"
+   }
+  ],
+  "form:de:dazu": [
+   {
+    "shown": "in addition to it, in addition",
+    "v": "ok"
+   }
+  ],
+  "form:de:den": [
+   {
+    "shown": "that",
+    "v": "false-meaning",
+    "note": "den here is the definite article \"the\", not \"that\""
+   }
+  ],
+  "form:de:des": [
+   {
+    "shown": "alternative form of das",
+    "v": "unknown",
+    "note": "only a pointer (\"alternative form of das\"); des is genitive of der/das"
+   }
+  ],
+  "form:de:deshalb": [
+   {
+    "shown": "therefore",
+    "v": "ok"
+   }
+  ],
+  "form:de:deutlich": [
+   {
+    "shown": "articulate, clear",
+    "v": "ok"
+   },
+   {
+    "shown": "clear; distinct",
+    "v": "ok"
+   }
+  ],
+  "form:de:dienstag": [
+   {
+    "shown": "Tuesday",
+    "v": "ok"
+   }
+  ],
+  "form:de:direkt": [
+   {
+    "shown": "directly",
+    "v": "ok"
+   }
+  ],
+  "form:de:donnerstag": [
+   {
+    "shown": "Thursday",
+    "v": "ok"
+   }
+  ],
+  "form:de:dort": [
+   {
+    "shown": "there, yonder",
+    "v": "ok"
+   }
+  ],
+  "form:de:draußen": [
+   {
+    "shown": "outside",
+    "v": "ok"
+   }
+  ],
+  "form:de:dreihundert": [
+   {
+    "shown": "three hundred",
+    "v": "ok"
+   }
+  ],
+  "form:de:dreimal": [
+   {
+    "shown": "thrice, three times",
+    "v": "ok"
+   }
+  ],
+  "form:de:dreißig": [
+   {
+    "shown": "thirty",
+    "v": "ok"
+   }
+  ],
+  "form:de:du": [
+   {
+    "shown": "you (singular familiar), thou",
+    "v": "ok"
+   }
+  ],
+  "form:de:einbruch": [
+   {
+    "shown": "burglary, break-in",
+    "v": "ok"
+   }
+  ],
+  "form:de:einmal": [
+   {
+    "shown": "once",
+    "v": "ok"
+   }
+  ],
+  "form:de:eins": [
+   {
+    "shown": "one, one o'clock",
+    "v": "ok"
+   }
+  ],
+  "form:de:einstellen": [
+   {
+    "shown": "to adjust, to set",
+    "v": "ok"
+   }
+  ],
+  "form:de:elektriker": [
+   {
+    "shown": "electrician (male or of unspecified gender) (a person who installs, repairs and maintains electrical wiring and equipment)",
+    "v": "ok"
+   }
+  ],
+  "form:de:energieverbrauch": [
+   {
+    "shown": "energy consumption / expenditure",
+    "v": "ok"
+   }
+  ],
+  "form:de:enge": [
+   {
+    "shown": "archaic form of eng",
+    "v": "unknown",
+    "note": "enge is an inflected form of eng (narrow); the shown gloss is only an archaic-form pointer"
+   }
+  ],
+  "form:de:entwurf": [
+   {
+    "shown": "draft",
+    "v": "ok"
+   }
+  ],
+  "form:de:er": [
+   {
+    "shown": "he",
+    "v": "ok"
+   }
+  ],
+  "form:de:erhöhung": [
+   {
+    "shown": "increase, elevation, rise, increment",
+    "v": "ok"
+   }
+  ],
+  "form:de:es": [
+   {
+    "shown": "it, that",
+    "v": "ok"
+   }
+  ],
+  "form:de:etwas": [
+   {
+    "shown": "something",
+    "v": "ok"
+   }
+  ],
+  "form:de:fahrrad": [
+   {
+    "shown": "bicycle",
+    "v": "ok"
+   }
+  ],
+  "form:de:fast": [
+   {
+    "shown": "almost; nearly",
+    "v": "ok"
+   }
+  ],
+  "form:de:finanzminister": [
+   {
+    "shown": "finance minister",
+    "v": "ok"
+   }
+  ],
+  "form:de:fluss": [
+   {
+    "shown": "river",
+    "v": "ok"
+   }
+  ],
+  "form:de:form": [
+   {
+    "shown": "shape",
+    "v": "ok"
+   }
+  ],
+  "form:de:frau": [
+   {
+    "shown": "woman (adult female human)",
+    "v": "ok"
+   }
+  ],
+  "form:de:frei": [
+   {
+    "shown": "free; unenslaved; unimprisoned",
+    "v": "ok"
+   }
+  ],
+  "form:de:freibad": [
+   {
+    "shown": "outdoor public swimming pool",
+    "v": "ok"
+   }
+  ],
+  "form:de:freitag": [
+   {
+    "shown": "Friday",
+    "v": "ok"
+   }
+  ],
+  "form:de:freitags": [
+   {
+    "shown": "on Fridays, every Friday",
+    "v": "ok"
+   }
+  ],
+  "form:de:frisch": [
+   {
+    "shown": "fresh",
+    "v": "ok"
+   }
+  ],
+  "form:de:fuchs": [
+   {
+    "shown": "fox (animal)",
+    "v": "ok"
+   }
+  ],
+  "form:de:fähren": [
+   {
+    "shown": "ferry",
+    "v": "ok"
+   }
+  ],
+  "form:de:fünfundzwanzig": [
+   {
+    "shown": "twenty-five",
+    "v": "ok"
+   }
+  ],
+  "form:de:fünfzig": [
+   {
+    "shown": "fifty",
+    "v": "ok"
+   }
+  ],
+  "form:de:gassen": [
+   {
+    "shown": "alley, lane, ginnel, twitchel",
+    "v": "ok"
+   }
+  ],
+  "form:de:gebühren": [
+   {
+    "shown": "to be due, to be owed",
+    "v": "false-reading",
+    "note": "Gebühren here is the noun (fees), not the verb gebühren"
+   }
+  ],
+  "form:de:gegen": [
+   {
+    "shown": "against",
+    "v": "ok"
+   }
+  ],
+  "form:de:gegenüber": [
+   {
+    "shown": "opposite",
+    "v": "ok"
+   }
+  ],
+  "form:de:gegessen": [
+   {
+    "shown": "to eat",
+    "v": "ok"
+   }
+  ],
+  "form:de:geld": [
+   {
+    "shown": "money",
+    "v": "ok"
+   }
+  ],
+  "form:de:gemeinsam": [
+   {
+    "shown": "together, jointly",
+    "v": "ok"
+   }
+  ],
+  "form:de:genug": [
+   {
+    "shown": "enough, sufficiently, in an adequate way",
+    "v": "ok"
+   }
+  ],
+  "form:de:gerade": [
+   {
+    "shown": "now (at the moment)",
+    "v": "ok"
+   }
+  ],
+  "form:de:geradeaus": [
+   {
+    "shown": "straight ahead",
+    "v": "ok"
+   }
+  ],
+  "form:de:geschirr": [
+   {
+    "shown": "dishware",
+    "v": "ok"
+   }
+  ],
+  "form:de:gestern": [
+   {
+    "shown": "yesterday",
+    "v": "ok"
+   }
+  ],
+  "form:de:gesucht": [
+   {
+    "shown": "to search, to look for",
+    "v": "ok"
+   }
+  ],
+  "form:de:gießt": [
+   {
+    "shown": "to pour; usually only of liquids, especially of large quantities",
+    "v": "ok"
+   }
+  ],
+  "form:de:glas": [
+   {
+    "shown": "glass",
+    "v": "ok"
+   }
+  ],
+  "form:de:glatt": [
+   {
+    "shown": "without roughness or unevenness: smooth",
+    "v": "ok"
+   }
+  ],
+  "form:de:gleis": [
+   {
+    "shown": "railway (track on which trains run)",
+    "v": "ok"
+   }
+  ],
+  "form:de:groß": [
+   {
+    "shown": "big, large, large-scale",
+    "v": "ok"
+   }
+  ],
+  "form:de:größere": [
+   {
+    "shown": "big, large, large-scale",
+    "v": "ok"
+   }
+  ],
+  "form:de:größeren": [
+   {
+    "shown": "big, large, large-scale",
+    "v": "ok"
+   }
+  ],
+  "form:de:gut": [
+   {
+    "shown": "good (effective; useful)",
+    "v": "ok"
+   }
+  ],
+  "form:de:guttut": [
+   {
+    "shown": "to do good for (to have a positive effect on)",
+    "v": "ok"
+   }
+  ],
+  "form:de:halbjahr": [
+   {
+    "shown": "half year, half of the year",
+    "v": "ok"
+   }
+  ],
+  "form:de:handy": [
+   {
+    "shown": "mobile phone, mobile, cell phone",
+    "v": "ok"
+   }
+  ],
+  "form:de:heimatdorf": [
+   {
+    "shown": "home village",
+    "v": "ok"
+   }
+  ],
+  "form:de:heimspiel": [
+   {
+    "shown": "home game",
+    "v": "ok"
+   }
+  ],
+  "form:de:heimweg": [
+   {
+    "shown": "way home",
+    "v": "ok"
+   }
+  ],
+  "form:de:hell": [
+   {
+    "shown": "bright; light",
+    "v": "ok"
+   },
+   {
+    "shown": "clear, bright, light",
+    "v": "ok"
+   }
+  ],
+  "form:de:heute": [
+   {
+    "shown": "today",
+    "v": "ok"
+   }
+  ],
+  "form:de:hier": [
+   {
+    "shown": "here",
+    "v": "ok"
+   }
+  ],
+  "form:de:himmel": [
+   {
+    "shown": "sky",
+    "v": "ok"
+   }
+  ],
+  "form:de:hinunter": [
+   {
+    "shown": "down",
+    "v": "ok"
+   }
+  ],
+  "form:de:hoch": [
+   {
+    "shown": "high, tall",
+    "v": "ok"
+   }
+  ],
+  "form:de:hof": [
+   {
+    "shown": "yard, court",
+    "v": "ok"
+   }
+  ],
+  "form:de:hund": [
+   {
+    "shown": "dog, hound",
+    "v": "ok"
+   }
+  ],
+  "form:de:immer": [
+   {
+    "shown": "always",
+    "v": "ok"
+   },
+   {
+    "shown": "always — very often",
+    "v": "ok"
+   }
+  ],
+  "form:de:innerhalb": [
+   {
+    "shown": "within, inside (of)",
+    "v": "ok"
+   }
+  ],
+  "form:de:insel": [
+   {
+    "shown": "an island, an isle",
+    "v": "ok"
+   }
+  ],
+  "form:de:ist": [
+   {
+    "shown": "forms the present perfect and past perfect tenses of certain verbs",
+    "v": "false-meaning",
+    "note": "ist means \"is\"; shown gloss is the auxiliary function, not the meaning of sein"
+   }
+  ],
+  "form:de:jahresende": [
+   {
+    "shown": "year's end; end of the year",
+    "v": "ok"
+   }
+  ],
+  "form:de:jemals": [
+   {
+    "shown": "ever",
+    "v": "ok"
+   }
+  ],
+  "form:de:kannst": [
+   {
+    "shown": "to be able (to do or be something), to have the possibility of, can.",
+    "v": "ok"
+   }
+  ],
+  "form:de:kaum": [
+   {
+    "shown": "barely, hardly (qualifying verbs or adjectives)",
+    "v": "ok"
+   },
+   {
+    "shown": "hardly",
+    "v": "ok"
+   }
+  ],
+  "form:de:kein": [
+   {
+    "shown": "no; not a(n); not one; not any",
+    "v": "ok"
+   }
+  ],
+  "form:de:kind": [
+   {
+    "shown": "kid; child (young person)",
+    "v": "ok"
+   }
+  ],
+  "form:de:kindergeldes": [
+   {
+    "shown": "child benefit (state payment to people with children)",
+    "v": "ok"
+   }
+  ],
+  "form:de:klar": [
+   {
+    "shown": "clear; transparent; bright",
+    "v": "ok"
+   }
+  ],
+  "form:de:klein": [
+   {
+    "shown": "small, little",
+    "v": "ok"
+   }
+  ],
+  "form:de:kleineren": [
+   {
+    "shown": "small, little, wee (in physical size or extent)",
+    "v": "ok"
+   }
+  ],
+  "form:de:kleines": [
+   {
+    "shown": "small, little, wee (in physical size or extent)",
+    "v": "ok"
+   }
+  ],
+  "form:de:konnte": [
+   {
+    "shown": "to be able (to do or be something), to have the possibility of, can.",
+    "v": "ok"
+   }
+  ],
+  "form:de:kopfschmerzen": [
+   {
+    "shown": "headache",
+    "v": "ok"
+   }
+  ],
+  "form:de:kostenlos": [
+   {
+    "shown": "free of charge",
+    "v": "ok"
+   },
+   {
+    "shown": "without cost, free",
+    "v": "ok"
+   }
+  ],
+  "form:de:krankenhaus": [
+   {
+    "shown": "hospital",
+    "v": "ok"
+   }
+  ],
+  "form:de:kräftig": [
+   {
+    "shown": "bold, intense, powerful, robust, strong, sturdy",
+    "v": "ok"
+   }
+  ],
+  "form:de:krücken": [
+   {
+    "shown": "crutch",
+    "v": "ok"
+   }
+  ],
+  "form:de:kurz": [
+   {
+    "shown": "short, quick, brief",
+    "v": "ok"
+   }
+  ],
+  "form:de:köcheln": [
+   {
+    "shown": "to simmer",
+    "v": "ok"
+   }
+  ],
+  "form:de:könnten": [
+   {
+    "shown": "to be able (to do or be something), to have the possibility of, can.",
+    "v": "ok"
+   }
+  ],
+  "form:de:kühlschrank": [
+   {
+    "shown": "refrigerator",
+    "v": "ok"
+   }
+  ],
+  "form:de:kündigte": [
+   {
+    "shown": "to cancel, to terminate (a continuous obligation)",
+    "v": "false-reading",
+    "note": "kündigte an is a form of ankündigen (announce), not kündigen"
+   },
+   {
+    "shown": "to give notice; to cancel",
+    "v": "false-reading",
+    "note": "kündigte an is a form of ankündigen (announce), not kündigen"
+   }
+  ],
+  "form:de:kürzen": [
+   {
+    "shown": "to shorten",
+    "v": "ok"
+   }
+  ],
+  "form:de:lang": [
+   {
+    "shown": "long; lengthy (in space or time)",
+    "v": "ok"
+   }
+  ],
+  "form:de:langweilig": [
+   {
+    "shown": "boring, dull, tedious",
+    "v": "ok"
+   }
+  ],
+  "form:de:laut": [
+   {
+    "shown": "loud, noisy",
+    "v": "ok"
+   }
+  ],
+  "form:de:leicht": [
+   {
+    "shown": "light (not heavy)",
+    "v": "ok"
+   }
+  ],
+  "form:de:leider": [
+   {
+    "shown": "unfortunately",
+    "v": "ok"
+   }
+  ],
+  "form:de:leipzig": [
+   {
+    "shown": "Leipzig (a city in Saxony, Germany)",
+    "v": "ok"
+   }
+  ],
+  "form:de:linken": [
+   {
+    "shown": "to deceive",
+    "v": "false-reading",
+    "note": "linken is the adjective (left) in der linken Seite, not the verb linken"
+   }
+  ],
+  "form:de:links": [
+   {
+    "shown": "on the left",
+    "v": "ok"
+   }
+  ],
+  "form:de:man": [
+   {
+    "shown": "one, you",
+    "v": "ok"
+   }
+  ],
+  "form:de:mehl": [
+   {
+    "shown": "flour; meal (ground cereal)",
+    "v": "ok"
+   }
+  ],
+  "form:de:mit": [
+   {
+    "shown": "with (in the company of, alongside)",
+    "v": "false-reading",
+    "note": "\"teilte mit\" is mitteilen; mit here is the separable prefix"
+   }
+  ],
+  "form:de:mitbringen": [
+   {
+    "shown": "to bring (along, with), to accompany",
+    "v": "ok"
+   }
+  ],
+  "form:de:montag": [
+   {
+    "shown": "Monday",
+    "v": "ok"
+   }
+  ],
+  "form:de:montags": [
+   {
+    "shown": "on Mondays, every Monday",
+    "v": "ok"
+   }
+  ],
+  "form:de:morgen": [
+   {
+    "shown": "tomorrow",
+    "v": "false-reading",
+    "note": "\"heute Morgen\" is the noun Morgen (morning), not morgen \"tomorrow\""
+   }
+  ],
+  "form:de:möchte": [
+   {
+    "shown": "to like (something or someone)",
+    "v": "ok"
+   }
+  ],
+  "form:de:möglich": [
+   {
+    "shown": "possible",
+    "v": "ok"
+   },
+   {
+    "shown": "potential; likely",
+    "v": "ok"
+   }
+  ],
+  "form:de:müde": [
+   {
+    "shown": "tired",
+    "v": "ok"
+   }
+  ],
+  "form:de:nach": [
+   {
+    "shown": "after, past (later in time)",
+    "v": "ok"
+   }
+  ],
+  "form:de:nachbarin": [
+   {
+    "shown": "female neighbor",
+    "v": "ok"
+   }
+  ],
+  "form:de:nachdem": [
+   {
+    "shown": "after (that)",
+    "v": "ok"
+   }
+  ],
+  "form:de:neben": [
+   {
+    "shown": "next to, beside, alongside, adjacent to",
+    "v": "ok"
+   }
+  ],
+  "form:de:neun": [
+   {
+    "shown": "nine",
+    "v": "ok"
+   }
+  ],
+  "form:de:nichts": [
+   {
+    "shown": "nothing",
+    "v": "ok"
+   }
+  ],
+  "form:de:nie": [
+   {
+    "shown": "never",
+    "v": "ok"
+   }
+  ],
+  "form:de:niemand": [
+   {
+    "shown": "nobody, no one",
+    "v": "ok"
+   }
+  ],
+  "form:de:nun": [
+   {
+    "shown": "now, at this moment",
+    "v": "ok"
+   }
+  ],
+  "form:de:obwohl": [
+   {
+    "shown": "although, though, while",
+    "v": "ok"
+   }
+  ],
+  "form:de:oder": [
+   {
+    "shown": "or",
+    "v": "ok"
+   }
+  ],
+  "form:de:ohnehin": [
+   {
+    "shown": "in any case, anyway, either way",
+    "v": "ok"
+   }
+  ],
+  "form:de:opposition": [
+   {
+    "shown": "the opposition, political opposition; opposition party",
+    "v": "ok"
+   }
+  ],
+  "form:de:ordnung": [
+   {
+    "shown": "arrangement, regulation",
+    "v": "ok"
+   }
+  ],
+  "form:de:pfund": [
+   {
+    "shown": "a metric pound, 500 grams",
+    "v": "ok"
+   }
+  ],
+  "form:de:picknick": [
+   {
+    "shown": "picnic",
+    "v": "ok"
+   }
+  ],
+  "form:de:polizei": [
+   {
+    "shown": "police; law enforcement",
+    "v": "ok"
+   }
+  ],
+  "form:de:pressekonferenz": [
+   {
+    "shown": "press conference",
+    "v": "ok"
+   }
+  ],
+  "form:de:prozent": [
+   {
+    "shown": "percent",
+    "v": "ok"
+   }
+  ],
+  "form:de:präsentation": [
+   {
+    "shown": "presentation",
+    "v": "ok"
+   }
+  ],
+  "form:de:rathaus": [
+   {
+    "shown": "city hall",
+    "v": "ok"
+   }
+  ],
+  "form:de:rechts": [
+   {
+    "shown": "on the right",
+    "v": "ok"
+   }
+  ],
+  "form:de:rief": [
+   {
+    "shown": "to call out, to shout, to cry (of a person or animal)",
+    "v": "false-reading",
+    "note": "\"rief an\" is anrufen; rief is not rufen here"
+   },
+   {
+    "shown": "to call; to shout",
+    "v": "false-reading",
+    "note": "\"rief an\" is anrufen, not rufen"
+   }
+  ],
+  "form:de:rot": [
+   {
+    "shown": "red (colour)",
+    "v": "ok"
+   }
+  ],
+  "form:de:salz": [
+   {
+    "shown": "salt, table salt, sal",
+    "v": "ok"
+   }
+  ],
+  "form:de:samstag": [
+   {
+    "shown": "Saturday",
+    "v": "ok"
+   }
+  ],
+  "form:de:sanieren": [
+   {
+    "shown": "to redevelop",
+    "v": "ok"
+   }
+  ],
+  "form:de:schließlich": [
+   {
+    "shown": "in the end, finally, eventually",
+    "v": "ok"
+   }
+  ],
+  "form:de:schlüssel": [
+   {
+    "shown": "a key",
+    "v": "ok"
+   }
+  ],
+  "form:de:schwer": [
+   {
+    "shown": "heavy, weighty",
+    "v": "ok"
+   }
+  ],
+  "form:de:schwimmbad": [
+   {
+    "shown": "public pool, public swimming pool, baths",
+    "v": "ok"
+   }
+  ],
+  "form:de:schälen": [
+   {
+    "shown": "to peel",
+    "v": "ok"
+   }
+  ],
+  "form:de:schön": [
+   {
+    "shown": "beautiful, lovely, pretty, handsome",
+    "v": "ok"
+   }
+  ],
+  "form:de:schöner": [
+   {
+    "shown": "of Schön",
+    "v": "unknown",
+    "note": "shown gloss is a pointer (of Schön), not a meaning; schöner is comparative of schön (more beautiful)"
+   }
+  ],
+  "form:de:see": [
+   {
+    "shown": "lake",
+    "v": "ok"
+   }
+  ],
+  "form:de:sehr": [
+   {
+    "shown": "very",
+    "v": "ok"
+   }
+  ],
+  "form:de:sei": [
+   {
+    "shown": "forms the present perfect and past perfect tenses of certain verbs",
+    "v": "false-meaning",
+    "note": "sei is the subjunctive \"be\"; shown gloss is the auxiliary function"
+   }
+  ],
+  "form:de:seit": [
+   {
+    "shown": "since",
+    "v": "ok"
+   }
+  ],
+  "form:de:seltener": [
+   {
+    "shown": "rare, infrequent, uncommon, scarce",
+    "v": "ok"
+   }
+  ],
+  "form:de:sind": [
+   {
+    "shown": "forms the present perfect and past perfect tenses of certain verbs",
+    "v": "false-meaning",
+    "note": "sind means \"are\"; shown gloss is the auxiliary function"
+   }
+  ],
+  "form:de:sollten": [
+   {
+    "shown": "should; to be obligated (to do something); ought; shall",
+    "v": "ok"
+   }
+  ],
+  "form:de:sonntag": [
+   {
+    "shown": "Sunday",
+    "v": "ok"
+   },
+   {
+    "shown": "a municipality of Vorarlberg, Austria",
+    "v": "false-meaning",
+    "note": "Sonntag is Sunday; the municipality is a marginal sense"
+   }
+  ],
+  "form:de:sonst": [
+   {
+    "shown": "otherwise (under different circumstances)",
+    "v": "ok"
+   }
+  ],
+  "form:de:spazieren": [
+   {
+    "shown": "to take a walk, to stroll",
+    "v": "ok"
+   }
+  ],
+  "form:de:stress": [
+   {
+    "shown": "stress (emotional pressure)",
+    "v": "ok"
+   }
+  ],
+  "form:de:stundenlang": [
+   {
+    "shown": "lasting for hours",
+    "v": "ok"
+   }
+  ],
+  "form:de:ständig": [
+   {
+    "shown": "permanent, constant (without breaks)",
+    "v": "ok"
+   }
+  ],
+  "form:de:tag": [
+   {
+    "shown": "day (a 24-hour period)",
+    "v": "ok"
+   }
+  ],
+  "form:de:tal": [
+   {
+    "shown": "valley",
+    "v": "ok"
+   }
+  ],
+  "form:de:teelöffel": [
+   {
+    "shown": "teaspoon",
+    "v": "ok"
+   }
+  ],
+  "form:de:teig": [
+   {
+    "shown": "dough, paste, pastry",
+    "v": "ok"
+   }
+  ],
+  "form:de:teilte": [
+   {
+    "shown": "to share; to divide",
+    "v": "false-reading",
+    "note": "\"teilte mit\" is mitteilen, not teilen"
+   },
+   {
+    "shown": "to split, to share",
+    "v": "false-reading",
+    "note": "\"teilte mit\" is mitteilen, not teilen"
+   }
+  ],
+  "form:de:teleskop": [
+   {
+    "shown": "telescope",
+    "v": "ok"
+   }
+  ],
+  "form:de:trinkt": [
+   {
+    "shown": "to drink (to drink liquids (in bottles, glasses, etc.) by mouth)",
+    "v": "ok"
+   }
+  ],
+  "form:de:trockenheit": [
+   {
+    "shown": "dryness, lack of moisture",
+    "v": "ok"
+   }
+  ],
+  "form:de:uhr": [
+   {
+    "shown": "hours",
+    "v": "false-meaning",
+    "note": "Uhr means clock/watch/o'clock, not \"hours\""
+   }
+  ],
+  "form:de:um": [
+   {
+    "shown": "about",
+    "v": "ok"
+   }
+  ],
+  "form:de:umsteigen": [
+   {
+    "shown": "to change, to interchange",
+    "v": "ok"
+   }
+  ],
+  "form:de:und": [
+   {
+    "shown": "and",
+    "v": "ok"
+   }
+  ],
+  "form:de:unfall": [
+   {
+    "shown": "accident",
+    "v": "ok"
+   }
+  ],
+  "form:de:unter": [
+   {
+    "shown": "under",
+    "v": "ok"
+   }
+  ],
+  "form:de:unterwegs": [
+   {
+    "shown": "on one’s way, underway, en route",
+    "v": "ok"
+   }
+  ],
+  "form:de:urlaub": [
+   {
+    "shown": "holiday, vacation",
+    "v": "ok"
+   }
+  ],
+  "form:de:verfahren": [
+   {
+    "shown": "to proceed, to deal with",
+    "v": "false-reading",
+    "note": "Verfahren is the noun (process/procedure) here, not the verb verfahren"
+   }
+  ],
+  "form:de:vernunft": [
+   {
+    "shown": "reason, good sense",
+    "v": "ok"
+   }
+  ],
+  "form:de:verspätung": [
+   {
+    "shown": "delay, lateness, late arrival",
+    "v": "ok"
+   }
+  ],
+  "form:de:vierhundert": [
+   {
+    "shown": "four hundred",
+    "v": "ok"
+   }
+  ],
+  "form:de:von": [
+   {
+    "shown": "from",
+    "v": "ok"
+   }
+  ],
+  "form:de:vor": [
+   {
+    "shown": "in front of",
+    "v": "ok"
+   }
+  ],
+  "form:de:voraussichtlich": [
+   {
+    "shown": "expected, anticipated, prospected",
+    "v": "ok"
+   }
+  ],
+  "form:de:vorjahr": [
+   {
+    "shown": "previous year",
+    "v": "ok"
+   }
+  ],
+  "form:de:wald": [
+   {
+    "shown": "forest; woods; woodland",
+    "v": "ok"
+   }
+  ],
+  "form:de:wann": [
+   {
+    "shown": "when",
+    "v": "ok"
+   }
+  ],
+  "form:de:war": [
+   {
+    "shown": "forms the present perfect and past perfect tenses of certain verbs",
+    "v": "false-meaning",
+    "note": "war means \"was\"; shown gloss is the auxiliary function"
+   }
+  ],
+  "form:de:warum": [
+   {
+    "shown": "why; for what reason",
+    "v": "ok"
+   }
+  ],
+  "form:de:was": [
+   {
+    "shown": "what",
+    "v": "ok"
+   }
+  ],
+  "form:de:wegen": [
+   {
+    "shown": "because of",
+    "v": "ok"
+   },
+   {
+    "shown": "for, because of",
+    "v": "ok"
+   }
+  ],
+  "form:de:weh": [
+   {
+    "shown": "sore, painful",
+    "v": "ok"
+   }
+  ],
+  "form:de:weiterhin": [
+   {
+    "shown": "still",
+    "v": "ok"
+   }
+  ],
+  "form:de:wer": [
+   {
+    "shown": "who (what person or people)",
+    "v": "ok"
+   }
+  ],
+  "form:de:werde": [
+   {
+    "shown": "will, to be going to, forms the future tense",
+    "v": "ok"
+   }
+  ],
+  "form:de:wieder": [
+   {
+    "shown": "again",
+    "v": "ok"
+   }
+  ],
+  "form:de:will": [
+   {
+    "shown": "to want; to wish; to desire; to demand",
+    "v": "ok"
+   }
+  ],
+  "form:de:wir": [
+   {
+    "shown": "we",
+    "v": "ok"
+   }
+  ],
+  "form:de:wird": [
+   {
+    "shown": "will, to be going to, forms the future tense",
+    "v": "false-meaning",
+    "note": "wird here is passive auxiliary; \"will\" misleads"
+   }
+  ],
+  "form:de:wo": [
+   {
+    "shown": "where (at what place)",
+    "v": "ok"
+   }
+  ],
+  "form:de:wohnung": [
+   {
+    "shown": "domicile",
+    "v": "ok"
+   }
+  ],
+  "form:de:wollte": [
+   {
+    "shown": "to want; to wish; to desire; to demand",
+    "v": "ok"
+   }
+  ],
+  "form:de:wollten": [
+   {
+    "shown": "to want; to wish; to desire; to demand",
+    "v": "ok"
+   }
+  ],
+  "form:de:wurde": [
+   {
+    "shown": "will, to be going to, forms the future tense",
+    "v": "false-meaning",
+    "note": "wurde is past of werden (passive), not \"will\""
+   }
+  ],
+  "form:de:wurden": [
+   {
+    "shown": "will, to be going to, forms the future tense",
+    "v": "false-meaning",
+    "note": "wurden is past of werden (passive), not \"will\""
+   }
+  ],
+  "form:de:während": [
+   {
+    "shown": "during, at the time of",
+    "v": "ok"
+   }
+  ],
+  "form:de:wäre": [
+   {
+    "shown": "forms the present perfect and past perfect tenses of certain verbs",
+    "v": "false-meaning",
+    "note": "wäre is subjunctive \"would be\"; shown gloss is the auxiliary function"
+   }
+  ],
+  "form:de:würfel": [
+   {
+    "shown": "die (game piece)",
+    "v": "ok"
+   }
+  ],
+  "form:de:zeitung": [
+   {
+    "shown": "newspaper",
+    "v": "ok"
+   }
+  ],
+  "form:de:zersetzen": [
+   {
+    "shown": "to corrode, decompose",
+    "v": "ok"
+   }
+  ],
+  "form:de:ziemlich": [
+   {
+    "shown": "pretty, quite, rather, fairly, kind of",
+    "v": "ok"
+   }
+  ],
+  "form:de:zinsen": [
+   {
+    "shown": "interest",
+    "v": "ok"
+   }
+  ],
+  "form:de:zog": [
+   {
+    "shown": "to pull; to drag",
+    "v": "false-reading",
+    "note": "\"zog an\" is anziehen, not ziehen"
+   },
+   {
+    "shown": "to pull; to move (house)",
+    "v": "false-reading",
+    "note": "\"zog an\" is anziehen, not ziehen"
+   }
+  ],
+  "form:de:zuerst": [
+   {
+    "shown": "first, firstly",
+    "v": "ok"
+   }
+  ],
+  "form:de:zufrieden": [
+   {
+    "shown": "satisfied, content, happy (with something)",
+    "v": "ok"
+   }
+  ],
+  "form:de:zug": [
+   {
+    "shown": "procession — train",
+    "v": "ok"
+   },
+   {
+    "shown": "pull",
+    "v": "false-meaning",
+    "note": "Zug first means train (also pull/draught); bare pull is a marginal first gloss"
+   }
+  ],
+  "form:de:zum": [
+   {
+    "shown": "contraction of zu + dem, literally “to the; for the",
+    "v": "ok"
+   }
+  ],
+  "form:de:zurückgehen": [
+   {
+    "shown": "to go back",
+    "v": "ok"
+   }
+  ],
+  "form:de:zusammen": [
+   {
+    "shown": "together, jointly",
+    "v": "ok"
+   }
+  ],
+  "form:de:zusätzliche": [
+   {
+    "shown": "additional, extra, supplementary",
+    "v": "ok"
+   }
+  ],
+  "form:de:zwanzig": [
+   {
+    "shown": "twenty",
+    "v": "ok"
+   }
+  ],
+  "form:de:zwar": [
+   {
+    "shown": "indeed; to be sure",
+    "v": "ok"
+   },
+   {
+    "shown": "namely",
+    "v": "false-meaning",
+    "note": "zwar means admittedly/indeed; namely is only a marginal use (und zwar)"
+   }
+  ],
+  "form:de:zwiebeln": [
+   {
+    "shown": "to hassle, harass, bully, torment",
+    "v": "false-reading",
+    "note": "Zwiebeln is the plural noun onions, not the verb zwiebeln"
+   }
+  ],
+  "form:de:zwischen": [
+   {
+    "shown": "between",
+    "v": "ok"
+   }
+  ],
+  "form:de:ältere": [
+   {
+    "shown": "old",
+    "v": "ok"
+   }
+  ],
+  "form:de:älteren": [
+   {
+    "shown": "old",
+    "v": "ok"
+   }
+  ],
+  "form:de:über": [
+   {
+    "shown": "[with accusative or dative] above",
+    "v": "ok"
+   }
+  ],
+  "form:de:übrigens": [
+   {
+    "shown": "apart from that, else",
+    "v": "ok"
+   },
+   {
+    "shown": "by the way",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Abend:NOUN": [
+   {
+    "shown": "evening",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Altstadt:NOUN": [
+   {
+    "shown": "old town",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Angebot:NOUN": [
+   {
+    "shown": "offer",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Anna:PROPN": [
+   {
+    "shown": "Anna (female first name)",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Apfel:NOUN": [
+   {
+    "shown": "apple",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Apotheke:NOUN": [
+   {
+    "shown": "pharmacy",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Arbeit:NOUN": [
+   {
+    "shown": "work; job",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Ausweis:NOUN": [
+   {
+    "shown": "identity card",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Autobahn:NOUN": [
+   {
+    "shown": "motorway",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Bahnhof:NOUN": [
+   {
+    "shown": "railway station",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Balkon:NOUN": [
+   {
+    "shown": "balcony",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Bauernhof:NOUN": [
+   {
+    "shown": "farm",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Baustelle:NOUN": [
+   {
+    "shown": "building site; roadworks",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Bein:NOUN": [
+   {
+    "shown": "leg",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Bett:NOUN": [
+   {
+    "shown": "bed",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Bibliothek:NOUN": [
+   {
+    "shown": "library",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Bildschirm:NOUN": [
+   {
+    "shown": "screen",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Blick:NOUN": [
+   {
+    "shown": "look; view",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Blume:NOUN": [
+   {
+    "shown": "flower",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Boot:NOUN": [
+   {
+    "shown": "boat",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Brief:NOUN": [
+   {
+    "shown": "letter",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Brille:NOUN": [
+   {
+    "shown": "glasses",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Brot:NOUN": [
+   {
+    "shown": "bread",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Bruder:NOUN": [
+   {
+    "shown": "brother",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Brötchen:NOUN": [
+   {
+    "shown": "bread roll",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Brücke:NOUN": [
+   {
+    "shown": "bridge",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Buch:NOUN": [
+   {
+    "shown": "book",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Bundesregierung:NOUN": [
+   {
+    "shown": "federal government",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Dank:NOUN": [
+   {
+    "shown": "thanks; gratitude",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Dienstag:NOUN": [
+   {
+    "shown": "Tuesday",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Donnerstag:NOUN": [
+   {
+    "shown": "Thursday",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Dorf:NOUN": [
+   {
+    "shown": "village",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Ei:NOUN": [
+   {
+    "shown": "egg",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Einkauf:NOUN": [
+   {
+    "shown": "purchase",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Ende:NOUN": [
+   {
+    "shown": "end",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Erde:NOUN": [
+   {
+    "shown": "earth; soil",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Erfurt:PROPN": [
+   {
+    "shown": "Erfurt (city)",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Ernte:NOUN": [
+   {
+    "shown": "harvest",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Essen:NOUN": [
+   {
+    "shown": "meal; food",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Fahrrad:NOUN": [
+   {
+    "shown": "bicycle",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Fenster:NOUN": [
+   {
+    "shown": "window",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Fernseher:NOUN": [
+   {
+    "shown": "television set",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Fieber:NOUN": [
+   {
+    "shown": "fever",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Fluss:NOUN": [
+   {
+    "shown": "river",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Frau:NOUN": [
+   {
+    "shown": "woman; wife; Mrs",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Freitag:NOUN": [
+   {
+    "shown": "Friday",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Freundin:NOUN": [
+   {
+    "shown": "friend (female); girlfriend",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Frühstück:NOUN": [
+   {
+    "shown": "breakfast",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Fuchs:NOUN": [
+   {
+    "shown": "fox",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Garten:NOUN": [
+   {
+    "shown": "garden",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Gast:NOUN": [
+   {
+    "shown": "guest",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Gebühr:NOUN": [
+   {
+    "shown": "fee",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Geist:NOUN": [
+   {
+    "shown": "spirit; mind; ghost",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Geld:NOUN": [
+   {
+    "shown": "money",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Gemeinde:NOUN": [
+   {
+    "shown": "congregation; community; municipality",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Gemälde:NOUN": [
+   {
+    "shown": "painting",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Geschichte:NOUN": [
+   {
+    "shown": "story; history",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Gewissen:NOUN": [
+   {
+    "shown": "conscience",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Gewitter:NOUN": [
+   {
+    "shown": "thunderstorm",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Gitarre:NOUN": [
+   {
+    "shown": "guitar",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Glas:NOUN": [
+   {
+    "shown": "glass",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Gleis:NOUN": [
+   {
+    "shown": "platform; track",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Großvater:NOUN": [
+   {
+    "shown": "grandfather",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Grundschule:NOUN": [
+   {
+    "shown": "primary school",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Größe:NOUN": [
+   {
+    "shown": "size; greatness",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Hafen:NOUN": [
+   {
+    "shown": "harbour",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Haltestelle:NOUN": [
+   {
+    "shown": "stop (bus, tram)",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Hamburg:PROPN": [
+   {
+    "shown": "Hamburg (city)",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Handy:NOUN": [
+   {
+    "shown": "mobile phone",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Haus:NOUN": [
+   {
+    "shown": "house",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Haushalt:NOUN": [
+   {
+    "shown": "household; budget",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Herbst:NOUN": [
+   {
+    "shown": "autumn",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Hilfe:NOUN": [
+   {
+    "shown": "help",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Himmel:NOUN": [
+   {
+    "shown": "sky; heaven",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Hof:NOUN": [
+   {
+    "shown": "yard; farm; court",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Hund:NOUN": [
+   {
+    "shown": "dog",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Husten:NOUN": [
+   {
+    "shown": "cough",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Hügel:NOUN": [
+   {
+    "shown": "hill",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Ihr:DET": [
+   {
+    "shown": "your (formal)",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Insel:NOUN": [
+   {
+    "shown": "island",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Jahr:NOUN": [
+   {
+    "shown": "year",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Kaffee:NOUN": [
+   {
+    "shown": "coffee",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Karin:PROPN": [
+   {
+    "shown": "Karin (name)",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Kartoffel:NOUN": [
+   {
+    "shown": "potato",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Kind:NOUN": [
+   {
+    "shown": "child",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Kirche:NOUN": [
+   {
+    "shown": "church",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Konzert:NOUN": [
+   {
+    "shown": "concert",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Kopfschmerzen:NOUN": [
+   {
+    "shown": "headache",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Krankenhaus:NOUN": [
+   {
+    "shown": "hospital",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Kuchen:NOUN": [
+   {
+    "shown": "cake",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Küche:NOUN": [
+   {
+    "shown": "kitchen",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Kühlschrank:NOUN": [
+   {
+    "shown": "fridge",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Küste:NOUN": [
+   {
+    "shown": "coast",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Laden:NOUN": [
+   {
+    "shown": "shop",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Landschaft:NOUN": [
+   {
+    "shown": "landscape; scenery",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Landwirt:NOUN": [
+   {
+    "shown": "farmer",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Lehrerin:NOUN": [
+   {
+    "shown": "teacher (female)",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Leipzig:PROPN": [
+   {
+    "shown": "Leipzig (city)",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Leute:NOUN": [
+   {
+    "shown": "people",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Luft:NOUN": [
+   {
+    "shown": "air",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Lust:NOUN": [
+   {
+    "shown": "desire; pleasure",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Mal:NOUN": [
+   {
+    "shown": "time; occasion",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Mannschaft:NOUN": [
+   {
+    "shown": "team",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Markt:NOUN": [
+   {
+    "shown": "market",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Mehl:NOUN": [
+   {
+    "shown": "flour",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Mensch:NOUN": [
+   {
+    "shown": "human being; person",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Milch:NOUN": [
+   {
+    "shown": "milk",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Mitternacht:NOUN": [
+   {
+    "shown": "midnight",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Monat:NOUN": [
+   {
+    "shown": "month",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Montag:NOUN": [
+   {
+    "shown": "Monday",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Morgen:NOUN": [
+   {
+    "shown": "morning",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Mutter:NOUN": [
+   {
+    "shown": "mother",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:März:NOUN": [
+   {
+    "shown": "March",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Nachbar:NOUN": [
+   {
+    "shown": "neighbour",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Nachbarin:NOUN": [
+   {
+    "shown": "neighbour (female)",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Nachmittag:NOUN": [
+   {
+    "shown": "afternoon",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Nachricht:NOUN": [
+   {
+    "shown": "message; news item",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Nacht:NOUN": [
+   {
+    "shown": "night",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Norden:NOUN": [
+   {
+    "shown": "north",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Nordsee:NOUN": [
+   {
+    "shown": "the North Sea",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Ordnung:NOUN": [
+   {
+    "shown": "order; tidiness",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Parkplatz:NOUN": [
+   {
+    "shown": "car park; parking space",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Pfund:NOUN": [
+   {
+    "shown": "pound (500 grams)",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Picknick:NOUN": [
+   {
+    "shown": "picnic",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Pilz:NOUN": [
+   {
+    "shown": "mushroom",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Polizei:NOUN": [
+   {
+    "shown": "police",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Preis:NOUN": [
+   {
+    "shown": "price; prize",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Rathaus:NOUN": [
+   {
+    "shown": "town hall",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Recht:NOUN": [
+   {
+    "shown": "right; law",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Saft:NOUN": [
+   {
+    "shown": "juice",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Salz:NOUN": [
+   {
+    "shown": "salt",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Samstag:NOUN": [
+   {
+    "shown": "Saturday",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Schlange:NOUN": [
+   {
+    "shown": "snake",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Schlüssel:NOUN": [
+   {
+    "shown": "key",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Schneider:PROPN": [
+   {
+    "shown": "Schneider (surname)",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Schokolade:NOUN": [
+   {
+    "shown": "chocolate",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Schule:NOUN": [
+   {
+    "shown": "school",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Schwester:NOUN": [
+   {
+    "shown": "sister",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Schwimmbad:NOUN": [
+   {
+    "shown": "swimming pool",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Schwimmen:NOUN": [
+   {
+    "shown": "to swim",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Schüler:NOUN": [
+   {
+    "shown": "pupil; schoolboy",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:See:NOUN": [
+   {
+    "shown": "lake",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Seite:NOUN": [
+   {
+    "shown": "page; side",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Sommer:NOUN": [
+   {
+    "shown": "summer",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Sonntag:NOUN": [
+   {
+    "shown": "Sunday",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Spanien:PROPN": [
+   {
+    "shown": "Spain",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Stadt:NOUN": [
+   {
+    "shown": "city; town",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Straße:NOUN": [
+   {
+    "shown": "street; road",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Sturm:NOUN": [
+   {
+    "shown": "storm",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Supermarkt:NOUN": [
+   {
+    "shown": "supermarket",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Süden:NOUN": [
+   {
+    "shown": "south",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Tablette:NOUN": [
+   {
+    "shown": "tablet",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Tag:NOUN": [
+   {
+    "shown": "day",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Tal:NOUN": [
+   {
+    "shown": "valley",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Tasse:NOUN": [
+   {
+    "shown": "cup",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Teig:NOUN": [
+   {
+    "shown": "dough",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Thomas:PROPN": [
+   {
+    "shown": "Thomas (male first name)",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Tisch:NOUN": [
+   {
+    "shown": "table",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Tochter:NOUN": [
+   {
+    "shown": "daughter",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Tomate:NOUN": [
+   {
+    "shown": "tomato",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Treppe:NOUN": [
+   {
+    "shown": "stairs",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Uhr:NOUN": [
+   {
+    "shown": "clock; watch; o'clock",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Unfall:NOUN": [
+   {
+    "shown": "accident",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Universität:NOUN": [
+   {
+    "shown": "university",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Unternehmen:NOUN": [
+   {
+    "shown": "enterprise; company",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Unterricht:NOUN": [
+   {
+    "shown": "lessons; teaching",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Urlaub:NOUN": [
+   {
+    "shown": "holiday; leave",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Vergleich:NOUN": [
+   {
+    "shown": "comparison",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Verspätung:NOUN": [
+   {
+    "shown": "delay",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Wald:NOUN": [
+   {
+    "shown": "forest",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Wasser:NOUN": [
+   {
+    "shown": "water",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Weile:NOUN": [
+   {
+    "shown": "while",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Wein:NOUN": [
+   {
+    "shown": "wine",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Weinberg:NOUN": [
+   {
+    "shown": "vineyard",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Woche:NOUN": [
+   {
+    "shown": "week",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Wochenende:NOUN": [
+   {
+    "shown": "weekend",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Wohnung:NOUN": [
+   {
+    "shown": "flat; apartment",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Zahl:NOUN": [
+   {
+    "shown": "number",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Zahnarzt:NOUN": [
+   {
+    "shown": "dentist",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Zeit:NOUN": [
+   {
+    "shown": "time",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Zeitung:NOUN": [
+   {
+    "shown": "newspaper",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Zimmer:NOUN": [
+   {
+    "shown": "room",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Zinsen:NOUN": [
+   {
+    "shown": "interest (on money)",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Zucker:NOUN": [
+   {
+    "shown": "sugar",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Zug:NOUN": [
+   {
+    "shown": "train; pull",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:Zwiebel:NOUN": [
+   {
+    "shown": "onion",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:abbiegen:VERB": [
+   {
+    "shown": "to turn off",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:abwaschen:VERB": [
+   {
+    "shown": "to wash up; to wash off",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:acht:NUM": [
+   {
+    "shown": "eight",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:als:CONJ": [
+   {
+    "shown": "than; as (after a comparative, or ",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:als:SCONJ": [
+   {
+    "shown": "when (a single event in the past)",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:also:ADV": [
+   {
+    "shown": "so; therefore; well",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:alt:ADJ": [
+   {
+    "shown": "old",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:an:ADP": [
+   {
+    "shown": "on; at; to (vertical surface, edge)",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:anbieten:VERB": [
+   {
+    "shown": "to offer",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:anfangen:VERB": [
+   {
+    "shown": "to begin; to start",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:anhalten:VERB": [
+   {
+    "shown": "to stop; to keep on",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:anrufen:VERB": [
+   {
+    "shown": "to call; to telephone",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:anschauen:VERB": [
+   {
+    "shown": "to look at",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:antworten:VERB": [
+   {
+    "shown": "to answer",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:anziehen:VERB": [
+   {
+    "shown": "to put on (clothes); to attract",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:arbeiten:VERB": [
+   {
+    "shown": "to work",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:auf:ADP": [
+   {
+    "shown": "on; onto; to (an event, an office)",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:aufräumen:VERB": [
+   {
+    "shown": "to tidy up",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:aufstehen:VERB": [
+   {
+    "shown": "to get up; to stand up",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:aus:ADP": [
+   {
+    "shown": "out of; from; made of",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:ausmachen:VERB": [
+   {
+    "shown": "to switch off; to arrange",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:ausruhen:VERB": [
+   {
+    "shown": "to rest",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:ausschalten:VERB": [
+   {
+    "shown": "to switch off",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:aussehen:VERB": [
+   {
+    "shown": "to look; to appear",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:außer:ADP": [
+   {
+    "shown": "except; apart from; out of",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:außerdem:ADV": [
+   {
+    "shown": "besides; moreover",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:bauen:VERB": [
+   {
+    "shown": "to build",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:beenden:VERB": [
+   {
+    "shown": "to finish; to end",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:befinden:VERB": [
+   {
+    "shown": "to be (situated)",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:begegnen:VERB": [
+   {
+    "shown": "to meet; to encounter",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:beginnen:VERB": [
+   {
+    "shown": "to begin",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:bei:ADP": [
+   {
+    "shown": "at; near; with; at the home of",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:bekommen:VERB": [
+   {
+    "shown": "to get; to receive",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:bellen:VERB": [
+   {
+    "shown": "to bark",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:benutzen:VERB": [
+   {
+    "shown": "to use",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:berühren:VERB": [
+   {
+    "shown": "to touch",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:beschließen:VERB": [
+   {
+    "shown": "to decide",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:besonders:ADV": [
+   {
+    "shown": "especially",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:besuchen:VERB": [
+   {
+    "shown": "to visit",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:bevor:SCONJ": [
+   {
+    "shown": "before",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:bis:ADP": [
+   {
+    "shown": "until; as far as; by",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:bis:SCONJ": [
+   {
+    "shown": "until",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:bisschen:ADV": [
+   {
+    "shown": "bit, little (ein bisschen = a little)",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:bitten:VERB": [
+   {
+    "shown": "to ask; to request",
+    "v": "false-reading",
+    "note": "bitte in bitte schön is the polite particle/interjection, not the verb bitten"
+   }
+  ],
+  "lemma:de:bleiben:VERB": [
+   {
+    "shown": "to stay; to remain",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:brauchen:VERB": [
+   {
+    "shown": "to need",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:brechen:VERB": [
+   {
+    "shown": "to break",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:breit:ADJ": [
+   {
+    "shown": "wide; broad",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:dafür:ADV": [
+   {
+    "shown": "for it; in favour; in return",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:danach:ADV": [
+   {
+    "shown": "afterwards",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:dann:ADV": [
+   {
+    "shown": "then; in that case",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:dass:SCONJ": [
+   {
+    "shown": "that",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:dazu:ADV": [
+   {
+    "shown": "to it; for it; in addition",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:denken:VERB": [
+   {
+    "shown": "to think",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:denn:PART": [
+   {
+    "shown": "(modal particle)",
+    "v": "unknown",
+    "note": "shown is only a label (modal particle), not a meaning"
+   }
+  ],
+  "lemma:de:der:DET": [
+   {
+    "shown": "the",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:der:PRON": [
+   {
+    "shown": "that one; he; she; they (stressed, demonstrative)",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:deshalb:ADV": [
+   {
+    "shown": "therefore; for that reason",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:deutlich:ADJ": [
+   {
+    "shown": "clear; distinct",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:direkt:ADV": [
+   {
+    "shown": "directly",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:dort:ADV": [
+   {
+    "shown": "there",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:draußen:ADV": [
+   {
+    "shown": "outside",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:drei:NUM": [
+   {
+    "shown": "three",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:dreißig:NUM": [
+   {
+    "shown": "thirty",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:du:PRON": [
+   {
+    "shown": "you (informal, one person)",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:dürfen:AUX": [
+   {
+    "shown": "to be allowed to; may",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:einander:PRON": [
+   {
+    "shown": "each other; one another",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:einkaufen:VERB": [
+   {
+    "shown": "to shop; to buy",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:einmal:ADV": [
+   {
+    "shown": "once; one day",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:einnehmen:VERB": [
+   {
+    "shown": "to take (medicine); to occupy",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:eins:NUM": [
+   {
+    "shown": "one",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:einsam:ADJ": [
+   {
+    "shown": "lonely; solitary",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:einschalten:VERB": [
+   {
+    "shown": "to switch on",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:einschlafen:VERB": [
+   {
+    "shown": "to fall asleep",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:einstellen:VERB": [
+   {
+    "shown": "to employ; to adjust",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:einzig:ADJ": [
+   {
+    "shown": "only; single",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:empfehlen:VERB": [
+   {
+    "shown": "to recommend",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:eng:ADJ": [
+   {
+    "shown": "narrow; tight",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:entdecken:VERB": [
+   {
+    "shown": "to discover",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:entschuldigung:ADV": [
+   {
+    "shown": "excuse me; sorry",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:entwickeln:VERB": [
+   {
+    "shown": "to develop",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:er:PRON": [
+   {
+    "shown": "he; it (masculine)",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:ereignen:VERB": [
+   {
+    "shown": "to occur; to take place",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:erhöhen:VERB": [
+   {
+    "shown": "to raise; to increase",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:erklären:VERB": [
+   {
+    "shown": "to explain",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:erlauben:VERB": [
+   {
+    "shown": "to allow",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:erledigen:VERB": [
+   {
+    "shown": "to settle; to get done",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:erscheinen:VERB": [
+   {
+    "shown": "to appear",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:erwarten:VERB": [
+   {
+    "shown": "to expect",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:erzählen:VERB": [
+   {
+    "shown": "to tell; to narrate",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:es:PRON": [
+   {
+    "shown": "it",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:essen:VERB": [
+   {
+    "shown": "to eat",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:etwas:PRON": [
+   {
+    "shown": "something; some; a little",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:fahren:VERB": [
+   {
+    "shown": "to drive; to go (by vehicle)",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:fast:ADV": [
+   {
+    "shown": "almost",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:feiern:VERB": [
+   {
+    "shown": "to celebrate",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:festnehmen:VERB": [
+   {
+    "shown": "to arrest",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:finden:VERB": [
+   {
+    "shown": "to find",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:folgen:VERB": [
+   {
+    "shown": "to follow",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:fordern:VERB": [
+   {
+    "shown": "to demand",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:fotografieren:VERB": [
+   {
+    "shown": "to photograph",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:fragen:VERB": [
+   {
+    "shown": "to ask",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:frei:ADJ": [
+   {
+    "shown": "free",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:frisch:ADJ": [
+   {
+    "shown": "fresh",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:fünfzig:NUM": [
+   {
+    "shown": "fifty",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:für:ADP": [
+   {
+    "shown": "for",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:geben:VERB": [
+   {
+    "shown": "to give",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:gebären:VERB": [
+   {
+    "shown": "to give birth to",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:gegen:ADP": [
+   {
+    "shown": "against; towards; about (time)",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:gegenüber:ADP": [
+   {
+    "shown": "opposite; towards; compared with",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:gehen:VERB": [
+   {
+    "shown": "to go; to walk",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:gemeinsam:ADV": [
+   {
+    "shown": "together; jointly",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:genug:ADV": [
+   {
+    "shown": "enough",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:gerade:ADV": [
+   {
+    "shown": "just; at the moment; straight",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:geradeaus:ADV": [
+   {
+    "shown": "straight ahead",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:gestern:ADV": [
+   {
+    "shown": "yesterday",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:gewinnen:VERB": [
+   {
+    "shown": "to win; to gain",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:gießen:VERB": [
+   {
+    "shown": "to pour; to water",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:glatt:ADJ": [
+   {
+    "shown": "smooth",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:groß:ADJ": [
+   {
+    "shown": "big; tall; great",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:gut:ADJ": [
+   {
+    "shown": "good",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:haben:VERB": [
+   {
+    "shown": "to have",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:helfen:VERB": [
+   {
+    "shown": "to help",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:hell:ADJ": [
+   {
+    "shown": "bright; light",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:heute:ADV": [
+   {
+    "shown": "today",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:hier:ADV": [
+   {
+    "shown": "here",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:hinunter:ADV": [
+   {
+    "shown": "down (there)",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:hoch:ADJ": [
+   {
+    "shown": "high",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:ich:PRON": [
+   {
+    "shown": "I",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:ihr:DET": [
+   {
+    "shown": "her; their",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:immer:ADV": [
+   {
+    "shown": "always",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:impfen:VERB": [
+   {
+    "shown": "to vaccinate",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:in:ADP": [
+   {
+    "shown": "in; into",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:innerhalb:ADP": [
+   {
+    "shown": "within; inside",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:jemals:ADV": [
+   {
+    "shown": "ever",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:jung:ADJ": [
+   {
+    "shown": "young",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:kalt:ADJ": [
+   {
+    "shown": "cold",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:kaufen:VERB": [
+   {
+    "shown": "to buy",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:kaum:ADV": [
+   {
+    "shown": "hardly",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:kein:DET": [
+   {
+    "shown": "no; not a; not any",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:klar:ADJ": [
+   {
+    "shown": "clear; obvious",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:klein:ADJ": [
+   {
+    "shown": "small; little",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:klingen:VERB": [
+   {
+    "shown": "to sound",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:kochen:VERB": [
+   {
+    "shown": "to cook; to boil",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:kommen:VERB": [
+   {
+    "shown": "to come",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:kosten:VERB": [
+   {
+    "shown": "to cost; to taste",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:kostenlos:ADJ": [
+   {
+    "shown": "free of charge",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:kritisieren:VERB": [
+   {
+    "shown": "to criticize",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:kräftig:ADJ": [
+   {
+    "shown": "strong, hearty",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:kurz:ADJ": [
+   {
+    "shown": "short",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:können:AUX": [
+   {
+    "shown": "to be able to; can",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:lang:ADJ": [
+   {
+    "shown": "long",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:langweilig:ADJ": [
+   {
+    "shown": "boring",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:lassen:VERB": [
+   {
+    "shown": "to let; to leave",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:laut:ADJ": [
+   {
+    "shown": "loud",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:leicht:ADJ": [
+   {
+    "shown": "easy; light",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:leiden:VERB": [
+   {
+    "shown": "to suffer",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:leider:ADV": [
+   {
+    "shown": "unfortunately",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:lernen:VERB": [
+   {
+    "shown": "to learn",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:lesen:VERB": [
+   {
+    "shown": "to read",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:letzt:ADJ": [
+   {
+    "shown": "last",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:lieb:ADJ": [
+   {
+    "shown": "dear; sweet",
+    "v": "false-reading",
+    "note": "lieber here is the comparative of gern (rather), not lieb"
+   }
+  ],
+  "lemma:de:liegen:VERB": [
+   {
+    "shown": "to lie; to be situated",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:links:ADV": [
+   {
+    "shown": "on the left; to the left",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:machen:VERB": [
+   {
+    "shown": "to make; to do",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:man:PRON": [
+   {
+    "shown": "one; you; they; people (impersonal)",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:mein:DET": [
+   {
+    "shown": "my",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:meinen:VERB": [
+   {
+    "shown": "to mean; to think",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:mieten:VERB": [
+   {
+    "shown": "to rent",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:mischen:VERB": [
+   {
+    "shown": "to mix",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:mit:ADP": [
+   {
+    "shown": "with; by (means of)",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:mitbringen:VERB": [
+   {
+    "shown": "to bring along",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:mitteilen:VERB": [
+   {
+    "shown": "to inform; to tell",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:montags:ADV": [
+   {
+    "shown": "on Mondays",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:morgen:ADV": [
+   {
+    "shown": "tomorrow",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:mögen:AUX": [
+   {
+    "shown": "to like; may",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:möglich:ADJ": [
+   {
+    "shown": "possible",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:müde:ADJ": [
+   {
+    "shown": "tired",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:müssen:AUX": [
+   {
+    "shown": "to have to; must",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:nach:ADP": [
+   {
+    "shown": "after; to; according to",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:nachdem:SCONJ": [
+   {
+    "shown": "after",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:neben:ADP": [
+   {
+    "shown": "next to; beside",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:nehmen:VERB": [
+   {
+    "shown": "to take",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:nett:ADJ": [
+   {
+    "shown": "nice; kind",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:neu:ADJ": [
+   {
+    "shown": "new",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:neun:NUM": [
+   {
+    "shown": "nine",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:nicht:PART": [
+   {
+    "shown": "not",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:nichts:PRON": [
+   {
+    "shown": "nothing",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:nie:ADV": [
+   {
+    "shown": "never",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:niemand:PRON": [
+   {
+    "shown": "no one; nobody",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:nun:ADV": [
+   {
+    "shown": "now; well",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:nächst:ADJ": [
+   {
+    "shown": "next",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:ob:SCONJ": [
+   {
+    "shown": "whether; if",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:obwohl:SCONJ": [
+   {
+    "shown": "although",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:oder:CONJ": [
+   {
+    "shown": "or",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:ohnehin:ADV": [
+   {
+    "shown": "anyway; in any case",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:passen:VERB": [
+   {
+    "shown": "to fit; to suit",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:privat:ADJ": [
+   {
+    "shown": "private",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:raten:VERB": [
+   {
+    "shown": "to advise; to guess",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:rechnen:VERB": [
+   {
+    "shown": "to calculate",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:rechts:ADV": [
+   {
+    "shown": "on the right; to the right",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:regnen:VERB": [
+   {
+    "shown": "to rain",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:reparieren:VERB": [
+   {
+    "shown": "to repair",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:rot:ADJ": [
+   {
+    "shown": "red",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:sagen:VERB": [
+   {
+    "shown": "to say; to tell",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:sammeln:VERB": [
+   {
+    "shown": "to collect",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:schauen:VERB": [
+   {
+    "shown": "to look",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:schlafen:VERB": [
+   {
+    "shown": "to sleep",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:schleichen:VERB": [
+   {
+    "shown": "to sneak; to creep",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:schließen:VERB": [
+   {
+    "shown": "to close; to conclude",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:schließlich:ADV": [
+   {
+    "shown": "finally; after all",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:schmecken:VERB": [
+   {
+    "shown": "to taste",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:schneiden:VERB": [
+   {
+    "shown": "to cut",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:schreiben:VERB": [
+   {
+    "shown": "to write",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:schwer:ADJ": [
+   {
+    "shown": "heavy; difficult",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:schön:ADJ": [
+   {
+    "shown": "beautiful; nice",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:sechs:NUM": [
+   {
+    "shown": "six",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:sehen:VERB": [
+   {
+    "shown": "to see",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:sehr:ADV": [
+   {
+    "shown": "very",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:sein:AUX": [
+   {
+    "shown": "to be",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:sein:DET": [
+   {
+    "shown": "his; its",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:seit:ADP": [
+   {
+    "shown": "since; for (a period up to now)",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:senken:VERB": [
+   {
+    "shown": "to lower",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:sich:PRON": [
+   {
+    "shown": "himself; herself; itself; themselves; yourself (formal)",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:sieben:NUM": [
+   {
+    "shown": "seven",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:sinken:VERB": [
+   {
+    "shown": "to sink",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:sollen:AUX": [
+   {
+    "shown": "to be supposed to; shall",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:sonst:ADV": [
+   {
+    "shown": "otherwise; else",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:spielen:VERB": [
+   {
+    "shown": "to play",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:sprechen:VERB": [
+   {
+    "shown": "to speak",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:stark:ADJ": [
+   {
+    "shown": "strong",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:starten:VERB": [
+   {
+    "shown": "to start",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:stattfinden:VERB": [
+   {
+    "shown": "to take place",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:stehen:VERB": [
+   {
+    "shown": "to stand",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:steigen:VERB": [
+   {
+    "shown": "to climb; to rise",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:städtisch:ADJ": [
+   {
+    "shown": "urban; municipal",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:ständig:ADV": [
+   {
+    "shown": "constantly",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:suchen:VERB": [
+   {
+    "shown": "to look for",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:treffen:VERB": [
+   {
+    "shown": "to meet; to hit",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:trinken:VERB": [
+   {
+    "shown": "to drink",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:trocknen:VERB": [
+   {
+    "shown": "to dry",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:um:ADP": [
+   {
+    "shown": "around; at (a time); about",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:umsteigen:VERB": [
+   {
+    "shown": "to change (trains)",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:umziehen:VERB": [
+   {
+    "shown": "to move (house)",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:und:CONJ": [
+   {
+    "shown": "and",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:unser:DET": [
+   {
+    "shown": "our",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:unter:ADP": [
+   {
+    "shown": "under; among; below",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:unterhalten:VERB": [
+   {
+    "shown": "to entertain; to maintain",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:unterwegs:ADV": [
+   {
+    "shown": "on the way; out and about",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:verkürzen:VERB": [
+   {
+    "shown": "to shorten",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:verletzen:VERB": [
+   {
+    "shown": "to hurt oneself",
+    "v": "false-meaning",
+    "note": "verletzen means to injure/hurt; \"to hurt oneself\" is too narrow"
+   }
+  ],
+  "lemma:de:verstehen:VERB": [
+   {
+    "shown": "to understand",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:versuchen:VERB": [
+   {
+    "shown": "to try; to attempt",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:vier:NUM": [
+   {
+    "shown": "four",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:voll:ADJ": [
+   {
+    "shown": "full",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:von:ADP": [
+   {
+    "shown": "from; of; by",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:vor:ADP": [
+   {
+    "shown": "in front of; before; ago",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:vorbereiten:VERB": [
+   {
+    "shown": "to prepare",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:vorhaben:VERB": [
+   {
+    "shown": "to plan; to intend",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:wann:ADV": [
+   {
+    "shown": "when",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:warnen:VERB": [
+   {
+    "shown": "to warn",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:warten:VERB": [
+   {
+    "shown": "to wait",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:warum:ADV": [
+   {
+    "shown": "why",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:was:PRON": [
+   {
+    "shown": "what; which; that",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:weder:CONJ": [
+   {
+    "shown": "neither (in weder … noch)",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:wegen:ADP": [
+   {
+    "shown": "because of",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:wehtun:VERB": [
+   {
+    "shown": "to hurt; to be sore",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:weil:SCONJ": [
+   {
+    "shown": "because",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:wenn:SCONJ": [
+   {
+    "shown": "if; when; whenever",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:wer:PRON": [
+   {
+    "shown": "who",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:werden:AUX": [
+   {
+    "shown": "to become; to get (also the auxiliary of the future and the passive)",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:wieder:ADV": [
+   {
+    "shown": "again",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:wir:PRON": [
+   {
+    "shown": "we",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:wissen:VERB": [
+   {
+    "shown": "to know (a fact)",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:wo:ADV": [
+   {
+    "shown": "where",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:wohnen:VERB": [
+   {
+    "shown": "to live; to reside",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:wollen:AUX": [
+   {
+    "shown": "to want to",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:während:SCONJ": [
+   {
+    "shown": "while; whereas",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:zehn:NUM": [
+   {
+    "shown": "ten",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:zeigen:VERB": [
+   {
+    "shown": "to show",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:ziemlich:ADV": [
+   {
+    "shown": "rather; quite",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:zu:ADP": [
+   {
+    "shown": "to; at; for",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:zuerst:ADV": [
+   {
+    "shown": "first; at first",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:zufrieden:ADJ": [
+   {
+    "shown": "content, satisfied",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:zurückgehen:VERB": [
+   {
+    "shown": "to go back",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:zurückkommen:VERB": [
+   {
+    "shown": "to come back",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:zusammen:ADV": [
+   {
+    "shown": "together",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:zwanzig:NUM": [
+   {
+    "shown": "twenty",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:zwar:ADV": [
+   {
+    "shown": "indeed; to be sure",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:zwei:NUM": [
+   {
+    "shown": "two",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:zwischen:ADP": [
+   {
+    "shown": "between",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:ärgern:VERB": [
+   {
+    "shown": "to annoy",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:über:ADP": [
+   {
+    "shown": "over; above; across; about",
+    "v": "ok"
+   }
+  ],
+  "lemma:de:übrigens:ADV": [
+   {
+    "shown": "by the way",
+    "v": "ok"
+   }
+  ]
+ }
+}

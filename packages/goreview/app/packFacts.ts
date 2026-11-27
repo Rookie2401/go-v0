@@ -30,6 +30,8 @@ import { createFormsSource } from '../../../src/dict/forms';
 import { featureKey, type Paradigm, type ParadigmCell } from '../../../src/core/paradigm';
 import type { PartOfSpeech } from '../../../src/core/model';
 import { buildParadigm, formRomanOf, pickRecord, selectedCellKeys, type LexicalRecord } from '../src/facts/paradigm-table';
+import { applyDeckGate } from '../src/facts/deck-gate';
+import { deckKnownLimit } from '../src/facts/deck-known-limits';
 
 export { featureKey };
 export type { Paradigm, ParadigmCell };
@@ -84,7 +86,7 @@ interface HebrewFormFrequencyIndex {
 /** How long a failed dictionary read waits before it is asked once more. */
 export const SOURCE_RETRY_DELAY_MS = 400;
 
-export function packFactsFor(opts: { fetch: typeof fetch; baseUrl: string; lexiconBaseUrl?: string }): PackFacts {
+export function packFactsFor(opts: { fetch: typeof fetch; baseUrl: string; lexiconBaseUrl?: string; /** false: the facts as the pack gives them, without the deck gate (src/facts/deck-gate.ts); for the deck audit's before-and-after only */ deckGate?: boolean }): PackFacts {
   const runtimes = new Map<string, ReturnType<typeof createPackRuntime>>();
   const formsIndexes = new Map<string, ReturnType<typeof createFormsSource>>();
   const runtimeSourceFailures = new Map<string, number>();
@@ -289,7 +291,7 @@ export function packFactsFor(opts: { fetch: typeof fetch; baseUrl: string; lexic
       return p;
     };
     const clearGreekSentenceCaches = (): void => { plain.clearSentenceCache(); byVariety.forEach(provider => provider.clearSentenceCache()); };
-    return {
+    const raw = {
       prime: async (unitIds: string[], varietyId?: string) => {
         if (languageId === 'he' && unitIds.some((id) => id.startsWith('form:he:'))) {
           await ensureHebrewSentenceSet(manifest);
@@ -363,6 +365,23 @@ export function packFactsFor(opts: { fetch: typeof fetch; baseUrl: string; lexic
         } catch { return undefined; }
       },
     } as Provider;
+    if (opts.deckGate === false) return raw;
+    // THE DECK GATE (src/facts/deck-gate.ts): every lemma and form unit's facts pass it before anything is built from them. It reads the dictionary through the
+    // facts' own runtime: the same files, read once (no second request for a shard the facts already hold), and a read that fails counts as a failed source like
+    // any other, so the facts are asked again later; meanwhile the gate holds what it could not check.
+    const dictionary = runtime;
+    const gated: Provider = {
+      prime: raw.prime, clearPrime: raw.clearPrime,
+      factsFor: async (unitId, requestedLanguage, varietyId) => {
+        const facts = await raw.factsFor(unitId, requestedLanguage, varietyId);
+        if (!facts || requestedLanguage !== languageId) return facts;
+        return applyDeckGate(facts, {
+          languageId, varietyId: varietyId ?? manifest.varietyId, gloss: (lemma, pos, forms) => dictionary.gloss(lemma, pos, forms),
+          factsOf: (id) => gated.factsFor(id, requestedLanguage, varietyId), known: (id) => deckKnownLimit(languageId, id),
+        });
+      },
+    } as Provider;
+    return gated;
   };
   // the form table of a card's word. Its dictionary reads go through a runtime of their own: a language with no full records answers
   // 404, which is the normal state there and must not count as a failed source of the facts above.

@@ -8,6 +8,7 @@ import type { AnalysisCandidate } from '../../src/core';
 import { resolveSelection } from '../../packages/repository-linguistics/src/resolver';
 import { parseSelection } from '../../packages/golearn-extension/src/parser';
 import { BUILDERS } from '../../packages/goreview/src/exercises';
+import { applyDeckGate, type DeckGateDeps } from '../../packages/goreview/src/facts/deck-gate';
 import { EXERCISE_FAMILIES, FAMILY_DIMENSION } from '../../packages/goreview/src/types';
 import { IDS, SENT, ctxOf, makeWorld, target } from '../goreview/exercises/support';
 import type { Selection } from '../goreview/exercises/support';
@@ -181,8 +182,10 @@ export async function reviewAvailability(res: SentenceResult[]) {
   const glosses: Array<{ unit: string; gloss: string[] }> = [];
   const goldLemmas = new Set(res.flatMap((r) => r.words.flatMap((w) => w.gold.lemma.flatMap((lm) => w.gold.pos.map((p) => nfc(lm) + '|' + (p === 'AUX' ? 'VERB' : p))))));
   const offGold: Array<{ unit: string; gloss: string[] }> = [];
+  // the facts as the app hands them to a builder: through the deck gate (packages/goreview/src/facts/deck-gate.ts), which packFacts applies to every unit
+  const gate: DeckGateDeps = { languageId: 'sq', gloss: (l, p, f) => world.runtime.gloss(l, p, f), factsOf: async (id) => applyDeckGate(await world.facts(id).catch(() => undefined), gate) };
   for (const unit of [...lemmaIds, ...formIds]) {
-    const facts = await world.facts(unit).catch(() => undefined);
+    const facts = await applyDeckGate(await world.facts(unit).catch(() => undefined), gate);
     if (!facts) continue;
     tested += 1;
     let any = false;

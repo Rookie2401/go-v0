@@ -54,7 +54,8 @@ describe.skipIf(!have)('the built extension', () => {
     // 2026-11-25, the review hold: 589 -> 591 KB. The card now says so when a word is undecided between two different words (both shown, each with its class and
     // meaning, no single answer in the headline) and shows why a held word is not added to review (parser/cardModel.ts reviewHold, popup/card.ts; any language that
     // writes the review gate's notes, src/core/review-gate.ts). Measured 604,503 bytes = 590.3 KB.
-    expect(sizes.get('content.js')!, 'content.js').toBeLessThanOrEqual(591 * KB);
+    // 2026-11-27, Korean on master 7a8ced80: measured 605,765 bytes = 591.6 KB (599,025 on that master, built the same day).
+    expect(sizes.get('content.js')!, 'content.js').toBeLessThanOrEqual(592 * KB);
     // Hindi reading must resolve in the offline Repository too. Its real analyser adds
     // about 460 KB to the former Albanian-only worker; classic workers cannot import
     // the page's analyser chunk. Keep an explicit ceiling rather than dropping analysis.
@@ -83,7 +84,8 @@ describe.skipIf(!have)('the built extension', () => {
     // ask it for: the pack manifest with its honest limits, the plain explanation of every feature value the analyser writes (speech levels,
     // connectives, the 58 particle families), of 35 constructions, and the orientation. Measured 1,342,801 bytes = 1,311.3 KB (1,263.2 KB on
     // master a822b1ab, built the same day). No Korean analyser, lexicon or Hangul table is in the worker: they are in analysers/ko.js (558 KB then; 609,722 bytes = 595.4 KB in the pack's final code, where background.js measured 1,342,910 bytes).
-    expect(sizes.get('background.js')!, 'background.js').toBeLessThanOrEqual(1315 * KB);
+    // 2026-11-27, Korean on master 7a8ced80: measured 1,349,016 bytes = 1,317.4 KB (1,299,239 on that master): the Korean manifest, grammar explanations and orientation.
+    expect(sizes.get('background.js')!, 'background.js').toBeLessThanOrEqual(1318 * KB);
     // 2026-10-21: 650 -> 760 KB; the GoTell redesign (aec73a36) and the GoListen playback refactor (9aae9cb0) brought app.js to 723 KB
     // (measured with the Biblia card of the reader screen, 0.8 KB, reverted). A ceiling again, not a target.
     // 2026-11-08: 760 -> 800 KB; master's build already measured 779 KB.
@@ -104,7 +106,8 @@ describe.skipIf(!have)('the built extension', () => {
     // dictionary code is in app.js (checked on the build). Measured 982,295 bytes = 959.3 KB (setup page built with GOLEARN_APP_DICT=sq,ru,fr,ko;
     // 929,736 bytes = 907.9 KB on master a822b1ab, built the same day with sq,ru,fr).
     // After merging master 4a381610 (app.js 932,398 bytes there): Korean's 52.6 KB on top gives about 985,000 bytes; ceiling 965 KB until the final build is measured.
-    if (sizes.has('app/app.js')) expect(sizes.get('app/app.js')!, 'app/app.js').toBeLessThanOrEqual(965 * KB);
+    // 2026-11-27, Korean on master 7a8ced80: measured 988,236 bytes = 965.1 KB (933,350 on that master).
+    if (sizes.has('app/app.js')) expect(sizes.get('app/app.js')!, 'app/app.js').toBeLessThanOrEqual(966 * KB);
     for (const id of ['sq', 'es', 'de', 'hi', 'th', 'nb', 'nn', 'ru', 'fr', 'ko']) expect(sizes.has(`analysers/${id}.js`), `analysers/${id}.js`).toBe(true);
   });
 

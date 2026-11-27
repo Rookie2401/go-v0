@@ -155,3 +155,48 @@ describe.skipIf(!shardsPresent())('one id per word (the old split: lemma:ar:أس
     expect(r.cards.filter((c) => c.kind === 'lemma' && !hasTashkil(c.head) && vocalized.has(`${arKey(c.head)}|${c.pos}`)).map((c) => c.unitId)).toEqual([]);
   }, 600_000);
 });
+
+describe.skipIf(!shardsPresent())('no admitted card\'s first meaning stops where the source sense goes on (the auditor\'s test)', () => {
+  it('over the development text, the shown first meaning is a whole item (or a run of items) of a sense of the unit\'s own dictionary record, or a reviewed hand gloss; سِوًى, تَوَقَّعَ and أَثْنَاءَ are among the checked words', async () => {
+    const { runDeckAudit: masterAudit } = await import('../deck-audit/support');
+    const { fragmentWhy } = await import('../deck-audit/fragments');
+    const { createPackRuntime } = await import('../../packages/language-packs/src/runtime');
+    const { packFor } = await import('../../packages/language-packs/src');
+    const { arUnitRecords } = await import('../../src/adapters/arabic/answers');
+    const { arAdapter } = await import('../../src/adapters/ar');
+    const zlib = await import('node:zlib');
+    const sentences = fs.readFileSync(path.resolve('data/deck-audit/ar/dev.txt'), 'utf8').split(/\r?\n/u).filter((l) => l.trim() && !l.startsWith('#'));
+    const result = await masterAudit('ar', sentences, {});
+    const files = (async (input: RequestInfo | URL) => {
+      const u = new URL(String(input), 'http://a.local/'); const f = path.join('public', decodeURIComponent(u.pathname));
+      if (!fs.existsSync(f) || fs.statSync(f).isDirectory()) return new Response('x', { status: 404 });
+      const b = fs.readFileSync(f); return new Response(f.endsWith('.gz') ? zlib.gunzipSync(b) : b);
+    }) as typeof fetch;
+    const rt = createPackRuntime(packFor('ar')!, { fetch: files, baseUrl: 'http://a.local/' });
+    const same = (a: string, b: string): boolean => a === b || (['VERB', 'AUX'].includes(a) && ['VERB', 'AUX'].includes(b)) || (['NOUN', 'PROPN'].includes(a) && ['NOUN', 'PROPN'].includes(b));
+    const norm = (t: string): string => { let x = t.toLowerCase(); for (let k = 0; k < 8; k++) { const n = x.replace(/\([^()]*\)|\[[^[\]]*\]/gu, ' '); if (n === x) break; x = n; } return x.replace(/\s+/gu, ' ').trim().replace(/[.\s]+$/u, ''); };
+    const items = (t: string): string[] => norm(t).split(/\s*[;,:]\s*/u).map((x) => x.trim()).filter(Boolean);
+    const failures: string[] = [];
+    const checked = new Set<string>();
+    for (const c of result.cards) {
+      if (c.kind !== 'lemma' || !c.pos) continue;
+      checked.add(c.headword);
+      const closed = arAdapter.analyze(arAdapter.tokenize(c.headword)).flatMap((a) => a.candidates).some((x) => x.lemma === c.headword && x.pos === c.pos && x.notes?.glossSource === 'closed');
+      if (closed) continue;
+      const e = await rt.entry(c.headword, c.pos);
+      const recs = arUnitRecords((e?.records ?? []) as Parameters<typeof arUnitRecords>[0], c.headword, c.pos, same);
+      const shown = items(c.shown);
+      const ok = shown.length > 0 && recs.some((r) => (r.s ?? []).some((s) => {
+        const it = items(s.g);
+        for (let i = 0; i + shown.length <= it.length; i++) if (shown.every((x, k) => it[i + k] === x)) return true;
+        return false;
+      }));
+      if (!ok) failures.push(`${c.unitId}: shows "${c.shown}"`);
+      const why = fragmentWhy(c.shown, recs.flatMap((r) => (r.s ?? []).map((x) => x.g)));
+      if (why) failures.push(`${c.unitId}: "${c.shown}" ${why}`);
+    }
+    for (const w of ['سِوًى', 'تَوَقَّعَ', 'أَثْنَاءَ']) console.log(`checked ${w}: ${checked.has(w) ? 'a card in the development text, whole item' : 'not admitted in the development text'}`);
+    if (failures.length) console.log('FRAGMENT-FAILURES', JSON.stringify(failures));
+    expect(failures, 'cards whose first meaning stops short of the source sense').toEqual([]);
+  }, 1_200_000);
+});

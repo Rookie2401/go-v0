@@ -26,17 +26,36 @@ const FUNCTION_WORD = /^(?:and|or|with|the|a|an|of|to|in|on|at|by|for|from|as|if
 const GRAMMAR_NOTE = /\b(?:copulative|inserted when|grammatical|syntactic(?:ally)?)\b/iu;
 /** From here a sense gives examples, not meanings ("to break, tear, e.g., a rope, a string"). */
 const EXAMPLE_CUT = /,?\s*\b(?:e\.g\.|i\.e\.|for example|for instance|such as)\s*,?/iu;
-const bare = (s: string): string => s.replace(/\([^()]*\)|\[[^[\]]*\]/gu, ' ').replace(/\s+/gu, ' ').trim();
+/** The text outside its brackets, nested brackets included ("meeting (بِ (bi) with someone), assembly" leaves "meeting , assembly"). */
+const bare = (s: string): string => {
+  let t = s;
+  for (let k = 0; k < 8; k++) { const n = t.replace(/\([^()]*\)|\[[^[\]]*\]/gu, ' '); if (n === t) break; t = n; }
+  return t.replace(/\s+/gu, ' ').trim();
+};
+/** Splits at a separator that is OUTSIDE every bracket ("a sound (of a thing, an animal), a noise" has one comma boundary, not three). */
+export function splitOutside(text: string, separator: ',' | ';'): string[] {
+  const out: string[] = [];
+  let depth = 0; let start = 0;
+  for (let i = 0; i < text.length; i++) {
+    const ch = text[i];
+    if (ch === '(' || ch === '[') depth++;
+    else if (ch === ')' || ch === ']') depth = Math.max(0, depth - 1);
+    else if (ch === separator && depth === 0) { out.push(text.slice(start, i)); start = i + 1; }
+  }
+  out.push(text.slice(start));
+  return out.map((x) => x.trim()).filter(Boolean);
+}
 
 /** True when this alternative of a sense is no meaning of the word (see (b) above). */
 export function isFragmentAlternative(alt: string, opts: { functionWords?: boolean } = {}): boolean {
   const a = alt.trim();
   if (!a || !/\p{L}/u.test(a)) return true;
-  if (/\p{Script=Arabic}/u.test(a) || a.includes(':') || /\betc\b/iu.test(a)) return true;
-  // a quotation mark is a quotation, not a meaning; "forms the ..." and "being ..." describe grammar (a description of the form, not what the word means)
-  if (/["\u201C\u201D\u201E\u00AB\u00BB]/u.test(a) || /^(?:forms the|being)\b/iu.test(a)) return true;
   const b = bare(a);
   if (!b) return true;
+  // judged outside the brackets: a bracket may hold Arabic script or a colon ("meeting (بِ (bi) with someone)") and the meaning stays
+  if (/\p{Script=Arabic}/u.test(b) || b.includes(':') || /\betc\b/iu.test(b)) return true;
+  // a quotation mark is a quotation, not a meaning; "forms the ..." and "being ..." describe grammar (a description of the form, not what the word means)
+  if (/["\u201C\u201D\u201E\u00AB\u00BB]/u.test(b) || /^(?:forms the|being)\b/iu.test(b)) return true;
   if (GRAMMAR_WORD.test(b) || USAGE_NOTE.test(b) || GRAMMAR_NOTE.test(b) || isCrossReferenceOnly(a)) return true;
   if (opts.functionWords !== false && FUNCTION_WORD.test(b)) return true;
   return false;
@@ -56,7 +75,7 @@ export function arCleanSense(sense: string, opts: { functionWords?: boolean } = 
   const cut = sense.search(EXAMPLE_CUT);
   if (cut >= 0) sense = sense.slice(0, cut);
   // a final full stop is the sentence's, not the meaning's ("the lift(s)." would leave "the lift ." once its aside is taken out)
-  const parts = sense.split(/\s*;\s*/u).map((part) => part.split(/\s*,\s*/u).filter((alt) => !isFragmentAlternative(alt, opts)).map((alt) => alt.replace(/[.\s]+$/u, '')));
+  const parts = splitOutside(sense, ';').map((part) => splitOutside(part, ',').filter((alt) => !isFragmentAlternative(alt, opts)).map((alt) => alt.replace(/[.\s]+$/u, '')));
   const all = parts.flat();
   const shortItems = all.filter((x) => wordsOutside(x) <= MAX_ITEM_WORDS);
   const dropLong = shortItems.length > 0 && shortItems.length < all.length && shortItems.every((x) => !/^\p{Lu}/u.test(x));

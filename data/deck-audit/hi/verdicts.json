@@ -1,0 +1,3126 @@
+{
+ "readBy": "AI models (Claude), not native speakers; each card judged once, in the first sentence it came from, against the brief in docs/ecosystem/DECK-GATE.md. 2026-11-26.",
+ "residual": [
+  "form:hi:छाया",
+  "lemma:hi:छाया:NOUN",
+  "lemma:hi:मनाना:VERB"
+ ],
+ "cards": {
+  "form:hi:अक्सर": [
+   {
+    "shown": "often, usually, frequently",
+    "v": "ok"
+   }
+  ],
+  "form:hi:अख़बार": [
+   {
+    "shown": "newspaper",
+    "v": "ok"
+   }
+  ],
+  "form:hi:अब": [
+   {
+    "shown": "now",
+    "v": "ok"
+   }
+  ],
+  "form:hi:अभी": [
+   {
+    "shown": "right now",
+    "v": "ok"
+   }
+  ],
+  "form:hi:अस्पताल": [
+   {
+    "shown": "hospital",
+    "v": "ok"
+   }
+  ],
+  "form:hi:आज": [
+   {
+    "shown": "today",
+    "v": "ok"
+   }
+  ],
+  "form:hi:आना": [
+   {
+    "shown": "to come, approach, draw near",
+    "v": "ok"
+   }
+  ],
+  "form:hi:आराम": [
+   {
+    "shown": "rest, comfort, ease",
+    "v": "ok"
+   },
+   {
+    "shown": "sensual pleasure, delight, bliss",
+    "v": "false-meaning",
+    "note": "आराम means rest, ease; sensual pleasure is a marginal Sanskrit sense"
+   }
+  ],
+  "form:hi:आलू": [
+   {
+    "shown": "potato",
+    "v": "ok"
+   }
+  ],
+  "form:hi:इंजीनियर": [
+   {
+    "shown": "engineer",
+    "v": "ok"
+   }
+  ],
+  "form:hi:उठना": [
+   {
+    "shown": "to rise, to rise up",
+    "v": "ok"
+   }
+  ],
+  "form:hi:उत्तर": [
+   {
+    "shown": "answer; north",
+    "v": "ok"
+   },
+   {
+    "shown": "reply, answer",
+    "v": "ok"
+   }
+  ],
+  "form:hi:कंपनी": [
+   {
+    "shown": "company, firm",
+    "v": "ok"
+   }
+  ],
+  "form:hi:कई": [
+   {
+    "shown": "several, many",
+    "v": "ok"
+   }
+  ],
+  "form:hi:कक्षा": [
+   {
+    "shown": "class, course",
+    "v": "ok"
+   }
+  ],
+  "form:hi:कभी": [
+   {
+    "shown": "sometimes, once in a while",
+    "v": "ok"
+   }
+  ],
+  "form:hi:कमरा": [
+   {
+    "shown": "room",
+    "v": "ok"
+   }
+  ],
+  "form:hi:करना": [
+   {
+    "shown": "to do, to perform, to execute",
+    "v": "ok"
+   }
+  ],
+  "form:hi:कल": [
+   {
+    "shown": "yesterday",
+    "v": "ok"
+   }
+  ],
+  "form:hi:कहाँ": [
+   {
+    "shown": "where",
+    "v": "ok"
+   }
+  ],
+  "form:hi:कहानी": [
+   {
+    "shown": "story, narrative",
+    "v": "ok"
+   }
+  ],
+  "form:hi:का": [
+   {
+    "shown": "of",
+    "v": "ok"
+   },
+   {
+    "shown": "part of, originating from",
+    "v": "false-meaning",
+    "note": "का means of / possessive marker; \"part of, originating from\" is vague and misleading"
+   }
+  ],
+  "form:hi:काफ़ी": [
+   {
+    "shown": "quite",
+    "v": "ok"
+   }
+  ],
+  "form:hi:काम": [
+   {
+    "shown": "work, task, labour",
+    "v": "ok"
+   }
+  ],
+  "form:hi:कार्ड": [
+   {
+    "shown": "card",
+    "v": "ok"
+   }
+  ],
+  "form:hi:कुछ": [
+   {
+    "shown": "something (inanimate singular)",
+    "v": "ok"
+   }
+  ],
+  "form:hi:कैमरा": [
+   {
+    "shown": "camera",
+    "v": "ok"
+   }
+  ],
+  "form:hi:कॉफ़ी": [
+   {
+    "shown": "coffee",
+    "v": "ok"
+   }
+  ],
+  "form:hi:कोई": [
+   {
+    "shown": "anybody, somebody",
+    "v": "ok"
+   },
+   {
+    "shown": "someone, anyone; some, any",
+    "v": "ok"
+   }
+  ],
+  "form:hi:खिड़की": [
+   {
+    "shown": "window",
+    "v": "ok"
+   }
+  ],
+  "form:hi:गली": [
+   {
+    "shown": "lane, alley",
+    "v": "ok"
+   },
+   {
+    "shown": "street, lane",
+    "v": "ok"
+   }
+  ],
+  "form:hi:गाँव": [
+   {
+    "shown": "village, hamlet",
+    "v": "ok"
+   }
+  ],
+  "form:hi:गृहकार्य": [
+   {
+    "shown": "homework",
+    "v": "ok"
+   }
+  ],
+  "form:hi:गौरव": [
+   {
+    "shown": "a male given name, Gaurav",
+    "v": "false-reading",
+    "note": "here गौरव is the common noun dignity/honour, not the given name Gaurav"
+   }
+  ],
+  "form:hi:घंटा": [
+   {
+    "shown": "hour",
+    "v": "ok"
+   }
+  ],
+  "form:hi:घंटी": [
+   {
+    "shown": "bell",
+    "v": "ok"
+   },
+   {
+    "shown": "small bell; doorbell",
+    "v": "ok"
+   }
+  ],
+  "form:hi:घर": [
+   {
+    "shown": "house, home; dwelling",
+    "v": "ok"
+   }
+  ],
+  "form:hi:चलना": [
+   {
+    "shown": "to function, work",
+    "v": "false-meaning",
+    "note": "चलना mainly means to walk/move/go; \"to function, work\" is a secondary sense and the sentence means walk"
+   }
+  ],
+  "form:hi:चाय": [
+   {
+    "shown": "tea (plant, beverage)",
+    "v": "ok"
+   }
+  ],
+  "form:hi:चावल": [
+   {
+    "shown": "rice",
+    "v": "ok"
+   }
+  ],
+  "form:hi:चित्र": [
+   {
+    "shown": "picture",
+    "v": "ok"
+   }
+  ],
+  "form:hi:चीज़": [
+   {
+    "shown": "thing, object, item",
+    "v": "ok"
+   }
+  ],
+  "form:hi:छाता": [
+   {
+    "shown": "umbrella",
+    "v": "ok"
+   }
+  ],
+  "form:hi:छाया": [
+   {
+    "shown": "shade, a shady place",
+    "v": "false-reading",
+    "note": "छाया here is the past form of the verb छाना (to spread over), not the noun shade"
+   }
+  ],
+  "form:hi:जगह": [
+   {
+    "shown": "place, site",
+    "v": "ok"
+   }
+  ],
+  "form:hi:जल्दी": [
+   {
+    "shown": "quickly, rapidly; soon",
+    "v": "ok"
+   }
+  ],
+  "form:hi:जहाँ": [
+   {
+    "shown": "where (relative)",
+    "v": "ok"
+   },
+   {
+    "shown": "wherever",
+    "v": "false-meaning",
+    "note": "जहाँ means where; wherever is a different (जहाँ-कहीं) sense and misleads"
+   }
+  ],
+  "form:hi:ज़रूर": [
+   {
+    "shown": "certainly, surely",
+    "v": "ok"
+   }
+  ],
+  "form:hi:ज़रूरत": [
+   {
+    "shown": "necessity",
+    "v": "ok"
+   }
+  ],
+  "form:hi:जीरा": [
+   {
+    "shown": "cumin",
+    "v": "ok"
+   }
+  ],
+  "form:hi:जो": [
+   {
+    "shown": "the relative pronoun: — who; whoever",
+    "v": "ok"
+   }
+  ],
+  "form:hi:टमाटर": [
+   {
+    "shown": "tomato",
+    "v": "ok"
+   }
+  ],
+  "form:hi:टीका": [
+   {
+    "shown": "a forehead variolation mark",
+    "v": "false-meaning",
+    "note": "टीका mainly means vaccination (also a tilak mark); variolation mark is a marginal sense"
+   },
+   {
+    "shown": "a tilak mark; vaccination",
+    "v": "ok"
+   }
+  ],
+  "form:hi:टीम": [
+   {
+    "shown": "team",
+    "v": "ok"
+   }
+  ],
+  "form:hi:डाकघर": [
+   {
+    "shown": "post office",
+    "v": "ok"
+   }
+  ],
+  "form:hi:डॉक्टर": [
+   {
+    "shown": "doctor",
+    "v": "ok"
+   }
+  ],
+  "form:hi:तक": [
+   {
+    "shown": "till",
+    "v": "ok"
+   },
+   {
+    "shown": "up to, until, as far as",
+    "v": "ok"
+   }
+  ],
+  "form:hi:तथा": [
+   {
+    "shown": "and",
+    "v": "ok"
+   }
+  ],
+  "form:hi:तब": [
+   {
+    "shown": "then, afterwards",
+    "v": "ok"
+   }
+  ],
+  "form:hi:तुलना": [
+   {
+    "shown": "comparison",
+    "v": "ok"
+   }
+  ],
+  "form:hi:तेल": [
+   {
+    "shown": "oil, petrol",
+    "v": "ok"
+   }
+  ],
+  "form:hi:तैयारी": [
+   {
+    "shown": "preparation",
+    "v": "ok"
+   },
+   {
+    "shown": "readiness",
+    "v": "ok"
+   }
+  ],
+  "form:hi:तो": [
+   {
+    "shown": "a topic marking emphatic particle",
+    "v": "ok"
+   }
+  ],
+  "form:hi:त्योहार": [
+   {
+    "shown": "festival, celebration",
+    "v": "ok"
+   }
+  ],
+  "form:hi:दफ़्तर": [
+   {
+    "shown": "office, bureau",
+    "v": "ok"
+   }
+  ],
+  "form:hi:दर्द": [
+   {
+    "shown": "pain",
+    "v": "ok"
+   }
+  ],
+  "form:hi:दवा": [
+   {
+    "shown": "medicine, treatment",
+    "v": "ok"
+   }
+  ],
+  "form:hi:दही": [
+   {
+    "shown": "curd, yogurt",
+    "v": "ok"
+   }
+  ],
+  "form:hi:दादी": [
+   {
+    "shown": "paternal grandmother",
+    "v": "ok"
+   }
+  ],
+  "form:hi:दाम": [
+   {
+    "shown": "price, value, cost",
+    "v": "ok"
+   }
+  ],
+  "form:hi:दिखाना": [
+   {
+    "shown": "to show",
+    "v": "ok"
+   }
+  ],
+  "form:hi:दिन": [
+   {
+    "shown": "day (any period of twenty-four hours)",
+    "v": "ok"
+   }
+  ],
+  "form:hi:दिल": [
+   {
+    "shown": "heart (organ)",
+    "v": "ok"
+   }
+  ],
+  "form:hi:देर": [
+   {
+    "shown": "period of time; a while",
+    "v": "ok"
+   }
+  ],
+  "form:hi:देश": [
+   {
+    "shown": "nation, country",
+    "v": "ok"
+   }
+  ],
+  "form:hi:दोपहर": [
+   {
+    "shown": "afternoon, midday",
+    "v": "ok"
+   }
+  ],
+  "form:hi:धन्यवाद": [
+   {
+    "shown": "thank you",
+    "v": "ok"
+   },
+   {
+    "shown": "thanks, thank you",
+    "v": "ok"
+   }
+  ],
+  "form:hi:धूप": [
+   {
+    "shown": "sunlight; sunshine",
+    "v": "ok"
+   },
+   {
+    "shown": "sunshine",
+    "v": "ok"
+   }
+  ],
+  "form:hi:ध्यान": [
+   {
+    "shown": "attention, focus",
+    "v": "ok"
+   }
+  ],
+  "form:hi:न": [
+   {
+    "shown": "not, do not",
+    "v": "ok"
+   }
+  ],
+  "form:hi:नंबर": [
+   {
+    "shown": "number, numeral",
+    "v": "ok"
+   }
+  ],
+  "form:hi:नगर": [
+   {
+    "shown": "town, city",
+    "v": "ok"
+   }
+  ],
+  "form:hi:नदी": [
+   {
+    "shown": "river",
+    "v": "ok"
+   }
+  ],
+  "form:hi:नमक": [
+   {
+    "shown": "salt",
+    "v": "ok"
+   }
+  ],
+  "form:hi:नमस्ते": [
+   {
+    "shown": "A salutation",
+    "v": "ok"
+   },
+   {
+    "shown": "hello; goodbye (a greeting)",
+    "v": "ok"
+   }
+  ],
+  "form:hi:नाम": [
+   {
+    "shown": "name",
+    "v": "ok"
+   }
+  ],
+  "form:hi:नाश्ता": [
+   {
+    "shown": "breakfast",
+    "v": "ok"
+   }
+  ],
+  "form:hi:नौकरी": [
+   {
+    "shown": "job, employment, service",
+    "v": "ok"
+   }
+  ],
+  "form:hi:पढ़ना": [
+   {
+    "shown": "to read",
+    "v": "ok"
+   }
+  ],
+  "form:hi:परिवार": [
+   {
+    "shown": "family; household",
+    "v": "ok"
+   }
+  ],
+  "form:hi:परीक्षा": [
+   {
+    "shown": "test, examination",
+    "v": "ok"
+   }
+  ],
+  "form:hi:परेशानी": [
+   {
+    "shown": "distress",
+    "v": "ok"
+   },
+   {
+    "shown": "worry, difficulty",
+    "v": "ok"
+   }
+  ],
+  "form:hi:पहुँचना": [
+   {
+    "shown": "to arrive, reach",
+    "v": "ok"
+   }
+  ],
+  "form:hi:पार": [
+   {
+    "shown": "the other side",
+    "v": "ok"
+   }
+  ],
+  "form:hi:पार्क": [
+   {
+    "shown": "park",
+    "v": "ok"
+   }
+  ],
+  "form:hi:पिता": [
+   {
+    "shown": "father",
+    "v": "ok"
+   }
+  ],
+  "form:hi:पुस्तकालय": [
+   {
+    "shown": "library",
+    "v": "ok"
+   }
+  ],
+  "form:hi:पेट्रोल": [
+   {
+    "shown": "petrol, gasoline",
+    "v": "ok"
+   }
+  ],
+  "form:hi:पैदल": [
+   {
+    "shown": "on foot",
+    "v": "ok"
+   }
+  ],
+  "form:hi:प्याज़": [
+   {
+    "shown": "onion",
+    "v": "ok"
+   }
+  ],
+  "form:hi:प्रकार": [
+   {
+    "shown": "kind, sort",
+    "v": "ok"
+   },
+   {
+    "shown": "type, kind, sort",
+    "v": "ok"
+   }
+  ],
+  "form:hi:प्रस्ताव": [
+   {
+    "shown": "proposal, motion",
+    "v": "ok"
+   },
+   {
+    "shown": "resolution, motion",
+    "v": "ok"
+   }
+  ],
+  "form:hi:फ़ोन": [
+   {
+    "shown": "phone",
+    "v": "ok"
+   },
+   {
+    "shown": "telephone",
+    "v": "ok"
+   }
+  ],
+  "form:hi:बचपन": [
+   {
+    "shown": "childhood",
+    "v": "ok"
+   }
+  ],
+  "form:hi:बनाना": [
+   {
+    "shown": "to make, create, produce",
+    "v": "ok"
+   }
+  ],
+  "form:hi:बहन": [
+   {
+    "shown": "female cousin",
+    "v": "false-meaning",
+    "note": "बहन means sister, not female cousin"
+   },
+   {
+    "shown": "sister",
+    "v": "ok"
+   }
+  ],
+  "form:hi:बाग़": [
+   {
+    "shown": "garden",
+    "v": "ok"
+   }
+  ],
+  "form:hi:बाज़ार": [
+   {
+    "shown": "market; bazaar",
+    "v": "ok"
+   }
+  ],
+  "form:hi:बाढ़": [
+   {
+    "shown": "flood, deluge, torrent",
+    "v": "ok"
+   }
+  ],
+  "form:hi:बात": [
+   {
+    "shown": "talk",
+    "v": "ok"
+   }
+  ],
+  "form:hi:बार": [
+   {
+    "shown": "occasion, time",
+    "v": "ok"
+   }
+  ],
+  "form:hi:बारिश": [
+   {
+    "shown": "rain",
+    "v": "ok"
+   }
+  ],
+  "form:hi:बिजली": [
+   {
+    "shown": "electricity",
+    "v": "ok"
+   }
+  ],
+  "form:hi:बिल्ली": [
+   {
+    "shown": "cat (of any gender)",
+    "v": "ok"
+   }
+  ],
+  "form:hi:बीज": [
+   {
+    "shown": "seed, seedling",
+    "v": "ok"
+   }
+  ],
+  "form:hi:बुद्धि": [
+   {
+    "shown": "wisdom, intelligence",
+    "v": "ok"
+   }
+  ],
+  "form:hi:बुधवार": [
+   {
+    "shown": "Wednesday",
+    "v": "ok"
+   }
+  ],
+  "form:hi:बेटा": [
+   {
+    "shown": "son",
+    "v": "ok"
+   }
+  ],
+  "form:hi:बैठक": [
+   {
+    "shown": "meeting",
+    "v": "ok"
+   }
+  ],
+  "form:hi:भाव": [
+   {
+    "shown": "rate, price",
+    "v": "false-meaning",
+    "note": "भाव mainly means feeling/sentiment (as in the sentence); rate/price is secondary"
+   }
+  ],
+  "form:hi:भी": [
+   {
+    "shown": "even",
+    "v": "false-meaning",
+    "note": "भी mainly means also/too; \"even\" is a secondary nuance"
+   }
+  ],
+  "form:hi:भीड़": [
+   {
+    "shown": "crowd",
+    "v": "ok"
+   }
+  ],
+  "form:hi:मंदिर": [
+   {
+    "shown": "monastery; temple",
+    "v": "false-meaning",
+    "note": "मंदिर means temple; monastery is not its ordinary meaning"
+   },
+   {
+    "shown": "temple",
+    "v": "ok"
+   }
+  ],
+  "form:hi:मदद": [
+   {
+    "shown": "help, assistance, aid, relief",
+    "v": "ok"
+   }
+  ],
+  "form:hi:महिला": [
+   {
+    "shown": "lady, female, woman",
+    "v": "ok"
+   }
+  ],
+  "form:hi:माँ": [
+   {
+    "shown": "mother",
+    "v": "ok"
+   }
+  ],
+  "form:hi:माता": [
+   {
+    "shown": "mother",
+    "v": "ok"
+   }
+  ],
+  "form:hi:मिनट": [
+   {
+    "shown": "minute",
+    "v": "ok"
+   }
+  ],
+  "form:hi:मुँह": [
+   {
+    "shown": "mouth",
+    "v": "ok"
+   }
+  ],
+  "form:hi:मुक़ाबला": [
+   {
+    "shown": "competition, comparison",
+    "v": "ok"
+   }
+  ],
+  "form:hi:में": [
+   {
+    "shown": "in, inside of",
+    "v": "ok"
+   }
+  ],
+  "form:hi:मेला": [
+   {
+    "shown": "fair",
+    "v": "ok"
+   },
+   {
+    "shown": "festival, fair",
+    "v": "ok"
+   }
+  ],
+  "form:hi:मैदान": [
+   {
+    "shown": "field, open ground",
+    "v": "ok"
+   },
+   {
+    "shown": "park, lawn",
+    "v": "false-meaning",
+    "note": "मैदान means field/open ground/plain; park, lawn is not the main sense"
+   }
+  ],
+  "form:hi:मौत": [
+   {
+    "shown": "death",
+    "v": "ok"
+   }
+  ],
+  "form:hi:मौसम": [
+   {
+    "shown": "season",
+    "v": "ok"
+   }
+  ],
+  "form:hi:यह": [
+   {
+    "shown": "this one",
+    "v": "ok"
+   },
+   {
+    "shown": "this; he, she, it (near)",
+    "v": "ok"
+   }
+  ],
+  "form:hi:यहाँ": [
+   {
+    "shown": "here",
+    "v": "ok"
+   }
+  ],
+  "form:hi:रविवार": [
+   {
+    "shown": "Sunday",
+    "v": "ok"
+   }
+  ],
+  "form:hi:राज्य": [
+   {
+    "shown": "state, kingdom",
+    "v": "ok"
+   }
+  ],
+  "form:hi:रात": [
+   {
+    "shown": "night",
+    "v": "ok"
+   }
+  ],
+  "form:hi:रेल": [
+   {
+    "shown": "a rail",
+    "v": "false-meaning",
+    "note": "रेल means railway/train, not \"a rail\""
+   },
+   {
+    "shown": "railway, train",
+    "v": "ok"
+   }
+  ],
+  "form:hi:रेलगाड़ी": [
+   {
+    "shown": "train, locomotive, railcar",
+    "v": "ok"
+   }
+  ],
+  "form:hi:रोज़": [
+   {
+    "shown": "daily, everyday; always",
+    "v": "ok"
+   }
+  ],
+  "form:hi:लगभग": [
+   {
+    "shown": "approximately",
+    "v": "ok"
+   }
+  ],
+  "form:hi:लगातार": [
+   {
+    "shown": "continuously, without pause",
+    "v": "ok"
+   }
+  ],
+  "form:hi:लेकिन": [
+   {
+    "shown": "but, however",
+    "v": "ok"
+   }
+  ],
+  "form:hi:लोग": [
+   {
+    "shown": "people",
+    "v": "ok"
+   }
+  ],
+  "form:hi:वर्ष": [
+   {
+    "shown": "annum, year",
+    "v": "ok"
+   },
+   {
+    "shown": "year",
+    "v": "ok"
+   }
+  ],
+  "form:hi:वह": [
+   {
+    "shown": "that",
+    "v": "ok"
+   }
+  ],
+  "form:hi:विश्वविद्यालय": [
+   {
+    "shown": "university",
+    "v": "ok"
+   }
+  ],
+  "form:hi:शहर": [
+   {
+    "shown": "city",
+    "v": "ok"
+   }
+  ],
+  "form:hi:शाम": [
+   {
+    "shown": "evening",
+    "v": "ok"
+   }
+  ],
+  "form:hi:शुक्रिया": [
+   {
+    "shown": "thanks, thank you",
+    "v": "ok"
+   }
+  ],
+  "form:hi:सड़क": [
+   {
+    "shown": "road",
+    "v": "ok"
+   }
+  ],
+  "form:hi:सप्ताह": [
+   {
+    "shown": "week",
+    "v": "ok"
+   }
+  ],
+  "form:hi:सब": [
+   {
+    "shown": "all; everyone, everybody",
+    "v": "ok"
+   }
+  ],
+  "form:hi:सब्ज़ी": [
+   {
+    "shown": "vegetable",
+    "v": "ok"
+   }
+  ],
+  "form:hi:समय": [
+   {
+    "shown": "time",
+    "v": "ok"
+   }
+  ],
+  "form:hi:समानता": [
+   {
+    "shown": "equality",
+    "v": "ok"
+   }
+  ],
+  "form:hi:सरकार": [
+   {
+    "shown": "government",
+    "v": "ok"
+   }
+  ],
+  "form:hi:सलाह": [
+   {
+    "shown": "advice, counsel",
+    "v": "ok"
+   }
+  ],
+  "form:hi:सहायता": [
+   {
+    "shown": "help, assistance, aid",
+    "v": "ok"
+   }
+  ],
+  "form:hi:सहेली": [
+   {
+    "shown": "a female friend",
+    "v": "ok"
+   },
+   {
+    "shown": "a girl's friend",
+    "v": "ok"
+   }
+  ],
+  "form:hi:साल": [
+   {
+    "shown": "year",
+    "v": "ok"
+   }
+  ],
+  "form:hi:सिर": [
+   {
+    "shown": "head",
+    "v": "ok"
+   }
+  ],
+  "form:hi:सुबह": [
+   {
+    "shown": "morning, dawn",
+    "v": "ok"
+   }
+  ],
+  "form:hi:सेवा": [
+   {
+    "shown": "service, care",
+    "v": "ok"
+   }
+  ],
+  "form:hi:सोमवार": [
+   {
+    "shown": "Monday",
+    "v": "ok"
+   }
+  ],
+  "form:hi:स्कूल": [
+   {
+    "shown": "school",
+    "v": "ok"
+   }
+  ],
+  "form:hi:स्टेशन": [
+   {
+    "shown": "station",
+    "v": "ok"
+   }
+  ],
+  "form:hi:स्वास्थ्य": [
+   {
+    "shown": "health",
+    "v": "ok"
+   }
+  ],
+  "form:hi:हर": [
+   {
+    "shown": "each",
+    "v": "ok"
+   }
+  ],
+  "form:hi:हाथ": [
+   {
+    "shown": "hand",
+    "v": "ok"
+   }
+  ],
+  "form:hi:हिंदी": [
+   {
+    "shown": "an Indian; a person of India",
+    "v": "false-meaning",
+    "note": "हिंदी here is the Hindi language; \"an Indian\" is a marginal sense"
+   }
+  ],
+  "form:hi:ही": [
+   {
+    "shown": "an emphatic particle",
+    "v": "ok"
+   },
+   {
+    "shown": "only, just, very; (emphasis)",
+    "v": "ok"
+   }
+  ],
+  "form:hi:होटल": [
+   {
+    "shown": "hotel",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:अंदर:ADP": [
+   {
+    "shown": "inside, in (in के अंदर)",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:अक्सर:ADV": [
+   {
+    "shown": "often",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:अख़बार:NOUN": [
+   {
+    "shown": "newspaper",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:अधिक:ADV": [
+   {
+    "shown": "more, much",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:अधिकार:NOUN": [
+   {
+    "shown": "right; authority",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:अनीता:PROPN": [
+   {
+    "shown": "Anita (a girl's name)",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:अनुसार:ADP": [
+   {
+    "shown": "according to (in के अनुसार)",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:अब:ADV": [
+   {
+    "shown": "now",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:अभी:ADV": [
+   {
+    "shown": "right now, just now",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:अस्पताल:NOUN": [
+   {
+    "shown": "hospital",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:आज:ADV": [
+   {
+    "shown": "today",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:आजकल:ADV": [
+   {
+    "shown": "nowadays, these days",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:आना:VERB": [
+   {
+    "shown": "to come",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:आप:PRON": [
+   {
+    "shown": "you (polite); oneself (in अपने आप)",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:आपका:DET": [
+   {
+    "shown": "your (polite)",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:आराम:NOUN": [
+   {
+    "shown": "rest, comfort, ease",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:आलू:NOUN": [
+   {
+    "shown": "potato",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:आसपास:ADV": [
+   {
+    "shown": "around, nearby",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:इंजीनियर:NOUN": [
+   {
+    "shown": "engineer",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:इलाक़ा:NOUN": [
+   {
+    "shown": "area, district",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:इसका:DET": [
+   {
+    "shown": "its, his, her (this one's)",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:इसलिए:CONJ": [
+   {
+    "shown": "therefore, so, for this reason",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:उठना:VERB": [
+   {
+    "shown": "to get up, to rise",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:उत्तर:NOUN": [
+   {
+    "shown": "answer; north",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:उबालना:VERB": [
+   {
+    "shown": "to boil",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:ओर:ADP": [
+   {
+    "shown": "toward, in the direction of (in की ओर)",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:कंपनी:NOUN": [
+   {
+    "shown": "company",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:कई:DET": [
+   {
+    "shown": "several, many a",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:कक्षा:NOUN": [
+   {
+    "shown": "class, classroom",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:कचरा:NOUN": [
+   {
+    "shown": "rubbish, waste",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:कप:NOUN": [
+   {
+    "shown": "cup",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:कभी:ADV": [
+   {
+    "shown": "ever, sometime; (with न: never)",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:कमरा:NOUN": [
+   {
+    "shown": "room",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:कमीज़:NOUN": [
+   {
+    "shown": "shirt",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:करना:VERB": [
+   {
+    "shown": "to do, to make",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:कल:ADV": [
+   {
+    "shown": "yesterday; tomorrow",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:कहना:VERB": [
+   {
+    "shown": "to say, to tell",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:कहाँ:ADV": [
+   {
+    "shown": "where",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:कहानी:NOUN": [
+   {
+    "shown": "story",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:क़ीमत:NOUN": [
+   {
+    "shown": "price, value",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:का:ADP": [
+   {
+    "shown": "of; 's (agrees with the thing owned: का के की)",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:काटना:VERB": [
+   {
+    "shown": "to cut; to bite",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:काफ़ी:ADV": [
+   {
+    "shown": "quite, enough, rather",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:काम:NOUN": [
+   {
+    "shown": "work, job, task",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:कारण:ADP": [
+   {
+    "shown": "because of, owing to (in के कारण)",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:कार्ड:NOUN": [
+   {
+    "shown": "card",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:कि:SCONJ": [
+   {
+    "shown": "that",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:किताब:NOUN": [
+   {
+    "shown": "book",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:किनारा:NOUN": [
+   {
+    "shown": "edge, bank, shore",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:किसान:NOUN": [
+   {
+    "shown": "farmer",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:कुछ:PRON": [
+   {
+    "shown": "something, anything; some",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:कैमरा:NOUN": [
+   {
+    "shown": "camera",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:कॉफ़ी:NOUN": [
+   {
+    "shown": "coffee",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:को:ADP": [
+   {
+    "shown": "to; (marks the person receiving or the definite object)",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:कोई:PRON": [
+   {
+    "shown": "someone, anyone; some, any",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:कोहरा:NOUN": [
+   {
+    "shown": "fog, mist",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:कौन:PRON": [
+   {
+    "shown": "who",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:ख़रीदना:VERB": [
+   {
+    "shown": "to buy",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:खिड़की:NOUN": [
+   {
+    "shown": "window",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:खुलना:VERB": [
+   {
+    "shown": "to open (by itself), to be opened",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:गर्मी:NOUN": [
+   {
+    "shown": "heat; summer",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:गला:NOUN": [
+   {
+    "shown": "throat, neck",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:गली:NOUN": [
+   {
+    "shown": "lane, alley",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:गाँव:NOUN": [
+   {
+    "shown": "village",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:गृहकार्य:NOUN": [
+   {
+    "shown": "homework",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:गौरव:PROPN": [
+   {
+    "shown": "Gaurav (a boy's name)",
+    "v": "false-reading",
+    "note": "here गौरव is the common noun dignity/honour, not the given name Gaurav"
+   }
+  ],
+  "lemma:hi:घंटा:NOUN": [
+   {
+    "shown": "hour; bell",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:घंटी:NOUN": [
+   {
+    "shown": "bell",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:घबराना:VERB": [
+   {
+    "shown": "to be flustered, to panic",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:घर:NOUN": [
+   {
+    "shown": "house, home",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:चलना:VERB": [
+   {
+    "shown": "to walk, to move, to go along; to work (a machine)",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:चाय:NOUN": [
+   {
+    "shown": "tea",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:चावल:NOUN": [
+   {
+    "shown": "rice",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:चाहना:VERB": [
+   {
+    "shown": "to want, to wish",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:चित्र:NOUN": [
+   {
+    "shown": "picture, drawing",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:चीज़:NOUN": [
+   {
+    "shown": "thing",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:चुकना:VERB": [
+   {
+    "shown": "to have already (done); to be finished",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:चौंकना:VERB": [
+   {
+    "shown": "to be startled",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:चौराहा:NOUN": [
+   {
+    "shown": "crossroads",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:छाता:NOUN": [
+   {
+    "shown": "umbrella",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:छात्र:NOUN": [
+   {
+    "shown": "student (boy)",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:छाया:NOUN": [
+   {
+    "shown": "shade, shadow",
+    "v": "false-reading",
+    "note": "छाया रहा is the verb छाना (hung over/spread), not the noun shade"
+   }
+  ],
+  "lemma:hi:छुट्टी:NOUN": [
+   {
+    "shown": "holiday, leave",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:छूटना:VERB": [
+   {
+    "shown": "to be left behind, to be released",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:जगमगाना:VERB": [
+   {
+    "shown": "to sparkle, to glitter",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:जगह:NOUN": [
+   {
+    "shown": "place, space",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:जब:SCONJ": [
+   {
+    "shown": "when",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:जल्दी:ADV": [
+   {
+    "shown": "quickly; early, soon",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:जहाँ:ADV": [
+   {
+    "shown": "where (relative)",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:ज़रूर:ADV": [
+   {
+    "shown": "certainly, surely; without fail",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:ज़रूरत:NOUN": [
+   {
+    "shown": "need, necessity",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:जागना:VERB": [
+   {
+    "shown": "to wake up, to be awake",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:जीतना:VERB": [
+   {
+    "shown": "to win",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:जीना:VERB": [
+   {
+    "shown": "to live",
+    "v": "false-reading",
+    "note": "जी here is the honorific particle (जी हाँ = yes), not a form of जीना to live"
+   }
+  ],
+  "lemma:hi:जीरा:NOUN": [
+   {
+    "shown": "cumin",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:जो:PRON": [
+   {
+    "shown": "who, which, that (relative)",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:टमाटर:NOUN": [
+   {
+    "shown": "tomato",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:टहलना:VERB": [
+   {
+    "shown": "to take a walk",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:टीका:NOUN": [
+   {
+    "shown": "a tilak mark; vaccination",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:टीम:NOUN": [
+   {
+    "shown": "team",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:टुकड़ा:NOUN": [
+   {
+    "shown": "piece, bit",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:टूटना:VERB": [
+   {
+    "shown": "to break (by itself)",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:डाकघर:NOUN": [
+   {
+    "shown": "post office",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:डालना:VERB": [
+   {
+    "shown": "to put in, to pour, to throw in",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:डूबना:VERB": [
+   {
+    "shown": "to sink, to drown, to set (the sun)",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:डॉक्टर:NOUN": [
+   {
+    "shown": "doctor",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:तक:ADP": [
+   {
+    "shown": "up to, until, as far as; even",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:तथा:CONJ": [
+   {
+    "shown": "and",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:तब:ADV": [
+   {
+    "shown": "then, at that time",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:तरह:ADP": [
+   {
+    "shown": "like, in the manner of (in की तरह)",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:तुम:PRON": [
+   {
+    "shown": "you (familiar)",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:तुम्हारा:DET": [
+   {
+    "shown": "your (familiar)",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:तुलना:NOUN": [
+   {
+    "shown": "comparison",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:तेज़ी:NOUN": [
+   {
+    "shown": "speed, quickness; haste",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:तेल:NOUN": [
+   {
+    "shown": "oil",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:तैयारी:NOUN": [
+   {
+    "shown": "preparation",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:तैरना:VERB": [
+   {
+    "shown": "to swim",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:तो:PART": [
+   {
+    "shown": "then, so; indeed, as for (emphasis)",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:त्योहार:NOUN": [
+   {
+    "shown": "festival",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:थकना:VERB": [
+   {
+    "shown": "to get tired",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:दफ़्तर:NOUN": [
+   {
+    "shown": "office",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:दर्द:NOUN": [
+   {
+    "shown": "pain",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:दवा:NOUN": [
+   {
+    "shown": "medicine",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:दही:NOUN": [
+   {
+    "shown": "curd, yoghurt",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:दादी:NOUN": [
+   {
+    "shown": "paternal grandmother",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:दाम:NOUN": [
+   {
+    "shown": "price",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:दाल:NOUN": [
+   {
+    "shown": "lentils",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:दिखना:VERB": [
+   {
+    "shown": "to be seen, to appear",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:दिखाना:VERB": [
+   {
+    "shown": "to show",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:दिन:NOUN": [
+   {
+    "shown": "day",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:दिल:NOUN": [
+   {
+    "shown": "heart",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:दिल्ली:PROPN": [
+   {
+    "shown": "Delhi",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:दूर:ADV": [
+   {
+    "shown": "far, far away",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:देखना:VERB": [
+   {
+    "shown": "to see, to look at",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:देना:VERB": [
+   {
+    "shown": "to give; to let",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:देर:NOUN": [
+   {
+    "shown": "delay, lateness",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:देश:NOUN": [
+   {
+    "shown": "country, nation",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:दोनों:PRON": [
+   {
+    "shown": "both",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:दोपहर:NOUN": [
+   {
+    "shown": "noon, afternoon",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:दोस्त:NOUN": [
+   {
+    "shown": "friend",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:धन्यवाद:INTJ": [
+   {
+    "shown": "thank you",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:धूप:NOUN": [
+   {
+    "shown": "sunshine",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:धोना:VERB": [
+   {
+    "shown": "to wash",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:ध्यान:NOUN": [
+   {
+    "shown": "attention; meditation",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:न:PART": [
+   {
+    "shown": "not; (a tag question: न?)",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:नंबर:NOUN": [
+   {
+    "shown": "number, mark, turn",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:नगर:NOUN": [
+   {
+    "shown": "city, town",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:नदी:NOUN": [
+   {
+    "shown": "river",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:नमक:NOUN": [
+   {
+    "shown": "salt",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:नमस्ते:INTJ": [
+   {
+    "shown": "hello; goodbye (a greeting)",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:नहाना:VERB": [
+   {
+    "shown": "to bathe",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:नहीं:ADV": [
+   {
+    "shown": "not, no",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:नाम:NOUN": [
+   {
+    "shown": "name",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:नाश्ता:NOUN": [
+   {
+    "shown": "breakfast, snack",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:निकलना:VERB": [
+   {
+    "shown": "to come out, to leave, to set out",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:ने:ADP": [
+   {
+    "shown": "(marks the doer of a perfective verb)",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:नौकरी:NOUN": [
+   {
+    "shown": "job, service",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:पकना:VERB": [
+   {
+    "shown": "to ripen, to be cooked",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:पड़ना:VERB": [
+   {
+    "shown": "to fall; to have to (after an oblique infinitive)",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:पड़ोसी:NOUN": [
+   {
+    "shown": "neighbour",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:पढ़ना:VERB": [
+   {
+    "shown": "to read, to study",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:पढ़ाना:VERB": [
+   {
+    "shown": "to teach; to make read",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:परांठा:NOUN": [
+   {
+    "shown": "paratha, fried flatbread",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:परिवार:NOUN": [
+   {
+    "shown": "family",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:परीक्षा:NOUN": [
+   {
+    "shown": "examination, test",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:परेशानी:NOUN": [
+   {
+    "shown": "worry, difficulty",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:पहाड़:NOUN": [
+   {
+    "shown": "mountain, hill",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:पहुँचना:VERB": [
+   {
+    "shown": "to arrive, to reach",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:पहुँचाना:VERB": [
+   {
+    "shown": "to take to, to deliver",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:पार:NOUN": [
+   {
+    "shown": "the other side, the far bank",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:पार्क:NOUN": [
+   {
+    "shown": "park",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:पास:ADP": [
+   {
+    "shown": "near, with; at hand (in के पास)",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:पिता:NOUN": [
+   {
+    "shown": "father",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:पिताजी:NOUN": [
+   {
+    "shown": "father (respectful)",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:पीना:VERB": [
+   {
+    "shown": "to drink",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:पुस्तकालय:NOUN": [
+   {
+    "shown": "library",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:पेट्रोल:NOUN": [
+   {
+    "shown": "petrol",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:पैदल:ADV": [
+   {
+    "shown": "on foot",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:पौधा:NOUN": [
+   {
+    "shown": "plant",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:प्याज़:NOUN": [
+   {
+    "shown": "onion",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:प्रकार:NOUN": [
+   {
+    "shown": "kind, sort",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:प्रतिशत:NOUN": [
+   {
+    "shown": "percent",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:प्रस्ताव:NOUN": [
+   {
+    "shown": "proposal, motion",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:फ़ोन:NOUN": [
+   {
+    "shown": "telephone",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:बगीचा:NOUN": [
+   {
+    "shown": "garden",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:बचपन:NOUN": [
+   {
+    "shown": "childhood",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:बच्चा:NOUN": [
+   {
+    "shown": "child",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:बजना:VERB": [
+   {
+    "shown": "to ring, to sound",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:बताना:VERB": [
+   {
+    "shown": "to tell, to show, to inform",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:बनना:VERB": [
+   {
+    "shown": "to be made, to become",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:बनाना:VERB": [
+   {
+    "shown": "to make, to build, to cook",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:बसना:VERB": [
+   {
+    "shown": "to settle, to dwell",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:बहन:NOUN": [
+   {
+    "shown": "sister",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:बाग़:NOUN": [
+   {
+    "shown": "garden",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:बाज़ार:NOUN": [
+   {
+    "shown": "market",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:बाढ़:NOUN": [
+   {
+    "shown": "flood",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:बात:NOUN": [
+   {
+    "shown": "matter, thing said, talk",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:बाद:ADP": [
+   {
+    "shown": "after (in के बाद)",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:बायाँ:ADJ": [
+   {
+    "shown": "left (the left hand, the left side)",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:बार:NOUN": [
+   {
+    "shown": "time, occasion (पहली बार)",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:बारिश:NOUN": [
+   {
+    "shown": "rain",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:बाहर:ADP": [
+   {
+    "shown": "outside (in के बाहर)",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:बिकना:VERB": [
+   {
+    "shown": "to be sold",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:बिजली:NOUN": [
+   {
+    "shown": "lightning; electricity",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:बिलकुल:ADV": [
+   {
+    "shown": "completely, absolutely, quite",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:बिल्ली:NOUN": [
+   {
+    "shown": "cat",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:बीच:ADP": [
+   {
+    "shown": "between, in the middle of (in के बीच)",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:बीज:NOUN": [
+   {
+    "shown": "seed",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:बुखार:NOUN": [
+   {
+    "shown": "fever",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:बुद्धि:NOUN": [
+   {
+    "shown": "intellect, wisdom",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:बुधवार:NOUN": [
+   {
+    "shown": "Wednesday",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:बेटा:NOUN": [
+   {
+    "shown": "son; (a dear child)",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:बैंक:NOUN": [
+   {
+    "shown": "bank",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:बैठक:NOUN": [
+   {
+    "shown": "meeting, sitting room",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:बैठना:VERB": [
+   {
+    "shown": "to sit",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:बोलना:VERB": [
+   {
+    "shown": "to speak",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:भागना:VERB": [
+   {
+    "shown": "to run away, to flee",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:भारत:PROPN": [
+   {
+    "shown": "India",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:भाव:NOUN": [
+   {
+    "shown": "feeling; price, rate",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:भी:PART": [
+   {
+    "shown": "also, too, even",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:भीड़:NOUN": [
+   {
+    "shown": "crowd",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:भूलना:VERB": [
+   {
+    "shown": "to forget",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:भेजना:VERB": [
+   {
+    "shown": "to send",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:मंदिर:NOUN": [
+   {
+    "shown": "temple",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:मदद:NOUN": [
+   {
+    "shown": "help",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:मनाना:VERB": [
+   {
+    "shown": "to persuade; to celebrate (a feast)",
+    "v": "false-reading",
+    "note": "मना है here is the adjective मना (forbidden/prohibited), not the verb मनाना"
+   }
+  ],
+  "lemma:hi:मनुष्य:NOUN": [
+   {
+    "shown": "human being, mankind",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:मशीन:NOUN": [
+   {
+    "shown": "machine",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:मसाला:NOUN": [
+   {
+    "shown": "spice",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:महिला:NOUN": [
+   {
+    "shown": "woman, lady",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:महीना:NOUN": [
+   {
+    "shown": "month",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:माँ:NOUN": [
+   {
+    "shown": "mother",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:माता:NOUN": [
+   {
+    "shown": "mother",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:मामला:NOUN": [
+   {
+    "shown": "matter, affair",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:मिनट:NOUN": [
+   {
+    "shown": "minute",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:मिलना:VERB": [
+   {
+    "shown": "to meet; to be found, to be got",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:मिलाना:VERB": [
+   {
+    "shown": "to mix, to join; to introduce",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:मुँह:NOUN": [
+   {
+    "shown": "mouth; face",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:मुंबई:PROPN": [
+   {
+    "shown": "Mumbai",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:मुक़ाबला:NOUN": [
+   {
+    "shown": "competition, match, comparison",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:मुड़ना:VERB": [
+   {
+    "shown": "to turn (oneself)",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:में:ADP": [
+   {
+    "shown": "in, inside; among",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:मेरा:DET": [
+   {
+    "shown": "my",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:मेला:NOUN": [
+   {
+    "shown": "fair",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:मैं:PRON": [
+   {
+    "shown": "I",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:मैदान:NOUN": [
+   {
+    "shown": "field, open ground",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:मोहल्ला:NOUN": [
+   {
+    "shown": "neighbourhood, locality",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:मौत:NOUN": [
+   {
+    "shown": "death",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:मौसम:NOUN": [
+   {
+    "shown": "weather, season",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:यह:PRON": [
+   {
+    "shown": "this; he, she, it (near)",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:यहाँ:ADV": [
+   {
+    "shown": "here",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:यात्री:NOUN": [
+   {
+    "shown": "traveller, passenger",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:रखना:VERB": [
+   {
+    "shown": "to keep, to put, to place",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:रविवार:NOUN": [
+   {
+    "shown": "Sunday",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:रहना:VERB": [
+   {
+    "shown": "to stay, to live; to keep on (the continuous)",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:राज्य:NOUN": [
+   {
+    "shown": "state; kingdom",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:रात:NOUN": [
+   {
+    "shown": "night",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:रास्ता:NOUN": [
+   {
+    "shown": "way, path, road",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:रुपया:NOUN": [
+   {
+    "shown": "rupee",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:रेल:NOUN": [
+   {
+    "shown": "railway, train",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:रेलगाड़ी:NOUN": [
+   {
+    "shown": "train",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:रोज़:ADV": [
+   {
+    "shown": "every day, daily",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:लगना:VERB": [
+   {
+    "shown": "to seem; to be felt; to begin (after an oblique infinitive)",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:लगभग:ADV": [
+   {
+    "shown": "about, approximately",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:लगातार:ADV": [
+   {
+    "shown": "continuously, without a break",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:लड़का:NOUN": [
+   {
+    "shown": "boy",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:लाना:VERB": [
+   {
+    "shown": "to bring",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:लेकिन:CONJ": [
+   {
+    "shown": "but",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:लेटना:VERB": [
+   {
+    "shown": "to lie down",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:लेना:VERB": [
+   {
+    "shown": "to take",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:लोग:NOUN": [
+   {
+    "shown": "people",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:लौटना:VERB": [
+   {
+    "shown": "to return, to come back",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:वजह:ADP": [
+   {
+    "shown": "because of, owing to (in की वजह से)",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:वर्ष:NOUN": [
+   {
+    "shown": "year",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:वह:PRON": [
+   {
+    "shown": "that; he, she, it (far)",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:विद्यार्थी:NOUN": [
+   {
+    "shown": "student",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:विश्वविद्यालय:NOUN": [
+   {
+    "shown": "university",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:वे:PRON": [
+   {
+    "shown": "those; they (far)",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:शहर:NOUN": [
+   {
+    "shown": "city, town",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:शाम:NOUN": [
+   {
+    "shown": "evening",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:शुक्रिया:INTJ": [
+   {
+    "shown": "thanks",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:सड़क:NOUN": [
+   {
+    "shown": "road, street",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:सप्ताह:NOUN": [
+   {
+    "shown": "week",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:सब:PRON": [
+   {
+    "shown": "all, everyone, everything",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:सब्ज़ी:NOUN": [
+   {
+    "shown": "vegetable; a cooked dish",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:सभी:PRON": [
+   {
+    "shown": "all, everyone",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:समय:NOUN": [
+   {
+    "shown": "time; period",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:समानता:NOUN": [
+   {
+    "shown": "equality, likeness",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:सरकार:NOUN": [
+   {
+    "shown": "government",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:सर्दी:NOUN": [
+   {
+    "shown": "cold; winter; a cold",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:सलाह:NOUN": [
+   {
+    "shown": "advice",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:सहायता:NOUN": [
+   {
+    "shown": "help, aid",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:सहेली:NOUN": [
+   {
+    "shown": "a girl's friend",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:साइकिल:NOUN": [
+   {
+    "shown": "bicycle",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:साथ:ADP": [
+   {
+    "shown": "with, together with (in के साथ)",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:सामने:ADP": [
+   {
+    "shown": "in front of, facing (in के सामने)",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:साल:NOUN": [
+   {
+    "shown": "year",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:सिर:NOUN": [
+   {
+    "shown": "head",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:सिर्फ़:PART": [
+   {
+    "shown": "only, merely",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:सीखना:VERB": [
+   {
+    "shown": "to learn",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:सुनना:VERB": [
+   {
+    "shown": "to hear, to listen",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:सुनाना:VERB": [
+   {
+    "shown": "to tell, to recite, to make hear",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:सुबह:NOUN": [
+   {
+    "shown": "morning",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:सेंकना:VERB": [
+   {
+    "shown": "to toast, to warm by a fire",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:सेवा:NOUN": [
+   {
+    "shown": "service",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:सैकड़ा:NOUN": [
+   {
+    "shown": "a hundred, hundreds",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:सोफ़ा:NOUN": [
+   {
+    "shown": "sofa",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:सोमवार:NOUN": [
+   {
+    "shown": "Monday",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:स्कूल:NOUN": [
+   {
+    "shown": "school",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:स्टेशन:NOUN": [
+   {
+    "shown": "station",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:स्थान:NOUN": [
+   {
+    "shown": "place",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:स्वतंत्रता:NOUN": [
+   {
+    "shown": "freedom, independence",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:स्वास्थ्य:NOUN": [
+   {
+    "shown": "health",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:हफ़्ता:NOUN": [
+   {
+    "shown": "week",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:हम:PRON": [
+   {
+    "shown": "we",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:हमारा:DET": [
+   {
+    "shown": "our",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:हर:DET": [
+   {
+    "shown": "every, each",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:हाँ:INTJ": [
+   {
+    "shown": "yes",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:हाथ:NOUN": [
+   {
+    "shown": "hand",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:हिंदी:NOUN": [
+   {
+    "shown": "Hindi",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:ही:PART": [
+   {
+    "shown": "only, just, very; (emphasis)",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:होटल:NOUN": [
+   {
+    "shown": "hotel",
+    "v": "ok"
+   }
+  ],
+  "lemma:hi:होना:AUX": [
+   {
+    "shown": "to be; to become",
+    "v": "ok"
+   }
+  ]
+ }
+}

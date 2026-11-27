@@ -22,6 +22,13 @@ describe('the account page', () => {
     expect(link.querySelector('svg circle')).not.toBeNull(); // the person: a head over shoulders, like Biblia's
     expect(link.previousElementSibling?.id).toBe('header-languages');
     expect(link.nextElementSibling?.id).toBe('settings-link');
+    // the Languages tab is a symbol too (the owner, 2026-11-26): a globe with no words of its own, named by the link and its tip
+    const languages = rig.q<HTMLAnchorElement>('header #header-languages');
+    expect([languages.textContent, languages.getAttribute('aria-label'), languages.title, languages.getAttribute('href')]).toEqual(['', 'Languages', 'Languages', '#/languages']);
+    expect(languages.querySelectorAll('svg[aria-hidden="true"]').length).toBe(1);
+    expect(languages.querySelector('svg circle')!.getAttribute('r')).toBe('9'); // the globe's outline
+    expect(languages.classList.contains('cog')).toBe(true); // the same round target as the person and the cog
+    expect(languages.getAttribute('aria-current')).toBeNull();
     await rig.go('account');
     expect(rig.q('main h1').textContent).toBe('Account');
     expect(rig.q('header #header-account').getAttribute('aria-current')).toBe('page');

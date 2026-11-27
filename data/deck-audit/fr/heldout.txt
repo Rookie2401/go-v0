@@ -1,0 +1,95 @@
+# HELD-OUT half (fr): never read while the gate or a known-limits list was written. Written for the deck audit by an AI model (not a native speaker); no rights are claimed by anyone else. One sentence per line.
+# everyday narrative
+Le samedi, mon oncle nous emmène souvent pêcher au bord du canal, même quand il fait froid.
+J'ai raté mon train parce que j'avais oublié mon téléphone sur le bureau de la cuisine.
+Pendant que les enfants dessinaient, leur mère préparait une soupe de légumes avec des carottes et des poireaux.
+Nous n'avons jamais visité ce château, bien qu'il soit à dix minutes de chez nous.
+Hélène a repeint les volets de sa maison en bleu, ce qui a beaucoup surpris les voisins.
+Je prends le métro tous les matins, et il y a toujours trop de monde.
+La semaine dernière, mon cousin a gagné un petit concours de pâtisserie organisé par la bibliothèque.
+Quand il pleuvait, nous restions à la maison et nous jouions aux cartes pendant des heures.
+Le facteur a laissé un paquet devant la porte, mais personne ne l'a vu avant le soir.
+Je n'aime pas me lever tôt, pourtant je dois être au bureau à sept heures et demie.
+Ils ont acheté un vieux piano qu'ils ont trouvé dans une brocante au fond de la campagne.
+Lucas ne savait pas nager, alors sa tante lui a donné des cours tout l'été.
+Elle a grandi dans une petite ville de montagne où les hivers sont longs et très froids.
+Nous avons marché le long de la plage jusqu'au coucher du soleil sans dire un mot.
+Après avoir fermé les fenêtres, j'ai éteint les lumières et je suis allé me coucher.
+Ma tante cultive des fleurs qu'elle vend le dimanche matin sur la place du village.
+Je crois que j'ai perdu mon parapluie dans le tramway, mais je n'en suis pas sûr.
+Mon fils veut devenir pompier, comme son parrain, qui travaille à la caserne de la ville.
+Le boulanger du quartier se lève à quatre heures pour que le pain soit chaud à l'ouverture.
+Ils se sont rencontrés dans un train de nuit, et ils ne se sont plus jamais quittés.
+Cet été, nous voulons visiter les îles du sud, que nous ne connaissons pas encore.
+Elle a mis son manteau, pris son sac et claqué la porte sans se retourner.
+Mes parents vendaient des légumes au marché quand j'étais petit, et je les aidais le week-end.
+Il m'a promis de venir, mais je pense qu'il a déjà changé d'avis.
+La rue était si calme que j'entendais mes pas résonner contre les murs des maisons.
+Si j'avais plus de temps, je prendrais des cours de peinture avec une artiste de mon quartier.
+Nous avons peint la chambre du bébé en jaune clair, avec des nuages blancs au plafond.
+Le chat de ma voisine entre chez moi par la fenêtre et s'installe toujours sur mon fauteuil.
+Il a fallu trois heures pour monter au sommet, mais la vue valait vraiment la peine.
+Je me souviens très bien du jour où nous avons planté ce vieux chêne devant l'école.
+# news register
+Le prix du pain a progressé de deux pour cent ce trimestre, d'après une enquête menée auprès des commerçants.
+Des orages violents ont touché l'ouest du pays dans la nuit, et plusieurs routes ont été inondées.
+La commune a voté la création d'une nouvelle piste cyclable qui reliera le centre aux zones commerciales.
+Le gardien de but a arrêté deux tirs au but, et son équipe s'est qualifiée pour la finale.
+Une équipe de chercheurs affirme avoir trouvé un moyen de conserver les fruits trois fois plus longtemps.
+Les hôpitaux de la région sont presque pleins à cause d'une épidémie de bronchite chez les jeunes enfants.
+Le gouvernement local a annoncé une aide pour les familles qui souhaitent isoler leur maison.
+La production de lait a diminué dans plusieurs départements, car les pâturages manquent d'eau depuis juin.
+Une exposition consacrée aux insectes ouvrira ses portes samedi au musée d'histoire naturelle.
+La direction de l'usine a confirmé que cent vingt emplois seront créés dans les deux prochaines années.
+Les températures resteront inférieures aux normales de saison jusqu'à la fin de la semaine, selon les prévisionnistes.
+Après trois ans de travaux, la gare de la ville a enfin rouvert ses portes au public.
+Le maire a rappelé qu'il est interdit de brûler des déchets dans les jardins pendant l'été.
+Un nageur de seize ans a battu le record régional du cent mètres nage libre dimanche dernier.
+Les médecins recommandent de boire davantage d'eau pendant les périodes de forte chaleur, surtout pour les personnes âgées.
+Le nombre de visiteurs de la bibliothèque municipale a doublé depuis l'ouverture de l'espace réservé aux enfants.
+Une panne d'électricité a privé de courant près de cinq mille foyers pendant presque deux heures.
+Les ingénieurs testent un nouveau type de batterie qui se recharge en moins de dix minutes.
+Le marché de Noël commencera cette année une semaine plus tôt que d'habitude, a indiqué l'office du tourisme.
+La région a investi trois millions d'euros dans la modernisation des lycées techniques.
+# conversation
+Excusez-moi, savez-vous où se trouve la poste la plus proche ?
+Oui, c'est au bout de cette rue, à côté du café.
+Je voudrais envoyer ce colis en Belgique, combien de temps cela prendra-t-il ?
+Normalement, il arrive en quatre jours, mais cela dépend de la douane.
+Tu as vu mes clés ? Je ne les trouve nulle part.
+Regarde dans la poche de ta veste, tu les mets souvent là.
+Ah oui, les voilà, merci ! Je suis déjà en retard.
+Bonsoir, nous avons réservé une table pour quatre personnes au nom de Dupont.
+Bien sûr, suivez-moi, votre table est près de la fenêtre.
+Qu'est-ce que vous nous conseillez comme plat du jour ?
+Je vous recommande le poisson, il est très frais et il vient du port ce matin.
+Est-ce que ce n'est pas trop cher pour ce que c'est ?
+Non, je ne pense pas, le prix comprend l'entrée et le dessert.
+Allô, bonjour, je voudrais prendre un rendez-vous avec le docteur Leroy, s'il vous plaît.
+Il peut vous recevoir jeudi à quinze heures, cela vous convient-il ?
+Malheureusement non, je travaille jusqu'à dix-sept heures ce jour-là.
+Alors, que pensez-vous de vendredi matin, vers neuf heures ?
+Parfait, je vous remercie, à vendredi.
+Je suis désolé, je n'ai pas compris votre question, pouvez-vous la répéter ?
+Je demandais si le bureau était ouvert le lundi après-midi.
+Non, il est fermé le lundi, mais vous pouvez revenir mardi dès huit heures.
+As-tu fini ton rapport, ou as-tu encore besoin de quelques jours ?
+Il me manque seulement la conclusion, je te l'envoie ce soir.
+Super, la réunion est reportée à demain, donc tu n'as pas à te presser.
+Merci de me prévenir, j'allais justement rester tard au bureau.
+# description and instructions
+Battez les œufs avec le sucre jusqu'à ce que le mélange devienne blanc, puis ajoutez la farine petit à petit.
+Versez la pâte dans un moule beurré et faites cuire le gâteau pendant trente-cinq minutes à cent quatre-vingts degrés.
+Pour arriver à la gare, prenez la première rue à gauche, passez devant le cinéma et traversez le pont.
+La ville est connue pour sa cathédrale, ses marchés colorés et ses nombreux festivals qui attirent des visiteurs chaque année.
+Le lycée se trouve sur une colline, et de ses fenêtres on voit toute la vallée.
+Les élèves doivent arriver cinq minutes avant le début des cours et ranger leurs manteaux au vestiaire.
+Il est interdit de fumer dans les transports en commun ainsi que dans tous les bâtiments publics.
+Le village a deux boulangeries, une petite église romane et une place ombragée où les anciens jouent à la pétanque.
+Avant de partir, vérifiez que le gaz est coupé et que toutes les fenêtres sont bien fermées.
+Mélangez l'huile et le vinaigre, ajoutez une pincée de sel, puis versez la sauce sur la salade.
+La chambre est équipée d'un grand lit, d'une armoire, d'un bureau et d'une salle de bains privée.
+Pour utiliser l'ascenseur, appuyez sur le bouton de l'étage souhaité et attendez que la porte se ferme.
+Notre quartier est calme le soir, mais très animé le matin, quand les commerçants ouvrent leurs boutiques.
+Pour obtenir un passeport, il faut remplir un formulaire et présenter une photo récente ainsi qu'un justificatif de domicile.
+Le parc possède un lac, des allées pour les promeneurs et une aire de jeux réservée aux jeunes enfants.

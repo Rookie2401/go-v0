@@ -1,0 +1,62 @@
+/**
+ * THE DECK AUDIT of every live language (the owner, 2026-11-25: "Make sure that there are no false words or unknown words that appear in the GoReview deck";
+ * 2026-11-26: "Enforce the same rule for all the other languages"). One test per audited set (a language, or one period variety of it).
+ *
+ * Each set has two texts under data/deck-audit/<set>/: dev.txt (read while the gate and the known-limits list were written) and heldout.txt (never read
+ * for that; run only to measure). Every card GoReview would admit from them, through the real path (test/deck-audit/support.ts), was read by a reader
+ * and given a verdict in verdicts.json: ok, false-reading (the sentence's word is another word), false-meaning (the right word, a wrong first meaning),
+ * unknown (not a real word, or no real meaning), unsure. The readers were AI models, not native speakers; the file says so.
+ *
+ * What a test holds a set to:
+ *   1. the machine findings are zero: no admitted card whose meaning is only a cross-reference, whose headword is in no word list or dictionary, or
+ *      whose headword has no letter;
+ *   2. every admitted card has a verdict FOR THE MEANING IT SHOWS: a card that is new, or whose first meaning changed, fails until it is read;
+ *   3. no admitted card of the DEVELOPMENT text is false or unknown (a dev card a reader found false is on the known-limits list, or a rule holds it);
+ *   4. the admitted false or unknown cards of the HELD-OUT text are exactly the named list in verdicts.json (`residual`): what remains, for the owner
+ *      to see. Nothing may be added to it silently, and a card that stops being admitted must be taken off it.
+ * The dictionaries and lexicon shards are build outputs, not in git: a set whose data is not on the machine is skipped.
+ */
+import fs from 'node:fs';
+import path from 'node:path';
+import { describe, expect, it } from 'vitest';
+import { DECK_KNOWN_LIMITS } from '../../packages/goreview/src/facts/deck-known-limits';
+import { AUDIT_SETS, ROOT, auditText, dataPresent, readSentences, runDeckAudit, type AuditCard } from './support';
+
+interface Verdict { shown: string; v: 'ok' | 'false-reading' | 'false-meaning' | 'unknown' | 'unsure'; note?: string }
+interface VerdictFile { readBy: string; cards: Record<string, Verdict[]>; residual: string[] }
+const BAD = new Set(['false-reading', 'false-meaning', 'unknown']);
+const verdictsOf = (id: string): VerdictFile | undefined => {
+  const file = path.join(ROOT, 'data/deck-audit', id, 'verdicts.json');
+  return fs.existsSync(file) ? JSON.parse(fs.readFileSync(file, 'utf8')) as VerdictFile : undefined;
+};
+const verdictFor = (file: VerdictFile, card: AuditCard): Verdict | undefined => (file.cards[card.unitId] ?? []).find((x) => x.shown === card.shown);
+
+describe.each(AUDIT_SETS.map((s) => [s.id, s] as const))('deck audit: %s', (_id, set) => {
+  const file = verdictsOf(set.id);
+  const ready = dataPresent(set.lang) && !!file && fs.existsSync(auditText(set.id, 'dev')) && fs.existsSync(auditText(set.id, 'heldout'));
+
+  it.skipIf(!ready)(`${set.name}: no unknown card, no unread card, no false card on the development text, and exactly the named residue on the held-out text`, async () => {
+    const dev = await runDeckAudit(set.lang, readSentences(auditText(set.id, 'dev')), { varietyId: set.varietyId });
+    const heldout = await runDeckAudit(set.lang, readSentences(auditText(set.id, 'heldout')), { varietyId: set.varietyId });
+    for (const [part, result] of [['dev', dev], ['heldout', heldout]] as const) {
+      // 1 — machine findings
+      expect(result.cards.filter((c) => c.xref).map((c) => `${c.unitId} = ${c.shown}`), `${part}: meaning is only a cross-reference`).toEqual([]);
+      expect(result.cards.filter((c) => !c.listed).map((c) => c.unitId), `${part}: headword in no word list or dictionary`).toEqual([]);
+      expect(result.cards.filter((c) => c.fragment || !c.shown.trim()).map((c) => c.unitId), `${part}: no letter, or no meaning`).toEqual([]);
+      // 2 — every card was read with the meaning it shows
+      expect(result.cards.filter((c) => !verdictFor(file!, c)).map((c) => `${c.unitId} = ${c.shown}`), `${part}: admitted cards no reader has judged (run npm run deck:audit -- ${set.id} --part ${part} --cards)`).toEqual([]);
+    }
+    const bad = (cards: AuditCard[]): string[] => cards.filter((c) => BAD.has(verdictFor(file!, c)!.v)).map((c) => c.unitId).sort();
+    // 3 — the development text
+    expect(bad(dev.cards), 'development text: false or unknown cards still admitted').toEqual([]);
+    // 4 — the held-out text: what remains, by name (a unit also met in the development text is counted there)
+    const devUnits = new Set(dev.cards.map((c) => c.unitId));
+    expect(bad(heldout.cards.filter((c) => !devUnits.has(c.unitId))), 'held-out text: the named residue').toEqual([...file!.residual].sort());
+  }, 600_000);
+
+  it.skipIf(!file)(`${set.name}: every unit on the known-limits list is one a reader found false or unknown`, () => {
+    const listed = Object.keys(DECK_KNOWN_LIMITS[set.lang] ?? {});
+    const all = AUDIT_SETS.filter((s) => s.lang === set.lang).map((s) => verdictsOf(s.id)).filter((f): f is VerdictFile => !!f);
+    for (const unit of listed) expect(all.some((f) => (f.cards[unit] ?? []).some((x) => BAD.has(x.v))), `${unit} is on the known-limits list without a verdict that says why`).toBe(true);
+  });
+});

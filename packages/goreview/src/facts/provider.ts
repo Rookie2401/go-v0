@@ -501,6 +501,19 @@ export function createFactsProvider(deps: FactsProviderDeps): FactsProvider & { 
     }
     const constructionIds = [...new Set(forms.map((f) => f.constructionId).filter((c): c is string => !!c))];
     const group: FormGroup = { lemma, ...(pos ? { pos } : {}), forms };
+    // the learner's period against the analyser's own period labels of this lemma's readings (for the deck gate; nothing here is chosen by it)
+    let periodReading: ReviewFacts['periodReading'];
+    if (deps.varietyId && read.cand) {
+      const mine = read.all.filter((c) => c.lemma === read.cand!.lemma && c.pos === read.cand!.pos && !c.unconfirmed);
+      if (mine.some((c) => c.varieties?.length)) {
+        // the pack's default variety is the modern language; its other period varieties are the older language, read together (a Koine learner's word may be
+        // attested only in the Attic tables: the lemma's own citation form need not occur in the New Testament)
+        const modern = manifest.varietyId;
+        const fits = (c: AnalysisCandidate): boolean => !c.varieties?.length || c.varieties.includes(deps.varietyId!) || (deps.varietyId !== modern && c.varieties.some((x) => x !== modern));
+        const best = mine.filter(fits).sort((a, b) => b.confidence - a.confidence)[0];
+        periodReading = { attested: !!best, inPeriod: fits(read.cand), ...(best?.gloss ? { gloss: best.gloss } : {}) };
+      }
+    }
     const featureDefsUsed: Record<string, FeatureDef> = { ...featureDefs };
     return {
       unit, relations: rec?.relations ?? [], analyses: rec?.analyses ?? [], status: unit.status,
@@ -515,7 +528,7 @@ export function createFactsProvider(deps: FactsProviderDeps): FactsProvider & { 
       ...(rec ? {} : { derivedFromPack: true }),
       source: unit.provenance.source, lemmaInWordList: inWordList(read.cand), lexiconGlossCount: g.lexiconCount,
       featureDefs: featureDefsUsed, exampleReadings: readings, formGroups: [group],
-      alternativeReadings: otherReadings(lemma, lemma, pos),
+      alternativeReadings: otherReadings(lemma, lemma, pos), ...(periodReading ? { periodReading } : {}),
     };
   }
 

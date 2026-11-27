@@ -1,0 +1,1600 @@
+{
+ "readBy": "AI models (Claude), not native speakers; each card judged once, in the first sentence it came from, against the brief in docs/ecosystem/DECK-GATE.md. 2026-11-26.",
+ "residual": [
+  "lemma:he:אָרַז:VERB",
+  "lemma:he:אוֹר:NOUN",
+  "lemma:he:בָּרִיא:ADJ",
+  "lemma:he:הִצִּיג:VERB",
+  "lemma:he:חַשְׁמַל:NOUN",
+  "lemma:he:חוּם:NOUN",
+  "lemma:he:יֶרֶק:NOUN",
+  "lemma:he:יָד:NOUN",
+  "lemma:he:כָּבֵד:NOUN",
+  "lemma:he:כָּמַהּ:VERB",
+  "lemma:he:מֶחְקָר:NOUN",
+  "lemma:he:מֶשֶׁק:NOUN",
+  "lemma:he:צֵל:NOUN",
+  "lemma:he:שָׁכַן:VERB"
+ ],
+ "cards": {
+  "form:he:או": [
+   {
+    "shown": "Or.",
+    "v": "ok"
+   }
+  ],
+  "form:he:אולי": [
+   {
+    "shown": "maybe",
+    "v": "ok"
+   }
+  ],
+  "form:he:אחווה": [
+   {
+    "shown": "brotherhood, camaraderie, fraternity, guild",
+    "v": "ok"
+   }
+  ],
+  "form:he:איחר": [
+   {
+    "shown": "to be late",
+    "v": "ok"
+   }
+  ],
+  "form:he:ביחד": [
+   {
+    "shown": "together",
+    "v": "ok"
+   }
+  ],
+  "form:he:בינתיים": [
+   {
+    "shown": "Meanwhile, in the meantime.",
+    "v": "ok"
+   }
+  ],
+  "form:he:בלבד": [
+   {
+    "shown": "only",
+    "v": "ok"
+   }
+  ],
+  "form:he:בעיה": [
+   {
+    "shown": "problem",
+    "v": "ok"
+   }
+  ],
+  "form:he:ברציפות": [
+   {
+    "shown": "consecutively, in a row",
+    "v": "ok"
+   }
+  ],
+  "form:he:דוקטור": [
+   {
+    "shown": "doctor",
+    "v": "ok"
+   }
+  ],
+  "form:he:ישראל": [
+   {
+    "shown": "the Kingdom of Israel",
+    "v": "ok"
+   }
+  ],
+  "form:he:כדורגל": [
+   {
+    "shown": "football, soccer",
+    "v": "ok"
+   }
+  ],
+  "form:he:כול": [
+   {
+    "shown": "excessive spelling of כֹּל",
+    "v": "unknown",
+    "note": "pointer to another entry"
+   }
+  ],
+  "form:he:כיכר": [
+   {
+    "shown": "square, plaza",
+    "v": "ok"
+   }
+  ],
+  "form:he:כישרון": [
+   {
+    "shown": "aptitude, natural talent",
+    "v": "ok"
+   }
+  ],
+  "form:he:לפיכך": [
+   {
+    "shown": "Therefore, hence, thereby.",
+    "v": "ok"
+   }
+  ],
+  "form:he:מאוחר": [
+   {
+    "shown": "late, belated",
+    "v": "ok"
+   }
+  ],
+  "form:he:מכונית": [
+   {
+    "shown": "car",
+    "v": "ok"
+   }
+  ],
+  "form:he:מסעדה": [
+   {
+    "shown": "restaurant",
+    "v": "ok"
+   }
+  ],
+  "form:he:משהו": [
+   {
+    "shown": "something",
+    "v": "ok"
+   }
+  ],
+  "form:he:ספרייה": [
+   {
+    "shown": "library",
+    "v": "ok"
+   }
+  ],
+  "form:he:עדיין": [
+   {
+    "shown": "Still, yet.",
+    "v": "ok"
+   }
+  ],
+  "form:he:עוגה": [
+   {
+    "shown": "cake",
+    "v": "ok"
+   }
+  ],
+  "form:he:צהריים": [
+   {
+    "shown": "Noon, midday.",
+    "v": "ok"
+   }
+  ],
+  "form:he:רוב": [
+   {
+    "shown": "majority",
+    "v": "ok"
+   }
+  ],
+  "form:he:שעבר": [
+   {
+    "shown": "last, past, latest: the most recent.",
+    "v": "ok"
+   }
+  ],
+  "form:he:תגובה": [
+   {
+    "shown": "response, reaction, reply",
+    "v": "ok"
+   }
+  ],
+  "form:he:תוכנית": [
+   {
+    "shown": "A program, a plan.",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:אֲוִיר:NOUN": [
+   {
+    "shown": "air",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:אִחֵר:VERB": [
+   {
+    "shown": "defective spelling of איחר",
+    "v": "unknown",
+    "note": "pointer only: defective spelling of איחר"
+   },
+   {
+    "shown": "to be late",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:אֵת:ADP": [
+   {
+    "shown": "with, beside",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:אֶל:ADP": [
+   {
+    "shown": "to, towards, into",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:אֶתְמוֹל:ADV": [
+   {
+    "shown": "yesterday",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:אַחֲוָה:NOUN": [
+   {
+    "shown": "brotherhood, camaraderie, fraternity, guild",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:אַחֲרוֹן:ADJ": [
+   {
+    "shown": "coming after, behind, hindermost",
+    "v": "false-meaning",
+    "note": "acharon is modern 'last, final'; 'hindermost' is archaic"
+   },
+   {
+    "shown": "last (final)",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:אַסְפָּקָה:NOUN": [
+   {
+    "shown": "supply",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:אָרַז:VERB": [
+   {
+    "shown": "to pack",
+    "v": "false-reading",
+    "note": "oréz here is the noun rice, not the verb 'to pack'"
+   }
+  ],
+  "lemma:he:אֹֽכֶל:NOUN": [
+   {
+    "shown": "food",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:אוֹטוֹבּוּס:NOUN": [
+   {
+    "shown": "a bus (vehicle)",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:אוֹפַנַּיִם:NOUN": [
+   {
+    "shown": "bicycle, bike",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:אוֹר:NOUN": [
+   {
+    "shown": "light, morning light, dawn",
+    "v": "false-reading",
+    "note": "le-orekh 'along, throughout' is from 'length', not 'light'"
+   },
+   {
+    "shown": "light, visible light: electromagnetic radiation of a frequency perceptible to the eye",
+    "v": "false-reading",
+    "note": "לאורך is from אורך length, not אור light"
+   }
+  ],
+  "lemma:he:אוּלַי:ADV": [
+   {
+    "shown": "maybe",
+    "v": "ok"
+   },
+   {
+    "shown": "peradventure, perhaps, if peradventure",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:אוּנִיבֶרְסִיטָה:NOUN": [
+   {
+    "shown": "university",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:בְּבַקָּשָׁה:INTJ": [
+   {
+    "shown": "please (said in expressing a request)",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:בְּיַחַד:ADV": [
+   {
+    "shown": "together",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:בְּמֶשֶׁךְ:ADP": [
+   {
+    "shown": "during",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:בְּעָיָה:NOUN": [
+   {
+    "shown": "problem",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:בִּלְבַד:ADV": [
+   {
+    "shown": "only",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:בִּרְצִיפוּת:ADV": [
+   {
+    "shown": "consecutively, in a row",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:בִּשֵּׁל:VERB": [
+   {
+    "shown": "To cook: to prepare for eating.",
+    "v": "ok"
+   },
+   {
+    "shown": "defective spelling of בישל.",
+    "v": "unknown",
+    "note": "only a pointer to spelling"
+   }
+  ],
+  "lemma:he:בַּזְמַן:ADV": [
+   {
+    "shown": "on time (punctually)",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:בַּיִת:NOUN": [
+   {
+    "shown": "house",
+    "v": "ok"
+   },
+   {
+    "shown": "house, household",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:בַּנְק:NOUN": [
+   {
+    "shown": "bank (an institution where one can place and borrow money and take care of financial affairs)",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:בָּרִיא:ADJ": [
+   {
+    "shown": "fat",
+    "v": "false-meaning",
+    "note": "bari means healthy; 'fat' is a marginal biblical sense (the word here is briut, health)"
+   },
+   {
+    "shown": "healthy, well (in good health)",
+    "v": "false-reading",
+    "note": "הבריאות is the noun health, not the adjective healthy"
+   }
+  ],
+  "lemma:he:בֹּקֶר:NOUN": [
+   {
+    "shown": "A morning, dawn.",
+    "v": "ok"
+   },
+   {
+    "shown": "morning, morrow, next day",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:בּוֹא:VERB": [
+   {
+    "shown": "To come.",
+    "v": "ok"
+   },
+   {
+    "shown": "to come, go in, enter",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:בינתיים \\ בֵּינְתַיִם:ADV": [
+   {
+    "shown": "Meanwhile, in the meantime.",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:גֶּשֶׁם:NOUN": [
+   {
+    "shown": "rain",
+    "v": "ok"
+   },
+   {
+    "shown": "rain, shower",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:גָּדָה:NOUN": [
+   {
+    "shown": "a bank (edge of river or lake)",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:גָּדוֹל:ADJ": [
+   {
+    "shown": "big, large",
+    "v": "ok"
+   },
+   {
+    "shown": "great, large, important",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:דִּבֵּר:VERB": [
+   {
+    "shown": "defective spelling of דיבר",
+    "v": "unknown",
+    "note": "pointer only: defective spelling of דיבר"
+   },
+   {
+    "shown": "to speak (say words)",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:דָּנִי:PROPN": [
+   {
+    "shown": "a diminutive, Dani, of the male given name דָּנִיֵּאל",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:דָּתִי:ADJ": [
+   {
+    "shown": "religious",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:דֹּאַר:NOUN": [
+   {
+    "shown": "post",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:דּוֹקְטוֹר:NOUN": [
+   {
+    "shown": "doctor",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:הִזְהִיר:VERB": [
+   {
+    "shown": "to warn, to caution",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:הִמְשִׁיךְ:VERB": [
+   {
+    "shown": "To continue, to still do.",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:הִצִּיג:VERB": [
+   {
+    "shown": "to perform",
+    "v": "false-meaning",
+    "note": "lehatzig is 'to present/show', not 'to perform'"
+   }
+  ],
+  "lemma:he:הִקְרִיא:VERB": [
+   {
+    "shown": "to read aloud; to recite",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:הִשְׁקָה:VERB": [
+   {
+    "shown": "to give drink to, to water",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:הִתְחִיל:VERB": [
+   {
+    "shown": "to start, to begin",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:הִתְקַשֵּׁר:VERB": [
+   {
+    "shown": "to phone, call someone on a telephone",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:הִתְרַגֵּשׁ:VERB": [
+   {
+    "shown": "be moved emotionally, be touched",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:הֵכִין:VERB": [
+   {
+    "shown": "to prepare (something)",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:הָלַךְ:VERB": [
+   {
+    "shown": "to go, walk",
+    "v": "ok"
+   },
+   {
+    "shown": "to walk, go, especially on foot",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:הוֹעִיל:VERB": [
+   {
+    "shown": "To be useful, beneficial, of use.",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:חַלּוֹן:NOUN": [
+   {
+    "shown": "a window",
+    "v": "ok"
+   },
+   {
+    "shown": "window",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:חַשְׁמַל:NOUN": [
+   {
+    "shown": "The meaning of this term is uncertain. Possibilities include: electrum, amber",
+    "v": "false-meaning",
+    "note": "modern חשמל means electricity; the Biblical electrum/amber is not its meaning"
+   },
+   {
+    "shown": "shining, amber",
+    "v": "false-meaning",
+    "note": "chashmal is modern 'electricity'"
+   }
+  ],
+  "lemma:he:חָבֵר:NOUN": [
+   {
+    "shown": "A (male) friend.",
+    "v": "ok"
+   },
+   {
+    "shown": "united, associate, companion",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:חָדָשׁ:ADJ": [
+   {
+    "shown": "new",
+    "v": "ok"
+   },
+   {
+    "shown": "new, recently made",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:חָזַר:VERB": [
+   {
+    "shown": "to return (to come back after some period of time, or at regular intervals)",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:חָשׁוּב:ADJ": [
+   {
+    "shown": "important",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:חָתַךְ:VERB": [
+   {
+    "shown": "to cut",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:חֹרֶף:NOUN": [
+   {
+    "shown": "winter",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:חֻלְצָה:NOUN": [
+   {
+    "shown": "shirt (an article of clothing that is worn on the upper part of the body, often with sleeves that cover some or all of the arms)",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:חוֹב:NOUN": [
+   {
+    "shown": "debt",
+    "v": "false-reading",
+    "note": "חובה here is the noun \"obligation\", not חוב \"debt\""
+   }
+  ],
+  "lemma:he:חוֹף:NOUN": [
+   {
+    "shown": "beach, shore, coast",
+    "v": "ok"
+   },
+   {
+    "shown": "shore, coast, surrounding",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:חוּם:NOUN": [
+   {
+    "shown": "brown (a colour like that of chocolate or coffee)",
+    "v": "false-reading",
+    "note": "chom here is heat/fever, not the colour brown"
+   }
+  ],
+  "lemma:he:טִיֵּל:VERB": [
+   {
+    "shown": "to hike, to walk (for pleasure), to journey",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:טֶלֶפוֹן:NOUN": [
+   {
+    "shown": "telephone, phone",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:טָרִי:ADJ": [
+   {
+    "shown": "fresh",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:יֶרֶק:NOUN": [
+   {
+    "shown": "green, greenness",
+    "v": "false-meaning",
+    "note": "yerek is modern 'vegetable(s)'; 'green' is marginal"
+   },
+   {
+    "shown": "vegetation, herbage, greenery",
+    "v": "false-meaning",
+    "note": "modern ירק means vegetable; vegetation is Biblical"
+   }
+  ],
+  "lemma:he:יָד:NOUN": [
+   {
+    "shown": "arm",
+    "v": "false-meaning",
+    "note": "יד ordinarily means hand"
+   },
+   {
+    "shown": "hand; power; side",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:יָלַד:VERB": [
+   {
+    "shown": "to bear, beget, bring forth",
+    "v": "ok"
+   },
+   {
+    "shown": "to give birth (",
+    "v": "false-meaning",
+    "note": "shown gloss is truncated; נולדו means were born"
+   }
+  ],
+  "lemma:he:יָפֶה:ADJ": [
+   {
+    "shown": "beautiful, comely, fair, goodly, pleasant",
+    "v": "ok"
+   },
+   {
+    "shown": "fair, beautiful",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:יָצָא:VERB": [
+   {
+    "shown": "To go out (of, from), come out (of, from), exit (from), leave, depart, get out (of, from).",
+    "v": "ok"
+   },
+   {
+    "shown": "to go out, come out",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:יָשַׁב:VERB": [
+   {
+    "shown": "to sit, dwell, remain",
+    "v": "false-reading",
+    "note": "ישיבה here is the noun \"meeting/session\", not the verb ישב"
+   },
+   {
+    "shown": "to sit, to be in a position with the torso upright and the legs supported",
+    "v": "false-reading",
+    "note": "ישיבה is the noun meeting/session, not the verb sit"
+   }
+  ],
+  "lemma:he:יוֹם:NOUN": [
+   {
+    "shown": "Day: the period between dawn and dusk.",
+    "v": "ok"
+   },
+   {
+    "shown": "day; time",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:כְּבִישׁ:NOUN": [
+   {
+    "shown": "A road, a street, especially a highway.",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:כְּפָר:NOUN": [
+   {
+    "shown": "village",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:כִּכָּר:NOUN": [
+   {
+    "shown": "a round, a round district, a round loaf",
+    "v": "false-meaning",
+    "note": "kikar in the sentence is a town square; first meaning 'a round' is misleading"
+   },
+   {
+    "shown": "square, plaza",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:כִּסָּה:VERB": [
+   {
+    "shown": "to cover, to hide",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:כִּשָּׁרוֹן:NOUN": [
+   {
+    "shown": "aptitude, natural talent",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:כִּתָּה:NOUN": [
+   {
+    "shown": "A class, a course.",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:כַּדּוּרֶגֶל:NOUN": [
+   {
+    "shown": "football, soccer",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:כַּרְטִיס:NOUN": [
+   {
+    "shown": "card",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:כָּאַב:VERB": [
+   {
+    "shown": "to hurt, ache",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:כָּבֵד:NOUN": [
+   {
+    "shown": "liver (organ of the body)",
+    "v": "false-reading",
+    "note": "kvedim is 'heavy' (adjective), not the noun liver"
+   }
+  ],
+  "lemma:he:כָּמַהּ:VERB": [
+   {
+    "shown": "faint",
+    "v": "false-reading",
+    "note": "kama 'several/how many' is not the verb 'to faint'"
+   },
+   {
+    "shown": "to long, yearn",
+    "v": "false-reading",
+    "note": "לכמה is ל+כמה (for a few), not the verb to long"
+   }
+  ],
+  "lemma:he:כֹּל:NOUN": [
+   {
+    "shown": "All, whole, entirety, everything; found almost exclusively in singular definite and singular construct forms; used to translate English all, each, every, everything, and so on.",
+    "v": "ok"
+   },
+   {
+    "shown": "all, every, the whole",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:כול:NOUN": [
+   {
+    "shown": "All, whole, entirety, everything",
+    "v": "ok"
+   },
+   {
+    "shown": "excessive spelling of כֹּל",
+    "v": "unknown",
+    "note": "pointer to another entry"
+   }
+  ],
+  "lemma:he:לְפִיכָךְ:ADV": [
+   {
+    "shown": "Therefore, hence, thereby.",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:לַחְמָנִיָּה:NOUN": [
+   {
+    "shown": "bread roll (a miniature round loaf of bread, often accompanying a meal); bun",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:לַעֲבֹד:VERB": [
+   {
+    "shown": "to work, labor",
+    "v": "ok"
+   },
+   {
+    "shown": "to-infinitive of עָבַד (avád).",
+    "v": "unknown",
+    "note": "only a grammatical pointer"
+   }
+  ],
+  "lemma:he:לָמַד:VERB": [
+   {
+    "shown": "exercise in, learn, teach",
+    "v": "ok"
+   },
+   {
+    "shown": "to learn, to study",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:מְאֻחָר:ADJ": [
+   {
+    "shown": "late, belated",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:מְדִינָה:NOUN": [
+   {
+    "shown": "province",
+    "v": "false-meaning",
+    "note": "מדינה in modern Hebrew means state/country; \"province\" is an archaic sense"
+   },
+   {
+    "shown": "state (sovereign polity)",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:מְכוֹנִית:NOUN": [
+   {
+    "shown": "car",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:מְעַט:NOUN": [
+   {
+    "shown": "a little, fewness, a few",
+    "v": "false-reading",
+    "note": "kimat 'almost' is a different word from me'at 'a little'"
+   }
+  ],
+  "lemma:he:מְקוֹמִי:ADJ": [
+   {
+    "shown": "Local: of, from, or in a given place.",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:מִבְחָן:NOUN": [
+   {
+    "shown": "a test, an examination",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:מִטְרִיָּה:NOUN": [
+   {
+    "shown": "an umbrella",
+    "v": "ok"
+   },
+   {
+    "shown": "defective spelling of מטרייה",
+    "v": "unknown",
+    "note": "only a pointer to spelling"
+   }
+  ],
+  "lemma:he:מִן:ADP": [
+   {
+    "shown": "from, out of; than",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:מִסְעָדָה:NOUN": [
+   {
+    "shown": "restaurant",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:מִרְפָּאָה:NOUN": [
+   {
+    "shown": "clinic, medical clinic: place where patients are treated",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:מִשְׂרָד:NOUN": [
+   {
+    "shown": "An office: a person's office, a workplace.",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:מֶחְקָר:NOUN": [
+   {
+    "shown": "material",
+    "v": "false-meaning",
+    "note": "mechkar is 'research, study', not 'material'"
+   }
+  ],
+  "lemma:he:מֶמְשָׁלָה:NOUN": [
+   {
+    "shown": "A government.",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:מֶשֶׁק:NOUN": [
+   {
+    "shown": "acquisition, possession",
+    "v": "false-meaning",
+    "note": "meshek is modern 'economy; farm'"
+   },
+   {
+    "shown": "farm",
+    "v": "false-meaning",
+    "note": "modern משק means economy (also farm/household)"
+   }
+  ],
+  "lemma:he:מַאֲכָל:NOUN": [
+   {
+    "shown": "food",
+    "v": "ok"
+   },
+   {
+    "shown": "food, meal, dish (specific type of food)",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:מַאֲמָר:NOUN": [
+   {
+    "shown": "article (relatively short written theoretical work)",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:מַאֲפִיָּה:NOUN": [
+   {
+    "shown": "bakery",
+    "v": "ok"
+   },
+   {
+    "shown": "defective spelling of מאפייה",
+    "v": "unknown",
+    "note": "pointer only: defective spelling of מאפייה"
+   }
+  ],
+  "lemma:he:מַחְשֵׁב:NOUN": [
+   {
+    "shown": "computer",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:מַרְבִּית:NOUN": [
+   {
+    "shown": "increase, great number, greatness",
+    "v": "false-meaning",
+    "note": "marbit is 'most (of), majority'"
+   }
+  ],
+  "lemma:he:מַשֶּׁהוּ:PRON": [
+   {
+    "shown": "something",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:מָחָר:NOUN": [
+   {
+    "shown": "to-morrow, in time to come, in future time",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:מוֹעָצָה:NOUN": [
+   {
+    "shown": "a council",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:נִצֵּחַ:VERB": [
+   {
+    "shown": "To win.",
+    "v": "ok"
+   },
+   {
+    "shown": "defective spelling of ניצח",
+    "v": "unknown",
+    "note": "only a pointer to spelling"
+   }
+  ],
+  "lemma:he:נִצָּחוֹן:NOUN": [
+   {
+    "shown": "defective spelling of ניצחון",
+    "v": "unknown",
+    "note": "only a pointer to spelling"
+   },
+   {
+    "shown": "victory, triumph",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:נִרְדַּם:VERB": [
+   {
+    "shown": "to sleep deeply, fall into a deep sleep",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:נִרְטַב:VERB": [
+   {
+    "shown": "To get wet, to become wet.",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:נִשְׁאַר:VERB": [
+   {
+    "shown": "to stay, to remain",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:נֵר:NOUN": [
+   {
+    "shown": "candle (a light source consisting of a wick embedded in a solid, flammable substance such as wax, tallow, or paraffin)",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:נַחַל:NOUN": [
+   {
+    "shown": "a stream (small river)",
+    "v": "ok"
+   },
+   {
+    "shown": "torrent, torrent-valley, wady",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:נָקִי:ADJ": [
+   {
+    "shown": "clean",
+    "v": "ok"
+   },
+   {
+    "shown": "clean, free from, exempt",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:נוֹתַר:VERB": [
+   {
+    "shown": "to be left, to remain",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:סְטוּדֶנְט:NOUN": [
+   {
+    "shown": "A (male) student (in a college, university, or other institute of higher education).",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:סִפְרִיָּה:NOUN": [
+   {
+    "shown": "library",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:סֻכֶּרֶת:NOUN": [
+   {
+    "shown": "defective spelling of סוכרת",
+    "v": "unknown",
+    "note": "only a pointer to spelling"
+   }
+  ],
+  "lemma:he:עֲבֹדָה:NOUN": [
+   {
+    "shown": "labour, service, work",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:עֲדַיִן:ADV": [
+   {
+    "shown": "Still, yet.",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:עֲרָפֶל:NOUN": [
+   {
+    "shown": "cloud, heavy cloud",
+    "v": "false-meaning",
+    "note": "arafel is modern 'fog'"
+   },
+   {
+    "shown": "fog",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:עִירִיָּה:NOUN": [
+   {
+    "shown": "municipality",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:עִרְבֵּב:VERB": [
+   {
+    "shown": "to mix",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:עִתּוֹן:NOUN": [
+   {
+    "shown": "newspaper",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:עַגְבָנִיָּה:NOUN": [
+   {
+    "shown": "Defective spelling of עגבנייה (“tomato",
+    "v": "unknown",
+    "note": "only a pointer to spelling, truncated"
+   },
+   {
+    "shown": "tomato",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:עַל:ADP": [
+   {
+    "shown": "on, on top of",
+    "v": "ok"
+   },
+   {
+    "shown": "on, upon, over, against, concerning",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:עָצִיץ:NOUN": [
+   {
+    "shown": "a flowerpot",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:עוּגָה:NOUN": [
+   {
+    "shown": "cake",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:פְּרִי:NOUN": [
+   {
+    "shown": "fruit (a product of fertilization in a plant, specifically:)",
+    "v": "ok"
+   },
+   {
+    "shown": "fruit, fruit of the ground, offspring",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:פַּעַם:NOUN": [
+   {
+    "shown": "A time: an instance, an occurrence.",
+    "v": "ok"
+   },
+   {
+    "shown": "beat, foot, anvil",
+    "v": "false-meaning",
+    "note": "pa'am is 'time, occasion' (shalosh pe'amim = three times)"
+   }
+  ],
+  "lemma:he:פָּנָה:VERB": [
+   {
+    "shown": "to face",
+    "v": "ok"
+   },
+   {
+    "shown": "turn, decline, turn toward",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:פָּתַר:VERB": [
+   {
+    "shown": "interpret",
+    "v": "false-meaning",
+    "note": "modern פתר means to solve; \"interpret\" is a biblical sense"
+   },
+   {
+    "shown": "to solve",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:צִבּוּר:NOUN": [
+   {
+    "shown": "A public, a community.",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:צִבּוּרִי:ADJ": [
+   {
+    "shown": "Public: pertaining to the public; or concerning an entire country or community.",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:צֵל:NOUN": [
+   {
+    "shown": "A shadow.",
+    "v": "false-reading",
+    "note": "בצל here is onion, not ב+צל shadow"
+   },
+   {
+    "shown": "shadow",
+    "v": "false-reading",
+    "note": "batzal here is 'onion', not 'shadow'"
+   }
+  ],
+  "lemma:he:צַד:NOUN": [
+   {
+    "shown": "A side.",
+    "v": "ok"
+   },
+   {
+    "shown": "side",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:צָפוֹן:NOUN": [
+   {
+    "shown": "north",
+    "v": "ok"
+   },
+   {
+    "shown": "north, hidden, dark",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:צׇהֳרַיִם:NOUN": [
+   {
+    "shown": "Noon, midday.",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:קְבוּצָה:NOUN": [
+   {
+    "shown": "group",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:קִילוֹמֶטֶר:NOUN": [
+   {
+    "shown": "A kilometre: a unit of length or distance equaling one thousand metres.",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:קַיִץ:NOUN": [
+   {
+    "shown": "summer",
+    "v": "ok"
+   },
+   {
+    "shown": "summer, summer-fruit",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:קַיָּם:ADJ": [
+   {
+    "shown": "existing",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:קָטָן:ADJ": [
+   {
+    "shown": "Little, small, diminutive.",
+    "v": "ok"
+   },
+   {
+    "shown": "small, young, unimportant",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:קָנָה:VERB": [
+   {
+    "shown": "get, acquire, buy",
+    "v": "ok"
+   },
+   {
+    "shown": "to buy, to purchase",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:קָפֶה:NOUN": [
+   {
+    "shown": "coffee",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:קָרִיר:ADJ": [
+   {
+    "shown": "cool, cold in a pleasant way",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:רְצִיף:NOUN": [
+   {
+    "shown": "platform, quay, pier",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:רְשׁוּת:NOUN": [
+   {
+    "shown": "permission, authorization",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:רֶגֶל:NOUN": [
+   {
+    "shown": "foot, leg",
+    "v": "ok"
+   },
+   {
+    "shown": "foot, three times",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:רָאשִׁי:ADJ": [
+   {
+    "shown": "main, principal",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:רָחוֹק:ADJ": [
+   {
+    "shown": "distant, far, distance",
+    "v": "ok"
+   },
+   {
+    "shown": "far, distant; remote",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:רָעָב:NOUN": [
+   {
+    "shown": "famine, hunger",
+    "v": "ok"
+   },
+   {
+    "shown": "hunger",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:רָץ:VERB": [
+   {
+    "shown": "To run; to move forward quickly on legs.",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:רֹב:NOUN": [
+   {
+    "shown": "majority",
+    "v": "ok"
+   },
+   {
+    "shown": "multitude, abundance, greatness",
+    "v": "false-meaning",
+    "note": "rov is modern 'majority, most'"
+   }
+  ],
+  "lemma:he:רוּחָנִי:ADJ": [
+   {
+    "shown": "spiritual",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:שְׁכוּנָה:NOUN": [
+   {
+    "shown": "A neighborhood: a residential area, a group of homes in geographic proximity.",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:שְׁמֹנִים:NUM": [
+   {
+    "shown": "an eighty",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:שְׁמֹנֶה:NUM": [
+   {
+    "shown": "eight",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:שְׁנַיִם:NUM": [
+   {
+    "shown": "two",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:שְׂחוֹק:NOUN": [
+   {
+    "shown": "laughter, derision, sport",
+    "v": "false-reading",
+    "note": "lesachek is the verb 'to play', not the noun 'laughter'"
+   }
+  ],
+  "lemma:he:שִׁטָּפוֹן:NOUN": [
+   {
+    "shown": "flood (an overflow of a large amount of water (usually disastrous) from a lake or other body of water due to excessive rainfall or other input of water)",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:שִׁשִּׁי:ADJ": [
+   {
+    "shown": "sixth",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:שֵׁנָה:NOUN": [
+   {
+    "shown": "sleep",
+    "v": "ok"
+   },
+   {
+    "shown": "sleep: a state or period of being asleep",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:שֶׁל:ADP": [
+   {
+    "shown": "Of, belonging to, owned by, pertaining to.",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:שֶׁעָבַר:ADJ": [
+   {
+    "shown": "last, past, latest: the most recent.",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:שֶׁקֶל:NOUN": [
+   {
+    "shown": "a weight, shekel",
+    "v": "ok"
+   },
+   {
+    "shown": "sheqel, the name of Israel's currency unit since 24 February 1980.",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:שָׁבוּעַ:NOUN": [
+   {
+    "shown": "period of seven, heptad, week",
+    "v": "ok"
+   },
+   {
+    "shown": "week, period of seven days",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:שָׁוֶה:ADJ": [
+   {
+    "shown": "equal, identical (the same in all respects, having the same value)",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:שָׁטַף:VERB": [
+   {
+    "shown": "overflow, rinse, wash off",
+    "v": "ok"
+   },
+   {
+    "shown": "to wash",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:שָׁכַב:VERB": [
+   {
+    "shown": "To lie down, to be lying down, to recline.",
+    "v": "ok"
+   },
+   {
+    "shown": "lie down, lodge, lie",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:שָׁכַח:VERB": [
+   {
+    "shown": "forget, be forgotten, to make",
+    "v": "ok"
+   },
+   {
+    "shown": "to forget",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:שָׁכַן:VERB": [
+   {
+    "shown": "settle down, abide, dwell",
+    "v": "ok"
+   },
+   {
+    "shown": "to dwell, reside",
+    "v": "false-reading",
+    "note": "השכנים/השכן are the noun neighbour, not the verb to dwell"
+   }
+  ],
+  "lemma:he:שָׁלוֹם:NOUN": [
+   {
+    "shown": "peace",
+    "v": "ok"
+   },
+   {
+    "shown": "peace, well-being, completeness",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:שׁוֹק:NOUN": [
+   {
+    "shown": "leg",
+    "v": "false-reading",
+    "note": "shuk here is 'market', not 'leg'"
+   }
+  ],
+  "lemma:he:תְּגוּבָה:NOUN": [
+   {
+    "shown": "response, reaction, reply",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:תְּמוּרָה:NOUN": [
+   {
+    "shown": "compensation, reward",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:תַּבְלִין:NOUN": [
+   {
+    "shown": "spice",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:תַּחֲנָה:NOUN": [
+   {
+    "shown": "A station, such as a bus station, a train station, or a space station; or, a (bus) stop.",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:תַּיָּר:NOUN": [
+   {
+    "shown": "A (male) tourist.",
+    "v": "ok"
+   }
+  ],
+  "lemma:he:תׇּכְנִית:NOUN": [
+   {
+    "shown": "A program, a plan.",
+    "v": "ok"
+   },
+   {
+    "shown": "measurement, proportion",
+    "v": "false-meaning",
+    "note": "תכנית means a plan/programme; \"measurement, proportion\" is a marginal sense"
+   }
+  ]
+ }
+}

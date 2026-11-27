@@ -73,6 +73,9 @@ jobs:
         env:
           GOREVIEW_SERVICE_URL: https://go-v0.onrender.com
           GOREVIEW_DICT: ''
+          # No dictionary is copied into review/, so review/ must read the shared tree one level up (go-v0/dict/<language>/).
+          # Without this its config.json says "./" and every dictionary request 404s (live 2026-11-21 to 2026-11-26).
+          GOREVIEW_ASSET_BASE: ../
         run: npx vite build -c packages/goreview/app/vite.config.ts --mode review
 
       - name: Build GoLearn setup web

@@ -93,7 +93,7 @@ describe('the setup application with the real worker and the real service', () =
     q('#continue-without-account').click();
     await until(() => app!.current() === 'languages');
     await app!.ready();
-    expect(q('#account-line').textContent).toContain('On this device only');
+    expect(q('#account-link').getAttribute('aria-label')).toContain('on this device only');
     q('[data-language="sq"] [data-action="choose"]').click();
     await until(() => /is ready|did not|could not/.test(q('[data-language="sq"] .status').textContent ?? ''), 20_000);
     expect(q('[data-language="sq"] .status').textContent).toMatch(/Albanian is ready: [0-9]+ checks passed(, dictionary from [^.]+)?[.]/);
@@ -105,7 +105,7 @@ describe('the setup application with the real worker and the real service', () =
     expect((await area.get('golearn:session'))['golearn:session']).toBeUndefined();
     expect((await area.get('golearn:pack:installed:pack:sq'))['golearn:pack:installed:pack:sq']).toMatchObject({ version: expect.any(String) });
     await until(() => document.querySelector('#next-note'));
-    expect(q('#next-note').textContent).toContain('GoLearn Active');
+    expect(q('#next-note').textContent).toBe('Albanian is ready.');
 
     // ── sign in (optional), on the sign-in page: the worker signs the new account in; the page holds no token of its own making
     await go('signin');

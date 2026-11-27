@@ -1,0 +1,6287 @@
+{
+ "readBy": "AI models (Claude), not native speakers; each card judged once, in the first sentence it came from, against the brief in docs/ecosystem/DECK-GATE.md. 2026-11-26.",
+ "residual": [
+  "form:th:กล้อง",
+  "form:th:ชาติ",
+  "form:th:ชาน",
+  "form:th:ท้อง",
+  "form:th:น้ำตาล",
+  "form:th:ประทาน",
+  "form:th:มาส",
+  "form:th:ลัง",
+  "form:th:ว่าการ",
+  "form:th:ว่าย",
+  "form:th:เจ็บ",
+  "form:th:เต้น",
+  "form:th:เบา",
+  "form:th:โล่ง",
+  "lemma:th:กล้อง:NOUN",
+  "lemma:th:ชาติ:NOUN",
+  "lemma:th:ชาน:NOUN",
+  "lemma:th:ท้อง:NOUN",
+  "lemma:th:น้ำตาล:NOUN",
+  "lemma:th:ประทาน:VERB",
+  "lemma:th:มาส:NOUN",
+  "lemma:th:ลัง:NOUN",
+  "lemma:th:ว่าการ:VERB",
+  "lemma:th:ว่าย:VERB",
+  "lemma:th:เจ็บ:VERB",
+  "lemma:th:เต้น:VERB",
+  "lemma:th:เบา:ADJ",
+  "lemma:th:โล่ง:ADJ"
+ ],
+ "cards": {
+  "form:th:กระทรวง": [
+   {
+    "shown": "kind; type; sort; category",
+    "v": "false-meaning",
+    "note": "กระทรวง means ministry, not kind/type"
+   }
+  ],
+  "form:th:กระทะ": [
+   {
+    "shown": "frying pan",
+    "v": "ok"
+   }
+  ],
+  "form:th:กระเทียม": [
+   {
+    "shown": "garlic",
+    "v": "ok"
+   }
+  ],
+  "form:th:กลับ": [
+   {
+    "shown": "to return; to come back",
+    "v": "ok"
+   }
+  ],
+  "form:th:กลาง": [
+   {
+    "shown": "middle; center",
+    "v": "ok"
+   }
+  ],
+  "form:th:กล่าว": [
+   {
+    "shown": "to sing",
+    "v": "false-meaning",
+    "note": "กล่าว means to say/state, not to sing"
+   }
+  ],
+  "form:th:กล้วย": [
+   {
+    "shown": "banana",
+    "v": "ok"
+   }
+  ],
+  "form:th:กล้อง": [
+   {
+    "shown": "pipe",
+    "v": "false-meaning",
+    "note": "กล้อง means camera (pipe is a marginal sense)"
+   }
+  ],
+  "form:th:กว่า": [
+   {
+    "shown": "more than; -er",
+    "v": "ok"
+   },
+   {
+    "shown": "than",
+    "v": "ok"
+   }
+  ],
+  "form:th:กว้าง": [
+   {
+    "shown": "wide, broad.",
+    "v": "ok"
+   }
+  ],
+  "form:th:กะเพรา": [
+   {
+    "shown": "clipping of ผัดกะเพรา",
+    "v": "false-meaning",
+    "note": "กะเพรา is holy basil; the clipping gloss is not its meaning"
+   }
+  ],
+  "form:th:กัน": [
+   {
+    "shown": "together; jointly; altogether",
+    "v": "ok"
+   }
+  ],
+  "form:th:กับ": [
+   {
+    "shown": "with; together with; along with",
+    "v": "ok"
+   }
+  ],
+  "form:th:การ": [
+   {
+    "shown": "work; matter; task; affair",
+    "v": "ok"
+   }
+  ],
+  "form:th:การบ้าน": [
+   {
+    "shown": "homework",
+    "v": "ok"
+   }
+  ],
+  "form:th:การ์ตูน": [
+   {
+    "shown": "cartoon.",
+    "v": "ok"
+   }
+  ],
+  "form:th:กิน": [
+   {
+    "shown": "to consume: — to eat",
+    "v": "ok"
+   }
+  ],
+  "form:th:กิโล": [
+   {
+    "shown": "kilometer",
+    "v": "false-meaning",
+    "note": "กิโล usually means kilogram (as here), not kilometer"
+   }
+  ],
+  "form:th:กีฬา": [
+   {
+    "shown": "sport.",
+    "v": "ok"
+   }
+  ],
+  "form:th:กุญแจ": [
+   {
+    "shown": "key (classifier ดอก)",
+    "v": "ok"
+   }
+  ],
+  "form:th:ก่อน": [
+   {
+    "shown": "before",
+    "v": "ok"
+   }
+  ],
+  "form:th:ก๋วยเตี๋ยว": [
+   {
+    "shown": "rice noodle; kway teow",
+    "v": "ok"
+   }
+  ],
+  "form:th:ขณะ": [
+   {
+    "shown": "moment; while",
+    "v": "ok"
+   }
+  ],
+  "form:th:ขนม": [
+   {
+    "shown": "sweets; dessert",
+    "v": "ok"
+   }
+  ],
+  "form:th:ขนาด": [
+   {
+    "shown": "size; dimension; proportion; measure; magnitude",
+    "v": "ok"
+   }
+  ],
+  "form:th:ขอ": [
+   {
+    "shown": "to beg, to ask, to request",
+    "v": "ok"
+   }
+  ],
+  "form:th:ของ": [
+   {
+    "shown": "of; belonging to; pertaining to",
+    "v": "ok"
+   }
+  ],
+  "form:th:ขอบคุณ": [
+   {
+    "shown": "to thank; to give thanks.",
+    "v": "ok"
+   }
+  ],
+  "form:th:ขอโทษ": [
+   {
+    "shown": "to apologise",
+    "v": "ok"
+   }
+  ],
+  "form:th:ขาย": [
+   {
+    "shown": "to sell",
+    "v": "ok"
+   }
+  ],
+  "form:th:ขาว": [
+   {
+    "shown": "white.",
+    "v": "ok"
+   }
+  ],
+  "form:th:ขึ้น": [
+   {
+    "shown": "to go up, rise",
+    "v": "ok"
+   },
+   {
+    "shown": "to wax",
+    "v": "false-meaning",
+    "note": "ขึ้น means to go up/rise; 'to wax' is marginal"
+   }
+  ],
+  "form:th:ข้าง": [
+   {
+    "shown": "towards; in the direction of",
+    "v": "ok"
+   }
+  ],
+  "form:th:ข้าม": [
+   {
+    "shown": "to cross over",
+    "v": "ok"
+   },
+   {
+    "shown": "to cross, cross over, step over",
+    "v": "ok"
+   }
+  ],
+  "form:th:ข้าว": [
+   {
+    "shown": "rice",
+    "v": "ok"
+   }
+  ],
+  "form:th:ข้าวต้ม": [
+   {
+    "shown": "Teochew-style rice porridge.",
+    "v": "ok"
+   },
+   {
+    "shown": "rice porridge",
+    "v": "ok"
+   }
+  ],
+  "form:th:คง": [
+   {
+    "shown": "probably, surely",
+    "v": "ok"
+   },
+   {
+    "shown": "to endure",
+    "v": "false-meaning",
+    "note": "คง means probably/surely (or remain); 'to endure' is not the usual meaning"
+   }
+  ],
+  "form:th:คน": [
+   {
+    "shown": "person",
+    "v": "ok"
+   }
+  ],
+  "form:th:ครอบครัว": [
+   {
+    "shown": "family",
+    "v": "ok"
+   }
+  ],
+  "form:th:ครัว": [
+   {
+    "shown": "kitchen",
+    "v": "false-reading",
+    "note": "ครัว is a fragment of ครัวเรือน (household), not kitchen"
+   }
+  ],
+  "form:th:ครั้ง": [
+   {
+    "shown": "time; instance, occurrence; occasion",
+    "v": "ok"
+   }
+  ],
+  "form:th:คราว": [
+   {
+    "shown": "time; occasion; opportunity; chance",
+    "v": "ok"
+   }
+  ],
+  "form:th:ครึ่ง": [
+   {
+    "shown": "half; exactly 50%",
+    "v": "ok"
+   }
+  ],
+  "form:th:ครู": [
+   {
+    "shown": "teacher; schoolteacher; instructor",
+    "v": "ok"
+   }
+  ],
+  "form:th:คลอง": [
+   {
+    "shown": "watercourse, either natural or artificial",
+    "v": "ok"
+   }
+  ],
+  "form:th:คลัง": [
+   {
+    "shown": "warehouse; storehouse.",
+    "v": "ok"
+   }
+  ],
+  "form:th:คลินิก": [
+   {
+    "shown": "clinic.",
+    "v": "ok"
+   }
+  ],
+  "form:th:ควร": [
+   {
+    "shown": "should, ought to, must",
+    "v": "ok"
+   }
+  ],
+  "form:th:ความ": [
+   {
+    "shown": "affair; matter",
+    "v": "ok"
+   }
+  ],
+  "form:th:คอ": [
+   {
+    "shown": "neck; throat",
+    "v": "ok"
+   }
+  ],
+  "form:th:คอมพิวเตอร์": [
+   {
+    "shown": "computer",
+    "v": "ok"
+   }
+  ],
+  "form:th:คาด": [
+   {
+    "shown": "to put around, tie around",
+    "v": "ok"
+   }
+  ],
+  "form:th:คำ": [
+   {
+    "shown": "gold",
+    "v": "false-meaning",
+    "note": "คำ means word/mouthful; 'gold' is archaic/poetic"
+   },
+   {
+    "shown": "word",
+    "v": "ok"
+   }
+  ],
+  "form:th:คิด": [
+   {
+    "shown": "to think",
+    "v": "ok"
+   }
+  ],
+  "form:th:คู่": [
+   {
+    "shown": "pair",
+    "v": "ok"
+   }
+  ],
+  "form:th:ค่อย": [
+   {
+    "shown": "gradually; little-by-little",
+    "v": "ok"
+   }
+  ],
+  "form:th:งด": [
+   {
+    "shown": "to stop",
+    "v": "ok"
+   }
+  ],
+  "form:th:งั้น": [
+   {
+    "shown": "then, in that case, or else.",
+    "v": "ok"
+   }
+  ],
+  "form:th:งาน": [
+   {
+    "shown": "work: — act; action; activity; deed",
+    "v": "ok"
+   }
+  ],
+  "form:th:ง่าย": [
+   {
+    "shown": "easy, simple",
+    "v": "ok"
+   }
+  ],
+  "form:th:จน": [
+   {
+    "shown": "until; till",
+    "v": "ok"
+   }
+  ],
+  "form:th:จนถึง": [
+   {
+    "shown": "until, till, to, up to",
+    "v": "ok"
+   }
+  ],
+  "form:th:จบ": [
+   {
+    "shown": "to end; to finish",
+    "v": "ok"
+   }
+  ],
+  "form:th:จะ": [
+   {
+    "shown": "will",
+    "v": "ok"
+   },
+   {
+    "shown": "would",
+    "v": "ok"
+   }
+  ],
+  "form:th:จัง": [
+   {
+    "shown": "so; very much; how",
+    "v": "ok"
+   }
+  ],
+  "form:th:จังหวัด": [
+   {
+    "shown": "area; region; district; locality; territory",
+    "v": "ok"
+   }
+  ],
+  "form:th:จัด": [
+   {
+    "shown": "to consider; to deem; to count",
+    "v": "false-meaning",
+    "note": "จัด here means to arrange/organise (hold a party)"
+   }
+  ],
+  "form:th:จันทร์": [
+   {
+    "shown": "Monday (Abbreviation: จ. (jɔɔ.))",
+    "v": "ok"
+   }
+  ],
+  "form:th:จาก": [
+   {
+    "shown": "from",
+    "v": "ok"
+   }
+  ],
+  "form:th:จาน": [
+   {
+    "shown": "plate; dish",
+    "v": "ok"
+   }
+  ],
+  "form:th:จึง": [
+   {
+    "shown": "so, thus, therefore, accordingly, consequentially",
+    "v": "ok"
+   }
+  ],
+  "form:th:ชนะ": [
+   {
+    "shown": "to win",
+    "v": "ok"
+   }
+  ],
+  "form:th:ชนิด": [
+   {
+    "shown": "type; kind; class; sort; variety",
+    "v": "ok"
+   }
+  ],
+  "form:th:ชอบ": [
+   {
+    "shown": "to like",
+    "v": "ok"
+   }
+  ],
+  "form:th:ชั่วโมง": [
+   {
+    "shown": "hour",
+    "v": "ok"
+   }
+  ],
+  "form:th:ชั้น": [
+   {
+    "shown": "class, rank, grade",
+    "v": "ok"
+   }
+  ],
+  "form:th:ชาติ": [
+   {
+    "shown": "birth; origin",
+    "v": "false-meaning",
+    "note": "ชาติ means nation; 'birth; origin' is marginal"
+   }
+  ],
+  "form:th:ชาน": [
+   {
+    "shown": "external area.",
+    "v": "false-reading",
+    "note": "ชาน is a fragment of ชานชาลา (platform)"
+   }
+  ],
+  "form:th:ชาย": [
+   {
+    "shown": "male; man",
+    "v": "ok"
+   }
+  ],
+  "form:th:ชาร์จ": [
+   {
+    "shown": "to charge (battery)",
+    "v": "ok"
+   }
+  ],
+  "form:th:ชาว": [
+   {
+    "shown": "approx. -er, -an, -ese, -ist etc.",
+    "v": "ok"
+   }
+  ],
+  "form:th:ชิ้น": [
+   {
+    "shown": "piece",
+    "v": "ok"
+   }
+  ],
+  "form:th:ชีวิต": [
+   {
+    "shown": "life",
+    "v": "ok"
+   }
+  ],
+  "form:th:ชื่อ": [
+   {
+    "shown": "name; title (Classifier: ชื่อ)",
+    "v": "ok"
+   }
+  ],
+  "form:th:ชุด": [
+   {
+    "shown": "outfit (a set of clothing)",
+    "v": "ok"
+   }
+  ],
+  "form:th:ช่วง": [
+   {
+    "shown": "portion; section; part; period",
+    "v": "ok"
+   },
+   {
+    "shown": "stretch of time, period",
+    "v": "ok"
+   }
+  ],
+  "form:th:ช่วย": [
+   {
+    "shown": "to help",
+    "v": "ok"
+   }
+  ],
+  "form:th:ช่อง": [
+   {
+    "shown": "opening; hole; cavity; gap; space",
+    "v": "ok"
+   }
+  ],
+  "form:th:ช้อน": [
+   {
+    "shown": "spoon",
+    "v": "ok"
+   }
+  ],
+  "form:th:ซื้อ": [
+   {
+    "shown": "to buy; to purchase",
+    "v": "ok"
+   }
+  ],
+  "form:th:ซ่อม": [
+   {
+    "shown": "to repair, mend",
+    "v": "ok"
+   }
+  ],
+  "form:th:ซ่อมแซม": [
+   {
+    "shown": "to repair; to mend.",
+    "v": "ok"
+   }
+  ],
+  "form:th:ดัง": [
+   {
+    "shown": "loud; noisy.",
+    "v": "ok"
+   }
+  ],
+  "form:th:ดับ": [
+   {
+    "shown": "to end; to expire; to terminate",
+    "v": "ok"
+   }
+  ],
+  "form:th:ดาว": [
+   {
+    "shown": "star (any sense)",
+    "v": "ok"
+   }
+  ],
+  "form:th:ดี": [
+   {
+    "shown": "good",
+    "v": "ok"
+   },
+   {
+    "shown": "good: — nice",
+    "v": "ok"
+   }
+  ],
+  "form:th:ดึก": [
+   {
+    "shown": "late",
+    "v": "ok"
+   },
+   {
+    "shown": "late at night",
+    "v": "ok"
+   }
+  ],
+  "form:th:ดื่ม": [
+   {
+    "shown": "to drink",
+    "v": "ok"
+   }
+  ],
+  "form:th:ดู": [
+   {
+    "shown": "to view; to look; to watch",
+    "v": "ok"
+   }
+  ],
+  "form:th:ดูแล": [
+   {
+    "shown": "to look after",
+    "v": "ok"
+   }
+  ],
+  "form:th:ด้วย": [
+   {
+    "shown": "also; as well; too",
+    "v": "ok"
+   }
+  ],
+  "form:th:ตลอด": [
+   {
+    "shown": "throughly",
+    "v": "false-meaning",
+    "note": "ตลอด means throughout; gloss 'throughly' is garbled"
+   },
+   {
+    "shown": "throughout, all along",
+    "v": "ok"
+   }
+  ],
+  "form:th:ตลาด": [
+   {
+    "shown": "market",
+    "v": "ok"
+   }
+  ],
+  "form:th:ตอน": [
+   {
+    "shown": "part; section; portion; division",
+    "v": "ok"
+   },
+   {
+    "shown": "time, when",
+    "v": "ok"
+   }
+  ],
+  "form:th:ตอนนี้": [
+   {
+    "shown": "now, at the moment",
+    "v": "ok"
+   }
+  ],
+  "form:th:ตั้ง": [
+   {
+    "shown": "to set up, to erect",
+    "v": "ok"
+   }
+  ],
+  "form:th:ตั้งแต่": [
+   {
+    "shown": "from; since",
+    "v": "ok"
+   }
+  ],
+  "form:th:ตื่น": [
+   {
+    "shown": "to wake up",
+    "v": "ok"
+   }
+  ],
+  "form:th:ต่อ": [
+   {
+    "shown": "per: for each; for every",
+    "v": "false-meaning",
+    "note": "ต่อ main senses are to continue/connect/against; 'per' is marginal"
+   }
+  ],
+  "form:th:ต้น": [
+   {
+    "shown": "trunk (of a tree); stalk",
+    "v": "ok"
+   }
+  ],
+  "form:th:ต้นไม้": [
+   {
+    "shown": "tree",
+    "v": "ok"
+   }
+  ],
+  "form:th:ต้อง": [
+   {
+    "shown": "must, have to",
+    "v": "ok"
+   },
+   {
+    "shown": "to touch",
+    "v": "false-meaning",
+    "note": "ต้อง means must/have to; 'to touch' is an old marginal sense"
+   }
+  ],
+  "form:th:ถนน": [
+   {
+    "shown": "causeway; inlet; roadway over an embankment",
+    "v": "false-meaning",
+    "note": "ถนน means road/street, not a causeway"
+   }
+  ],
+  "form:th:ถัด": [
+   {
+    "shown": "next; following.",
+    "v": "ok"
+   }
+  ],
+  "form:th:ถาม": [
+   {
+    "shown": "to ask",
+    "v": "ok"
+   }
+  ],
+  "form:th:ถิ่น": [
+   {
+    "shown": "area; region; part.",
+    "v": "ok"
+   }
+  ],
+  "form:th:ถึง": [
+   {
+    "shown": "to arrive (at, in, on, etc)",
+    "v": "ok"
+   }
+  ],
+  "form:th:ถุง": [
+   {
+    "shown": "bag",
+    "v": "ok"
+   }
+  ],
+  "form:th:ถ่าย": [
+   {
+    "shown": "to transfer",
+    "v": "ok"
+   }
+  ],
+  "form:th:ทบ": [
+   {
+    "shown": "to fold; to double up",
+    "v": "false-reading",
+    "note": "ทบ is a fragment of ผลกระทบ, not the word 'to fold'"
+   }
+  ],
+  "form:th:ทะเล": [
+   {
+    "shown": "large body of water, as lake",
+    "v": "false-meaning",
+    "note": "ทะเล means sea, not a lake"
+   },
+   {
+    "shown": "sea",
+    "v": "ok"
+   }
+  ],
+  "form:th:ทาง": [
+   {
+    "shown": "way, route, or course for travel",
+    "v": "ok"
+   }
+  ],
+  "form:th:ทำ": [
+   {
+    "shown": "to make",
+    "v": "ok"
+   }
+  ],
+  "form:th:ทำงาน": [
+   {
+    "shown": "to work; to perform work",
+    "v": "ok"
+   }
+  ],
+  "form:th:ที": [
+   {
+    "shown": "chance, occasion, opportunity, time; round, turn",
+    "v": "ok"
+   }
+  ],
+  "form:th:ที่สุด": [
+   {
+    "shown": "the most, very most",
+    "v": "ok"
+   }
+  ],
+  "form:th:ทุกคน": [
+   {
+    "shown": "everyone, everybody",
+    "v": "ok"
+   }
+  ],
+  "form:th:ท่วม": [
+   {
+    "shown": "to flood",
+    "v": "ok"
+   }
+  ],
+  "form:th:ท่อง": [
+   {
+    "shown": "to go around",
+    "v": "ok"
+   },
+   {
+    "shown": "to wade (as through water).",
+    "v": "false-meaning",
+    "note": "ท่อง means to travel/roam/recite, not to wade"
+   }
+  ],
+  "form:th:ท้อง": [
+   {
+    "shown": "abdomen; belly",
+    "v": "false-reading",
+    "note": "ท้อง is a fragment of ท้องถิ่น (local), not belly"
+   },
+   {
+    "shown": "belly, stomach",
+    "v": "false-reading",
+    "note": "ท้อง is a fragment of ท้องถิ่น (local), not belly"
+   }
+  ],
+  "form:th:ธนาคาร": [
+   {
+    "shown": "bank (financial institution)",
+    "v": "ok"
+   }
+  ],
+  "form:th:นอน": [
+   {
+    "shown": "to sleep",
+    "v": "ok"
+   }
+  ],
+  "form:th:นัก": [
+   {
+    "shown": "much; quite; very",
+    "v": "false-reading",
+    "note": "นัก here is the agent prefix in นักวิเคราะห์ (analyst), not the adverb 'very'"
+   },
+   {
+    "shown": "very, too (as in นักหนา)",
+    "v": "false-reading",
+    "note": "นัก here is the agent prefix in นักวิเคราะห์ (analyst), not the adverb 'very'"
+   }
+  ],
+  "form:th:นักเรียน": [
+   {
+    "shown": "student",
+    "v": "ok"
+   }
+  ],
+  "form:th:นัด": [
+   {
+    "shown": "to appoint",
+    "v": "ok"
+   },
+   {
+    "shown": "to arrange to meet",
+    "v": "ok"
+   }
+  ],
+  "form:th:นั่ง": [
+   {
+    "shown": "to sit; to be seated",
+    "v": "ok"
+   }
+  ],
+  "form:th:นั่น": [
+   {
+    "shown": "that; those",
+    "v": "ok"
+   }
+  ],
+  "form:th:นั้น": [
+   {
+    "shown": "that; those",
+    "v": "ok"
+   }
+  ],
+  "form:th:นาที": [
+   {
+    "shown": "minute",
+    "v": "ok"
+   }
+  ],
+  "form:th:นายก": [
+   {
+    "shown": "chief; lord; master.",
+    "v": "ok"
+   }
+  ],
+  "form:th:นำ": [
+   {
+    "shown": "to lead",
+    "v": "ok"
+   }
+  ],
+  "form:th:นิทาน": [
+   {
+    "shown": "fable; story; tale; folklore; fairy-tale.",
+    "v": "ok"
+   }
+  ],
+  "form:th:นี่": [
+   {
+    "shown": "this; these",
+    "v": "ok"
+   }
+  ],
+  "form:th:นี้": [
+   {
+    "shown": "this; these",
+    "v": "ok"
+   }
+  ],
+  "form:th:น้อง": [
+   {
+    "shown": "younger brother; younger sister",
+    "v": "ok"
+   },
+   {
+    "shown": "younger sibling",
+    "v": "ok"
+   }
+  ],
+  "form:th:น้อย": [
+   {
+    "shown": "little, few",
+    "v": "ok"
+   }
+  ],
+  "form:th:น้ำ": [
+   {
+    "shown": "water",
+    "v": "ok"
+   }
+  ],
+  "form:th:น้ำตาล": [
+   {
+    "shown": "palmyra palm juice",
+    "v": "false-meaning",
+    "note": "น้ำตาล means sugar (palm juice is marginal)"
+   }
+  ],
+  "form:th:น้ำปลา": [
+   {
+    "shown": "fish sauce",
+    "v": "ok"
+   }
+  ],
+  "form:th:น้ำป่า": [
+   {
+    "shown": "flash flood.",
+    "v": "ok"
+   }
+  ],
+  "form:th:น้ำมัน": [
+   {
+    "shown": "oil (petroleum or comestible)",
+    "v": "ok"
+   }
+  ],
+  "form:th:บน": [
+   {
+    "shown": "on; up; upon; above; over",
+    "v": "ok"
+   }
+  ],
+  "form:th:บริษัท": [
+   {
+    "shown": "any business company, corporation, or firm.",
+    "v": "ok"
+   }
+  ],
+  "form:th:บาท": [
+   {
+    "shown": "baht",
+    "v": "ok"
+   },
+   {
+    "shown": "foot",
+    "v": "false-meaning",
+    "note": "บาท here is the baht currency, not 'foot'"
+   }
+  ],
+  "form:th:บาน": [
+   {
+    "shown": "panel; pane",
+    "v": "ok"
+   }
+  ],
+  "form:th:บ้าน": [
+   {
+    "shown": "house: — place of habitation; residence",
+    "v": "ok"
+   }
+  ],
+  "form:th:ปกติ": [
+   {
+    "shown": "natural; normal; usual; typical; ordinary; regular",
+    "v": "ok"
+   }
+  ],
+  "form:th:ปฏิบัติ": [
+   {
+    "shown": "to conduct",
+    "v": "ok"
+   },
+   {
+    "shown": "to practise; to treat (someone)",
+    "v": "ok"
+   }
+  ],
+  "form:th:ประชาชน": [
+   {
+    "shown": "national, citizen",
+    "v": "ok"
+   }
+  ],
+  "form:th:ประตู": [
+   {
+    "shown": "door; gate",
+    "v": "ok"
+   }
+  ],
+  "form:th:ประถม": [
+   {
+    "shown": "first; primary",
+    "v": "ok"
+   }
+  ],
+  "form:th:ประทาน": [
+   {
+    "shown": "to give",
+    "v": "false-reading",
+    "note": "the word is a fragment of รับประทาน (to eat) in this sentence, not the royal verb ประทาน"
+   }
+  ],
+  "form:th:ประมาณ": [
+   {
+    "shown": "approximately; about; around; roughly.",
+    "v": "false-reading",
+    "note": "ประมาณ is part of งบประมาณ (budget), not 'approximately'"
+   }
+  ],
+  "form:th:ประสบ": [
+   {
+    "shown": "to meet",
+    "v": "ok"
+   }
+  ],
+  "form:th:ประเทศ": [
+   {
+    "shown": "nation",
+    "v": "ok"
+   }
+  ],
+  "form:th:ปลูก": [
+   {
+    "shown": "to raise; to erect; to build",
+    "v": "false-meaning",
+    "note": "ปลูก means to plant/grow"
+   }
+  ],
+  "form:th:ปวด": [
+   {
+    "shown": "to ache; to be in pain",
+    "v": "ok"
+   }
+  ],
+  "form:th:ปัญหา": [
+   {
+    "shown": "problem; trouble; difficulty",
+    "v": "ok"
+   }
+  ],
+  "form:th:ปิด": [
+   {
+    "shown": "to close",
+    "v": "ok"
+   }
+  ],
+  "form:th:ผล": [
+   {
+    "shown": "result; outcome; profit; effect",
+    "v": "ok"
+   }
+  ],
+  "form:th:ผลไม้": [
+   {
+    "shown": "fruit",
+    "v": "ok"
+   }
+  ],
+  "form:th:ผัก": [
+   {
+    "shown": "vegetable",
+    "v": "ok"
+   }
+  ],
+  "form:th:ผู้": [
+   {
+    "shown": "person who (before a verb)",
+    "v": "ok"
+   },
+   {
+    "shown": "person; people",
+    "v": "ok"
+   }
+  ],
+  "form:th:ผู้หญิง": [
+   {
+    "shown": "female; woman",
+    "v": "ok"
+   },
+   {
+    "shown": "woman",
+    "v": "ok"
+   }
+  ],
+  "form:th:ผ่อน": [
+   {
+    "shown": "to postpone, to defer",
+    "v": "false-meaning",
+    "note": "ผ่อน means to relax/ease or pay in instalments, not postpone"
+   }
+  ],
+  "form:th:ผ่าน": [
+   {
+    "shown": "to pass",
+    "v": "ok"
+   }
+  ],
+  "form:th:ฝาก": [
+   {
+    "shown": "to deposit (e.g., money)",
+    "v": "ok"
+   }
+  ],
+  "form:th:พร้อม": [
+   {
+    "shown": "ready; prepared; set",
+    "v": "ok"
+   }
+  ],
+  "form:th:พอ": [
+   {
+    "shown": "enough, sufficiently",
+    "v": "ok"
+   }
+  ],
+  "form:th:พอก": [
+   {
+    "shown": "to cover; to plaster.",
+    "v": "false-reading",
+    "note": "พอก is a mis-split of พอ+กลับ in the sentence, not a word used here"
+   }
+  ],
+  "form:th:พัก": [
+   {
+    "shown": "to break; to pause; to halt",
+    "v": "ok"
+   }
+  ],
+  "form:th:พัฒนา": [
+   {
+    "shown": "to progress; to advance",
+    "v": "ok"
+   }
+  ],
+  "form:th:พัดลม": [
+   {
+    "shown": "electric fan.",
+    "v": "ok"
+   }
+  ],
+  "form:th:พี่": [
+   {
+    "shown": "elder brother; elder sister",
+    "v": "ok"
+   },
+   {
+    "shown": "older sibling",
+    "v": "ok"
+   }
+  ],
+  "form:th:พื้นที่": [
+   {
+    "shown": "area.",
+    "v": "ok"
+   }
+  ],
+  "form:th:พูด": [
+   {
+    "shown": "to speak",
+    "v": "ok"
+   }
+  ],
+  "form:th:พ่อ": [
+   {
+    "shown": "male head, lord, leader, or master",
+    "v": "false-meaning",
+    "note": "พ่อ means father; the 'male head' sense is secondary"
+   }
+  ],
+  "form:th:พ้น": [
+   {
+    "shown": "to be free of",
+    "v": "ok"
+   },
+   {
+    "shown": "to go beyond",
+    "v": "ok"
+   }
+  ],
+  "form:th:ฟัง": [
+   {
+    "shown": "to listen; to hear",
+    "v": "ok"
+   }
+  ],
+  "form:th:ฟัน": [
+   {
+    "shown": "tooth",
+    "v": "ok"
+   }
+  ],
+  "form:th:ฟุตบอล": [
+   {
+    "shown": "soccer; association football",
+    "v": "ok"
+   }
+  ],
+  "form:th:ฟ้า": [
+   {
+    "shown": "sky (upper atmosphere of the earth)",
+    "v": "ok"
+   }
+  ],
+  "form:th:ภรรยา": [
+   {
+    "shown": "wife",
+    "v": "ok"
+   },
+   {
+    "shown": "wife: married woman",
+    "v": "ok"
+   }
+  ],
+  "form:th:ภัย": [
+   {
+    "shown": "fear, fright",
+    "v": "false-meaning",
+    "note": "ภัย means danger/peril, not fear"
+   }
+  ],
+  "form:th:ภาค": [
+   {
+    "shown": "good luck",
+    "v": "false-meaning",
+    "note": "ภาค means region/part/section, not good luck"
+   }
+  ],
+  "form:th:ภายใน": [
+   {
+    "shown": "within; inside",
+    "v": "ok"
+   }
+  ],
+  "form:th:ภาษา": [
+   {
+    "shown": "language (computer language)",
+    "v": "ok"
+   }
+  ],
+  "form:th:มติ": [
+   {
+    "shown": "a resolution.",
+    "v": "ok"
+   },
+   {
+    "shown": "an opinion; view.",
+    "v": "ok"
+   }
+  ],
+  "form:th:มนุษย์": [
+   {
+    "shown": "human; human being",
+    "v": "ok"
+   }
+  ],
+  "form:th:มหาวิทยาลัย": [
+   {
+    "shown": "university",
+    "v": "ok"
+   }
+  ],
+  "form:th:มอง": [
+   {
+    "shown": "to watch",
+    "v": "ok"
+   }
+  ],
+  "form:th:มะม่วง": [
+   {
+    "shown": "mango (fruit)",
+    "v": "ok"
+   }
+  ],
+  "form:th:มัก": [
+   {
+    "shown": "often; usually",
+    "v": "ok"
+   }
+  ],
+  "form:th:มา": [
+   {
+    "shown": "to arrive",
+    "v": "ok"
+   },
+   {
+    "shown": "to come",
+    "v": "ok"
+   }
+  ],
+  "form:th:มาก": [
+   {
+    "shown": "a lot; much; many; very",
+    "v": "ok"
+   }
+  ],
+  "form:th:มากกว่า": [
+   {
+    "shown": "more than",
+    "v": "ok"
+   }
+  ],
+  "form:th:มากมาย": [
+   {
+    "shown": "a great many, plentiful",
+    "v": "ok"
+   },
+   {
+    "shown": "much; many; a lot",
+    "v": "ok"
+   }
+  ],
+  "form:th:มาราธอน": [
+   {
+    "shown": "marathon.",
+    "v": "ok"
+   }
+  ],
+  "form:th:มาส": [
+   {
+    "shown": "moon.",
+    "v": "false-reading",
+    "note": "mis-split of มา สอง; มาส is not the word here"
+   }
+  ],
+  "form:th:มี": [
+   {
+    "shown": "to have; to own; to possess",
+    "v": "ok"
+   }
+  ],
+  "form:th:มืด": [
+   {
+    "shown": "dark — radiating, admitting",
+    "v": "ok"
+   }
+  ],
+  "form:th:มือ": [
+   {
+    "shown": "(classifier ข้าง) hand",
+    "v": "ok"
+   }
+  ],
+  "form:th:มโนธรรม": [
+   {
+    "shown": "conscience",
+    "v": "ok"
+   }
+  ],
+  "form:th:ยัง": [
+   {
+    "shown": "still; yet",
+    "v": "ok"
+   }
+  ],
+  "form:th:ยา": [
+   {
+    "shown": "medicine; drug",
+    "v": "ok"
+   }
+  ],
+  "form:th:ยาย": [
+   {
+    "shown": "grandmother (mother's mother)",
+    "v": "ok"
+   },
+   {
+    "shown": "maternal grandmother",
+    "v": "ok"
+   }
+  ],
+  "form:th:ยิ้ม": [
+   {
+    "shown": "to smile",
+    "v": "ok"
+   }
+  ],
+  "form:th:ยื่น": [
+   {
+    "shown": "to submit; to present; to offer",
+    "v": "ok"
+   }
+  ],
+  "form:th:ย่าน": [
+   {
+    "shown": "area; section; district.",
+    "v": "ok"
+   }
+  ],
+  "form:th:ย้าย": [
+   {
+    "shown": "to move; to change; to transfer",
+    "v": "ok"
+   }
+  ],
+  "form:th:รถ": [
+   {
+    "shown": "car; vehicle",
+    "v": "ok"
+   },
+   {
+    "shown": "chariot; carriage; cart; wagon",
+    "v": "false-meaning",
+    "note": "รถ means car/vehicle in current use, not chariot"
+   }
+  ],
+  "form:th:รถเมล์": [
+   {
+    "shown": "bus",
+    "v": "ok"
+   }
+  ],
+  "form:th:รอ": [
+   {
+    "shown": "to wait",
+    "v": "ok"
+   }
+  ],
+  "form:th:ระ": [
+   {
+    "shown": "to scrape; to brush against",
+    "v": "false-reading",
+    "note": "ระ is a stray fragment (e.g. of เร่ง/กระทบ), not a word used here"
+   }
+  ],
+  "form:th:รัฐมนตรี": [
+   {
+    "shown": "Councillor of State",
+    "v": "ok"
+   },
+   {
+    "shown": "cabinet minister",
+    "v": "ok"
+   }
+  ],
+  "form:th:รับ": [
+   {
+    "shown": "to greet; to receive; to welcome",
+    "v": "ok"
+   }
+  ],
+  "form:th:ราคา": [
+   {
+    "shown": "price; cost",
+    "v": "ok"
+   }
+  ],
+  "form:th:ราย": [
+   {
+    "shown": "case; instance",
+    "v": "ok"
+   }
+  ],
+  "form:th:ริม": [
+   {
+    "shown": "beside, along the edge of",
+    "v": "ok"
+   },
+   {
+    "shown": "by the side of",
+    "v": "ok"
+   }
+  ],
+  "form:th:รีบ": [
+   {
+    "shown": "to hurry; to rush",
+    "v": "ok"
+   }
+  ],
+  "form:th:รูป": [
+   {
+    "shown": "outward appearance",
+    "v": "false-meaning",
+    "note": "รูป means picture/shape/photo"
+   },
+   {
+    "shown": "picture; shape",
+    "v": "ok"
+   }
+  ],
+  "form:th:รู้": [
+   {
+    "shown": "to know (information), to be aware",
+    "v": "ok"
+   }
+  ],
+  "form:th:รู้จัก": [
+   {
+    "shown": "to know (a person)",
+    "v": "ok"
+   }
+  ],
+  "form:th:รู้สึก": [
+   {
+    "shown": "to feel",
+    "v": "ok"
+   }
+  ],
+  "form:th:ร้อน": [
+   {
+    "shown": "hot (creating a burning sensation)",
+    "v": "ok"
+   }
+  ],
+  "form:th:ร้อย": [
+   {
+    "shown": "hundred; 100 (Thai numeral: ๑๐๐ (100))",
+    "v": "ok"
+   }
+  ],
+  "form:th:ร้าน": [
+   {
+    "shown": "the fruit of this plant",
+    "v": "false-meaning",
+    "note": "ร้าน means shop/store, not a plant fruit"
+   }
+  ],
+  "form:th:ลง": [
+   {
+    "shown": "to come down",
+    "v": "ok"
+   },
+   {
+    "shown": "to go down",
+    "v": "ok"
+   }
+  ],
+  "form:th:ลงทุน": [
+   {
+    "shown": "to invest",
+    "v": "ok"
+   }
+  ],
+  "form:th:ลด": [
+   {
+    "shown": "to lower, to reduce",
+    "v": "ok"
+   },
+   {
+    "shown": "to reduce; to go down",
+    "v": "ok"
+   }
+  ],
+  "form:th:ลม": [
+   {
+    "shown": "wind; breeze; air",
+    "v": "ok"
+   }
+  ],
+  "form:th:ลอง": [
+   {
+    "shown": "to try (to make an experiment)",
+    "v": "ok"
+   }
+  ],
+  "form:th:ละ": [
+   {
+    "shown": "each, per",
+    "v": "ok"
+   }
+  ],
+  "form:th:ลัง": [
+   {
+    "shown": "crate: container",
+    "v": "false-reading",
+    "note": "ลัง is a fragment of หลัง (after)"
+   }
+  ],
+  "form:th:ลิตร": [
+   {
+    "shown": "litre",
+    "v": "ok"
+   }
+  ],
+  "form:th:ลืม": [
+   {
+    "shown": "to forget",
+    "v": "ok"
+   }
+  ],
+  "form:th:ลูก": [
+   {
+    "shown": "child; offspring; issue",
+    "v": "ok"
+   }
+  ],
+  "form:th:ลูกสาว": [
+   {
+    "shown": "daughter",
+    "v": "ok"
+   }
+  ],
+  "form:th:ล้าง": [
+   {
+    "shown": "to kill; to slay",
+    "v": "false-meaning",
+    "note": "ล้าง means to wash, not to kill"
+   },
+   {
+    "shown": "to wash",
+    "v": "ok"
+   }
+  ],
+  "form:th:ล้าน": [
+   {
+    "shown": "million",
+    "v": "ok"
+   }
+  ],
+  "form:th:วัด": [
+   {
+    "shown": "Buddhist compound",
+    "v": "ok"
+   },
+   {
+    "shown": "temple",
+    "v": "ok"
+   }
+  ],
+  "form:th:วัน": [
+   {
+    "shown": "day",
+    "v": "ok"
+   }
+  ],
+  "form:th:วิชา": [
+   {
+    "shown": "subject (of study)",
+    "v": "ok"
+   }
+  ],
+  "form:th:วิทยาศาสตร์": [
+   {
+    "shown": "science",
+    "v": "ok"
+   }
+  ],
+  "form:th:วิเคราะห์": [
+   {
+    "shown": "to analyze.",
+    "v": "ok"
+   }
+  ],
+  "form:th:วิ่ง": [
+   {
+    "shown": "to run",
+    "v": "ok"
+   }
+  ],
+  "form:th:ว่าการ": [
+   {
+    "shown": "to be in charge",
+    "v": "false-reading",
+    "note": "mis-split of ว่า การนอน"
+   }
+  ],
+  "form:th:ว่าง": [
+   {
+    "shown": "free; at leisure",
+    "v": "ok"
+   }
+  ],
+  "form:th:ว่าย": [
+   {
+    "shown": "to swim",
+    "v": "false-reading",
+    "note": "mis-split of ว่า ยอดขาย"
+   }
+  ],
+  "form:th:สถานี": [
+   {
+    "shown": "topic; subject; theme; issue; point",
+    "v": "false-meaning",
+    "note": "สถานี means station, not topic"
+   }
+  ],
+  "form:th:สนาม": [
+   {
+    "shown": "lawn, yard",
+    "v": "ok"
+   }
+  ],
+  "form:th:สนุก": [
+   {
+    "shown": "fun, enjoyable",
+    "v": "ok"
+   },
+   {
+    "shown": "pleasant; enjoyable; fun",
+    "v": "ok"
+   }
+  ],
+  "form:th:สภา": [
+   {
+    "shown": "assembly",
+    "v": "ok"
+   }
+  ],
+  "form:th:สมุด": [
+   {
+    "shown": "notebook",
+    "v": "ok"
+   }
+  ],
+  "form:th:สวน": [
+   {
+    "shown": "garden, orchard",
+    "v": "ok"
+   },
+   {
+    "shown": "park; garden; orchard; plantation",
+    "v": "ok"
+   }
+  ],
+  "form:th:สวย": [
+   {
+    "shown": "beautiful",
+    "v": "ok"
+   }
+  ],
+  "form:th:สอน": [
+   {
+    "shown": "to teach; to instruct",
+    "v": "ok"
+   }
+  ],
+  "form:th:สะอาด": [
+   {
+    "shown": "clean (physically or morally), immaculate, spotless",
+    "v": "ok"
+   }
+  ],
+  "form:th:สับ": [
+   {
+    "shown": "to hack, to chop, to slash",
+    "v": "ok"
+   }
+  ],
+  "form:th:สาธารณสุข": [
+   {
+    "shown": "public health.",
+    "v": "ok"
+   }
+  ],
+  "form:th:สาธารณะ": [
+   {
+    "shown": "public; common",
+    "v": "ok"
+   }
+  ],
+  "form:th:สามี": [
+   {
+    "shown": "husband",
+    "v": "ok"
+   },
+   {
+    "shown": "husband: married man",
+    "v": "ok"
+   }
+  ],
+  "form:th:สาย": [
+   {
+    "shown": "line; wire; rope; string; strap",
+    "v": "ok"
+   }
+  ],
+  "form:th:สิทธิ": [
+   {
+    "shown": "entitlement; right; title",
+    "v": "ok"
+   }
+  ],
+  "form:th:สี": [
+   {
+    "shown": "color, colour",
+    "v": "ok"
+   },
+   {
+    "shown": "colour",
+    "v": "ok"
+   }
+  ],
+  "form:th:สุดท้าย": [
+   {
+    "shown": "final, last",
+    "v": "ok"
+   }
+  ],
+  "form:th:สูง": [
+   {
+    "shown": "tall",
+    "v": "ok"
+   }
+  ],
+  "form:th:สูงสุด": [
+   {
+    "shown": "highest; supreme; top",
+    "v": "ok"
+   }
+  ],
+  "form:th:ส่ง": [
+   {
+    "shown": "to send",
+    "v": "ok"
+   }
+  ],
+  "form:th:หญิง": [
+   {
+    "shown": "woman; female",
+    "v": "ok"
+   }
+  ],
+  "form:th:หนังสือ": [
+   {
+    "shown": "book",
+    "v": "ok"
+   },
+   {
+    "shown": "letter; character; script",
+    "v": "false-meaning",
+    "note": "หนังสือ means book (also letter), shown sense is secondary"
+   }
+  ],
+  "form:th:หนุ่ม": [
+   {
+    "shown": "young; still young; younger than usual",
+    "v": "ok"
+   }
+  ],
+  "form:th:หน่อย": [
+   {
+    "shown": "a little; a little bit",
+    "v": "ok"
+   }
+  ],
+  "form:th:หน้า": [
+   {
+    "shown": "face; surface; front",
+    "v": "ok"
+   }
+  ],
+  "form:th:หน้าต่าง": [
+   {
+    "shown": "window",
+    "v": "ok"
+   }
+  ],
+  "form:th:หมอ": [
+   {
+    "shown": "person specialising in magic, the occult",
+    "v": "false-meaning",
+    "note": "หมอ means doctor"
+   }
+  ],
+  "form:th:หมู": [
+   {
+    "shown": "pig",
+    "v": "ok"
+   }
+  ],
+  "form:th:หยุด": [
+   {
+    "shown": "to stop",
+    "v": "ok"
+   }
+  ],
+  "form:th:หรือ": [
+   {
+    "shown": "or",
+    "v": "ok"
+   }
+  ],
+  "form:th:หลัง": [
+   {
+    "shown": "behind",
+    "v": "ok"
+   }
+  ],
+  "form:th:หลับ": [
+   {
+    "shown": "to close (the eyes)",
+    "v": "ok"
+   }
+  ],
+  "form:th:หลาก": [
+   {
+    "shown": "many; abundant; profuse.",
+    "v": "ok"
+   }
+  ],
+  "form:th:หลาน": [
+   {
+    "shown": "grandchild.",
+    "v": "ok"
+   }
+  ],
+  "form:th:หัว": [
+   {
+    "shown": "head",
+    "v": "ok"
+   },
+   {
+    "shown": "head: — chief; leader",
+    "v": "false-meaning",
+    "note": "หัว means head"
+   }
+  ],
+  "form:th:หัวหน้า": [
+   {
+    "shown": "head; chief; leader",
+    "v": "ok"
+   }
+  ],
+  "form:th:หั่น": [
+   {
+    "shown": "to cut into pieces, to slice",
+    "v": "ok"
+   }
+  ],
+  "form:th:หา": [
+   {
+    "shown": "to call; to summon",
+    "v": "false-meaning",
+    "note": "หา means to look for/find; 'to call' is not its main sense"
+   },
+   {
+    "shown": "to look for; to find",
+    "v": "ok"
+   }
+  ],
+  "form:th:หาย": [
+   {
+    "shown": "to disappear, to be lost",
+    "v": "ok"
+   },
+   {
+    "shown": "to ruin, to wreck",
+    "v": "false-meaning",
+    "note": "หาย means to disappear/recover, not to ruin"
+   }
+  ],
+  "form:th:หุ้น": [
+   {
+    "shown": "share; stock",
+    "v": "ok"
+   }
+  ],
+  "form:th:ห้อง": [
+   {
+    "shown": "room (division of building)",
+    "v": "ok"
+   }
+  ],
+  "form:th:ห้องเรียน": [
+   {
+    "shown": "classroom",
+    "v": "ok"
+   }
+  ],
+  "form:th:ห้าม": [
+   {
+    "shown": "to forbid; to prohibit; to inhibit",
+    "v": "ok"
+   }
+  ],
+  "form:th:อด": [
+   {
+    "shown": "to abstain or refrain (from)",
+    "v": "false-reading",
+    "note": "อด is a fragment of กอด (to hug), not the word 'abstain'"
+   }
+  ],
+  "form:th:อนุมัติ": [
+   {
+    "shown": "to grant",
+    "v": "ok"
+   }
+  ],
+  "form:th:อยาก": [
+   {
+    "shown": "to want to",
+    "v": "ok"
+   },
+   {
+    "shown": "to want; to desire",
+    "v": "ok"
+   }
+  ],
+  "form:th:อยู่": [
+   {
+    "shown": "to dwell, to live, to reside",
+    "v": "ok"
+   }
+  ],
+  "form:th:อย่าง": [
+   {
+    "shown": "kind, way",
+    "v": "ok"
+   },
+   {
+    "shown": "variety",
+    "v": "ok"
+   }
+  ],
+  "form:th:อร่อย": [
+   {
+    "shown": "delicious; tasty",
+    "v": "ok"
+   }
+  ],
+  "form:th:อะไร": [
+   {
+    "shown": "what",
+    "v": "ok"
+   },
+   {
+    "shown": "what?",
+    "v": "ok"
+   }
+  ],
+  "form:th:อาการ": [
+   {
+    "shown": "condition; state; status",
+    "v": "ok"
+   }
+  ],
+  "form:th:อากาศ": [
+   {
+    "shown": "air",
+    "v": "ok"
+   }
+  ],
+  "form:th:อาจ": [
+   {
+    "shown": "may; might",
+    "v": "ok"
+   }
+  ],
+  "form:th:อาทิตย์": [
+   {
+    "shown": "Sunday Abbreviation: อา. (aa) (Classifier: วัน)",
+    "v": "ok"
+   }
+  ],
+  "form:th:อาบ": [
+   {
+    "shown": "to bathe; to immerse; to bask",
+    "v": "ok"
+   }
+  ],
+  "form:th:อาหาร": [
+   {
+    "shown": "food; meal; diet",
+    "v": "ok"
+   }
+  ],
+  "form:th:อีก": [
+   {
+    "shown": "more; additionally; further",
+    "v": "ok"
+   }
+  ],
+  "form:th:อื่น": [
+   {
+    "shown": "other",
+    "v": "ok"
+   }
+  ],
+  "form:th:อุณหภูมิ": [
+   {
+    "shown": "temperature",
+    "v": "ok"
+   }
+  ],
+  "form:th:อ่าน": [
+   {
+    "shown": "to read",
+    "v": "ok"
+   }
+  ],
+  "form:th:เกิด": [
+   {
+    "shown": "to be born; to happen",
+    "v": "ok"
+   },
+   {
+    "shown": "to rise",
+    "v": "false-meaning",
+    "note": "เกิด means to be born/happen, not 'to rise'"
+   }
+  ],
+  "form:th:เกี่ยว": [
+   {
+    "shown": "to be related to",
+    "v": "ok"
+   },
+   {
+    "shown": "to hook",
+    "v": "false-meaning",
+    "note": "เกี่ยว means to be related/concerned, not to hook (hook is marginal)"
+   }
+  ],
+  "form:th:เกือบ": [
+   {
+    "shown": "almost, nearly",
+    "v": "ok"
+   }
+  ],
+  "form:th:เก็บ": [
+   {
+    "shown": "to accumulate",
+    "v": "false-meaning",
+    "note": "เก็บ means to keep/collect/put away; 'to accumulate' is off"
+   },
+   {
+    "shown": "to pick up",
+    "v": "ok"
+   }
+  ],
+  "form:th:เก่ง": [
+   {
+    "shown": "skilled; skilful; good at something",
+    "v": "ok"
+   }
+  ],
+  "form:th:เก่า": [
+   {
+    "shown": "old",
+    "v": "ok"
+   }
+  ],
+  "form:th:เก้าอี้": [
+   {
+    "shown": "chair (Classifier: ตัว)",
+    "v": "ok"
+   }
+  ],
+  "form:th:เขา": [
+   {
+    "shown": "he; she; they",
+    "v": "ok"
+   }
+  ],
+  "form:th:เขียว": [
+   {
+    "shown": "green",
+    "v": "ok"
+   }
+  ],
+  "form:th:เข้า": [
+   {
+    "shown": "to cause to do so",
+    "v": "false-meaning",
+    "note": "เข้า means to enter"
+   }
+  ],
+  "form:th:เข้าใจ": [
+   {
+    "shown": "to understand",
+    "v": "ok"
+   }
+  ],
+  "form:th:เครื่อง": [
+   {
+    "shown": "machine; equipment",
+    "v": "ok"
+   },
+   {
+    "shown": "thing; article; matter; material",
+    "v": "false-meaning",
+    "note": "เครื่อง means machine/device here"
+   }
+  ],
+  "form:th:เจตนารมณ์": [
+   {
+    "shown": "intention; intendment; spirit; will; purpose.",
+    "v": "ok"
+   }
+  ],
+  "form:th:เจอ": [
+   {
+    "shown": "to discover, to meet, to find",
+    "v": "ok"
+   }
+  ],
+  "form:th:เจ็บ": [
+   {
+    "shown": "to be sick",
+    "v": "false-meaning",
+    "note": "เจ็บ means to hurt/be in pain"
+   }
+  ],
+  "form:th:เฉพาะ": [
+   {
+    "shown": "specific; particular; peculiar",
+    "v": "ok"
+   }
+  ],
+  "form:th:เชื่อ": [
+   {
+    "shown": "to believe",
+    "v": "ok"
+   }
+  ],
+  "form:th:เช้า": [
+   {
+    "shown": "morning",
+    "v": "ok"
+   }
+  ],
+  "form:th:เซลเซียส": [
+   {
+    "shown": "Celsius.",
+    "v": "ok"
+   }
+  ],
+  "form:th:เดิน": [
+   {
+    "shown": "to install",
+    "v": "false-meaning",
+    "note": "เดิน means to walk, not to install"
+   },
+   {
+    "shown": "to walk",
+    "v": "ok"
+   }
+  ],
+  "form:th:เดิม": [
+   {
+    "shown": "original; first",
+    "v": "ok"
+   }
+  ],
+  "form:th:เด็ก": [
+   {
+    "shown": "child; young",
+    "v": "ok"
+   },
+   {
+    "shown": "young person",
+    "v": "ok"
+   }
+  ],
+  "form:th:เตรียม": [
+   {
+    "shown": "to prepare; to make ready",
+    "v": "ok"
+   }
+  ],
+  "form:th:เติบโต": [
+   {
+    "shown": "to grow",
+    "v": "ok"
+   }
+  ],
+  "form:th:เติม": [
+   {
+    "shown": "to add; to fill",
+    "v": "ok"
+   }
+  ],
+  "form:th:เตือน": [
+   {
+    "shown": "to warn, to alarm, to alert",
+    "v": "ok"
+   }
+  ],
+  "form:th:เต้น": [
+   {
+    "shown": "to spring, jump",
+    "v": "false-meaning",
+    "note": "เต้น means to dance/beat; ตื่นเต้น is a compound"
+   }
+  ],
+  "form:th:เทศบาล": [
+   {
+    "shown": "municipality.",
+    "v": "ok"
+   }
+  ],
+  "form:th:เที่ยว": [
+   {
+    "shown": "to go out for fun",
+    "v": "ok"
+   },
+   {
+    "shown": "to travel",
+    "v": "ok"
+   }
+  ],
+  "form:th:เท่านั้น": [
+   {
+    "shown": "only, just, no more than",
+    "v": "ok"
+   }
+  ],
+  "form:th:เท่าไร": [
+   {
+    "shown": "how much?",
+    "v": "ok"
+   },
+   {
+    "shown": "to what extent or degree?",
+    "v": "ok"
+   }
+  ],
+  "form:th:เบา": [
+   {
+    "shown": "light (weight)",
+    "v": "false-reading",
+    "note": "เบา is a fragment of เบาหวาน (diabetes)"
+   },
+   {
+    "shown": "soft; gentle.",
+    "v": "false-reading",
+    "note": "เบา is a fragment of เบาหวาน (diabetes)"
+   }
+  ],
+  "form:th:เปิด": [
+   {
+    "shown": "to open; to turn on",
+    "v": "ok"
+   },
+   {
+    "shown": "to part",
+    "v": "false-meaning",
+    "note": "เปิด means to open, not 'to part'"
+   }
+  ],
+  "form:th:เป็น": [
+   {
+    "shown": "to be",
+    "v": "ok"
+   }
+  ],
+  "form:th:เผย": [
+   {
+    "shown": "to open; to reveal",
+    "v": "ok"
+   }
+  ],
+  "form:th:เพราะ": [
+   {
+    "shown": "because",
+    "v": "ok"
+   }
+  ],
+  "form:th:เพิ่ม": [
+   {
+    "shown": "to add; to insert; to include",
+    "v": "ok"
+   }
+  ],
+  "form:th:เพียง": [
+   {
+    "shown": "only, merely",
+    "v": "ok"
+   },
+   {
+    "shown": "up to, equal to",
+    "v": "false-meaning",
+    "note": "เพียง means only/merely"
+   }
+  ],
+  "form:th:เพื่อน": [
+   {
+    "shown": "familiar, intimate",
+    "v": "false-meaning",
+    "note": "เพื่อน means friend, not 'familiar, intimate'"
+   },
+   {
+    "shown": "friend",
+    "v": "ok"
+   }
+  ],
+  "form:th:เมตร": [
+   {
+    "shown": "metre.",
+    "v": "ok"
+   }
+  ],
+  "form:th:เมือง": [
+   {
+    "shown": "city, town; country",
+    "v": "ok"
+   },
+   {
+    "shown": "city-state",
+    "v": "false-meaning",
+    "note": "เมือง means city/town"
+   }
+  ],
+  "form:th:เมื่อวาน": [
+   {
+    "shown": "yesterday",
+    "v": "ok"
+   }
+  ],
+  "form:th:เย็น": [
+   {
+    "shown": "evening; late afternoon; early evening",
+    "v": "ok"
+   }
+  ],
+  "form:th:เรา": [
+   {
+    "shown": "I, we",
+    "v": "ok"
+   }
+  ],
+  "form:th:เริ่ม": [
+   {
+    "shown": "to begin; to start",
+    "v": "ok"
+   }
+  ],
+  "form:th:เรียน": [
+   {
+    "shown": "to learn; to study",
+    "v": "ok"
+   }
+  ],
+  "form:th:เรือ": [
+   {
+    "shown": "watercraft: boat; ship; etc. (Classifier: ลำ)",
+    "v": "ok"
+   }
+  ],
+  "form:th:เรือน": [
+   {
+    "shown": "house; residential building; residence",
+    "v": "ok"
+   }
+  ],
+  "form:th:เร็ว": [
+   {
+    "shown": "fast; quick; rapid",
+    "v": "ok"
+   }
+  ],
+  "form:th:เลิก": [
+   {
+    "shown": "to lift up; to raise",
+    "v": "false-meaning",
+    "note": "เลิก means to stop/quit, not lift up"
+   }
+  ],
+  "form:th:เลิศ": [
+   {
+    "shown": "excellent; superb; fine",
+    "v": "ok"
+   }
+  ],
+  "form:th:เลี้ยง": [
+   {
+    "shown": "to dribble",
+    "v": "false-meaning",
+    "note": "เลี้ยง means to raise/feed/treat"
+   },
+   {
+    "shown": "to raise, to feed",
+    "v": "ok"
+   }
+  ],
+  "form:th:เลี้ยว": [
+   {
+    "shown": "to turn",
+    "v": "ok"
+   }
+  ],
+  "form:th:เลือก": [
+   {
+    "shown": "to choose",
+    "v": "ok"
+   }
+  ],
+  "form:th:เล็ก": [
+   {
+    "shown": "small",
+    "v": "ok"
+   }
+  ],
+  "form:th:เล่น": [
+   {
+    "shown": "to kid",
+    "v": "false-meaning",
+    "note": "เล่น means to play"
+   },
+   {
+    "shown": "to play",
+    "v": "ok"
+   }
+  ],
+  "form:th:เล่า": [
+   {
+    "shown": "to narrate; to tell",
+    "v": "ok"
+   }
+  ],
+  "form:th:เวลา": [
+   {
+    "shown": "time",
+    "v": "ok"
+   }
+  ],
+  "form:th:เศรษฐกิจ": [
+   {
+    "shown": "economy.",
+    "v": "ok"
+   }
+  ],
+  "form:th:เสนอ": [
+   {
+    "shown": "to offer; to propose",
+    "v": "ok"
+   }
+  ],
+  "form:th:เสมอ": [
+   {
+    "shown": "always; constantly",
+    "v": "false-reading",
+    "note": "เสมอ here is part of เสมอภาค (equality), not 'always'"
+   }
+  ],
+  "form:th:เสร็จ": [
+   {
+    "shown": "to be finished (complete); ready",
+    "v": "ok"
+   }
+  ],
+  "form:th:เสีย": [
+   {
+    "shown": "to degenerate",
+    "v": "false-meaning",
+    "note": "เสีย means to lose/spoil/pay, not 'to degenerate'"
+   },
+   {
+    "shown": "to lose",
+    "v": "ok"
+   }
+  ],
+  "form:th:เสียง": [
+   {
+    "shown": "opinion; view (as in ออกเสียง (ɔ̀ɔk-sǐiang))",
+    "v": "false-meaning",
+    "note": "เสียง means sound/voice"
+   }
+  ],
+  "form:th:เสียดาย": [
+   {
+    "shown": "to regret, to deplore.",
+    "v": "ok"
+   }
+  ],
+  "form:th:เสื้อ": [
+   {
+    "shown": "shirt",
+    "v": "ok"
+   }
+  ],
+  "form:th:เหตุผล": [
+   {
+    "shown": "reason, rationale.",
+    "v": "ok"
+   }
+  ],
+  "form:th:เหนือ": [
+   {
+    "shown": "over; above; on top of",
+    "v": "ok"
+   }
+  ],
+  "form:th:เหลือ": [
+   {
+    "shown": "to remain; to be left",
+    "v": "false-reading",
+    "note": "เหลือ is part of ช่วยเหลือ (help), not 'remain'"
+   }
+  ],
+  "form:th:เห็น": [
+   {
+    "shown": "to see",
+    "v": "ok"
+   },
+   {
+    "shown": "to think",
+    "v": "false-meaning",
+    "note": "เห็น means to see"
+   }
+  ],
+  "form:th:เอา": [
+   {
+    "shown": "to bring; to take",
+    "v": "ok"
+   },
+   {
+    "shown": "to take; to want",
+    "v": "ok"
+   }
+  ],
+  "form:th:แก้ว": [
+   {
+    "shown": "any clear, transparent substance, as crystal",
+    "v": "ok"
+   }
+  ],
+  "form:th:แข่ง": [
+   {
+    "shown": "to compete",
+    "v": "ok"
+   }
+  ],
+  "form:th:แข่งขัน": [
+   {
+    "shown": "to compete",
+    "v": "ok"
+   }
+  ],
+  "form:th:แดง": [
+   {
+    "shown": "red",
+    "v": "ok"
+   }
+  ],
+  "form:th:แต่": [
+   {
+    "shown": "but; however",
+    "v": "ok"
+   }
+  ],
+  "form:th:แต่ง": [
+   {
+    "shown": "ตั้ง to appoint",
+    "v": "false-meaning",
+    "note": "แต่ง means to dress/compose/adorn (แต่งตัว); appointing is marginal"
+   }
+  ],
+  "form:th:แต่งงาน": [
+   {
+    "shown": "to marry, especially through a ceremony",
+    "v": "ok"
+   }
+  ],
+  "form:th:แถว": [
+   {
+    "shown": "area; locality; vicinity",
+    "v": "ok"
+   },
+   {
+    "shown": "row, line",
+    "v": "ok"
+   }
+  ],
+  "form:th:แนะนำ": [
+   {
+    "shown": "to advise",
+    "v": "ok"
+   }
+  ],
+  "form:th:แบตเตอรี่": [
+   {
+    "shown": "battery.",
+    "v": "ok"
+   }
+  ],
+  "form:th:แปรง": [
+   {
+    "shown": "to brush",
+    "v": "ok"
+   }
+  ],
+  "form:th:แพง": [
+   {
+    "shown": "expensive; of a high price",
+    "v": "ok"
+   }
+  ],
+  "form:th:แมว": [
+   {
+    "shown": "cat",
+    "v": "ok"
+   }
+  ],
+  "form:th:แม่": [
+   {
+    "shown": "female head, chief, or leader",
+    "v": "false-meaning",
+    "note": "แม่ means mother; 'female head' is secondary"
+   }
+  ],
+  "form:th:แม่น้ำ": [
+   {
+    "shown": "river",
+    "v": "ok"
+   }
+  ],
+  "form:th:แรก": [
+   {
+    "shown": "first",
+    "v": "ok"
+   }
+  ],
+  "form:th:และ": [
+   {
+    "shown": "and",
+    "v": "ok"
+   }
+  ],
+  "form:th:แล้ว": [
+   {
+    "shown": "already",
+    "v": "ok"
+   },
+   {
+    "shown": "then; next; and",
+    "v": "ok"
+   }
+  ],
+  "form:th:แวะ": [
+   {
+    "shown": "to stop by; to visit",
+    "v": "ok"
+   }
+  ],
+  "form:th:แห่ง": [
+   {
+    "shown": "of",
+    "v": "ok"
+   }
+  ],
+  "form:th:แห้ง": [
+   {
+    "shown": "dry; dried",
+    "v": "ok"
+   }
+  ],
+  "form:th:โดย": [
+   {
+    "shown": "by; with; by means of",
+    "v": "ok"
+   }
+  ],
+  "form:th:โต๊ะ": [
+   {
+    "shown": "table; desk",
+    "v": "ok"
+   }
+  ],
+  "form:th:โทรศัพท์": [
+   {
+    "shown": "telephone",
+    "v": "ok"
+   },
+   {
+    "shown": "telephone system.",
+    "v": "ok"
+   }
+  ],
+  "form:th:โรค": [
+   {
+    "shown": "disease; sickness",
+    "v": "ok"
+   }
+  ],
+  "form:th:โรงพยาบาล": [
+   {
+    "shown": "hospital",
+    "v": "ok"
+   }
+  ],
+  "form:th:โรงเรียน": [
+   {
+    "shown": "school",
+    "v": "ok"
+   }
+  ],
+  "form:th:โล่ง": [
+   {
+    "shown": "bare; naked.",
+    "v": "false-meaning",
+    "note": "โล่ง means open/clear/spacious"
+   }
+  ],
+  "form:th:ใกล้": [
+   {
+    "shown": "near; close",
+    "v": "ok"
+   }
+  ],
+  "form:th:ใจดี": [
+   {
+    "shown": "kind-hearted, kind",
+    "v": "ok"
+   }
+  ],
+  "form:th:ใช้": [
+   {
+    "shown": "to use; to employ",
+    "v": "ok"
+   }
+  ],
+  "form:th:ใต้": [
+   {
+    "shown": "down; below; beneath; under; underneath",
+    "v": "ok"
+   }
+  ],
+  "form:th:ใน": [
+   {
+    "shown": "in; inside; within; amidst; into",
+    "v": "ok"
+   }
+  ],
+  "form:th:ใส่": [
+   {
+    "shown": "to don",
+    "v": "ok"
+   },
+   {
+    "shown": "to put in or on",
+    "v": "ok"
+   }
+  ],
+  "form:th:ใหญ่": [
+   {
+    "shown": "big; very big; large; great",
+    "v": "ok"
+   }
+  ],
+  "form:th:ใหม่": [
+   {
+    "shown": "new; fresh",
+    "v": "ok"
+   }
+  ],
+  "form:th:ไก่": [
+   {
+    "shown": "chicken",
+    "v": "ok"
+   },
+   {
+    "shown": "fowl",
+    "v": "ok"
+   }
+  ],
+  "form:th:ไข่": [
+   {
+    "shown": "egg",
+    "v": "ok"
+   }
+  ],
+  "form:th:ไข้": [
+   {
+    "shown": "fever",
+    "v": "ok"
+   },
+   {
+    "shown": "sickness",
+    "v": "false-meaning",
+    "note": "ไข้ means fever"
+   }
+  ],
+  "form:th:ได้": [
+   {
+    "shown": "to get; to obtain; to receive",
+    "v": "ok"
+   }
+  ],
+  "form:th:ไทย": [
+   {
+    "shown": "(ประเทศ~, เมือง~, กรุง~) Siam",
+    "v": "false-meaning",
+    "note": "ไทย means Thai/Thailand, not archaic 'Siam'"
+   }
+  ],
+  "form:th:ไป": [
+   {
+    "shown": "to go",
+    "v": "ok"
+   }
+  ],
+  "form:th:ไฟ": [
+   {
+    "shown": "fire; flame",
+    "v": "ok"
+   }
+  ],
+  "form:th:ไฟฟ้า": [
+   {
+    "shown": "electricity",
+    "v": "ok"
+   },
+   {
+    "shown": "lightning; lightning bolt",
+    "v": "false-meaning",
+    "note": "ไฟฟ้า means electricity"
+   }
+  ],
+  "form:th:ไม่ทัน": [
+   {
+    "shown": "not to be in time",
+    "v": "ok"
+   },
+   {
+    "shown": "unable to",
+    "v": "ok"
+   }
+  ],
+  "form:th:ไหน": [
+   {
+    "shown": "which; where; who (for question)",
+    "v": "ok"
+   }
+  ],
+  "form:th:ไหม": [
+   {
+    "shown": "or not?",
+    "v": "ok"
+   }
+  ],
+  "form:th:ไหล": [
+   {
+    "shown": "To flow, leak",
+    "v": "ok"
+   }
+  ],
+  "form:th:ไอ": [
+   {
+    "shown": "to cough.",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:กระทรวง:NOUN": [
+   {
+    "shown": "kind; type; sort; category",
+    "v": "false-meaning",
+    "note": "กระทรวง means ministry, not kind/type"
+   }
+  ],
+  "lemma:th:กระทะ:NOUN": [
+   {
+    "shown": "frying pan",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:กระเทียม:NOUN": [
+   {
+    "shown": "garlic",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:กลับ:VERB": [
+   {
+    "shown": "to return, go back",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:กลาง:NOUN": [
+   {
+    "shown": "middle, centre",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:กล่าว:VERB": [
+   {
+    "shown": "to sing",
+    "v": "false-meaning",
+    "note": "กล่าว means to say/state, not to sing"
+   }
+  ],
+  "lemma:th:กล้วย:NOUN": [
+   {
+    "shown": "banana",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:กล้อง:NOUN": [
+   {
+    "shown": "pipe",
+    "v": "false-meaning",
+    "note": "กล้อง means camera (pipe is a marginal sense)"
+   }
+  ],
+  "lemma:th:กว่า:ADP": [
+   {
+    "shown": "more than; -er",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:กว้าง:ADJ": [
+   {
+    "shown": "wide, broad.",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:กะเพรา:NOUN": [
+   {
+    "shown": "clipping of ผัดกะเพรา",
+    "v": "false-meaning",
+    "note": "กะเพรา is holy basil; the clipping gloss is not its meaning"
+   }
+  ],
+  "lemma:th:กัน:ADV": [
+   {
+    "shown": "each other; together",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:กับ:ADP": [
+   {
+    "shown": "with; and",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:การ:NOUN": [
+   {
+    "shown": "(prefix: the act of …-ing)",
+    "v": "ok"
+   },
+   {
+    "shown": "work; matter; task; affair",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:การบ้าน:NOUN": [
+   {
+    "shown": "homework",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:การ์ตูน:NOUN": [
+   {
+    "shown": "cartoon.",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:กำลัง:AUX": [
+   {
+    "shown": "in the middle of (doing)",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:กิน:VERB": [
+   {
+    "shown": "to eat",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:กิโล:NOUN": [
+   {
+    "shown": "kilometer",
+    "v": "false-meaning",
+    "note": "กิโล usually means kilogram (as here), not kilometer"
+   }
+  ],
+  "lemma:th:กีฬา:NOUN": [
+   {
+    "shown": "sport.",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:กุญแจ:NOUN": [
+   {
+    "shown": "key (classifier ดอก)",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ก็:PART": [
+   {
+    "shown": "(so, also; linking particle)",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ก็ได้:PART": [
+   {
+    "shown": "(that will do; or anything)",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ก่อน:ADP": [
+   {
+    "shown": "before; first",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ก๋วยเตี๋ยว:NOUN": [
+   {
+    "shown": "rice noodle; kway teow",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ขณะ:NOUN": [
+   {
+    "shown": "moment, time",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ขนม:NOUN": [
+   {
+    "shown": "sweets, snack",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ขนาด:NOUN": [
+   {
+    "shown": "size",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ขอ:VERB": [
+   {
+    "shown": "to ask for, request",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ของ:ADP": [
+   {
+    "shown": "of",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ขอบคุณ:VERB": [
+   {
+    "shown": "to thank",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ขอโทษ:VERB": [
+   {
+    "shown": "to apologise; sorry, excuse me",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ขาย:VERB": [
+   {
+    "shown": "to sell",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ขาว:ADJ": [
+   {
+    "shown": "white",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ขึ้น:VERB": [
+   {
+    "shown": "to go up, rise",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ข้าง:ADP": [
+   {
+    "shown": "towards; in the direction of",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ข้าม:VERB": [
+   {
+    "shown": "to cross over",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ข้าว:NOUN": [
+   {
+    "shown": "rice; food, a meal",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ข้าวต้ม:NOUN": [
+   {
+    "shown": "rice porridge",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:คง:AUX": [
+   {
+    "shown": "probably, surely",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:คน:CLF": [
+   {
+    "shown": "(classifier for people)",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:คน:NOUN": [
+   {
+    "shown": "person",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ครอบครัว:NOUN": [
+   {
+    "shown": "family",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ครับ:PART": [
+   {
+    "shown": "(polite particle, male speaker)",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ครัว:NOUN": [
+   {
+    "shown": "kitchen",
+    "v": "false-reading",
+    "note": "ครัว is a fragment of ครัวเรือน (household), not kitchen"
+   }
+  ],
+  "lemma:th:ครั้ง:NOUN": [
+   {
+    "shown": "time, occasion",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:คราว:NOUN": [
+   {
+    "shown": "time, occasion",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ครึ่ง:NOUN": [
+   {
+    "shown": "half",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ครู:NOUN": [
+   {
+    "shown": "teacher",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:คลอง:NOUN": [
+   {
+    "shown": "watercourse, either natural or artificial",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:คลัง:NOUN": [
+   {
+    "shown": "warehouse; storehouse.",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:คลินิก:NOUN": [
+   {
+    "shown": "clinic.",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ควร:AUX": [
+   {
+    "shown": "should, ought to",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ความ:NOUN": [
+   {
+    "shown": "(prefix forming abstract nouns)",
+    "v": "ok"
+   },
+   {
+    "shown": "affair; matter",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:คอ:NOUN": [
+   {
+    "shown": "neck; throat",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:คอมพิวเตอร์:NOUN": [
+   {
+    "shown": "computer",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:คะ:PART": [
+   {
+    "shown": "(polite particle, female speaker; questions)",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:คัน:CLF": [
+   {
+    "shown": "(classifier for vehicles, umbrellas)",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:คาด:VERB": [
+   {
+    "shown": "to put around, tie around",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:คำ:NOUN": [
+   {
+    "shown": "word",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:คิด:VERB": [
+   {
+    "shown": "to think",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:คืน:NOUN": [
+   {
+    "shown": "night",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:คุณ:PRON": [
+   {
+    "shown": "you (polite)",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:คู่:NOUN": [
+   {
+    "shown": "pair; partner",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ค่อย:ADV": [
+   {
+    "shown": "gradually; (not) very much",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ค่ะ:PART": [
+   {
+    "shown": "(polite particle, female speaker; statements)",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:งด:VERB": [
+   {
+    "shown": "to stop",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:งั้น:ADV": [
+   {
+    "shown": "then, in that case, or else.",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:งาน:NOUN": [
+   {
+    "shown": "work, job; event",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ง่าย:ADJ": [
+   {
+    "shown": "easy",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:จน:CONJ": [
+   {
+    "shown": "until; so much that",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:จนถึง:CONJ": [
+   {
+    "shown": "until, till, to, up to",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:จบ:VERB": [
+   {
+    "shown": "to end, finish",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:จะ:AUX": [
+   {
+    "shown": "will",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:จัง:ADV": [
+   {
+    "shown": "so; very much; how",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:จังหวัด:NOUN": [
+   {
+    "shown": "area; region; district; locality; territory",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:จัด:VERB": [
+   {
+    "shown": "to arrange, to organise",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:จันทร์:NOUN": [
+   {
+    "shown": "Monday (in วันจันทร์); the moon",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:จาก:ADP": [
+   {
+    "shown": "from",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:จาน:NOUN": [
+   {
+    "shown": "plate, dish",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:จึง:CONJ": [
+   {
+    "shown": "so, therefore",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:จ้ะ:PART": [
+   {
+    "shown": "(friendly polite particle)",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ฉัน:PRON": [
+   {
+    "shown": "I (neutral/female)",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ชนะ:VERB": [
+   {
+    "shown": "to win, to overcome",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ชนิด:NOUN": [
+   {
+    "shown": "type; kind; class; sort; variety",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ชอบ:VERB": [
+   {
+    "shown": "to like",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ชั่วโมง:NOUN": [
+   {
+    "shown": "hour",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ชั้น:NOUN": [
+   {
+    "shown": "class, grade; floor, layer",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ชาติ:NOUN": [
+   {
+    "shown": "birth; origin",
+    "v": "false-meaning",
+    "note": "ชาติ means nation; 'birth; origin' is marginal"
+   }
+  ],
+  "lemma:th:ชาน:NOUN": [
+   {
+    "shown": "external area.",
+    "v": "false-reading",
+    "note": "ชาน is a fragment of ชานชาลา (platform)"
+   }
+  ],
+  "lemma:th:ชาม:NOUN": [
+   {
+    "shown": "bowl",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ชาย:NOUN": [
+   {
+    "shown": "man, male",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ชาร์จ:VERB": [
+   {
+    "shown": "to charge (battery)",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ชาว:NOUN": [
+   {
+    "shown": "people (of a place or trade), as in ชาวนา ",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ชิ้น:NOUN": [
+   {
+    "shown": "piece",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ชีวิต:NOUN": [
+   {
+    "shown": "life",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ชื่อ:NOUN": [
+   {
+    "shown": "name",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ชุด:NOUN": [
+   {
+    "shown": "set; outfit",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ช่วง:NOUN": [
+   {
+    "shown": "stretch of time, period",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ช่วย:VERB": [
+   {
+    "shown": "to help",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ช่อง:NOUN": [
+   {
+    "shown": "opening; hole; cavity; gap; space",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ช้อน:NOUN": [
+   {
+    "shown": "spoon",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ซิ:PART": [
+   {
+    "shown": "(urging particle)",
+    "v": "false-reading",
+    "note": "ซิ is a fragment of เม็กซิกัน (Mexican)"
+   }
+  ],
+  "lemma:th:ซื้อ:VERB": [
+   {
+    "shown": "to buy",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ซ่อม:VERB": [
+   {
+    "shown": "to repair, to mend",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ซ่อมแซม:VERB": [
+   {
+    "shown": "to repair; to mend.",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ดัง:ADJ": [
+   {
+    "shown": "loud; (of a sound) to ring out; famous",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ดับ:VERB": [
+   {
+    "shown": "to go out (a light); to put out",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ดาว:NOUN": [
+   {
+    "shown": "star",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ดิฉัน:PRON": [
+   {
+    "shown": "I (woman, formal)",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ดี:ADJ": [
+   {
+    "shown": "good",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ดึก:ADJ": [
+   {
+    "shown": "late at night",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ดื่ม:VERB": [
+   {
+    "shown": "to drink",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ดู:VERB": [
+   {
+    "shown": "to look at, watch",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ดูแล:VERB": [
+   {
+    "shown": "to look after",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ด้วย:ADV": [
+   {
+    "shown": "also, with",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ตกลง:VERB": [
+   {
+    "shown": "to agree; to decide",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ตลอด:ADV": [
+   {
+    "shown": "throughout, all along",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ตลาด:NOUN": [
+   {
+    "shown": "market",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ตอน:NOUN": [
+   {
+    "shown": "time, when",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ตอนนี้:ADV": [
+   {
+    "shown": "now",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ตั้ง:VERB": [
+   {
+    "shown": "to set up, put in place; to give (a name); to start",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ตั้งแต่:ADP": [
+   {
+    "shown": "since, from (a time)",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ตั๋ว:NOUN": [
+   {
+    "shown": "ticket",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ตื่น:VERB": [
+   {
+    "shown": "to wake up",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ต่อ:ADP": [
+   {
+    "shown": "to, toward; against",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ต่าง:DET": [
+   {
+    "shown": "different; each, every (as in ต่างคน)",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ต้น:CLF": [
+   {
+    "shown": "(classifier for plants)",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ต้นไม้:NOUN": [
+   {
+    "shown": "tree",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ต้อง:AUX": [
+   {
+    "shown": "must, have to",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ถนน:NOUN": [
+   {
+    "shown": "road, street",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ถัด:ADJ": [
+   {
+    "shown": "next; following.",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ถาม:VERB": [
+   {
+    "shown": "to ask (a question)",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ถิ่น:NOUN": [
+   {
+    "shown": "area; region; part.",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ถึง:VERB": [
+   {
+    "shown": "to arrive, reach; until",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ถุง:NOUN": [
+   {
+    "shown": "bag",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ถ่าย:VERB": [
+   {
+    "shown": "to take (a photo); to copy; to transfer",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ถ้า:SCONJ": [
+   {
+    "shown": "if",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ทบ:VERB": [
+   {
+    "shown": "to fold; to double up",
+    "v": "false-reading",
+    "note": "ทบ is a fragment of ผลกระทบ, not the word 'to fold'"
+   }
+  ],
+  "lemma:th:ทะเล:NOUN": [
+   {
+    "shown": "sea",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ทั้ง:DET": [
+   {
+    "shown": "all, both, whole (as in ทั้งสอง ",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ทาง:NOUN": [
+   {
+    "shown": "way, path, road",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ทำ:VERB": [
+   {
+    "shown": "to do, make",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ทำงาน:VERB": [
+   {
+    "shown": "to work",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ทำให้:VERB": [
+   {
+    "shown": "to cause; to make (so that)",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ที:NOUN": [
+   {
+    "shown": "time, turn (as in ทีหนึ่ง ",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ที่:SCONJ": [
+   {
+    "shown": "that, who, which",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ที่สุด:ADV": [
+   {
+    "shown": "the most",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ที่ไหน:ADV": [
+   {
+    "shown": "where?",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ทุก:DET": [
+   {
+    "shown": "every",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ทุกคน:PRON": [
+   {
+    "shown": "everyone",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ทุ่ม:NOUN": [
+   {
+    "shown": "(evening hours: ทุ่ม marks 7-11 pm)",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ท่วม:VERB": [
+   {
+    "shown": "to flood",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ท่อง:VERB": [
+   {
+    "shown": "to go around",
+    "v": "ok"
+   },
+   {
+    "shown": "to wade (as through water).",
+    "v": "false-meaning",
+    "note": "ท่อง means to travel/roam/recite, not to wade"
+   }
+  ],
+  "lemma:th:ท้อง:NOUN": [
+   {
+    "shown": "belly, stomach",
+    "v": "false-reading",
+    "note": "ท้อง is a fragment of ท้องถิ่น (local), not belly"
+   }
+  ],
+  "lemma:th:ธนาคาร:NOUN": [
+   {
+    "shown": "bank (financial institution)",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:นอน:VERB": [
+   {
+    "shown": "to lie down; to sleep",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:นะ:PART": [
+   {
+    "shown": "(softening particle)",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:นัก:ADV": [
+   {
+    "shown": "very, too (as in นักหนา)",
+    "v": "false-reading",
+    "note": "นัก here is the agent prefix in นักวิเคราะห์ (analyst), not the adverb 'very'"
+   }
+  ],
+  "lemma:th:นักเรียน:NOUN": [
+   {
+    "shown": "pupil, student",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:นัด:VERB": [
+   {
+    "shown": "to arrange to meet; (noun) an appointment",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:นั่ง:VERB": [
+   {
+    "shown": "to sit",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:นั่น:PRON": [
+   {
+    "shown": "that (pointing)",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:นั้น:DET": [
+   {
+    "shown": "that",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:นาที:NOUN": [
+   {
+    "shown": "minute",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:นาน:ADJ": [
+   {
+    "shown": "long (of time)",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:นายก:NOUN": [
+   {
+    "shown": "chief; lord; master.",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:นำ:VERB": [
+   {
+    "shown": "to lead; to bring",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:นิด:ADV": [
+   {
+    "shown": "a little bit",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:นิทาน:NOUN": [
+   {
+    "shown": "tale, story, fable",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:นี่:PRON": [
+   {
+    "shown": "this; here (pointing)",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:นี้:DET": [
+   {
+    "shown": "this",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:น้อง:NOUN": [
+   {
+    "shown": "younger sibling",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:น้อย:ADJ": [
+   {
+    "shown": "few, little",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:น้ำ:NOUN": [
+   {
+    "shown": "water",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:น้ำตาล:NOUN": [
+   {
+    "shown": "palmyra palm juice",
+    "v": "false-meaning",
+    "note": "น้ำตาล means sugar (palm juice is marginal)"
+   }
+  ],
+  "lemma:th:น้ำปลา:NOUN": [
+   {
+    "shown": "fish sauce",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:น้ำป่า:NOUN": [
+   {
+    "shown": "flash flood.",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:น้ำมัน:NOUN": [
+   {
+    "shown": "oil (petroleum or comestible)",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:บน:ADP": [
+   {
+    "shown": "on, above",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:บริษัท:NOUN": [
+   {
+    "shown": "any business company, corporation, or firm.",
+    "v": "ok"
+   },
+   {
+    "shown": "company: group or number.",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:บาท:NOUN": [
+   {
+    "shown": "baht",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:บาน:NOUN": [
+   {
+    "shown": "panel; pane",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:บ้าง:ADV": [
+   {
+    "shown": "some, a bit",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:บ้าน:NOUN": [
+   {
+    "shown": "house, home",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ปกติ:ADJ": [
+   {
+    "shown": "natural; normal; usual; typical; ordinary; regular",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ปฏิบัติ:VERB": [
+   {
+    "shown": "to practise; to treat (someone)",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ประชาชน:NOUN": [
+   {
+    "shown": "national, citizen",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ประตู:NOUN": [
+   {
+    "shown": "door",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ประถม:ADJ": [
+   {
+    "shown": "first; primary",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ประทาน:VERB": [
+   {
+    "shown": "to give (royal/divine)",
+    "v": "false-reading",
+    "note": "the word is a fragment of รับประทาน (to eat) in this sentence, not the royal verb ประทาน"
+   }
+  ],
+  "lemma:th:ประมาณ:ADV": [
+   {
+    "shown": "about, approximately",
+    "v": "false-reading",
+    "note": "ประมาณ is part of งบประมาณ (budget), not 'approximately'"
+   }
+  ],
+  "lemma:th:ประสบ:VERB": [
+   {
+    "shown": "to meet",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ประเทศ:NOUN": [
+   {
+    "shown": "country, nation",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ปลูก:VERB": [
+   {
+    "shown": "to plant, to grow; to build",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ปวด:VERB": [
+   {
+    "shown": "to ache, to hurt",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ปัญหา:NOUN": [
+   {
+    "shown": "problem",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ปิด:VERB": [
+   {
+    "shown": "to close; to turn off",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ปี:NOUN": [
+   {
+    "shown": "year",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ป่วย:ADJ": [
+   {
+    "shown": "ill, sick",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ผม:PRON": [
+   {
+    "shown": "I (male)",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ผล:NOUN": [
+   {
+    "shown": "fruit; result",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ผลไม้:NOUN": [
+   {
+    "shown": "fruit",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ผัก:NOUN": [
+   {
+    "shown": "vegetable",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ผู้:NOUN": [
+   {
+    "shown": "person who (before a verb)",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ผู้หญิง:NOUN": [
+   {
+    "shown": "woman",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ผ่อน:VERB": [
+   {
+    "shown": "to postpone, to defer",
+    "v": "false-meaning",
+    "note": "ผ่อน means to relax/ease or pay in instalments, not postpone"
+   }
+  ],
+  "lemma:th:ผ่าน:VERB": [
+   {
+    "shown": "to pass, to go through",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ฝน:NOUN": [
+   {
+    "shown": "rain",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ฝาก:VERB": [
+   {
+    "shown": "to leave with, to deposit; to entrust",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:พรุ่งนี้:ADV": [
+   {
+    "shown": "tomorrow",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:พร้อม:ADJ": [
+   {
+    "shown": "ready; together",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:พอ:ADV": [
+   {
+    "shown": "enough; to be enough",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:พอก:VERB": [
+   {
+    "shown": "to cover; to plaster.",
+    "v": "false-reading",
+    "note": "พอก is a mis-split of พอ+กลับ in the sentence, not a word used here"
+   }
+  ],
+  "lemma:th:พัก:VERB": [
+   {
+    "shown": "to rest; to stay (somewhere)",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:พักพิง:VERB": [
+   {
+    "shown": "to take shelter, stay",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:พัฒนา:VERB": [
+   {
+    "shown": "to progress; to advance",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:พัดลม:NOUN": [
+   {
+    "shown": "electric fan.",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:พัน:NUM": [
+   {
+    "shown": "thousand",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:พี่:NOUN": [
+   {
+    "shown": "older sibling",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:พื้นที่:NOUN": [
+   {
+    "shown": "area.",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:พูด:VERB": [
+   {
+    "shown": "to say, speak",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:พ่อ:NOUN": [
+   {
+    "shown": "father",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:พ้น:VERB": [
+   {
+    "shown": "to be free of",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ฟัง:VERB": [
+   {
+    "shown": "to listen",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ฟัน:NOUN": [
+   {
+    "shown": "tooth",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ฟุตบอล:NOUN": [
+   {
+    "shown": "soccer; association football",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ฟ้า:NOUN": [
+   {
+    "shown": "sky",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ภรรยา:NOUN": [
+   {
+    "shown": "wife",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ภัย:NOUN": [
+   {
+    "shown": "fear, fright",
+    "v": "false-meaning",
+    "note": "ภัย means danger/peril, not fear"
+   }
+  ],
+  "lemma:th:ภาค:NOUN": [
+   {
+    "shown": "good luck",
+    "v": "false-meaning",
+    "note": "ภาค means region/part/section, not good luck"
+   }
+  ],
+  "lemma:th:ภายใน:ADP": [
+   {
+    "shown": "within, inside",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ภาษา:NOUN": [
+   {
+    "shown": "language",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:มติ:NOUN": [
+   {
+    "shown": "a resolution.",
+    "v": "ok"
+   },
+   {
+    "shown": "an opinion; view.",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:มนุษย์:NOUN": [
+   {
+    "shown": "human; human being",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:มหาวิทยาลัย:NOUN": [
+   {
+    "shown": "university",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:มอง:VERB": [
+   {
+    "shown": "to look at, to watch",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:มะม่วง:NOUN": [
+   {
+    "shown": "mango",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:มัก:ADV": [
+   {
+    "shown": "often, tending to",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:มา:VERB": [
+   {
+    "shown": "to come",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:มาก:ADV": [
+   {
+    "shown": "very; much, many",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:มากกว่า:ADV": [
+   {
+    "shown": "more than",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:มากมาย:ADJ": [
+   {
+    "shown": "a great many, plentiful",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:มาราธอน:NOUN": [
+   {
+    "shown": "marathon.",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:มาส:NOUN": [
+   {
+    "shown": "moon.",
+    "v": "false-reading",
+    "note": "mis-split of มา สอง; มาส is not the word here"
+   }
+  ],
+  "lemma:th:มี:VERB": [
+   {
+    "shown": "to have; there is",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:มืด:ADJ": [
+   {
+    "shown": "dark",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:มือ:NOUN": [
+   {
+    "shown": "hand",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:มโนธรรม:NOUN": [
+   {
+    "shown": "conscience",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ยัง:ADV": [
+   {
+    "shown": "still, yet",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ยา:NOUN": [
+   {
+    "shown": "medicine",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ยาย:NOUN": [
+   {
+    "shown": "grandmother (mother's mother)",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ยินดี:VERB": [
+   {
+    "shown": "to be glad, pleased",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ยิ้ม:VERB": [
+   {
+    "shown": "to smile",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ยื่น:VERB": [
+   {
+    "shown": "to submit; to present; to offer",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ย่าน:NOUN": [
+   {
+    "shown": "area; section; district.",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ย้าย:VERB": [
+   {
+    "shown": "to move (house), to transfer",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:รถ:NOUN": [
+   {
+    "shown": "car; vehicle",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:รถเมล์:NOUN": [
+   {
+    "shown": "bus",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:รถไฟ:NOUN": [
+   {
+    "shown": "train",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:รอ:VERB": [
+   {
+    "shown": "to wait",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ระ:VERB": [
+   {
+    "shown": "to scrape; to brush against",
+    "v": "false-reading",
+    "note": "ระ is a stray fragment (e.g. of เร่ง/กระทบ), not a word used here"
+   }
+  ],
+  "lemma:th:รัฐบาล:NOUN": [
+   {
+    "shown": "government",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:รัฐมนตรี:NOUN": [
+   {
+    "shown": "Councillor of State",
+    "v": "ok"
+   },
+   {
+    "shown": "cabinet minister",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:รับ:VERB": [
+   {
+    "shown": "to receive, accept",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ราคา:NOUN": [
+   {
+    "shown": "price",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ราย:CLF": [
+   {
+    "shown": "Classifier for cases, instances, persons, items",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ริม:ADP": [
+   {
+    "shown": "beside, along the edge of",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:รีบ:VERB": [
+   {
+    "shown": "to hurry; to rush",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:รูป:NOUN": [
+   {
+    "shown": "picture; shape",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:รู้:VERB": [
+   {
+    "shown": "to know",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:รู้จัก:VERB": [
+   {
+    "shown": "to know (a person or place)",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:รู้สึก:VERB": [
+   {
+    "shown": "to feel",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ร้อน:ADJ": [
+   {
+    "shown": "hot",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ร้อย:NUM": [
+   {
+    "shown": "hundred",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ร้าน:NOUN": [
+   {
+    "shown": "shop",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ลง:VERB": [
+   {
+    "shown": "to go down",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ลงทุน:VERB": [
+   {
+    "shown": "to invest",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ลด:VERB": [
+   {
+    "shown": "to reduce; to go down",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ลม:NOUN": [
+   {
+    "shown": "wind",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ลอง:VERB": [
+   {
+    "shown": "to try",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ละ:PART": [
+   {
+    "shown": "(short form of ล่ะ or แล้ว)",
+    "v": "false-reading",
+    "note": "ละ here means 'each/per' (ชามละ), not the particle short for ล่ะ/แล้ว"
+   }
+  ],
+  "lemma:th:ลัง:NOUN": [
+   {
+    "shown": "crate: container",
+    "v": "false-reading",
+    "note": "ลัง is a fragment of หลัง (after)"
+   }
+  ],
+  "lemma:th:ลิตร:NOUN": [
+   {
+    "shown": "litre",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ลืม:VERB": [
+   {
+    "shown": "to forget",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ลุง:NOUN": [
+   {
+    "shown": "uncle (parent's older brother); older man",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ลูก:CLF": [
+   {
+    "shown": "(classifier for round things)",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ลูก:NOUN": [
+   {
+    "shown": "child (of someone); fruit; ball",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ลูกสาว:NOUN": [
+   {
+    "shown": "daughter",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ล่ะ:PART": [
+   {
+    "shown": "(what about…? / emphasis)",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ล้าง:VERB": [
+   {
+    "shown": "to wash",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ล้าน:NUM": [
+   {
+    "shown": "million",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:วัด:NOUN": [
+   {
+    "shown": "temple",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:วัน:NOUN": [
+   {
+    "shown": "day",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:วันนี้:ADV": [
+   {
+    "shown": "today",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:วิชา:NOUN": [
+   {
+    "shown": "subject (of study)",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:วิทยาศาสตร์:NOUN": [
+   {
+    "shown": "science",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:วิเคราะห์:VERB": [
+   {
+    "shown": "to analyze.",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:วิ่ง:VERB": [
+   {
+    "shown": "to run",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ว่า:SCONJ": [
+   {
+    "shown": "that (complementizer)",
+    "v": "false-reading",
+    "note": "ว่า here is the verb 'to scold/say' (ไม่ได้ว่า), not the complementizer"
+   }
+  ],
+  "lemma:th:ว่าการ:VERB": [
+   {
+    "shown": "to be in charge",
+    "v": "false-reading",
+    "note": "mis-split of ว่า การนอน"
+   }
+  ],
+  "lemma:th:ว่าง:ADJ": [
+   {
+    "shown": "empty, vacant; free (not busy)",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ว่าย:VERB": [
+   {
+    "shown": "to swim",
+    "v": "false-reading",
+    "note": "mis-split of ว่า ยอดขาย"
+   }
+  ],
+  "lemma:th:ศูนย์:NUM": [
+   {
+    "shown": "zero",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:สถานี:NOUN": [
+   {
+    "shown": "station (train, bus, radio)",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:สนาม:NOUN": [
+   {
+    "shown": "lawn, yard",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:สนุก:ADJ": [
+   {
+    "shown": "fun, enjoyable",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:สบายใจ:ADJ": [
+   {
+    "shown": "at ease, content",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:สภา:NOUN": [
+   {
+    "shown": "assembly",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:สมุด:NOUN": [
+   {
+    "shown": "notebook",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:สร้าง:VERB": [
+   {
+    "shown": "to build, create",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:สวน:NOUN": [
+   {
+    "shown": "garden, orchard",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:สวย:ADJ": [
+   {
+    "shown": "beautiful, pretty",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:สวัสดี:INTJ": [
+   {
+    "shown": "hello",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:สอง:NUM": [
+   {
+    "shown": "two",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:สอน:VERB": [
+   {
+    "shown": "to teach",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:สะพาน:NOUN": [
+   {
+    "shown": "bridge",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:สะอาด:ADJ": [
+   {
+    "shown": "clean",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:สับ:VERB": [
+   {
+    "shown": "to hack, to chop, to slash",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:สัปดาห์:NOUN": [
+   {
+    "shown": "week",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:สาธารณสุข:NOUN": [
+   {
+    "shown": "public health.",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:สาธารณะ:ADJ": [
+   {
+    "shown": "public; common",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:สาม:NUM": [
+   {
+    "shown": "three",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:สามสิบ:NUM": [
+   {
+    "shown": "thirty",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:สามี:NOUN": [
+   {
+    "shown": "husband",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:สาย:NOUN": [
+   {
+    "shown": "line, string",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:สิทธิ:NOUN": [
+   {
+    "shown": "entitlement; right; title",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:สิบ:NUM": [
+   {
+    "shown": "ten",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:สี:NOUN": [
+   {
+    "shown": "colour",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:สี่:NUM": [
+   {
+    "shown": "four",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:สุดท้าย:ADJ": [
+   {
+    "shown": "last, final",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:สูง:ADJ": [
+   {
+    "shown": "tall; high",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:สูงสุด:ADJ": [
+   {
+    "shown": "highest; supreme; top",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ส่ง:VERB": [
+   {
+    "shown": "to send",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ส้ม:NOUN": [
+   {
+    "shown": "orange; sour (as of fruit)",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:หก:NUM": [
+   {
+    "shown": "six",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:หญิง:NOUN": [
+   {
+    "shown": "woman, female",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:หนังสือ:NOUN": [
+   {
+    "shown": "book",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:หนึ่ง:NUM": [
+   {
+    "shown": "one",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:หนุ่ม:ADJ": [
+   {
+    "shown": "young (of a man)",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:หนู:PRON": [
+   {
+    "shown": "I, you (to or from a child)",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:หน่อย:ADV": [
+   {
+    "shown": "a little; (softens a request)",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:หน้า:NOUN": [
+   {
+    "shown": "face; front",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:หน้าต่าง:NOUN": [
+   {
+    "shown": "window",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:หมอ:NOUN": [
+   {
+    "shown": "doctor",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:หมื่น:NUM": [
+   {
+    "shown": "ten thousand",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:หมู:NOUN": [
+   {
+    "shown": "pig; pork",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:หมู่บ้าน:NOUN": [
+   {
+    "shown": "village",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:หยุด:VERB": [
+   {
+    "shown": "to stop; to take a break",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:หรือ:CONJ": [
+   {
+    "shown": "or; (also ends a yes/no question)",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:หลัง:ADP": [
+   {
+    "shown": "after, behind",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:หลับ:VERB": [
+   {
+    "shown": "to sleep, be asleep",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:หลาก:ADJ": [
+   {
+    "shown": "many; abundant; profuse.",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:หลาน:NOUN": [
+   {
+    "shown": "grandchild; niece, nephew",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:หลาย:DET": [
+   {
+    "shown": "several, many",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:หอม:ADJ": [
+   {
+    "shown": "fragrant",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:หัว:NOUN": [
+   {
+    "shown": "head",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:หัวหน้า:NOUN": [
+   {
+    "shown": "leader, head, chief",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:หั่น:VERB": [
+   {
+    "shown": "to slice, to chop",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:หา:VERB": [
+   {
+    "shown": "to look for; to find",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:หาย:VERB": [
+   {
+    "shown": "to disappear, to be lost; to recover (from illness)",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:หิว:ADJ": [
+   {
+    "shown": "hungry",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:หุ้น:NOUN": [
+   {
+    "shown": "share; stock",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ห้อง:NOUN": [
+   {
+    "shown": "room",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ห้องเรียน:NOUN": [
+   {
+    "shown": "classroom",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ห้า:NUM": [
+   {
+    "shown": "five",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ห้าม:VERB": [
+   {
+    "shown": "to forbid",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ห้าสิบ:NUM": [
+   {
+    "shown": "fifty",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:อด:VERB": [
+   {
+    "shown": "to go without; to hold back",
+    "v": "false-reading",
+    "note": "อด is a fragment of กอด (to hug), not the word 'abstain'"
+   }
+  ],
+  "lemma:th:อนุมัติ:VERB": [
+   {
+    "shown": "to grant",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:อยาก:AUX": [
+   {
+    "shown": "to want to",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:อยู่:AUX": [
+   {
+    "shown": "to be located; (ongoing)",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:อย่าง:NOUN": [
+   {
+    "shown": "kind, way",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:อร่อย:ADJ": [
+   {
+    "shown": "delicious",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ออก:VERB": [
+   {
+    "shown": "to go out, exit",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:อะไร:PRON": [
+   {
+    "shown": "what",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:อาการ:NOUN": [
+   {
+    "shown": "symptom; condition",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:อากาศ:NOUN": [
+   {
+    "shown": "air; weather",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:อาจ:AUX": [
+   {
+    "shown": "may, might",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:อาทิตย์:NOUN": [
+   {
+    "shown": "week; sun",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:อาบ:VERB": [
+   {
+    "shown": "to bathe",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:อาหาร:NOUN": [
+   {
+    "shown": "food",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:อีก:ADV": [
+   {
+    "shown": "again; more; another",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:อื่น:ADJ": [
+   {
+    "shown": "other, else",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:อุณหภูมิ:NOUN": [
+   {
+    "shown": "temperature",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:อ่าน:VERB": [
+   {
+    "shown": "to read",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:เกิด:VERB": [
+   {
+    "shown": "to be born; to happen",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:เกี่ยว:VERB": [
+   {
+    "shown": "to be related to",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:เกือบ:ADV": [
+   {
+    "shown": "almost, nearly",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:เก็บ:VERB": [
+   {
+    "shown": "to pick up; to collect; to put away; to keep",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:เก่ง:ADJ": [
+   {
+    "shown": "skilled, clever",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:เก่า:ADJ": [
+   {
+    "shown": "old (things)",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:เก้า:NUM": [
+   {
+    "shown": "nine",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:เก้าอี้:NOUN": [
+   {
+    "shown": "chair",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:เขา:PRON": [
+   {
+    "shown": "he, she, they",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:เขียว:ADJ": [
+   {
+    "shown": "green",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:เข้า:VERB": [
+   {
+    "shown": "to enter, go in",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:เข้าใจ:VERB": [
+   {
+    "shown": "to understand",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:เคย:AUX": [
+   {
+    "shown": "to have ever; used to",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:เครื่อง:NOUN": [
+   {
+    "shown": "machine; equipment",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:เจตนารมณ์:NOUN": [
+   {
+    "shown": "intention; intendment; spirit; will; purpose.",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:เจอ:VERB": [
+   {
+    "shown": "to meet; to find",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:เจ็ด:NUM": [
+   {
+    "shown": "seven",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:เจ็บ:VERB": [
+   {
+    "shown": "to be sick",
+    "v": "false-meaning",
+    "note": "เจ็บ means to hurt/be in pain"
+   }
+  ],
+  "lemma:th:เจ้า:PRON": [
+   {
+    "shown": "you, he, she (old or literary)",
+    "v": "false-reading",
+    "note": "เจ้า is a fragment of เจ้าหน้าที่ (official), not the pronoun"
+   }
+  ],
+  "lemma:th:เฉพาะ:ADJ": [
+   {
+    "shown": "specific; particular; peculiar",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:เชื่อ:VERB": [
+   {
+    "shown": "to believe",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:เช้า:NOUN": [
+   {
+    "shown": "morning",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:เซลเซียส:NOUN": [
+   {
+    "shown": "Celsius.",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:เดิน:VERB": [
+   {
+    "shown": "to walk",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:เดิม:ADJ": [
+   {
+    "shown": "original, former",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:เดือน:NOUN": [
+   {
+    "shown": "month; moon",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:เด็ก:NOUN": [
+   {
+    "shown": "child; young",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:เตรียม:VERB": [
+   {
+    "shown": "to prepare",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:เติบโต:VERB": [
+   {
+    "shown": "to grow",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:เติม:VERB": [
+   {
+    "shown": "to add, to top up",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:เตือน:VERB": [
+   {
+    "shown": "to warn, to alarm, to alert",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:เต้น:VERB": [
+   {
+    "shown": "to spring, jump",
+    "v": "false-meaning",
+    "note": "เต้น means to dance/beat; ตื่นเต้น is a compound"
+   }
+  ],
+  "lemma:th:เทศบาล:NOUN": [
+   {
+    "shown": "municipality.",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:เที่ยว:VERB": [
+   {
+    "shown": "to go out for fun; to tour",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:เท่านั้น:ADV": [
+   {
+    "shown": "only; that is all",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:เท่าไร:PRON": [
+   {
+    "shown": "how much?",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:เธอ:PRON": [
+   {
+    "shown": "she; you (to an equal)",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:เบา:ADJ": [
+   {
+    "shown": "light (weight)",
+    "v": "false-reading",
+    "note": "เบา is a fragment of เบาหวาน (diabetes)"
+   }
+  ],
+  "lemma:th:เปล่า:INTJ": [
+   {
+    "shown": "no, not so (denying)",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:เปิด:VERB": [
+   {
+    "shown": "to open; to turn on",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:เป็น:VERB": [
+   {
+    "shown": "to be (identity); to be able to (a skill)",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:เป็นไร:VERB": [
+   {
+    "shown": "to matter; to be wrong (as in ไม่เป็นไร ",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:เผย:VERB": [
+   {
+    "shown": "to open; to reveal",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:เพราะ:CONJ": [
+   {
+    "shown": "because",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:เพิ่ม:VERB": [
+   {
+    "shown": "to add, to increase",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:เพียง:ADV": [
+   {
+    "shown": "only, merely",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:เพื่อ:SCONJ": [
+   {
+    "shown": "in order to, for",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:เพื่อน:NOUN": [
+   {
+    "shown": "friend",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:เมตร:NOUN": [
+   {
+    "shown": "metre.",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:เมือง:NOUN": [
+   {
+    "shown": "city, town; country",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:เมื่อ:SCONJ": [
+   {
+    "shown": "when (a point in time)",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:เมื่อวาน:ADV": [
+   {
+    "shown": "yesterday",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:เย็น:NOUN": [
+   {
+    "shown": "evening",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:เรา:PRON": [
+   {
+    "shown": "we; I",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:เริ่ม:VERB": [
+   {
+    "shown": "to begin",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:เรียน:VERB": [
+   {
+    "shown": "to study, learn",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:เรือ:NOUN": [
+   {
+    "shown": "boat, ship",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:เรือน:NOUN": [
+   {
+    "shown": "house; residential building; residence",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:เร็ว:ADJ": [
+   {
+    "shown": "fast, quick",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:เลย:PART": [
+   {
+    "shown": "(emphasis: at all; right away; very)",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:เลิก:VERB": [
+   {
+    "shown": "to stop, quit; to end (work, school)",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:เลิศ:ADJ": [
+   {
+    "shown": "excellent; superb; fine",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:เลี้ยง:VERB": [
+   {
+    "shown": "to raise, to feed; to treat (to a meal)",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:เลี้ยว:VERB": [
+   {
+    "shown": "to turn",
+    "v": "ok"
+   },
+   {
+    "shown": "to turn, veer, swerve",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:เลือก:VERB": [
+   {
+    "shown": "to choose",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:เล็ก:ADJ": [
+   {
+    "shown": "small",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:เล่น:VERB": [
+   {
+    "shown": "to play",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:เล่ม:CLF": [
+   {
+    "shown": "(classifier for books, knives)",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:เล่า:VERB": [
+   {
+    "shown": "to tell, to narrate (a story)",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:เวลา:NOUN": [
+   {
+    "shown": "time",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:เศรษฐกิจ:NOUN": [
+   {
+    "shown": "economy.",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:เสนอ:VERB": [
+   {
+    "shown": "to offer; to propose",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:เสมอ:ADV": [
+   {
+    "shown": "always",
+    "v": "false-reading",
+    "note": "เสมอ here is part of เสมอภาค (equality), not 'always'"
+   }
+  ],
+  "lemma:th:เสร็จ:VERB": [
+   {
+    "shown": "to finish, to be done",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:เสาร์:NOUN": [
+   {
+    "shown": "Saturday (in วันเสาร์); Saturn",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:เสีย:VERB": [
+   {
+    "shown": "to lose; to spoil, to break down; to pay",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:เสียง:NOUN": [
+   {
+    "shown": "sound, voice",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:เสียดาย:VERB": [
+   {
+    "shown": "to regret, to deplore.",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:เสื้อ:NOUN": [
+   {
+    "shown": "shirt, garment",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:เหตุผล:NOUN": [
+   {
+    "shown": "reason, rationale.",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:เหนือ:NOUN": [
+   {
+    "shown": "north",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:เหลือ:VERB": [
+   {
+    "shown": "to be left over, to remain",
+    "v": "false-reading",
+    "note": "เหลือ is part of ช่วยเหลือ (help), not 'remain'"
+   }
+  ],
+  "lemma:th:เห็น:VERB": [
+   {
+    "shown": "to see",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:เอา:VERB": [
+   {
+    "shown": "to take; to want",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:แก้ว:NOUN": [
+   {
+    "shown": "glass (for drinking)",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:แข่ง:VERB": [
+   {
+    "shown": "to compete",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:แข่งขัน:VERB": [
+   {
+    "shown": "to compete",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:แดง:ADJ": [
+   {
+    "shown": "red",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:แต่:CONJ": [
+   {
+    "shown": "but",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:แต่ง:VERB": [
+   {
+    "shown": "ตั้ง to appoint",
+    "v": "false-meaning",
+    "note": "แต่ง means to dress/compose/adorn (แต่งตัว); appointing is marginal"
+   }
+  ],
+  "lemma:th:แต่งงาน:VERB": [
+   {
+    "shown": "to marry, especially through a ceremony",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:แถว:NOUN": [
+   {
+    "shown": "row, line",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:แนะนำ:VERB": [
+   {
+    "shown": "to advise",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:แบตเตอรี่:NOUN": [
+   {
+    "shown": "battery.",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:แปด:NUM": [
+   {
+    "shown": "eight",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:แปรง:VERB": [
+   {
+    "shown": "to brush",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:แพง:ADJ": [
+   {
+    "shown": "expensive",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:แมว:NOUN": [
+   {
+    "shown": "cat",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:แม่:NOUN": [
+   {
+    "shown": "mother",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:แม่น้ำ:NOUN": [
+   {
+    "shown": "river",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:แรก:ADJ": [
+   {
+    "shown": "first",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:และ:CONJ": [
+   {
+    "shown": "and",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:แล้ว:ADV": [
+   {
+    "shown": "already",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:แวะ:VERB": [
+   {
+    "shown": "to stop by; to visit",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:แห่ง:ADP": [
+   {
+    "shown": "of",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:แห่ง:CLF": [
+   {
+    "shown": "(classifier for places)",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:แห้ง:ADJ": [
+   {
+    "shown": "dry",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:โดย:ADP": [
+   {
+    "shown": "by; by means of",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:โต๊ะ:NOUN": [
+   {
+    "shown": "table, desk",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:โทร:VERB": [
+   {
+    "shown": "to phone",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:โทรศัพท์:NOUN": [
+   {
+    "shown": "telephone",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:โมง:CLF": [
+   {
+    "shown": "o'clock (daytime hours)",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:โรค:NOUN": [
+   {
+    "shown": "disease; sickness",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:โรงพยาบาล:NOUN": [
+   {
+    "shown": "hospital",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:โรงเรียน:NOUN": [
+   {
+    "shown": "school",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:โล่ง:ADJ": [
+   {
+    "shown": "bare; naked.",
+    "v": "false-meaning",
+    "note": "โล่ง means open/clear/spacious"
+   }
+  ],
+  "lemma:th:ใกล้:ADJ": [
+   {
+    "shown": "near",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ใจดี:ADJ": [
+   {
+    "shown": "kind-hearted",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ใช่:INTJ": [
+   {
+    "shown": "yes; that is right",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ใช้:VERB": [
+   {
+    "shown": "to use",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ใต้:ADP": [
+   {
+    "shown": "under, below",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ใน:ADP": [
+   {
+    "shown": "in",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ใส่:VERB": [
+   {
+    "shown": "to put in or on; to wear",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ใหญ่:ADJ": [
+   {
+    "shown": "big, large",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ใหม่:ADJ": [
+   {
+    "shown": "new",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ไก่:NOUN": [
+   {
+    "shown": "chicken",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ไข่:NOUN": [
+   {
+    "shown": "egg",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ไข้:NOUN": [
+   {
+    "shown": "fever",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ได้:AUX": [
+   {
+    "shown": "can; got to",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ไทย:PROPN": [
+   {
+    "shown": "Thai; Thailand",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ไป:VERB": [
+   {
+    "shown": "to go",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ไฟ:NOUN": [
+   {
+    "shown": "fire; light; electricity",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ไฟฟ้า:NOUN": [
+   {
+    "shown": "electricity",
+    "v": "ok"
+   },
+   {
+    "shown": "lightning; lightning bolt",
+    "v": "false-meaning",
+    "note": "ไฟฟ้า means electricity"
+   }
+  ],
+  "lemma:th:ไม่:PART": [
+   {
+    "shown": "not",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ไม่ทัน:VERB": [
+   {
+    "shown": "not to be in time",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ไว้:PART": [
+   {
+    "shown": "(after a verb: set aside, in place, for later; e.g. เก็บไว้ ",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ไว้:VERB": [
+   {
+    "shown": "to keep; to leave (as it is); to let (hair) grow",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ไหน:PRON": [
+   {
+    "shown": "which; where",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ไหม:PART": [
+   {
+    "shown": "(yes/no question particle)",
+    "v": "ok"
+   },
+   {
+    "shown": "or not?",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ไหล:VERB": [
+   {
+    "shown": "to flow",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ไอ:VERB": [
+   {
+    "shown": "to cough",
+    "v": "ok"
+   }
+  ],
+  "lemma:th:ๆ:PART": [
+   {
+    "shown": "(repeat the previous word)",
+    "v": "ok"
+   }
+  ]
+ }
+}

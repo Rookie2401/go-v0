@@ -11,14 +11,15 @@ import { downloadLanguage, makeRig as baseRig, until, type RigOptions } from './
 const makeRig = (o: RigOptions = {}) => baseRig({ startRoute: 'languages', ...o });
 
 describe('the Languages page', () => {
-  it('has nothing behind a closed section: where the learner stands, then the languages, then two quiet links', async () => {
+  it('has nothing behind a closed section: the way to GoReview, then the languages, then two quiet links', async () => {
     const rig = await makeRig();
     expect(rig.q('#screen h1').textContent).toBe('Languages');
     expect(rig.root.querySelector('details.disclosure, #audio, #audio-guide')).toBeNull();
     const status = rig.q('#languages');
     expect(status.tagName).toBe('SECTION');
     expect(status.contains(rig.q('#next-steps'))).toBe(true);
-    expect(status.contains(rig.q('#account-line'))).toBe(true);
+    expect(rig.root.querySelector('#account-line')).toBeNull(); // the account is the person in the top bar
+    expect(rig.q('.topbar #account-link').getAttribute('data-state')).toBe('device');
     // the status comes before the list, the list before the foot
     const body = [...rig.q('#screen .body').children].map((x) => x.id);
     expect(body).toEqual(['languages', 'language-list', 'to-help']);
@@ -32,7 +33,8 @@ describe('the Languages page', () => {
     await rig.go('settings');
     await rig.go('languages');
     await until(() => rig.root.querySelector('#next-note'));
-    expect(rig.q('#next-note .lede').textContent).toContain('Albanian is ready');
+    expect(rig.q('#next-note').textContent).toBe('Albanian is ready.');
+    expect(rig.q('[data-language="sq"] .lang-reading').hidden).toBe(false);
     expect(rig.q('#my-languages').hidden).toBe(false);
     expect(rig.q('#language-cards').firstElementChild?.id).toBe('my-languages');
     expect(rig.q('#my-languages').nextElementSibling?.getAttribute('data-language')).toBe('sq');

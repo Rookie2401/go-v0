@@ -223,6 +223,9 @@ export function createReviewEngine(opts: EngineOptions): ReviewEngine {
       if (!facts) return { available: false, reason: 'Verified facts for this word are unavailable.', retryable: true };
       if (facts.unit.unitId !== request.unitId || facts.unit.languageId !== request.languageId)
         return { available: false, reason: 'The current facts belong to another word or language.', retryable: true };
+      // a unit the deck gate holds (src/facts/deck-gate.ts) says why in its own sentence
+      const hold = (facts as { reviewHold?: { reason?: string } }).reviewHold?.reason;
+      if (facts.status === 'requires-review' && hold) return { available: false, reason: hold, retryable: false };
       if (facts.status === 'invalidated' || facts.status === 'conflicted' || facts.status === 'requires-review')
         return { available: false, reason: 'The source reading is invalidated, conflicted, or awaiting review.', retryable: false };
       const builder = resolveBuilder(opts.builders, request.family);

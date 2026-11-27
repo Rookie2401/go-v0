@@ -11,9 +11,10 @@ import type { AnalysisCandidate, AnalyzedToken, LanguageAdapter, PatternCandidat
 import { unitIds } from '../../../repository-contract/src';
 import { sentenceKeyOf, fnv1a64 } from '../text';
 import { wordAnalysisFor } from '../../../../src/adapters/word-analysis';
+import { displayLemma, lemmaEntryLabel } from '../../../repository-contract/src/lemma-display';
 import { fallbackMorphologyLine } from './morphology';
 import type { Alternative, CardModel, SyntaxNote, CardProvenance, ConstructionNote, ContextReport, EvidenceLabel, FeatureItem, LabelledField, PhraseNote, SentenceWord, WordLine } from './cardModel';
-import { AnalyserNotLoaded, LANGUAGE_META, PARSER_LANGUAGES, clearAnalysers, getAnalyser, hasAnalyser, languageMeta, registerAnalyser, type LanguageMeta } from './registry';
+import { AnalyserNotLoaded, lexiconNotLoaded, LANGUAGE_META, PARSER_LANGUAGES, clearAnalysers, getAnalyser, hasAnalyser, languageMeta, registerAnalyser, type LanguageMeta } from './registry';
 
 export * from './cardModel';
 export { AnalyserNotLoaded, PARSER_LANGUAGES, clearAnalysers, getAnalyser, hasAnalyser, languageMeta, registerAnalyser, type LanguageMeta };
@@ -170,7 +171,8 @@ export function parseSelection(input: ParseInput): CardModel {
   let lemma: string | undefined; let pos: string | undefined; let gloss: string | undefined; let morphology: string | undefined;
   let confidence = 0; let provenance: CardProvenance = 'none'; let source; let unconfirmed = false;
   const basis: string[] = []; let pronunciation: string[] = []; const alternatives: Alternative[] = [];
-  let transliteration: string | undefined; let lemmaTransliteration: string | undefined;
+  let reviewHold: CardModel['reviewHold'];
+  let notLoaded = false; let respelling: string | undefined; let romanizationScheme: string | undefined; let transliteration: string | undefined; let lemmaTransliteration: string | undefined;
   let features: FeatureItem[] = []; let role: string | undefined; const syntaxNotes: string[] = []; let syntax: SyntaxNote | undefined;
   let period: CardModel['period']; let variants: CardModel['variants']; let glossSource: string | undefined;
   let wordAnalysis: CardModel['wordAnalysis'];
@@ -185,6 +187,7 @@ export function parseSelection(input: ParseInput): CardModel {
     const pron = L.adapter.pronunciation(tokens[i], analyses[i]);
     pronunciation = pron.notes ?? [];
     transliteration = romanOf(pron.transliteration, tokens[i].surface);
+    respelling = pron.respelling; romanizationScheme = transliteration ? pron.romanizationScheme : undefined;
     if (selStart > tokens[i].start || selEnd < tokens[i].end) notes.push(`The selection is part of the word "${tokens[i].surface}"; the reading is for the whole word.`);
     if (c) {
       lemma = c.lemma; pos = c.pos; gloss = c.unconfirmed ? undefined : c.gloss;
@@ -192,7 +195,9 @@ export function parseSelection(input: ParseInput): CardModel {
       wordAnalysis = wordAnalysisFor({ language: L.lang, surface: tokens[i].surface, lemma: c.lemma, pos: c.pos, lemmaGloss: c.unconfirmed ? undefined : c.gloss,
         morph: c.morph, source: c.sourceId ? L.adapter.sources?.[c.sourceId]?.label : undefined, confidence: c.confidence, parts: c.parts,
         ...(typeof c.notes?.root === 'string' ? { root: c.notes.root } : {}), ...(typeof c.notes?.rootClass === 'string' ? { rootClass: c.notes.rootClass } : {}),
-        alternatives: analyses[i].candidates.slice(1).map((x) => ({ lemma: x.lemma, pos: x.pos, morph: x.morph, confidence: x.confidence })),
+        alternatives: analyses[i].candidates.slice(1).map((x) => ({ lemma: x.lemma, pos: x.pos, morph: x.morph, confidence: x.confidence,
+          // a lemma as a person reads it: a Korean homonym number is identity, shown as a small entry label, with the meaning that tells the entries apart
+          ...(x.lemma ? { label: displayLemma(L.lang, x.lemma) + (lemmaEntryLabel(L.lang, x.lemma) ? ` · entry ${lemmaEntryLabel(L.lang, x.lemma)}` : '') } : {}), ...(x.gloss && !x.unconfirmed ? { gloss: x.gloss } : {}) })),
         sentence: kind === 'sentence' ? text : undefined, sentenceConfidence: context.confidence, references: ctx.references });
       const resolvedMeaning = wordAnalysis.contextualMeaning?.text ?? wordAnalysis.inflectedMeaning?.text ?? wordAnalysis.lexicalMeaning?.text;
       if (resolvedMeaning) gloss = resolvedMeaning;
@@ -203,6 +208,7 @@ export function parseSelection(input: ParseInput): CardModel {
       provenance = provenanceOf(c);
       unconfirmed = !!c.unconfirmed;
       source = sourceOf(c);
+      reviewHold = reviewHoldOf(c, analyses[i].candidates);
       lemmaTransliteration = lemmaRomanOf(L, c.lemma, tokens[i].surface, transliteration);
       features = Object.entries(c.morph ?? {}).filter(([, v]) => typeof v === 'string' && v).map(([key, value]) => ({ key, value }));
       role = typeof c.role === 'string' && c.role ? c.role : undefined;
@@ -212,10 +218,13 @@ export function parseSelection(input: ParseInput): CardModel {
       // a verb the adapter can read further is listed by its own components (וְ, the verbal base, the ending); otherwise by the source's parts
       const components = wordAnalysis.formAnalysis?.components;
       if (components?.length) for (const part of components) syntaxNotes.push(`${part.text}: ${part.role}`);
-      else for (const part of c.parts ?? []) syntaxNotes.push(`${part.text}: ${[part.lemma && part.lemma !== part.text ? `from ${part.lemma}` : '', part.role ?? part.pos ?? ''].filter(Boolean).join(', ') || 'part of the word'}`);
+      else for (const part of c.parts ?? []) syntaxNotes.push(`${part.text}: ${[part.lemma && displayLemma(L.lang, part.lemma) !== part.text ? `from ${displayLemma(L.lang, part.lemma)}` : '', part.role ?? part.pos ?? ''].filter(Boolean).join(', ') || 'part of the word'}`);
       for (const f of formConstructions(L, c)) if (!constructions.some((x) => x.id === f.id)) constructions.push(f);
       for (const key of ['rule', 'context'] as const) { const v = c.notes?.[key]; if (typeof v === 'string' && v) basis.push(v); }
-      if (c.unconfirmed) notes.push('Not in the word list: the lemma is a guess from the ending and no meaning is given.');
+      if (c.unconfirmed) {
+        if (lexiconNotLoaded(L.lang)) { notLoaded = true; notes.push('The full word list could not be loaded, so this word could not be looked up; try again when the page can reach the extension’s files.'); }
+        else notes.push('Not in the word list: the lemma is a guess from the ending and no meaning is given.');
+      }
       if (typeof c.notes?.disputed === 'string') notes.push(`Sources disagree: ${c.notes.disputed}`);
       if (c.unit && c.unit.pieces.length > 1) notes.push(`Part of a unit with the neighbouring word: "${c.unit.display}".`);
       if (c.orthography) notes.push(`Spelling differs from today's standard (${c.orthography.modern}).`);
@@ -291,13 +300,30 @@ export function parseSelection(input: ParseInput): CardModel {
     ...base, ...(dialectNote ? { dialect: dialectNote } : {}), lemma, pos, morphology, gloss, confidence, provenance, source, unconfirmed,
     phrases: phrases.map((p) => ({ display: p.display, kind: p.kind, gloss: p.gloss, confidence: clamp01(p.confidence) })),
     words: selected.length > 1 ? lines.slice(0, MAX_WORD_LINES) : [],
-    alternatives: alternatives.slice(0, 3), basis, notes, pronunciation, ...(transliteration ? { transliteration } : {}), ...(lemmaTransliteration ? { lemmaTransliteration } : {}), itemIds,
+    alternatives: alternatives.slice(0, 3), basis, notes, pronunciation, ...(reviewHold ? { reviewHold } : {}), ...(notLoaded ? { lexiconNotLoaded: true } : {}), ...(respelling ? { respelling } : {}), ...(selected.length === 1 && best[0]?.notes?.homonym === 'undecided' ? { entryUndecided: true } : {}), ...(romanizationScheme ? { romanizationScheme } : {}), ...(transliteration ? { transliteration } : {}), ...(lemmaTransliteration ? { lemmaTransliteration } : {}), itemIds,
     features, constructions, role, syntaxNotes, ...(syntax ? { syntax } : {}), sentenceWords, unitIds: unitIdsToAsk, formId: formUnit,
     ...(period ? { period } : {}), ...(variants ? { variants } : {}), ...(glossSource ? { glossSource } : {}), ...(wordAnalysis ? { wordAnalysis } : {}),
   };
 }
 
 /** A romanization only when the adapter gave one that is not just the word again (a Latin-script word has none). */
+/**
+ * The card's hold, from the notes a language's review gate writes on the reading (src/core/review-gate.ts: reviewGate 'yes', reviewReason, reviewKind,
+ * reviewRivals): language-neutral, keyed on the notes only. Each rival is resolved from the token's other readings, so it carries its own class and
+ * meaning (none when that reading is unconfirmed).
+ */
+function reviewHoldOf(c: { notes?: Record<string, string | string[]> }, all: ReadonlyArray<{ lemma?: string; pos?: string; gloss?: string; unconfirmed?: boolean; confidence: number }>): CardModel['reviewHold'] {
+  // held by the gate, or marked requires-review WITH a kind (a language whose reading is decided but gets no card); a reviewStatus without a kind (Biblical Aramaic) shows nothing new
+  if (!(c.notes?.reviewGate === 'yes' || (c.notes?.reviewKind && c.notes?.reviewStatus === 'requires-review'))) return undefined;
+  const one = (v: string | string[] | undefined): string => (Array.isArray(v) ? v[0] : v) ?? '';
+  const rivalNames = Array.isArray(c.notes?.reviewRivals) ? c.notes.reviewRivals : typeof c.notes?.reviewRivals === 'string' && c.notes.reviewRivals ? [c.notes.reviewRivals] : [];
+  const rivals = rivalNames.map((name) => {
+    const r = all.find((x) => x.lemma === name);
+    return { lemma: name, ...(r?.pos ? { pos: r.pos } : {}), ...(r && !r.unconfirmed && r.gloss ? { gloss: r.gloss } : {}) };
+  });
+  return { kind: one(c.notes.reviewKind) || 'other', reason: one(c.notes.reviewReason), rivals };
+}
+
 function romanOf(t: string | undefined, surface: string): string | undefined {
   const v = typeof t === 'string' ? t.normalize('NFC').trim() : '';
   return v && v !== surface.normalize('NFC').trim() ? v : undefined;
@@ -357,6 +383,7 @@ const SCRIPT_TEST: Record<string, { name: string; re: RegExp }> = {
   Hebr: { name: 'Hebrew', re: /\p{Script=Hebrew}/u },
   Grek: { name: 'Greek', re: /\p{Script=Greek}/u },
   Cyrl: { name: 'Cyrillic', re: /\p{Script=Cyrillic}/u },
+  Hang: { name: 'Hangul', re: /\p{Script=Hangul}/u },
   // the letters and the presentation forms (U+FB50-U+FDFF, U+FE70-U+FEFF) a copied page may carry
   Arab: { name: 'Arabic', re: /\p{Script=Arabic}/u },
 };
@@ -454,7 +481,7 @@ function itemIdsFor(L: Lang, selected: number[], tokens: RawToken[], best: Array
   const ids: string[] = [];
   selected.slice(0, MAX_ITEM_IDS).forEach((i, k) => {
     const c = best[k];
-    // a reading the language's deck gate holds (notes.reviewGate = 'yes': a misread or undecided word) is credited to its FORM id only
+    // a reading the language's review gate holds back (src/core/review-gate.ts, notes.reviewGate) is credited to its written form, never to a lemma: it stays on the card, it is not drilled
     const creditable = c?.lemma && !c.unconfirmed && c.confidence >= LEMMA_MIN_CONFIDENCE && c.notes?.reviewGate !== 'yes';
     ids.push(creditable ? `lemma:${L.lang}:${c!.lemma}${c!.pos ? ':' + c!.pos : ''}` : formId(L, tokens[i].surface));
   });

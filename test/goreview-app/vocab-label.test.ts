@@ -17,7 +17,7 @@ describe('the vocabulary screen', () => {
   it('titles a unit with no label by the word inside its id (Arabic: with its vowels), never by the id', async () => {
     const fs = await import('node:fs');
     const src = fs.readFileSync(new URL('../../packages/goreview/app/screens/vocabulary.ts', import.meta.url), 'utf8');
-    expect(src).toMatch(/const title = vocabLabel\(item\.unit\?\.label, unitId\)/);
+    expect(src).toMatch(/const title = displayLemma\(item\.unit\?\.languageId \?\? activeIdentity\.languageId, vocabLabel\(item\.unit\?\.label, unitId\)\)/); // Korean's displayLemma around Arabic's vocabLabel
     expect(src).not.toMatch(/item\.unit\?\.label \|\| unitId/);
   });
 });

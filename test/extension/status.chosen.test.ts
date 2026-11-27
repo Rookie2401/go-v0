@@ -15,7 +15,7 @@ describe('installedLanguages in the status', () => {
     const fake = createChromeFake();
     createBackground(fake, { fetch: (async () => { throw new TypeError('no network'); }) as typeof fetch }).register();
     const before = await fake.dispatch({ type: MSG.status }, CONTENT) as { installedLanguages: string[] };
-    expect(before.installedLanguages.sort()).toEqual(['ar', 'arc', 'de', 'el', 'es', 'fr', 'he', 'hi', 'la', 'nb', 'nn', 'ru', 'sq', 'th']);
+    expect(before.installedLanguages.sort()).toEqual(['ar', 'arc', 'de', 'el', 'es', 'fr', 'he', 'hi', 'ko', 'la', 'nb', 'nn', 'ru', 'sq', 'th']);
     expect(await fake.dispatch({ type: MSG.localRepo, op: 'enrol', languageId: 'de', packId: 'pack:de', packVersion: '1' }, PAGE)).toMatchObject({ ok: true });
     const one = await fake.dispatch({ type: MSG.status }, CONTENT) as { installedLanguages: string[]; languageId: string };
     expect(one.installedLanguages).toEqual(['de']);

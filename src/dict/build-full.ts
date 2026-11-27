@@ -23,6 +23,8 @@ import path from 'node:path';
 import readline from 'node:readline';
 import zlib from 'node:zlib';
 import { LANGUAGES, type LanguageCode } from '../core';
+import { koHomonymLemma } from '../adapters/korean/index-store';
+import { koDictionaryPlan, koIsPageText } from './korean';
 import { createAdapterRegistry } from '../adapters';
 import { KAIKKI_ATTRIBUTION } from './build';
 import {
@@ -36,7 +38,7 @@ export const FULL_SPILL_PARTITIONS = 256;
 
 /** The language name kaikki uses in its file names. */
 export const KAIKKI_LANGUAGE_NAMES: Readonly<Record<string, string>> = {
-  sq: 'Albanian', de: 'German', es: 'Spanish', hi: 'Hindi', th: 'Thai', nb: 'Norwegian Bokmål', en: 'English', grc: 'Ancient Greek', la: 'Latin', ru: 'Russian', fr: 'French',
+  sq: 'Albanian', de: 'German', es: 'Spanish', hi: 'Hindi', th: 'Thai', nb: 'Norwegian Bokmål', en: 'English', grc: 'Ancient Greek', la: 'Latin', ru: 'Russian', fr: 'French', ko: 'Korean',
   ar: 'Arabic',
 };
 
@@ -148,6 +150,8 @@ export async function buildFullFile(opts: BuildFullOptions): Promise<BuildFullRe
   const gzip = v2 && opts.gzip === true;
   const internCounts = new Map<string, number>();
   const countIntern = (str: string) => internCounts.set(str, (internCounts.get(str) ?? 0) + 1);
+  // a Korean homonym (눈² 묻다¹) also has its FULL record under its numbered headword, holding only its own entry (korean.ts)
+  const koHom = opts.lang === ('ko' as LanguageCode) ? (await koDictionaryPlan(opts.input)).homByLine : undefined;
   const spillDir = fs.mkdtempSync(path.join(opts.tmpDir ?? os.tmpdir(), 'go-dict-full-spill-'));
   const spill = createSpill(spillDir);
   try {
@@ -166,11 +170,15 @@ export async function buildFullFile(opts: BuildFullOptions): Promise<BuildFullRe
       try { json = JSON.parse(text); } catch { stats.malformed++; continue; }
       const { key, record, skipped } = mapFullLine(json, normalize, opts.lang);
       if (!record || key === undefined) { stats.skipped[skipped!]++; continue; }
+      // a Hanja-syllable page's text is not a meaning: left out of the full record too
+      if (koHom) { record.s = record.s.filter((x) => !koIsPageText(x.g)); if (!record.s.length && !record.f?.length && !record.p) { stats.skipped['no-senses']++; continue; } }
       tallyFullRecord(stats.counts, record);
       if (v2) internCandidates(record, countIntern);
       const rec = JSON.stringify(record);
       estimate += byteLength(rec) + byteLength(key) + 6;
       spill.add(bucketOf(key, FULL_SPILL_PARTITIONS), JSON.stringify([key, rec]));
+      const homNo = koHom?.get(stats.lines);
+      if (homNo !== undefined) { const nk = koHomonymLemma(key, homNo); estimate += byteLength(rec) + byteLength(nk) + 6; spill.add(bucketOf(nk, FULL_SPILL_PARTITIONS), JSON.stringify([nk, rec])); }
     }
     spill.close();
     if (stats.counts.records === 0) throw new Error('no usable entries in the input (nothing written)');

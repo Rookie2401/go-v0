@@ -249,6 +249,7 @@ const MODELS: Record<LanguageCode, Record<string, string | { text: string; note:
   },
   ru: {}, // No Russian production curriculum is claimed.
   fr: {},
+  ko: {}, // No Korean production curriculum is claimed.
   ar: {}, // No Arabic production curriculum is claimed.
 };
 

@@ -64,9 +64,10 @@ describe('the GoReview home', () => {
     // Russian and French have no photograph yet: the owner has not supplied them (Wikimedia Commons refuses a scripted download). The home
     // draws no hero photograph and no credit for a language without one (app.ts: `photo` stays undefined), and the assertions below make
     // this exemption fail loudly as soon as a photograph is added for either.
-    const NO_PHOTO_YET = ['ru', 'fr', 'ar'];
+    const NO_PHOTO_YET = ['ru', 'fr', 'ko', 'ar']; // Korean: none supplied either
     expect(homePhoto('ru')).toBeUndefined();
     expect(homePhoto('fr')).toBeUndefined();
+    expect(homePhoto('ko')).toBeUndefined();
     expect(homePhoto('ar')).toBeUndefined();
     for (const language of Object.keys(PACKS).filter((l) => !NO_PHOTO_YET.includes(l))) {
       const photo = homePhoto(language);

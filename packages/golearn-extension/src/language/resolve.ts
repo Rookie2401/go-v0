@@ -93,11 +93,12 @@ export const PACK_VARIETIES: Readonly<Record<string, readonly string[]>> = {
   arc: ['arc-bib'],
   ru: ['ru-RU'],
   fr: ['fr-FR', 'fr-CA', 'fr-BE', 'fr-CH'],
+  ko: ['ko-KR'],
   // the learning varieties; the spoken dialects are recognised and kept apart (NOT_THE_PACK), never chosen
   ar: ['ar-msa', 'ar-cla'],
 };
 /** The script each pack's language is written in; a tag that states another script (hi-Latn) names something no pack analyses. */
-const PACK_SCRIPT: Readonly<Record<string, string>> = { sq: 'latn', es: 'latn', de: 'latn', hi: 'deva', th: 'thai', nb: 'latn', nn: 'latn', la: 'latn', he: 'hebr', arc: 'hebr', el: 'grek', ru: 'cyrl', fr: 'latn',
+const PACK_SCRIPT: Readonly<Record<string, string>> = { sq: 'latn', es: 'latn', de: 'latn', hi: 'deva', th: 'thai', nb: 'latn', nn: 'latn', la: 'latn', he: 'hebr', arc: 'hebr', el: 'grek', ru: 'cyrl', fr: 'latn', ko: 'hang',
   ar: 'arab' };
 
 const PRIMARY: Readonly<Record<string, string>> = {
@@ -117,6 +118,7 @@ const PRIMARY: Readonly<Record<string, string>> = {
   // are NOT listed, so a page that declares one of them is a page no pack covers
   ru: 'ru', rus: 'ru',
   fr: 'fr', fra: 'fr', fre: 'fr',
+  ko: 'ko', kor: 'ko',
   // Arabic (ar), Standard Arabic (arb) and the ISO 639-2 code (ara). Persian (fa), Urdu (ur), Pashto (ps), Sorani Kurdish (ckb), Uyghur (ug) and Sindhi (sd)
   // share the script and are NOT listed: a page that declares one of them is a page no pack covers. `arc` (Aramaic) is another language: tags match whole.
   ar: 'ar', ara: 'ar', arb: 'ar',
@@ -171,7 +173,8 @@ export function mapLanguageTag(tag: string): TagMapping {
   if (NOT_THE_PACK[primary]) return { kind: 'ambiguous', reason: NOT_THE_PACK[primary] };
   const languageId = PRIMARY[primary];
   if (!languageId) return { kind: 'no-pack', reason: `no language pack covers "${primary}"` };
-  if (script && script !== PACK_SCRIPT[languageId]) {
+  // ko-Kore is Korean written in Hangul with Hanja, which the pack reads (Hanja inside a word is kept)
+  if (script && script !== PACK_SCRIPT[languageId] && !(languageId === 'ko' && script === 'kore')) {
     return { kind: 'ambiguous', reason: `"${tag}" is ${primary} written in ${script.toUpperCase()} script; the ${languageId} pack analyses the ${PACK_SCRIPT[languageId].toUpperCase()} script only` };
   }
   const notes: string[] = [];
@@ -190,6 +193,10 @@ export function mapLanguageTag(tag: string): TagMapping {
     // a region the pack labels (France, Canada, Belgium, Switzerland) is its variety; any other French-speaking region is read as French with no variety claimed
     const v = `fr-${region.toUpperCase()}`;
     if (PACK_VARIETIES.fr.includes(v)) varietyId = v;
+  } else if (languageId === 'ko') {
+    // ko-KR is the variety. ko-KP (North Korea) is read as Standard Korean with no variety claimed: its spelling rules are not analysed.
+    if (region === 'kr') varietyId = 'ko-KR';
+    else if (region === 'kp') notes.push('ko-KP is North Korean usage: read as Modern Standard Korean (ko-KR); North Korean spelling is not analysed as a variety of its own');
   } else if (primary === 'arc') {
     if (rest.some((p) => ['targum', 'targumic', 'onkelos', 'syriac', 'imperial', 'qumran'].includes(p))) return { kind: 'no-pack', reason: 'Only the Biblical Aramaic slice is implemented; the declared variety has no validated pack' };
     varietyId = 'arc-bib'; notes.push('The Aramaic pack currently analyses Biblical Aramaic only');
@@ -217,9 +224,9 @@ function sampleWords(sample: string): string[] {
   return out;
 }
 
-interface ScriptShare { latin: number; thai: number; devanagari: number; hebrew: number; greek: number; cyrillic: number; arabic: number; letters: number }
+interface ScriptShare { latin: number; thai: number; devanagari: number; hebrew: number; greek: number; cyrillic: number; hangul: number; arabic: number; letters: number }
 function scriptShare(sample: string): ScriptShare {
-  const r: ScriptShare = { latin: 0, thai: 0, devanagari: 0, hebrew: 0, greek: 0, cyrillic: 0, arabic: 0, letters: 0 };
+  const r: ScriptShare = { latin: 0, thai: 0, devanagari: 0, hebrew: 0, greek: 0, cyrillic: 0, hangul: 0, arabic: 0, letters: 0 };
   for (const ch of sample.slice(0, MAX_SAMPLE_CHARS)) {
     if (!/\p{L}/u.test(ch)) continue;
     r.letters++;
@@ -229,6 +236,7 @@ function scriptShare(sample: string): ScriptShare {
     else if (/\p{Script=Hebrew}/u.test(ch)) r.hebrew++;
     else if (/\p{Script=Greek}/u.test(ch)) r.greek++;
     else if (/\p{Script=Cyrillic}/u.test(ch)) r.cyrillic++;
+    else if (/\p{Script=Hangul}/u.test(ch)) r.hangul++;
     else if (/\p{Script=Arabic}/u.test(ch)) r.arabic++;
   }
   return r;
@@ -276,6 +284,11 @@ function detect(sample: string, installed: ReadonlySet<string>, adapterOf: (l: s
   if (share(sh.thai) >= MIN_SCRIPT_SHARE) {
     if (!installed.has('th')) return { confidence: 0, reasons: ['the sample is in Thai script, but the Thai pack is not installed'] };
     return { languageId: 'th', confidence: 0.9, reasons: ['the sample is in Thai script, which none of the other packs uses'] };
+  }
+  // Hangul is written by Korean alone (no other pack reads it), so the script is the language, as for Thai
+  if (share(sh.hangul) >= MIN_SCRIPT_SHARE) {
+    if (!installed.has('ko')) return { confidence: 0, reasons: ['the sample is in Hangul, but the Korean pack is not installed'] };
+    return { languageId: 'ko', confidence: 0.9, reasons: ['the sample is in Hangul, which no other pack uses'] };
   }
   if (share(sh.devanagari) >= MIN_SCRIPT_SHARE) {
     if (!installed.has('hi')) return { confidence: 0, reasons: ['the sample is in Devanagari script, but the Hindi pack is not installed'] };
@@ -335,7 +348,7 @@ function detect(sample: string, installed: ReadonlySet<string>, adapterOf: (l: s
     return { confidence: 0, reasons: [`the sample is in Arabic script, but only ${f.hits} of its ${f.words} words are common Arabic function words: it may be Persian, Urdu, Pashto or Kurdish without their own letters, or Arabic in a short passage`] };
   }
   if (share(sh.latin) < MIN_SCRIPT_SHARE) {
-    return { confidence: 0, reasons: ['the sample is not mainly in one script this resolver can compare (Latin, Thai, Devanagari, Hebrew, Greek, Cyrillic or Arabic)'] };
+    return { confidence: 0, reasons: ['the sample is not mainly in one script this resolver can compare (Latin, Thai, Devanagari, Hebrew, Greek, Cyrillic, Hangul or Arabic)'] };
   }
 
   // Latin script: a lexicon-hit comparison across the installed packs that have a word list.

@@ -5,7 +5,7 @@
  * learner's selected language was used for every word: English words were underlined as Albanian, and the Hebrew was not read at all.
  *
  * Now each piece of text gets its own language:
- *   - a word in a script that only one pack reads (Hebrew, Greek, Thai, Devanagari) is in that pack's language, when it is installed;
+ *   - a word in a script that only one pack reads (Hebrew, Greek, Thai, Devanagari, Hangul) is in that pack's language, when it is installed;
  *   - Latin-script text is decided per block (a paragraph, a table cell, a list item ...): a language declared on the block (lang=) decides;
  *     otherwise the installed Latin-script packs' word lists are compared on the block's own words. A pack that recognises at least
  *     COMPATIBLE_SHARE of them (and MIN_HITS) reads the block; the page's own language wins a near tie, another pack must lead clearly.
@@ -23,13 +23,13 @@ import { notRussianCyrillic } from '../language/cyrillic';
 import { arabicLanguageOf } from '../language/arabic';
 
 /** Scripts read by exactly one pack: the script is the language. */
-export const SCRIPT_LANGUAGE: Readonly<Record<string, string>> = { Hebr: 'he', Grek: 'el', Thai: 'th', Deva: 'hi' };
+export const SCRIPT_LANGUAGE: Readonly<Record<string, string>> = { Hebr: 'he', Grek: 'el', Thai: 'th', Deva: 'hi', Hang: 'ko' };
 const SCRIPT_RE: Readonly<Record<string, RegExp>> = {
   Latn: /\p{Script=Latin}/u, Hebr: /\p{Script=Hebrew}/u, Grek: /\p{Script=Greek}/u, Thai: /\p{Script=Thai}/u, Deva: /\p{Script=Devanagari}/u,
-  Cyrl: /\p{Script=Cyrillic}/u, Arab: /\p{Script=Arabic}/u,
+  Cyrl: /\p{Script=Cyrillic}/u, Hang: /\p{Script=Hangul}/u, Arab: /\p{Script=Arabic}/u,
 };
 /** The script each pack's words are written in. */
-export const LANGUAGE_SCRIPT: Readonly<Record<string, string>> = { sq: 'Latn', es: 'Latn', de: 'Latn', nb: 'Latn', nn: 'Latn', la: 'Latn', he: 'Hebr', arc: 'Hebr', el: 'Grek', th: 'Thai', hi: 'Deva', ru: 'Cyrl', fr: 'Latn', ar: 'Arab' };
+export const LANGUAGE_SCRIPT: Readonly<Record<string, string>> = { sq: 'Latn', es: 'Latn', de: 'Latn', nb: 'Latn', nn: 'Latn', la: 'Latn', he: 'Hebr', arc: 'Hebr', el: 'Grek', th: 'Thai', hi: 'Deva', ru: 'Cyrl', fr: 'Latn', ko: 'Hang', ar: 'Arab' };
 
 /** A block whose words a pack's word list recognises at this share (and MIN_HITS) is compatible with it (resolve.ts DEFAULT_COMPATIBLE_SHARE, measured: own prose 70-100 %, foreign at most 38 %). */
 export const COMPATIBLE_SHARE = 0.45;
@@ -49,7 +49,10 @@ export function wordInScript(surface: string, languageId: string): boolean {
   const script = LANGUAGE_SCRIPT[languageId];
   if (!script) return true;
   let letters = 0, own = 0;
-  for (const ch of surface) { if (!/\p{L}/u.test(ch)) continue; letters++; if (SCRIPT_RE[script].test(ch)) own++; }
+  // Korean is written in Hangul with Hanja inside a word (學校에서): Hanja counts as that word's own script, in a Korean word only; a text node
+  // is Korean only for its Hangul (hasScript), never for Hanja alone
+  const hanja = languageId === 'ko';
+  for (const ch of surface) { if (!/\p{L}/u.test(ch)) continue; letters++; if (SCRIPT_RE[script].test(ch) || (hanja && /\p{Script=Han}/u.test(ch))) own++; }
   return letters > 0 && own * 2 > letters;
 }
 

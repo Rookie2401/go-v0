@@ -14,8 +14,8 @@
  */
 import type { PronunciationKind, PhoneticDetail, VoiceDescriptor } from './contracts';
 import { albanianPhonetics } from './phonetics';
-import { ALBANIAN_DEVICE_TAGS, SPANISH_DEVICE_TAGS, GERMAN_DEVICE_TAGS, HINDI_DEVICE_TAGS, THAI_DEVICE_TAGS, BOKMAL_DEVICE_TAGS, NYNORSK_DEVICE_TAGS, HEBREW_DEVICE_TAGS, GREEK_DEVICE_TAGS, LATIN_DEVICE_TAGS, RUSSIAN_DEVICE_TAGS, FRENCH_DEVICE_TAGS, ARABIC_DEVICE_TAGS } from './deviceTags';
-export { ALBANIAN_DEVICE_TAGS, SPANISH_DEVICE_TAGS, GERMAN_DEVICE_TAGS, HINDI_DEVICE_TAGS, THAI_DEVICE_TAGS, BOKMAL_DEVICE_TAGS, NYNORSK_DEVICE_TAGS, HEBREW_DEVICE_TAGS, GREEK_DEVICE_TAGS, LATIN_DEVICE_TAGS, RUSSIAN_DEVICE_TAGS, FRENCH_DEVICE_TAGS, ARABIC_DEVICE_TAGS } from './deviceTags';
+import { ALBANIAN_DEVICE_TAGS, SPANISH_DEVICE_TAGS, GERMAN_DEVICE_TAGS, HINDI_DEVICE_TAGS, THAI_DEVICE_TAGS, BOKMAL_DEVICE_TAGS, NYNORSK_DEVICE_TAGS, HEBREW_DEVICE_TAGS, GREEK_DEVICE_TAGS, LATIN_DEVICE_TAGS, RUSSIAN_DEVICE_TAGS, FRENCH_DEVICE_TAGS, KOREAN_DEVICE_TAGS, ARABIC_DEVICE_TAGS } from './deviceTags';
+export { ALBANIAN_DEVICE_TAGS, SPANISH_DEVICE_TAGS, GERMAN_DEVICE_TAGS, HINDI_DEVICE_TAGS, THAI_DEVICE_TAGS, BOKMAL_DEVICE_TAGS, NYNORSK_DEVICE_TAGS, HEBREW_DEVICE_TAGS, GREEK_DEVICE_TAGS, LATIN_DEVICE_TAGS, RUSSIAN_DEVICE_TAGS, FRENCH_DEVICE_TAGS, KOREAN_DEVICE_TAGS, ARABIC_DEVICE_TAGS } from './deviceTags';
 
 export type VoiceSource =
   | { kind: 'device'; langTags: string[] }
@@ -285,6 +285,15 @@ export function pronunciationRegistries(): VoiceRegistry[] {
         azureEntry('fr-CA-SylvieNeural', 'Sylvie', 'female', { languageId: 'fr', locale: 'fr-CA', name: 'French (Canada)' }),
       ],
       gaps: ['No French recordings are registered; nothing is claimed.', 'A synthetic voice decides liaison and the silent letters by its own rules; it is not a reference for either.'],
+    },
+    {
+      ...deviceRegistry('ko', [...KOREAN_DEVICE_TAGS], 'Korean'),
+      entries: [
+        ...deviceRegistry('ko', [...KOREAN_DEVICE_TAGS], 'Korean').entries,
+        azureEntry('ko-KR-SunHiNeural', 'SunHi', 'female', { languageId: 'ko', locale: 'ko-KR', name: 'Korean (Korea)' }),
+        azureEntry('ko-KR-InJoonNeural', 'InJoon', 'male', { languageId: 'ko', locale: 'ko-KR', name: 'Korean (Korea)' }),
+      ],
+      gaps: ['No Korean recordings are registered; nothing is claimed.', 'A synthetic voice applies the sound changes between syllables (liaison, nasalisation, tensing) by its own rules; it is not a reference for them.'],
     },
     {
       ...deviceRegistry('ar', [...ARABIC_DEVICE_TAGS], 'Arabic'),

@@ -24,7 +24,7 @@ describe('the ids the extension records for a gated Arabic reading', () => {
     expect(word, 'a known-limit form that is credited with confidence and held').toBeDefined();
     const [w] = wordsOfText(word!, arAdapter, 'ar');
     expect(w.ids).toEqual([`form:ar:${word}`]);
-    expect(w.known).toBe(false);
+    expect(w.known).toBe(true); // Korean's mechanism (scan.ts): a held reading is still KNOWN and still a reading (Reading Analysis counts it), credited to its form id only
   });
 
   it.skipIf(!shardsPresent())('a meaning hold keeps its lemma id; a reading hold of the same text never has one', () => {

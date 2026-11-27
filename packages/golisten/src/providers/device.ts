@@ -12,7 +12,7 @@ import type { PlaybackDriver } from '../playback';
 import type { SpeechLike, SpeechVoiceLike } from '../ports';
 import { DEVICE_LICENCE, SYNTHETIC_LIMITATIONS } from '../registry';
 import type { VoiceEntry, VoiceRegistry } from '../registry';
-import { fail } from './types';
+import { fail, spokenText } from './types';
 import type { PrepareOutcome, Req } from './types';
 
 /** The sentence a learner is told about the device voice (same wording as the reader's PRACTICE_LABEL). */
@@ -84,7 +84,7 @@ export async function prepareDevice(req: Req, registry: VoiceRegistry, env: GoLi
     }
     if (!entry.supports.includes(req.kind)) return fail('unsupported-kind', `Device voices here do not speak a ${req.kind}.`);
     const found = await matchDeviceVoices(entry, env);
-    const standardAlias = req.varietyId && ['sq-standard', 'hi-standard', 'th-standard', 'nb', 'nn', 'he-mod', 'el-mod', 'he-bib', 'he-mish', 'he-med', 'arc-bib', 'el-koi', 'el-att', 'el-hom', 'el-med', 'la-ecclesiastical', 'la-classical', 'ru-ru', 'ar-msa', 'ar-cla'].includes(normalizeLocale(req.varietyId));
+    const standardAlias = req.varietyId && ['sq-standard', 'hi-standard', 'th-standard', 'nb', 'nn', 'he-mod', 'el-mod', 'he-bib', 'he-mish', 'he-med', 'arc-bib', 'el-koi', 'el-att', 'el-hom', 'el-med', 'la-ecclesiastical', 'la-classical', 'ru-ru', 'ko-kr', 'ar-msa', 'ar-cla'].includes(normalizeLocale(req.varietyId));
     const matches = req.varietyId
       ? found.matches.filter((m) => standardAlias || normalizeLocale(m.voice.lang) === speechVarietyLocale(req.languageId, req.varietyId))
       : found.matches;
@@ -117,7 +117,7 @@ export async function prepareDevice(req: Req, registry: VoiceRegistry, env: GoLi
       source: 'device-tts', voiceId: chosen.descriptor.voiceId, generatedFromText: true,
       note: `${DEVICE_PRACTICE_NOTE} ${chosen.networked ? 'This browser voice is not local.' : ''}`.trim(),
     };
-    return { ok: true, prepared: { voice: chosen.descriptor, provenance, audio: { kind: 'device', text: req.text.replace(/\s+/g, ' ').trim() } } };
+    return { ok: true, prepared: { voice: chosen.descriptor, provenance, audio: { kind: 'device', text: spokenText(req.languageId, req.text) } } };
   }
   return fail('no-voice', `No device voice is registered for ${req.languageId}.`);
 }

@@ -12,6 +12,7 @@ import { packFor } from '../../../language-packs/src/registry';
 import type { PackManifest } from '../../../language-packs/src/manifest';
 import type { StorageArea } from '../platform';
 import { readPrefix } from '../store';
+import { displayLemma } from '../../../repository-contract/src/lemma-display';
 import {
   cleanText, isLanguageId, languageNameOf, type ConstructionExplanation, type EntryReply, type EntryRequest, type ExplainReply, type ExplainRequest, type FeatureExplanation, type GlossReply, type GlossRequest, type SourceLink, stringRecord,
 } from '../protocol';
@@ -184,6 +185,8 @@ export function createGlossService(opts: GlossServiceOptions) {
     const templates = cleanSourceTemplates((await readConfig() as { sourceLinks?: unknown } | null | undefined)?.sourceLinks);
     const name = DICTIONARY_LANGUAGE_NAME[languageId] ?? languageNameOf(languageId);
     const out: SourceLink[] = [];
+    // a page address and its label are a SPELLING: a Korean homonym number (눈²) is identity, not part of the page's name
+    lemma = displayLemma(languageId, lemma);
     const wiktionary = fillSourceUrl(templates.wiktionary, lemma, name);
     if (wiktionary) out.push({ label: `Wiktionary: ${lemma} (${name})`, url: wiktionary, licence: 'CC BY-SA 4.0' });
     const kaikki = fillSourceUrl(templates.kaikki, lemma, name);

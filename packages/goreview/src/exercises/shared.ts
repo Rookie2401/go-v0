@@ -2,7 +2,7 @@
  * Shared machinery of the exercise builders: the exercise shape GoReview really stores (the contract's `Exercise`
  * plus what validation, grading and evidence need), eligibility, the gap convention and a few pure helpers.
  */
-import { STATUS_RANK } from '../../../repository-contract/src';
+import { STATUS_RANK, displayLemma, entryGlossPieces, stripEntryLabel } from '../../../repository-contract/src';
 import { answerVariants } from '../../../../src/core/english-verb';
 import type { AnalysisStatus, Dimension, ReviewEligibility } from '../../../repository-contract/src';
 import { glossParts, normalizeAnswer } from '../grading/normalize';
@@ -136,6 +136,8 @@ export function matchCase(form: string, template: string): string {
 export const withGap = (c: Pick<ExerciseContext, 'sentence' | 'start' | 'end'>): string => `${c.sentence.slice(0, c.start)}${GAP}${c.sentence.slice(c.end)}`;
 
 export const quote = (s: string): string => `“${s}”`;
+/** A lemma as a person reads, hears and types it: a Korean homonym number (눈²) is identity, never part of the spelling (repository-contract lemma-display.ts). */
+export const shownLemma = (facts: UnitFacts, lemma: string): string => displayLemma(facts.unit.languageId, lemma);
 
 const wordCount = (s: string): number => s.trim().split(/\s+/u).filter(Boolean).length;
 
@@ -267,8 +269,11 @@ export function acceptedMeanings(facts: UnitFacts, opts: { splitNumbers?: boolea
   const { lexicon, dictionary } = glossSplit(facts);
   const out: string[] = [];
   const add = (p: string): void => { if (!out.includes(p)) out.push(p); };
-  for (const g of lexicon.flatMap(split)) glossParts(g).forEach(add);
-  for (const sense of dictionary.flatMap(split)) senseAnswers(sense).forEach(add);
+  // a bare Korean homonym (눈, undecided) is every entry of its spelling: the answers are the senses of each entry, labels ("(noun, entry 2)") removed
+  // (and a numbered Arabic sense list "1. to know 2. to teach" is split first, so each sense is an answer: lexicon.flatMap(split))
+  const lang = facts.unit?.languageId;
+  for (const g of lexicon.flatMap(split)) { glossParts(g).forEach(add); for (const piece of entryGlossPieces(lang, g)) glossParts(piece).forEach(add); }
+  for (const sense of dictionary.flatMap(split)) senseAnswers(stripEntryLabel(lang, sense)).forEach(add);
   return out;
 }
 

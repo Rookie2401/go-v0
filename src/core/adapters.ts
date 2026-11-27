@@ -92,6 +92,10 @@ export interface PatternCandidate {
 export interface PronunciationSupport {
   /** Romanization / phonetic aid for display in the support panel (never sent to TTS). */
   transliteration?: string;
+  /** The pronunciation written in the language's own script, when the adapter has one (Korean: [머걷씀니다]); shown first on the card, before the romanization. */
+  respelling?: string;
+  /** The name of the romanization scheme `transliteration` follows (Revised Romanization (2000)); the card labels the romanization with it. */
+  romanizationScheme?: string;
   ipa?: string;
   /**
    * Who produced `ipa` when it is the adapter's own (rule-based, e.g. Norwegian 'rules'): the word sheet then shows it, labelled
@@ -233,6 +237,11 @@ export interface LanguageAdapter {
    * Optional: without it the card splits union values itself (`cellsForSelection`) and falls back to matching the form.
    */
   cellsFor?(paradigm: Pick<Paradigm, 'cells' | 'kind' | 'pos'>, features: Record<string, string>, surface?: string): ParadigmCell[];
+  /**
+   * True when `cellsFor` is EXACT: an empty list means no cell of the table is the reader's form (its ending is not one of the table's rows), and
+   * the card must light none. Without it an empty list means "I do not know", and the card falls back to its loose match (`cellsForSelection`).
+   */
+  cellsForIsExact?: boolean;
   /**
    * Alternative ways of cutting a selection into words, for a script without word spaces (Thai): the chosen cut first,
    * then the others the word list allows, each with its confidence share and basis. Optional.

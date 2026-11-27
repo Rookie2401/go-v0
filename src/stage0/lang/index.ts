@@ -302,6 +302,17 @@ export const STAGE0_LANGS: Record<LanguageCode, Stage0LanguageConfig> = {
     exit: { reading: { minCorrect: 0.8, maxLookups: 4 }, listening: { minCorrect: 0.7 }, writing: { minAccepted: 2 }, speaking: { minRecorded: 1, minSelfChecked: 1 } },
     intro: 'French is read in the Latin alphabet, but its spelling does not sound the way an English reader expects. The pack orientation (the optional Decoding Sprint) introduces the spelling patterns; a Stage 0 course is not part of the French pack.',
   },
+  // Korean: only the facts are stated. No Stage 0 course content exists (no scenes, no validated audio); the Alphabet Sprint is the pack's script entry.
+  ko: {
+    lang: 'ko', name: 'Korean', voiceLangs: ['ko-KR', 'ko'],
+    script: { kind: 'hangul', features: 'spelling', spelling: [
+      { id: 'ko:batchim', label: 'a letter under a syllable (받침) closes it; at the end of a syllable it is said in one of seven ways', pattern: koFinalPattern() },
+      { id: 'ko:final-ng', label: 'ㅇ under a syllable is "ng"; at the start of a syllable it is silent', pattern: koFinalPattern(21) },
+    ] },
+    bands: { earlyScenes: 4, earlyMaxNew: 5, laterMaxNew: 7, laterMinCoverage: 0.6, exitMinCoverage: 0.95 },
+    exit: { reading: { minCorrect: 0.8, maxLookups: 4 }, listening: { minCorrect: 0.7 }, writing: { minAccepted: 2 }, speaking: { minRecorded: 1, minSelfChecked: 1 } },
+    intro: 'Korean is written in Hangul, left to right, with spaces between phrases. Each block is one syllable built from letters. A complete Stage 0 course and validated audio are not yet available.',
+  },
   // Arabic: only the facts are stated. No Stage 0 course content exists (no scenes, no validated audio), as for Russian and French.
   // The marks are built from code points so that no invisible character sits in the source.
   ar: {
@@ -315,6 +326,16 @@ export const STAGE0_LANGS: Record<LanguageCode, Stage0LanguageConfig> = {
     intro: 'Arabic is written in its own alphabet, from right to left, and the letters join. A complete Stage 0 course and validated audio are not yet available.',
   },
 };
+
+/** A precomposed Hangul syllable with a final consonant (any, or the one at index `only` of the 27) as a character class: the syllable block is 28 wide. */
+function koFinalPattern(only?: number): RegExp {
+  let cls = '';
+  for (let lv = 0; lv < 19 * 21; lv++) {
+    const base = 0xac00 + lv * 28;
+    cls += only === undefined ? `\\u${(base + 1).toString(16)}-\\u${(base + 27).toString(16)}` : `\\u${(base + only).toString(16)}`;
+  }
+  return new RegExp(`[${cls}]`, 'u');
+}
 
 export function stage0Config(lang: LanguageCode): Stage0LanguageConfig {
   return STAGE0_LANGS[lang];

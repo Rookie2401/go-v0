@@ -4,6 +4,7 @@
  * sentence for the writer's content, or a template; the only sentences it can quote are the pack's own tutorial examples,
  * shown as a pattern.
  */
+import { unitIdLabel } from '../../../repository-contract/src';
 import type { WriterProfile, WritingPrompt } from '../types';
 import type { GuidancePack, GuidancePattern } from './pack-source';
 
@@ -25,10 +26,7 @@ const MAX_SUGGESTIONS = 3;
 const MAX_WORDS = 3;
 
 /** The label of a unit id such as `lemma:sq:shtëpi:NOUN`. */
-export const unitLabelOf = (unitId: string): string => {
-  const parts = unitId.split(':');
-  return parts.length >= 3 && parts[2] ? parts[2] : unitId;
-};
+export const unitLabelOf = (unitId: string): string => unitIdLabel(unitId); // a Korean homonym number (눈²) is identity, not spelling
 
 /**
  * The prompt-target keys a unit id stands for: `syntax:sq:negation-nuk` → negation-nuk; `morph:sq:NOUN:Case=Acc|Definite=Def|Number=Sing`

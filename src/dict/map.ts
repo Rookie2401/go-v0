@@ -82,9 +82,9 @@ export function soundsWithNotes(sounds: unknown[], lang: string): unknown[] {
 }
 const isClassicalLatin = (p: DictionaryPronunciation): boolean => p.tags?.some((t) => /^classical/i.test(t)) ?? false;
 
-/** The etymology number of a line: a whole number from 1 up. The Latin extract writes it as a string ("2"), and for Latin a digit string counts; for any other language only a number does. */
+/** The etymology number of a line: a whole number from 1 up. The Latin and Korean extracts write it as a string ("2"), and for them a digit string counts; for any other language only a number does. */
 export function etymologyNumberOf(x: unknown, lang: string): number | undefined {
-  const n = lang === 'la' && typeof x === 'string' && /^[0-9]{1,6}$/.test(x.trim()) ? Number(x.trim()) : x;
+  const n = (lang === 'la' || lang === 'ko') && typeof x === 'string' && /^[0-9]{1,6}$/.test(x.trim()) ? Number(x.trim()) : x;
   return typeof n === 'number' && Number.isInteger(n) && n >= 1 ? n : undefined;
 }
 

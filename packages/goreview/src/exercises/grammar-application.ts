@@ -17,6 +17,7 @@ import type { FormInfo } from '../facts/review-facts';
 import { defineBuilder } from './builders';
 import {
   assemble, codesOf, contextOf, eligibilityOf, exerciseIdOf, matchCase, occurrences, precheck, quote, referenceGloss, refuse, rnd, shuffle, trusted, withGap,
+  shownLemma,
 } from './shared';
 import type { Planned } from './shared';
 import type { BuildContext, ReviewTarget, UnitFacts } from '../types';
@@ -81,7 +82,7 @@ function plan(target: ReviewTarget, facts: UnitFacts, ctx: BuildContext): Planne
         family: 'grammar-application',
         target: { ...target },
         prompt: {
-          instruction: `Choose the form of ${quote(group.lemma)}${gloss ? ` (${gloss})` : ''} that fills the gap and has this ${def.label.toLowerCase()}: ${valueName}.`,
+          instruction: `Choose the form of ${quote(shownLemma(facts, group.lemma))}${gloss ? ` (${gloss})` : ''} that fills the gap and has this ${def.label.toLowerCase()}: ${valueName}.`,
           sentenceWithGap: withGap(context),
           options,
         },

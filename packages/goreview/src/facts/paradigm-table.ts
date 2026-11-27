@@ -13,7 +13,7 @@ import type { PartOfSpeech } from '../../../../src/core/model';
 
 /** The dictionary's full record, as far as a table needs it (the `full-1` keys; every field optional and untrusted). */
 export interface LexicalRecord {
-  w: string; p: string;
+  w: string; p: string; e?: number;
   f?: Array<{ f: string; t: string[]; s?: string; r?: string }>;
   tpl?: string[];
 }
@@ -22,9 +22,12 @@ const WIKTIONARY = { label: 'Wiktionary (kaikki.org extract)', licence: 'CC BY-S
 const str = (v: unknown, max = 400): string | undefined => (typeof v === 'string' && v.trim() ? v.replace(/[\u0000-\u001f\u007f]/g, '').trim().slice(0, max) : undefined);
 
 /** The record that matches the part of speech best (the dictionary's POS vocabulary is the parser's), else the first. */
-export function pickRecord(records: LexicalRecord[] | undefined, pos?: string, isLemma?: (r: LexicalRecord) => boolean | undefined): LexicalRecord | undefined {
+export function pickRecord(records: LexicalRecord[] | undefined, pos?: string, opts?: { ambiguous?: boolean }, isLemma?: (r: LexicalRecord) => boolean | undefined): LexicalRecord | undefined {
   if (!records?.length) return undefined;
-  // a key may hold several words written alike (Arabic): the adapter's `headMatches` says which record is the lemma; only then are the others set aside
+  if (opts?.ambiguous) {
+    const same = records.filter((r) => !pos || r.p === pos);
+    if (new Set(same.map((r) => r.e ?? r.w)).size > 1) return undefined;
+  }
   const mine = isLemma ? records.filter((r) => isLemma(r) === true) : [];
   const from = mine.length ? mine : records;
   return (pos && from.find((r) => r.p === pos)) || from[0];
@@ -99,7 +102,8 @@ export function formRomanOf(record: LexicalRecord | undefined): Record<string, s
 export function selectedCellKeys(adapter: LanguageAdapter | undefined, paradigm: Paradigm | undefined, features: Record<string, string>, surface?: string): string[] {
   if (!paradigm || paradigm.kind === 'none' || !paradigm.cells.length) return [];
   const own = adapter?.cellsFor ? safe(() => adapter.cellsFor!(paradigm, features, surface)) : undefined;
-  const cells = own?.length ? own : cellsForSelection(paradigm, features, surface);
+  // an adapter whose cellsFor is exact (LanguageAdapter.cellsForIsExact) may answer with an empty list: no cell is the reader's form
+  const cells = own?.length || (own && adapter?.cellsForIsExact) ? own : cellsForSelection(paradigm, features, surface);
   return [...new Set(cells.map((c) => featureKey(c.features)))];
 }
 

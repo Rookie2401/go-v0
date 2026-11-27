@@ -57,7 +57,7 @@ const FONT_EXT = /\.woff2$/i;
 /** GoReview travels inside the extension under review/, with its own copy of the form indexes; the same rules apply under that prefix. */
 const LEXICON = '(?:review/)?lexicon';
 /** The sharded form indexes: lexicon/<lang>/<set>/<shard>.json.gz, each beside its set's manifest.json. */
-const SHARD = new RegExp(`^${LEXICON}/(he|el|ru|ar)/[a-z]+/[^/]+\\.json\\.gz$`);
+const SHARD = new RegExp(`^${LEXICON}/(he|el|ru|ko|ar)/[a-z]+/[^/]+\\.json\\.gz$`);
 /** The unsharded Koine form index (MorphGNT / SBLGNT forms -> lemma and features; no verse travels in it). */
 const KOINE_INDEX = new RegExp(`^${LEXICON}/el/koine-index\\.json\\.gz$`);
 /**
@@ -375,6 +375,8 @@ describe.each(DISTS)('$id', (dist) => {
     // verse travels in them); gzip keeps the four sets at 23 MB instead of about 70. Each shard must sit beside its set's manifest.json.
     // 2026-11-19: the Russian form index (lexicon/ru/standard/, 467 shards beside its manifest; Wiktionary via kaikki.org, CC BY-SA 4.0) is the
     // same kind of table: word forms -> lemma, features and stress, no running text.
+    // 2026-11-25: the Korean stem lexicon (lexicon/ko/standard/, shards named by the first syllable's jamo: H4 .. or letters; Wiktionary via kaikki.org,
+    // CC BY-SA 4.0) is the same kind of table: headword stems -> class, conjugation class, first gloss and Hanja, no running text.
     // 2026-11-25: the Arabic form index (lexicon/ar/standard/, 179 shards beside its manifest; Wiktionary via kaikki.org, CC BY-SA 4.0) is the same kind of table:
     // word forms -> lemma, vowels, features and root, no running text.
     // 2026-11-26: the same tables under review/ (GoReview's copy inside the extension), the unsharded Koine index, and the OSHB

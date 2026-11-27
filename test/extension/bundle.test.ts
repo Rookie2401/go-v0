@@ -44,11 +44,18 @@ describe.skipIf(!have)('the built extension', () => {
     // Belarusian, Bulgarian and Serbian text (language/cyrillic.ts, the Cyrillic branches of language/resolve.ts and active/pageLanguages.ts)
     // and loads the Russian form index's shards before a lookup (russian/shards.ts with its text helpers). content.js measured 581.4 KB
     // (575.5 KB on master 22be2d7e, which this branch has merged in).
-    // 2026-11-25 (Arabic pack): 585 -> 599 KB (fix batch 1: 605 -> 599 once the root came with the reading and the content script stopped linking the form index). The Arabic script is shared by Persian, Urdu, Pashto, Kurdish and Uyghur, so the content script tells Arabic
-    // from them by the printed letters and the commonest Arabic function words (language/arabic.ts, the Arabic branches of language/resolve.ts and
-    // active/pageLanguages.ts, with arabic/text.ts for the letters) and loads the Arabic form index's shards before a lookup (arabic/shards.ts with its
-    // clitic rules). Measured by `npm run ext:build`: content.js 612,501 bytes = 598.1 KB (597,766 bytes = 583.8 KB at the same tree without the pack; 618,659 before the fix).
-    expect(sizes.get('content.js')!, 'content.js').toBeLessThanOrEqual(599 * KB);
+    // 2026-11-25: 585 -> 588 KB for Korean: the content script tells a Hangul page from any other, knows the language's row, its voices and its
+    // lexicon set, and shows a homonym's headword without its number (lemma-display.ts). Measured 600,498 bytes = 586.4 KB (583.8 KB on master
+    // a822b1ab, built the same day). The Korean shard loader's stem rules are NOT here: lexicon/prepare.ts takes the factory from the analyser
+    // chunk (a static import had cost another 4.2 KB on every page).
+    // 2026-11-25, the pack's final code: 588 -> 589 KB. Since the line above the content script also waits for a language's lexicon before the
+    // first scan where the pack asks for it (lexicon/prepare.ts, Korean only), tells the card when a word's entry is undecided or its lexicon
+    // has not loaded (parser/cardModel.ts), and takes an entry's label off a gloss (lemma-display.ts). Measured 602,499 bytes = 588.4 KB.
+    // 2026-11-25, the review hold: 589 -> 591 KB. The card now says so when a word is undecided between two different words (both shown, each with its class and
+    // meaning, no single answer in the headline) and shows why a held word is not added to review (parser/cardModel.ts reviewHold, popup/card.ts; any language that
+    // writes the review gate's notes, src/core/review-gate.ts). Measured 604,503 bytes = 590.3 KB.
+    // AR-PROVISIONAL: Korean's number kept. Arabic's own addition (content script: language/arabic.ts, the Arabic branches of language/resolve.ts and active/pageLanguages.ts, arabic/text.ts; Arabic measured 598.1 KB on its own base 583.8 KB, +14.3 KB) is NOT counted in it; the lead measures once on the final build and sets this ceiling.
+    expect(sizes.get('content.js')!, 'content.js').toBeLessThanOrEqual(591 * KB);
     // Hindi reading must resolve in the offline Repository too. Its real analyser adds
     // about 460 KB to the former Albanian-only worker; classic workers cannot import
     // the page's analyser chunk. Keep an explicit ceiling rather than dropping analysis.
@@ -73,11 +80,12 @@ describe.skipIf(!have)('the built extension', () => {
     // (about 12 KB). Measured 1,263,600 bytes = 1,234.0 KB on the merged tree (1,195.8 KB on 22be2d7e). No French analyser, word list or
     // lemma list is in the worker.
     // 2026-11-19 (release/ru-fr, both packs on master 3d92b264): 1,240 -> 1,270 KB. background.js measured 1,291,753 bytes = 1,261.5 KB with Russian and French.
-    // 2026-11-25 (Arabic pack): 1,270 -> 1,294 KB. Like every pack the worker holds the manifest with its thirteen feature and 27 pattern explanations,
-    // the validation cases and the orientation, and the Arabic voice registry; the adapter registry reaches arabic/text.ts for the headword check
-    // (`headMatches`) and the language ladder for the letters. No Arabic analyser, core or word list is in the worker. Measured by `npm run ext:build`:
-    // background.js 1,324,503 bytes = 1,293.5 KB (1,293,470 bytes = 1,263.1 KB at the same tree without the pack).
-    expect(sizes.get('background.js')!, 'background.js').toBeLessThanOrEqual(1294 * KB);
+    // 2026-11-25: 1,270 -> 1,315 KB for Korean, as for Russian and French before it: the worker holds what the popup card and the setup page
+    // ask it for: the pack manifest with its honest limits, the plain explanation of every feature value the analyser writes (speech levels,
+    // connectives, the 58 particle families), of 35 constructions, and the orientation. Measured 1,342,801 bytes = 1,311.3 KB (1,263.2 KB on
+    // master a822b1ab, built the same day). No Korean analyser, lexicon or Hangul table is in the worker: they are in analysers/ko.js (558 KB then; 609,722 bytes = 595.4 KB in the pack's final code, where background.js measured 1,342,910 bytes).
+    // AR-PROVISIONAL: Korean's number kept. Arabic's own addition (worker: the Arabic manifest, grammar explanations, validation cases, orientation and voice registry; Arabic measured +30 KB on its own base) is NOT counted in it; the lead measures once on the final build and sets this ceiling.
+    expect(sizes.get('background.js')!, 'background.js').toBeLessThanOrEqual(1315 * KB);
     // 2026-10-21: 650 -> 760 KB; the GoTell redesign (aec73a36) and the GoListen playback refactor (9aae9cb0) brought app.js to 723 KB
     // (measured with the Biblia card of the reader screen, 0.8 KB, reverted). A ceiling again, not a target.
     // 2026-11-08: 760 -> 800 KB; master's build already measured 779 KB.
@@ -93,12 +101,18 @@ describe.skipIf(!have)('the built extension', () => {
     // 2026-11-26: 910 -> 915 KB. The Languages page took GoReview's language display (b0b86316: 931,462 bytes, 378 under the ceiling) and
     // then its top bar's symbols (app/barIcons.ts: the globe, the person, the cog and the arrow as inline SVG paths, about 1.5 KB; the
     // sentences cut from the head of the page give 0.6 KB back). app.js measured 932,398 bytes = 910.5 KB (GOLEARN_APP_DICT default).
-    if (sizes.has('app/app.js')) expect(sizes.get('app/app.js')!, 'app/app.js').toBeLessThanOrEqual(953 * KB); // AR-PROVISIONAL: 915 -> 953 KB for the Arabic pack's manifest (thirteen feature and 27 pattern explanations), validation cases and orientation, like every pack's (it added 36.7 KB before the merge); to be measured on the merged tree
-    for (const id of ['sq', 'es', 'de', 'hi', 'th', 'nb', 'nn', 'ru', 'fr', 'ar']) expect(sizes.has(`analysers/${id}.js`), `analysers/${id}.js`).toBe(true);
+    // 2026-11-25: 910 -> 962 KB for Korean, as for Russian and French before it: the setup page shows each language's manifest, the plain
+    // explanation of its features and constructions (packs/ko-grammar.ts) and its orientation (tutorial/ko.ts); no Korean analyser, lexicon or
+    // dictionary code is in app.js (checked on the build). Measured 982,295 bytes = 959.3 KB (setup page built with GOLEARN_APP_DICT=sq,ru,fr,ko;
+    // 929,736 bytes = 907.9 KB on master a822b1ab, built the same day with sq,ru,fr).
+    // After merging master 4a381610 (app.js 932,398 bytes there): Korean's 52.6 KB on top gives about 985,000 bytes; ceiling 965 KB until the final build is measured.
+    // AR-PROVISIONAL: Korean's number kept. Arabic's own addition (setup page: the Arabic pack's manifest, explanations, validation cases and orientation; Arabic measured +37 KB on its own base) is NOT counted in it; the lead measures once on the final build and sets this ceiling.
+    if (sizes.has('app/app.js')) expect(sizes.get('app/app.js')!, 'app/app.js').toBeLessThanOrEqual(965 * KB);
+    for (const id of ['sq', 'es', 'de', 'hi', 'th', 'nb', 'nn', 'ru', 'fr', 'ko', 'ar']) expect(sizes.has(`analysers/${id}.js`), `analysers/${id}.js`).toBe(true);
   });
 
   it('each analyser chunk is an ES module that exports the adapter, and the manifest makes the chunks readable from the page', () => {
-    for (const id of ['sq', 'es', 'de', 'hi', 'th', 'nb', 'nn', 'ru', 'ar']) {
+    for (const id of ['sq', 'es', 'de', 'hi', 'th', 'nb', 'nn', 'ru', 'ko', 'ar']) {
       const code = read(`analysers/${id}.js`);
       expect(code, id).toMatch(/\bexport\s*\{[^}]*\bas adapter\b[^}]*\}|\bexport\s*\{\s*adapter\b/);
       expect(code, id).not.toMatch(/\bfetch\s*\(|XMLHttpRequest|sendBeacon|WebSocket|StoredSourceRef|importScripts/);
@@ -108,7 +122,7 @@ describe.skipIf(!have)('the built extension', () => {
     // lexicon/* (2026-10-22): the sharded Hebrew and Greek form indexes the content script loads before a lookup
     expect(m.web_accessible_resources).toEqual([{ resources: ['analysers/*.js', 'lexicon/*'], matches: ['<all_urls>'] }]);
     // every shared chunk the analysers import sits in analysers/ too, so the one pattern covers it
-    for (const id of ['sq', 'es', 'de', 'hi', 'th', 'nb', 'nn', 'ru', 'ar']) for (const [, spec] of read(`analysers/${id}.js`).matchAll(/from\s*"(\.[^"]+)"/g)) expect(spec, id).toMatch(/^\.\/[^/]+\.js$/);
+    for (const id of ['sq', 'es', 'de', 'hi', 'th', 'nb', 'nn', 'ru', 'ko', 'ar']) for (const [, spec] of read(`analysers/${id}.js`).matchAll(/from\s*"(\.[^"]+)"/g)) expect(spec, id).toMatch(/^\.\/[^/]+\.js$/);
   });
 
   it('keeps Hindi out of the content script and unrelated analysers out of both scripts', () => {
@@ -118,6 +132,8 @@ describe.skipIf(!have)('the built extension', () => {
       expect(code, f).not.toContain('adapter-th@');
       expect(code, f).not.toContain('adapter-ru@'); // nor the Russian analyser and its 760 KB core: a chunk of its own
       expect(code, f).not.toContain('kaikki-ru-tables');
+      expect(code, f).not.toContain('adapter-ko@'); // nor the Korean analyser (Hangul tables, particles, endings, conjugation): a chunk of its own
+      expect(code, f).not.toContain('kaikki-ko-lexicon');
       expect(code, f).not.toContain('adapter-ar@'); // nor the Arabic analyser and its core: a chunk of its own (the content script holds only the letters that tell Arabic from Persian, from arabic/text.ts)
       expect(code, f).not.toContain('kaikki-ar-tables');
       expect(code, f).not.toContain('Reference realisation of East Norwegian speech'); // the Norwegian engine (its ids are built at run time, so a literal from its text is checked)
@@ -126,6 +142,7 @@ describe.skipIf(!have)('the built extension', () => {
     expect(read('background.js')).toContain('adapter-hi@');
     expect(read('analysers/de.js')).toContain('adapter-de@');
     expect(read('analysers/ru.js')).toContain('adapter-ru@');
+    expect(read('analysers/ko.js')).toContain('adapter-ko@');
     expect(read('analysers/ar.js')).toContain('adapter-ar@');
     // Bokmål and Nynorsk share one engine, so the chunk that holds it (imported by both nb.js and nn.js) is the only place its text appears
     const shared = fs.readdirSync(path.join(dist, 'analysers')).filter((n) => /^shared-.*\.js$/.test(n)).map((n) => read(`analysers/${n}`)).join('\n');

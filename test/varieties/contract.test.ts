@@ -57,7 +57,7 @@ describe('the registry', () => {
   });
 
   it('a language without learning varieties is left exactly as it was', () => {
-    for (const lang of ['sq', 'es', 'de', 'hi', 'th', 'la', 'nb', 'nn', 'arc', 'ru']) {
+    for (const lang of ['sq', 'es', 'de', 'hi', 'th', 'la', 'nb', 'nn', 'arc', 'ru', 'ko']) {
       expect(hasLearningVarieties(lang)).toBe(false);
       expect(learningVarietiesOf(lang)).toEqual([]);
       expect(canonicalVarietyId(lang, `${lang}-standard`)).toBeUndefined();

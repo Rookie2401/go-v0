@@ -79,12 +79,12 @@ export function wordsOfText(raw: string, adapter: LanguageAdapter, languageId: s
     const candidates = analysed[i]?.candidates ?? [];
     // the first of the highest confidence, as the scanner always chose it
     const best = candidates.length ? candidates.reduce((m, c) => (c.confidence > m.confidence ? c : m), candidates[0]) : undefined;
-    // a reading the language's deck gate holds (notes.reviewGate = 'yes') is credited to its FORM id only
-    const creditable = (c: (typeof candidates)[number] | undefined): boolean => !!c?.lemma && !c.unconfirmed && c.confidence >= LEMMA_MIN_CONFIDENCE && c.notes?.reviewGate !== 'yes';
+    const creditable = (c: (typeof candidates)[number] | undefined): boolean => !!c?.lemma && !c.unconfirmed && c.confidence >= LEMMA_MIN_CONFIDENCE;
     const lemmaId = (c: (typeof candidates)[number]): string => `lemma:${languageId}:${c.lemma}${c.pos ? ':' + c.pos : ''}`;
     const known = creditable(best);
     const readings: string[] = [];
-    if (known) { ids.push(lemmaId(best!)); readings.push(lemmaId(best!)); }
+    // a reading the language's review gate holds back (notes.reviewGate) is still KNOWN and still a reading (Reading Analysis counts it), but GoLearn Active credits its written form only
+    if (known) { if (best!.notes?.reviewGate !== 'yes') ids.push(lemmaId(best!)); readings.push(lemmaId(best!)); }
     for (const c of [...candidates].sort((a, b) => b.confidence - a.confidence)) {
       if (!creditable(c)) continue;
       const id = lemmaId(c);

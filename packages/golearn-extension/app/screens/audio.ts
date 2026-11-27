@@ -20,6 +20,7 @@ const VOICE_LANGUAGES: ReadonlyArray<{ id: string; note?: string }> = [
   { id: 'la', note: 'Azure Italian is only an Ecclesiastical Latin stand-in; it is not Classical Latin' },
   { id: 'ru' },
   { id: 'fr' },
+  { id: 'ko' },
   { id: 'ar', note: 'Azure speaks Modern Standard Arabic; a synthetic voice is not a Classical recitation and may leave out vowels the page printed' },
 ];
 

@@ -8,7 +8,7 @@ import { FakeGoLearn, buildFixtureText, makeFakeAdapter } from './fakes';
 
 // Aramaic's first slice is explicitly reading-only; it has no GoTell lesson tables. Russian and French have none either yet (GoTell's concept
 // lexemes were not written for it; the French pack is for reading web pages): the test below asserts that, so the exemption cannot go stale.
-const NO_GOTELL_TABLES = ['arc', 'ru', 'fr', 'ar'];
+const NO_GOTELL_TABLES = ['arc', 'ru', 'fr', 'ko', 'ar'];
 const WRITING_LANGUAGES = LANGUAGES.filter(lang => !NO_GOTELL_TABLES.includes(lang));
 
 describe('concept tables', () => {
@@ -41,6 +41,7 @@ describe('concept tables', () => {
   it('does not pretend a reading-only Aramaic pack has production lessons', () => {
     expect(lexemesFor('arc', 'know')).toEqual([]);
     expect(lexemesFor('fr', 'know'), 'French has GoTell tables now: drop it from NO_GOTELL_TABLES').toEqual([]);
+    expect(lexemesFor('ko', 'know'), 'Korean has GoTell tables now: drop it from NO_GOTELL_TABLES').toEqual([]);
     expect(lexemesFor('ar', 'know'), 'Arabic has no GoTell tables: it is read, not written').toEqual([]);
     expect(CHRONOLOGY.arc).toEqual([]);
   });

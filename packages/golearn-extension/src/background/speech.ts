@@ -3,6 +3,7 @@ import type { PrivacySettings } from '../protocol';
 import type { SpeechMessage, SpeechReply } from '../speechProtocol';
 import { registryEntry, matchEntry } from '../adapters/registry';
 import { REMOTE_SPEECH_CONSENT_OWNER_KEY } from '../protocol';
+import { speechSafeText } from '../../../repository-contract/src/lemma-display';
 
 export const SPEECH_CONFIG_KEY = 'golearn:speech-proxy';
 interface SpeechConfig { baseUrl: string; token: string; permittedSourceOrigins?: string[] }
@@ -87,7 +88,7 @@ export function createSpeechService(opts: {
     if (typeof req.requestId !== 'string' || !/^[\w:.-]{1,100}$/.test(req.requestId)) return refused(400, 'Invalid speech request.');
     const key = `${owner}:${req.requestId}`;
     if (req.op === 'cancel') { pending.get(key)?.abort(); return { ok: true, status: 200 }; }
-    if (!['status', 'voices', 'synthesize'].includes(req.op) || !['sq', 'es', 'de', 'hi', 'th', 'nb', 'nn', 'he', 'el', 'la', 'ru', 'fr', 'ar'].includes(req.languageId)) return refused(400, 'Unsupported speech request.');
+    if (!['status', 'voices', 'synthesize'].includes(req.op) || !['sq', 'es', 'de', 'hi', 'th', 'nb', 'nn', 'he', 'el', 'la', 'ru', 'fr', 'ko', 'ar'].includes(req.languageId)) return refused(400, 'Unsupported speech request.');
     if (pending.size >= 8) return refused(429, 'Too many speech requests are pending.');
     pending.get(key)?.abort();
     const ctl = new AbortController(); pending.set(key, ctl);
@@ -133,7 +134,7 @@ export function createSpeechService(opts: {
         method: req.op === 'synthesize' ? 'POST' : 'GET', signal: ctl.signal,
         credentials: 'omit', redirect: 'error', cache: 'no-store',
         headers: { Authorization: `Bearer ${config.token}`, ...(req.op === 'synthesize' ? { 'content-type': 'application/json' } : {}) },
-        ...(req.op === 'synthesize' ? { body: JSON.stringify({ languageId: req.languageId, text: req.text, voice: req.voice, locale: req.locale, format: 'riff-24khz-16bit-mono-pcm', kind: req.kind, sourcePermission: 'allowed' }) } : {}),
+        ...(req.op === 'synthesize' ? { body: JSON.stringify({ languageId: req.languageId, text: typeof req.text === 'string' ? speechSafeText(req.languageId, req.text) : undefined, voice: req.voice, locale: req.locale, format: 'riff-24khz-16bit-mono-pcm', kind: req.kind, sourcePermission: 'allowed' }) } : {}),
       });
       if (ctl.signal.aborted) return refused(499, 'Pronunciation was cancelled.');
       if (!response.ok) {

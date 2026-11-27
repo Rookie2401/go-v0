@@ -144,3 +144,17 @@ describe('a click on a dialect sentence', () => {
     expect(m.notes.join(' ')).not.toMatch(/spoken Arabic/);
   });
 });
+
+describe('an undecided Arabic word, through the card states of the review gate', () => {
+  const BARE = 'كتب';
+  const undecided = (): CardModel => parseSelection({ surface: BARE, languageId: 'ar', context: { kind: 'sentence', confidence: 0.9, sentence: BARE, selStart: 0, selEnd: BARE.length, direction: 'rtl' } as never });
+  it('credits an unvocalized word that its sentence does not decide to its form id, and says it is undecided', () => {
+    const m = undecided();
+    expect(m.formId).toBe('form:ar:كتب');
+    expect(m.reviewHold?.rivals.length ?? 0).toBeGreaterThan(1);
+    ui.show(m, anchor);
+    const note = ui.root()!.querySelector('[data-row="review-hold"]') as HTMLElement | null;
+    expect(note?.textContent ?? '').toMatch(/Not added to review/);
+    for (const r of m.reviewHold!.rivals) expect(ui.root()!.textContent).toContain(r.lemma);
+  });
+});

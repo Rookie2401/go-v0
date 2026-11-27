@@ -559,13 +559,16 @@ export class LookupController {
               if (!live()) return;
               if (!reply || !reply.ok) { this.d.ui.update({ enrichment: { state: 'unavailable', message: reply?.message ?? 'The dictionary could not be asked for the full entry.' } }); return; }
               const adapter = this.d.analyserOf?.(languageId);
-              const record = pickRecord(reply.found ? (reply.records as LexicalRecord[]) : [], card.pos, headTest(adapter, card.lemma));
+              const all = reply.found ? (reply.records as LexicalRecord[]) : [];
+              const record = pickRecord(all, card.pos, { ambiguous: card.entryUndecided }, headTest(adapter, card.lemma));
+              const undecidedEntries = !!card.entryUndecided && !record && all.length > 1;
               const hint = { features: Object.fromEntries(card.features.map((f) => [f.key, f.value])), surface: card.surface };
               const paradigm = card.lemma && card.pos ? buildParadigm(adapter, languageId, card.lemma, card.pos as PartOfSpeech, record, hint) : undefined;
               const selected = selectedCellKeys(adapter, paradigm, hint.features, card.surface);
               this.d.ui.update({ ...gather(reply.sources), enrichment: {
                 state: 'ready', paradigm, selected, ...(segmentations ? { segmentations } : {}), etymology: etymologyOf(record), structure: structureOf(record, adapter, card.lemma ?? card.surface.trim(), card.pos, card.surface, hint.features, { languageId }), pronunciation: pronunciationOf(record, card.pronunciation), formRoman: formRomanOf(record), relations: relationsOf(record), senses: leadSenses(adapter, card.gloss, sensesOf(record)),
                 ...(reply.attribution ? { attribution: reply.attribution } : {}), ...(reply.reason && !reply.found ? { message: reply.message ?? reply.reason } : {}),
+                ...(undecidedEntries ? { message: "Several dictionary entries share this spelling; the card could not tell which, so no one entry’s origin or forms is shown as the word’s." } : {}),
               } });
             }).catch(() => { if (live()) this.d.ui.update({ enrichment: { state: 'unavailable', message: 'The dictionary could not be asked for the full entry.' } }); }),
           );

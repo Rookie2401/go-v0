@@ -140,6 +140,7 @@ export const STORY: Record<LanguageCode, FixtureSentence[]> = {
     { tokens: ['Dieu', 'me', 'pardonne'].map(w).concat(dot()) },
     { tokens: ['Je', 'comprends', 'mon', 'cœur'].map(w).concat(dot()) },
   ],
+  ko: [{ tokens: ['학생이', '책을', '읽습니다'].map(w).concat(dot()) }],
   ar: [{ tokens: ['كَتَبَ', 'الْوَلَدُ', 'الدَّرْسَ'].map(w).concat(dot()) }],
 };
 
@@ -193,6 +194,10 @@ export const SCRIPTURE: Record<LanguageCode, FixtureSentence[]> = {
   fr: [
     { tokens: ['Car', 'Dieu', 'a', 'tant', 'aimé', 'le', 'monde'].map(w).concat(dot()), verseRefs: ['JHN.3.16'] },
     { tokens: ['Si', 'nous', 'confessons', 'nos', 'péchés'].map(w).concat(dot()), verseRefs: ['1JN.1.9'] },
+  ],
+  ko: [
+    { tokens: ['하나님이', '세상을', '이처럼', '사랑하사'].map(w).concat(dot()), verseRefs: ['JHN.3.16'] },
+    { tokens: ['만일', '우리가', '우리', '죄를', '자백하면'].map(w).concat(dot()), verseRefs: ['1JN.1.9'] },
   ],
   ar: [{ tokens: ['كَتَبَ', 'الْوَلَدُ', 'الدَّرْسَ'].map(w).concat(dot()), verseRefs: ['JHN.3.16'] }],
 };

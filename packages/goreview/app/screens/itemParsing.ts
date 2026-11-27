@@ -12,6 +12,7 @@
  *
  * It is filled when the learner opens "This item", not before: the table of a Hebrew verb reads several form files.
  */
+import { displayLemma, lemmaEntryLabel } from '../../../repository-contract/src';
 import { reviewFacts } from '../../src/facts/review-facts';
 import type { FeatureDef } from '../../src/facts/review-facts';
 import type { AppContext } from '../context';
@@ -68,7 +69,12 @@ export function renderParsing(el: HTMLElement, m: ParsingModel): void {
   const rows: HTMLElement[] = [];
   const row = (name: string, value: string | HTMLElement, id: string): void => { rows.push(h('div', { class: 'parsing-row', 'data-row': id }, h('dt', {}, name), h('dd', {}, value))); };
   row('Form', h('span', langProps(m.tag), m.surface), 'form');
-  if (m.lemma) row('Lemma', h('span', langProps(m.tag), m.lemma), 'lemma');
+  if (m.lemma) {
+    // a Korean homonym number (눈²) is identity, not spelling: the headword is shown, the number as a small label beside it
+    const entry = lemmaEntryLabel(m.tag, m.lemma);
+    const word = h('span', langProps(m.tag), displayLemma(m.tag, m.lemma));
+    row('Lemma', entry ? h('span', {}, word, h('small', { class: 'muted', 'data-row': 'homonym' }, ` · entry ${entry}`)) : word, 'lemma');
+  }
   if (m.pos) row('Part of speech', POS_NAME[m.pos] ?? m.pos.toLowerCase(), 'pos');
   for (const f of m.features) {
     const named = nameFeature(f.key, f.value, m.featureDefs);

@@ -15,6 +15,7 @@ import { createLexiconPreparer } from '../lexicon/prepare';
 import { createAdapters } from '../adapters';
 import { resolveLanguage } from '../language/resolve';
 import { createMemoryMetricsStore } from '../metrics';
+import { lemmaLookupKeys } from '../../../repository-contract/src/lemma-display';
 import { PARSER_LANGUAGES, getAnalyser, hasAnalyser, parseSelection } from '../parser';
 import { MSG, getContentChrome, type ContentChromeApi, type LookupMessage } from '../platform';
 import { createCardUI, type CardUI } from '../popup/card';
@@ -88,7 +89,8 @@ export async function install(chromeApi: ContentChromeApi | undefined = getConte
     glossForms: (lemma, pos, languageId) => {
       const a = getAnalyser(languageId);
       if (!a || languageId === 'sq') return []; // the worker carries Albanian
-      return [...new Set([a.normalize(lemma), ...(a.lemmaVariants?.(lemma, pos as Parameters<NonNullable<typeof a.lemmaVariants>>[1]) ?? []).map((v) => a.normalize(v))])].slice(0, 8);
+      // a Korean homonym (눈²) is filed in the dictionary under its numbered headword AND the bare one: the numbered key finds that entry alone, and the bare one is deliberately NOT asked for a numbered lemma (it holds every homonym: lemma-display.ts)
+      return [...new Set([...lemmaLookupKeys(languageId, lemma).map((k) => a.normalize(k)), ...(a.lemmaVariants?.(lemma, pos as Parameters<NonNullable<typeof a.lemmaVariants>>[1]) ?? []).map((v) => a.normalize(v))])].slice(0, 8);
     },
     loadAnalyser,
     prepareLexicon: (languageId, text) => lexicon.prepare(languageId, text),
@@ -114,7 +116,7 @@ export async function install(chromeApi: ContentChromeApi | undefined = getConte
   // GoLearn Active: reads the page only when the background says the switch is on (below, or on `activate`)
   // its learner-model question goes through the scan's own message (device rows only, honoured only while the switch is on), not the card's
   const active = new ActiveMode({
-    doc, controller, adapters, ui, adapterOf: getAnalyser, loadAnalyser,
+    doc, controller, adapters, ui, adapterOf: getAnalyser, loadAnalyser, prepareLexicon: (languageId, text) => lexicon.prepare(languageId, text),
     profile: bridge?.activeProfile ? (unitIds, languageId) => bridge.activeProfile!({ unitIds, languageId }) : undefined,
     confirmForms: bridge?.confirmForms ? (forms, languageId) => bridge.confirmForms!({ forms, languageId }) : undefined,
     recordEncounter: bridge?.events.append,
@@ -129,7 +131,7 @@ export async function install(chromeApi: ContentChromeApi | undefined = getConte
 
   // Reading Analysis: nothing is read until the popup starts a run in this tab (src/reading/session.ts)
   const reading = bridge?.readingKnowledge ? createReadingSession({
-    doc, adapters, languages: PARSER_LANGUAGES, adapterOf: getAnalyser, loadAnalyser,
+    doc, adapters, languages: PARSER_LANGUAGES, adapterOf: getAnalyser, loadAnalyser, prepareLexicon: (languageId, text) => lexicon.prepare(languageId, text),
     defaultLanguage: async () => (await bridge.status())?.languageId,
     ...(bridge.confirmForms ? { confirmForms: (forms: string[], languageId: string) => bridge.confirmForms!({ forms, languageId }) } : {}),
     knowledge: (req) => bridge.readingKnowledge!(req),

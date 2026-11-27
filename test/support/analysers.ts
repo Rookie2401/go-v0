@@ -14,6 +14,8 @@ import { heAdapter } from '../../src/adapters/he';
 import { createGreekShardLoader } from '../../src/adapters/greek/shards';
 import { createHebrewShardLoader } from '../../src/adapters/hebrew/shards';
 import { hiAdapter } from '../../src/adapters/hi';
+import { koAdapter } from '../../src/adapters/ko';
+import { createKoreanShardLoader } from '../../src/adapters/korean/shards';
 import { laAdapter } from '../../src/adapters/la';
 import { nbAdapter } from '../../src/adapters/nb';
 import { nnAdapter } from '../../src/adapters/nn';
@@ -36,6 +38,7 @@ export function registerAllAnalysers(): void {
   if (languageMeta('el')) registerAnalyser('el', elAdapter, { createShardLoader: createGreekShardLoader });
   if (languageMeta('la')) registerAnalyser('la', laAdapter); // once the adapter lane's parser entry exists
   if (languageMeta('ru')) registerAnalyser('ru', ruAdapter, { createShardLoader: createRussianShardLoader });
+  if (languageMeta('ko')) registerAnalyser('ko', koAdapter, { createShardLoader: createKoreanShardLoader }); // the compiled core alone: the stem lexicon's shards are a loader a test installs itself when it wants them
   registerAnalyser('ar', arAdapter, { createShardLoader: createArabicShardLoader });
   registerAnalyser('fr', frAdapter); // the hand word list alone: the lemma list is a lazy module a test loads itself when it wants it
 }

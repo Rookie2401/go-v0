@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest';
 import type { LanguageCode } from '../../src/core/model';
 import { createPlayerModel, reducePlayer, type PlayerManifestInput } from '../../src/golisten/player';
 
-const sample: Record<LanguageCode, string> = { arc: 'מַלְכָּא לְעָלְמִין חֱיִי׃', es: 'Hola mundo.', sq: 'Përshëndetje.', th: 'สวัสดีครับ', hi: 'नमस्ते।', de: 'Guten Tag.', nb: 'God dag.', nn: 'God dag.', he: 'שלום עולם.', el: 'Καλημέρα κόσμε.', la: 'In principio erat Verbum.', ru: 'Она читает книгу.', fr: 'Bonjour le monde.', ar: 'مرحبا بالعالم.' };
+const sample: Record<LanguageCode, string> = { arc: 'מַלְכָּא לְעָלְמִין חֱיִי׃', es: 'Hola mundo.', sq: 'Përshëndetje.', th: 'สวัสดีครับ', hi: 'नमस्ते।', de: 'Guten Tag.', nb: 'God dag.', nn: 'God dag.', he: 'שלום עולם.', el: 'Καλημέρα κόσμε.', la: 'In principio erat Verbum.', ru: 'Она читает книгу.', fr: 'Bonjour le monde.', ko: '안녕하세요.', ar: 'مرحبا بالعالم.' };
 
 describe('resume offsets across all supported scripts', () => {
   it.each(Object.entries(sample) as [LanguageCode, string][])('%s restores an absolute clip offset without producing listening evidence', (lang, sentence) => {

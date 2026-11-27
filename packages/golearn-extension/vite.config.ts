@@ -76,7 +76,7 @@ function writeBuildJson(): Plugin {
 }
 
 /** The analysers: one entry per language (`src/analysers/<id>.ts` exports the adapter as `adapter`). */
-const ANALYSER_IDS = ['sq', 'es', 'de', 'hi', 'th', 'nb', 'nn', 'la', 'he', 'el', 'arc', 'ru', 'fr',
+const ANALYSER_IDS = ['sq', 'es', 'de', 'hi', 'th', 'nb', 'nn', 'la', 'he', 'el', 'arc', 'ru', 'fr', 'ko',
   'ar'] as const;
 
 /** Copy the static files once, in the first (content) build. */
@@ -98,7 +98,7 @@ function copyStatic(): Plugin {
       if (fs.existsSync(notices)) fs.copyFileSync(notices, path.join(dist, 'THIRD-PARTY-NOTICES.md'));
       fs.cpSync(path.join(here, 'icons'), path.join(dist, 'icons'), { recursive: true });
       // the sharded form indexes (npm run lexicon:shard): gzip shards + manifest per set, loaded by the content script before a lookup
-      for (const set of ['el/ancient', 'el/modern', 'he/biblical', 'he/modern', 'ru/standard',
+      for (const set of ['el/ancient', 'el/modern', 'he/biblical', 'he/modern', 'ru/standard', 'ko/standard',
         'ar/standard']) {
         const from = path.join(here, '..', '..', 'public', 'lexicon', set);
         if (fs.existsSync(path.join(from, 'manifest.json'))) fs.cpSync(from, path.join(dist, 'lexicon', set), { recursive: true });

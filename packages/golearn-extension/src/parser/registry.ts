@@ -37,6 +37,7 @@ export const LANGUAGE_META: Readonly<Record<string, LanguageMeta>> = {
   arc: { lang: 'arc', name: 'Biblical Aramaic', pageTag: /^arc(-|$)/, experimental: 'The Aramaic pack is experimental: only its declared Biblical Aramaic excerpt forms have source-backed analyses. Other dialects and unlisted forms are unresolved.' },
   ru: { lang: 'ru', name: 'Russian', pageTag: /^ru(-|$)/, experimental: 'The Russian pack is experimental: readings come from the Wiktionary inflection tables (via kaikki.org); only the commonest words are compiled in, the rest needs the installed index; a form with several readings keeps them all; nothing has been reviewed by a native speaker.' },
   fr: { lang: 'fr', name: 'French', pageTag: /^fr(-|$)/i, experimental: 'The French pack is new and machine-drafted: its word list, rules and grammar notes have not been checked by a native speaker; readings of words outside the word list come from the rules and the Wiktionary-derived dictionary.' },
+  ko: { lang: 'ko', name: 'Korean', pageTag: /^ko(-|$)/i, experimental: 'The Korean pack is new and machine-drafted: readings come from rules and a stem lexicon taken from Wiktionary (via kaikki.org); a word the lexicon does not hold is shown as written, with no meaning; nothing has been reviewed by a native speaker.' },
   // `ar` must not match `arc` (Biblical Aramaic): the tag ends or continues with a hyphen
   ar: { lang: 'ar', name: 'Arabic', pageTag: /^ar(-|$)/i, experimental: 'The Arabic pack is experimental: readings come from the Wiktionary conjugation and declension tables (via kaikki.org); only the commonest words are compiled in, the rest needs the installed index; a printed word usually has no short vowels, so a spelling with several readings keeps them all and credits no word until the page or the sentence decides; nothing has been reviewed by a native speaker or an Arabist.' },
 };
@@ -88,3 +89,11 @@ export const getAnalyser = (languageId: string): LanguageAdapter | undefined => 
 export function clearAnalysers(keep: readonly string[] = []): void {
   for (const id of [...loaded.keys()]) if (!keep.includes(id)) loaded.delete(id);
 }
+
+/**
+ * Languages whose sharded word list could not be loaded on the last lookup (lexicon/prepare.ts sets and clears it). A word only that list holds
+ * is then unconfirmed for a reason that is NOT "not in the word list", and the card must not say so.
+ */
+const lexiconFailed = new Set<string>();
+export function setLexiconNotLoaded(languageId: string, failed: boolean): void { if (failed) lexiconFailed.add(languageId); else lexiconFailed.delete(languageId); }
+export const lexiconNotLoaded = (languageId: string): boolean => lexiconFailed.has(languageId);

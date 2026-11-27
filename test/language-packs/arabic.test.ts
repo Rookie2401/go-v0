@@ -209,11 +209,11 @@ describe('a vocalized lemma is read with its own dictionary entry', () => {
     const rec = (head: string, p: string) => ({ w: 'علم', p, f: [{ f: head, t: ['canonical'] }] });
     const records = [rec('عَلِمَ', 'VERB'), rec('عَلَم', 'NOUN'), rec('عِلْم', 'NOUN')];
     expect(pickRecord(records, 'NOUN')?.f?.[0].f).toBe('عَلَم'); // before: the first noun, whatever the lemma
-    expect(pickRecord(records, 'NOUN', headTest(arAdapter, 'عِلْم'))?.f?.[0].f).toBe('عِلْم');
-    expect(goreviewPick(records, 'NOUN', goreviewHead(arAdapter, 'عِلْم'))?.f?.[0].f).toBe('عِلْم');
-    expect(pickRecord(records, 'VERB', headTest(arAdapter, 'عَلِمَ'))?.f?.[0].f).toBe('عَلِمَ');
+    expect(pickRecord(records, 'NOUN', undefined, headTest(arAdapter, 'عِلْم'))?.f?.[0].f).toBe('عِلْم');
+    expect(goreviewPick(records, 'NOUN', undefined, goreviewHead(arAdapter, 'عِلْم'))?.f?.[0].f).toBe('عِلْم');
+    expect(pickRecord(records, 'VERB', undefined, headTest(arAdapter, 'عَلِمَ'))?.f?.[0].f).toBe('عَلِمَ');
     // a lemma no record has: nothing is set aside, the old choice stands
-    expect(pickRecord(records, 'NOUN', headTest(arAdapter, 'عُلْم'))?.f?.[0].f).toBe('عَلَم');
+    expect(pickRecord(records, 'NOUN', undefined, headTest(arAdapter, 'عُلْم'))?.f?.[0].f).toBe('عَلَم');
     // a language whose adapter has no `headMatches` is chosen exactly as before
     expect(headTest({}, 'عِلْم')).toBeUndefined();
     expect(pickRecord(records, 'NOUN', undefined)?.f?.[0].f).toBe('عَلَم');

@@ -186,7 +186,7 @@ describe('import of the bundled corpus', () => {
   it('gives the same form in story and Bible the same formId, yet distinct tokens', async () => {
     const sharedContent: Record<LanguageCode, string[]> = { arc: [],
       es: ['pecado', 'dios'], de: ['sünde', 'gott'], sq: ['mëkat', 'perëndia'], th: ['บาป', 'พระเจ้า'], hi: ['पाप', 'परमेश्वर'], nb: [], nn: [], he: [], el: [], la: [], fr: [],
-      ru: [], ar: [],
+      ru: [], ko: [], ar: [],
     };
     for (const lang of LANGUAGES) {
       for (const word of sharedContent[lang]) {
@@ -226,7 +226,7 @@ describe('import of the bundled corpus', () => {
       sq: ['mëkat', 'fal', 'kuptoj', 'zemër', 'besoj'],
       th: ['บาป', 'ยก', 'เข้าใจ', 'หัวใจ', 'เชื่อ'],
       hi: ['पाप', 'क्षमा', 'समझना', 'दिल', 'विश्वास'],
-      ru: [],
+      ru: [], ko: [],
       nb: [], nn: [], he: [], el: [], la: [], fr: [], ar: [],
     };
     for (const lang of ANALYZED) {
@@ -257,6 +257,7 @@ describe('import of the bundled corpus', () => {
       la: { young: [], began: [], believe: [] },
       ru: { young: [], began: [], believe: [] }, // no Russian seed texts
       fr: { young: [], began: [], believe: [] },
+      ko: { young: [], began: [], believe: [] }, // no Korean seed texts
       ar: { young: [], began: [], believe: [] }, // no Arabic seed texts
     };
     for (const lang of ORIGINAL_SEVEN) {

@@ -25,6 +25,8 @@ import { answerVariants } from '../../../../src/core/english-verb';
 import { greekWordAnalysis } from '../../../../src/adapters/greek/word-analysis';
 import type { ExampleSentence, FactsProvider, UnitFacts } from '../types';
 import { FORM_HELD_REASON, holdsDeck } from './deck-holds';
+import { held } from './deck-gate';
+import type { ReviewKind } from '../../../../src/core/review-gate';
 import ANSWER_EXCLUSIONS from '../../../../src/adapters/arabic/answer-exclusions.json';
 import type { ExampleReading, FeatureDef, FormGroup, FormInfo, ReviewFacts } from './review-facts';
 
@@ -515,7 +517,7 @@ export function createFactsProvider(deps: FactsProviderDeps): FactsProvider & { 
       }
     }
     const featureDefsUsed: Record<string, FeatureDef> = { ...featureDefs };
-    return {
+    const built: ReviewFacts = {
       unit, relations: rec?.relations ?? [], analyses: rec?.analyses ?? [], status: unit.status,
       lemma, ...(pos ? { pos } : {}),
       glosses: g.glosses, ...(g.attribution ? { glossAttribution: g.attribution } : {}),
@@ -530,6 +532,9 @@ export function createFactsProvider(deps: FactsProviderDeps): FactsProvider & { 
       featureDefs: featureDefsUsed, exampleReadings: readings, formGroups: [group],
       alternativeReadings: otherReadings(lemma, lemma, pos), ...(periodReading ? { periodReading } : {}),
     };
+    // a lemma the language's own gate holds (the analyser marked the reading: src/adapters/arabic/deck.ts) comes out in the deck gate's own shape
+    if (marked) return held(built, (read.cand!.notes!.reviewKind as ReviewKind | undefined) ?? 'meaning-unreviewed', String(read.cand!.notes!.reviewReason ?? 'This word is not made a review card.'));
+    return built;
   }
 
   // ───────── form ─────────
@@ -810,16 +815,16 @@ export function createFactsProvider(deps: FactsProviderDeps): FactsProvider & { 
   /** A bare form of a language held to the deck rule: facts that say  and name nothing (no lemma, no meaning, no example). */
   function heldFormFacts(unitId: string, rec: RepositoryUnit | undefined): ReviewFacts {
     const label = rec?.unit.label || unitId.slice(`form:${lang}:`.length);
+    let kind: ReviewKind = 'undecided-entry';
     let reason = FORM_HELD_REASON;
     try {
       const top = adapter.analyze(adapter.tokenize(label), deps.varietyId ? { varietyId: deps.varietyId } : undefined).find((a) => a.token.isWord)?.candidates[0];
-      const why = top?.notes?.reviewReason;
-      reason = typeof why === 'string' && why ? `${why}; ${FORM_HELD_REASON}` : top ? `undecided: ${FORM_HELD_REASON}` : `no reading in the word list: ${FORM_HELD_REASON}`;
+      if (top?.notes?.reviewReason) { kind = (top.notes.reviewKind as ReviewKind | undefined) ?? kind; reason = String(top.notes.reviewReason); } else if (!top) { kind = 'unlisted'; reason = 'No reading in the word list: a bare written form is not made a review card.'; }
     } catch { /* the generic reason stands */ }
-    const unit = { ...(rec?.unit ?? synth('form', unitId, label, 'requires-review', 'parser', 0)), status: 'requires-review' as const };
-    return { unit, relations: rec?.relations ?? [], analyses: rec?.analyses ?? [], status: 'requires-review', glosses: [], constructionIds: [], featureExplanations: {},
-      siblingForms: [], exampleSentences: [], pronunciationNotes: [], lexicalRecognition: { status: 'withheld', reason }, ...(rec ? {} : { derivedFromPack: true }),
-      source: unit.provenance.source, lemmaInWordList: false, lexiconGlossCount: 0, formGroups: [], alternativeReadings: [] };
+    const unit = rec?.unit ?? synth('form', unitId, label, 'requires-review', 'parser', 0);
+    return held({ unit, relations: rec?.relations ?? [], analyses: rec?.analyses ?? [], status: 'requires-review', glosses: [], constructionIds: [], featureExplanations: {},
+      siblingForms: [], exampleSentences: [], pronunciationNotes: [], ...(rec ? {} : { derivedFromPack: true }),
+      source: unit.provenance.source, lemmaInWordList: false, lexiconGlossCount: 0, formGroups: [], alternativeReadings: [] } as ReviewFacts, kind, reason) as ReviewFacts;
   }
 
   return {

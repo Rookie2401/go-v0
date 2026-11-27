@@ -37,6 +37,8 @@ import { installedRussianIndexes, resetRussianIndexes } from '../../src/adapters
 import { createGreekShardLoader } from '../../src/adapters/greek/shards';
 import { createHebrewShardLoader } from '../../src/adapters/hebrew/shards';
 import { createRussianShardLoader } from '../../src/adapters/russian/shards';
+import { createArabicShardLoader } from '../../src/adapters/arabic/shards';
+import { installedArabicIndexes, resetArabicIndexes } from '../../src/adapters/arabic/index-store';
 import type { ShardSource } from '../../src/adapters/shared/shards';
 import type { LanguageAdapter } from '../../src/core';
 import { isCrossReferenceOnly } from '../../src/core/review-meaning';
@@ -85,7 +87,7 @@ export async function prepareLexicon(lang: string, adapter: LanguageAdapter, tex
   for (const set of LEXICON_SETS[lang] ?? []) {
     let job = shardLoaders.get(set);
     if (!job) {
-      const make = set.startsWith('el/') ? createGreekShardLoader : set.startsWith('ru/') ? createRussianShardLoader : createHebrewShardLoader;
+      const make = set.startsWith('el/') ? createGreekShardLoader : set.startsWith('ru/') ? createRussianShardLoader : set.startsWith('ar/') ? createArabicShardLoader : createHebrewShardLoader;
       job = make(shardSource, { base: `lexicon/${set}`, maxLoaded: 4096 }) as unknown as Promise<Ensurer>;
       shardLoaders.set(set, job);
     }
@@ -100,7 +102,7 @@ export async function prepareLexicon(lang: string, adapter: LanguageAdapter, tex
  * installed is taken out again.
  */
 const STORES: Record<string, { installed(): Array<{ id: string; shard?: string }>; reset(keep: (id: string, shard?: string) => boolean): void }> = {
-  el: { installed: installedGreekIndexes, reset: resetGreekIndexes }, he: { installed: installedHebrewIndexes, reset: resetHebrewIndexes }, ru: { installed: installedRussianIndexes, reset: resetRussianIndexes },
+  el: { installed: installedGreekIndexes, reset: resetGreekIndexes }, he: { installed: installedHebrewIndexes, reset: resetHebrewIndexes }, ru: { installed: installedRussianIndexes, reset: resetRussianIndexes }, ar: { installed: installedArabicIndexes, reset: resetArabicIndexes },
 };
 const baseline = new Map<string, Set<string>>();
 const storeKey = (id: string, shard?: string): string => id + '|' + (shard ?? '');
@@ -280,6 +282,7 @@ export const AUDIT_SETS: readonly AuditSet[] = [
   { id: 'el', lang: 'el', varietyId: 'el-mod', name: 'Modern Greek' }, { id: 'el-koi', lang: 'el', varietyId: 'el-koi', name: 'Koine Greek' },
   { id: 'he', lang: 'he', varietyId: 'he-mod', name: 'Modern Hebrew' }, { id: 'he-bib', lang: 'he', varietyId: 'he-bib', name: 'Biblical Hebrew' },
   { id: 'arc', lang: 'arc', varietyId: 'arc-bib', name: 'Biblical Aramaic' },
+  { id: 'ar', lang: 'ar', name: 'Arabic' },
 ];
 export const auditSet = (id: string): AuditSet => { const s = AUDIT_SETS.find((x) => x.id === id); if (!s) throw new Error(`no audit set ${id}`); return s; };
 export const auditText = (id: string, part: 'dev' | 'heldout'): string => path.join(ROOT, 'data/deck-audit', id, `${part}.txt`);

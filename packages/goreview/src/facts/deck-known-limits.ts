@@ -5,6 +5,9 @@
  * A unit leaves the list when its reading or meaning is fixed. GENERATED from the verdict files; test/deck-audit/deck-audit.test.ts checks that
  * every unit here has a verdict that says why.
  */
+import { AR_LIMITED_LEMMAS } from '../../../../src/adapters/arabic/generated/deck-limits';
+import { arKnownLimitOf } from '../../../../src/adapters/arabic/deck';
+
 const WHY = 'The deck audit found this word read or glossed wrongly in ordinary text, so it is not made a review card until that is fixed.';
 const list = (units: string[]): Readonly<Record<string, string>> => Object.fromEntries(units.map((u) => [u, WHY]));
 
@@ -149,4 +152,21 @@ export const DECK_KNOWN_LIMITS: Readonly<Record<string, Readonly<Record<string, 
   ]),
 };
 
-export const deckKnownLimit = (languageId: string, unitId: string): string | undefined => DECK_KNOWN_LIMITS[languageId]?.[unitId];
+/**
+ * Arabic's known limits are GENERATED from a sweep of the pack's development sets (scripts/ar-deck-limits.mts -> src/adapters/arabic/generated/deck-limits.ts) and are
+ * reached here, not copied: a written form (`form:ar:<key>`) or a lexeme (`lemma:ar:<head>:<POS>`) the sweep found credited to the wrong word.
+ */
+const arabicKnownLimit = (unitId: string): string | undefined => {
+  if (unitId.startsWith('lemma:ar:')) {
+    const m = /^lemma:ar:(.*):([A-Z]+)$/u.exec(unitId);
+    const why = m ? (AR_LIMITED_LEMMAS as Record<string, string>)[`${m[1]}|${m[2]}`] : undefined;
+    return why ? `This lexeme is credited to a misread spelling (${why}), so it is not made a review card.` : undefined;
+  }
+  if (unitId.startsWith('form:ar:')) {
+    const why = arKnownLimitOf(unitId.slice('form:ar:'.length));
+    return why ? `This spelling is known to be read as another word (${why}), so it is not made a review card.` : undefined;
+  }
+  return undefined;
+};
+
+export const deckKnownLimit = (languageId: string, unitId: string): string | undefined => DECK_KNOWN_LIMITS[languageId]?.[unitId] ?? (languageId === 'ar' ? arabicKnownLimit(unitId) : undefined);

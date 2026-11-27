@@ -79,20 +79,21 @@ The mark is on the **candidate set**, written by the analyser, in the names Bibl
 
 `test/adapters/arabic-deck-limits.test.ts` re-runs the sweep and fails when the file is out of step. Today: 9 written forms, 7 lexemes.
 
-## What the audit measured
+## The deck gate of every language, and where Arabic stands in it
 
-`test/goreview/arabic-deck-audit.test.ts` (harness `arabic-deck-audit.support.ts`), text `test/fixtures/arabic/deck-audit.json`: 367 words of unvocalized prose (news, encyclopedia, narrative), written for the test, machine-written and machine-annotated, frozen 2026-11-25, never tuned on. The real path: the extension's own word naming (`wordsOfText`, whole index) -> encounter events -> the Repository folds and registration -> GoReview recovery (core plus the shards its loader fetches) -> the engine's ranking of stored units -> intake. Every admitted card is checked: headword in the index with a meaning, gold lemma, the leading meaning shares a content word with the gold meaning (or is in the visible `REVIEWED_EQUIVALENT_MEANINGS` table, size printed in the summary line), a verb "to ", no numbered merge, no leading sense labelled archaic / obsolete / dated / rare / dialectal / historical while another is unlabelled, no fragment, and no form card.
+Master's deck gate (`docs/ecosystem/DECK-GATE.md`, `packages/goreview/src/facts/deck-gate.ts`, the core `src/core/review-gate.ts`) runs in `packFacts` for every lemma and form unit of every language. Arabic uses it so:
 
-On the merged tip fd7f471d (index with its `Sense` classes, one clean meaning per reading, hand glosses for 207 closed-class words):
+* the kinds of hold are the core's `ReviewKind`; `heldByReviewGate` is the core's; Arabic's own are `arDeckVerdict`, `arMarkForDeck`, `AR_DECK_LIMITS` (with its `kind` column) and `AR_UNREVIEWED_CLOSED`;
+* a held Arabic unit comes out in the gate's shape (`held()`: status `requires-review`, no meaning, `reviewHold` = kind + one sentence). Arabic skips the gate's own meaning checks (b) and (e): they would replace the reviewed index lead by the dictionary's first current sense; Arabic's stricter rule (Sense Rev / One, one source entry, reviewed answer exclusions) takes their place;
+* the generated known-limits sweep (`generated/deck-limits.ts`) is reached through master's `deckKnownLimit('ar', unitId)`, not copied into `DECK_KNOWN_LIMITS`.
 
-* words 377, distinct 309; **admitted 175** (lemma 175, **form 0**); **false 0**; **unknown or fragment 0**; admitted with no gold behind them 16;
-* **held back 117 distinct words = 37.9%**: undecided 74, sense-unreviewed 30, plural-entry 5, derived 2, no-meaning 2, known-misread-form 1, known-misread-lemma 1, no reading 1, recovery 1;
-* "recovery" is now one word (ملايين: no facts). The eleven of the earlier run came back: with a decided word's rivals capped at 0.35 the head read alone is no longer "within 0.15" of a rival. Where a head read alone is undecided although the page word was decided by its clitics or sentence, the gate still sees only the head (only the unit id travels); the smallest change would be to carry one decided/undecided bit on the encounter event; not built.
-* Closed-class cards: a closed-class lexeme is eligible when its reading has `notes.glossSource = 'closed'` (one hand-written meaning) or a Rev / One row, except the six `AR_UNREVIEWED_CLOSED` entries (the unvocalized بكثير, the abbreviation م, إِلَيْهِمْ, إِلَيْكُمْ, لِمَّا, مَا as ADV), which are held by lemma. DECK-CARDS.md lists every admitted particle, pronoun, preposition and conjunction with its meaning.
-* The audit also checks that a card leads with the reading's own gloss, and that no accepted answer belongs to another entry of the same headword (`facts/provider.ts` drops the dictionary senses that start with the analyser's `notes.homonymMeanings`).
-* Held words stay readable: after the marks every word token has the same readings with the same confidences (asserted).
-* **AB1** (أقرأ, أطير, شاء, تحدث, مواطن, الجديدة, الجزيرة, إن): no card, form or lemma, exists for any of them (asserted).
-* `REVIEWED_EQUIVALENT_MEANINGS` has one entry: وِزَارَة "a government department" = gold "ministry" (the lead: the source's wording of the modern sense).
+The audit is master's: `npm run deck:audit -- ar [--part dev|heldout] [--cards]`, set `ar` in `test/deck-audit/support.ts`, texts `data/deck-audit/ar/dev.txt` (the 44 sentences of `test/fixtures/arabic/deck-audit.json`) and `heldout.txt`, verdicts `data/deck-audit/ar/verdicts.json`. `AR_DECK_GATE=off` gives the state before the Arabic gate (the audit's "before" column; measurement only). `test/goreview/arabic-deck-audit.test.ts` keeps what only Arabic needs: no form card, the two kinds of hold, قَالَ (one source entry), the exclusions, one id per word.
+
+Development text, 367 words (309 distinct): cards before the gate 262 (lemma 210, form 52), after 174 (lemma 174, **form 0**); false + unknown before 14, after 0. The held-out text was written by an agent that had seen nothing of the gate; its cards are read by an independent reader and are not judged here.
+
+### Older figures of this page (the first audit harness)
+
+The first harness had 175 admitted cards on the same text and the same zero false. Held back then: the same kinds as now. Everything in it is superseded by the master-format set above.
 
 ## Reviewed exclusions of accepted answers
 

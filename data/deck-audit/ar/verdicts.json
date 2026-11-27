@@ -1,0 +1,1622 @@
+{
+ "readBy": "AI models (Claude), not native speakers; each card judged once, in the first sentence it came from, against the brief in docs/ecosystem/DECK-GATE.md. 2026-11-26. Where the sentence's word has a gold lemma and meaning in test/fixtures/arabic/deck-audit.json (written by the same agents that wrote the text) the card was read against it first; the rest were read by hand.",
+ "residual": [],
+ "cards": {
+  "form:ar:أحد": [
+   {
+    "shown": "one",
+    "v": "ok"
+   }
+  ],
+  "form:ar:أطول": [
+   {
+    "shown": "elative degree of طَوِيل",
+    "v": "unknown",
+    "note": "cross-reference only: \"elative degree of طَوِيل\""
+   }
+  ],
+  "form:ar:أكثر": [
+   {
+    "shown": "most, the majority",
+    "v": "ok",
+    "note": "read: the sentence's word is this headword and the meaning is a main meaning of it"
+   }
+  ],
+  "form:ar:أمام": [
+   {
+    "shown": "in front of",
+    "v": "ok"
+   }
+  ],
+  "form:ar:أمس": [
+   {
+    "shown": "yesterday",
+    "v": "ok"
+   }
+  ],
+  "form:ar:أين": [
+   {
+    "shown": "where?",
+    "v": "ok"
+   }
+  ],
+  "form:ar:إلى": [
+   {
+    "shown": "to, towards, until",
+    "v": "ok"
+   }
+  ],
+  "form:ar:الذي": [
+   {
+    "shown": "who, which, that (m. sg.)",
+    "v": "ok"
+   }
+  ],
+  "form:ar:القاهرة": [
+   {
+    "shown": "conquerer",
+    "v": "false-meaning",
+    "note": "Cairo shown as \"conquerer\" (the look-alike قَاهِر)"
+   }
+  ],
+  "form:ar:المدينة": [
+   {
+    "shown": "city",
+    "v": "ok"
+   }
+  ],
+  "form:ar:اليوم": [
+   {
+    "shown": "day",
+    "v": "ok"
+   }
+  ],
+  "form:ar:بسبب": [
+   {
+    "shown": "because",
+    "v": "ok",
+    "note": "read: the sentence's word is this headword and the meaning is a main meaning of it"
+   }
+  ],
+  "form:ar:بعد": [
+   {
+    "shown": "after",
+    "v": "ok"
+   }
+  ],
+  "form:ar:بناء": [
+   {
+    "shown": "building",
+    "v": "ok"
+   }
+  ],
+  "form:ar:تحت": [
+   {
+    "shown": "under, below",
+    "v": "ok"
+   }
+  ],
+  "form:ar:جدا": [
+   {
+    "shown": "very",
+    "v": "ok",
+    "note": "read: the sentence's word is this headword and the meaning is a main meaning of it"
+   }
+  ],
+  "form:ar:جديد": [
+   {
+    "shown": "new",
+    "v": "ok"
+   }
+  ],
+  "form:ar:خلال": [
+   {
+    "shown": "during, through",
+    "v": "ok"
+   }
+  ],
+  "form:ar:زار": [
+   {
+    "shown": "to visit",
+    "v": "ok"
+   }
+  ],
+  "form:ar:صغيرة": [
+   {
+    "shown": "small",
+    "v": "ok"
+   }
+  ],
+  "form:ar:طويلة": [
+   {
+    "shown": "long",
+    "v": "ok"
+   }
+  ],
+  "form:ar:عاد": [
+   {
+    "shown": "to return",
+    "v": "ok"
+   }
+  ],
+  "form:ar:عشرة": [
+   {
+    "shown": "ten",
+    "v": "ok"
+   }
+  ],
+  "form:ar:على": [
+   {
+    "shown": "on, over, against",
+    "v": "ok"
+   }
+  ],
+  "form:ar:عن": [
+   {
+    "shown": "from, about, away from",
+    "v": "ok"
+   }
+  ],
+  "form:ar:عندما": [
+   {
+    "shown": "when",
+    "v": "ok"
+   }
+  ],
+  "form:ar:فوق": [
+   {
+    "shown": "above, over",
+    "v": "ok"
+   }
+  ],
+  "form:ar:في": [
+   {
+    "shown": "in, within",
+    "v": "ok"
+   }
+  ],
+  "form:ar:قال": [
+   {
+    "shown": "to say",
+    "v": "ok"
+   }
+  ],
+  "form:ar:قرأ": [
+   {
+    "shown": "to read",
+    "v": "ok"
+   }
+  ],
+  "form:ar:كان": [
+   {
+    "shown": "to be",
+    "v": "ok"
+   }
+  ],
+  "form:ar:كبيرة": [
+   {
+    "shown": "big",
+    "v": "ok"
+   }
+  ],
+  "form:ar:كثيرا": [
+   {
+    "shown": "a lot; often",
+    "v": "ok",
+    "note": "read: the sentence's word is this headword and the meaning is a main meaning of it"
+   }
+  ],
+  "form:ar:كل": [
+   {
+    "shown": "every",
+    "v": "ok",
+    "note": "read: the sentence's word is this headword and the meaning is a main meaning of it"
+   }
+  ],
+  "form:ar:مبكرا": [
+   {
+    "shown": "early",
+    "v": "ok",
+    "note": "read: the sentence's word is this headword and the meaning is a main meaning of it"
+   }
+  ],
+  "form:ar:مدينة": [
+   {
+    "shown": "city",
+    "v": "ok"
+   }
+  ],
+  "form:ar:مساحة": [
+   {
+    "shown": "area",
+    "v": "ok"
+   }
+  ],
+  "form:ar:مشكلة": [
+   {
+    "shown": "problem, difficulty",
+    "v": "ok"
+   }
+  ],
+  "form:ar:مصر": [
+   {
+    "shown": "to make Egyptian",
+    "v": "false-meaning",
+    "note": "Egypt shown as \"to make Egyptian\""
+   }
+  ],
+  "form:ar:مع": [
+   {
+    "shown": "with, together with",
+    "v": "ok"
+   }
+  ],
+  "form:ar:معظم": [
+   {
+    "shown": "most, the majority",
+    "v": "ok"
+   }
+  ],
+  "form:ar:من": [
+   {
+    "shown": "from, of, some of",
+    "v": "ok"
+   }
+  ],
+  "form:ar:منذ": [
+   {
+    "shown": "since, for (a period)",
+    "v": "ok"
+   }
+  ],
+  "form:ar:مياه": [
+   {
+    "shown": "plural of مَاء",
+    "v": "unknown",
+    "note": "cross-reference only: \"plural of مَاء\""
+   }
+  ],
+  "form:ar:نام": [
+   {
+    "shown": "to sleep",
+    "v": "ok"
+   }
+  ],
+  "form:ar:نحو": [
+   {
+    "shown": "towards; about",
+    "v": "ok"
+   }
+  ],
+  "form:ar:نسمة": [
+   {
+    "shown": "breath, wiff",
+    "v": "ok"
+   }
+  ],
+  "form:ar:هدية": [
+   {
+    "shown": "gift",
+    "v": "ok"
+   }
+  ],
+  "form:ar:هذا": [
+   {
+    "shown": "this (m. sg.)",
+    "v": "ok"
+   }
+  ],
+  "form:ar:هو": [
+   {
+    "shown": "he, it",
+    "v": "ok"
+   }
+  ],
+  "form:ar:وزارة": [
+   {
+    "shown": "a government department",
+    "v": "ok",
+    "note": "ministry = \"a government department\" (the modern sense, in the source's words)"
+   }
+  ],
+  "form:ar:وصول": [
+   {
+    "shown": "arrival",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:أَب:NOUN": [
+   {
+    "shown": "father",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:أَجَابَ:VERB": [
+   {
+    "shown": "to respond, to reply",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:أَحَبَّ:VERB": [
+   {
+    "shown": "to love",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:أَحَد:NOUN": [
+   {
+    "shown": "one",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:أَدَّى:VERB": [
+   {
+    "shown": "to perform",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:أَرْسَلَ:VERB": [
+   {
+    "shown": "to send",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:أَصْبَحَ:VERB": [
+   {
+    "shown": "to become",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:أَطْوَل:ADJ": [
+   {
+    "shown": "elative degree of طَوِيل",
+    "v": "unknown",
+    "note": "cross-reference only: \"elative degree of طَوِيل\""
+   }
+  ],
+  "lemma:ar:أَعْطَى:VERB": [
+   {
+    "shown": "to give",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:أَعْلَنَ:VERB": [
+   {
+    "shown": "to announce",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:أَكَّدَ:VERB": [
+   {
+    "shown": "to confirm",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:أَكْثَر:ADJ": [
+   {
+    "shown": "most, the majority",
+    "v": "ok",
+    "note": "read: the sentence's word is this headword and the meaning is a main meaning of it"
+   }
+  ],
+  "lemma:ar:أَمَامَ:ADP": [
+   {
+    "shown": "in front of",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:أَمْسِ:ADV": [
+   {
+    "shown": "yesterday",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:أَوَّل:ADJ": [
+   {
+    "shown": "first",
+    "v": "ok",
+    "note": "read: the sentence's word is this headword and the meaning is a main meaning of it"
+   }
+  ],
+  "lemma:ar:أَيْنَ:ADV": [
+   {
+    "shown": "where?",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:أُسْبُوع:NOUN": [
+   {
+    "shown": "week",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:أُسْتَاذ:NOUN": [
+   {
+    "shown": "professor",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:أُكْسِجِين:NOUN": [
+   {
+    "shown": "oxygen",
+    "v": "ok",
+    "note": "read: the sentence's word is this headword and the meaning is a main meaning of it"
+   }
+  ],
+  "lemma:ar:إِجْرَاء:NOUN": [
+   {
+    "shown": "procedure",
+    "v": "ok",
+    "note": "read: the sentence's word is this headword and the meaning is a main meaning of it"
+   }
+  ],
+  "lemma:ar:إِسْلَامِيّ:ADJ": [
+   {
+    "shown": "of, relating",
+    "v": "false-meaning",
+    "note": "gold meaning islamic/muslim"
+   }
+  ],
+  "lemma:ar:إِلَى:ADP": [
+   {
+    "shown": "to, towards, until",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:إِنْتَاج:NOUN": [
+   {
+    "shown": "production",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:الَّذِي:PRON": [
+   {
+    "shown": "who, which, that (m. sg.)",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:اِتِّحَاد:NOUN": [
+   {
+    "shown": "union",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:اِجْتِمَاع:NOUN": [
+   {
+    "shown": "meeting",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:اِحْتَوَى:VERB": [
+   {
+    "shown": "to contain",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:اِرْتَفَعَ:VERB": [
+   {
+    "shown": "to rise",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:اِزْدَادَ:VERB": [
+   {
+    "shown": "to increase",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:اِزْدَهَرَ:VERB": [
+   {
+    "shown": "to thrive",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:اِسْتَمَعَ:VERB": [
+   {
+    "shown": "to listen",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:اِسْتَيْقَظَ:VERB": [
+   {
+    "shown": "to wake up",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:اِسْم:NOUN": [
+   {
+    "shown": "name",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:اِعْتَبَرَ:VERB": [
+   {
+    "shown": "to consider",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:اِفْتِتَاح:NOUN": [
+   {
+    "shown": "opening, introduction",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:اِلْتَقَى:VERB": [
+   {
+    "shown": "to meet",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:اِنْتَظَرَ:VERB": [
+   {
+    "shown": "to wait",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:اِنْتِشَار:NOUN": [
+   {
+    "shown": "spread, proliferation",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:اِهْتِمَام:NOUN": [
+   {
+    "shown": "interest",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:بَاب:NOUN": [
+   {
+    "shown": "door",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:بَارِد:ADJ": [
+   {
+    "shown": "cold",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:بَحَثَ:VERB": [
+   {
+    "shown": "to search",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:بَحْر:NOUN": [
+   {
+    "shown": "sea",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:بَدَأَ:VERB": [
+   {
+    "shown": "to begin",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:بَعْدَ:ADP": [
+   {
+    "shown": "after",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:بَغْدَاد:PROPN": [
+   {
+    "shown": "Baghdad",
+    "v": "ok",
+    "note": "read: the sentence's word is this headword and the meaning is a main meaning of it"
+   }
+  ],
+  "lemma:ar:بَلَد:NOUN": [
+   {
+    "shown": "country",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:بَلَغَ:VERB": [
+   {
+    "shown": "to reach",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:بَيْت:NOUN": [
+   {
+    "shown": "house",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:بِسَبَبِ:ADP": [
+   {
+    "shown": "because",
+    "v": "ok",
+    "note": "read: the sentence's word is this headword and the meaning is a main meaning of it"
+   }
+  ],
+  "lemma:ar:بِنَاء:NOUN": [
+   {
+    "shown": "building",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:تَارِيخ:NOUN": [
+   {
+    "shown": "date",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:تَحْتَ:ADP": [
+   {
+    "shown": "under, below",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:تَسَاقَطَ:VERB": [
+   {
+    "shown": "to fall down successively or gradually",
+    "v": "ok",
+    "note": "read: the sentence's word is this headword and the meaning is a main meaning of it"
+   }
+  ],
+  "lemma:ar:تَوَقَّعَ:VERB": [
+   {
+    "shown": "to expect, to look",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:تِلْكَ:PRON": [
+   {
+    "shown": "that (f. sg.)",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:تِلْمِيذ:NOUN": [
+   {
+    "shown": "pupil, student",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:ثَقِيل:ADJ": [
+   {
+    "shown": "heavy",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:ثَلْج:NOUN": [
+   {
+    "shown": "snow",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:جَامِعَة:NOUN": [
+   {
+    "shown": "university",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:جَبَل:NOUN": [
+   {
+    "shown": "mountain",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:جَدِيد:ADJ": [
+   {
+    "shown": "new",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:جَلَسَ:VERB": [
+   {
+    "shown": "to sit",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:جَمِيع:ADJ": [
+   {
+    "shown": "all",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:جُغْرَافِيَا:NOUN": [
+   {
+    "shown": "geography",
+    "v": "ok",
+    "note": "read: the sentence's word is this headword and the meaning is a main meaning of it"
+   }
+  ],
+  "lemma:ar:جُمْهُور:NOUN": [
+   {
+    "shown": "the majority",
+    "v": "false-meaning",
+    "note": "gold meaning public/audience/crowd"
+   }
+  ],
+  "lemma:ar:جِدًّا:ADV": [
+   {
+    "shown": "very",
+    "v": "ok",
+    "note": "read: the sentence's word is this headword and the meaning is a main meaning of it"
+   }
+  ],
+  "lemma:ar:حَدِيد:NOUN": [
+   {
+    "shown": "armor, helmet",
+    "v": "false-meaning",
+    "note": "gold meaning iron"
+   }
+  ],
+  "lemma:ar:حَدِيقَة:NOUN": [
+   {
+    "shown": "garden",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:حَضَارَة:NOUN": [
+   {
+    "shown": "civilization",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:حَقِيبَة:NOUN": [
+   {
+    "shown": "bag",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:حَمَلَ:VERB": [
+   {
+    "shown": "to carry",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:حَيَوَان:NOUN": [
+   {
+    "shown": "animal",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:حُكُومَة:NOUN": [
+   {
+    "shown": "government",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:خَبَر:NOUN": [
+   {
+    "shown": "news",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:خَرَجَ:VERB": [
+   {
+    "shown": "to exit",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:خِلَالَ:ADP": [
+   {
+    "shown": "during, through",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:دَرَسَ:VERB": [
+   {
+    "shown": "to study",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:دَوْلَة:NOUN": [
+   {
+    "shown": "state",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:رَأَى:VERB": [
+   {
+    "shown": "to see",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:رَئِيس:NOUN": [
+   {
+    "shown": "president",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:رَئِيسِيّ:ADJ": [
+   {
+    "shown": "main, chief",
+    "v": "ok",
+    "note": "read: the sentence's word is this headword and the meaning is a main meaning of it"
+   }
+  ],
+  "lemma:ar:رَجُل:NOUN": [
+   {
+    "shown": "man",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:رِبْح:NOUN": [
+   {
+    "shown": "profit",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:رِحْلَة:NOUN": [
+   {
+    "shown": "trip",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:رِسَالَة:NOUN": [
+   {
+    "shown": "letter",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:رِيح:NOUN": [
+   {
+    "shown": "wind",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:زَارَ:VERB": [
+   {
+    "shown": "to visit",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:زِيَارَة:NOUN": [
+   {
+    "shown": "visit",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:سَأَلَ:VERB": [
+   {
+    "shown": "to ask",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:سَابِع:ADJ": [
+   {
+    "shown": "seventh",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:سَاحَة:NOUN": [
+   {
+    "shown": "yard",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:سَاحِل:NOUN": [
+   {
+    "shown": "coast",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:سَعَادَة:NOUN": [
+   {
+    "shown": "happiness",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:سَمَاء:NOUN": [
+   {
+    "shown": "the sky/skies",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:سَنَة:NOUN": [
+   {
+    "shown": "year",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:سُرْعَة:NOUN": [
+   {
+    "shown": "speed",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:سُكَّان:NOUN": [
+   {
+    "shown": "rudder, helm",
+    "v": "false-meaning",
+    "note": "residents, shown as \"rudder, helm\" (the other entry of the spelling)"
+   }
+  ],
+  "lemma:ar:سُوق:NOUN": [
+   {
+    "shown": "market",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:سِعْر:NOUN": [
+   {
+    "shown": "price",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:شَارَكَ:VERB": [
+   {
+    "shown": "to participate",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:شَاطِئ:NOUN": [
+   {
+    "shown": "shore, coast",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:شَرِكَة:NOUN": [
+   {
+    "shown": "company",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:شَمْس:NOUN": [
+   {
+    "shown": "sun",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:شِتَاء:NOUN": [
+   {
+    "shown": "winter",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:صَافٍ:ADJ": [
+   {
+    "shown": "pure, clear",
+    "v": "ok",
+    "note": "read: the sentence's word is this headword and the meaning is a main meaning of it"
+   }
+  ],
+  "lemma:ar:صَبَاح:NOUN": [
+   {
+    "shown": "the time from morning twilight to sunrise",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:صَحْرَاء:NOUN": [
+   {
+    "shown": "desert",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:صَغِير:ADJ": [
+   {
+    "shown": "small",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:صَوْت:NOUN": [
+   {
+    "shown": "a sound",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:صَيَّاد:NOUN": [
+   {
+    "shown": "hunter",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:صَيْف:NOUN": [
+   {
+    "shown": "summer",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:صِحَّة:NOUN": [
+   {
+    "shown": "health",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:ضَمَّ:VERB": [
+   {
+    "shown": "to gather, hoard",
+    "v": "false-meaning",
+    "note": "gold meaning include/join/comprise/annex/embrace"
+   }
+  ],
+  "lemma:ar:ضِفَّة:NOUN": [
+   {
+    "shown": "bank, shore",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:طَالِب:NOUN": [
+   {
+    "shown": "student",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:طَرِيق:NOUN": [
+   {
+    "shown": "way",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:طَعَام:NOUN": [
+   {
+    "shown": "food",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:طَقْس:NOUN": [
+   {
+    "shown": "weather",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:طَوِيل:ADJ": [
+   {
+    "shown": "long",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:طِفْل:NOUN": [
+   {
+    "shown": "child",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:عَادَ:VERB": [
+   {
+    "shown": "to return",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:عَاشَ:VERB": [
+   {
+    "shown": "to live",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:عَاصِمَة:NOUN": [
+   {
+    "shown": "capital city",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:عَالَم:NOUN": [
+   {
+    "shown": "world",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:عَام:NOUN": [
+   {
+    "shown": "year",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:عَدَد:NOUN": [
+   {
+    "shown": "number",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:عَرَبِيّ:ADJ": [
+   {
+    "shown": "Arab",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:عَرَفَ:VERB": [
+   {
+    "shown": "to know",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:عَشَرَة:NUM": [
+   {
+    "shown": "ten",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:عَلَى:ADP": [
+   {
+    "shown": "on, over, against",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:عَمَل:NOUN": [
+   {
+    "shown": "work",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:عَمِلَ:VERB": [
+   {
+    "shown": "to work",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:عَنْ:ADP": [
+   {
+    "shown": "from, about, away from",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:عُنْصُر:NOUN": [
+   {
+    "shown": "element",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:عِدَّة:NOUN": [
+   {
+    "shown": "several",
+    "v": "ok",
+    "note": "read: the sentence's word is this headword and the meaning is a main meaning of it"
+   }
+  ],
+  "lemma:ar:عِنْدَمَا:CONJ": [
+   {
+    "shown": "when",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:غَرِيب:ADJ": [
+   {
+    "shown": "strange",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:فَتَحَ:VERB": [
+   {
+    "shown": "to open",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:فَرِيق:NOUN": [
+   {
+    "shown": "team",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:فَوْز:NOUN": [
+   {
+    "shown": "win",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:فَوْقَ:ADP": [
+   {
+    "shown": "above, over",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:فِي:ADP": [
+   {
+    "shown": "in, within",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:قَائِد:NOUN": [
+   {
+    "shown": "leader",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:قَادِم:ADJ": [
+   {
+    "shown": "coming",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:قَالَ:VERB": [
+   {
+    "shown": "to say",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:قَدِيم:ADJ": [
+   {
+    "shown": "old",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:قَرَأَ:VERB": [
+   {
+    "shown": "to read",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:قَرْن:NOUN": [
+   {
+    "shown": "century",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:قَرْيَة:NOUN": [
+   {
+    "shown": "an urban area or community",
+    "v": "false-meaning",
+    "note": "gold meaning village"
+   }
+  ],
+  "lemma:ar:قَوِيّ:ADJ": [
+   {
+    "shown": "strong",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:قِصَّة:NOUN": [
+   {
+    "shown": "story",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:كَانَ:VERB": [
+   {
+    "shown": "to be",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:كَبِير:ADJ": [
+   {
+    "shown": "big",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:كَثِيرًا:ADV": [
+   {
+    "shown": "a lot; often",
+    "v": "ok",
+    "note": "read: the sentence's word is this headword and the meaning is a main meaning of it"
+   }
+  ],
+  "lemma:ar:كُلّ:NOUN": [
+   {
+    "shown": "every",
+    "v": "ok",
+    "note": "read: the sentence's word is this headword and the meaning is a main meaning of it"
+   }
+  ],
+  "lemma:ar:كِتَاب:NOUN": [
+   {
+    "shown": "book",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:كِيلُومِتْر:NOUN": [
+   {
+    "shown": "kilometre",
+    "v": "ok",
+    "note": "read: the sentence's word is this headword and the meaning is a main meaning of it"
+   }
+  ],
+  "lemma:ar:لَمْ:PART": [
+   {
+    "shown": "did not (+ jussive)",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:لُغَة:NOUN": [
+   {
+    "shown": "language",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:مَاء:NOUN": [
+   {
+    "shown": "water",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:مَحَطَّة:NOUN": [
+   {
+    "shown": "station",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:مَدِينَة:NOUN": [
+   {
+    "shown": "city",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:مَدْرَسَة:NOUN": [
+   {
+    "shown": "school",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:مَسَاء:NOUN": [
+   {
+    "shown": "evening",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:مَصْنَع:NOUN": [
+   {
+    "shown": "factory",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:مَطْبَخ:NOUN": [
+   {
+    "shown": "kitchen",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:مَعَ:ADP": [
+   {
+    "shown": "with, together with",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:مَعْلُومَات:NOUN": [
+   {
+    "shown": "information",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:مَكْتَبَة:NOUN": [
+   {
+    "shown": "library",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:مُؤْتَمَر:NOUN": [
+   {
+    "shown": "conference, congress",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:مُبَارَاة:NOUN": [
+   {
+    "shown": "contest",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:مُبَكِّرًا:ADV": [
+   {
+    "shown": "early",
+    "v": "ok",
+    "note": "read: the sentence's word is this headword and the meaning is a main meaning of it"
+   }
+  ],
+  "lemma:ar:مُتَحَدِّث:NOUN": [
+   {
+    "shown": "spokesman, speaker",
+    "v": "ok",
+    "note": "read: the sentence's word is this headword and the meaning is a main meaning of it"
+   }
+  ],
+  "lemma:ar:مُحَادَثَة:NOUN": [
+   {
+    "shown": "conversation, talk",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:مُرَبَّع:NOUN": [
+   {
+    "shown": "square, quadrangular piece",
+    "v": "ok",
+    "note": "read: the sentence's word is this headword and the meaning is a main meaning of it"
+   }
+  ],
+  "lemma:ar:مُزَارِع:NOUN": [
+   {
+    "shown": "farmer",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:مُسَاعَدَة:NOUN": [
+   {
+    "shown": "help",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:مُسْتَشْفًى:NOUN": [
+   {
+    "shown": "hospital",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:مُشْكِلَة:NOUN": [
+   {
+    "shown": "problem, difficulty",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:مُعَلِّم:NOUN": [
+   {
+    "shown": "teacher",
+    "v": "ok",
+    "note": "read: the sentence's word is this headword and the meaning is a main meaning of it"
+   }
+  ],
+  "lemma:ar:مُعْظَم:NOUN": [
+   {
+    "shown": "most, the majority",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:مُنْذُ:ADP": [
+   {
+    "shown": "since, for (a period)",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:مُهَنْدِس:NOUN": [
+   {
+    "shown": "engineer",
+    "v": "ok",
+    "note": "read: the sentence's word is this headword and the meaning is a main meaning of it"
+   }
+  ],
+  "lemma:ar:مُوَاطِن:NOUN": [
+   {
+    "shown": "citizen",
+    "v": "ok",
+    "note": "read: the sentence's word is this headword and the meaning is a main meaning of it"
+   }
+  ],
+  "lemma:ar:مِسَاحَة:NOUN": [
+   {
+    "shown": "area",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:مِنْ:ADP": [
+   {
+    "shown": "from, of, some of",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:مِيلَادِيّ:ADJ": [
+   {
+    "shown": "related to birthdays",
+    "v": "false-meaning",
+    "note": "the Christian-era / Gregorian sense is the one in the sentence; \"related to birthdays\" is a side meaning"
+   }
+  ],
+  "lemma:ar:مِيَاه:NOUN": [
+   {
+    "shown": "plural of مَاء",
+    "v": "false-reading",
+    "note": "the plural is an entry of its own; the sentence word is the plural of ماء, shown as a pointer"
+   }
+  ],
+  "lemma:ar:نَاس:NOUN": [
+   {
+    "shown": "people",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:نَامَ:VERB": [
+   {
+    "shown": "to sleep",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:نَحْوَ:ADP": [
+   {
+    "shown": "towards; about",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:نَسَمَة:NOUN": [
+   {
+    "shown": "breath, wiff",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:نَظَّمَ:VERB": [
+   {
+    "shown": "to organize",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:نَهْر:NOUN": [
+   {
+    "shown": "river",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:نِفْط:NOUN": [
+   {
+    "shown": "blisters, blebs",
+    "v": "false-meaning",
+    "note": "gold meaning oil/petroleum"
+   }
+  ],
+  "lemma:ar:نِهَائِيّ:ADJ": [
+   {
+    "shown": "final",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:هَدِيَّة:NOUN": [
+   {
+    "shown": "gift",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:هُمَا:PRON": [
+   {
+    "shown": "they two",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:هُوَ:PRON": [
+   {
+    "shown": "he, it",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:هِيدْرُوجِين:NOUN": [
+   {
+    "shown": "hydrogen",
+    "v": "ok",
+    "note": "read: the sentence's word is this headword and the meaning is a main meaning of it"
+   }
+  ],
+  "lemma:ar:هٰذَا:PRON": [
+   {
+    "shown": "this (m. sg.)",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:وَاجَهَ:VERB": [
+   {
+    "shown": "to face",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:وَزِير:NOUN": [
+   {
+    "shown": "minister",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:وَصَلَ:VERB": [
+   {
+    "shown": "to arrive",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:وَفْد:NOUN": [
+   {
+    "shown": "delegation, despatch",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:وَقَعَ:VERB": [
+   {
+    "shown": "to fall down",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:وُصُول:NOUN": [
+   {
+    "shown": "arrival",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:وِزَارَة:NOUN": [
+   {
+    "shown": "a government department",
+    "v": "ok",
+    "note": "ministry = \"a government department\""
+   }
+  ],
+  "lemma:ar:يَوْم:NOUN": [
+   {
+    "shown": "day",
+    "v": "ok"
+   }
+  ]
+ }
+}

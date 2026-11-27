@@ -7,7 +7,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { describe, expect, it } from 'vitest';
 import { arAdapter } from '../../src/adapters/ar';
-import { heldByReviewGate } from '../../src/adapters/arabic/deck';
+import { heldByReviewGate } from '../../src/core/review-gate';
 import { AR_KNOWN_LIMITS } from '../../src/adapters/arabic/generated/deck-limits';
 import { installFullIndex, shardsPresent } from '../../scripts/ar-deck-limits-lib.mts';
 import { wordsOfText } from '../../packages/golearn-extension/src/active/scan';

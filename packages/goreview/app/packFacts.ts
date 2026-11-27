@@ -31,7 +31,7 @@ import { createFormsSource } from '../../../src/dict/forms';
 import { featureKey, type Paradigm, type ParadigmCell } from '../../../src/core/paradigm';
 import type { PartOfSpeech } from '../../../src/core/model';
 import { buildParadigm, formRomanOf, headTest, pickRecord, selectedCellKeys, type LexicalRecord } from '../src/facts/paradigm-table';
-import { applyDeckGate } from '../src/facts/deck-gate';
+import { applyDeckGate, held } from '../src/facts/deck-gate';
 import { deckKnownLimit } from '../src/facts/deck-known-limits';
 
 export { featureKey };
@@ -411,6 +411,13 @@ export function packFactsFor(opts: { fetch: typeof fetch; baseUrl: string; lexic
       factsFor: async (unitId, requestedLanguage, varietyId) => {
         const facts = await raw.factsFor(unitId, requestedLanguage, varietyId);
         if (!facts || requestedLanguage !== languageId) return facts;
+        // Arabic: its own, stricter gate has already run (src/adapters/arabic/deck.ts marks the reading; the facts provider returns a held unit in this gate's shape). What
+        // remains of this gate for Arabic is the known-limits list. Its meaning checks (b) and (e) are not applied: the card's first meaning is the reviewed index lead
+        // (Sense Rev / One), which a later "first current sense of the dictionary" must not replace.
+        if (languageId === 'ar') {
+          const known = deckKnownLimit('ar', unitId);
+          return known && facts.status !== 'requires-review' && facts.status !== 'verified' ? held(facts, 'known-limit', known) : facts;
+        }
         return applyDeckGate(facts, {
           languageId, varietyId: varietyId ?? manifest.varietyId, gloss: (lemma, pos, forms) => dictionary.gloss(lemma, pos, forms),
           factsOf: (id) => gated.factsFor(id, requestedLanguage, varietyId), known: (id) => deckKnownLimit(languageId, id),

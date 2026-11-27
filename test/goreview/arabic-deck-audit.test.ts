@@ -38,14 +38,6 @@ const show = (label: string, r: AuditResult): void => {
   ].join('\n'));
 };
 
-/**
- * THE FIRST-MEANING FINDINGS STILL OPEN (the release manager's list to review: "those lexemes then get a reviewed gloss choice"). A card whose leading meaning
- * the gold contradicts is FALSE under the owner's rule; the target is an empty list. The list is frozen here so that a NEW one fails the suite, and the day a
- * gloss is reviewed the entry must be deleted (the second assertion fails when a listed card is no longer a finding).
- */
-const OPEN_MEANING_FINDINGS: string[] = [];
-const isMeaning = (p: string): boolean => /leading meaning|does not begin|is labelled|numbered merge|leads with|another entry|more than one entry/u.test(p);
-
 describe.skipIf(!shardsPresent())('the Arabic deck audit: real path, today\'s rules', () => {
   let r: AuditResult;
   beforeAll(async () => { r = await runDeckAudit([...TEXTS, ...NAMED_TEXTS]); }, 900_000);
@@ -59,17 +51,9 @@ describe.skipIf(!shardsPresent())('the Arabic deck audit: real path, today\'s ru
     expect(fixture.sentences.reduce((n, s) => n + s.tokens.length, 0)).toBe(fixture.wordCount);
   });
 
-  it('admits no false card, no unknown or fragment card, and NO FORM CARD; every admitted card is checked', () => {
-    show('today (index rows with their Sense class)', r);
+  it('admits no form card at all, and holds the open-class words back until their leading meaning is reviewed (sense-unreviewed)', () => {
+    show('today (the figures of the master-format set are in test/deck-audit, set ar)', r);
     expect(r.figures.formCards, `form cards: ${r.cards.filter((c) => c.kind === 'form').map((c) => c.unitId).join(' ')}`).toBe(0);
-    const meaning = r.cards.filter((c) => c.problems.some(isMeaning));
-    const other = r.cards.filter((c) => c.problems.length && !meaning.includes(c));
-    expect(other.map((c) => `${c.unitId}: ${c.problems.join('; ')}`), 'false cards other than a wrong first meaning').toEqual([]);
-    expect(meaning.map((c) => c.unitId), 'wrong first meanings: a new one fails; a reviewed one must leave OPEN_MEANING_FINDINGS').toEqual(OPEN_MEANING_FINDINGS);
-    expect(r.figures.unknownOrFragment).toBe(0);
-  });
-
-  it('holds the open-class words back until their leading meaning is reviewed (sense-unreviewed), and says so', () => {
     expect(r.figures.heldByReason['sense-unreviewed'] ?? 0).toBeGreaterThan(0);
     expect(r.cards.every((c) => c.kind === 'lemma')).toBe(true);
   });
@@ -81,24 +65,6 @@ describe.skipIf(!shardsPresent())('the Arabic deck audit: real path, today\'s ru
   it('AB1: no card exists for any of the eight words the auditor found (undecided words stay readable, none is drilled)', () => {
     const named = new Set(r.cards.filter((c) => c.behind.some((b) => b.sentence.startsWith('ab1-') && AB1_SURFACES.has(b.surface))).map((c) => c.unitId));
     expect([...named], 'cards for the AB1 words').toEqual([]);
-  });
-});
-
-describe.skipIf(!shardsPresent())('the Arabic deck audit: SIMULATION of the merged index (every row Sense=One)', () => {
-  let r: AuditResult;
-  beforeAll(async () => { r = await runDeckAudit([...TEXTS, ...NAMED_TEXTS], { senseWhenAbsent: 'One' }); }, 900_000);
-  afterAll(() => arDeckSenseWhenAbsent());
-
-  it('reports the cards that would be admitted; form cards, unknown headwords and gold lemma mismatches stay at zero', () => {
-    show('SIMULATION: rows without Sense read as One', r);
-    expect(r.figures.formCards).toBe(0);
-    expect(r.figures.unknownOrFragment).toBe(0);
-    expect(r.cards.filter((c) => c.problems.some((p) => /^gold lemma/u.test(p))), 'gold lemma mismatches').toEqual([]);
-  });
-
-  it('AB1 in the simulation: still no card for the eight words', () => {
-    const named = new Set(r.cards.filter((c) => c.behind.some((b) => b.sentence.startsWith('ab1-') && AB1_SURFACES.has(b.surface))).map((c) => c.unitId));
-    expect([...named]).toEqual([]);
   });
 });
 
@@ -166,4 +132,26 @@ describe.skipIf(!shardsPresent())('the reviewed answer exclusions cannot rot', (
       for (const x of list) expect(x.trim()).not.toBe('');
     }
   });
+});
+
+describe.skipIf(!shardsPresent())('one id per word (the old split: lemma:ar:أسبوع:NOUN beside lemma:ar:أُسْبُوع:NOUN)', () => {
+  it('over the development text no credited unit id names a lexeme without its vowels when the index holds it vocalized, and أسبوع is credited once, vocalized', async () => {
+    const { installFullIndex } = await import('../../scripts/ar-deck-limits-lib.mts');
+    const { installedArabicIndexes } = await import('../../src/adapters/arabic/index-store');
+    const { arAdapter } = await import('../../src/adapters/ar');
+    const { wordsOfText } = await import('../../packages/golearn-extension/src/active/scan');
+    const { arKey, hasTashkil } = await import('../../src/adapters/arabic/text');
+    installFullIndex();
+    const vocalized = new Set<string>();
+    for (const ix of installedArabicIndexes()) for (const [id, row] of Object.entries(ix.lemmas)) if (hasTashkil(row[0]) && id.includes('|')) vocalized.add(`${arKey(row[0])}|${row[2]}`);
+    const sentences = fs.readFileSync(path.resolve('data/deck-audit/ar/dev.txt'), 'utf8').split(/\r?\n/u).filter((l) => l && !l.startsWith('#'));
+    const ids = new Set<string>();
+    for (const t of sentences) for (const w of wordsOfText(t, arAdapter, 'ar')) for (const id of w.ids) ids.add(id);
+    const bare = [...ids].filter((id) => { const m = /^lemma:ar:(.*):([A-Z]+)$/u.exec(id); return !!m && !hasTashkil(m[1]) && vocalized.has(`${arKey(m[1])}|${m[2]}`); });
+    expect(bare, 'lemma ids without vowels for a lexeme the index holds vocalized').toEqual([]);
+    expect([...ids].filter((id) => id.startsWith('lemma:ar:') && arKey(id.slice('lemma:ar:'.length)).startsWith('\u0623\u0633\u0628\u0648\u0639'))).toEqual(['lemma:ar:\u0623\u064F\u0633\u0652\u0628\u064F\u0648\u0639:NOUN']);
+    // the same through GoReview's facts: a card for the lexeme, if any, is the vocalized unit
+    const r = await runDeckAudit(sentences.map((x, i) => ({ id: `one-id-${i}`, text: x })));
+    expect(r.cards.filter((c) => c.kind === 'lemma' && !hasTashkil(c.head) && vocalized.has(`${arKey(c.head)}|${c.pos}`)).map((c) => c.unitId)).toEqual([]);
+  }, 600_000);
 });

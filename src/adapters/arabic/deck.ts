@@ -34,6 +34,7 @@
  * "1. ... 2. ..." merge of several entries, and the reading is not a homonym merge (notes.homonyms); otherwise it needs a reviewed (Rev) or single (One) index row like any word.
  */
 import type { AnalysisCandidate, AnalyzedToken, RawToken } from '../../core';
+import type { ReviewKind } from '../../core/review-gate';
 import { AR_CLOSED } from './closed';
 import { AR_KNOWN_LIMITS, AR_LIMITED_LEMMAS } from './generated/deck-limits';
 import { installedArabicIndexes, lexOf, lookupArabicLemma, type ArabicFormIndex, type ArLemmaRow } from './index-store';
@@ -45,12 +46,9 @@ export interface ArDeckLimit {
    *  false: the hold is about the MEANING SHOWN on the card (unreviewed, wrong part of speech, no gloss, a plural entry): the reading is right, the lemma is still credited. */
   reading: boolean;
   /** The reason's class, in the names of the shared gate (notes.reviewKind): the GoLearn card says why a held word is not added to review. */
-  kind: ArReviewKind;
+  kind: ReviewKind;
 }
-export type ArReviewKind = 'unlisted' | 'no-meaning' | 'undecided-entry' | 'two-words' | 'low-confidence' | 'known-limit' | 'other-listed-word' | 'unwritten-copula' | 'meaning-unreviewed' | 'other-variety';
 
-/** A reading held by the language's deck gate for what it IS (not for the meaning the card would show). After the merge with Korean's shared gate: import it from src/core/review-gate.ts. */
-export const heldByReviewGate = (c: { notes?: Record<string, string | string[]> } | undefined): boolean => c?.notes?.reviewGate === 'yes';
 
 /** THE known-limits table: id, the test in words, and the sentence a learner reads. */
 export const AR_DECK_LIMITS: readonly ArDeckLimit[] = [
@@ -241,6 +239,8 @@ export const AR_DECK_STATUS_CEILING = 'provisional' as const;
  * Returns new objects for the marked tokens; an unmarked token is returned as it came.
  */
 export function arMarkForDeck(tokens: readonly RawToken[], analyzed: AnalyzedToken[]): AnalyzedToken[] {
+  // MEASUREMENT ONLY: AR_DECK_GATE=off gives the state before this gate (the deck audit's "before" column); never set in a product
+  if (typeof process !== 'undefined' && process.env?.AR_DECK_GATE === 'off') return analyzed;
   return analyzed.map((a, i) => {
     const token = tokens[i] ?? a.token;
     if (!token?.isWord || !a.candidates.length) return a;

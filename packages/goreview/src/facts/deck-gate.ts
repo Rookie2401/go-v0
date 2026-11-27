@@ -95,7 +95,8 @@ const REASON: Record<string, string> = {
   'other-variety': 'This reading comes from another period of the language than the one being studied, so it is not made a review card.',
 };
 
-function held(facts: UnitFacts, kind: ReviewKind, reason: string): GatedFacts {
+/** The shape of a held unit (status requires-review, no meaning a card can be built from, `reviewHold`): also what a language's own stricter holds are returned in (Arabic: src/adapters/arabic/deck.ts, joined in facts/provider.ts). */
+export function held(facts: UnitFacts, kind: ReviewKind, reason: string): GatedFacts {
   return {
     ...facts, status: 'requires-review', unit: { ...facts.unit, status: 'requires-review' }, glosses: [], lexiconGlossCount: 0,
     lexicalRecognition: { status: 'withheld', reason }, reviewHold: { kind, reason },

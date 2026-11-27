@@ -11,7 +11,7 @@
  */
 export const DECK_HELD_LANGUAGES: ReadonlySet<string> = new Set(['ar']);
 
-export const holdsDeck = (languageId: string): boolean => DECK_HELD_LANGUAGES.has(languageId);
+export const holdsDeck = (languageId: string): boolean => DECK_HELD_LANGUAGES.has(languageId) && !(typeof process !== 'undefined' && process.env?.AR_DECK_GATE === 'off');
 
 /** What a learner reads when no reason came from the analyser. */
 export const FORM_HELD_REASON = 'a bare written form is read on the card but not drilled: only a word the word list decides is';

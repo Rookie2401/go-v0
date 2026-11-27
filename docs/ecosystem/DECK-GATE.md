@@ -314,3 +314,125 @@ German: the sentences of `german-misreadings.test.ts`; whether a finite form of 
 verbs known to take a prefix. Thai: every re-cut in `thai-missegmentation.test.ts`, the two compounds kept split on the course plan's word
 (ช่วย + เหลือ, ชาน + ชาลา), and the weights of the re-cut. All four: the fresh held-out sentences themselves (an AI model wrote them), the
 held units, the remaining ones, and every verdict (the readers were AI models, not native speakers).
+
+## Follow-up 3 (2026-11-27): the first meaning, and the misreadings of five more languages
+
+The third part: cards whose reading is right but whose first meaning is not the word's ordinary meaning (Russian `стать` "to stand", Thai กล้อง
+"pipe"), and the confident misreadings of Russian, French, Spanish, Hindi and Albanian. A change written for Hebrew was measured and rejected, and Latin is
+left for a part of its own (both below).
+
+### The first meaning: what was wrong, and what fixes it
+
+| Cause | Fix | Cards |
+|---|---|---|
+| The gate's rule "the first CURRENT sense leads" did not engage when a machine word list had taken the first ITEM of a sense the entry marks archaic (Russian `платье`: the list says "clothes", the entry's first sense is "clothes, clothing" [archaic], the current one "dress, gown, frock") | `deck-gate.ts`: the word list's meaning is matched to a sense by its first item too | `платье`, lemma and form |
+| A form card of the citation form showed a LATER sense of its own word: the card builder shows the first sense that is short, so a first sense of seven words was passed over (Russian `линия` "a cloth hall", `площадь` "space, living space"; French `campagne` "campaign"; Thai เงิน "silver (metal)"; Nynorsk `annan` "second"; Spanish `película` "film (layer)") | the citation form shows what its word's own card shows first; a form that already leads with that meaning keeps its own wording | the six named, and Russian `проезд`, `номер`, `нельзя`, Spanish `carro`, Hindi भाव and भी. In all, 269 form cards of fourteen sets are now worded as their word's own card; their verdicts are derived, not read again (the reading from the form's earlier verdict, the meaning from the word's card) |
+| A form with no reading whose capital is lost (German `uhr`) took the dictionary entry's first sense ("hours") though the forms index lists the spelling under one word, whose card says "clock; watch; o'clock" | such a form shows its one listed word's own first meaning | `uhr`, and 28 German forms now worded as their noun's card |
+| The German word list glossed `verletzen` with its reflexive row ("to hurt oneself") | the row is the verb's own: "to injure; to hurt (sich verletzen: to hurt oneself)" | `verletzen` |
+| The dictionary entry HAS the ordinary meaning but lists another sense first and marks nothing (Thai กล้อง: "pipe", "binoculars", "camera"; Russian `стать`: "to stand" before "to become"; French `chômage`: "idleness" before "unemployment") | `deck-lead-senses.ts`: for each such word a reader found, the entry's OWN sense is named, verbatim, and the gate shows it first (two senses may be named: Thai กิโล "kilogram; kilometer"). No meaning is written that the dictionary does not have; when the entry no longer has the sense the word is held. 37 words: Russian 16, Thai 10, French 4, Hebrew 7 | Russian, Thai and French read again in their sentences: 29 of 30 right; Thai เต้น "to dance" is right as a meaning, but its sentence has ตื่นเต้น "excited", a cut the analyser still makes, so it stays held as a misreading. Hebrew (the entries carry healthy, to show, electricity, vegetable, study, hand; Biblical מעה "inward parts"): a table may be keyed by a VARIETY, since Biblical כנור is rightly "harp" and Modern is not; the word's form cards show the same meaning. `בריא` stays held because the analyser also reads הבריאות as the adjective |
+
+No rule over the entry can choose the ordinary sense where the entry marks nothing. One was measured and rejected: "lead with the sense the entry
+illustrates with the most usage examples". Over the cards already read, it would change 16 of the cards found to show a wrong first meaning and 403
+cards read as right, many of those for the worse (Russian `идти` "to go" would become "to fall", `мы` "we" would become "I", `жёлтый` "yellow"
+would become "of doubtful accuracy"). The stricter form (the first sense has no example, another has two or more) changes 2 and 72.
+
+Held by name, because the source does not have the ordinary meaning or the reading is the fault: French `noël` (the entry is the
+common noun "a Christmas gift"; the holiday is the name `Noël`), Albanian `na` (the clitic "us" is shown with its word's "we"), German `das Rauchen`
+(shown "to smoke"), Russian `синоптик` (not in the dictionary), and **Greek**: each Greek entry named before carries ONE sense in the installed data
+(`έναντι` "towards (in part payment)", `ίδιος` "own", `ρεύμα` "air current", `υπολογιστής` "self-seeker"; the Koine forms' English is built from the
+lemma's one sense), so there is nothing to move forward: those words stay held or named as follow-up 1 left them.
+
+### The misreadings: what was wrong, and the rule that fixes it
+
+| Language | Cause and rule | Targets |
+|---|---|---|
+| Russian | A frequency prior ("much rarer than `село`") beat the sentence: `сел` after its subject was the noun "village", `спала` was `спасть`. New rules in `russian/sentence.ts`: a word right after its subject with an agreeing finite verb reading is that verb; after a verb that takes the accusative a genitive-only form gives way to a word that can be its object (`душ`, not `душа`). A lemma written as its own headword in the same case and number as the commoner one gets half the penalty, so `очки` "glasses" beside `очко` is undecided | `сел` and `душ` are read rightly now. `очки` and `спала` are closer (0.9 against 0.8, and a tie) but the wrong word is still first and still credited, so both stay held; `синоптик` is not in the dictionary (only `синоптика`) and is held; `банка`, `есть` were already held by the form rules |
+| French | `entre` after a noun and before a noun phrase is the preposition; `parfait` after `être` is the adjective; `parce`, `tandis`, `pourvu` before `que` get no confirmed reading of their own (the phrase is the unit) | 3 of 3 |
+| Spanish | `caso`, `gusto`, `marca` were not in the word list as nouns, so the verb form was the only reading; `comida` after `haber` was forced to the participle (a feminine or plural form after `haber` is the noun); `derecho` "straight ahead" after a verb of motion | 5 of 8 fixed; `mañana`, `tarde`, `goles` already read rightly in the sentence (their form cards are held by the two-words rule) |
+| Hindi | Words with one reading never reached the sentence layer: rows added for गौरव "dignity", मना "forbidden", छाना; new `hindi/misreadings.ts`: a name against a common noun by its neighbours, जी before हाँ / नहीं, a participle before रहा, मना before होना or करना | 6 of 6. The audit then showed two faults of the new rows: छाता "umbrella" had become two readings and lost its card, and after that was mended धोती in `धोती हूँ` was read as the noun; both were fixed (a listed noun's own form stays the noun, except before an auxiliary) and are tested |
+| Albanian | `kisha` "I had" beside `kishë` "church" were tied: after `unë`, or after a clause opener and before a quantity word, it is the verb; `kurse` "whereas" was not in the word list at all | `kurse` fixed; `kisha` fixed after `unë` and clause openers, but `ti kishe` is still read as "church", so `kishë` stays held; `lekë` and `verë` were read rightly (their form cards are the dictionary's) |
+
+### No other reading made worse (measured before and after)
+
+| Measure | Before | After |
+|---|---|---|
+| Russian, Universal Dependencies gold (`npm run ru:eval`, 56,824 words): first-reading lemma / class | 51,546 / 50,739 | 51,548 / 50,740 |
+| Russian, the same: features of the first reading, lenient / strict | 36,391 / 16,433 | 36,394 / 16,432 (one word lower on the strict count; not traced) |
+| Russian gold fixture (503 words), six measures | | identical |
+| French, UD GSD first-reading lemma, dev / test | 26,703 / 7,401 | 26,708 / 7,402 |
+| French fixtures | 519 of 524 | the same |
+| Spanish, shared gold (`scripts/gold-score.mts`), lemma / class / both: dev 215, hard 82, unseen 80 | 206 / 202 / 195; 81 / 76 / 76; 66 / 66 / 60 | identical |
+| Hindi, the same: dev 215, hard 68, unseen 80 | 204 / 195 / 192; 67 / 53 / 53; 71 / 68 / 67 | identical |
+| Albanian, the same: dev 215, hard 70, unseen 70 | 204 / 192 / 183; 58 / 60 / 54; 63 / 61 / 55 | identical |
+| German gold (`scripts/de-gold.mts`) after the `verletzen` row | | byte-identical output |
+| Spanish and Albanian adapter tests | 1,486 pass | 1,515 pass (28 new) |
+
+No golden was re-recorded and no adapter version was raised. On the texts already read, no card that had been read as right was lost to these rules
+except the form cards the two-words rule now holds (Hindi छाता, whose word card stays), and no card they add was read as false.
+
+### A Hebrew change, measured and rejected
+
+Rules were written for Modern Hebrew (a whole Modern word beats prefix + Biblical word; the citation noun wins after a verb or preposition) and fixed
+ten of the twelve named misreadings; their 21 tests and all seven Hebrew test files passed. Hebrew has no gold set, so the measure was the audit's own
+texts, with and without the rules, against the readers' verdicts:
+
+| Text | Cards without / with the rules | False cards without / with |
+|---|---|---|
+| development | 67 / 116 | 2 / 15 |
+| second development (the old held-out) | 153 / 242 | 12 / 47 |
+| fresh held-out | 225 / 350 | 17 / 57 |
+
+The rules gave a confident reading to words that had none before, most of them function words (אם "if" as "mother", כי as "cauterization", על as
+"yoke", עוד as "oud", למה as "llama"). The change is not in this part; the Hebrew misreadings stay held by name. A language with no gold set needs
+this comparison before any analyser rule is accepted: passing tests is not a measure.
+
+### Latin is left for a part of its own
+
+The Latin fixes were written and measured (the evaluation of `scripts/latin-eval.mts` is unchanged or one tenth higher on every corpus) but are NOT
+in this part. Writing them showed that the audit reads Latin with the 1,900-word seed list only, as GoReview does, while the reader extension
+loads the full lexicon of 39,000 entries: six of the eleven Latin "misreadings" (`casa` read as `cado`, `poetas` as `peto`, `subito`, `vitium`,
+`assis`, `mensam`) are read rightly by the extension and are faults of the seed-only reading alone. The audit's Latin lemma cards are therefore
+partly cards the reader would never credit, and Latin's known-limits list holds real words because of it. Mending that means GoReview loading
+the full Latin lexicon as the reader does (about 3.4 MB of source text, fetched once for a Latin learner, as French already fetches its own), and
+reading every Latin card again. That is a decision for the owner; until it is made Latin's audit data is as it was.
+
+### The figures
+
+The old held-out halves of eight more sets are development text now (`dev2.txt`), and each has a fresh `heldout.txt`: 90 sentences written by an
+AI model for Albanian, Spanish, Hindi, Russian, French and Modern Hebrew (no Bible translation, no quoted text); Genesis 22:1-18 for Biblical Hebrew and
+Daniel 2:31-45 for Biblical Aramaic, from the editions already named. They were read for the first time after every rule, lead sense and list of this
+part was written: the first-reading column is blind.
+
+| Set | Old named residue | Now, on that text | Known-limits units | Fresh held-out: words / cards | False at the first reading | Named residue |
+|---|---|---|---|---|---|---|
+| Russian | 13 | 10 right cards, 3 no longer cards | 18 → 3 | 1,031 / 626 | 20 | 20 |
+| French | 6 | 5 right cards, 1 held (`noël`) | 6 → 1 | 1,327 / 652 | 6 | 6 |
+| Spanish | 2 | both read rightly (no longer cards) | 7 → 0 | 1,209 / 542 | 2 | 2 |
+| Hindi | 3 | all read rightly (no longer cards) | 4 → 1 | 1,250 / 456 | 3 | 2 |
+| Albanian | 1 | held (`na`) | 2 → 2 | 1,249 / 435 | 4 | 2 |
+| Modern Hebrew | 14 | 7 right cards, 7 held | 5 → 13 (both Hebrew sets) | 971 / 225 | 17 | 14 |
+| Biblical Hebrew | 2 | both held | | 293 / 92 | 4 | 1 |
+| Biblical Aramaic | 0 | | 1 → 1 | 280 / 42 | 1 | 1 |
+
+(False at the first reading counts every admitted card of the fresh text read as false or unknown; those whose unit is also false on an older text are
+held by the list, the rest are the named residue.) On the eight fresh texts together: 57 false cards of 3,070 (1.9 %). The sets refreshed in the
+earlier parts keep their held-out halves: Thai's named residue went 9 → 4 and its list 21 → 7 (the lead senses), Nynorsk 3 → 2 (`annan`), German's
+list 5 → 3 (`uhr`, `verletzen`). Latin and Greek are as they were. (The Hebrew lead senses were added after the fresh texts' first reading, which the table gives.)
+
+**Known-limits units: 95 → 57.** Russian `очко`, `синоптика`, `спасть`; French `noël`; Hindi जीना (for जी); Albanian `na`, `kishë`; German the forms
+`an`, `mit`, `morgen`; Bokmål `klare`; Nynorsk `tre`; Thai ชาน, เหลือ, นัก (form and word), เจ้า, เต้น (form and word); Hebrew 13 (Modern and
+Biblical together); Aramaic 1; Greek 18; Latin 6.
+
+**Named residue, all fifteen sets: 76 → 77** (130 at the landing). The words named before are fixed or held; the 77 are what the fresh texts show.
+They say plainly what this part did not change: a lead sense named for one word does nothing for the next word, and Russian in particular has many
+entries whose first sense is not the ordinary one (20 of 314 new Russian cards: `руль` "rudder", `гроза` "thunder", `водитель` "guide", `шапка` "warm",
+`настоящий` "present", `бутерброд` "butterbrot"; the reflexives `подниматься` and `спускаться` carded as their transitive verbs; `духами` as `дух`).
+French: `box`, `chargeur`, `apprentissage`. Spanish: the imperative `Mezcla` read as the noun. Hindi: जाना read as जानना, सी in छोटी-सी as सीना.
+Albanian: `të marrë` as the adjective, `shpëtim` "salvation" for a goalkeeper's save. Modern Hebrew: 14, mostly misreadings (חופשה "vacation" as "freedom").
+
+**For a native speaker to review.** Every lead sense in `deck-lead-senses.ts` (37 choices made by an AI model: is the sense named the ordinary one?);
+the Russian subject-verb and object rules and the list of verbs that take the genitive; French `entre` before a noun phrase and `parfait` after `être`;
+the Spanish nouns added (`caso`, `gusto`, `marca`) and the motion verbs before `derecho`; the Hindi rows added (गौरव, मना, छाना) and the rule that a
+listed noun's own form is the noun except before an auxiliary; Albanian `kisha` and `kurse`; the fresh held-out sentences themselves (an AI model wrote
+them: the writer was least sure of the Albanian and of Hebrew spelling); every held and remaining unit; every verdict (the readers were AI models).
+

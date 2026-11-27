@@ -21,7 +21,10 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { describe, expect, it } from 'vitest';
 import { DECK_KNOWN_LIMITS } from '../../packages/goreview/src/facts/deck-known-limits';
-import { AUDIT_SETS, ROOT, auditText, dataPresent, devParts, readSentences, runDeckAudit, type AuditCard, type AuditPart } from './support';
+import { DECK_LEAD_SENSES } from '../../packages/goreview/src/facts/deck-lead-senses';
+import { packFactsFor } from '../../packages/goreview/app/packFacts';
+import { createPackRuntime, packFor } from '../../packages/language-packs/src';
+import { AUDIT_SETS, ROOT, auditText, dataPresent, devParts, diskFetch, readSentences, runDeckAudit, type AuditCard, type AuditPart } from './support';
 
 interface Verdict { shown: string; v: 'ok' | 'false-reading' | 'false-meaning' | 'unknown' | 'unsure'; note?: string }
 interface VerdictFile { readBy: string; cards: Record<string, Verdict[]>; residual: string[] }
@@ -62,4 +65,27 @@ describe.each(AUDIT_SETS.map((s) => [s.id, s] as const))('deck audit: %s', (_id,
     const all = AUDIT_SETS.filter((s) => s.lang === set.lang).map((s) => verdictsOf(s.id)).filter((f): f is VerdictFile => !!f);
     for (const unit of listed) expect(all.some((f) => (f.cards[unit] ?? []).some((x) => BAD.has(x.v))), `${unit} is on the known-limits list without a verdict that says why`).toBe(true);
   });
+});
+
+describe('lead senses (deck-lead-senses.ts): the entry\u2019s own sense, named for a word whose first sense a reader found wrong', () => {
+  for (const [key, units] of Object.entries(DECK_LEAD_SENSES)) {
+    const lang = key.split('-')[0];
+    it.skipIf(!dataPresent(lang))(`${key}: every sense named is a sense the app has for the word, and a verdict says why it is named`, async () => {
+      const varietyId = AUDIT_SETS.find((x) => x.varietyId === key)?.varietyId;
+      const runtime = createPackRuntime(packFor(lang)!, { fetch: diskFetch, baseUrl: 'http://assets.local/' });
+      const api = { units: async (ids: string[]) => ({ ok: true, data: { units: {}, missing: ids } }), unit: async () => ({ ok: false }) } as never;
+      const raw = packFactsFor({ fetch: diskFetch, baseUrl: 'http://assets.local/', deckGate: false })(lang, api)!;
+      const primed = raw as unknown as { prime?(ids: string[], varietyId?: string): Promise<void> };
+      await primed.prime?.(Object.keys(units), varietyId);
+      const files = AUDIT_SETS.filter((x) => x.lang === lang).map((x) => verdictsOf(x.id)).filter((f): f is VerdictFile => !!f);
+      for (const [unit, leads] of Object.entries(units)) {
+        const parts = unit.split(':');
+        const entry = await runtime.gloss(parts.slice(2, -1).join(':'), parts[parts.length - 1]);
+        const facts = await raw.factsFor(unit, lang, varietyId);
+        const has = [...(entry?.senses ?? []).map((x) => x.gloss), ...(facts?.glosses ?? [])];
+        for (const g of leads) expect(has.includes(g), `${unit}: no sense "${g}"`).toBe(true);
+        expect(files.some((f) => (f.cards[unit] ?? []).some((x) => x.v === 'false-meaning')), `${unit} is named without a verdict that says why`).toBe(true);
+      }
+    }, 120_000);
+  }
 });

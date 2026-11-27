@@ -39,7 +39,7 @@ function mayLead(list: readonly C[], c: C, cue: Cue): boolean {
   return CUE[cue] >= (head.origin === 'hand' && FUNCTION_POS.has(head.pos ?? '') ? CUE.certain : CUE.strong);
 }
 
-interface Choice { k: number; why: string; cue: Cue }
+interface Choice { k: number; why: string; cue: Cue; confirm?: boolean }
 /** What a rule says: a reading to put first, `null` (the rule applies and the order stays as it is), or `undefined` (not this rule). */
 type Verdict = Choice | null | undefined;
 
@@ -83,6 +83,8 @@ const QUE_CONJ_HEADS = new Set([
   'tant', 'moins', 'sorte', 'façon', 'manière', 'condition', 'pourvu', 'peur', 'crainte', 'mesure', 'encore', 'sinon', 'selon', 'vu',
   'outre', 'sauf', 'lors', 'aussitôt', 'sitôt', 'non', 'attendant', 'autant', 'tel', 'telle', 'tels', 'telles',
 ]);
+/** Verbs whose past participle is rare beside an adjective spelled the same: parfait (parfaire). Lemmas. */
+const RARE_PARTICIPLE_VERBS = new Set(['parfaire']);
 /** Antecedents of a relative clause that are pronouns: ce que, celui que … */
 const RELATIVE_PRONOUN_HEADS = new Set(['ce', 'celui', 'celle', 'ceux', 'celles', 'cela', 'ceci', 'quelqu\'un', 'chacun', 'chacune', 'rien', 'tout']);
 /** Pronouns other than je, tu, il … that stand as the subject of a third-person verb (celui-ci fait, cela suffit, personne ne). */
@@ -494,6 +496,13 @@ const RULES: readonly Rule[] = [
     if (!h.cands.some(isPastParticiple)) return undefined;
     const a = auxiliaryBefore(h);
     if (a === undefined) return undefined;
+    // ce serait parfait, c'est parfait: after être a word that is also an adjective, whose participle belongs to a verb used almost only
+    // in the infinitive (parfaire), is the adjective; after avoir (il a parfait son travail) it stays the participle
+    const aux = h.own(a).find((c) => isVerbal(c) && (c.lemma === 'avoir' || c.lemma === 'être'));
+    if (aux?.lemma === 'être' && h.cands.some((c) => c.pos === 'ADJ') && h.cands.filter(isPastParticiple).every((c) => RARE_PARTICIPLE_VERBS.has(c.lemma ?? ''))) {
+        const choice = h.pick((c) => c.pos === 'ADJ', `after the auxiliary "${h.tokens[a].surface}": the adjective (the verb it could be a participle of is rare)`, 'strong');
+      return choice && { ...choice, confirm: true };
+    }
     return h.pick(isPastParticiple, `after the auxiliary "${h.tokens[a].surface}": the past participle`, 'strong');
   } },
   { name: 'noun after a determiner', run: (h) => {
@@ -576,6 +585,17 @@ const RULES: readonly Rule[] = [
     if (!isVerbal(h.cands[0])) return undefined;
     if (question) return undefined;
     return h.pick(isImperative, 'opens the sentence with no subject: a command', 'weak');
+  } },
+  { name: 'entre: preposition before a noun phrase', run: (h) => {
+    // la route entre les deux villages, un accord entre Paris et Lyon: after a noun, before a determiner, a number or a name, "entre" is
+    // the preposition (the verb entrer takes its place with dans, à, en, not a bare noun phrase straight after a noun subject)
+    if (h.w !== 'entre' || !h.cands.some((c) => c.pos === 'ADP')) return undefined;
+    const top = h.top(h.prev);
+    if (top?.pos !== 'NOUN' || h.own(h.prev).some(isVerbal)) return undefined;
+    const nt = h.top(h.next);
+    if (!(determinerAt(h, h.next) || nt?.pos === 'NUM' || nt?.pos === 'PROPN')) return undefined;
+    const choice = h.pick((c) => c.pos === 'ADP', `after the noun "${h.tokens[h.prev as number].surface}", before a noun phrase: the preposition (between)`, 'strong');
+    return choice && { ...choice, confirm: true };
   } },
   { name: 'verb after a noun subject', run: (h) => {
     const p = h.prev;
@@ -703,7 +723,10 @@ export function disambiguateFrench(i: number, tokens: RawToken[], base: C[][]): 
   for (const rule of RULES) {
     const v = rule.run(h);
     if (v === undefined) continue;
-    if (v === null || v.k === 0) return cands;
+    if (v === null) return cands;
+    // a reading already first stays first; a rule that says the others "do not fit here" still lowers them, so that no card
+    // is made from a close second (only the rules that ask for it: `confirm`)
+    if (v.k === 0 && !v.confirm) return cands;
     const chosen = cands[v.k];
     const cap = v.cue === 'weak' ? chosen.confidence : Math.min(0.4, chosen.confidence);
     const moved: C = { ...chosen, notes: { ...(chosen.notes ?? {}), context: v.why } };

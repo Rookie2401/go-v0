@@ -8,6 +8,9 @@ export const NOUN_ROWS = `
 # NOUN
 // ── everyday nouns that share a spelling with a verb form (un regalo / yo regalo): without the noun the verb was the only reading
 regalo/m = gift, present
+caso/m = case; matter
+gusto/m = taste; pleasure, liking
+marca/f = mark; brand; record
 canto/m = song; singing
 saludo/m = greeting
 beso/m = kiss

@@ -258,3 +258,79 @@ describe('a form card has no sentence', () => {
     expect((await applyDeckGate(hace, deps('es', {}, { 'lemma:es:hacer:VERB': hacer })))?.reviewHold).toBeUndefined();
   });
 });
+
+describe('follow-up 3: the first meaning', () => {
+  it('a machine word list that leads with the first ITEM of a not-current sense gives way to the first current sense', async () => {
+    // Russian платье: the list says "clothes" (the first item of "clothes, clothing", which the entry marks archaic); the current sense is "dress, gown, frock"
+    const senses: Sense[] = [{ gloss: 'clothes, clothing', pos: 'NOUN', tags: ['archaic', 'historical'] }, { gloss: 'dress, gown, frock', pos: 'NOUN' }];
+    const f = { ...facts('lemma:ru:платье:NOUN', { lemma: 'платье', pos: 'NOUN', lexicon: ['clothes'], dictionary: ['clothes, clothing', 'dress, gown, frock'], inWordList: true }), source: 'dictionary' } as UnitFacts;
+    expect(shown(await applyDeckGate(f, deps('ru', { 'платье': senses })))).toBe('dress, gown, frock');
+    // a list meaning that is the first item of a CURRENT first sense stays
+    const ok = { ...facts('lemma:ru:стол:NOUN', { lemma: 'стол', pos: 'NOUN', lexicon: ['table'], dictionary: ['table, desk', 'board, fare'], inWordList: true }), source: 'dictionary' } as UnitFacts;
+    expect(shown(await applyDeckGate(ok, deps('ru', { 'стол': [{ gloss: 'table, desk', pos: 'NOUN' }, { gloss: 'board, fare', pos: 'NOUN' }] })))).toBe('table');
+  });
+
+  it('the citation form shows what its word’s own card shows first, also when that meaning is long', async () => {
+    // Russian линия: the word's card shows the first sense; the form card passed it over (seven words) for the later short sense "a cloth hall"
+    const first = 'line (path through two or more points, or figuratively)';
+    const lemma = { ...facts('lemma:ru:линия:NOUN', { lemma: 'линия', pos: 'NOUN', lexicon: [first], dictionary: [first, 'a cloth hall'], inWordList: true }), source: 'dictionary' } as UnitFacts;
+    const form = facts('form:ru:линия', { lemma: 'линия', pos: 'NOUN', dictionary: [first, 'a cloth hall'], inWordList: true });
+    expect(shown(form)).toBe('a cloth hall');
+    const d = deps('ru', { 'линия': [{ gloss: first, pos: 'NOUN' }, { gloss: 'a cloth hall', pos: 'NOUN' }] }, { 'lemma:ru:линия:NOUN': lemma });
+    expect(shown(await applyDeckGate(form, d))).toBe(first);
+    // a second meaning the word's card lists too (Thai เงิน "silver (metal)" beside the word list's "money; silver"): the citation form shows the first
+    const money = facts('lemma:th:เงิน:NOUN', { lemma: 'เงิน', pos: 'NOUN', lexicon: ['money; silver'], inWordList: true });
+    const silver = facts('form:th:เงิน', { lemma: 'เงิน', pos: 'NOUN', dictionary: ['silver (metal)', 'money'], inWordList: true });
+    expect(shown(await applyDeckGate(silver, deps('th', {}, { 'lemma:th:เงิน:NOUN': money })))).toBe('money; silver');
+    // an INFLECTED form with a meaning of its own that its word's card lists keeps it (oss "us" beside vi "we; us")
+    const vi = facts('lemma:nb:vi:PRON', { lemma: 'vi', pos: 'PRON', lexicon: ['we; us'], inWordList: true });
+    const oss = facts('form:nb:oss', { lemma: 'vi', pos: 'PRON', dictionary: ['us'], inWordList: true });
+    expect(shown(await applyDeckGate(oss, deps('nb', {}, { 'lemma:nb:vi:PRON': vi })))).toBe('us');
+  });
+
+  it('a lead sense named for a word is shown first when the entry has it, and the word is held when the entry no longer has it', async () => {
+    const senses: Sense[] = [{ gloss: 'pipe', pos: 'NOUN' }, { gloss: 'binoculars (optical device)', pos: 'NOUN' }, { gloss: 'camera', pos: 'NOUN' }];
+    const f = facts('lemma:th:กล้อง:NOUN', { lemma: 'กล้อง', pos: 'NOUN', dictionary: ['pipe', 'binoculars (optical device)', 'camera'], inWordList: true });
+    const withLead = (lead: string[], dict: Sense[]): DeckGateDeps => ({ ...deps('th', { 'กล้อง': dict }), lead: (id) => (id === 'lemma:th:กล้อง:NOUN' ? lead : undefined) });
+    expect(shown(await applyDeckGate(f, deps('th', { 'กล้อง': senses })))).toBe('pipe');
+    const g = await applyDeckGate(f, withLead(['camera'], senses));
+    expect(shown(g)).toBe('camera');
+    expect(cardMeaning(g!)?.accepted).toContain('pipe'); // the entry's other senses are still accepted answers
+    // two senses named: shown together
+    expect(shown(await applyDeckGate(f, withLead(['camera', 'pipe'], senses)))).toBe('camera; pipe');
+    // the entry changed and has the sense no longer: held, not shown with a meaning nobody chose
+    const without = facts('lemma:th:กล้อง:NOUN', { lemma: 'กล้อง', pos: 'NOUN', dictionary: ['pipe', 'binoculars (optical device)'], inWordList: true });
+    const gone = await applyDeckGate(without, withLead(['camera'], senses.slice(0, 2)));
+    expect(gone?.reviewHold?.kind).toBe('meaning-unreviewed');
+    expect(gone?.reviewHold?.reason).toContain('no longer in its dictionary entry');
+    // the form card of the same word follows its word's card
+    const form = facts('form:th:กล้อง', { lemma: 'กล้อง', pos: 'NOUN', dictionary: ['pipe', 'binoculars (optical device)', 'camera'], inWordList: true });
+    const d = withLead(['camera'], senses);
+    const all: DeckGateDeps = { ...d, factsOf: async (id) => (id === 'lemma:th:กล้อง:NOUN' ? applyDeckGate(f, d) : undefined) };
+    expect(shown(await applyDeckGate(form, all))).toBe('camera');
+  });
+
+  it('a form with no reading that the forms index lists under one word shows that word’s own first meaning', async () => {
+    // German uhr: the form unit has lost the capital of Uhr; the dictionary's entry leads with "hours, o'clock", the word's own card with "clock; watch; o'clock"
+    const uhr = facts('lemma:de:Uhr:NOUN', { lemma: 'Uhr', pos: 'NOUN', lexicon: ['clock; watch; o’clock'], inWordList: true });
+    const form = { ...facts('form:de:uhr', { dictionary: ['hours, o’clock', 'clock, watch'] }), unit: { ...facts('form:de:uhr', {}).unit, provenance: { source: 'parser', ref: 't', confidence: 0.5 } } } as UnitFacts;
+    const d: DeckGateDeps = { ...deps('de', { uhr: [{ gloss: 'hours, o’clock', pos: 'NOUN' }, { gloss: 'clock, watch', pos: 'NOUN' }] }, { 'lemma:de:Uhr:NOUN': uhr }), formIdentities: async () => [{ lemma: 'Uhr', pos: 'NOUN' }] };
+    expect(shown(await applyDeckGate(form, d))).toBe('clock; watch; o’clock');
+    // with no forms index (or no such word's card) the form is as it was
+    expect(shown(await applyDeckGate(form, deps('de', { uhr: [{ gloss: 'hours, o’clock', pos: 'NOUN' }, { gloss: 'clock, watch', pos: 'NOUN' }] })))).toBe('hours, o’clock');
+  });
+});
+
+describe('lead senses where the meanings come from the lexicon (attested-form languages)', () => {
+  it('the sense named is taken from the facts\u2019 own senses, and the word\u2019s form card shows it too', async () => {
+    const senses = ['arm', 'hand', 'forelimb (anterior limb)'];
+    const lemma = facts('lemma:he:yad:NOUN', { lemma: 'yad', pos: 'NOUN', lexicon: ['arm'], dictionary: senses, inWordList: true });
+    const form = facts('form:he:beyado', { lemma: 'yad', pos: 'NOUN', dictionary: senses });
+    const d: DeckGateDeps = { ...deps('he', {}), lead: (id) => (id === 'lemma:he:yad:NOUN' ? ['hand'] : undefined) };
+    const all: DeckGateDeps = { ...d, factsOf: async (id) => (id === 'lemma:he:yad:NOUN' ? applyDeckGate(lemma, d) : undefined) };
+    expect(shown(await applyDeckGate(lemma, d))).toBe('hand');
+    expect(shown(await applyDeckGate(form, all))).toBe('hand');
+    // without a named sense the attested form keeps its lemma's meaning as it was
+    expect(shown(await applyDeckGate(form, { ...deps('he', {}), factsOf: async () => lemma }))).toBe(shown(form));
+  });
+});

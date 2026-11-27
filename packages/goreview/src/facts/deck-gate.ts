@@ -45,6 +45,8 @@ export interface DeckGateDeps {
   formIdentities?(form: string): Promise<Array<{ lemma: string; pos?: string }>>;
   /** (d) Why this unit is on the language's known-limits list, or undefined. */
   known?(unitId: string): string | undefined;
+  /** (e) The senses of the word's own dictionary entry to show first, verbatim, where a reader found the entry's first sense is not the ordinary meaning (deck-lead-senses.ts). */
+  lead?(unitId: string): readonly string[] | undefined;
 }
 
 /** A sense so labelled is not the word's current main meaning. */
@@ -104,6 +106,7 @@ const REASON: Record<string, string> = {
   'form-separable': 'A finite verb form can be half of a separable verb whose prefix stands at the end of the clause, which the written form alone does not show, so the form is not made a review card; the verb read in its sentence is.',
   'form-of-another': 'The dictionary also lists this spelling as a form of another word, and the spelling alone does not say which word it is here, so it is not made a review card.',
   'other-variety': 'This reading comes from another period of the language than the one being studied, so it is not made a review card.',
+  'lead-missing': 'The meaning chosen for this word is no longer in its dictionary entry, so it is not made a review card until the choice is made again.',
 };
 
 function held(facts: UnitFacts, kind: ReviewKind, reason: string): GatedFacts {
@@ -117,6 +120,19 @@ function held(facts: UnitFacts, kind: ReviewKind, reason: string): GatedFacts {
 function withFirst(facts: UnitFacts, head: string): UnitFacts {
   const { lexicon, dictionary } = glossSplit(facts);
   return { ...facts, glosses: [...lexicon, head, ...dictionary.filter((g) => g !== head)] };
+}
+
+/** The items a meaning lists, brackets dropped ("clothes, clothing" gives clothes and clothing). */
+const meaningParts = (s: string): string[] => withoutBrackets(s).split(/[;,/]/u).map((x) => loose(x)).filter(Boolean);
+
+/**
+ * The facts with `shown` as the meaning the card shows. `withFirst` only reorders the dictionary meanings, and the builder then shows the first SHORT
+ * one: a first sense of seven words or more (Russian линия "line (path through two or more points, or figuratively)") was passed over for a later
+ * short sense ("a cloth hall"). Here the meaning is counted with the word list's, which are shown as they stand.
+ */
+function showing(facts: UnitFacts, shown: string): UnitFacts {
+  const { lexicon, dictionary } = glossSplit(facts);
+  return { ...facts, glosses: [shown, ...lexicon.filter((g) => g !== shown), ...dictionary.filter((g) => g !== shown)], lexiconGlossCount: lexicon.filter((g) => g !== shown).length + 1 } as UnitFacts;
 }
 
 const lemmaUnitId = (lang: string, lemma: string, pos?: string): string => `lemma:${lang}:${lemma}${pos ? `:${pos}` : ''}`;
@@ -177,6 +193,15 @@ export async function applyDeckGate(facts: UnitFacts | undefined, deps: DeckGate
       const rest = facts.glosses.filter((g, i) => g !== own && !(i < lexicon.length));
       return applyDeckGate({ ...facts, glosses: [own, ...rest], lexiconGlossCount: 1, periodReading: { ...pr, inPeriod: true } } as UnitFacts, deps);
     }
+    // (e) the ordinary meaning, where the entry has it but not first and marks nothing: the entry's own sense, named for this word, is shown first
+    // (the dictionary's senses, or for a language whose meanings come from the lexicon shards the senses the facts carry)
+    const leads = deps.lead?.(id);
+    if (leads?.length) {
+      const all = [...(await read()).map((x) => x.gloss), ...facts.glosses];
+      const heads = leads.map((g) => (all.includes(g) ? senseHead(g) : undefined));
+      if (heads.some((h) => !h)) return held(facts, 'meaning-unreviewed', REASON['lead-missing']);
+      return showing(facts, heads.join('; '));
+    }
     // (b) + (e) the first meaning
     if (lexicon.length && hasMeaning(lexicon[0])) {
       if (!isCrossReferenceOnly(meaning.shown)) {
@@ -185,7 +210,10 @@ export async function applyDeckGate(facts: UnitFacts | undefined, deps: DeckGate
         const all = await read();
         const mine = all.filter((s) => !facts.pos || !s.pos || posCompatible(facts.pos, s.pos)).filter((s) => hasMeaning(s.gloss));
         const first = mine.find(current) ?? mine[0];
-        const at = mine.findIndex((s) => loose(s.gloss) === loose(lexicon[0]) || loose(senseHead(s.gloss) ?? '') === loose(lexicon[0]));
+        // the word list's meaning may be the sense, its head, or its first item ("clothes" of "clothes, clothing"; "rein; cause" begins with the first item of "rein, bridle")
+        const lead = loose(lexicon[0]);
+        const leadItem = meaningParts(lexicon[0])[0];
+        const at = mine.findIndex((s) => loose(s.gloss) === lead || loose(senseHead(s.gloss) ?? '') === lead || (!!leadItem && meaningParts(s.gloss)[0] === leadItem));
         if (!first || at < 0 || mine[at] === first) return facts;
         const head = senseHead(first.gloss);
         return head && loose(head) !== loose(lexicon[0]) ? { ...facts, glosses: [head, ...facts.glosses.filter((g) => g !== head)], lexiconGlossCount: lexicon.length + 1 } as UnitFacts : facts;
@@ -232,6 +260,11 @@ export async function applyDeckGate(facts: UnitFacts | undefined, deps: DeckGate
     if (own?.reviewHold) return held(facts, own.reviewHold.kind, REASON['word-held']);
     const ownMeaning = own && own.status !== 'conflicted' && own.status !== 'invalidated' && own.status !== 'requires-review' ? cardMeaning(own) : undefined;
     if (ATTESTED_FORMS.has(lang)) {
+      // a word with a named lead sense: its form shows what the word's own card shows
+      if (ownMeaning && !ownMeaning.base && deps.lead?.(lemmaUnitId(lang, lemma, pos))?.length && loose(meaning.shown) !== loose(ownMeaning.shown)) {
+        if (meaning.base) return { ...facts, lexicalRecognition: { ...facts.lexicalRecognition!, glosses: [ownMeaning.shown, ...facts.lexicalRecognition!.glosses!.filter((g) => g !== ownMeaning.shown)] } };
+        return showing(facts, ownMeaning.shown);
+      }
       // the form's meaning is its lemma's by construction (an attested form source): only a pointer shown as the meaning is refused
       return isCrossReferenceOnly(meaning.shown) ? held(facts, 'no-meaning', REASON['no-meaning']) : facts;
     }
@@ -239,16 +272,21 @@ export async function applyDeckGate(facts: UnitFacts | undefined, deps: DeckGate
     if (loose(meaning.shown) === loose(ownMeaning.shown)) return facts;
     // a base-meaning card asks for the meaning of the form's word: it shows what the word's own card shows first
     if (meaning.base) return { ...facts, lexicalRecognition: { ...facts.lexicalRecognition!, glosses: [ownMeaning.shown, ...facts.lexicalRecognition!.glosses!.filter((g) => g !== ownMeaning.shown)] } };
-    // an inflected form with a meaning of its own that its word's card shows too (oss "us" beside vi "we; us"): the same word, a meaning of its own
-    const partsOf = (s: string): string[] => withoutBrackets(s).split(/[;,/]/u).map((x) => loose(x)).filter(Boolean);
-    const firstPart = partsOf(meaning.shown)[0];
-    if (firstPart && partsOf(ownMeaning.shown).includes(firstPart)) return facts;
+    const firstPart = meaningParts(meaning.shown)[0];
+    const shares = !!firstPart && meaningParts(ownMeaning.shown).includes(firstPart);
     const mine = new Set([meaning.shown, ...meaning.accepted].map(loose));
     const theirs = new Set([ownMeaning.shown, ...ownMeaning.accepted].map(loose));
     const agrees = theirs.has(loose(meaning.shown)) || mine.has(loose(ownMeaning.shown));
-    // the citation form itself, with the dictionary's meanings of the same word in another order: the form card shows what the word's own card shows first
+    // the citation form itself, with the dictionary's meanings of the same word in another order (площадь "space, living space" beside the word's own
+    // "square"; Thai เงิน "silver (metal)" beside "money; silver"): the form card shows what the word's own card shows first
     const citation = facts.unit.label.normalize('NFC').toLowerCase() === lemma.normalize('NFC').toLowerCase();
-    if (agrees && citation && !lexicon.length) return withFirst(facts, ownMeaning.shown);
+    // (a form that already leads with the word's own first meaning keeps its own wording: Latin gratia "grace" beside the word list's longer line)
+    // an aside narrows a meaning: Spanish película "film (layer)" is not the word's own "film"
+    const narrowed = /[([]/u.test(meaning.shown.split(/[;,/]/u)[0] ?? '');
+    const sameLead = !!firstPart && !narrowed && meaningParts(ownMeaning.shown)[0] === firstPart;
+    if (citation && !lexicon.length && !sameLead && (agrees || shares)) return showing(facts, ownMeaning.shown);
+    // an inflected form with a meaning of its own that its word's card shows too (oss "us" beside vi "we; us"): the same word, a meaning of its own
+    if (shares) return facts;
     return held(facts, 'meaning-unreviewed', REASON['form-meaning']);
   }
   // a written form with no reading: its meaning is the dictionary's entry of that spelling
@@ -259,6 +297,14 @@ export async function applyDeckGate(facts: UnitFacts | undefined, deps: DeckGate
   // of Gebühr) found the verb gebühren, and Zwiebeln the verb zwiebeln (a place name beside a common word does not count, as below)
   const another = commonListed.some((h) => h.lemma.normalize('NFC').toLowerCase() !== facts.unit.label.normalize('NFC').toLowerCase());
   if (another) return held(facts, 'undecided-entry', REASON['form-of-another']);
+  // the spelling is ONE word of the forms index (German uhr is Uhr with its capital lost; the dictionary's entry leads with "hours"): the form shows what
+  // that word's own card shows first
+  if (words.size === 1) {
+    const h = commonListed[0];
+    const own = await deps.factsOf(lemmaUnitId(lang, h.lemma, h.pos)).catch(() => undefined);
+    const ownMeaning = own && !own.reviewHold && own.status !== 'conflicted' && own.status !== 'invalidated' && own.status !== 'requires-review' ? cardMeaning(own) : undefined;
+    if (ownMeaning && !ownMeaning.base && loose(ownMeaning.shown) !== loose(meaning.shown)) return showing(facts, ownMeaning.shown);
+  }
   // (c) a spelling the dictionary files under several word classes is not decided by the spelling (a place name beside a common word does not count)
   const common = senses.filter((s) => s.pos !== 'PROPN' && current(s) && !isCrossReferenceOnly(s.gloss));
   const pool = common.length ? common : senses;

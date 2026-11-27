@@ -18,6 +18,7 @@ import type { AnalysisCandidate, RawToken } from '../../core';
 import { HINDI_VECTOR_VERBS, subjunctiveTriggerBefore } from './verb-group';
 import { preferNounFirst } from './noun-first';
 import { ladderContext } from './ladder-context';
+import { misreadings } from './misreadings';
 
 type C = AnalysisCandidate;
 
@@ -167,6 +168,8 @@ function decide(i: number, tokens: RawToken[], base: AnalysisCandidate[][]): Ana
   // the words the first reading of the ladder found read wrongly (जी after a name, किरण, सीख, पूरी, सजा, सोता, बिल, बैठे)
   const ladder = ladderContext(i, tokens, base);
   if (ladder) return ladder;
+  const misread = misreadings(i, tokens, base);
+  if (misread) return misread;
   const nounFirst = preferNounFirst(i, tokens, base);
   if (nounFirst) return nounFirst;
 

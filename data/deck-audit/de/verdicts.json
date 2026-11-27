@@ -72,13 +72,18 @@
    {
     "shown": "agency",
     "v": "ok"
+   },
+   {
+    "shown": "office; post",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:de:an": [
    {
     "shown": "on, upon, at, in, against",
     "v": "false-reading",
-    "note": "an here is the separable verb particle of anziehen, not the preposition"
+    "note": "an here is the separable verb particle of anziehen (zog ... an), not the preposition"
    }
   ],
   "form:de:angebaut": [
@@ -91,6 +96,11 @@
    {
     "shown": "offer, proposition",
     "v": "ok"
+   },
+   {
+    "shown": "offer",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:de:anhaltenden": [
@@ -103,6 +113,11 @@
    {
     "shown": "a female given name",
     "v": "ok"
+   },
+   {
+    "shown": "Anna (female first name)",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:de:arbeitslosigkeit": [
@@ -158,18 +173,33 @@
    {
     "shown": "identity document",
     "v": "ok"
+   },
+   {
+    "shown": "identity card",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:de:ausziehen": [
    {
     "shown": "to move out, to vacate",
     "v": "ok"
+   },
+   {
+    "shown": "to take off (clothes); to move out",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:de:autobahn": [
    {
     "shown": "motorway (Britain, Ireland, New Zealand)",
     "v": "ok"
+   },
+   {
+    "shown": "motorway",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:de:außer": [
@@ -218,12 +248,22 @@
    {
     "shown": "by, near",
     "v": "ok"
+   },
+   {
+    "shown": "at; near; with; at the home of",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:de:bein": [
    {
     "shown": "leg of a person, animal",
     "v": "ok"
+   },
+   {
+    "shown": "leg",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:de:bergstraßen": [
@@ -473,6 +513,11 @@
    {
     "shown": "you (singular familiar), thou",
     "v": "ok"
+   },
+   {
+    "shown": "you (informal, one person)",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:de:einbruch": [
@@ -509,6 +554,11 @@
    {
     "shown": "to adjust, to set",
     "v": "ok"
+   },
+   {
+    "shown": "to employ; to adjust",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:de:elektriker": [
@@ -776,6 +826,11 @@
    {
     "shown": "railway (track on which trains run)",
     "v": "ok"
+   },
+   {
+    "shown": "platform; track",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:de:groß": [
@@ -824,6 +879,11 @@
    {
     "shown": "mobile phone, mobile, cell phone",
     "v": "ok"
+   },
+   {
+    "shown": "mobile phone",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:de:heimatdorf": [
@@ -888,6 +948,11 @@
    {
     "shown": "yard, court",
     "v": "ok"
+   },
+   {
+    "shown": "yard; farm; court",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:de:holt": [
@@ -901,6 +966,11 @@
    {
     "shown": "dog, hound",
     "v": "ok"
+   },
+   {
+    "shown": "dog",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:de:immer": [
@@ -923,6 +993,11 @@
    {
     "shown": "an island, an isle",
     "v": "ok"
+   },
+   {
+    "shown": "island",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:de:ist": [
@@ -983,6 +1058,11 @@
    {
     "shown": "kid; child (young person)",
     "v": "ok"
+   },
+   {
+    "shown": "child",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:de:kindergeldes": [
@@ -1089,6 +1169,11 @@
    {
     "shown": "refrigerator",
     "v": "ok"
+   },
+   {
+    "shown": "fridge",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:de:kündigt": [
@@ -1134,10 +1219,21 @@
     "v": "ok"
    }
   ],
+  "form:de:lebensmittel": [
+   {
+    "shown": "groceries; food",
+    "v": "ok"
+   }
+  ],
   "form:de:leicht": [
    {
     "shown": "light (not heavy)",
     "v": "ok"
+   },
+   {
+    "shown": "easy; light",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:de:leider": [
@@ -1150,6 +1246,11 @@
    {
     "shown": "Leipzig (a city in Saxony, Germany)",
     "v": "ok"
+   },
+   {
+    "shown": "Leipzig (city)",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:de:linken": [
@@ -1201,19 +1302,34 @@
    {
     "shown": "flour; meal (ground cereal)",
     "v": "ok"
+   },
+   {
+    "shown": "flour",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:de:meistens": [
    {
     "shown": "mostly (for the most part)",
     "v": "ok"
+   },
+   {
+    "shown": "mostly; usually",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:de:mit": [
    {
     "shown": "with (in the company of, alongside)",
     "v": "false-reading",
-    "note": "mit here is the particle of mitteilen, not the preposition with"
+    "note": "mit is the separable particle of mitteilen (teilte mit), not the preposition"
+   },
+   {
+    "shown": "with; by (means of)",
+    "v": "false-reading",
+    "note": "mit is the separable particle of mitteilen (teilte mit), not the preposition"
    }
   ],
   "form:de:mitbringen": [
@@ -1238,7 +1354,7 @@
    {
     "shown": "tomorrow",
     "v": "false-reading",
-    "note": "Morgen in heute Morgen is the noun morning, not tomorrow"
+    "note": "heute Morgen means this morning; Morgen is the noun, not the adverb morgen"
    }
   ],
   "form:de:möchte": [
@@ -1309,6 +1425,11 @@
    {
     "shown": "nobody, no one",
     "v": "ok"
+   },
+   {
+    "shown": "no one; nobody",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:de:nun": [
@@ -1333,6 +1454,11 @@
    {
     "shown": "in any case, anyway, either way",
     "v": "ok"
+   },
+   {
+    "shown": "anyway; in any case",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:de:opposition": [
@@ -1345,12 +1471,22 @@
    {
     "shown": "arrangement, regulation",
     "v": "ok"
+   },
+   {
+    "shown": "order; tidiness",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:de:pfund": [
    {
     "shown": "a metric pound, 500 grams",
     "v": "ok"
+   },
+   {
+    "shown": "pound (500 grams)",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:de:picknick": [
@@ -1363,6 +1499,11 @@
    {
     "shown": "police; law enforcement",
     "v": "ok"
+   },
+   {
+    "shown": "police",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:de:pressekonferenz": [
@@ -1387,6 +1528,11 @@
    {
     "shown": "city hall",
     "v": "ok"
+   },
+   {
+    "shown": "town hall",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:de:rechts": [
@@ -1467,6 +1613,11 @@
    {
     "shown": "public pool, public swimming pool, baths",
     "v": "ok"
+   },
+   {
+    "shown": "swimming pool",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:de:schälen": [
@@ -1559,6 +1710,11 @@
    {
     "shown": "otherwise (under different circumstances)",
     "v": "ok"
+   },
+   {
+    "shown": "otherwise; else",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:de:spazieren": [
@@ -1620,6 +1776,11 @@
    {
     "shown": "dough, paste, pastry",
     "v": "ok"
+   },
+   {
+    "shown": "dough",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:de:teilte": [
@@ -1656,6 +1817,11 @@
    {
     "shown": "door (rigid plane on a hinge)",
     "v": "ok"
+   },
+   {
+    "shown": "door",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:de:uhr": [
@@ -1663,12 +1829,22 @@
     "shown": "hours",
     "v": "false-meaning",
     "note": "Uhr means clock/watch or o'clock, not hours"
+   },
+   {
+    "shown": "clock; watch; o'clock",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:de:um": [
    {
     "shown": "about",
     "v": "ok"
+   },
+   {
+    "shown": "around; at (a time); about",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:de:umsteigen": [
@@ -1724,6 +1900,11 @@
    {
     "shown": "delay, lateness, late arrival",
     "v": "ok"
+   },
+   {
+    "shown": "delay",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:de:vierhundert": [
@@ -1766,6 +1947,11 @@
    {
     "shown": "forest; woods; woodland",
     "v": "ok"
+   },
+   {
+    "shown": "forest",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:de:wann": [
@@ -1825,6 +2011,11 @@
    {
     "shown": "who (what person or people)",
     "v": "ok"
+   },
+   {
+    "shown": "who",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:de:werde": [
@@ -1862,12 +2053,22 @@
    {
     "shown": "where (at what place)",
     "v": "ok"
+   },
+   {
+    "shown": "where",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:de:wohnung": [
    {
     "shown": "domicile",
     "v": "ok"
+   },
+   {
+    "shown": "flat; apartment",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:de:wollte": [
@@ -1931,6 +2132,11 @@
    {
     "shown": "center, centre — central point",
     "v": "ok"
+   },
+   {
+    "shown": "centre",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:de:zersetzen": [
@@ -1973,6 +2179,11 @@
    {
     "shown": "satisfied, content, happy (with something)",
     "v": "ok"
+   },
+   {
+    "shown": "content, satisfied",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:de:zug": [
@@ -1984,6 +2195,11 @@
     "shown": "pull",
     "v": "false-meaning",
     "note": "Zug first means train (also pull/draught); bare pull is a marginal first gloss"
+   },
+   {
+    "shown": "train; pull",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:de:zum": [
@@ -2068,6 +2284,11 @@
    {
     "shown": "[with accusative or dative] above",
     "v": "ok"
+   },
+   {
+    "shown": "over; above; across; about",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:de:übrigens": [
@@ -2420,7 +2641,7 @@
    {
     "shown": "Fischer (surname)",
     "v": "false-reading",
-    "note": "Die Fischer is the common noun fishermen, not the surname"
+    "note": "Die Fischer is the common noun, the fishermen, not the surname"
    }
   ],
   "lemma:de:Flughafen:NOUN": [
@@ -3105,7 +3326,7 @@
    {
     "shown": "to smoke",
     "v": "false-meaning",
-    "note": "Rauchen as a noun is smoking (the act); the card shows the verb's meaning. Two readings of the same sentence disagreed; the stricter stands"
+    "note": "Rauchen as a noun means smoking; shown is a verb gloss"
    }
   ],
   "lemma:de:Raum:NOUN": [
@@ -3953,7 +4174,7 @@
    {
     "shown": "to blow",
     "v": "false-reading",
-    "note": "blass is the adjective pale, not blasen"
+    "note": "blass is the adjective pale, not a form of blasen"
    }
   ],
   "lemma:de:bleiben:VERB": [
@@ -5421,6 +5642,10 @@
     "shown": "to hurt oneself",
     "v": "false-meaning",
     "note": "verletzen means to injure/hurt; reflexive to hurt oneself is a narrower sense"
+   },
+   {
+    "shown": "to injure; to hurt (sich verletzen: to hurt oneself)",
+    "v": "ok"
    }
   ],
   "lemma:de:verlieren:VERB": [
@@ -5541,7 +5766,7 @@
    {
     "shown": "to yield; to give way",
     "v": "false-reading",
-    "note": "weich is the adjective soft, not weichen"
+    "note": "weich is the adjective soft, not a form of the verb weichen"
    }
   ],
   "lemma:de:weil:SCONJ": [

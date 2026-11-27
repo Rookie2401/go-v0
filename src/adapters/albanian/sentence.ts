@@ -21,7 +21,7 @@ import type { Ctx } from './sentence-core';
 import { prepositions, verbs } from './sentence-clause';
 import { names } from './sentence-names';
 import { formUnits, littleWords } from './sentence-little';
-import { perfect } from './sentence-perfect';
+import { auxiliaryBeforeObject, conjunctionAfterComma, perfect } from './sentence-perfect';
 
 /**
  * `base[i]` = the context-free candidates of token i, best first (empty for a token that is not a word). Returns, for
@@ -34,6 +34,8 @@ export function orderSqSentence(tokens: RawToken[], base: AnalysisCandidate[][])
   formUnits(cx);
   littleWords(cx);
   perfect(cx);
+  auxiliaryBeforeObject(cx);
+  conjunctionAfterComma(cx);
   prepositions(cx);
   verbs(cx);
   return base.map((original, i) => cx.cur[i] ?? original);

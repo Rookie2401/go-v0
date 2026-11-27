@@ -27,6 +27,11 @@
    {
     "shown": "toward, to (direction)",
     "v": "ok"
+   },
+   {
+    "shown": "to, toward, at, near",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:la:adversus": [
@@ -46,6 +51,11 @@
    {
     "shown": "to act, to behave",
     "v": "ok"
+   },
+   {
+    "shown": "do, act; drive, lead; spend (time); drive/urge/conduct/act",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:la:altare": [
@@ -62,6 +72,11 @@
    {
     "shown": "male friend",
     "v": "ok"
+   },
+   {
+    "shown": "friend; friend, ally, disciple; loved one; patron",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:la:amo": [
@@ -78,6 +93,11 @@
    {
     "shown": "soul, life",
     "v": "ok"
+   },
+   {
+    "shown": "soul, life; breath; soul, spirit, vital principle; breathing",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:la:apud": [
@@ -88,6 +108,11 @@
    {
     "shown": "at, by, near, among",
     "v": "ok"
+   },
+   {
+    "shown": "at the house of, among, in the presence of",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:la:aqua": [
@@ -159,6 +184,11 @@
    {
     "shown": "sky",
     "v": "ok"
+   },
+   {
+    "shown": "heaven, the heavens; sky; space; air, climate, weather",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:la:calix": [
@@ -177,12 +207,22 @@
    {
     "shown": "the head (of humans and animals)",
     "v": "ok"
+   },
+   {
+    "shown": "head; top, chief; person; life; leader; source/mouth (river)",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:la:caritas": [
    {
     "shown": "dearness",
     "v": "ok"
+   },
+   {
+    "shown": "charity; love, affection, esteem, favor; dearness",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:la:carnis": [
@@ -235,6 +275,11 @@
    {
     "shown": "plan, intention, design, purpose",
     "v": "ok"
+   },
+   {
+    "shown": "counsel, advice; plan, design; council; debate/discussion/deliberation/consultation",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:la:continenter": [
@@ -285,6 +330,11 @@
    {
     "shown": "owe",
     "v": "ok"
+   },
+   {
+    "shown": "owe; ought, must, be bound (with inf.); be due; be indebted/responsible for/obliged/bound/destined",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:la:deinde": [
@@ -330,6 +380,11 @@
    {
     "shown": "master, owner, possessor, proprietor",
     "v": "ok"
+   },
+   {
+    "shown": "lord, master (the Lord, God or Christ); owner; title for ecclesiastics/gentlemen",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:la:ecce": [
@@ -460,6 +515,11 @@
    {
     "shown": "frenzy, fury, rage, raving, insanity, madness",
     "v": "ok"
+   },
+   {
+    "shown": "fury, rage, wrath; madness; madness, rage, fury, frenzy; passionate love",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:la:genus": [
@@ -494,6 +554,11 @@
    {
     "shown": "man, human being",
     "v": "ok"
+   },
+   {
+    "shown": "man, human being; person; man, human being, person, fellow",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:la:iacet": [
@@ -506,6 +571,11 @@
    {
     "shown": "already",
     "v": "ok"
+   },
+   {
+    "shown": "now, already, soon",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:la:ibi": [
@@ -532,6 +602,11 @@
    {
     "shown": "in, at, on, upon, from (space)",
     "v": "ok"
+   },
+   {
+    "shown": "into, onto / in, on",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:la:inanis": [
@@ -556,6 +631,11 @@
    {
     "shown": "so",
     "v": "ok"
+   },
+   {
+    "shown": "thus, so",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:la:iter": [
@@ -578,6 +658,11 @@
    {
     "shown": "justice, fairness, equity",
     "v": "ok"
+   },
+   {
+    "shown": "righteousness, justice; equality",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:la:joannes": [
@@ -609,6 +694,11 @@
    {
     "shown": "place (referring to a specific location)",
     "v": "ok"
+   },
+   {
+    "shown": "place; passage, opportunity; seat, rank, position; soldier's post; quarters",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:la:longus": [
@@ -619,18 +709,33 @@
    {
     "shown": "long",
     "v": "ok"
+   },
+   {
+    "shown": "long; tall; tedious, taking long time; boundless",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:la:lux": [
    {
     "shown": "light (of the sun, stars etc.)",
     "v": "ok"
+   },
+   {
+    "shown": "light; daylight; light, daylight, light of day; life; world",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:la:magister": [
    {
     "shown": "master, chief, head, superior, director, president",
     "v": "ok"
+   },
+   {
+    "shown": "teacher, tutor, master, expert, chief; pilot of a ship",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:la:major": [
@@ -669,6 +774,11 @@
    {
     "shown": "mother (female parent)",
     "v": "ok"
+   },
+   {
+    "shown": "mother; mother, foster mother; lady, matron",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:la:me": [
@@ -725,12 +835,22 @@
    {
     "shown": "nobody, no one, no man",
     "v": "ok"
+   },
+   {
+    "shown": "no one, nobody",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:la:neque": [
    {
     "shown": "not",
     "v": "ok"
+   },
+   {
+    "shown": "nor, and not; not; and not, not, neither",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:la:nescio": [
@@ -775,6 +895,11 @@
    {
     "shown": "night (period of time)",
     "v": "ok"
+   },
+   {
+    "shown": "night",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:la:numquam": [
@@ -817,12 +942,22 @@
    {
     "shown": "formerly, in time past",
     "v": "ok"
+   },
+   {
+    "shown": "once, formerly",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:la:omnis": [
    {
     "shown": "every",
     "v": "ok"
+   },
+   {
+    "shown": "all, every; whole; each, every, every one (of a number)",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:la:oportet": [
@@ -866,12 +1001,22 @@
    {
     "shown": "very little",
     "v": "ok"
+   },
+   {
+    "shown": "too/very little, not enough/so good, insufficient",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:la:pater": [
    {
     "shown": "father (male parent)",
     "v": "ok"
+   },
+   {
+    "shown": "father (also God the Father); ancestor",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:la:patientia": [
@@ -943,6 +1088,11 @@
    {
     "shown": "behind (of space)",
     "v": "ok"
+   },
+   {
+    "shown": "after, behind",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:la:postulo": [
@@ -975,6 +1125,11 @@
    {
     "shown": "in front of, on behalf of",
     "v": "ok"
+   },
+   {
+    "shown": "in front of, on behalf of, instead of",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:la:proelium": [
@@ -1018,6 +1173,11 @@
    {
     "shown": "a child; chit",
     "v": "ok"
+   },
+   {
+    "shown": "boy, child; servant, young man; boy, lad, young man",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:la:quam": [
@@ -1045,6 +1205,11 @@
    {
     "shown": "why?, wherefore?",
     "v": "ok"
+   },
+   {
+    "shown": "why?, wherefore?; for which reason, therefore; in what way? how? by which means, whereby",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:la:quattuor": [
@@ -1099,6 +1264,11 @@
    {
     "shown": "royal power, power, control, reign",
     "v": "ok"
+   },
+   {
+    "shown": "kingdom; reign; royal power; power; control",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:la:rex": [
@@ -1163,6 +1333,11 @@
    {
     "shown": "to feel, to sense",
     "v": "ok"
+   },
+   {
+    "shown": "perceive, feel, experience; think, realize, see, understand",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:la:sepulcrum": [
@@ -1182,6 +1357,11 @@
    {
     "shown": "a slave",
     "v": "ok"
+   },
+   {
+    "shown": "servant, slave",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:la:sic": [
@@ -1213,6 +1393,11 @@
    {
     "shown": "at the same time; simultaneously",
     "v": "ok"
+   },
+   {
+    "shown": "together, at the same time; at once; likewise; also; simultaneously",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:la:sine": [
@@ -1237,6 +1422,11 @@
    {
     "shown": "expectation, anticipation",
     "v": "ok"
+   },
+   {
+    "shown": "hope; hope/anticipation/expectation; prospect/hope/promise",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:la:statim": [
@@ -1262,6 +1452,11 @@
    {
     "shown": "[of place] above",
     "v": "ok"
+   },
+   {
+    "shown": "over (space), above, upon, in addition to",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:la:tam": [
@@ -1312,6 +1507,11 @@
    {
     "shown": "ground",
     "v": "ok"
+   },
+   {
+    "shown": "earth, land; ground; country, region",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:la:testimonium": [
@@ -1354,6 +1554,11 @@
    {
     "shown": "you (singular); thou",
     "v": "ok"
+   },
+   {
+    "shown": "you",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:la:unde": [
@@ -1383,6 +1588,11 @@
    {
     "shown": "constantly, continuously",
     "v": "ok"
+   },
+   {
+    "shown": "as far as, up to, until (usque ad); all the way, continuously; all the way, right on",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:la:valeo": [
@@ -1419,6 +1629,11 @@
    {
     "shown": "road, street, path",
     "v": "ok"
+   },
+   {
+    "shown": "way, road; journey; way of life, conduct; way, road, street",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:la:vinum": [
@@ -1431,6 +1646,11 @@
    {
     "shown": "twig, young shoot",
     "v": "ok"
+   },
+   {
+    "shown": "rod, staff; twig; twig, sprout, stalk; switch, rod; staff, wand",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:la:virgo": [
@@ -1447,6 +1667,11 @@
    {
     "shown": "power, might, strength",
     "v": "ok"
+   },
+   {
+    "shown": "power, might, strength; virtue; (pl.) mighty works, hosts; courage/bravery",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:la:vita": [
@@ -1465,6 +1690,11 @@
    {
     "shown": "to wish, to please",
     "v": "ok"
+   },
+   {
+    "shown": "to want, wish, be willing",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:la:voluntas": [

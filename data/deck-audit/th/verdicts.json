@@ -3,13 +3,8 @@
  "residual": [
   "form:th:ทาสี",
   "form:th:พริก",
-  "form:th:วิดีโอ",
-  "form:th:เงิน",
-  "form:th:แป้ง",
   "lemma:th:ทาสี:NOUN",
-  "lemma:th:พริก:NOUN",
-  "lemma:th:วิดีโอ:NOUN",
-  "lemma:th:แป้ง:NOUN"
+  "lemma:th:พริก:NOUN"
  ],
  "cards": {
   "form:th:กระจก": [
@@ -79,6 +74,10 @@
     "shown": "pipe",
     "v": "false-meaning",
     "note": "กล้อง ordinarily means camera; pipe is marginal"
+   },
+   {
+    "shown": "camera",
+    "v": "ok"
    }
   ],
   "form:th:กว่า": [
@@ -114,6 +113,11 @@
    {
     "shown": "together; jointly; altogether",
     "v": "ok"
+   },
+   {
+    "shown": "each other; together",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:th:กับ": [
@@ -163,6 +167,10 @@
     "shown": "kilometer",
     "v": "false-meaning",
     "note": "กิโล is kilogram here; the card shows kilometer. Two readings of the same sentence disagreed; the stricter stands"
+   },
+   {
+    "shown": "kilogram; kilometer",
+    "v": "ok"
    }
   ],
   "form:th:กิโลเมตร": [
@@ -690,13 +698,18 @@
    {
     "shown": "external area.",
     "v": "false-reading",
-    "note": "ชาน is a piece of ชานชาลา (platform), not the word used"
+    "note": "ชาน is a fragment of ชานชาลา (platform)"
    }
   ],
   "form:th:ชาย": [
    {
     "shown": "male; man",
     "v": "ok"
+   },
+   {
+    "shown": "man, male",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:th:ชาร์จ": [
@@ -821,6 +834,11 @@
    {
     "shown": "star (any sense)",
     "v": "ok"
+   },
+   {
+    "shown": "star",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:th:ดี": [
@@ -916,6 +934,11 @@
    {
     "shown": "to decide; to determine; to judge",
     "v": "ok"
+   },
+   {
+    "shown": "to judge, to decide",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:th:ตัวเลข": [
@@ -934,6 +957,11 @@
    {
     "shown": "from; since",
     "v": "ok"
+   },
+   {
+    "shown": "since, from (a time)",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:th:ตาม": [
@@ -1006,6 +1034,11 @@
    {
     "shown": "to need",
     "v": "ok"
+   },
+   {
+    "shown": "to want, need",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:th:ถนน": [
@@ -1043,6 +1076,11 @@
    {
     "shown": "to arrive (at, in, on, etc)",
     "v": "ok"
+   },
+   {
+    "shown": "to arrive, reach; until",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:th:ถุง": [
@@ -1061,6 +1099,11 @@
    {
     "shown": "to transfer",
     "v": "ok"
+   },
+   {
+    "shown": "to take (a photo); to copy; to transfer",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:th:ทบ": [
@@ -1091,13 +1134,18 @@
    {
     "shown": "female slave; female servant",
     "v": "false-reading",
-    "note": "ทาสี is ทา+สี, to paint, not the noun ทาสี female slave"
+    "note": "ทาสี here is the verb to paint, not the noun female slave"
    }
   ],
   "form:th:ทำ": [
    {
     "shown": "to make",
     "v": "ok"
+   },
+   {
+    "shown": "to do, make",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:th:ทำงาน": [
@@ -1169,6 +1217,11 @@
    {
     "shown": "local area; locality.",
     "v": "ok"
+   },
+   {
+    "shown": "locality, local area (as a modifier: local)",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:th:ธนาคาร": [
@@ -1187,6 +1240,11 @@
    {
     "shown": "to sleep",
     "v": "ok"
+   },
+   {
+    "shown": "to lie down; to sleep",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:th:นัก": [
@@ -1198,7 +1256,7 @@
    {
     "shown": "very, too (as in นักหนา)",
     "v": "false-reading",
-    "note": "นัก is the agent prefix in นักวิทยาศาสตร์ (scientist), not very/too"
+    "note": "นัก here is the prefix of นักวิทยาศาสตร์ (scientist), not the adverb"
    }
   ],
   "form:th:นักกีฬา": [
@@ -1229,6 +1287,11 @@
    {
     "shown": "student",
     "v": "ok"
+   },
+   {
+    "shown": "pupil, student",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:th:นัด": [
@@ -1239,6 +1302,11 @@
    {
     "shown": "to arrange to meet",
     "v": "ok"
+   },
+   {
+    "shown": "to arrange to meet; (noun) an appointment",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:th:นั่ง": [
@@ -1281,6 +1349,11 @@
    {
     "shown": "fable; story; tale; folklore; fairy-tale.",
     "v": "ok"
+   },
+   {
+    "shown": "tale, story, fable",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:th:นิ่ม": [
@@ -1321,6 +1394,11 @@
    {
     "shown": "little, few",
     "v": "ok"
+   },
+   {
+    "shown": "few, little",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:th:น้ำ": [
@@ -1334,6 +1412,10 @@
     "shown": "palmyra palm juice",
     "v": "false-meaning",
     "note": "น้ำตาล ordinarily means sugar (or brown)"
+   },
+   {
+    "shown": "sugar (of any kind)",
+    "v": "ok"
    }
   ],
   "form:th:น้ำปลา": [
@@ -1458,6 +1540,11 @@
    {
     "shown": "approximately; about; around; roughly.",
     "v": "ok"
+   },
+   {
+    "shown": "about, approximately",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:th:ประสบ": [
@@ -1470,6 +1557,11 @@
    {
     "shown": "nation",
     "v": "ok"
+   },
+   {
+    "shown": "country, nation",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:th:ปรับปรุง": [
@@ -1543,6 +1635,11 @@
    {
     "shown": "result; outcome; profit; effect",
     "v": "ok"
+   },
+   {
+    "shown": "fruit; result",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:th:ผลกระทบ": [
@@ -1636,6 +1733,11 @@
    {
     "shown": "to deposit (e.g., money)",
     "v": "ok"
+   },
+   {
+    "shown": "to leave with, to deposit; to entrust",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:th:พบ": [
@@ -1648,7 +1750,7 @@
    {
     "shown": "chilli",
     "v": "false-reading",
-    "note": "พริก is part of พริกไทย (pepper), a different word"
+    "note": "พริก is a fragment of พริกไทย (pepper)"
    }
   ],
   "form:th:พร้อม": [
@@ -1714,6 +1816,11 @@
    {
     "shown": "to speak",
     "v": "ok"
+   },
+   {
+    "shown": "to say, speak",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:th:พ่อ": [
@@ -1755,6 +1862,11 @@
    {
     "shown": "sky (upper atmosphere of the earth)",
     "v": "ok"
+   },
+   {
+    "shown": "sky",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:th:ภรรยา": [
@@ -1779,6 +1891,10 @@
     "shown": "good luck",
     "v": "false-meaning",
     "note": "ภาค means region/part, not good luck"
+   },
+   {
+    "shown": "part; section; division; region; area",
+    "v": "ok"
    }
   ],
   "form:th:ภายใน": [
@@ -1791,6 +1907,11 @@
    {
     "shown": "language (computer language)",
     "v": "ok"
+   },
+   {
+    "shown": "language",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:th:ภูเขา": [
@@ -1825,6 +1946,11 @@
    {
     "shown": "to watch",
     "v": "ok"
+   },
+   {
+    "shown": "to look at, to watch",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:th:มะพร้าว": [
@@ -1837,6 +1963,11 @@
    {
     "shown": "mango (fruit)",
     "v": "ok"
+   },
+   {
+    "shown": "mango",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:th:มัก": [
@@ -1906,6 +2037,11 @@
    {
     "shown": "(classifier ข้าง) hand",
     "v": "ok"
+   },
+   {
+    "shown": "hand",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:th:มโนธรรม": [
@@ -2017,6 +2153,11 @@
    {
     "shown": "to survive",
     "v": "ok"
+   },
+   {
+    "shown": "to be saved; to survive",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:th:รอบ": [
@@ -2103,12 +2244,22 @@
    {
     "shown": "to know (information), to be aware",
     "v": "ok"
+   },
+   {
+    "shown": "to know",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:th:รู้จัก": [
    {
     "shown": "to know (a person)",
     "v": "ok"
+   },
+   {
+    "shown": "to know (a person or place)",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:th:รู้สึก": [
@@ -2127,6 +2278,11 @@
    {
     "shown": "hot (creating a burning sensation)",
     "v": "ok"
+   },
+   {
+    "shown": "hot",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:th:ร้อย": [
@@ -2178,6 +2334,11 @@
    {
     "shown": "to try (to make an experiment)",
     "v": "ok"
+   },
+   {
+    "shown": "to try",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:th:ละ": [
@@ -2196,6 +2357,11 @@
    {
     "shown": "detailed; thorough.",
     "v": "ok"
+   },
+   {
+    "shown": "fine; detailed",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:th:ลัง": [
@@ -2303,6 +2469,10 @@
     "shown": "VHS cassette",
     "v": "false-meaning",
     "note": "วิดีโอ means video; VHS cassette is a marginal sense"
+   },
+   {
+    "shown": "video (in general)",
+    "v": "ok"
    }
   ],
   "form:th:วิทยาศาสตร์": [
@@ -2340,6 +2510,11 @@
    {
     "shown": "free; at leisure",
     "v": "ok"
+   },
+   {
+    "shown": "empty, vacant; free (not busy)",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:th:ว่าย": [
@@ -2445,6 +2620,11 @@
    {
     "shown": "clean (physically or morally), immaculate, spotless",
     "v": "ok"
+   },
+   {
+    "shown": "clean",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:th:สับ": [
@@ -2519,6 +2699,11 @@
    {
     "shown": "final, last",
     "v": "ok"
+   },
+   {
+    "shown": "last, final",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:th:สุดสัปดาห์": [
@@ -2692,6 +2877,11 @@
    {
     "shown": "head; chief; leader",
     "v": "ok"
+   },
+   {
+    "shown": "leader, head, chief",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:th:หั่น": [
@@ -2720,6 +2910,11 @@
     "shown": "to ruin, to wreck",
     "v": "false-meaning",
     "note": "หาย means to disappear/recover, not to ruin"
+   },
+   {
+    "shown": "to disappear, to be lost; to recover (from illness)",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:th:หาเงิน": [
@@ -2829,6 +3024,11 @@
    {
     "shown": "condition; state; status",
     "v": "ok"
+   },
+   {
+    "shown": "symptom; condition",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:th:อากาศ": [
@@ -2889,6 +3089,11 @@
    {
     "shown": "more; additionally; further",
     "v": "ok"
+   },
+   {
+    "shown": "again; more; another",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:th:อื่น": [
@@ -2964,6 +3169,11 @@
    {
     "shown": "to pick up",
     "v": "ok"
+   },
+   {
+    "shown": "to pick up; to collect; to put away; to keep",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:th:เก่ง": [
@@ -2982,6 +3192,11 @@
    {
     "shown": "chair (Classifier: ตัว)",
     "v": "ok"
+   },
+   {
+    "shown": "chair",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:th:เขา": [
@@ -3037,6 +3252,11 @@
     "shown": "silver (metal)",
     "v": "false-meaning",
     "note": "เงิน is money here and ordinarily; silver is the secondary sense. Two readings of the same sentence disagreed; the stricter stands"
+   },
+   {
+    "shown": "money; silver",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:th:เจตนารมณ์": [
@@ -3056,6 +3276,10 @@
     "shown": "to be sick",
     "v": "false-meaning",
     "note": "เจ็บ means to hurt/be in pain, not to be sick"
+   },
+   {
+    "shown": "to be hurt; be in pain",
+    "v": "ok"
    }
   ],
   "form:th:เฉพาะ": [
@@ -3144,6 +3368,11 @@
     "shown": "to spring, jump",
     "v": "false-meaning",
     "note": "เต้น ordinarily means to dance/throb; spring/jump is marginal"
+   },
+   {
+    "shown": "to dance",
+    "v": "false-reading",
+    "note": "เต้น is a fragment of ตื่นเต้น (excited)"
    }
   ],
   "form:th:เท": [
@@ -3178,6 +3407,11 @@
    {
     "shown": "to travel",
     "v": "ok"
+   },
+   {
+    "shown": "to go out for fun; to tour",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:th:เท่านั้น": [
@@ -3333,6 +3567,11 @@
    {
     "shown": "I, we",
     "v": "ok"
+   },
+   {
+    "shown": "we; I",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:th:เริ่ม": [
@@ -3351,6 +3590,11 @@
    {
     "shown": "to learn; to study",
     "v": "ok"
+   },
+   {
+    "shown": "to study, learn",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:th:เรียบร้อย": [
@@ -3405,6 +3649,11 @@
    {
     "shown": "to raise, to feed",
     "v": "ok"
+   },
+   {
+    "shown": "to raise, to feed; to treat (to a meal)",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:th:เลี้ยว": [
@@ -3440,6 +3689,11 @@
    {
     "shown": "to narrate; to tell",
     "v": "ok"
+   },
+   {
+    "shown": "to tell, to narrate (a story)",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:th:เวลา": [
@@ -3482,6 +3736,11 @@
    {
     "shown": "to lose",
     "v": "ok"
+   },
+   {
+    "shown": "to lose; to spoil, to break down; to pay",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:th:เสียง": [
@@ -3520,6 +3779,11 @@
     "shown": "to remain; to be left",
     "v": "false-reading",
     "note": "เหลือ is only a piece of ช่วยเหลือ (to help), not a word here"
+   },
+   {
+    "shown": "to be left over, to remain",
+    "v": "false-reading",
+    "note": "เหลือ is a fragment of ช่วยเหลือ (to help)"
    }
   ],
   "form:th:เห็น": [
@@ -3578,6 +3842,10 @@
     "shown": "ตั้ง to appoint",
     "v": "false-meaning",
     "note": "แต่ง means to dress/compose/adorn; appoint is แต่งตั้ง"
+   },
+   {
+    "shown": "to adorn; to decorate; to embellish; to compose",
+    "v": "ok"
    }
   ],
   "form:th:แต่งงาน": [
@@ -3619,6 +3887,10 @@
     "shown": "meal",
     "v": "false-meaning",
     "note": "แป้ง means flour/powder; meal is archaic"
+   },
+   {
+    "shown": "flour; powder; starch",
+    "v": "ok"
    }
   ],
   "form:th:แผนก": [
@@ -3748,6 +4020,11 @@
    {
     "shown": "hall",
     "v": "ok"
+   },
+   {
+    "shown": "building, hall; mill (as in โรงสี)",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:th:โรงพยาบาล": [
@@ -3773,6 +4050,10 @@
     "shown": "bare; naked.",
     "v": "false-meaning",
     "note": "โล่ง means open/clear/spacious, not bare/naked"
+   },
+   {
+    "shown": "clear; unobstructed.",
+    "v": "ok"
    }
   ],
   "form:th:ใกล้": [
@@ -3825,6 +4106,11 @@
    {
     "shown": "to put in or on",
     "v": "ok"
+   },
+   {
+    "shown": "to put in or on; to wear",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:th:ใหญ่": [
@@ -4033,6 +4319,10 @@
     "shown": "pipe",
     "v": "false-meaning",
     "note": "กล้อง ordinarily means camera; pipe is marginal"
+   },
+   {
+    "shown": "camera",
+    "v": "ok"
    }
   ],
   "lemma:th:กว่า:ADP": [
@@ -4129,6 +4419,10 @@
     "shown": "kilometer",
     "v": "false-meaning",
     "note": "กิโล is kilogram here; the card shows kilometer. Two readings of the same sentence disagreed; the stricter stands"
+   },
+   {
+    "shown": "kilogram; kilometer",
+    "v": "ok"
    }
   ],
   "lemma:th:กิโลเมตร:NOUN": [
@@ -5127,7 +5421,7 @@
    {
     "shown": "female slave; female servant",
     "v": "false-reading",
-    "note": "ทาสี is ทา+สี, to paint, not the noun ทาสี female slave"
+    "note": "ทาสี here is the verb to paint, not the noun female slave"
    }
   ],
   "lemma:th:ทำ:VERB": [
@@ -5260,7 +5554,7 @@
    {
     "shown": "very, too (as in นักหนา)",
     "v": "false-reading",
-    "note": "นัก is the agent prefix in นักวิทยาศาสตร์ (scientist), not very/too"
+    "note": "นัก here is the prefix of นักวิทยาศาสตร์ (scientist), not the adverb"
    }
   ],
   "lemma:th:นักกีฬา:NOUN": [
@@ -5400,6 +5694,10 @@
     "shown": "palmyra palm juice",
     "v": "false-meaning",
     "note": "น้ำตาล ordinarily means sugar (or brown)"
+   },
+   {
+    "shown": "sugar (of any kind)",
+    "v": "ok"
    }
   ],
   "lemma:th:น้ำปลา:NOUN": [
@@ -5742,7 +6040,7 @@
    {
     "shown": "chilli",
     "v": "false-reading",
-    "note": "พริก is part of พริกไทย (pepper), a different word"
+    "note": "พริก is a fragment of พริกไทย (pepper)"
    }
   ],
   "lemma:th:พรุ่งนี้:ADV": [
@@ -5884,6 +6182,10 @@
     "shown": "good luck",
     "v": "false-meaning",
     "note": "ภาค means region/part, not good luck"
+   },
+   {
+    "shown": "part; section; division; region; area",
+    "v": "ok"
    }
   ],
   "lemma:th:ภายใน:ADP": [
@@ -6431,6 +6733,10 @@
     "shown": "VHS cassette",
     "v": "false-meaning",
     "note": "วิดีโอ means video; VHS cassette is a marginal sense"
+   },
+   {
+    "shown": "video (in general)",
+    "v": "ok"
    }
   ],
   "lemma:th:วิทยาศาสตร์:NOUN": [
@@ -7304,13 +7610,17 @@
     "shown": "to be sick",
     "v": "false-meaning",
     "note": "เจ็บ means to hurt/be in pain, not to be sick"
+   },
+   {
+    "shown": "to be hurt; be in pain",
+    "v": "ok"
    }
   ],
   "lemma:th:เจ้า:PRON": [
    {
     "shown": "you, he, she (old or literary)",
     "v": "false-reading",
-    "note": "เจ้า here is the shop/brand-owner word (เจ้าดัง, the famous one), not the old pronoun"
+    "note": "เจ้า here is a shop owner/brand noun (ร้าน...เจ้าดัง), not the pronoun"
    }
   ],
   "lemma:th:เจ้าหน้าที่:NOUN": [
@@ -7408,6 +7718,11 @@
     "shown": "to spring, jump",
     "v": "false-meaning",
     "note": "เต้น ordinarily means to dance/throb; spring/jump is marginal"
+   },
+   {
+    "shown": "to dance",
+    "v": "false-reading",
+    "note": "เต้น is a fragment of ตื่นเต้น (excited)"
    }
   ],
   "lemma:th:เท:VERB": [
@@ -7858,6 +8173,10 @@
     "shown": "ตั้ง to appoint",
     "v": "false-meaning",
     "note": "แต่ง means to dress/compose/adorn; appoint is แต่งตั้ง"
+   },
+   {
+    "shown": "to adorn; to decorate; to embellish; to compose",
+    "v": "ok"
    }
   ],
   "lemma:th:แต่งงาน:VERB": [
@@ -7907,6 +8226,10 @@
     "shown": "meal",
     "v": "false-meaning",
     "note": "แป้ง means flour/powder; meal is archaic"
+   },
+   {
+    "shown": "flour; powder; starch",
+    "v": "ok"
    }
   ],
   "lemma:th:แผนก:NOUN": [
@@ -8070,6 +8393,10 @@
     "shown": "bare; naked.",
     "v": "false-meaning",
     "note": "โล่ง means open/clear/spacious, not bare/naked"
+   },
+   {
+    "shown": "clear; unobstructed.",
+    "v": "ok"
    }
   ],
   "lemma:th:ใกล้:ADJ": [

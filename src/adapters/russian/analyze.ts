@@ -45,6 +45,8 @@ interface Reading {
   listed?: boolean;
   /** Set when the lemma is much rarer than the commonest lemma of the form: that lemma's headword. */
   rarerThan?: string;
+  /** With rarerThan: the form is this lemma's own headword and the commonest lemma has it in the same case and number (очки, plural-only, beside очко): lemma counts do not separate them. */
+  rarerSameSlot?: boolean;
   /** The treebank has this form with other readings only (form priors): lowered, and says so. */
   unseen?: boolean;
   /** Set by a merge of several lemma ids that read alike (за́мок / замо́к): the glosses, the partners and whether every member is lowered. */
@@ -290,7 +292,7 @@ function formCount(rows: ReadonlyArray<[string, string, number]>, r: Reading): n
 }
 
 /** B: a lemma that is much rarer than the commonest lemma of the form is lowered (it stays in the list); a lone reading never is. */
-function markRarer(readings: Reading[]): void {
+function markRarer(readings: Reading[], key?: string): void {
   if (readings.length < 2) return;
   let top: Reading | undefined;
   for (const r of readings) if (!r.hand && (!top || countOf(r) > countOf(top))) top = r;
@@ -299,7 +301,12 @@ function markRarer(readings: Reading[]): void {
   for (const r of readings) {
     if (r.hand || r.lemmaId === top.lemmaId) continue;
     const c = countOf(r);
-    if (c === 0 || (t >= RARE_TOP_MIN && c < t / RARE_RATIO)) r.rarerThan = top.lemma;
+    if (c === 0 || (t >= RARE_TOP_MIN && c < t / RARE_RATIO)) {
+      r.rarerThan = top.lemma;
+      // a lemma's count is over all its forms: where the rarer lemma is written exactly as its headword and the commonest has this very
+      // spelling in the same case and number, the counts do not decide (очко "point" counts mostly singular; очки "glasses" is plural only)
+      if (key && yoFold(r.lemma) === key && r.pos === top.pos && !!r.morph.Case && r.morph.Case === top.morph.Case && r.morph.Number === top.morph.Number) r.rarerSameSlot = true;
+    }
   }
 }
 
@@ -310,7 +317,7 @@ interface Ctx { anyDirect: boolean }
 function toCandidate(r: Reading, ctx: Ctx): AnalysisCandidate {
   let confidence = r.hand ? CONF_HAND : r.viaYo && !r.listed ? (ctx.anyDirect ? CONF_YO_BESIDE : CONF_YO_ALONE) : CONF_AS_WRITTEN;
   if (lowered(r)) confidence -= USAGE_PENALTY;
-  if (r.rarerThan) confidence -= RARE_PENALTY;
+  if (r.rarerThan) confidence -= r.rarerSameSlot ? RARE_PENALTY / 2 : RARE_PENALTY;
   if (r.unseen) confidence -= RARE_PENALTY;
   if (r.formRarer) confidence -= RARE_PENALTY;
   const notes: Record<string, string | string[]> = {};
@@ -354,7 +361,7 @@ function dictionaryReadings(key: string, markedStress: number[]): { readings: Re
     if (g) g.push(r); else byLemma.set(k, [r]);
   }
   readings = mergeSameReading([...byLemma.values()].flatMap((g) => mergeUnions(g)), markedStress);
-  markRarer(readings);
+  markRarer(readings, yoFold(key));
 
   const wt = new Map<Reading, number>();
   const score = new Map<Reading, number>();

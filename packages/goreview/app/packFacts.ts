@@ -32,6 +32,7 @@ import type { PartOfSpeech } from '../../../src/core/model';
 import { buildParadigm, formRomanOf, pickRecord, selectedCellKeys, type LexicalRecord } from '../src/facts/paradigm-table';
 import { applyDeckGate } from '../src/facts/deck-gate';
 import { deckKnownLimit } from '../src/facts/deck-known-limits';
+import { deckLeadSenses } from '../src/facts/deck-lead-senses';
 
 export { featureKey };
 export type { Paradigm, ParadigmCell };
@@ -391,7 +392,7 @@ export function packFactsFor(opts: { fetch: typeof fetch; baseUrl: string; lexic
         if (!facts || requestedLanguage !== languageId) return facts;
         return applyDeckGate(facts, {
           languageId, varietyId: varietyId ?? manifest.varietyId, gloss: (lemma, pos, forms) => dictionary.gloss(lemma, pos, forms),
-          factsOf: (id) => gated.factsFor(id, requestedLanguage, varietyId), known: (id) => deckKnownLimit(languageId, id), formIdentities: identitiesOf,
+          factsOf: (id) => gated.factsFor(id, requestedLanguage, varietyId), known: (id) => deckKnownLimit(languageId, id), lead: (id) => deckLeadSenses(languageId, id, varietyId), formIdentities: identitiesOf,
         });
       },
     } as Provider;

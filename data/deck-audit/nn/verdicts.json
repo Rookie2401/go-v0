@@ -1,7 +1,6 @@
 {
  "readBy": "AI models (Claude), not native speakers; each card judged once, in the first sentence it came from, against the brief in docs/ecosystem/DECK-GATE.md. 2026-11-26.",
  "residual": [
-  "form:nn:annan",
   "form:nn:like",
   "lemma:nn:nå:VERB"
  ],
@@ -35,6 +34,11 @@
     "shown": "second",
     "v": "false-meaning",
     "note": "annan means other/another; second is andre"
+   },
+   {
+    "shown": "other, different, second",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:nn:arbeida": [
@@ -159,6 +163,11 @@
    {
     "shown": "you (second-person plural)",
     "v": "ok"
+   },
+   {
+    "shown": "you (pl)",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:nn:deg": [
@@ -271,6 +280,11 @@
    {
     "shown": "still",
     "v": "ok"
+   },
+   {
+    "shown": "yet, still",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:nn:er": [
@@ -359,6 +373,11 @@
    {
     "shown": "quickly",
     "v": "ok"
+   },
+   {
+    "shown": "fast; quickly",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:nn:fotball": [
@@ -506,6 +525,11 @@
    {
     "shown": "walk, go.",
     "v": "ok"
+   },
+   {
+    "shown": "go; walk",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:nn:ha": [
@@ -617,6 +641,11 @@
    {
     "shown": "again (not last time)",
     "v": "ok"
+   },
+   {
+    "shown": "again; left",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:nn:ikkje": [
@@ -718,6 +747,11 @@
    {
     "shown": "what (interrogative pronoun)",
     "v": "ok"
+   },
+   {
+    "shown": "what",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:nn:kvar": [
@@ -826,7 +860,7 @@
    {
     "shown": "to like",
     "v": "false-reading",
-    "note": "like ved is the adverb/adjective close/right (by), not the verb like"
+    "note": "like ved means right next to; like is an adverb, not the verb to like"
    }
   ],
   "form:nn:lite": [
@@ -880,6 +914,11 @@
    {
     "shown": "man (an adult male human being)",
     "v": "ok"
+   },
+   {
+    "shown": "man; husband",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:nn:mat": [
@@ -892,6 +931,11 @@
    {
     "shown": "with (in the company of)",
     "v": "ok"
+   },
+   {
+    "shown": "with",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:nn:meir": [
@@ -920,6 +964,11 @@
    {
     "shown": "dinner (main meal of the day)",
     "v": "ok"
+   },
+   {
+    "shown": "dinner",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:nn:min": [
@@ -967,6 +1016,11 @@
    {
     "shown": "aim, goal, purpose, target, destination",
     "v": "ok"
+   },
+   {
+    "shown": "goal; aim",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:nn:månad": [
@@ -1020,6 +1074,11 @@
    {
     "shown": "enough",
     "v": "ok"
+   },
+   {
+    "shown": "probably; enough",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:nn:noko": [
@@ -1109,6 +1168,11 @@
    {
     "shown": "a price (as above)",
     "v": "ok"
+   },
+   {
+    "shown": "price; prize",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:nn:prøva": [
@@ -1193,6 +1257,11 @@
    {
     "shown": "her/his/its/their",
     "v": "ok"
+   },
+   {
+    "shown": "his/her/its/their own (reflexive)",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:nn:sist": [
@@ -1255,6 +1324,10 @@
   "form:nn:slå": [
    {
     "shown": "to beat, punch, hit",
+    "v": "ok"
+   },
+   {
+    "shown": "hit; beat; turn",
     "v": "ok"
    }
   ],
@@ -1455,6 +1528,11 @@
    {
     "shown": "to (indicating destination)",
     "v": "ok"
+   },
+   {
+    "shown": "to; until",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:nn:tjue": [
@@ -1479,6 +1557,11 @@
    {
     "shown": "to hit, strike",
     "v": "ok"
+   },
+   {
+    "shown": "meet; hit",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:nn:trena": [
@@ -1504,6 +1587,11 @@
    {
     "shown": "a walk",
     "v": "ok"
+   },
+   {
+    "shown": "trip; walk",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:nn:tusen": [
@@ -1555,6 +1643,11 @@
    {
     "shown": "at, by, near",
     "v": "ok"
+   },
+   {
+    "shown": "by, at, near",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:nn:veg": [
@@ -3189,7 +3282,7 @@
    {
     "shown": "reach; catch",
     "v": "false-reading",
-    "note": "når is the conjunction when, not a form of nå"
+    "note": "når is the conjunction when, not the verb nå"
    }
   ],
   "lemma:nn:når:ADV": [
@@ -3864,7 +3957,7 @@
    {
     "shown": "tree",
     "v": "false-reading",
-    "note": "tre here is the numeral three, not the noun tree"
+    "note": "tre in til tre is the numeral three, not the noun tree"
    }
   ],
   "lemma:nn:tre:NUM": [

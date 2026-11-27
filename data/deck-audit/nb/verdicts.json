@@ -67,6 +67,11 @@
    {
     "shown": "to order (goods)",
     "v": "ok"
+   },
+   {
+    "shown": "order; book",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:nb:bil": [
@@ -417,6 +422,11 @@
    {
     "shown": "fresh",
     "v": "ok"
+   },
+   {
+    "shown": "healthy; fresh",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:nb:frokost": [
@@ -494,6 +504,11 @@
    {
     "shown": "To walk, go.",
     "v": "ok"
+   },
+   {
+    "shown": "go; walk",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:nb:ha": [
@@ -518,6 +533,11 @@
    {
     "shown": "to act (do something)",
     "v": "ok"
+   },
+   {
+    "shown": "shop; act",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:nb:helgen": [
@@ -665,6 +685,11 @@
    {
     "shown": "high, tall",
     "v": "ok"
+   },
+   {
+    "shown": "tall; high; loud",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:nb:ifølge": [
@@ -701,6 +726,11 @@
    {
     "shown": "yes",
     "v": "ok"
+   },
+   {
+    "shown": "as you know; yes (to a negative)",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:nb:kaffe": [
@@ -816,6 +846,11 @@
    {
     "shown": "easy (requiring little skill or effort)",
     "v": "ok"
+   },
+   {
+    "shown": "easy; light",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:nb:levere": [
@@ -879,6 +914,11 @@
    {
     "shown": "you",
     "v": "ok"
+   },
+   {
+    "shown": "one, you (generic)",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:nb:mandag": [
@@ -891,6 +931,11 @@
    {
     "shown": "man (an adult male human being)",
     "v": "ok"
+   },
+   {
+    "shown": "man; husband",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:nb:mat": [
@@ -1044,6 +1089,11 @@
    {
     "shown": "enough",
     "v": "ok"
+   },
+   {
+    "shown": "probably; enough",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:nb:nummer": [
@@ -1074,6 +1124,11 @@
    {
     "shown": "approximately, about",
     "v": "ok"
+   },
+   {
+    "shown": "about, approximately",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:nb:oppdage": [
@@ -1111,6 +1166,11 @@
    {
     "shown": "a prize",
     "v": "ok"
+   },
+   {
+    "shown": "price; prize",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:nb:prosent": [
@@ -1160,6 +1220,11 @@
    {
     "shown": "to ring (e.g. bell, telephone)",
     "v": "ok"
+   },
+   {
+    "shown": "ring; phone",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:nb:rundt": [
@@ -1256,6 +1321,10 @@
    {
     "shown": "to beat, punch, hit, strike",
     "v": "ok"
+   },
+   {
+    "shown": "hit; beat; turn",
+    "v": "ok"
    }
   ],
   "form:nb:små": [
@@ -1292,6 +1361,11 @@
    {
     "shown": "to play (a sport)",
     "v": "ok"
+   },
+   {
+    "shown": "play",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:nb:spørsmål": [
@@ -1411,6 +1485,11 @@
    {
     "shown": "to take (grab with the hands)",
     "v": "ok"
+   },
+   {
+    "shown": "take",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:nb:takk": [
@@ -1457,6 +1536,11 @@
    {
     "shown": "an hour",
     "v": "ok"
+   },
+   {
+    "shown": "lesson; hour",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:nb:tirsdag": [
@@ -1517,6 +1601,11 @@
    {
     "shown": "a walk",
     "v": "ok"
+   },
+   {
+    "shown": "trip; walk",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:nb:tusen": [
@@ -1600,6 +1689,11 @@
    {
     "shown": "at, by, near",
     "v": "ok"
+   },
+   {
+    "shown": "by, at, near",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:nb:vei": [
@@ -1630,6 +1724,11 @@
    {
     "shown": "to want to, be willing to",
     "v": "ok"
+   },
+   {
+    "shown": "will, want to",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:nb:være": [
@@ -3064,7 +3163,7 @@
    {
     "shown": "manage",
     "v": "false-reading",
-    "note": "klar here is the adjective clear/fresh, not the verb klare"
+    "note": "klar is the adjective clear, not the verb klare (manage)"
    }
   ],
   "lemma:nb:klokke:NOUN": [
@@ -3712,7 +3811,7 @@
    {
     "shown": "reach; catch",
     "v": "false-reading",
-    "note": "når is the conjunction/adverb when, not a form of the verb nå"
+    "note": "når is the conjunction when, not the verb nå"
    }
   ],
   "lemma:nb:når:ADV": [

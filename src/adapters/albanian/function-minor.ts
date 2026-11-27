@@ -70,7 +70,7 @@ export const CONJUNCTIONS: SqLexeme[] = [
   F('ose', 'CONJ', 'or'), F('apo', 'CONJ', 'or (between questions or alternatives)'),
   F('prandaj', 'CONJ', 'therefore, that is why'), F('pra', 'CONJ', 'so, therefore, in other words'),
   F('se', 'SCONJ', 'that; than'), F('që', 'SCONJ', 'that'), F('sepse', 'SCONJ', 'because'), F('kur', 'SCONJ', 'when'),
-  F('nëse', 'SCONJ', 'if'), F('megjithëse', 'SCONJ', 'although'), F('ndërsa', 'SCONJ', 'while, whereas'),
+  F('nëse', 'SCONJ', 'if'), F('megjithëse', 'SCONJ', 'although'), F('ndërsa', 'SCONJ', 'while, whereas'), F('kurse', 'SCONJ', 'whereas, while'),
   F('sa', 'SCONJ', 'as much as, as many as'), F('si', 'SCONJ', 'as, like'), F('derisa', 'SCONJ', 'until, while'),
   // the ladder plan's additions (data/ladder/sq/PLAN-A1-2-A2.md section 6.1)
   F('mirëpo', 'CONJ', 'but, however'), F('siç', 'CONJ', 'as, the way (siç thotë: as he says)'), F('pasi', 'SCONJ', 'after, since (conjunction)'),

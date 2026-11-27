@@ -1,3 +1,4 @@
+// Single words in Qur’anic-style spelling (a spelling is not a quotation) and sentences written 2026-11-27 by the Arabic pack’s AI agents in Qur’anic-style orthography (the alif wasla, the dagger alif, full vowels); no verse and no edition is quoted.
 /**
  * Arabic text views, second set: the cases an independent audit found wrong in the first draft (implied vowels, decomposed input,
  * Quranic marks and spelling, phrase ligatures, a letter written onto a number, abbreviations, borrowed letters) and the one

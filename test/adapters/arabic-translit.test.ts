@@ -1,3 +1,4 @@
+// Sentences written 2026-11-27 by the Arabic pack’s AI agents in Qur’anic-style orthography (the alif wasla, the dagger alif, full vowels); no verse and no edition is quoted; the transliterations are the pack's own.
 // @vitest-environment node
 /**
  * Arabic transliteration (src/adapters/arabic/translit.ts). The expected transliterations are the author's own, machine-drafted
@@ -98,7 +99,7 @@ describe('transliterateArabic: the article and the prefixes', () => {
     expect(t('الَّذِي')).toBe('alladhī');
     expect(t('وَالَّذِي')).toBe('wa-lladhī');
   });
-  it('several words are done one by one', () => expect(t('بِسْمِ ٱللَّهِ')).toBe('bismi Allāhi'));
+  it('several words are done one by one', () => expect(t('ذَهَبَ ٱلطَّالِبُ إِلَىٰ ٱلْمَدْرَسَةِ')).toBe('dhahaba aṭ-ṭālibu ilā al-madrasati'));
 });
 
 describe('transliterateArabic: pause', () => {
@@ -108,7 +109,7 @@ describe('transliterateArabic: pause', () => {
     expect(t('مَدْرَسَةٌ', true)).toBe('madrasa');
     expect(t('فَعَلَ', true)).toBe('faʿal');
   });
-  it('is applied to the last word only', () => expect(t('بِسْمِ ٱللَّهِ', true)).toBe('bismi Allāh'));
+  it('is applied to the last word only', () => expect(t('ذَهَبَ ٱلطَّالِبُ إِلَىٰ ٱلْمَدْرَسَةِ', true)).toBe('dhahaba aṭ-ṭālibu ilā al-madrasa'));
 });
 
 describe('transliterateArabic: never guesses', () => {
@@ -126,7 +127,7 @@ describe('transliterateArabic: never guesses', () => {
     expect(t('ٱسْمُ')).toBeUndefined(); // an alif waṣla with no mark: its vowel is not printed
     expect(t('1234')).toBeUndefined();
   });
-  it('one unvocalized word makes a phrase undefined, not half a phrase', () => expect(t('بِسْمِ الله')).toBeUndefined());
+  it('one unvocalized word makes a phrase undefined, not half a phrase', () => expect(t('ذَهَبَ المدرسة')).toBeUndefined());
 });
 
 describe('transliterateArabic: the auditor’s cases', () => {

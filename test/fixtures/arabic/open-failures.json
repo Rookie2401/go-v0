@@ -1,5 +1,5 @@
 {
- "_about": "Regression cases that fail with the recorded analyser and index. A RATCHET: a case not listed must pass; a listed case must still fail, so a fix forces the entry to be removed. Re-record with --write-open after an analyser change. Cases are never deleted or weakened.",
+ "_about": "Regression cases that fail with the recorded analyser and index. A RATCHET: a case not listed must pass; a listed case must still fail, so a fix forces the entry to be removed. Re-record with --write-open after an analyser change. Cases are never deleted or weakened. Every sentence is the Arabic pack’s own wording, written by its agents; nobody else’s text, no Qur’an, hadith, poetry or translation.",
  "analyser": "adapter",
  "index": "full",
  "date": "2026-11-26",

@@ -1,3 +1,4 @@
+// Sentences of the rig page ar-pages/quran-style.html (step H1) written 2026-11-27 by the Arabic pack’s AI agents in Qur’anic-style orthography (the alif wasla, the dagger alif, full vowels); no verse and no edition is quoted.
 // GoLearn Arabic acceptance rig: the real extension build (with its setup page and GoReview page) in a throw-away headless Brave
 // profile, a throw-away LOCAL Repository service with a generated test account, and fixture pages served from ar-pages/. Walks a
 // learner's journey in Arabic (install, reading language and varieties, the lexicon shards, lookups and their cards, vocalized text,
@@ -564,11 +565,11 @@ async function main() {
     await sleep(1500);
     const Q = [
       ['ٱلْعَٰلَمِينَ', { id: 'q2', word: 'ٱلْعَٰلَمِينَ' }, 'dagger alif, alif wasla: العالمين → عَالَم', /^عالم$|^علم$/],
-      ['ٱلرَّحْمَٰنِ', { id: 'q1', word: 'ٱلرَّحْمَٰنِ' }, 'الرحمن', /^رحمن$|^الرحمن$|^رحمان$/],
-      ['لِلَّهِ', { id: 'q2', word: 'لِلَّهِ' }, 'ل + الله', /^الله$|^اله$|^لله$/],
-      ['ٱللَّهِ', { id: 'q1', word: 'ٱللَّهِ' }, 'الله', /^الله$|^اله$/],
-      ['ٱلرَّحِيمِ', { id: 'q1', word: 'ٱلرَّحِيمِ' }, 'الرحيم', /^رحيم$/],
-      ['ٱلْحَمْدُ', { id: 'q2', word: 'ٱلْحَمْدُ' }, 'الحمد', /^حمد$/],
+      ['ٱلرَّحْمَٰنِ', { id: 'q4', word: 'ٱلرَّحْمَٰنِ' }, 'الرحمن', /^رحمن$|^الرحمن$|^رحمان$/],
+      ['لِلَّهِ', { id: 'q3', word: 'لِلَّهِ' }, 'ل + الله', /^الله$|^اله$|^لله$/],
+      ['ٱلطَّالِبُ', { id: 'q1', word: 'ٱلطَّالِبُ' }, 'alif wasla + shadda: الطالب', /^طالب$/],
+      ['ٱلْمَدْرَسَةِ', { id: 'q1', word: 'ٱلْمَدْرَسَةِ' }, 'alif wasla, sukun: المدرسة', /^مدرسه$|^مدرسة$/],
+      ['ٱلْحَمْدُ', { id: 'q3', word: 'ٱلْحَمْدُ' }, 'الحمد', /^حمد$/],
     ];
     await run(Q, 'quran', qp);
     const qc = report.cards.filter((x) => x.set === 'quran');

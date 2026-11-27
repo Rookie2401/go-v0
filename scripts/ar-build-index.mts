@@ -262,7 +262,9 @@ function tidy(t: string): string {
 }
 /** One gloss made short: no bracketed segments, cut at the first ";", at most two comma-separated alternatives, never cut inside a word, never an unclosed bracket. */
 function cleanGloss(raw: string, alts = 2): string {
+  // an alternative ends at a spaced dash and at an opening quotation mark that follows a space (title — and "anything that serves as an indication …" → title)
   let t = stripBrackets(raw).split(';')[0];
+  { const cut = t.split(/\s[—–-]\s|\s[“"«]/)[0]; if (cut !== t && !/^(?:to|of|a|an|the|said|used|in|for|with|or|and)?$/i.test(cut.trim()) && cut.trim().length >= 4) t = cut; }
   // a colon separates the meaning from an explanation of it ("to make: to create"): the meaning is what stands before it
   { const c = t.indexOf(':'); if (c > 0) { const before = tidy(t.slice(0, c)); if (before.length >= 2) t = before; else t = t.slice(c + 1); } }
   t = t.split(',').slice(0, alts).join(',');
@@ -599,7 +601,7 @@ const byKey = new Map<string, number[]>(); // key of a head → lemma numbers
       // the keyword is looked for outside brackets, first in the FIRST alternative of a sense (a sense that merely mentions it later does not lead), then in any alternative;
       // the text kept is the alternative that holds it ("to mark … on a surface, to write" → "to write")
       const pick = (sg: string, firstOnly: boolean): string => {
-        const alts = stripBrackets(sg).split(';').flatMap((seg) => seg.split(',')).flatMap((seg) => seg.split(':'));
+        const alts = stripBrackets(sg).split(';').flatMap((seg) => seg.split(',')).flatMap((seg) => seg.split(':')).map((seg) => seg.split(/\s[—–-]\s|\s[“"«]/)[0]);
         const hitAlt = (firstOnly ? alts.slice(0, 1) : alts).find((alt) => res.some((r) => r.test(alt)));
         const t = hitAlt ? tidy(hitAlt) : '';
         return t.length >= 2 ? t : '';
@@ -607,7 +609,7 @@ const byKey = new Map<string, number[]>(); // key of a head → lemma numbers
       // a pass BEFORE those two: an alternative that IS the keyword (a leading "to ", "a ", "an ", "the " allowed, nothing else) wins over a sense that merely holds it
       // only the reviewer's FIRST keyword may win this way (a later keyword must not overturn the order the reviewer gave), and a verb's alternative must be a verb gloss
       const isKeyword = (sg: string, verb: boolean): string => {
-        const alts = stripBrackets(sg).split(';').flatMap((seg) => seg.split(',')).flatMap((seg) => seg.split(':'));
+        const alts = stripBrackets(sg).split(';').flatMap((seg) => seg.split(',')).flatMap((seg) => seg.split(':')).map((seg) => seg.split(/\s[—–-]\s|\s[“"«]/)[0]);
         for (const alt of alts) {
           const bare = alt.trim().replace(/^(?:to|a|an|the)\s+/i, '').trim().toLowerCase();
           if (verb && !/^\s*to\s/i.test(alt)) continue;

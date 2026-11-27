@@ -37,6 +37,7 @@ import { arKeyIsPartial, lookupArabicForm, lookupArabicLemma } from './index-sto
 import { arFeaturesOfCode } from './tags';
 import { arKey, arLoose, packVocal, tashkilLevel, vocalMatch } from './text';
 import { AR_PREFERRED } from './generated/preferences';
+import reviewedTwins from './preferences-reviewed.json';
 import { AR_ANALYZER, AR_SOURCE_IDS } from './version';
 
 type Cand = AnalysisCandidate;
@@ -48,6 +49,8 @@ let CURRENT_RULE = '';
 export function arRuleLogging(on: boolean): void { LOGGING = on; if (on) AR_RULE_LOG.length = 0; }
 
 const SHADDA = '\u0651';
+/** Pairs of verb lexemes the reviewed twin list holds as balanced (عَجِبَ / أَعْجَبَ …): never decided by counts. */
+const REVIEWED_BALANCED: ReadonlyArray<readonly [string, string]> = (reviewedTwins as unknown as { balanced: Array<[string, string]> }).balanced.flatMap(([x, y]) => [[x, y], [y, x]] as const);
 /** The id of a reading's lexeme as the index and the preference table write it ("كَتَبَ|VERB"). */
 const lexemeId = (c: Cand): string => `${c.lemma ?? ''}|${c.pos ?? ''}`;
 /** Is lexeme `winner` reviewed as preferred over lexeme `loser` (generated/preferences.ts: the loser's row lists the winners)? */
@@ -225,6 +228,8 @@ export class ArSentence {
       const ownSpelling = arLoose(surfKey) === arLoose(`${conj}${key}`);
       // فَقَدْ is also "he lost": a chain with فَ before قَدْ is never certain by its spelling
       const fa = pre.some((p) => p.lemma === 'فَ') && key === 'قد';
+      // a closed-class spelling is never decided for ANOTHER word reached through a loose spelling (إذا for إِذَنْ via إذًا); verbs are inflected, their lemma is not the spelling
+      if (!ownSpelling && !G.isPos(c, 'VERB')) continue;
       const certain = (cs[0] === c && c.confidence >= 0.5) || (ownSpelling && !!safe && safe.has(key) && !fa);
       return { c, certain, key };
     }
@@ -418,6 +423,8 @@ function chooseJussive(s: ArSentence, j: number, name: string, only: (c: Cand) =
   // the reviewed preferences first, then a verb at least five times as frequent as every other
   const pick = settleLexemes(imp, s.keys[j]);
   if (pick) { s.decide(j, (c) => isJus(c) && G.lexemeOf(c) === pick.lexeme, `after ${name}: jussive, and this verb is reviewed as the likelier of those with a jussive cell on this spelling`); return; }
+  // counts do not tell verb twins apart (عَجِبَ / أَعْجَبَ spell alike in the imperfect, and a Form IV verb shares its keys): only the reviewed preferences decide there
+  { const ids = [...lexes.values()].map((g) => lexemeId(g[0])); if (REVIEWED_BALANCED.some(([x, y]) => ids.includes(x) && ids.includes(y))) return; }
   const ranked = [...lexes.entries()].map(([k, g]) => [k, Math.max(...g.map(countOf))] as const).sort((x, y) => y[1] - x[1]);
   if (ranked[0][1] > 0 && ranked[0][1] >= 5 * Math.max(ranked[1][1], 1)) s.decide(j, (c) => isJus(c) && G.lexemeOf(c) === ranked[0][0], `after ${name}: jussive, and this is by far the commonest verb with a jussive cell on this spelling`);
 }
@@ -561,6 +568,28 @@ function ruleLa(s: ArSentence): void {
         s.dirty[j] = true;
       }
     }
+  }
+}
+
+// ───────────────────────────── ما before زَالَ and its sisters ─────────────────────────────
+
+/** The forms (keys) of the verbs that are negated by a ما before them: مَا زَالَ, مَا بَرِحَ, مَا انْفَكَّ, مَا فَتِئَ, مَا دَامَ ("still", "as long as"). */
+const MA_SISTERS = new Set(['زال', 'زالت', 'زالوا', 'زالا', 'زالتا', 'يزال', 'تزال', 'نزال', 'يزالون', 'تزالون', 'يزالان', 'تزالان', 'دام', 'دامت', 'داموا', 'دمت', 'دمنا', 'يدوم',
+  'برح', 'برحت', 'يبرح', 'تبرح', 'انفك', 'انفكت', 'ينفك', 'تنفك', 'فتئ', 'فتئت', 'يفتأ', 'تفتأ']);
+/**
+ * مَا directly before زَالَ / يَزَالُ / دَامَ / بَرِحَ / اِنْفَكَّ / فَتِئَ (any person) is the particle of that expression, not "what": the particle مَا (PART) is credited when the
+ * index has it, otherwise the word is left undecided (the pronoun reading goes under 0.5). Elsewhere مَا is not touched. Window: the next word.
+ */
+function ruleMaNegative(s: ArSentence): void {
+  for (let i = 0; i < s.n; i++) {
+    if (!s.word[i] || !s.edit[i]) continue;
+    const j = s.next(i);
+    if (j < 0 || !MA_SISTERS.has(s.keys[j]) || !/^[وف]?ما$/.test(s.keys[i])) continue;
+    const isPart = (c: Cand): boolean => G.lemmaKeyOf(c) === 'ما' && G.isPos(c, 'PART') && !G.hasSuffix(c);
+    if (s.any(i, isPart)) { s.decide(i, isPart, 'before زَالَ and its sisters مَا is their particle ("still"), not "what"'); continue; }
+    let changed = false;
+    for (const c of s.cands[i]) if (G.lemmaKeyOf(c) === 'ما' && c.confidence > 0.45) { c.confidence = 0.45; ctx(c, 'Before زَالَ and its sisters مَا is their particle, not "what": left open.'); changed = true; }
+    if (changed) s.resort(i);
   }
 }
 
@@ -1255,6 +1284,7 @@ export function orderArSentence(tokens: readonly RawToken[], base: readonly Cand
   CURRENT_RULE = 'ruleMoodParticles'; ruleMoodParticles(s);
   CURRENT_RULE = 'ruleLa'; ruleLa(s);
   CURRENT_RULE = 'ruleJussiveOnlyOutside'; ruleJussiveOnlyOutside(s);
+  CURRENT_RULE = 'ruleMaNegative'; ruleMaNegative(s);
   CURRENT_RULE = 'ruleVerbParticles'; ruleVerbParticles(s);
   CURRENT_RULE = 'rulePrepositions'; rulePrepositions(s);
   CURRENT_RULE = 'ruleConstructHeads'; ruleConstructHeads(s);

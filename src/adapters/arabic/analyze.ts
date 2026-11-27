@@ -27,7 +27,7 @@
 import type { AnalysisCandidate, PartOfSpeech, RawToken, WordPart } from '../../core';
 import { AR_IDENTITIES, arMainOf, arMainOfVocalized } from './identities';
 import { arSegmentations, arProcliticAllows, arEncliticAllows, type ArSegmentation, type Clitic } from './clitics';
-import { arClosedFor, arClosedGloss, arClosedLooseFor, AR_PRIORS, type ArClosedEntry } from './closed';
+import { arClosedFor, arClosedGloss, arHandGlossExact, arClosedLooseFor, AR_PRIORS, type ArClosedEntry } from './closed';
 import { arGuess } from './guess';
 import { AR_PREFERRED } from './generated/preferences';
 import { arKeyIsPartial, lookupArabicForm, lookupArabicLemma, lemmaOfId, lexOf, type ArIndexHit, type ArLemmaRow } from './index-store';
@@ -890,8 +890,8 @@ function toCandidate(m: Merged, p: Printed, confidence: number, identity: string
   }
   const c: AnalysisCandidate = { lemma, pos: m.pos, morph: { ...m.morph }, confidence: round2(confidence), origin: seg.proclitics.length || seg.enclitics.length ? 'rule' : row0.hand ? 'hand' : 'dictionary', sourceId: row0.hand ? AR_SOURCE_IDS.closed : seg.proclitics.length || seg.enclitics.length ? AR_SOURCE_IDS.rules : AR_SOURCE_IDS.tables };
   // a closed-class word: the HAND gloss (a short plain meaning), the index's description goes to notes.otherMeanings
-  if (CLOSED_POS.has(m.pos) || m.pos === 'ADV') {
-    const hand = arClosedGloss(m.head, m.pos) ?? row0.hand?.gloss;
+  if (CLOSED_POS.has(m.pos) || m.pos === 'ADV' || arHandGlossExact(m.head, m.pos)) {
+    const hand = (CLOSED_POS.has(m.pos) || m.pos === 'ADV' ? arClosedGloss(m.head, m.pos) : arHandGlossExact(m.head, m.pos)) ?? row0.hand?.gloss;
     if (hand) {
       if (gloss && gloss !== hand) notes.otherMeanings = [...new Set([...(notes.otherMeanings ? String(notes.otherMeanings).split('; ') : []), gloss])].join('; ');
       gloss = hand;

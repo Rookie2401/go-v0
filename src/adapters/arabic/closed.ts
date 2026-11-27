@@ -214,6 +214,8 @@ AR_CLOSED[arKey('يَأَيُّهَا')] = AR_CLOSED[arKey('يَاأَيُّهَ
  * an Arabist. Key: "<vocalized head>|<POS>". The adverbs are the closed-class lemmas among the 2,000 commonest lexemes of the index.
  */
 const EXTRA_GLOSSES: Readonly<Record<string, string>> = {
+  // auditor finding AF (2026-11-27): words whose dictionary sense is only a usage description or a cut phrase; reviewed by the lead
+  'سِوًى|NOUN': 'except, other than', 'أَثْنَاءَ|ADV': 'during', 'أَثْنَاءَ|ADP': 'during', 'أَثْنَاءَ|NOUN': 'during',
   'بِ|ADP': 'in, with, by', 'لِ|ADP': 'to, for', 'كَ|ADP': 'like, as', 'وَفْقَ|ADV': 'according to', 'وَفْقَ|ADP': 'according to',
   'مَا|ADV': 'as long as; whenever', 'حَسَنًا|ADV': 'well; okay', 'هُنَا|ADV': 'here', 'نَعَمْ|ADV': 'yes', 'هُنَاكَ|ADV': 'there', 'فَقَطْ|ADV': 'only',
   'الْآنَ|ADV': 'now', 'لَنْ|ADV': 'will not (future)', 'كَيْفَ|ADV': 'how?', 'جِدًّا|ADV': 'very', 'لِمَاذَا|ADV': 'why?', 'حَتَّى|ADV': 'even; until',
@@ -250,6 +252,10 @@ export function arClosedGloss(head: string, pos: string): string | undefined {
     if (g) return g;
   }
   return undefined;
+}
+/** The hand gloss given for exactly this lemma id (head and part of speech) in the reviewed table, for an OPEN-class word whose dictionary sense is not a meaning (سِوًى); undefined when none. */
+export function arHandGlossExact(head: string, pos: string): string | undefined {
+  return Object.prototype.hasOwnProperty.call(EXTRA_GLOSSES, `${head.normalize('NFC')}|${pos}`) ? EXTRA_GLOSSES[`${head.normalize('NFC')}|${pos}`] : undefined;
 }
 /** Every hand gloss (lemma id → gloss), for the table the maintainers read before it ships. */
 export const arClosedGlossTable = (): Array<[string, string]> => {

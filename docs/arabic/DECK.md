@@ -36,6 +36,7 @@ Every reason of `AR_DECK_LIMITS`, which kind it is, whether it sets `notes.revie
 | pronoun-form | reading | yes | form id |
 | numbered-gloss (safety net) | reading | yes | form id |
 | structural-prior (a word in a sentence settled by a structural prior alone) | reading | yes | form id |
+| sibling-not-lead (held only by a non-lead homonym sibling: لا تزال) | reading | yes | form id |
 | sense-unreviewed | meaning | no | **lemma id** |
 | gloss-pos | meaning | no | **lemma id** |
 | no-meaning | meaning | no | **lemma id** |
@@ -51,7 +52,7 @@ Each rule also writes `notes.reviewKind` (the shared gate's class of reason, whi
 | undecided-entry | numbered-gloss |
 | low-confidence | guess, restored-spelling, structural-prior |
 | known-limit | known-misread-form, known-misread-lemma |
-| other-listed-word | plural-entry, pronoun-form |
+| other-listed-word | plural-entry, pronoun-form, sibling-not-lead |
 | other-variety | dialect |
 | meaning-unreviewed | sense-unreviewed, gloss-pos (kind 2: no reviewGate) |
 

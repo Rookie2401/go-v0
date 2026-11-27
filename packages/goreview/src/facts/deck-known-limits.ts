@@ -15,7 +15,6 @@ export const DECK_KNOWN_LIMITS: Readonly<Record<string, Readonly<Record<string, 
   // Arabic: units a reader found false that no rule catches (the generated sweep list, generated/deck-limits.ts, is reached separately by deckKnownLimit)
   ar: list([
     "lemma:ar:طَلْق:NOUN",
-    "lemma:ar:صَبَاح:NOUN",
   ]),
   arc: list([
     "lemma:arc:לָהֵן:CONJ",

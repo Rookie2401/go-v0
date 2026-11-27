@@ -1,13 +1,6 @@
 {
  "readBy": "AI models (Claude), not native speakers; each card judged once, in the first sentence it came from, against the brief in docs/ecosystem/DECK-GATE.md. 2026-11-26. Where the sentence's word has a gold lemma and meaning in test/fixtures/arabic/deck-audit.json (written by the same agents that wrote the text) the card was read against it first; the rest were read by hand.",
- "residual": [
-  "lemma:ar:أَسِيَ:VERB",
-  "lemma:ar:تَدَخَّلَ:VERB",
-  "lemma:ar:زَالَ:VERB",
-  "lemma:ar:سَارِق:NOUN",
-  "lemma:ar:مَقْصُور:ADJ",
-  "lemma:ar:وَاتَرَ:VERB"
- ],
+ "residual": [],
  "cards": {
   "form:ar:أحد": [
    {

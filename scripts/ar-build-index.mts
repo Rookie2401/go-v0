@@ -255,9 +255,10 @@ function stripBrackets(g: string): string {
   for (const ch of g) { if (ch === '(' || ch === '[') depth++; else if ((ch === ')' || ch === ']') && depth > 0) depth--; else if (depth === 0) out += ch; }
   return out;
 }
-function tidy(t: string): string {
+/** Spaces and trailing punctuation tidied; a trailing function word ("to look for" -> "to look") is stripped ONLY from text that was cut at the length limit (`cut`), never from a complete alternative of the source. */
+function tidy(t: string, cut = false): string {
   let x = t.replace(/\s+/g, ' ').replace(/\s+([,;:.])/g, '$1').trim();
-  for (let i = 0; i < 4; i++) { const y = x.replace(/[\s,;:.\-–—]+$/g, '').replace(DANGLING, '').trim(); if (y === x) break; x = y; }
+  for (let i = 0; i < 4; i++) { let y = x.replace(/[\s,;:.\-–—]+$/g, ''); if (cut) y = y.replace(DANGLING, ''); y = y.trim(); if (y === x) break; x = y; }
   return x;
 }
 /** One gloss made short: no bracketed segments, cut at the first ";", at most two comma-separated alternatives, never cut inside a word, never an unclosed bracket. */
@@ -269,7 +270,7 @@ function cleanGloss(raw: string, alts = 2): string {
   { const c = t.indexOf(':'); if (c > 0) { const before = tidy(t.slice(0, c)); if (before.length >= 2) t = before; else t = t.slice(c + 1); } }
   t = t.split(',').slice(0, alts).join(',');
   t = tidy(t);
-  if (t.length > 60) { const sp = t.lastIndexOf(' ', 60); t = tidy(sp > 10 ? t.slice(0, sp) : t.slice(0, 60)); }
+  if (t.length > 60) { const sp = t.lastIndexOf(' ', 60); t = tidy(sp > 10 ? t.slice(0, sp) : t.slice(0, 60), true); }
   return t.length >= 2 ? t : '';
 }
 /** The fallback: the raw first gloss cut at a word boundary under 60 characters, its brackets balanced (an unclosed one cuts the text before it). */
@@ -278,8 +279,9 @@ function rawGloss(raw: string): string {
   const open = Math.max(t.lastIndexOf('('), t.lastIndexOf('['));
   const close = Math.max(t.lastIndexOf(')'), t.lastIndexOf(']'));
   if (open > close) t = t.slice(0, open);
-  if (t.length > 59) { const sp = t.lastIndexOf(' ', 59); t = sp > 10 ? t.slice(0, sp) : t.slice(0, 59); }
-  return tidy(t);
+  const long = t.length > 59;
+  if (long) { const sp = t.lastIndexOf(' ', 59); t = sp > 10 ? t.slice(0, sp) : t.slice(0, 59); }
+  return tidy(t, long);
 }
 /** Source labels that keep a sense from LEADING an entry when an unlabelled sense exists: the source lists senses historically, and these mark the old, the rare, the regional and the figurative. */
 const SKIP_LABELS = new Set(['obsolete', 'archaic', 'dated', 'historical', 'rare', 'uncommon', 'poetic', 'literary', 'dialectal', 'regional', 'obsolete-form', 'misspelling', 'nonstandard', 'proscribed', 'figuratively', 'figurative', 'Egypt', 'Egyptian', 'Levantine', 'Gulf', 'Maghrebi', 'Maghreb', 'Morocco', 'Moroccan', 'Iraq', 'Iraqi', 'Sudan', 'Sudanese', 'Hijazi', 'Yemen', 'Yemeni', 'Kuwait', 'Palestine', 'Palestinian', 'Mauritania', 'al-Andalus', 'Algeria', 'Tunisia', 'Libya', 'Syria', 'Lebanon', 'Jordan', 'Saudi Arabia', 'Oman', 'UAE', 'Bahrain', 'Qatar', 'Najdi', 'Bedouin', 'colloquial', 'slang']);
@@ -312,7 +314,9 @@ function chooseGlossInner(real: Record<string, unknown>[], pos: string, useLabel
   const withGloss = pool.slice(0, 3);
   const cands = withGloss.map((x) => ({ c: cleanGloss(strs(x.glosses)[0]), x })).filter((o) => o.c.length >= 2);
   // One only when the source entry has exactly ONE sense counting the pointer senses (a sense whose first gloss line is "elative degree of X:" with the real gloss on a second line counts too) (elative degree of, plural of, verbal noun of, alternative form of, any form-of / alt-of): a pointer set aside is a sense the card would hide
-  const klass = (lead: Record<string, unknown> | undefined): 'One' | 'Lab' | 'Ord' => (body.length === 1 && pointers === 0 && all.length === body.length ? 'One' : lead && lead === pool[0] && all.indexOf(lead) > 0 ? 'Lab' : 'Ord');
+  // a single sense that only DESCRIBES a use ("used in the construct state in ways which are translated …") is no meaning to drill: not One
+  const usageOnly = body.length === 1 && /^\s*(?:\([^)]*\)\s*)?used\s+(?:in|as|with|to|for|only|after|before|mostly|chiefly|especially)\b/i.test(strs(body[0].glosses)[0] ?? '');
+  const klass = (lead: Record<string, unknown> | undefined): 'One' | 'Lab' | 'Ord' => (body.length === 1 && pointers === 0 && all.length === body.length && !usageOnly ? 'One' : lead && lead === pool[0] && all.indexOf(lead) > 0 ? 'Lab' : 'Ord');
   if (!cands.length) return { text: rawGloss(strs(withGloss[0].glosses)[0]), cls: klass(undefined) };
   let first = cands[0].c;
   // a long first sense is tried with its first alternative alone ("day, period from sunrise to sunset" → "day")

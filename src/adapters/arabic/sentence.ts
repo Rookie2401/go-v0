@@ -195,6 +195,9 @@ export class ArSentence {
     try { return vocalMatch(surf, arKey(v), packVocal(v)).compatible; } catch { return undefined; }
   }
 
+  /** Puts the readings of word `i` in the order of their confidences again (stable). */
+  resort(i: number): void { this.sort(i); }
+
   private sort(i: number): void {
     this.cands[i].sort((a, b) => b.confidence - a.confidence); // stable: ties keep the analyser's order
     this.dirty[i] = true;
@@ -417,6 +420,51 @@ function chooseJussive(s: ArSentence, j: number, name: string, only: (c: Cand) =
   if (ranked[0][1] > 0 && ranked[0][1] >= 5 * Math.max(ranked[1][1], 1)) s.decide(j, (c) => isJus(c) && G.lexemeOf(c) === ranked[0][0], `after ${name}: jussive, and this is by far the commonest verb with a jussive cell on this spelling`);
 }
 
+// ───────────────────────────── a form that exists only as a jussive ─────────────────────────────
+
+/** A reading whose mood is the jussive and nothing else: a shortened hollow or defective form (يَخَفْ from خَافَ, يَبْقَ from بَقِيَ). */
+const jussiveOnly = (c: Cand): boolean => G.isImperfect(c) && c.morph.Mood === 'Jus' && !isLamOfCommandCut(c);
+const isLamOfCommandCut = (c: Cand): boolean => !!c.parts?.some((q) => q.kind === 'prefix' && /command/.test(q.role ?? ''));
+const JUSSIVE_LICENSERS = new Set(['لم', 'لما', 'لا', 'إن', 'ان', 'من', 'ما', 'مهما', 'متى', 'أين', 'اين', 'أينما', 'اينما', 'حيثما', 'كيفما', 'أي', 'اي', 'إذما', 'اذما', 'كلما', 'فمن', 'فما']);
+
+/**
+ * After أَنْ, لَنْ, كَيْ, لِكَيْ, حَتَّى (before a verb) the verb is SUBJUNCTIVE, never jussive: a reading that exists only as a jussive (يَخَفْ of خَافَ) is impossible
+ * there, so it drops to 0.35 and a rival reading leads. When exactly one lexeme is left with a subjunctive cell it is the word (the usual decision rules apply).
+ * Window: the verb right after the particle (the caller has said the particle is that one).
+ */
+function restrictToSubjunctive(s: ArSentence, j: number, name: string): void {
+  if (!s.edit[j] || tashkilLevel(s.surface(j)) !== 'none') return;
+  const imp = s.cands[j].filter(G.isImperfect);
+  const lexSub = new Set(imp.filter((c) => G.hasVal(c, 'Mood', 'Sub')).map(G.lexemeOf));
+  if (!lexSub.size) return;
+  let changed = false;
+  for (const c of imp) if (jussiveOnly(c) && !lexSub.has(G.lexemeOf(c)) && c.confidence > 0.35) { c.confidence = 0.35; ctx(c, `After ${name} a verb is subjunctive, never jussive: a form that exists only as a jussive is impossible here.`); changed = true; }
+  if (changed) s.resort(j);
+  if (lexSub.size === 1) s.decide(j, (c) => G.isImperfect(c) && G.hasVal(c, 'Mood', 'Sub'), `after ${name} the verb has a subjunctive cell on this spelling, and only this verb does`);
+}
+
+/**
+ * A form that exists ONLY as a jussive is possible after لَمْ, لَمَّا, the forbidding لَا, a lām of command or in a condition (إِنْ, مَنْ, مَا, مَهْمَا, مَتَى, أَيْنَمَا …) — within three
+ * words of it in the clause. Anywhere else it drops to 0.35 when the word has another reading, which then leads. A page that prints its vowels is the page's.
+ */
+function ruleJussiveOnlyOutside(s: ArSentence): void {
+  for (let j = 0; j < s.n; j++) {
+    if (!s.word[j] || !s.edit[j] || tashkilLevel(s.surface(j)) !== 'none') continue;
+    const only = s.cands[j].filter((c) => jussiveOnly(c) && c.confidence > 0.35);
+    if (!only.length || only.length === s.cands[j].length) continue;
+    let licensed = false;
+    for (let k = j, steps = 0; steps < 3 && !licensed; steps++) {
+      k = s.prev(k);
+      if (k < 0) break;
+      const key = s.keys[k];
+      if (JUSSIVE_LICENSERS.has(key) || (key.length > 2 && /^[وف]/.test(key) && JUSSIVE_LICENSERS.has(key.slice(1)))) licensed = true;
+    }
+    if (licensed) continue;
+    for (const c of only) { c.confidence = 0.35; ctx(c, 'A form that exists only as a jussive needs لَمْ, a forbidding لَا, a lām of command or a condition before it.'); }
+    s.resort(j);
+  }
+}
+
 // ───────────────────────────── rule a: particles that govern a mood ─────────────────────────────
 
 /** The reading is the particle of the table (a spelling with a shadda is another particle: أَنْ against أَنَّ, لَمَّا against لِمَا). */
@@ -450,6 +498,7 @@ function ruleMoodParticles(s: ArSentence): void {
     } else if (!verbOnly) continue;
     else s.prefer(j, G.isImperfect, `after ${name} a verb stands`);
     s.noteMood(j, spec.mood, `after ${name}`);
+    if (spec.mood === 'Sub' && (verbOnly || (spec.certain && t.certain))) restrictToSubjunctive(s, j, name);
     if (spec.mood === 'Jus' && spec.certain && t.certain) chooseJussive(s, j, name);
     // the particle itself: followed by a verb-only word it is the particle (and not the verb or noun it is also spelled like)
     if (verbOnly) s.decide(i, (c) => !!c.lemma && !G.isPos(c, 'NOUN', 'ADJ', 'PROPN', 'NUM', 'VERB') && isMoodParticle(G.lemmaKeyOf(c), c) && !G.hasSuffix(c), `a verb follows, so this is the particle ${name}`);
@@ -1171,6 +1220,7 @@ export function orderArSentence(tokens: readonly RawToken[], base: readonly Cand
   CURRENT_RULE = 'ruleAnInna'; ruleAnInna(s);
   CURRENT_RULE = 'ruleMoodParticles'; ruleMoodParticles(s);
   CURRENT_RULE = 'ruleLa'; ruleLa(s);
+  CURRENT_RULE = 'ruleJussiveOnlyOutside'; ruleJussiveOnlyOutside(s);
   CURRENT_RULE = 'ruleVerbParticles'; ruleVerbParticles(s);
   CURRENT_RULE = 'rulePrepositions'; rulePrepositions(s);
   CURRENT_RULE = 'ruleConstructHeads'; ruleConstructHeads(s);

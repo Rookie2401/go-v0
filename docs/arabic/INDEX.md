@@ -14,7 +14,7 @@ Lemma string convention: `arHeadForm` of `arabic/text.ts`.
 | pages that are only alternative spellings (alt-of) | 1,021 |
 | participle entries (verb class in the extract, head "active / passive participle of X"; made ADJ with VerbForm=Part, Voice, Of=verb) / of those with Of | 14 / 10 |
 | lemma glosses changed by the clean-gloss rule (batch 6; counted before the reviewed choices) | 13,202 |
-| gloss trust class (Sense= in lex): Rev (a reviewed choice matched) / One (a single real sense) / Lab (the lead stands after labelled senses) / Ord (the source's order, unreviewed): over all lemma ids with rows / over the 2,000 highest-count lexemes (leads) | 1276 / 15211 / 120 / 8694; 1147 / 688 / 1 / 164 |
+| gloss trust class (Sense= in lex): Rev (a reviewed choice matched) / One (a single real sense) / Lab (the lead stands after labelled senses) / Ord (the source's order, unreviewed): over all lemma ids with rows / over the 2,000 highest-count lexemes (leads) | 1276 / 13724 / 140 / 10161; 1145 / 599 / 5 / 251 |
 | lexemes with homonym siblings (Homonyms=N on each id, Lead=Yes on the lead) / glosses that differ from the batch-6 choice because of the sense labels | 787 / 172 |
 | reviewed gloss choices (gloss-choices.json): lexemes that took one / lexemes where no sense matched (keeping the default) | 1,276 / 7: أَنَا|PRON, زَهْرَة|NOUN, زَوْج|NOUN, فَقِير|ADJ, قَرْيَة|NOUN, مَتَى|ADP, وَاحِد|PRON |
 | lemma ids by part of speech | NOUN 12,758, VERB 7,366, ADJ 3,814, PROPN 2,357, ADV 366, ADP 113, INTJ 90, CONJ 80, NUM 53, PRON 44, PART 42, DET 6 |
@@ -43,7 +43,7 @@ Lemma string convention: `arHeadForm` of `arabic/text.ts`.
 | verb-form lines that gave no vocalized form (page word used) / form-of senses with no target word / verb-form lines that did not parse / whose form is another key / pages without a form / form pages whose own table mixed senses | 838 / 0 / 161 / 0 / 10 / 36 |
 | Gender of nouns: from the canonical row's labels / from the head template | 13,861 / 767 |
 | Decl: lemmas whose rows agree on one class / that mix classes (no Decl) | 14,308 / 2,698 |
-| lex features on lemma ids | Sense=One 16,890, Decl=Trip 13,087, Gender=Masc 9,293, Sense=Ord 8,801, Gender=Fem 5,219, Form=I 2,870, Homonyms=2 1,360, Sense=Rev 1,276, Form=II 1,184, Reg=Cla 812, Lead=Yes 787, Decl=Dip 780, Form=IV 659, Form=V 570, Form=VIII 467, Decl=Indecl 440, Form=III 333, Form=X 309, Form=VI 308, Form=Iq 237, Homonyms=3 237, Form=VII 172, Sense=Lab 122, Gender=Fem,Masc 115, Homonyms=4 92, Form=IIq 80, Homonyms=5 25, Form=IX 23, Form=IVq 20, Form=XII 19, Form=IIIq 15, VerbForm=Part 14, Form=XI 13, Voice=Act 6, Reg=Msa 4, Voice=Pass 4, Form=XIII 3, Of=بَسَطَ 1, Of=ذَهَبَ 1, Of=رَاحَ 1 |
+| lex features on lemma ids | Sense=One 15,401, Decl=Trip 13,087, Sense=Ord 10,270, Gender=Masc 9,293, Gender=Fem 5,219, Form=I 2,870, Homonyms=2 1,360, Sense=Rev 1,276, Form=II 1,184, Reg=Cla 812, Lead=Yes 787, Decl=Dip 780, Form=IV 659, Form=V 570, Form=VIII 467, Decl=Indecl 440, Form=III 333, Form=X 309, Form=VI 308, Form=Iq 237, Homonyms=3 237, Form=VII 172, Sense=Lab 142, Gender=Fem,Masc 115, Homonyms=4 92, Form=IIq 80, Homonyms=5 25, Form=IX 23, Form=IVq 20, Form=XII 19, Form=IIIq 15, VerbForm=Part 14, Form=XI 13, Voice=Act 6, Reg=Msa 4, Voice=Pass 4, Form=XIII 3, Of=بَسَطَ 1, Of=ذَهَبَ 1, Of=رَاحَ 1 |
 | Reg=Cla (every sense Classical, archaic or obsolete) / Reg=Msa (every sense Modern) — lemma entries | 812 / 4 |
 | roots (the ar-root / ar-rootbox template, else the root category of the senses; malformed templates ignored: 0) | NOUN 4,688/12,758 (36.7 %), VERB 4,745/7,366 (64.4 %), ADJ 1,464/3,814 (38.4 %), PROPN 217/2,357 (9.2 %), ADV 55/366 (15.0 %), ADP 28/113 (24.8 %), INTJ 11/90 (12.2 %), CONJ 7/80 (8.8 %), NUM 11/53 (20.8 %), PRON 0/44 (0.0 %), PART 3/42 (7.1 %), DET 0/6 (0.0 %) |
 | shards | 179 (prefixes of up to 3 letters; limit 1,500,000 bytes of JSON) |
@@ -59,11 +59,11 @@ Lemma string convention: `arHeadForm` of `arabic/text.ts`.
 | core | 1676 lemmas (255 of closed classes, 2 seeded), 2597 keys, 12771 rows, 499,491 bytes of JSON (budget 500,000) |
 | core token coverage on ar_50k (running words whose key is a core key) | 55.94 % of 149,102,962 (clitic forms are not keys) |
 | identity checks accepted through a numbered sibling of the main id / through the loose fold | 2 / 2 (counted apart from the clean ones above) |
-| lexeme preferences (--identities): candidate loser/winner pairs / dropped as one lexeme (same head, same part-of-speech group) / dropped as both directions (b) / dropped as balanced (c) / closed-class loser to open winner dropped (d) | 1,905 / 75 / 7 / 110 / 2 |
-| reviewed preferences (preferences-reviewed.json) merged / derived pairs they overrode / pairs removed by its balanced list / lexemes not in the index (skipped); derived pairs before the merge | 125 / 0 / 0 / 0; 1,291 |
-| preferences emitted: pairs / distinct losers / distinct winners | 1,397 / 1,236 / 601 |
-| lemma ids with count 0 (counts by lexeme group: own keys of the group, plus the weaker decided-key term, weight 0.25; before the group rule 22,516) | 21,102 of 27,089 |
-| identities file | src/adapters/arabic/identities.json: 867 keys credited to their main lemma; checked clean 866, failed 11 (10 naming a lemma id not in the index) |
+| lexeme preferences (--identities): candidate loser/winner pairs / dropped as one lexeme (same head, same part-of-speech group) / dropped as both directions (b) / dropped as balanced (c) / closed-class loser to open winner dropped (d) | 1,904 / 75 / 7 / 109 / 2 |
+| reviewed preferences (preferences-reviewed.json) merged / derived pairs they overrode / pairs removed by its balanced list / lexemes not in the index (skipped); derived pairs before the merge | 103 / 0 / 5 / 0; 1,291 |
+| preferences emitted: pairs / distinct losers / distinct winners | 1,375 / 1,218 / 589 |
+| lemma ids with count 0 (counts by lexeme group: own keys of the group, plus the weaker decided-key term, weight 0.25; before the group rule 22,516) | 21,103 of 27,089 |
+| identities file | src/adapters/arabic/identities.json: 866 keys credited to their main lemma; checked clean 865, failed 11 (10 naming a lemma id not in the index) |
 
 ## Count (order of readings)
 

@@ -660,7 +660,11 @@ function prefers(l: Merged, w: Merged): boolean {
 function decide(key: string, merged: Merged[], printed: Printed, partial = false): Verdict {
   const lexemes = [...new Set(merged.map((m) => m.lexeme))];
   const v: Verdict = { top: new Set(), cap: new Map() };
-  if (lexemes.length <= 1) return v;
+  if (lexemes.length <= 1) {
+    // a key the reviewed list holds as balanced (null) is not credited by one فَعَّال noun the index happens to hold (an occupation noun: خَضَّار "greengrocer", حَمَّام, نَجَّار …), since the plain noun of the same letters may be missing: the index may lack the other (the extract has no خُضَار "vegetables", only the greengrocer خَضَّار)
+    if (lexemes.length === 1 && !printed.any && !partial && (arMainOf(key) === null || merged.some((m) => arMainOf(m.stemKey) === null)) && merged.every((m) => m.pos === 'NOUN' && /^..ا.$/.test(m.stemKey) && m.head.includes('ّ'))) v.identity = 'undecided';
+    return v;
+  }
   // readings reached only through the loose fold are not rivals of a lexeme read as written: one direct lexeme is the word
   const directLexemes = new Set(merged.filter((m) => m.rows.some((r) => !r.viaLoose)).map((m) => m.lexeme));
   if (directLexemes.size === 1 && arMainOf(key) !== null && !(arMainOf(key) && arMainOf(key) !== undefined)) return v;

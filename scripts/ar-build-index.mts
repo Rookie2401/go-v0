@@ -185,7 +185,7 @@ const unresolved = new Map<string, number>();
 
 type Cell = [form: string, code: number];
 interface Ent {
-  pos: string; word: string; head: string; headRaw: string; etym: number; gloss: string; glossOld: string; senseGlosses: string[]; senseLines: string[]; senseClass: string; order: number;
+  pos: string; word: string; head: string; headRaw: string; etym: number; gloss: string; glossOld: string; senseGlosses: string[]; senseLines: string[]; senseClass: string; wasOne?: boolean; order: number;
   lex: Record<string, string>; root?: string; table: Cell[]; headline: Cell[]; citation?: number; lemma: number;
 }
 interface PageTarget { target: string; tags: string[]; form?: string }
@@ -289,13 +289,17 @@ const isLabelled = (x: Record<string, unknown>): boolean => {
   if (t.includes('Classical') && !t.includes('Modern') && !t.includes('Standard')) return true;
   return FORM_LINE.test(strs(x.glosses)[0] ?? '');
 };
-interface GlossChoice { text: string; cls: 'One' | 'Lab' | 'Ord' }
+interface GlossChoice { text: string; cls: 'One' | 'Lab' | 'Ord'; /** The old rule would have said One: the entry has pointer senses (form-of / alt-of) that were set aside, so it is not a single sense. */ wasOne?: boolean }
 /**
  * The sense of the gloss: among the senses, those the source labels as obsolete / archaic / dialectal … and the form-of lines do not lead while an unlabelled sense exists;
  * the first remaining sense leads unless it is long (or, for a verb, not a "to …" phrase) and one of the first three remaining senses is shorter and fit.
  * Class: One (a single real sense once form lines are set aside), Lab (several senses; the lead stands after labelled ones), Ord (the source's order).
  */
-function chooseGloss(real: Record<string, unknown>[], pos: string, useLabels = true): GlossChoice {
+function chooseGloss(real: Record<string, unknown>[], pos: string, useLabels = true, pointers = 0): GlossChoice {
+  const r = chooseGlossInner(real, pos, useLabels, pointers);
+  return r.cls !== 'One' && real.filter((x) => strs(x.glosses).length && !strs(x.tags).includes('no-gloss')).filter((x) => !FORM_LINE.test(strs(x.glosses)[0] ?? '')).length === 1 ? { ...r, wasOne: true } : r;
+}
+function chooseGlossInner(real: Record<string, unknown>[], pos: string, useLabels: boolean, pointers: number): GlossChoice {
   const all = real.filter((x) => strs(x.glosses).length && !strs(x.tags).includes('no-gloss'));
   if (!all.length) return { text: '', cls: 'Ord' };
   const body = all.filter((x) => !FORM_LINE.test(strs(x.glosses)[0] ?? ''));
@@ -303,7 +307,8 @@ function chooseGloss(real: Record<string, unknown>[], pos: string, useLabels = t
   const pool = useLabels && free.length ? free : all;
   const withGloss = pool.slice(0, 3);
   const cands = withGloss.map((x) => ({ c: cleanGloss(strs(x.glosses)[0]), x })).filter((o) => o.c.length >= 2);
-  const klass = (lead: Record<string, unknown> | undefined): 'One' | 'Lab' | 'Ord' => (body.length === 1 ? 'One' : lead && lead === pool[0] && all.indexOf(lead) > 0 ? 'Lab' : 'Ord');
+  // One only when the source entry has exactly ONE sense counting the pointer senses (a sense whose first gloss line is "elative degree of X:" with the real gloss on a second line counts too) (elative degree of, plural of, verbal noun of, alternative form of, any form-of / alt-of): a pointer set aside is a sense the card would hide
+  const klass = (lead: Record<string, unknown> | undefined): 'One' | 'Lab' | 'Ord' => (body.length === 1 && pointers === 0 && all.length === body.length ? 'One' : lead && lead === pool[0] && all.indexOf(lead) > 0 ? 'Lab' : 'Ord');
   if (!cands.length) return { text: rawGloss(strs(withGloss[0].glosses)[0]), cls: klass(undefined) };
   let first = cands[0].c;
   // a long first sense is tried with its first alternative alone ("day, period from sunrise to sunset" → "day")
@@ -511,9 +516,9 @@ const EXP_BARE = /^#\s*([a-z][a-z/ -]*?)\s+of\s+(\S+)\s*\(/u;
         if (decls.size === 1) { lex.Decl = [...decls][0]; stats.declUniform++; } else if (decls.size > 1) stats.declMixed++;
         if (isCla) { lex.Reg = 'Cla'; stats.regCla++; } else if (isMsa) { lex.Reg = 'Msa'; stats.regMsa++; }
         const citeTags = canonTags.length ? canonTags : ['canonical'];
-        const cg = chooseGloss(real, lpos);
+        const cg = chooseGloss(real, lpos, true, formSenses.length);
         if (chooseGloss(real, lpos, false).text !== cg.text) stats.glossLabelChanged++;
-        ents.push({ pos: lpos, word, head: h.head, headRaw: h.head, etym: Number.isFinite(en) ? en : 9999, gloss: cg.text, senseClass: cg.cls, senseLines: real.filter((x) => strs(x.glosses).length).map((x) => `[${labelsOf(x).join(',')}] ${strs(x.glosses)[0]}`.slice(0, 70)), glossOld, senseGlosses: real.map((x) => strs(x.glosses)[0] ?? '').filter(Boolean), order, lex, root, table: tableCells, headline: cellsOf(grp.headline, true), citation: intern(citeTags), lemma: -1 });
+        ents.push({ pos: lpos, word, head: h.head, headRaw: h.head, etym: Number.isFinite(en) ? en : 9999, gloss: cg.text, senseClass: cg.cls, wasOne: cg.wasOne === true, senseLines: real.filter((x) => strs(x.glosses).length).map((x) => `[${labelsOf(x).join(',')}] ${strs(x.glosses)[0]}`.slice(0, 70)), glossOld, senseGlosses: real.map((x) => strs(x.glosses)[0] ?? '').filter(Boolean), order, lex, root, table: tableCells, headline: cellsOf(grp.headline, true), citation: intern(citeTags), lemma: -1 });
       }
     }
 
@@ -1024,6 +1029,14 @@ const classTop: Record<string, number> = { Rev: 0, One: 0, Lab: 0, Ord: 0 };
   for (const en of ents) if (!entOf.has(en.lemma)) entOf.set(en.lemma, en);
   const leads = [...leadOfLexeme.values()].filter((l) => ['NOUN', 'VERB', 'ADJ', 'ADV'].includes(lemmaRows[l][2]) && withRows[l]).sort((a, b) => lemmaRows[b][4] - lemmaRows[a][4] || (lemmaIds[a] < lemmaIds[b] ? -1 : 1)).slice(0, 2000);
   for (const l of leads) classTop[senseClassOf(l)] = (classTop[senseClassOf(l)] ?? 0) + 1;
+  {
+    // how many lemma ids lose the class One because the source entry also has pointer senses (printed once per build)
+    const changed = [...entOf.entries()].filter(([l, en]) => en.wasOne && withRows[l] && senseClassOf(l) !== 'Rev');
+    const topSet = new Set(leads);
+    const changedTop = changed.filter(([l]) => topSet.has(l));
+    console.log(`sense class One -> not One (pointer senses set aside): ${changed.length} lemma ids over all, ${changedTop.length} among the ${leads.length} commonest lexemes`);
+    for (const [l] of changed.sort((a, b) => lemmaRows[b[0]][4] - lemmaRows[a[0]][4]).slice(0, 15)) console.log(`  ${lemmaIds[l]}  count ${lemmaRows[l][4]}  class ${senseClassOf(l)}  "${lemmaRows[l][1]}"`);
+  }
   if (opt['top-lexemes']) {
     const out = leads.map((l) => [lemmaIds[l], String(lemmaRows[l][4]), senseClassOf(l), lemmaRows[l][1], ...(entOf.get(l)?.senseLines ?? [])].join('\t'));
     fs.writeFileSync(opt['top-lexemes'], `id\tcount\tclass\tgloss\tsenses\n${out.join('\n')}\n`);

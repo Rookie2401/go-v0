@@ -1,6 +1,9 @@
 {
  "readBy": "AI models (Claude), not native speakers; each card judged once, in the first sentence it came from, against the brief in docs/ecosystem/DECK-GATE.md. 2026-11-26. Where the sentence's word has a gold lemma and meaning in test/fixtures/arabic/deck-audit.json (written by the same agents that wrote the text) the card was read against it first; the rest were read by hand.",
- "residual": [],
+ "residual": [
+  "lemma:ar:إِذَنْ:ADV",
+  "lemma:ar:عَجِبَ:VERB"
+ ],
  "cards": {
   "form:ar:أحد": [
    {
@@ -644,11 +647,19 @@
    {
     "shown": "building",
     "v": "ok"
+   },
+   {
+    "shown": "construction",
+    "v": "ok"
    }
   ],
   "lemma:ar:تَارِيخ:NOUN": [
    {
     "shown": "date",
+    "v": "ok"
+   },
+   {
+    "shown": "history",
     "v": "ok"
    }
   ],
@@ -691,7 +702,8 @@
   "lemma:ar:ثَقِيل:ADJ": [
    {
     "shown": "heavy",
-    "v": "ok"
+    "v": "ok",
+    "note": "bad answers: geminate"
    }
   ],
   "lemma:ar:ثَلْج:NOUN": [
@@ -1005,6 +1017,10 @@
     "shown": "the time from morning twilight to sunrise",
     "v": "false-meaning",
     "note": "Reading is right, but the shown meaning is a pedantic definition; the ordinary meaning is \"morning\", which is not among the accepted answers."
+   },
+   {
+    "shown": "morning",
+    "v": "ok"
    }
   ],
   "lemma:ar:صَحْرَاء:NOUN": [
@@ -1022,7 +1038,8 @@
   "lemma:ar:صَوْت:NOUN": [
    {
     "shown": "a sound",
-    "v": "ok"
+    "v": "ok",
+    "note": "bad answers: an animal"
    }
   ],
   "lemma:ar:صَيَّاد:NOUN": [
@@ -1065,6 +1082,10 @@
   "lemma:ar:طَرِيق:NOUN": [
    {
     "shown": "way",
+    "v": "ok"
+   },
+   {
+    "shown": "road",
     "v": "ok"
    }
   ],
@@ -1137,7 +1158,8 @@
   "lemma:ar:عَرَفَ:VERB": [
    {
     "shown": "to know",
-    "v": "ok"
+    "v": "ok",
+    "note": "bad answers: a place"
    }
   ],
   "lemma:ar:عَشَرَة:NUM": [
@@ -1211,6 +1233,10 @@
    {
     "shown": "win",
     "v": "ok"
+   },
+   {
+    "shown": "victory",
+    "v": "ok"
    }
   ],
   "lemma:ar:فَوْقَ:ADP": [
@@ -1283,7 +1309,8 @@
   "lemma:ar:كَانَ:VERB": [
    {
     "shown": "to be",
-    "v": "ok"
+    "v": "ok",
+    "note": "bad answers: forms the past perfect | past continuous"
    }
   ],
   "lemma:ar:كَبِير:ADJ": [
@@ -1399,13 +1426,16 @@
    {
     "shown": "contest",
     "v": "ok"
+   },
+   {
+    "shown": "match",
+    "v": "ok"
    }
   ],
   "lemma:ar:مُبَكِّرًا:ADV": [
    {
     "shown": "early",
-    "v": "ok",
-    "note": "read: the sentence's word is this headword and the meaning is a main meaning of it"
+    "v": "ok"
    }
   ],
   "lemma:ar:مُتَحَدِّث:NOUN": [
@@ -1620,6 +1650,10 @@
    {
     "shown": "to fall down",
     "v": "ok"
+   },
+   {
+    "shown": "to fall",
+    "v": "ok"
    }
   ],
   "lemma:ar:وُصُول:NOUN": [
@@ -1674,7 +1708,8 @@
   "lemma:ar:أَغْلَقَ:VERB": [
    {
     "shown": "to close",
-    "v": "ok"
+    "v": "ok",
+    "note": "bad answers: to compel"
    }
   ],
   "lemma:ar:أَمَّا:CONJ": [
@@ -1903,6 +1938,10 @@
    {
     "shown": "teaching",
     "v": "ok"
+   },
+   {
+    "shown": "education",
+    "v": "ok"
    }
   ],
   "lemma:ar:تَغَيَّرَ:VERB": [
@@ -1920,7 +1959,8 @@
   "lemma:ar:تَقْرِير:NOUN": [
    {
     "shown": "report",
-    "v": "ok"
+    "v": "ok",
+    "note": "bad answers: pleasure"
    }
   ],
   "lemma:ar:تَنَاوَلَ:VERB": [
@@ -1975,12 +2015,17 @@
    {
     "shown": "clothes",
     "v": "ok"
+   },
+   {
+    "shown": "garment",
+    "v": "ok"
    }
   ],
   "lemma:ar:ثُمَّ:CONJ": [
    {
     "shown": "then, afterwards",
-    "v": "ok"
+    "v": "ok",
+    "note": "bad answers: being later occurring"
    }
   ],
   "lemma:ar:جَعَلَ:VERB": [
@@ -2008,6 +2053,10 @@
   "lemma:ar:جَيِّد:ADJ": [
    {
     "shown": "of good quality",
+    "v": "ok"
+   },
+   {
+    "shown": "good",
     "v": "ok"
    }
   ],
@@ -2039,6 +2088,11 @@
    {
     "shown": "to detain",
     "v": "ok"
+   },
+   {
+    "shown": "to reserve",
+    "v": "ok",
+    "note": "bad answers: to RSVP"
    }
   ],
   "lemma:ar:حَرَارَة:NOUN": [
@@ -2056,6 +2110,10 @@
   "lemma:ar:حَقِيقِيّ:ADJ": [
    {
     "shown": "true",
+    "v": "ok"
+   },
+   {
+    "shown": "real",
     "v": "ok"
    }
   ],
@@ -2340,6 +2398,10 @@
    {
     "shown": "hard",
     "v": "ok"
+   },
+   {
+    "shown": "difficult",
+    "v": "ok"
    }
   ],
   "lemma:ar:صَيْدَلِيَّة:NOUN": [
@@ -2376,6 +2438,10 @@
    {
     "shown": "power",
     "v": "ok"
+   },
+   {
+    "shown": "energy",
+    "v": "ok"
    }
   ],
   "lemma:ar:طَبِيب:NOUN": [
@@ -2387,6 +2453,10 @@
   "lemma:ar:طَرِيقَة:NOUN": [
    {
     "shown": "way",
+    "v": "ok"
+   },
+   {
+    "shown": "method",
     "v": "ok"
    }
   ],
@@ -2424,6 +2494,10 @@
   "lemma:ar:عُضْو:NOUN": [
    {
     "shown": "organ",
+    "v": "ok"
+   },
+   {
+    "shown": "member",
     "v": "ok"
    }
   ],
@@ -2491,6 +2565,10 @@
    {
     "shown": "to cover up",
     "v": "ok"
+   },
+   {
+    "shown": "to cover",
+    "v": "ok"
    }
   ],
   "lemma:ar:غَيَّرَ:VERB": [
@@ -2502,6 +2580,10 @@
   "lemma:ar:غَيْر:NOUN": [
    {
     "shown": "other than",
+    "v": "ok"
+   },
+   {
+    "shown": "other",
     "v": "ok"
    }
   ],
@@ -2712,7 +2794,8 @@
   "lemma:ar:مَا:PRON": [
    {
     "shown": "what? that which",
-    "v": "ok"
+    "v": "ok",
+    "note": "READ OK in the development sentences where this card was first judged (the word is this headword there). The third blind text has a sentence where it is NOT (ما زال): In ما زال the word is the negative particle ما (not still), not the pronoun ما (what). [recorded in blind3.false below; the verdict file holds one verdict per card, so the unit counts as development]"
    }
   ],
   "lemma:ar:مَاضٍ:NOUN": [
@@ -2724,6 +2807,10 @@
   "lemma:ar:مَال:NOUN": [
    {
     "shown": "wealth",
+    "v": "ok"
+   },
+   {
+    "shown": "money",
     "v": "ok"
    }
   ],
@@ -2761,6 +2848,10 @@
   "lemma:ar:مَكْتَب:NOUN": [
    {
     "shown": "desk",
+    "v": "ok"
+   },
+   {
+    "shown": "office",
     "v": "ok"
    }
   ],
@@ -2809,7 +2900,8 @@
   "lemma:ar:مِثْل:NOUN": [
    {
     "shown": "something similar",
-    "v": "ok"
+    "v": "ok",
+    "note": "READ OK in the development sentences where this card was first judged (the word is this headword there). The third blind text has a sentence where it is NOT (مثّل): The word is مَثَّلَ, Form II verb (played/acted a role), not the noun مِثْل (likeness). [recorded in blind3.false below; the verdict file holds one verdict per card, so the unit counts as development]"
    }
   ],
   "lemma:ar:مِحْفَظَة:NOUN": [
@@ -3026,6 +3118,10 @@
    {
     "shown": "supper",
     "v": "ok"
+   },
+   {
+    "shown": "dinner",
+    "v": "ok"
    }
   ],
   "lemma:ar:غُرُوب:NOUN": [
@@ -3073,6 +3169,10 @@
   "lemma:ar:آلَة:NOUN": [
    {
     "shown": "instrument",
+    "v": "ok"
+   },
+   {
+    "shown": "machine",
     "v": "ok"
    }
   ],
@@ -3221,6 +3321,10 @@
    {
     "shown": "search",
     "v": "ok"
+   },
+   {
+    "shown": "research",
+    "v": "ok"
    }
   ],
   "lemma:ar:بَرْد:NOUN": [
@@ -3283,6 +3387,10 @@
    {
     "shown": "electric current",
     "v": "ok"
+   },
+   {
+    "shown": "current",
+    "v": "ok"
    }
   ],
   "lemma:ar:ثَانٍ:ADJ": [
@@ -3330,6 +3438,10 @@
   "lemma:ar:حَفْل:NOUN": [
    {
     "shown": "performance",
+    "v": "ok"
+   },
+   {
+    "shown": "celebration",
     "v": "ok"
    }
   ],
@@ -3390,7 +3502,8 @@
   "lemma:ar:دُخُول:NOUN": [
    {
     "shown": "entering",
-    "v": "ok"
+    "v": "ok",
+    "note": "bad answers: income"
    }
   ],
   "lemma:ar:رَاجَعَ:VERB": [
@@ -3414,8 +3527,7 @@
   "lemma:ar:زَالَ:VERB": [
    {
     "shown": "to disappear",
-    "v": "false-reading",
-    "note": "In لا تزال (\"still\") the verb is زال يزال, the auxiliary meaning \"to continue to be\", not زال يزول \"to disappear\"."
+    "v": "ok"
    }
   ],
   "lemma:ar:زَرَعَ:VERB": [
@@ -3555,8 +3667,7 @@
   "lemma:ar:طَازَج:ADJ": [
    {
     "shown": "fresh",
-    "v": "ok",
-    "note": "bad answers: healthy, sound, pure | healthy | sound | pure"
+    "v": "ok"
    }
   ],
   "lemma:ar:طَاوِلَة:NOUN": [
@@ -3683,6 +3794,10 @@
   "lemma:ar:كَلَام:NOUN": [
    {
     "shown": "speech",
+    "v": "ok"
+   },
+   {
+    "shown": "talk",
     "v": "ok"
    }
   ],
@@ -3868,6 +3983,619 @@
     "shown": "to continue doing uninterruptedly",
     "v": "ok"
    }
+  ],
+  "lemma:ar:أَخِير:ADJ": [
+   {
+    "shown": "last",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:أَزْعَجَ:VERB": [
+   {
+    "shown": "to bother",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:أَنَا:PRON": [
+   {
+    "shown": "I",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:أَوَّلًا:ADV": [
+   {
+    "shown": "first; firstly",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:إِذَنْ:ADV": [
+   {
+    "shown": "then; therefore",
+    "v": "false-reading",
+    "note": "The word in the sentence is the conditional/temporal particle إِذَا (if), not the adverb إِذَنْ (then, therefore)."
+   }
+  ],
+  "lemma:ar:إِصْلَاح:NOUN": [
+   {
+    "shown": "reform",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:اِبْن:NOUN": [
+   {
+    "shown": "son",
+    "v": "ok",
+    "note": "bad answers: son of the fatherland"
+   }
+  ],
+  "lemma:ar:اِتَّفَقَ:VERB": [
+   {
+    "shown": "to agree",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:اِجْتَمَعَ:VERB": [
+   {
+    "shown": "to meet, to meet up",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:اِسْتَبْدَلَ:VERB": [
+   {
+    "shown": "to replace",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:اِسْتَخْدَمَ:VERB": [
+   {
+    "shown": "to use",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:اِسْتَقْبَلَ:VERB": [
+   {
+    "shown": "to receive",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:اِسْتِمَارَة:NOUN": [
+   {
+    "shown": "form, application",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:اِشْتَدَّ:VERB": [
+   {
+    "shown": "to become more vehement",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:اِشْتَكَى:VERB": [
+   {
+    "shown": "to complain",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:اِضْطَرَّ:VERB": [
+   {
+    "shown": "to force, to compel",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:اِقْتَرَحَ:VERB": [
+   {
+    "shown": "to suggest",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:اِقْتَلَعَ:VERB": [
+   {
+    "shown": "to pluck out",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:اِنْتَقَلَ:VERB": [
+   {
+    "shown": "to move",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:اِنْقِطَاع:NOUN": [
+   {
+    "shown": "interruption",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:اِهْتَزَّ:VERB": [
+   {
+    "shown": "to tremble",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:بَائِع:NOUN": [
+   {
+    "shown": "seller",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:بَاكِر:ADJ": [
+   {
+    "shown": "early",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:بَيْنَمَا:CONJ": [
+   {
+    "shown": "while, whereas",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:بُرُودَة:NOUN": [
+   {
+    "shown": "coolness",
+    "v": "ok",
+    "note": "bad answers: becoming on unfriendly terms"
+   }
+  ],
+  "lemma:ar:بِلَا:ADP": [
+   {
+    "shown": "without",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:تَأَكَّدَ:VERB": [
+   {
+    "shown": "to be or become convinced or certain or sure",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:تَرَكَ:VERB": [
+   {
+    "shown": "to leave",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:تَسْلِيم:NOUN": [
+   {
+    "shown": "delivery",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:تَمْر:NOUN": [
+   {
+    "shown": "date",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:تَوَقَّفَ:VERB": [
+   {
+    "shown": "to stop",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:ثَالِث:ADJ": [
+   {
+    "shown": "third",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:جَبَلِيّ:ADJ": [
+   {
+    "shown": "mountainous",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:جَنُوب:NOUN": [
+   {
+    "shown": "south",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:حَطَب:NOUN": [
+   {
+    "shown": "material for fueling fire",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:حَفِظَ:VERB": [
+   {
+    "shown": "to memorize",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:حِزَام:NOUN": [
+   {
+    "shown": "belt",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:حِوَار:NOUN": [
+   {
+    "shown": "dialogue",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:خَسّ:NOUN": [
+   {
+    "shown": "lettuce",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:خَطّ:NOUN": [
+   {
+    "shown": "line",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:خَفِيف:ADJ": [
+   {
+    "shown": "light",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:خَيْمَة:NOUN": [
+   {
+    "shown": "tent",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:دَفْتَر:NOUN": [
+   {
+    "shown": "notebook",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:دَوْر:NOUN": [
+   {
+    "shown": "role",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:دِينَار:NOUN": [
+   {
+    "shown": "dinar",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:ذِرَاع:NOUN": [
+   {
+    "shown": "an arm or leg",
+    "v": "ok",
+    "note": "bad answers: time"
+   }
+  ],
+  "lemma:ar:رَأْس:NOUN": [
+   {
+    "shown": "head",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:رَاقَبَ:VERB": [
+   {
+    "shown": "to observe",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:رَبَطَ:VERB": [
+   {
+    "shown": "to tie up",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:رَبِيع:NOUN": [
+   {
+    "shown": "spring",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:رَخِيص:ADJ": [
+   {
+    "shown": "cheap",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:رِوَايَة:NOUN": [
+   {
+    "shown": "novel",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:سَحَبَ:VERB": [
+   {
+    "shown": "to pull",
+    "v": "ok",
+    "note": "bad answers: to widen, to parlay | to widen | to parlay"
+   }
+  ],
+  "lemma:ar:سَيِّدَة:NOUN": [
+   {
+    "shown": "lady",
+    "v": "ok",
+    "note": "bad answers: “master, princess | “master"
+   }
+  ],
+  "lemma:ar:سِتَّة:NUM": [
+   {
+    "shown": "six",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:سِجِلّ:NOUN": [
+   {
+    "shown": "register",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:شَاحِنَة:NOUN": [
+   {
+    "shown": "truck",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:شَتْلَة:NOUN": [
+   {
+    "shown": "plantling, seedling",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:شَمَالِيّ:ADJ": [
+   {
+    "shown": "northern",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:صَفْحَة:NOUN": [
+   {
+    "shown": "page",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:صُحُفِيّ:NOUN": [
+   {
+    "shown": "journalist",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:صُورَة:NOUN": [
+   {
+    "shown": "picture",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:ضَابِط:NOUN": [
+   {
+    "shown": "officer",
+    "v": "ok",
+    "note": "bad answers: tenant farmer or villein"
+   }
+  ],
+  "lemma:ar:طَابَق:NOUN": [
+   {
+    "shown": "floor",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:طِين:NOUN": [
+   {
+    "shown": "wet or sticky soil, clay",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:عَجِبَ:VERB": [
+   {
+    "shown": "to wonder, to marvel",
+    "v": "false-reading",
+    "note": "The word is يُعْجِب, Form IV أَعْجَبَ (to please; لم يعجبني = I did not like), not Form I عَجِبَ (to wonder)."
+   }
+  ],
+  "lemma:ar:عَضَلَة:NOUN": [
+   {
+    "shown": "muscle",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:عَمُود:NOUN": [
+   {
+    "shown": "column, shaft",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:عُبُور:NOUN": [
+   {
+    "shown": "crossing",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:عُنْوَان:NOUN": [
+   {
+    "shown": "title — and ",
+    "v": "false-meaning",
+    "note": "The shown meaning is a garbled dictionary fragment (title — and \"anything that serves as an indication...\"); the ordinary meaning is address (also title). | bad answers: title — and \"anything that serves as an indication of another thing is called its عُنْوَان"
+   },
+   {
+    "shown": "title",
+    "v": "ok",
+    "note": "READ by the Arabic pack agent, not by the independent reader: after batch 11 (a quotation mark ends a gloss) the card shows \"title\", a correct main meaning of this word (the reader called the earlier garbled shown meaning false-meaning; that verdict stays above and in blind3). The measured figure of the blind text is NOT changed by this entry."
+   }
+  ],
+  "lemma:ar:غَدَاء:NOUN": [
+   {
+    "shown": "lunch",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:فَتًى:NOUN": [
+   {
+    "shown": "youth",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:فَتَاة:NOUN": [
+   {
+    "shown": "young girl",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:فِيلْم:NOUN": [
+   {
+    "shown": "film, movie",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:قَدَّمَ:VERB": [
+   {
+    "shown": "to offer",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:قَلْب:NOUN": [
+   {
+    "shown": "heart",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:قِمَّة:NOUN": [
+   {
+    "shown": "peak",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:مَتَى:ADV": [
+   {
+    "shown": "when?",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:مَسَافَة:NOUN": [
+   {
+    "shown": "distance",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:مَسْأَلَة:NOUN": [
+   {
+    "shown": "issue",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:مَسْرَح:NOUN": [
+   {
+    "shown": "theater",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:مَطَار:NOUN": [
+   {
+    "shown": "airport",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:مَعْرِفَة:NOUN": [
+   {
+    "shown": "knowledge",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:مَوْقِد:NOUN": [
+   {
+    "shown": "fireplace",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:مَوْقِع:NOUN": [
+   {
+    "shown": "site",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:مُمَثِّل:NOUN": [
+   {
+    "shown": "actor",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:مُنْتَصَف:NOUN": [
+   {
+    "shown": "middle",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:نَاضِج:ADJ": [
+   {
+    "shown": "ripe",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:نَصّ:NOUN": [
+   {
+    "shown": "text, document",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:وَاضِح:ADJ": [
+   {
+    "shown": "clear",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:وَسَط:NOUN": [
+   {
+    "shown": "middle",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:وَقَفَ:VERB": [
+   {
+    "shown": "to stand",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:يَسَار:NOUN": [
+   {
+    "shown": "left",
+    "v": "ok"
+   }
   ]
+ },
+ "blind3": {
+  "text": "ar heldout.txt of 2026-11-26 (the third blind text, the FINAL figure of the Arabic set, never re-measured)",
+  "cards": 306,
+  "ok": 301,
+  "falseReading": 4,
+  "falseMeaning": 1,
+  "unknown": 0,
+  "false": [
+   {
+    "unit": "lemma:ar:إِذَنْ:ADV",
+    "shown": "then; therefore",
+    "v": "false-reading",
+    "note": "The word in the sentence is the conditional/temporal particle إِذَا (if), not the adverb إِذَنْ (then, therefore)."
+   },
+   {
+    "unit": "lemma:ar:عَجِبَ:VERB",
+    "shown": "to wonder, to marvel",
+    "v": "false-reading",
+    "note": "The word is يُعْجِب, Form IV أَعْجَبَ (to please; لم يعجبني = I did not like), not Form I عَجِبَ (to wonder)."
+   },
+   {
+    "unit": "lemma:ar:مَا:PRON",
+    "shown": "what? that which",
+    "v": "false-reading",
+    "note": "In ما زال the word is the negative particle ما (not still), not the pronoun ما (what)."
+   },
+   {
+    "unit": "lemma:ar:مِثْل:NOUN",
+    "shown": "something similar",
+    "v": "false-reading",
+    "note": "The word is مَثَّلَ, Form II verb (played/acted a role), not the noun مِثْل (likeness)."
+   },
+   {
+    "unit": "lemma:ar:عُنْوَان:NOUN",
+    "shown": "title — and ",
+    "v": "false-meaning",
+    "note": "The shown meaning is a garbled dictionary fragment (title — and \"anything that serves as an indication...\"); the ordinary meaning is address (also title). | bad answers: title — and \"anything that serves as an indication of another thing is called its عُنْوَان"
+   }
+  ],
+  "note": "The first two blind texts (374 cards, 7 false; 323 cards, 7 false) were folded into the development text after reading. Arabic uses the stricter rule: no card for a word whose first meaning nobody has checked."
  }
 }

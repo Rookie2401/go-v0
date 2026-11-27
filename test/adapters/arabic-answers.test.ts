@@ -67,3 +67,13 @@ describe('each item of a sense is judged on its own', () => {
     expect(arCleanSense('a city in the north of Egypt, Africa')).toBe('a city in the north of Egypt, Africa');
   });
 });
+
+describe('two mechanical filters (batch 11)', () => {
+  it('drops an alternative with a quotation mark, and one that begins "forms the" or "being"', () => {
+    expect(arCleanSense('master, \u201Cprincess, lady')).toBe('master, lady');
+    expect(arCleanSense('title, "anything that serves as an indication"')).toBe('title');
+    expect(arCleanSense('to be, forms the past perfect, past continuous')).toBe('to be, past continuous');
+    expect(arCleanSense('cold, being later occurring, chill')).toBe('cold, chill');
+    expect(arCleanSense("don't, can't")).toBe("don't, can't");
+  });
+});

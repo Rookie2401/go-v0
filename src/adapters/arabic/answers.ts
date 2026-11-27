@@ -33,6 +33,8 @@ export function isFragmentAlternative(alt: string, opts: { functionWords?: boole
   const a = alt.trim();
   if (!a || !/\p{L}/u.test(a)) return true;
   if (/\p{Script=Arabic}/u.test(a) || a.includes(':') || /\betc\b/iu.test(a)) return true;
+  // a quotation mark is a quotation, not a meaning; "forms the ..." and "being ..." describe grammar (a description of the form, not what the word means)
+  if (/["\u201C\u201D\u201E\u00AB\u00BB]/u.test(a) || /^(?:forms the|being)\b/iu.test(a)) return true;
   const b = bare(a);
   if (!b) return true;
   if (GRAMMAR_WORD.test(b) || USAGE_NOTE.test(b) || GRAMMAR_NOTE.test(b) || isCrossReferenceOnly(a)) return true;

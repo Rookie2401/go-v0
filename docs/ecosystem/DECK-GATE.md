@@ -92,6 +92,9 @@ was judged once, in the first sentence it came from; nothing was looked up; no n
 | Modern Hebrew | 71 → 64 | 8 → 3 → 0 | 651 | 162 → 153 | 22 / 9 | 14 / 0 | 5 (both Hebrew sets) |
 | Biblical Hebrew | 88 → 79 | 2 → 1 → 0 | 270 | 73 → 66 | 7 / 0 | 2 / 0 | |
 | Biblical Aramaic | 44 → 43 | 1 → 1 → 0 | 215 | 36 → 36 | 0 / 0 | 0 / 0 | 1 |
+| Arabic | 831 → 487 (224 sentences) | not read before → 0 | 964 | 505 → 306 | not read / not read | 4 + 1 / 0 (301 of 306 ok) | 1 listed + the generated sweep list |
+
+**Arabic** (not in the totals below): the figure in its row is from the THIRD of three blind texts and is final: 306 admitted cards, 301 read ok, 4 false readings, 1 false meaning, 0 unknown (named in `data/deck-audit/ar/verdicts.json`, `blind3`). The first two blind texts were folded into the development text after they were read (374 cards, 7 false; 323 cards, 7 false), so the held-out row is not blind to the rules written from them. Arabic uses the stricter rule: no card for a word whose first meaning nobody has checked (index `Sense` Rev or One), no form card, one source entry for a headword, a reviewed answer-exclusion table. Its "before" figures are cards only: the before-gate cards were not read.
 
 On the held-out texts: **396 false or unknown cards of 6,202 before (6.4 %), 130 of 5,905 after (2.2 %), and no unknown card after.** The deck
 has 297 fewer held-out cards (4.8 %) and 266 fewer false or unknown ones (some were repaired, not held).

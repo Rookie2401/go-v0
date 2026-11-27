@@ -1,0 +1,1 @@
+import{t as e}from"./es-jX-s2k2c.js";export{e as adapter};

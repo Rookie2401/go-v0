@@ -20,7 +20,7 @@
  */
 'use strict';
 
-var BUILD_ID = '7b8c92f67b10';
+var BUILD_ID = '8d4759e94ac7';
 var PRECACHE = [
   "./",
   "./EB-Garamond-OFL.txt",
@@ -29,9 +29,9 @@ var PRECACHE = [
   "./assets/athens-CGnxwDV8.webp",
   "./assets/bangkok-r3GWRAT9.webp",
   "./assets/berat-CFdUV1uK.webp",
-  "./assets/de-CH6cNZth.js",
+  "./assets/de-BM4Cmvup.js",
   "./assets/earth-C2ksqYf2.webp",
-  "./assets/el-HV8pgHwi.js",
+  "./assets/el-o2jKsPR0.js",
   "./assets/es-BQBFw-vS.js",
   "./assets/fonts/EB-Garamond-OFL.txt",
   "./assets/fonts/eb-garamond-latin-400-italic.woff2",
@@ -45,15 +45,15 @@ var PRECACHE = [
   "./assets/he-CDT9jrOs.js",
   "./assets/hebrew-script-CnsZhqS-.js",
   "./assets/hi-DahJF875.js",
-  "./assets/index-DdEAYLoB.js",
+  "./assets/index-Bybv0nF9.js",
   "./assets/jerusalem-YWyJNBCG.webp",
   "./assets/la-CwaQG1iI.js",
-  "./assets/languageChoices-CNCzCyMw.js",
+  "./assets/languageChoices-DSuu_7Dw.js",
   "./assets/nb-DD4vZ02j.js",
   "./assets/nn-BFIvrq7f.js",
   "./assets/norwegian-CE2nWb77.js",
   "./assets/oslo-CP39LCLT.webp",
-  "./assets/registry-Ck9ixnMG.js",
+  "./assets/registry-CdOpFOiE.js",
   "./assets/rolldown-runtime-DK3Fl9T5.js",
   "./assets/roman-forum-BwyPrRQO.webp",
   "./assets/rothenburg-vv8nBX67.webp",
@@ -64,7 +64,7 @@ var PRECACHE = [
   "./assets/src-BdSvOU29.js",
   "./assets/style-DbT1ML9p.css",
   "./assets/syntax-CGmPxLTF.js",
-  "./assets/th-BPP1umjf.js",
+  "./assets/th-Cg9eohnC.js",
   "./assets/valle-de-angeles-BxOTzEvC.webp",
   "./assets/varanasi-D-p-TlCF.webp",
   "./config.json",
@@ -86,51 +86,51 @@ var LANG_CHUNKS = {
     "./assets/lang-aramaic-B5WkUau3.js"
   ],
   "de": [
-    "./assets/lang-de-DcsppLzf.js"
+    "./assets/lang-de-Cko0bP9J.js"
   ],
   "el": [
-    "./assets/lang-el-mDpoa5G6.js"
+    "./assets/lang-el-xEQKXZ-Q.js"
   ],
   "es": [
-    "./assets/lang-es-MIb7wW9w.js"
+    "./assets/lang-es-0ViotqCi.js"
   ],
   "fr": [
-    "./assets/lang-fr-CTgmAq9U.js"
+    "./assets/lang-fr-QHX_eYtr.js"
   ],
   "french": [
     "./assets/lang-french-CIGjcOcX.js",
     "./assets/lang-french-LVX0gXcx.js"
   ],
   "he": [
-    "./assets/lang-he-CzqeAxlp.js"
+    "./assets/lang-he-C54ZVlsr.js"
   ],
   "hebrew": [
     "./assets/lang-hebrew-Bsnip4qd.js",
     "./assets/lang-hebrew-apRjTzMX.js"
   ],
   "hi": [
-    "./assets/lang-hi-Bn23wBoy.js"
+    "./assets/lang-hi-CbE9-Are.js"
   ],
   "hindi": [
     "./assets/lang-hindi-DyM6_O99.js"
   ],
   "la": [
-    "./assets/lang-la-BQ4CdB5w.js"
+    "./assets/lang-la-B7ryCsAw.js"
   ],
   "nb": [
-    "./assets/lang-nb-HFSISPUA.js"
+    "./assets/lang-nb-DsbNWBgv.js"
   ],
   "nn": [
-    "./assets/lang-nn-Dp4eZ7ax.js"
+    "./assets/lang-nn-DbJ01sqD.js"
   ],
   "norwegian": [
-    "./assets/lang-norwegian-V5xXuAif.js"
+    "./assets/lang-norwegian-_VQh16Ya.js"
   ],
   "ru": [
-    "./assets/lang-ru-DJ8VhIJA.js"
+    "./assets/lang-ru-k_OAgXEV.js"
   ],
   "sq": [
-    "./assets/lang-sq-C-1Oaxsh.js"
+    "./assets/lang-sq-CmIAorbU.js"
   ],
   "th": [
     "./assets/lang-th-QSLCPu7R.js"

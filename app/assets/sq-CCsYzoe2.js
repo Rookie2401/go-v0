@@ -1,0 +1,1 @@
+import{p as e}from"./index-OEE4oovO.js";export{e as adapter};

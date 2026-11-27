@@ -1,0 +1,1 @@
+import{t as e}from"./engine-BDiqG8-7.js";var t=e(`nn`);export{t as adapter};

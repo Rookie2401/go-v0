@@ -47,11 +47,20 @@ function payloadFiles(root) {
       const full = path.join(directory, entry.name);
       if (entry.isSymbolicLink()) throw new Error(`Refusing a symlink in the native web payload: ${relative(path.relative(root, full))}`);
       if (entry.isDirectory()) visit(full);
-      else if (entry.isFile() && entry.name !== NATIVE_PAYLOAD_MANIFEST) files.push(relative(path.relative(root, full)));
+      // Paths are recorded in NFC: the macOS build host can hand back decomposed names (Russian lexicon shards such as
+      // "й.json.gz" become и + U+0306), which would otherwise fail a payload staged on Windows. The file is read by its real name.
+      else if (entry.isFile() && entry.name !== NATIVE_PAYLOAD_MANIFEST) files.push({ path: relative(path.relative(root, full)).normalize('NFC'), full });
     }
   };
   visit(root);
-  return files.sort().map((file) => ({ path: file, sha256: sha256(fs.readFileSync(path.join(root, file))) }));
+  const seen = new Set();
+  for (const file of files) {
+    if (seen.has(file.path)) throw new Error(`Two native payload files share one normalized name: ${file.path}`);
+    seen.add(file.path);
+  }
+  return files
+    .sort((a, b) => (a.path < b.path ? -1 : a.path > b.path ? 1 : 0))
+    .map((file) => ({ path: file.path, sha256: sha256(fs.readFileSync(file.full)) }));
 }
 
 /** Verify Capacitor copied the prepared payload byte-for-byte, then bind its empty Cordova compatibility shims. */

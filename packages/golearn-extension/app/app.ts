@@ -1,11 +1,13 @@
 /**
- * The application shell (redesigned 2026-11-11, docs/golearn/DESIGN-SYSTEM.md): a slim top bar with the brand and the TWO places a learner
- * goes, Languages (the home: what you read in, what else you can download) and Settings (the account and everything that is set once);
+ * The application shell (redesigned 2026-11-11, docs/golearn/DESIGN-SYSTEM.md): a slim top bar with the brand and, at the top right as
+ * symbols (2026-11-26, GoReview's manner), the places a learner goes: Languages (the home: what you read in, what else you can download),
+ * the account, and Settings (the account and everything that is set once);
  * one hash router; one content area with ONE heading per page and, on a page under Settings, a way back above it; and the quiet
  * “Done — back to reading” bar at the foot. Setup is two pages: Sign in (the first page on a first run; an account is optional) and
  * Languages. The old Status page said again what Languages says and is gone (#/home leads to Languages). The same code runs as the
  * extension’s options page and as the hosted web app; the difference is only `deps` (see main.ts).
  */
+import { barIcon, type BarIconName } from './barIcons';
 import { append, button, clear, h, p } from './dom';
 import { createContext, type AppContext } from './context';
 import type { Deps } from './ports';
@@ -102,14 +104,22 @@ export function createApp(root: HTMLElement, deps: Deps): AppHandle {
   let disposers: Array<() => void> = [];
   let destroyed = false;
 
-  // the slim top bar: the brand, then the two places, named in words (an icon alone would have to be guessed)
-  const languagesLink = h('a', { href: '#/languages', id: 'languages-link', class: 'top-link' }, 'Languages');
-  const settingsLink = h('a', { href: '#/settings', id: 'settings-link', class: 'top-link' }, 'Settings');
+  // the slim top bar: the brand, then, at the top right in GoReview's manner (the owner, 2026-11-26: "Move the account settings to the top
+  // right in the manner of GoReview"; "Change the language button from text to a symbol"), three symbols: Languages, the account, Settings.
+  // A symbol is never alone: each link carries its name for a screen reader and as the tip under the pointer.
+  const iconLink = (id: string, href: string, label: string, name: BarIconName): HTMLAnchorElement => {
+    const a = h('a', { href, id, class: 'top-icon', 'aria-label': label, title: label }) as HTMLAnchorElement;
+    a.append(barIcon(deps.doc, name));
+    return a;
+  };
+  const languagesLink = iconLink('languages-link', '#/languages', 'Languages', 'languages');
+  const accountLink = iconLink('account-link', '#/signin', 'Account', 'account');
+  const settingsLink = iconLink('settings-link', '#/settings', 'Settings', 'settings');
   const bar = h('header', { class: 'topbar' },
     // the Go mark (the G and the globe, packages/shared-brand) as a silhouette filled with the accent colour, beside the name
     h('a', { class: 'brand go-brand', href: '#/languages', 'aria-label': 'GoLearn home' },
       h('span', { class: 'go-brand-mark', 'aria-hidden': 'true', style: `--go-brand-mask: url("${brandMarkUrl(deps.doc)}")` }), h('span', {}, 'GoLearn')),
-    h('nav', { class: 'top-actions', 'aria-label': 'GoLearn' }, languagesLink, settingsLink));
+    h('nav', { class: 'top-actions', 'aria-label': 'GoLearn' }, languagesLink, accountLink, settingsLink));
   const main = h('main', { id: 'screen', class: 'screen', tabindex: '-1' });
   const shell = h('div', { class: 'shell' }, bar, main);
   clear(root);
@@ -139,6 +149,18 @@ export function createApp(root: HTMLElement, deps: Deps): AppHandle {
     mark(languagesLink, route === HOME_ID);
     // Settings and every page whose way back is Settings
     mark(settingsLink, !!def && (def.group === 'settings' || backOf(def)?.href === '#/settings'));
+    mark(accountLink, route === 'signin');
+    // the account: signed in, it is the first thing on Settings; on a device of its own, the person leads to the (optional) sign-in.
+    // What the line under the page's title used to say is the link's name now.
+    const painted = route;
+    void ctx.state.getSession().then((session) => {
+      if (destroyed || painted !== route) return;
+      const label = session ? `Account: synced as ${session.email}` : 'Account: on this device only. Sign in to keep your progress across devices (optional)';
+      accountLink.setAttribute('href', session ? '#/settings' : '#/signin');
+      accountLink.setAttribute('data-state', session ? 'synced' : 'device');
+      accountLink.setAttribute('aria-label', label);
+      accountLink.title = label;
+    }).catch(() => undefined);
   }
 
   async function show(id: string): Promise<void> {

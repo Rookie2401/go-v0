@@ -74,6 +74,8 @@ export interface World {
   provider: ReturnType<typeof createFactsProvider>;
   manifest: ReturnType<typeof albanianManifest>;
   facts(unitId: string): Promise<ReviewFacts>;
+  /** The pack dictionary the facts read (for the deck gate, which the app applies over these facts). */
+  runtime: ReturnType<typeof createPackRuntime>;
 }
 
 export function makeWorld(opts: { selections?: Selection[]; noDictionary?: boolean } = {}): World {
@@ -87,7 +89,7 @@ export function makeWorld(opts: { selections?: Selection[]; noDictionary?: boole
     now: () => NOW,
   });
   return {
-    repo, provider, manifest,
+    repo, provider, manifest, runtime,
     async facts(unitId: string) {
       const f = await provider.factsFor(unitId, 'sq');
       if (!f) throw new Error(`no facts for ${unitId}`);

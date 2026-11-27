@@ -18,6 +18,7 @@
  */
 import { beforeAll, describe, expect, it, type TestContext } from 'vitest';
 import crypto from 'node:crypto';
+import zlib from 'node:zlib';
 import fs from 'node:fs';
 import path from 'node:path';
 import { ROOT } from './conformance.support';
@@ -41,12 +42,43 @@ const DISTS: Dist[] = [
     builds: 'npx vite build -c packages/goreview/app/vite.config.ts',
     notices: ['THIRD-PARTY-NOTICES.md'], dictDir: 'dict',
   },
+  {
+    // the folder that is zipped for the Chrome Web Store (2026-11-26): the extension with GoReview reading its dictionaries from the hosted tree
+    id: 'store package (dist-store)', dir: 'packages/golearn-extension/dist-store',
+    builds: 'node scripts/extension-store-package.mjs',
+    notices: ['THIRD-PARTY-NOTICES.md', 'app/THIRD-PARTY-NOTICES.md'], dictDir: 'app/dict',
+  },
 ];
 
 const KAIKKI_ATTRIBUTION = 'Wiktionary, via kaikki.org — CC BY-SA 4.0';
 const TEXT_EXT = /\.(js|mjs|css|html|json|md|txt|xml|svg|webmanifest)$/i;
 /** The one binary kind of a web build: the EB Garamond web fonts (SIL OFL 1.1, packages/shared-fonts). */
 const FONT_EXT = /\.woff2$/i;
+/** GoReview travels inside the extension under review/, with its own copy of the form indexes; the same rules apply under that prefix. */
+const LEXICON = '(?:review/)?lexicon';
+/** The sharded form indexes: lexicon/<lang>/<set>/<shard>.json.gz, each beside its set's manifest.json. */
+const SHARD = new RegExp(`^${LEXICON}/(he|el|ru|ko)/[a-z]+/[^/]+\\.json\\.gz$`);
+/** The unsharded Koine form index (MorphGNT / SBLGNT forms -> lemma and features; no verse travels in it). */
+const KOINE_INDEX = new RegExp(`^${LEXICON}/el/koine-index\\.json\\.gz$`);
+/**
+ * The one frequency table a build may carry: how often each Hebrew Bible word form occurs, counted from the Open Scriptures
+ * Hebrew Bible form index (id "oshb-tanakh-form-frequency"; OSHB annotations CC BY 4.0, credited in THIRD-PARTY-NOTICES.md).
+ * GoReview orders Hebrew cards by it (packages/goreview/app/packFacts.ts). It is not the quarantined sidecar
+ * (public/dict/<lang>/frequency.json, counted from the retired library: RIGHTS-AND-PRIVACY-BOUNDARIES §2), which stays refused.
+ * The exemption is by path AND by content: a file there that is not that table is refused like any other.
+ */
+const OSHB_FREQUENCY = new RegExp(`^${LEXICON}/he/biblical/form-frequency\\.json\\.gz$`);
+const isOshbFrequency = (dir: string, f: string): boolean => {
+  if (!OSHB_FREQUENCY.test(f)) return false;
+  try {
+    const table = JSON.parse(zlib.gunzipSync(fs.readFileSync(path.join(abs(dir), f))).toString('utf8')) as { id?: string; indexId?: string };
+    return table.id === 'oshb-tanakh-form-frequency' && table.indexId === 'oshb-tanakh';
+  } catch { return false; }
+};
+/** The owner's own brand art and the icons Chrome requires (manifest.json "icons"); a bundler may add a content hash. */
+const BRAND_PNG = /(^|\/)(icon-\d+|apple-touch-icon|go-logo|go-globe-(frame|rim|turn))(-[A-Za-z0-9_-]{8})?\.png$/;
+/** A bundled photograph: assets/<name>-<hash>.webp. It is allowed only when <name>.webp is credited in a notice file of the same build. */
+const PHOTO = /(^|\/)assets\/([a-z0-9-]+?)-[A-Za-z0-9_-]{8}\.webp$/;
 
 const listAll = (dir: string): string[] => {
   const out: string[] = [];
@@ -332,7 +364,7 @@ describe.each(DISTS)('$id', (dist) => {
 
   it('contains no frequency list and no other word-count sidecar', (ctx) => {
     guard(ctx);
-    expect(files.filter((f) => /(^|\/)frequency\.json$/.test(f) || /freq/i.test(path.basename(f)))).toEqual([]);
+    expect(files.filter((f) => (/(^|\/)frequency\.json$/.test(f) || /freq/i.test(path.basename(f))) && !isOshbFrequency(dist.dir, f))).toEqual([]);
   });
 
   it('contains only the file kinds of a web build: no EPUB, USFM, audio, archive, source map or database; no library, corpus, ladder, stage0 or Bible directory', (ctx) => {
@@ -345,9 +377,15 @@ describe.each(DISTS)('$id', (dist) => {
     // same kind of table: word forms -> lemma, features and stress, no running text.
     // 2026-11-25: the Korean stem lexicon (lexicon/ko/standard/, shards named by the first syllable's jamo: H4 .. or letters; Wiktionary via kaikki.org,
     // CC BY-SA 4.0) is the same kind of table: headword stems -> class, conjugation class, first gloss and Hanja, no running text.
-    const shards = files.filter((f) => /^lexicon\/(he|el|ru|ko)\/[a-z]+\/[^/]+\.json\.gz$/.test(f));
+    // 2026-11-26: the same tables under review/ (GoReview's copy inside the extension), the unsharded Koine index, and the OSHB
+    // form-frequency table (checked by content, see OSHB_FREQUENCY) are the same kind.
+    const shards = files.filter((f) => SHARD.test(f) && !OSHB_FREQUENCY.test(f));
     for (const sh of shards) expect(files, `manifest beside ${sh}`).toContain(path.posix.join(path.posix.dirname(sh), 'manifest.json'));
-    const rest = files.filter((f) => !shards.includes(f));
+    const tables = files.filter((f) => KOINE_INDEX.test(f) || isOshbFrequency(dist.dir, f));
+    // images: the owner's brand art and required icons, and photographs credited by name in a notice file of this build
+    const notices = files.filter((f) => path.posix.basename(f) === 'THIRD-PARTY-NOTICES.md').map((f) => fs.readFileSync(path.join(abs(dist.dir), f), 'utf8')).join('\n');
+    const images = files.filter((f) => BRAND_PNG.test(f) || (PHOTO.test(f) && notices.includes(`\`${PHOTO.exec(f)![2]}.webp\``)));
+    const rest = files.filter((f) => !shards.includes(f) && !tables.includes(f) && !images.includes(f));
     expect(rest.filter((f) => /\.(epub|usfm|usx|sfm|wav|oga|ogg|mp3|m4a|zip|gz|tgz|map|sqlite|db|jsonl|pdf|docx?)$/i.test(f))).toEqual([]);
     const dirs = new Set(files.flatMap((f) => f.split('/').slice(0, -1)));
     expect([...dirs].filter((d) => /^(library|corpus|sources|ladder|stage0|scripture|bible|bibles|audio|recordings|texts|books)$/i.test(d))).toEqual([]);

@@ -1,0 +1,95 @@
+# DEVELOPMENT half (nn). Written for the deck audit by an AI model (not a native speaker); no rights are claimed by anyone else. One sentence per line.
+# everyday narrative
+I går vakna eg tidleg fordi naboen bora i veggen.
+Bestemor bakte ein stor eplekake til søndagsmiddagen.
+Vi gjekk ein lang tur langs elva og åt matpakke på ein stein.
+Han gløymde paraplyen på bussen og vart klissvåt på veg heim.
+Kvar morgon drikk ho to koppar kaffi før ho syklar på jobb.
+Då eg var liten, budde vi i eit gult hus ved sjøen.
+Systera mi har flytta til Bergen og jobbar no som sjukepleiar.
+Vi har ikkje sett filmen enno, men vi skal gjere det i helga.
+Medan borna leika i hagen, sat eg og las ein gamal roman.
+Læraren hadde venta i ti minutt før dei siste elevane kom.
+Eg likar best å lage mat når heile familien er heime.
+Ho hadde aldri smaka brunost før ho kom til Noreg.
+Vi kjøpte ein brukt sofa som var mykje billegare enn den nye.
+Han vil gjerne lære å spele gitar, men har ikkje tid no.
+I fjor reiste vi til Spania og bada kvar einaste dag.
+Bilen vår starta ikkje, så vi måtte gå nesten fem kilometer.
+Ho fortalde at ho hadde mista nøklane sine ein stad i byen.
+Eg trur at vinteren blir kaldare enn i fjor.
+Dei som bur i blokka ved sida av, er veldig hyggelege.
+Etter middagen vaska vi opp saman og såg på nyheitene.
+Han har jobba på det same kontoret i tjue år.
+Vi bestemte oss for å reise tidlegare fordi det byrja å snø.
+Hunden sprang ut av porten og forsvann bak låven til naboen.
+Ho sparer pengar fordi ho drøymer om ei lang reise.
+Eg var så trøytt at eg sovna midt i filmen.
+Brørne mine speler fotball kvar tysdag og torsdag.
+Viss det regnar i morgon, blir vi heime og speler brettspel.
+Det var den vakraste solnedgangen eg nokon gong hadde sett.
+Han ringde mora si kvar kveld medan han budde i utlandet.
+Vi plukka blåbær i skogen og laga syltetøy då vi kom heim.
+# news register
+Arbeidsløysa gjekk ned til fire prosent i løpet av hausten, melder statistikkbyrået.
+Sentralbanken har bestemt at renta skal vere uendra fram til neste møte.
+Straumprisane er nesten dobbelt så høge som for eitt år sidan.
+Meteorologane varslar kraftig vind og store nedbørsmengder langs kysten i kveld.
+Fleire vegar vart stengde etter at ei elv gjekk over breiddene.
+Kommunestyret vedtok i går å bygge ein ny skule i den nordlege bydelen.
+Politikarane er usamde om kor mykje pengar som skal brukast på kollektivtransport.
+Laget vann kampen med tre mål mot eitt etter ein sterk andre omgang.
+Treneren sa at spelarane hadde trena hardare enn nokon gong før.
+Forskarar ved universitetet har funne ein ny metode for å reinse drikkevatn.
+Ifølgje undersøkinga søv unge menneske mindre enn eldre gjer.
+Sjukehuset opnar ei ny avdeling for born med alvorlege lungesjukdommar neste år.
+Helsestyresmaktene oppmodar alle over seksti år om å ta influensavaksine.
+Talet på turistar har auka med tolv prosent samanlikna med same periode i fjor.
+Bønder i området fryktar at tørka vil øydeleggje årets avling.
+Eit nytt forskingsprosjekt skal undersøkje korleis havet endrar seg når det blir varmare.
+Bussrutene i sentrum blir endra frå og med første januar.
+Eksportørane håpar at den svakare krona vil gi betre inntekter.
+Politiet ber folk om å halde seg unna området til brannen er sløkt.
+Løparen sette ny personleg rekord og kom i mål fem sekund føre nummer to.
+# conversation
+God morgon! Har du sove godt?
+Nei, eigentleg ikkje, for barnet var uroleg halve natta.
+Kan du hjelpe meg med å finne ei jakke i storleik medium?
+Sjølvsagt, dei heng der borte ved sida av kassa.
+Kor mykje kostar denne blå genseren?
+Han kostar fire hundre og femti kroner, men i dag er han på sal.
+Eg har vondt i halsen og i hovudet sidan førre veke.
+Har du hatt feber, eller er det berre vanleg forkjøling?
+Du bør kvile og drikke mykje vatn i nokre dagar.
+Kjem du til å rekke møtet klokka ni?
+Ja, men eg må først levere nokre papir til sjefen.
+Kva skal vi ha til middag i dag?
+Eg tenkte at vi kunne lage suppe, for det er kaldt ute.
+Orsak, kva for ein plattform går toget til Oslo frå?
+Det går frå plattform tre om omtrent tjue minutt.
+Eg vil gjerne bestille eit dobbeltrom for to netter.
+Har de noko som ligg lenger unna gata?
+Kvifor kom du ikkje på festen i går?
+Eg var sjuk, og eg hadde ikkje høve til å ringje deg.
+Kan eg få rekninga, takk?
+Vil du ha kvittering, eller treng du ho ikkje?
+Hugs å ta med deg lunsjen din i dag.
+Takk, mamma, men eg har allereie lagt han i sekken.
+Kven er det som bankar på døra så seint?
+Det er berre naboen som vil låne ein stige.
+# description and instructions
+Pisk egga og sukkeret til blandinga blir lys og luftig.
+Ha i mjølet langsamt og rør forsiktig med ei tresleiv.
+Set kaka i omnen på hundre og syttifem grader.
+La kaka kjølne i omtrent ein halv time før du tek ho ut av forma.
+Ta til venstre ved det første lyskrysset og gå rett fram i to hundre meter.
+Posthuset ligg på høgre side, rett ved sida av apoteket.
+Byen ligg ved ein djup fjord og er omgitt av høge fjell.
+I sentrum finst det mange små butikkar, og dei fleste er opne til klokka seks.
+Skulen har tre hundre elevar, og han vart bygd for over femti år sidan.
+Elevane byrjar klokka åtte og har fri klokka tre.
+Det er forbode å parkere framfor inngangen til sjukehuset.
+Alle som brukar symjehallen, må dusje før dei går i vatnet.
+Biblioteket er stort og lyst, og det har ei eiga avdeling for born.
+Skrell potetene og skjer dei i tynne skiver før du kokar dei.
+Hugs å lese bruksrettleiinga nøye før du set i gang maskinen.

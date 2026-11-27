@@ -96,11 +96,15 @@ describe.skipIf(!have)('the built extension', () => {
     // 2026-11-19 (French pack, after merging master 22be2d7e): 840 -> 880 KB. The same French text reaches the setup page (manifest,
     // construction explanations, orientation: 37.6 KB on 985c742b). Measured 896,583 bytes = 875.6 KB on the merged tree.
     // 2026-11-19 (release/ru-fr, both packs on master 3d92b264): 880 -> 910 KB. app.js measured 926,340 bytes = 904.6 KB with Russian and French (setup page built with GOLEARN_APP_DICT=sq,ru,fr).
+    // 2026-11-26: 910 -> 915 KB. The Languages page took GoReview's language display (b0b86316: 931,462 bytes, 378 under the ceiling) and
+    // then its top bar's symbols (app/barIcons.ts: the globe, the person, the cog and the arrow as inline SVG paths, about 1.5 KB; the
+    // sentences cut from the head of the page give 0.6 KB back). app.js measured 932,398 bytes = 910.5 KB (GOLEARN_APP_DICT default).
     // 2026-11-25: 910 -> 962 KB for Korean, as for Russian and French before it: the setup page shows each language's manifest, the plain
     // explanation of its features and constructions (packs/ko-grammar.ts) and its orientation (tutorial/ko.ts); no Korean analyser, lexicon or
     // dictionary code is in app.js (checked on the build). Measured 982,295 bytes = 959.3 KB (setup page built with GOLEARN_APP_DICT=sq,ru,fr,ko;
     // 929,736 bytes = 907.9 KB on master a822b1ab, built the same day with sq,ru,fr).
-    if (sizes.has('app/app.js')) expect(sizes.get('app/app.js')!, 'app/app.js').toBeLessThanOrEqual(962 * KB);
+    // After merging master 4a381610 (app.js 932,398 bytes there): Korean's 52.6 KB on top gives about 985,000 bytes; ceiling 965 KB until the final build is measured.
+    if (sizes.has('app/app.js')) expect(sizes.get('app/app.js')!, 'app/app.js').toBeLessThanOrEqual(965 * KB);
     for (const id of ['sq', 'es', 'de', 'hi', 'th', 'nb', 'nn', 'ru', 'fr', 'ko']) expect(sizes.has(`analysers/${id}.js`), `analysers/${id}.js`).toBe(true);
   });
 

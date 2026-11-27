@@ -205,7 +205,7 @@ function senseAnswers(sense: string): string[] {
 }
 
 /** The gloss one dictionary sense offers to show: the whole if short, else its first short meaning, else the leading items of its first list. */
-function senseReference(sense: string): string | undefined {
+export function senseReference(sense: string): string | undefined {
   if (wordCount(sense) <= 6) return sense;
   for (const { text: meaning } of splitTop(sense, ';')) {
     if (wordCount(meaning) <= 6) return meaning;

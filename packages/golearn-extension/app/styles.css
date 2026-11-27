@@ -69,11 +69,13 @@ code, kbd { font: .86em var(--mono); background: color-mix(in srgb, var(--divide
 .topbar { display: flex; align-items: center; gap: var(--gap-3); background: var(--bg); border-bottom: 1px solid var(--divider); padding: .5rem clamp(1rem, 4vw, 3rem); position: sticky; top: 0; z-index: 5; }
 .brand { font-size: .82rem; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: var(--ink-faint); }
 .topbar .brand:hover { text-decoration: none; color: var(--ink); }
-.top-actions { display: flex; align-items: center; gap: var(--gap-3); margin-inline-start: auto; }
-/* a place of the top bar: plain words; the one you are in carries a rule under it, not a filled shape */
-.top-link { color: var(--ink-soft); padding: .35rem .1rem; border-bottom: 2px solid transparent; }
-.top-link:hover { color: var(--ink); text-decoration: none; border-bottom-color: var(--rule-strong); }
-.top-link[aria-current="page"] { color: var(--ink); border-bottom-color: var(--accent); }
+.top-actions { display: flex; align-items: center; gap: .35rem; margin-inline-start: auto; }
+/* a place of the top bar: a symbol in a round target, as in GoReview's bar (its .cog); the one you are in is in the accent colour, and
+   Languages, the home, carries a rule under it as GoReview's Languages tab does */
+.top-icon { display: inline-flex; align-items: center; justify-content: center; width: 2.75rem; height: 2.75rem; border-radius: 999px; color: var(--ink-soft); }
+.top-icon:hover { color: var(--ink); background: color-mix(in srgb, var(--ink) 5%, transparent); text-decoration: none; }
+.top-icon[aria-current="page"] { color: var(--accent); }
+#languages-link[aria-current="page"] { border-radius: 0; box-shadow: inset 0 -2px var(--accent); }
 .mark { display: inline-block; width: 1.1em; text-align: center; font-weight: 600; }
 .mark.done { color: var(--ok); }
 .mark.todo { color: var(--muted); }
@@ -214,8 +216,6 @@ details.fold > summary > h3 + *, details.fold > section.sub > :first-child { mar
 /* ───────────── the Languages page ─────────────
    what you read in, said once at the top; then your languages; then the ones you can add. A row is a name, one quiet line, and one action. */
 .home-status { margin: 0 0 var(--gap-4); }
-.home-status .lede strong { font-weight: 600; }
-.account-line { margin: .15rem 0 0; font-size: 1rem; }
 .home-actions { margin: var(--gap-3) 0 0; display: flex; flex-wrap: wrap; align-items: center; gap: var(--gap-2) var(--gap-4); }
 .status-note { font-weight: 600; margin: .4rem 0 1rem; }
 .status-note[data-state="synced"]::before { content: '✓ '; color: var(--ok); }
@@ -315,7 +315,7 @@ details.forgot { margin: 1rem 0; }
 /* motion: restrained and opacity-led, and only when the person has not asked for less */
 @keyframes screen-in { from { opacity: 0; } to { opacity: 1; } }
 @media (prefers-reduced-motion: no-preference) {
-  button, .btn, .top-link { transition: border-color .15s, background-color .15s, color .15s, opacity .15s; }
+  button, .btn, .top-icon { transition: border-color .15s, background-color .15s, color .15s, opacity .15s; }
   .screen > h1, .screen > .body { animation: screen-in .22s ease-out both; }
 }
 
@@ -323,11 +323,9 @@ details.forgot { margin: 1rem 0; }
 .go-brand { display: inline-flex; align-items: center; gap: .5rem; flex-shrink: 0; color: var(--ink); text-decoration: none; }
 .go-brand-mark { display: block; width: 60px; height: 30px; background: currentColor; -webkit-mask: var(--go-brand-mask) center / contain no-repeat; mask: var(--go-brand-mask) center / contain no-repeat; }
 .go-brand:hover { text-decoration: none; }
-@media (max-width: 380px) { .go-brand-mark { width: 52px; height: 26px; } .top-actions { gap: var(--gap-2); } }
+@media (max-width: 380px) { .go-brand-mark { width: 52px; height: 26px; } .top-actions { gap: .1rem; } }
 
 /* the top of the Languages page: where the learner stands, set as the page's opening lines */
-.home-ready .lede { margin-bottom: .1rem; }
-.home-ready p.muted { margin-top: 0; }
 .lang-level::first-letter { text-transform: uppercase; }
 .download-one { justify-self: end; }
 @media (max-width: 640px) { .download-one { justify-self: start; } }
@@ -356,20 +354,17 @@ body:has(.screen[data-route="languages"]) .topbar { background: #211a15; border-
   line-height: .96;
   letter-spacing: -.042em;
 }
-.screen[data-route="languages"] > h1::before {
-  content: "Choose your language";
-  display: block;
-  margin-bottom: .55rem;
-  color: var(--ink);
-  font: 600 .83rem/1.5 var(--serif);
-  letter-spacing: .18em;
-  text-transform: uppercase;
-}
 .screen[data-route="languages"] > h1::after { content: ""; display: block; width: 2.2rem; height: 2px; margin: .75rem auto 0; background: var(--accent-soft); }
 .screen[data-route="languages"] .home-status { text-align: center; }
-.screen[data-route="languages"] .home-status .lede { font-size: 1.15rem; }
-.screen[data-route="languages"] .account-line { color: var(--ink-soft); font-style: italic; }
-.screen[data-route="languages"] .home-actions { justify-content: center; }
+.screen[data-route="languages"] .home-actions { justify-content: center; margin-top: 0; }
+/* the way to GoReview: the page's gold pill, with GoReview's arrow at its end */
+.screen[data-route="languages"] .to-goreview {
+  display: inline-flex; align-items: center; gap: .6rem; min-height: 2.75rem; padding: .5rem 1.7rem;
+  border: 1px solid var(--accent); border-radius: 999px; background: var(--accent); color: var(--accent-ink);
+  font: 600 1.05rem/1.3 var(--serif); letter-spacing: .04em; text-decoration: none;
+}
+.screen[data-route="languages"] .to-goreview:hover { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); opacity: .9; text-decoration: none; }
+.screen[data-route="languages"] .to-goreview:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 /* a group: its name as a kicker between rules */
 .screen[data-route="languages"] .lang-rows { display: grid; gap: .8rem; }
 .screen[data-route="languages"] .lang-group { margin: 1.1rem 0 0; }
@@ -379,7 +374,7 @@ body:has(.screen[data-route="languages"]) .topbar { background: #211a15; border-
   color: var(--ink-soft); font: 400 .78rem/1.4 var(--serif); letter-spacing: .18em; text-transform: uppercase;
 }
 .screen[data-route="languages"] .lang-group > h2::before, .screen[data-route="languages"] .lang-group > h2::after { content: ""; flex: 1 1 auto; height: 1px; background: var(--rule-strong); }
-/* a language: a warm tile with no outline; the one being read in is lighter */
+/* a language: a warm tile with no outline; the one being read in is lighter and stands first (GoReview's "Reviewing now" tile) */
 .screen[data-route="languages"] .lang-row {
   display: block;
   padding: 0;
@@ -387,23 +382,51 @@ body:has(.screen[data-route="languages"]) .topbar { background: #211a15; border-
   border-radius: .8rem;
   background: #2a211a;
 }
-.screen[data-route="languages"] .lang-row.chosen { background: #382a20; }
+.screen[data-route="languages"] .lang-row[data-active="true"] { background: #382a20; }
 .screen[data-route="languages"] .lang-row .lang-name { font-size: clamp(1.65rem, 6vw, 2rem); font-weight: 400; line-height: 1.05; letter-spacing: -.018em; }
 .screen[data-route="languages"] .lang-row.chosen .lang-name { font-weight: 400; }
-.screen[data-route="languages"] .lang-row .native { display: inline; font-size: .65em; letter-spacing: 0; color: var(--ink-soft); }
+.screen[data-route="languages"] .lang-row .native { display: inline; font-size: .8em; font-style: normal; letter-spacing: 0; color: var(--ink-soft); }
 .language-box-face { display: flex; align-items: center; justify-content: space-between; gap: 1rem; min-height: 5rem; padding: .7rem var(--tile-inset); list-style: none; cursor: pointer; }
 .language-box-face::-webkit-details-marker { display: none; }
+/* the box has its own caret at the end of the face: the page's general mark at the start of a summary is not drawn here */
+.language-box > .language-box-face::before, .language-box[open] > .language-box-face::before { content: none; }
+.language-box > .language-box-face { color: var(--ink); text-align: start; }
 .language-box-face > div:first-child { min-width: 0; overflow-wrap: anywhere; }
-.lang-reading { display: block; margin-bottom: .2rem; color: var(--accent); font-size: .75rem; letter-spacing: .14em; text-transform: uppercase; }
+.lang-reading { display: block; margin-bottom: .4rem; color: var(--ink-soft); font-size: .78rem; letter-spacing: .18em; text-transform: uppercase; }
 .lang-reading[hidden] { display: none; }
 .language-box-caret { color: var(--accent); }
 .language-box[open] > .language-box-face .language-box-caret { transform: rotate(180deg); }
 .language-box-body { padding: 0 var(--tile-inset) .9rem; }
-.language-box-body .lang-actions { justify-items: stretch; padding: 0; }
-.language-box-body .mine-list { width: 100%; justify-items: stretch; }
-.language-box-body .mine { justify-content: flex-start; border-top: 1px solid var(--control-line); padding-block: .35rem; }
-.language-box-body .mine strong { margin-inline-end: auto; }
-.language-box-body .dl-note:empty { display: none; }
+.language-box-body .lang-actions { justify-items: stretch; justify-self: stretch; padding: 0; }
+/* the tracks of a language, as GoReview lists them (its .account-language-list): a hairline above each line, the name at its start, the
+   state at its end, and the line itself the control. A downloaded track has Remove after it. */
+.language-box-body .track-list { display: grid; justify-items: stretch; justify-self: stretch; gap: 0; width: 100%; margin: 0; padding: 0 0 .25rem; list-style: none; }
+.language-box-body .track { display: flex; align-items: center; gap: .1rem .6rem; border-top: 1px solid var(--control-line); }
+.track-row {
+  flex: 1 1 auto; display: flex; align-items: center; justify-content: space-between; gap: .5rem 1rem;
+  min-width: 0; min-height: 2.75rem; margin: 0; padding: .45rem .25rem;
+  border: 0; border-radius: 0; background: transparent; color: var(--ink);
+  font: 1.15rem/1.25 var(--serif); letter-spacing: 0; text-align: start;
+}
+button.track-row { cursor: pointer; }
+button.track-row:hover:not(:disabled) { background: color-mix(in srgb, var(--accent) 8%, transparent); }
+button.track-row:disabled { cursor: default; color: var(--ink-soft); }
+.track-row .track-name { margin-inline-end: auto; overflow-wrap: anywhere; }
+.track-row small, .track-row .tag { padding: 0; border: 0; border-radius: 0; color: var(--ink-soft); font: inherit; font-size: .83em; letter-spacing: 0; text-transform: none; text-align: end; white-space: nowrap; }
+.track-row .dl-state.error { font-size: .83em; }
+.track-row:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
+/* the written standard (Norwegian), as GoReview asks it (its .setup-choice): two words, the chosen one underlined in gold */
+.standard-choice { display: flex; flex-wrap: wrap; align-items: center; gap: .2rem 1.6rem; min-width: 0; margin: .3rem 0 0; padding: 0; border: 0; }
+.track-list:not(:empty) + .download-one .standard-choice { margin-top: .6rem; padding-top: .5rem; border-top: 1px solid var(--control-line); }
+.standard-choice legend { width: 100%; padding: 0; margin-bottom: .2rem; color: var(--ink-soft); font-style: italic; }
+.standard-option { position: relative; display: inline-flex; align-items: center; min-height: 2.75rem; cursor: pointer; }
+.standard-option input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+.standard-option span { padding-bottom: .15rem; border-bottom: 2px solid transparent; color: var(--ink-soft); font-size: 1.25rem; }
+.standard-option:hover span { color: var(--ink); }
+.standard-option input:checked + span { color: var(--ink); border-bottom-color: var(--accent); }
+.standard-option input:focus-visible + span { outline: 2px solid var(--accent); outline-offset: 3px; }
+.language-box-body .download-one { justify-self: stretch; }
+.language-box-body .dl-panel .row { margin: 1rem 0 .1rem; }
 /* the gold pill: Download, and a question's Download in its panel */
 .screen[data-route="languages"] .lang-row .btn, .screen[data-route="languages"] details.download > summary {
   min-height: 2.75rem;
@@ -427,12 +450,6 @@ body:has(.screen[data-route="languages"]) .topbar { background: #211a15; border-
 .screen[data-route="languages"] .language-box-body > details.about > summary {
   display: inline-flex; align-items: center; min-height: 2.75rem; color: var(--accent); font: 600 .9rem/1.3 var(--serif); text-decoration: underline; text-underline-offset: .23em;
 }
-.screen[data-route="languages"] .lang-row .dl-panel select {
-  width: 100%; min-height: 2.75rem; padding: .35rem 1.5rem .35rem 0; border: 0; border-bottom: 1px solid var(--control-line); border-radius: 0;
-  background: transparent; color: var(--ink); font: 1.1rem/1.3 var(--serif);
-}
-.screen[data-route="languages"] .lang-row .dl-panel select:focus { border-bottom-color: var(--accent); }
-.screen[data-route="languages"] .lang-row .dl-panel option { background: var(--paper); color: var(--ink); }
-.screen[data-route="languages"] .lang-row :is(.btn, summary, select):focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.screen[data-route="languages"] .lang-row :is(.btn, summary):focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 .screen[data-route="languages"] .foot-links { text-align: center; }
 .screen[data-route="languages"] ~ * #done-reading, body:has(.screen[data-route="languages"]) #done-reading { border-color: var(--rule-strong); border-radius: 999px; }

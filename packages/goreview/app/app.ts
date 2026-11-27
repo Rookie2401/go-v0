@@ -74,6 +74,23 @@ function cogIcon(doc: Document): Element {
   return svg;
 }
 
+/**
+ * The Languages globe (the outline, the equator and one meridian; the same drawing as the GoLearn setup page's, app/barIcons.ts): a plain
+ * SVG, named for assistive technology by the link. The tab was the word "Languages" until the owner, 2026-11-26, after GoLearn's bar took
+ * the symbol: "Change the language icon in GoReview as well."
+ */
+function globeIcon(doc: Document): Element {
+  const ns = 'http://www.w3.org/2000/svg';
+  const svg = doc.createElementNS(ns, 'svg');
+  for (const [k, v] of Object.entries({ viewBox: '0 0 24 24', width: '20', height: '20', fill: 'none', stroke: 'currentColor', 'stroke-width': '1.6', 'stroke-linecap': 'round', 'stroke-linejoin': 'round', 'aria-hidden': 'true', focusable: 'false' })) svg.setAttribute(k, v);
+  const outline = doc.createElementNS(ns, 'circle');
+  for (const [k, v] of Object.entries({ cx: '12', cy: '12', r: '9' })) outline.setAttribute(k, v);
+  const lines = doc.createElementNS(ns, 'path');
+  lines.setAttribute('d', 'M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9s1.3-6.4 3.8-9z');
+  svg.append(outline, lines);
+  return svg;
+}
+
 /** The Account person (a head over shoulders, the same drawing as Biblia's): a plain SVG, named for assistive technology by the link. */
 function personIcon(doc: Document): Element {
   const ns = 'http://www.w3.org/2000/svg';
@@ -248,7 +265,8 @@ export function createApp(root: HTMLElement, deps: Deps): AppHandle {
     // the account is offered any time, never required
     if (mode !== 'none') {
       // Languages is its own top-right tab alongside Account and Settings.
-      const languages = h('a', { href: '#/languages', id: 'header-languages', class: 'header-languages', ...(route === 'languages' ? { 'aria-current': 'page' } : {}) }, 'Languages');
+      const languages = h('a', { href: '#/languages', id: 'header-languages', class: 'cog header-languages', 'aria-label': 'Languages', title: 'Languages', ...(route === 'languages' ? { 'aria-current': 'page' } : {}) });
+      languages.append(globeIcon(deps.doc));
       const who = h('a', { href: '#/account', id: 'header-account', class: 'cog', 'aria-label': 'Account', title: 'Account', ...(route === 'account' ? { 'aria-current': 'page' } : {}) });
       who.append(personIcon(deps.doc));
       updateCog();

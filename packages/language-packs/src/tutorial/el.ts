@@ -2,7 +2,7 @@
  * The Greek orientation (tutorial/el): a MINIMAL one, drafted by an AI model for the experimental Greek pack. NO native speaker or
  * classicist has checked it. It teaches how to select a word, what the card shows, one practice lookup in John 1:1, the alphabet and
  * the two spelling systems, the periods the pack reads and how it tells them apart, the article, and what the pack cannot do. The
- * practice sentence is one of the pack's validation sentences (John 1:1, SBL Greek New Testament).
+ * practice sentence is one of the pack's validation phrases (five words cut from John 1:1, SBL Greek New Testament).
  */
 import { orientation } from './orientation';
 import type { Tutorial, TutorialStep } from './types';
@@ -53,7 +53,7 @@ export const EL_TUTORIAL_STEPS_OWN: TutorialStep[] = [
 export const EL_TUTORIAL: Tutorial = orientation({
   languageId: 'el',
   languageName: 'Greek',
-  practice: { instruction: 'Select the word that means word, and look at its case and at the period the card names.', sentence: 'Ἐν ἀρχῇ ἦν ὁ λόγος, καὶ ὁ λόγος ἦν πρὸς τὸν θεόν, καὶ θεὸς ἦν ὁ λόγος.', target: 'λόγος' },
+  practice: { instruction: 'Select the word that means word, and look at its case and at the period the card names.', sentence: 'Ἐν ἀρχῇ ἦν ὁ λόγος,', target: 'λόγος' },
   cardFeatureNote: 'For a Greek word the card shows the period it was read in and why, the lemma, the case, number and gender of a noun or the tense, voice, mood and person of a verb, how often the New Testament reads it this way (and how often the lemma occurs in the Septuagint), a written transliteration in three named conventions for an ancient word, and under Variants the word across the periods.',
   thin: [
     'Only the closed classes and the commonest New Testament words are compiled into the pack; the full Koine, Ancient and Modern indexes are assets the reader installs when Greek is loaded. Until then a word outside the core has no reading.',

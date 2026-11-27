@@ -2,7 +2,7 @@
  * The Hebrew orientation (tutorial/he): a MINIMAL one, drafted by an AI model for the experimental Hebrew pack. NO native speaker or
  * Hebrew scholar has checked it. It teaches how to select a word, what the card shows, one practice lookup in a Biblical verse, the
  * direction and letters of the script, the two periods the pack reads and how it tells them apart, the attached prefixes, and what the
- * pack cannot do. The practice sentence is one of the pack's validation sentences (Genesis 1:1, Miqra according to the Masorah).
+ * pack cannot do. The practice sentence is one of the pack's validation phrases (two words cut from Genesis 1:1, Miqra according to the Masorah).
  */
 import { orientation } from './orientation';
 import type { Tutorial, TutorialStep } from './types';
@@ -53,7 +53,7 @@ export const HE_TUTORIAL_STEPS_OWN: TutorialStep[] = [
 export const HE_TUTORIAL: Tutorial = orientation({
   languageId: 'he',
   languageName: 'Hebrew',
-  practice: { instruction: 'Select the word that means God, and look at the plural ending and the period the card names.', sentence: 'בְּרֵאשִׁ֖ית בָּרָ֣א אֱלֹהִ֑ים אֵ֥ת הַשָּׁמַ֖יִם וְאֵ֥ת הָאָֽרֶץ׃', target: 'אֱלֹהִ֑ים' },
+  practice: { instruction: 'Select the word that means God, and look at the plural ending and the period the card names.', sentence: 'בָּרָ֣א אֱלֹהִ֑ים', target: 'אֱלֹהִ֑ים' },
   cardFeatureNote: 'For a Hebrew word the card shows the period it was read in (Biblical or Modern) and why, the lemma as the source prints it, the gender, number and state of a noun or the stem (binyan), conjugation and person of a verb, the attached prefixes as parts of the word, how often the Bible reads it this way, a written transliteration of a pointed form, and under Variants the word across the periods.',
   thin: [
     'Only the closed classes and the commonest Biblical words are compiled into the pack; the full Biblical and Modern indexes are assets the reader installs when Hebrew is loaded. Until then a word outside the core has no reading.',

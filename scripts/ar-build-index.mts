@@ -263,6 +263,8 @@ function tidy(t: string): string {
 /** One gloss made short: no bracketed segments, cut at the first ";", at most two comma-separated alternatives, never cut inside a word, never an unclosed bracket. */
 function cleanGloss(raw: string, alts = 2): string {
   let t = stripBrackets(raw).split(';')[0];
+  // a colon separates the meaning from an explanation of it ("to make: to create"): the meaning is what stands before it
+  { const c = t.indexOf(':'); if (c > 0) { const before = tidy(t.slice(0, c)); if (before.length >= 2) t = before; else t = t.slice(c + 1); } }
   t = t.split(',').slice(0, alts).join(',');
   t = tidy(t);
   if (t.length > 60) { const sp = t.lastIndexOf(' ', 60); t = tidy(sp > 10 ? t.slice(0, sp) : t.slice(0, 60)); }
@@ -596,7 +598,7 @@ const byKey = new Map<string, number[]>(); // key of a head → lemma numbers
       // the keyword is looked for outside brackets, first in the FIRST alternative of a sense (a sense that merely mentions it later does not lead), then in any alternative;
       // the text kept is the alternative that holds it ("to mark … on a surface, to write" → "to write")
       const pick = (sg: string, firstOnly: boolean): string => {
-        const alts = stripBrackets(sg).split(';').flatMap((seg) => seg.split(','));
+        const alts = stripBrackets(sg).split(';').flatMap((seg) => seg.split(',')).flatMap((seg) => seg.split(':'));
         const hitAlt = (firstOnly ? alts.slice(0, 1) : alts).find((alt) => res.some((r) => r.test(alt)));
         const t = hitAlt ? tidy(hitAlt) : '';
         return t.length >= 2 ? t : '';
@@ -1027,7 +1029,7 @@ const classTop: Record<string, number> = { Rev: 0, One: 0, Lab: 0, Ord: 0 };
   for (let l = 0; l < lemmaIds.length; l++) if (withRows[l]) classTotals[senseClassOf(l)] = (classTotals[senseClassOf(l)] ?? 0) + 1;
   const entOf = new Map<number, Ent>();
   for (const en of ents) if (!entOf.has(en.lemma)) entOf.set(en.lemma, en);
-  const leads = [...leadOfLexeme.values()].filter((l) => ['NOUN', 'VERB', 'ADJ', 'ADV'].includes(lemmaRows[l][2]) && withRows[l]).sort((a, b) => lemmaRows[b][4] - lemmaRows[a][4] || (lemmaIds[a] < lemmaIds[b] ? -1 : 1)).slice(0, 2000);
+  const leads = [...leadOfLexeme.values()].filter((l) => ['NOUN', 'VERB', 'ADJ', 'ADV'].includes(lemmaRows[l][2]) && withRows[l]).sort((a, b) => lemmaRows[b][4] - lemmaRows[a][4] || (lemmaIds[a] < lemmaIds[b] ? -1 : 1)).slice(0, Number(opt['top-n'] ?? 2000)); // --top-n: a longer list for a review batch (the statistics of INDEX.md are of the default 2,000)
   for (const l of leads) classTop[senseClassOf(l)] = (classTop[senseClassOf(l)] ?? 0) + 1;
   {
     // how many lemma ids lose the class One because the source entry also has pointer senses (printed once per build)

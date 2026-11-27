@@ -4367,6 +4367,2052 @@
   ],
   "أَحَسَّ|VERB": [
    "feel"
+  ],
+  "مَرَّة|NOUN": [
+   "time",
+   "occurrence"
+  ],
+  "لَانَ|VERB": [
+   "soften"
+  ],
+  "مَيِّت|ADJ": [
+   "dead"
+  ],
+  "ذَاهِب|ADJ": [
+   "going"
+  ],
+  "مُحِقّ|ADJ": [
+   "right"
+  ],
+  "مُسَاعَدَة|NOUN": [
+   "help"
+  ],
+  "خَطَأ|NOUN": [
+   "mistake",
+   "error"
+  ],
+  "وُجُود|NOUN": [
+   "existence"
+  ],
+  "شَرِكَة|NOUN": [
+   "company"
+  ],
+  "مُحَاوَلَة|NOUN": [
+   "attempt"
+  ],
+  "أَحْسَنَ|VERB": [
+   "well"
+  ],
+  "إِيجَاد|NOUN": [
+   "creation"
+  ],
+  "شُعُور|NOUN": [
+   "feeling",
+   "emotion"
+  ],
+  "جُنُون|NOUN": [
+   "madness",
+   "insanity"
+  ],
+  "لَاكَ|VERB": [
+   "chew"
+  ],
+  "حِمَايَة|NOUN": [
+   "protection"
+  ],
+  "سُكُوت|NOUN": [
+   "silence"
+  ],
+  "مُشَاهَدَة|NOUN": [
+   "viewing",
+   "observation"
+  ],
+  "أَمَل|NOUN": [
+   "hope"
+  ],
+  "شِرَاء|NOUN": [
+   "buying"
+  ],
+  "مُفَاجَأَة|NOUN": [
+   "surprise"
+  ],
+  "مَسْؤُول|ADJ": [
+   "responsible"
+  ],
+  "جَوْلَة|NOUN": [
+   "trip"
+  ],
+  "ضَوْء|NOUN": [
+   "light"
+  ],
+  "كَاذِب|ADJ": [
+   "false"
+  ],
+  "مُدْهِش|ADJ": [
+   "amazing"
+  ],
+  "تَأْثِير|NOUN": [
+   "influence"
+  ],
+  "تَهْدِيد|NOUN": [
+   "threat"
+  ],
+  "مُمَارَسَة|NOUN": [
+   "exercise",
+   "practice"
+  ],
+  "عَشَاء|NOUN": [
+   "dinner",
+   "supper"
+  ],
+  "هُجُوم|NOUN": [
+   "attack"
+  ],
+  "اِخْتِبَار|NOUN": [
+   "test"
+  ],
+  "تَشْغِيل|NOUN": [
+   "operating",
+   "operation"
+  ],
+  "جَيْش|NOUN": [
+   "army"
+  ],
+  "سُرْعَة|NOUN": [
+   "speed"
+  ],
+  "إِرْسَال|NOUN": [
+   "sending",
+   "dispatching"
+  ],
+  "مَأْلُوف|ADJ": [
+   "familiar",
+   "usual"
+  ],
+  "بَدْء|NOUN": [
+   "beginning",
+   "start"
+  ],
+  "اِسْتِعْدَاد|NOUN": [
+   "preparation"
+  ],
+  "تَدْمِير|NOUN": [
+   "destruction"
+  ],
+  "مُكَافَحَة|NOUN": [
+   "combat",
+   "fight"
+  ],
+  "صِلَة|NOUN": [
+   "link",
+   "connection"
+  ],
+  "تَنْظِيف|NOUN": [
+   "cleaning"
+  ],
+  "أَسْمَعَ|VERB": [
+   "hear"
+  ],
+  "زِفَاف|NOUN": [
+   "wedding"
+  ],
+  "زِيَادَة|NOUN": [
+   "increase"
+  ],
+  "اِنْتِظَار|NOUN": [
+   "waiting"
+  ],
+  "مُخِيف|ADJ": [
+   "frightening",
+   "scary"
+  ],
+  "إِخْبَار|NOUN": [
+   "notification",
+   "information"
+  ],
+  "غَبَاء|NOUN": [
+   "stupidity",
+   "foolishness"
+  ],
+  "دِفَاع|NOUN": [
+   "defence",
+   "defense"
+  ],
+  "تَوْجِيه|NOUN": [
+   "directing"
+  ],
+  "إِزَالَة|NOUN": [
+   "removal"
+  ],
+  "مُحَاكَمَة|NOUN": [
+   "trial"
+  ],
+  "اِتِّجَاه|NOUN": [
+   "direction"
+  ],
+  "إِحْسَاس|NOUN": [
+   "feeling",
+   "emotion"
+  ],
+  "إِعْطَاء|NOUN": [
+   "giving",
+   "providing"
+  ],
+  "إِقَامَة|NOUN": [
+   "staying"
+  ],
+  "مَوْهِبَة|NOUN": [
+   "talent"
+  ],
+  "تَحِيَّة|NOUN": [
+   "greeting"
+  ],
+  "إِهَانَة|NOUN": [
+   "insult"
+  ],
+  "مُقَارَنَة|NOUN": [
+   "comparison"
+  ],
+  "شَكْوَى|NOUN": [
+   "complaint"
+  ],
+  "حُرِّيَّة|NOUN": [
+   "freedom",
+   "liberty"
+  ],
+  "تَفْكِير|NOUN": [
+   "thinking"
+  ],
+  "إِلْغَاء|NOUN": [
+   "cancellation",
+   "abolition"
+  ],
+  "غَيْبُوبَة|NOUN": [
+   "coma"
+  ],
+  "اِحْتِرَام|NOUN": [
+   "respect"
+  ],
+  "حِذَاء|NOUN": [
+   "shoe",
+   "boot"
+  ],
+  "تَفْجِير|NOUN": [
+   "explosion"
+  ],
+  "جَهْد|NOUN": [
+   "effort"
+  ],
+  "اِسْتِدْعَاء|NOUN": [
+   "summoning"
+  ],
+  "اِنْفِجَار|NOUN": [
+   "explosion"
+  ],
+  "مَهَارَة|NOUN": [
+   "skill"
+  ],
+  "مُنَافَسَة|NOUN": [
+   "competition"
+  ],
+  "سُقُوط|NOUN": [
+   "fall",
+   "falling"
+  ],
+  "سُرُور|NOUN": [
+   "joy",
+   "pleasure"
+  ],
+  "عُبُور|NOUN": [
+   "crossing"
+  ],
+  "تَالٍ|ADJ": [
+   "following",
+   "subsequent"
+  ],
+  "اِنْتِهَاء|NOUN": [
+   "finishing"
+  ],
+  "دِرَايَة|NOUN": [
+   "knowledge"
+  ],
+  "وُضُوح|NOUN": [
+   "clarity",
+   "clearness"
+  ],
+  "وَحْش|NOUN": [
+   "animal"
+  ],
+  "اِسْتِعْمَال|NOUN": [
+   "use"
+  ],
+  "إِنْتَاج|NOUN": [
+   "production"
+  ],
+  "لَفَتَ|VERB": [
+   "attract"
+  ],
+  "تَعْبِير|NOUN": [
+   "expression"
+  ],
+  "تَقْيِيم|NOUN": [
+   "evaluation",
+   "assessment"
+  ],
+  "اِقْتِرَاح|NOUN": [
+   "suggestion",
+   "proposal"
+  ],
+  "رَاعٍ|NOUN": [
+   "shepherd"
+  ],
+  "خَلِيج|NOUN": [
+   "gulf"
+  ],
+  "مَقْطُوع|ADJ": [
+   "severed"
+  ],
+  "إِشَاعَة|NOUN": [
+   "rumor"
+  ],
+  "طَازَج|ADJ": [
+   "fresh"
+  ],
+  "خَيَال|NOUN": [
+   "imagination"
+  ],
+  "شَرَحَ|VERB": [
+   "explain"
+  ],
+  "شِحْنَة|NOUN": [
+   "cargo",
+   "shipment"
+  ],
+  "مُسْتَمِرّ|ADJ": [
+   "continuous"
+  ],
+  "إِنْجَاز|NOUN": [
+   "achievement"
+  ],
+  "تَعْرِيف|NOUN": [
+   "definition"
+  ],
+  "تَوْضِيح|NOUN": [
+   "clarification",
+   "explanation"
+  ],
+  "مَبْدَأ|NOUN": [
+   "principle"
+  ],
+  "قَانُونِيّ|ADJ": [
+   "legal"
+  ],
+  "اِعْتِقَال|NOUN": [
+   "arrest"
+  ],
+  "اِرْتَبَطَ|VERB": [
+   "connected"
+  ],
+  "إِزْعَاج|NOUN": [
+   "annoyance"
+  ],
+  "تَرْقِيَة|NOUN": [
+   "promotion"
+  ],
+  "إِقْنَاع|NOUN": [
+   "convincing",
+   "persuasion"
+  ],
+  "مُكَافَأَة|NOUN": [
+   "reward"
+  ],
+  "بَرِيطَانِيّ|ADJ": [
+   "British"
+  ],
+  "تَكْلِفَة|NOUN": [
+   "cost"
+  ],
+  "أَفْهَمَ|VERB": [
+   "understand"
+  ],
+  "حَرَّرَ|VERB": [
+   "free",
+   "liberate"
+  ],
+  "سَيْطَرَة|NOUN": [
+   "control"
+  ],
+  "اِخْتِرَاق|NOUN": [
+   "penetration"
+  ],
+  "عَظَمَة|NOUN": [
+   "greatness"
+  ],
+  "زَائِف|ADJ": [
+   "fake",
+   "counterfeit"
+  ],
+  "صِنَاعِيّ|ADJ": [
+   "industrial"
+  ],
+  "اِنْكَسَرَ|VERB": [
+   "break"
+  ],
+  "جُمْلَة|NOUN": [
+   "sentence"
+  ],
+  "مَقَالَة|NOUN": [
+   "article"
+  ],
+  "قَبَضَ|VERB": [
+   "seize",
+   "arrest"
+  ],
+  "فَضَاء|NOUN": [
+   "space"
+  ],
+  "عَرَبِيّ|ADJ": [
+   "Arab",
+   "Arabic"
+  ],
+  "غَائِب|ADJ": [
+   "absent"
+  ],
+  "تَرْبِيَة|NOUN": [
+   "education"
+  ],
+  "رَابِطَة|NOUN": [
+   "association"
+  ],
+  "قَبْو|NOUN": [
+   "basement",
+   "cellar"
+  ],
+  "صَرَاحَة|NOUN": [
+   "honesty",
+   "openness"
+  ],
+  "حَرِيص|ADJ": [
+   "eager"
+  ],
+  "حُزْمَة|NOUN": [
+   "bundle"
+  ],
+  "اِضْطِرَاب|NOUN": [
+   "disturbance",
+   "disorder"
+  ],
+  "مِنْشَفَة|NOUN": [
+   "towel"
+  ],
+  "اِنْتَحَرَ|VERB": [
+   "suicide"
+  ],
+  "تَشْكِيل|NOUN": [
+   "formation"
+  ],
+  "ضَجَّة|NOUN": [
+   "noise"
+  ],
+  "فَشِلَ|VERB": [
+   "fail"
+  ],
+  "مُحِيط|NOUN": [
+   "ocean"
+  ],
+  "زَحَفَ|VERB": [
+   "crawl"
+  ],
+  "إِرَادَة|NOUN": [
+   "will"
+  ],
+  "وَدُود|ADJ": [
+   "friendly"
+  ],
+  "وَاعٍ|ADJ": [
+   "conscious",
+   "aware"
+  ],
+  "خَطِيئَة|NOUN": [
+   "sin"
+  ],
+  "تَصْحِيح|NOUN": [
+   "correction"
+  ],
+  "تَجْهِيز|NOUN": [
+   "preparation",
+   "equipping"
+  ],
+  "قَاع|NOUN": [
+   "bottom"
+  ],
+  "شَهِير|ADJ": [
+   "famous"
+  ],
+  "بُعْد|NOUN": [
+   "distance"
+  ],
+  "مِقْيَاس|NOUN": [
+   "scale"
+  ],
+  "فَضِيحَة|NOUN": [
+   "scandal"
+  ],
+  "نَسِيج|NOUN": [
+   "fabric",
+   "textile"
+  ],
+  "تَأَثَّرَ|VERB": [
+   "influenced"
+  ],
+  "كَافَحَ|VERB": [
+   "struggle",
+   "fight"
+  ],
+  "اِنْقَطَعَ|VERB": [
+   "cut"
+  ],
+  "تَوْزِيع|NOUN": [
+   "distribution"
+  ],
+  "شَفَة|NOUN": [
+   "lip"
+  ],
+  "ثُعْبَان|NOUN": [
+   "snake"
+  ],
+  "جَنَاح|NOUN": [
+   "wing"
+  ],
+  "اِنْتِحَار|NOUN": [
+   "suicide"
+  ],
+  "وَعَى|VERB": [
+   "aware"
+  ],
+  "ضِعْف|NOUN": [
+   "double"
+  ],
+  "قُدْرَة|NOUN": [
+   "ability",
+   "capacity"
+  ],
+  "قَذَفَ|VERB": [
+   "throw",
+   "hurl"
+  ],
+  "تَبْدِيل|NOUN": [
+   "exchange",
+   "alteration"
+  ],
+  "ذَوْق|NOUN": [
+   "taste"
+  ],
+  "صِحِّيّ|ADJ": [
+   "health"
+  ],
+  "إِخْلَاء|NOUN": [
+   "evacuation"
+  ],
+  "أَضَاعَ|VERB": [
+   "lose"
+  ],
+  "صَوَّتَ|VERB": [
+   "vote"
+  ],
+  "تَعَطَّلَ|VERB": [
+   "working"
+  ],
+  "صِرَاع|NOUN": [
+   "conflict"
+  ],
+  "مُخْتَبِئ|ADJ": [
+   "hiding"
+  ],
+  "إِسْقَاط|NOUN": [
+   "overthrow"
+  ],
+  "إِنْشَاء|NOUN": [
+   "establishment",
+   "creation"
+  ],
+  "قَيْصَر|NOUN": [
+   "Caesar"
+  ],
+  "دَيْن|NOUN": [
+   "debt"
+  ],
+  "اِقْتَرَفَ|VERB": [
+   "commit"
+  ],
+  "تَعَدَّى|VERB": [
+   "exceed"
+  ],
+  "نَقَلَ|VERB": [
+   "transport"
+  ],
+  "هَمَسَ|VERB": [
+   "whisper"
+  ],
+  "لَعِقَ|VERB": [
+   "lick"
+  ],
+  "مُضَاجَعَة|NOUN": [
+   "sex"
+  ],
+  "وَعْد|NOUN": [
+   "promise"
+  ],
+  "سُهُولَة|NOUN": [
+   "ease"
+  ],
+  "اِسْتَبْعَدَ|VERB": [
+   "exclude"
+  ],
+  "اِخْتِطَاف|NOUN": [
+   "kidnapping",
+   "hijacking"
+  ],
+  "مِنْحَة|NOUN": [
+   "scholarship",
+   "grant"
+  ],
+  "ضَمِير|NOUN": [
+   "conscience"
+  ],
+  "تَجَنَّبَ|VERB": [
+   "avoid"
+  ],
+  "مُسْتَعَار|ADJ": [
+   "borrowed"
+  ],
+  "فَوْز|NOUN": [
+   "victory",
+   "win"
+  ],
+  "لَيْرَة|NOUN": [
+   "pound",
+   "lira"
+  ],
+  "غَرَامِيّ|ADJ": [
+   "romantic"
+  ],
+  "اِسْتَدَارَ|VERB": [
+   "turn"
+  ],
+  "تَمَسَّكَ|VERB": [
+   "hold"
+  ],
+  "مُذْنِب|NOUN": [
+   "sinner",
+   "criminal"
+  ],
+  "نَاقِص|ADJ": [
+   "incomplete"
+  ],
+  "سُلَالَة|NOUN": [
+   "dynasty",
+   "lineage"
+  ],
+  "ضَحَّى|VERB": [
+   "sacrifice"
+  ],
+  "حَاكِم|NOUN": [
+   "ruler",
+   "governor"
+  ],
+  "جِيل|NOUN": [
+   "generation"
+  ],
+  "دُخَان|NOUN": [
+   "smoke"
+  ],
+  "سَمِين|ADJ": [
+   "fat"
+  ],
+  "عُقْدَة|NOUN": [
+   "knot"
+  ],
+  "غُرُوب|NOUN": [
+   "sunset"
+  ],
+  "اِسْتَقْبَلَ|VERB": [
+   "receive"
+  ],
+  "تَخْرِيب|NOUN": [
+   "destroying",
+   "sabotage"
+  ],
+  "صَائِد|NOUN": [
+   "hunter"
+  ],
+  "اِمْتَدَّ|VERB": [
+   "stretch",
+   "extend"
+  ],
+  "آتٍ|ADJ": [
+   "coming",
+   "next"
+  ],
+  "بِرْمِيل|NOUN": [
+   "barrel"
+  ],
+  "بِيئَة|NOUN": [
+   "environment"
+  ],
+  "مُتَّصِل|ADJ": [
+   "continuous",
+   "connected"
+  ],
+  "غِذَاء|NOUN": [
+   "food",
+   "nutrition"
+  ],
+  "اِبْتَلَعَ|VERB": [
+   "swallow"
+  ],
+  "نَشْرَة|NOUN": [
+   "bulletin"
+  ],
+  "بِنَايَة|NOUN": [
+   "building"
+  ],
+  "مَرْبُوط|ADJ": [
+   "tied"
+  ],
+  "جَوْرَب|NOUN": [
+   "sock"
+  ],
+  "صَافٍ|ADJ": [
+   "pure",
+   "clear"
+  ],
+  "بَطَّارِيَّة|NOUN": [
+   "battery"
+  ],
+  "اِقْتِحَام|NOUN": [
+   "storming",
+   "invasion"
+  ],
+  "أَمَان|NOUN": [
+   "security",
+   "safety"
+  ],
+  "مُرْتَبِك|ADJ": [
+   "confused"
+  ],
+  "أَذًى|NOUN": [
+   "injury"
+  ],
+  "رَدِيء|ADJ": [
+   "bad"
+  ],
+  "غَارِق|ADJ": [
+   "drowned",
+   "submerged"
+  ],
+  "مِنَصَّة|NOUN": [
+   "platform"
+  ],
+  "رَضِيَ|VERB": [
+   "pleased",
+   "satisfied"
+  ],
+  "مُكْتَئِب|ADJ": [
+   "depressed"
+  ],
+  "حَاسِم|ADJ": [
+   "conclusive",
+   "crucial"
+  ],
+  "وَضْعِيَّة|NOUN": [
+   "situation",
+   "position"
+  ],
+  "تَذْكَار|NOUN": [
+   "souvenir",
+   "memento"
+  ],
+  "قِيَاس|NOUN": [
+   "measurement"
+  ],
+  "اِلْتَحَقَ|VERB": [
+   "join"
+  ],
+  "يَتِيم|ADJ": [
+   "orphan"
+  ],
+  "حُقْنَة|NOUN": [
+   "injection"
+  ],
+  "عَاقِل|ADJ": [
+   "reasonable",
+   "rational"
+  ],
+  "جَاذِبِيَّة|NOUN": [
+   "gravity"
+  ],
+  "مُؤَشِّر|NOUN": [
+   "indicator",
+   "index"
+  ],
+  "وَهْمِيّ|ADJ": [
+   "imaginary"
+  ],
+  "حَفِيد|NOUN": [
+   "grandson"
+  ],
+  "تَجَسَّسَ|VERB": [
+   "spy"
+  ],
+  "هَيْكَل|NOUN": [
+   "structure",
+   "framework"
+  ],
+  "أَلَم|NOUN": [
+   "pain"
+  ],
+  "رَنَّ|VERB": [
+   "ring"
+  ],
+  "اِسْتَحَالَ|VERB": [
+   "impossible"
+  ],
+  "مَجْرُوح|ADJ": [
+   "wounded"
+  ],
+  "وَحْشِيّ|ADJ": [
+   "wild"
+  ],
+  "جَلَالَة|NOUN": [
+   "majesty"
+  ],
+  "شَكَّ|VERB": [
+   "doubt"
+  ],
+  "اِعْتِرَاف|NOUN": [
+   "confession"
+  ],
+  "لُقْمَة|NOUN": [
+   "mouthful"
+  ],
+  "بَارَى|VERB": [
+   "compete"
+  ],
+  "مِسْمَار|NOUN": [
+   "nail"
+  ],
+  "شَائِع|ADJ": [
+   "common",
+   "widespread"
+  ],
+  "صَمَدَ|VERB": [
+   "withstand"
+  ],
+  "مَضْمُون|NOUN": [
+   "content"
+  ],
+  "سَطَا|VERB": [
+   "burglarize",
+   "rob"
+  ],
+  "نَفِدَ|VERB": [
+   "exhausted"
+  ],
+  "اِتِّهَام|NOUN": [
+   "accusation"
+  ],
+  "تَعْوِيض|NOUN": [
+   "compensation"
+  ],
+  "زِمَام|NOUN": [
+   "reins"
+  ],
+  "تَخْفِيض|NOUN": [
+   "reduction",
+   "decrease"
+  ],
+  "عَرَبَة|NOUN": [
+   "carriage",
+   "vehicle",
+   "cart"
+  ],
+  "قَذِيفَة|NOUN": [
+   "projectile",
+   "shell"
+  ],
+  "تَجْمِيع|NOUN": [
+   "collecting"
+  ],
+  "قَطَنَ|VERB": [
+   "inhabit",
+   "reside"
+  ],
+  "قُرْص|NOUN": [
+   "disk"
+  ],
+  "تَخْطِيط|NOUN": [
+   "planning"
+  ],
+  "وَجَّهَ|VERB": [
+   "direct",
+   "aim"
+  ],
+  "غَرَابَة|NOUN": [
+   "strangeness"
+  ],
+  "خِطَاب|NOUN": [
+   "speech"
+  ],
+  "اِخْتِفَاء|NOUN": [
+   "disappearance"
+  ],
+  "قِلَادَة|NOUN": [
+   "necklace"
+  ],
+  "نَوْبَة|NOUN": [
+   "fit",
+   "attack"
+  ],
+  "صَامِت|ADJ": [
+   "silent"
+  ],
+  "مَحْظُور|ADJ": [
+   "forbidden",
+   "banned"
+  ],
+  "تَدَبَّرَ|VERB": [
+   "ponder"
+  ],
+  "تِلْمِيذ|NOUN": [
+   "pupil"
+  ],
+  "خَيَالِيّ|ADJ": [
+   "imaginary"
+  ],
+  "رَمْز|NOUN": [
+   "symbol"
+  ],
+  "مَرَض|NOUN": [
+   "disease"
+  ],
+  "اِتَّبَعَ|VERB": [
+   "follow"
+  ],
+  "كَهْرَبَاء|NOUN": [
+   "electricity"
+  ],
+  "مَدَنِيّ|ADJ": [
+   "civil",
+   "civilian"
+  ],
+  "مَدَنِيّ|NOUN": [
+   "civilian"
+  ],
+  "رَحِيم|ADJ": [
+   "merciful"
+  ],
+  "أَوْقَعَ|VERB": [
+   "fall"
+  ],
+  "فَاحَ|VERB": [
+   "emanate"
+  ],
+  "غَدَا|VERB": [
+   "become"
+  ],
+  "شَاحِب|ADJ": [
+   "pale"
+  ],
+  "قَزَم|NOUN": [
+   "dwarf"
+  ],
+  "تَأْخِير|NOUN": [
+   "delay"
+  ],
+  "تَفْعِيل|NOUN": [
+   "activation"
+  ],
+  "مَغْرُور|ADJ": [
+   "conceited",
+   "arrogant"
+  ],
+  "هَدَف|NOUN": [
+   "target",
+   "goal",
+   "aim"
+  ],
+  "حَاكَ|VERB": [
+   "weave"
+  ],
+  "نَظَرِيّ|ADJ": [
+   "theoretical"
+  ],
+  "أَيَّدَ|VERB": [
+   "support"
+  ],
+  "حَسُنَ|VERB": [
+   "good"
+  ],
+  "تَجْمِيل|NOUN": [
+   "beautification"
+  ],
+  "أَسَاسِيّ|ADJ": [
+   "fundamental",
+   "basic"
+  ],
+  "مُنْتَدًى|NOUN": [
+   "forum"
+  ],
+  "إِفْسَاد|NOUN": [
+   "corrupting"
+  ],
+  "اِشْتَغَلَ|VERB": [
+   "work"
+  ],
+  "مَعْدِنِيّ|ADJ": [
+   "metallic"
+  ],
+  "مُنْتَشِر|ADJ": [
+   "widespread",
+   "prevalent"
+  ],
+  "عَذَّبَ|VERB": [
+   "torture"
+  ],
+  "اِهْتَزَّ|VERB": [
+   "tremble",
+   "quiver"
+  ],
+  "تَنْبِيه|NOUN": [
+   "warning"
+  ],
+  "رَقَبَة|NOUN": [
+   "neck"
+  ],
+  "شَارَفَ|VERB": [
+   "approach"
+  ],
+  "تَرْكِيب|NOUN": [
+   "installation",
+   "structure"
+  ],
+  "تَرْخِيص|NOUN": [
+   "license",
+   "permit"
+  ],
+  "أَثْبَتَ|VERB": [
+   "prove"
+  ],
+  "فِعْل|NOUN": [
+   "action"
+  ],
+  "وَضِيع|ADJ": [
+   "low",
+   "vile"
+  ],
+  "اِنْهِيَار|NOUN": [
+   "collapse"
+  ],
+  "تَمَالَكَ|VERB": [
+   "restrain"
+  ],
+  "وَرَقِيّ|ADJ": [
+   "paper"
+  ],
+  "إِيمَان|NOUN": [
+   "faith"
+  ],
+  "مُبْتَدِئ|ADJ": [
+   "beginner"
+  ],
+  "إِبْعَاد|NOUN": [
+   "distancing"
+  ],
+  "خَلِيط|NOUN": [
+   "mixture"
+  ],
+  "اِسْتَرْجَعَ|VERB": [
+   "retrieve",
+   "recover"
+  ],
+  "مَكَانَة|NOUN": [
+   "status"
+  ],
+  "مُمَثِّل|NOUN": [
+   "actor",
+   "representative"
+  ],
+  "اِسْتَوْلَى|VERB": [
+   "seize"
+  ],
+  "مَكْشُوف|ADJ": [
+   "exposed",
+   "bare"
+  ],
+  "طَلَاق|NOUN": [
+   "divorce"
+  ],
+  "أَبْلَغَ|VERB": [
+   "notify",
+   "inform"
+  ],
+  "قَيْلُولَة|NOUN": [
+   "nap"
+  ],
+  "تَعَارَضَ|VERB": [
+   "contradictory",
+   "incompatible"
+  ],
+  "سِيرَة|NOUN": [
+   "biography"
+  ],
+  "صَالُون|NOUN": [
+   "salon"
+  ],
+  "أَنِيق|ADJ": [
+   "elegant",
+   "stylish"
+  ],
+  "اِسْتِقْبَال|NOUN": [
+   "reception"
+  ],
+  "حَافِل|ADJ": [
+   "rich",
+   "full"
+  ],
+  "فَاعِل|NOUN": [
+   "doer"
+  ],
+  "جُمْهُور|NOUN": [
+   "public",
+   "crowd"
+  ],
+  "كَسَا|VERB": [
+   "clothe"
+  ],
+  "أَصْمَتَ|VERB": [
+   "silence"
+  ],
+  "تَسَمَّعَ|VERB": [
+   "listen"
+  ],
+  "اِتِّحَاد|NOUN": [
+   "union"
+  ],
+  "بَدِيع|ADJ": [
+   "marvelous",
+   "splendid"
+  ],
+  "عَجِيب|ADJ": [
+   "strange",
+   "weird"
+  ],
+  "اِحْمَرَّ|VERB": [
+   "red"
+  ],
+  "شَظِيَّة|NOUN": [
+   "splinter",
+   "shrapnel"
+  ],
+  "سَايَرَ|VERB": [
+   "pace"
+  ],
+  "مَحْمُود|ADJ": [
+   "praised"
+  ],
+  "اِخْتَلَطَ|VERB": [
+   "mixed",
+   "mingled"
+  ],
+  "اِنْطِبَاع|NOUN": [
+   "impression"
+  ],
+  "غَفَا|VERB": [
+   "doze"
+  ],
+  "مُتَقَدِّم|ADJ": [
+   "advanced"
+  ],
+  "تَجَمَّعَ|VERB": [
+   "gather"
+  ],
+  "فَزِعَ|VERB": [
+   "terrified",
+   "afraid"
+  ],
+  "تَابِع|ADJ": [
+   "dependent",
+   "subsidiary"
+  ],
+  "تَنَاسَبَ|VERB": [
+   "proportional",
+   "fit"
+  ],
+  "رَحِيل|NOUN": [
+   "departure"
+  ],
+  "رَسَا|VERB": [
+   "anchor"
+  ],
+  "عَكَسَ|VERB": [
+   "reflect",
+   "reverse"
+  ],
+  "خَيْط|NOUN": [
+   "thread"
+  ],
+  "بَشِع|ADJ": [
+   "hideous",
+   "horrible",
+   "ugly"
+  ],
+  "تَمْيِيز|NOUN": [
+   "discrimination"
+  ],
+  "وَاجِهَة|NOUN": [
+   "facade",
+   "front"
+  ],
+  "أَفْعًى|NOUN": [
+   "viper"
+  ],
+  "مِعْيَار|NOUN": [
+   "standard",
+   "criterion"
+  ],
+  "نَكِرَة|NOUN": [
+   "indefinite"
+  ],
+  "نَزَعَ|VERB": [
+   "remove"
+  ],
+  "رَاكِب|NOUN": [
+   "passenger",
+   "rider"
+  ],
+  "تَقْلِيدِيّ|ADJ": [
+   "traditional",
+   "conventional"
+  ],
+  "جَرْو|NOUN": [
+   "cub",
+   "puppy"
+  ],
+  "حَدِيد|NOUN": [
+   "iron"
+  ],
+  "فِقْرَة|NOUN": [
+   "paragraph"
+  ],
+  "اِسْتِعَارَة|NOUN": [
+   "metaphor"
+  ],
+  "تَشْخِيص|NOUN": [
+   "diagnosis"
+  ],
+  "اِخْتِلَاف|NOUN": [
+   "difference"
+  ],
+  "سُخْرِيَّة|NOUN": [
+   "mockery",
+   "derision"
+  ],
+  "وَكَّلَ|VERB": [
+   "authorize"
+  ],
+  "شُهْرَة|NOUN": [
+   "fame"
+  ],
+  "فَائِز|NOUN": [
+   "victor"
+  ],
+  "مُخْلِص|ADJ": [
+   "sincere",
+   "devoted"
+  ],
+  "مِرْحَاض|NOUN": [
+   "toilet",
+   "lavatory"
+  ],
+  "مُبَكِّر|ADJ": [
+   "early"
+  ],
+  "بَاقَة|NOUN": [
+   "bouquet",
+   "bunch"
+  ],
+  "خَلَوِيّ|ADJ": [
+   "cellular"
+  ],
+  "كَدْمَة|NOUN": [
+   "bruise"
+  ],
+  "تَخْفِيف|NOUN": [
+   "alleviation",
+   "mitigation"
+  ],
+  "جِدَال|NOUN": [
+   "argument",
+   "debate"
+  ],
+  "مُحَارِب|NOUN": [
+   "warrior",
+   "fighter"
+  ],
+  "مُقْتَنِع|ADJ": [
+   "convinced"
+  ],
+  "جَوْدَة|NOUN": [
+   "quality"
+  ],
+  "اِفْتَقَرَ|VERB": [
+   "lack"
+  ],
+  "نَقِيب|NOUN": [
+   "captain"
+  ],
+  "تَيَّار|NOUN": [
+   "current"
+  ],
+  "بَصَقَ|VERB": [
+   "spit"
+  ],
+  "نَشَاط|NOUN": [
+   "activity",
+   "liveliness"
+  ],
+  "نَكْهَة|NOUN": [
+   "flavor",
+   "flavour"
+  ],
+  "صَلَاة|NOUN": [
+   "prayer"
+  ],
+  "مَذَاق|NOUN": [
+   "taste"
+  ],
+  "اِسْتِغْلَال|NOUN": [
+   "exploitation"
+  ],
+  "خَيْمَة|NOUN": [
+   "tent"
+  ],
+  "عَلَّقَ|VERB": [
+   "hang",
+   "comment"
+  ],
+  "مُوَاطِن|NOUN": [
+   "citizen"
+  ],
+  "إِعْجَاب|NOUN": [
+   "admiration"
+  ],
+  "سَالِم|ADJ": [
+   "safe",
+   "secure"
+  ],
+  "عَاقَبَ|VERB": [
+   "punish"
+  ],
+  "بَقَاء|NOUN": [
+   "remaining",
+   "lasting"
+  ],
+  "رَكَّزَ|VERB": [
+   "concentrate",
+   "focus"
+  ],
+  "مِلْعَقَة|NOUN": [
+   "spoon"
+  ],
+  "تَقْلِيل|NOUN": [
+   "reduction"
+  ],
+  "عَدَالَة|NOUN": [
+   "justice",
+   "fairness"
+  ],
+  "إِشْعَار|NOUN": [
+   "notification"
+  ],
+  "اِمْتِحَان|NOUN": [
+   "examination",
+   "test"
+  ],
+  "زَرَعَ|VERB": [
+   "sow",
+   "plant"
+  ],
+  "طَائِفَة|NOUN": [
+   "sect",
+   "denomination"
+  ],
+  "جُنْدِيّ|NOUN": [
+   "soldier"
+  ],
+  "إِتْمَام|NOUN": [
+   "completion"
+  ],
+  "مَعْزُول|ADJ": [
+   "isolated"
+  ],
+  "إِدْرَاك|NOUN": [
+   "awareness",
+   "perception"
+  ],
+  "رَدّ|NOUN": [
+   "reply"
+  ],
+  "عَاطِل|ADJ": [
+   "unemployed",
+   "jobless",
+   "idle"
+  ],
+  "اِلْتِزَام|NOUN": [
+   "commitment",
+   "obligation"
+  ],
+  "تَعْطِيل|NOUN": [
+   "obstruction",
+   "disruption"
+  ],
+  "صَوَّرَ|VERB": [
+   "photograph"
+  ],
+  "تَقْسِيم|NOUN": [
+   "division"
+  ],
+  "حَظِيرَة|NOUN": [
+   "enclosure"
+  ],
+  "إِيجَار|NOUN": [
+   "rent"
+  ],
+  "اِسْتِرْجَاع|NOUN": [
+   "retrieval",
+   "recovery"
+  ],
+  "لَهْجَة|NOUN": [
+   "dialect"
+  ],
+  "طَابَق|NOUN": [
+   "floor"
+  ],
+  "مِطْرَقَة|NOUN": [
+   "hammer"
+  ],
+  "خَالِص|ADJ": [
+   "pure"
+  ],
+  "اِنْفَتَحَ|VERB": [
+   "open"
+  ],
+  "تَعَثَّرَ|VERB": [
+   "stumble",
+   "stall"
+  ],
+  "غَزْو|NOUN": [
+   "invasion",
+   "incursion"
+  ],
+  "مَقْصِد|NOUN": [
+   "purpose",
+   "destination"
+  ],
+  "فَاسِق|ADJ": [
+   "sinful",
+   "debauched"
+  ],
+  "عَالِم|NOUN": [
+   "scientist",
+   "scholar"
+  ],
+  "تَوْظِيف|NOUN": [
+   "employment"
+  ],
+  "لَازِم|ADJ": [
+   "necessary"
+  ],
+  "مُسْتَقِلّ|ADJ": [
+   "independent"
+  ],
+  "وَرْشَة|NOUN": [
+   "workshop"
+  ],
+  "اِسْتِثْنَاء|NOUN": [
+   "exception"
+  ],
+  "تَجْدِيد|NOUN": [
+   "renewal"
+  ],
+  "سَمِيك|ADJ": [
+   "thick"
+  ],
+  "مَلْء|NOUN": [
+   "filling"
+  ],
+  "مَهَمَّة|NOUN": [
+   "task",
+   "mission"
+  ],
+  "شِوَاء|NOUN": [
+   "barbecue",
+   "grilled"
+  ],
+  "مُنْفَرِد|ADJ": [
+   "single",
+   "alone"
+  ],
+  "حِوَار|NOUN": [
+   "dialogue"
+  ],
+  "صَاغَ|VERB": [
+   "formulate"
+  ],
+  "شَمْع|NOUN": [
+   "wax"
+  ],
+  "لُكْنَة|NOUN": [
+   "accent"
+  ],
+  "بُلُوغ|NOUN": [
+   "reaching",
+   "attaining"
+  ],
+  "مَحْو|NOUN": [
+   "erasure"
+  ],
+  "سُلَحْفَاة|NOUN": [
+   "turtle"
+  ],
+  "قُرْصَان|NOUN": [
+   "pirate"
+  ],
+  "اِسْتَعَارَ|VERB": [
+   "borrow"
+  ],
+  "صَوْتِيّ|ADJ": [
+   "vocal",
+   "acoustic"
+  ],
+  "خَزْنَة|NOUN": [
+   "safe",
+   "vault"
+  ],
+  "اِخْتِرَاع|NOUN": [
+   "invention"
+  ],
+  "جَهَدَ|VERB": [
+   "strive",
+   "struggle"
+  ],
+  "صَفّ|NOUN": [
+   "row",
+   "class"
+  ],
+  "عُمْلَة|NOUN": [
+   "currency"
+  ],
+  "مَذْكُور|ADJ": [
+   "mentioned"
+  ],
+  "اِفْتِتَاح|NOUN": [
+   "opening",
+   "inauguration"
+  ],
+  "هَذَّبَ|VERB": [
+   "refine",
+   "polish"
+  ],
+  "تَصَاعَدَ|VERB": [
+   "rise",
+   "increase"
+  ],
+  "مَصْرِف|NOUN": [
+   "bank"
+  ],
+  "مُصَارَعَة|NOUN": [
+   "wrestling"
+  ],
+  "تَرْكِيز|NOUN": [
+   "concentration"
+  ],
+  "مُعَطَّل|ADJ": [
+   "broken"
+  ],
+  "مُحْتَرِق|ADJ": [
+   "burning",
+   "burnt"
+  ],
+  "فَوْضَوِيّ|ADJ": [
+   "chaotic"
+  ],
+  "مَصْرُوف|NOUN": [
+   "expense"
+  ],
+  "أَوْلَوِيَّة|NOUN": [
+   "priority"
+  ],
+  "تَدْخِين|NOUN": [
+   "smoking"
+  ],
+  "مُلْقًى|ADJ": [
+   "thrown",
+   "discarded"
+  ],
+  "خَاتَم|NOUN": [
+   "ring"
+  ],
+  "دَخِيل|ADJ": [
+   "alien",
+   "extraneous"
+  ],
+  "عِرَاك|NOUN": [
+   "fight"
+  ],
+  "مَرْمًى|NOUN": [
+   "target",
+   "goal"
+  ],
+  "اِرْتِكَاب|NOUN": [
+   "committing"
+  ],
+  "اِنْدَفَعَ|VERB": [
+   "rush"
+  ],
+  "جَاهِل|ADJ": [
+   "ignorant"
+  ],
+  "خَادَعَ|VERB": [
+   "deceive",
+   "fool"
+  ],
+  "دَبُّوس|NOUN": [
+   "pin"
+  ],
+  "مُرْضِيّ|ADJ": [
+   "pathological",
+   "morbid"
+  ],
+  "اِنْقِطَاع|NOUN": [
+   "interruption"
+  ],
+  "قَيْد|NOUN": [
+   "restriction"
+  ],
+  "ثَرْثَرَة|NOUN": [
+   "chatter"
+  ],
+  "مَفْصُول|ADJ": [
+   "separated"
+  ],
+  "اِغْتَصَبَ|VERB": [
+   "rape"
+  ],
+  "مُهْلَة|NOUN": [
+   "grace",
+   "extension"
+  ],
+  "حَشِيش|NOUN": [
+   "cannabis",
+   "hemp"
+  ],
+  "تَسْرِيب|NOUN": [
+   "leak"
+  ],
+  "شَرِيطَة|NOUN": [
+   "condition"
+  ],
+  "مَعْدُود|ADJ": [
+   "counted"
+  ],
+  "إِحْدَاث|NOUN": [
+   "creation"
+  ],
+  "سَلِس|ADJ": [
+   "smooth",
+   "flexible"
+  ],
+  "نُمُوّ|NOUN": [
+   "growth"
+  ],
+  "تَصْوِيت|NOUN": [
+   "voting"
+  ],
+  "إِعْدَام|NOUN": [
+   "execution"
+  ],
+  "وَقَاحَة|NOUN": [
+   "rudeness",
+   "insolence"
+  ],
+  "أَهْدَرَ|VERB": [
+   "waste"
+  ],
+  "رُتْبَة|NOUN": [
+   "rank"
+  ],
+  "فَجْوَة|NOUN": [
+   "gap"
+  ],
+  "مَوْكِب|NOUN": [
+   "procession",
+   "convoy",
+   "parade"
+  ],
+  "ثَقَافَة|NOUN": [
+   "culture"
+  ],
+  "جَوَاز|NOUN": [
+   "passport"
+  ],
+  "دَائِرَة|NOUN": [
+   "circle",
+   "department"
+  ],
+  "نَاتِج|NOUN": [
+   "product",
+   "output",
+   "outcome"
+  ],
+  "حُمُولَة|NOUN": [
+   "cargo",
+   "freight"
+  ],
+  "عَامَلَ|VERB": [
+   "treat"
+  ],
+  "مُعْتَدِل|ADJ": [
+   "moderate",
+   "mild"
+  ],
+  "أَقْحَمَ|VERB": [
+   "insert",
+   "intrude"
+  ],
+  "اِسْتِجْوَاب|NOUN": [
+   "interrogation"
+  ],
+  "صَمَّمَ|VERB": [
+   "design",
+   "resolve"
+  ],
+  "قَامَرَ|VERB": [
+   "gamble"
+  ],
+  "اِنْتِشَار|NOUN": [
+   "spread",
+   "proliferation"
+  ],
+  "رُبَاعِيّ|ADJ": [
+   "fourfold",
+   "quadruple"
+  ],
+  "شَنَّ|VERB": [
+   "launch"
+  ],
+  "خَفَقَ|VERB": [
+   "palpitate"
+  ],
+  "بُرُودَة|NOUN": [
+   "coolness",
+   "chilliness"
+  ],
+  "اِمْتِيَاز|NOUN": [
+   "privilege"
+  ],
+  "تَقْوِيم|NOUN": [
+   "calendar"
+  ],
+  "مَشْرِق|NOUN": [
+   "east"
+  ],
+  "اِعْتِدَاء|NOUN": [
+   "assault"
+  ],
+  "جَار|NOUN": [
+   "neighbor"
+  ],
+  "عَتِيق|ADJ": [
+   "ancient",
+   "antique"
+  ],
+  "قَطَّعَ|VERB": [
+   "cut"
+  ],
+  "نَغْمَة|NOUN": [
+   "melody",
+   "tone"
+  ],
+  "بَثَّ|VERB": [
+   "broadcast",
+   "transmit"
+  ],
+  "مُكَلَّف|ADJ": [
+   "responsible"
+  ],
+  "جَادّ|ADJ": [
+   "serious"
+  ],
+  "مَخَافَة|NOUN": [
+   "fear"
+  ],
+  "دِعَايَة|NOUN": [
+   "advertising",
+   "propaganda"
+  ],
+  "مَقْصُود|ADJ": [
+   "intended",
+   "deliberate"
+  ],
+  "مُتَوَفِّر|ADJ": [
+   "available"
+  ],
+  "أَبْدَى|VERB": [
+   "express"
+  ],
+  "أَشْقَر|ADJ": [
+   "blond"
+  ],
+  "عَكْسِيّ|ADJ": [
+   "reverse",
+   "opposite"
+  ],
+  "حَاسَّة|NOUN": [
+   "sense"
+  ],
+  "حِيَازَة|NOUN": [
+   "possession"
+  ],
+  "تَأَلَّمَ|VERB": [
+   "pain",
+   "suffer"
+  ],
+  "مُتَحَرِّك|ADJ": [
+   "moving",
+   "mobile"
+  ],
+  "اِخْتِصَاص|NOUN": [
+   "specialization",
+   "specialty"
+  ],
+  "سَالَ|VERB": [
+   "flow"
+  ],
+  "تَابُوت|NOUN": [
+   "coffin"
+  ],
+  "جَبْهَة|NOUN": [
+   "front",
+   "forehead"
+  ],
+  "غَذَّى|VERB": [
+   "feed"
+  ],
+  "مَالِيّ|ADJ": [
+   "financial"
+  ],
+  "طَالَ|VERB": [
+   "long"
+  ],
+  "إِضَاعَة|NOUN": [
+   "wasting"
+  ],
+  "نَقْدِيّ|ADJ": [
+   "monetary",
+   "cash"
+  ],
+  "شَفَقَة|NOUN": [
+   "pity"
+  ],
+  "قَاطَعَ|VERB": [
+   "interrupt",
+   "boycott"
+  ],
+  "تَمْزِيق|NOUN": [
+   "tearing",
+   "ripping"
+  ],
+  "تَعَفَّنَ|VERB": [
+   "rot"
+  ],
+  "صَفْعَة|NOUN": [
+   "slap"
+  ],
+  "أَقْفَلَ|VERB": [
+   "lock"
+  ],
+  "ظِلّ|NOUN": [
+   "shadow",
+   "shade"
+  ],
+  "بِرَاز|NOUN": [
+   "feces",
+   "excrement"
+  ],
+  "جَذْر|NOUN": [
+   "root"
+  ],
+  "تَوْصِيَة|NOUN": [
+   "recommendation"
+  ],
+  "مُتَوَسِّط|ADJ": [
+   "average",
+   "medium"
+  ],
+  "مُقَدَّس|ADJ": [
+   "sacred",
+   "holy"
+  ],
+  "أَفَاقَ|VERB": [
+   "wake"
+  ],
+  "مَقْطُورَة|NOUN": [
+   "trailer"
+  ],
+  "اِجْتَازَ|VERB": [
+   "traverse",
+   "pass"
+  ],
+  "فَتَكَ|VERB": [
+   "destroy"
+  ],
+  "مَائِدَة|NOUN": [
+   "table"
+  ],
+  "أَهَّلَ|VERB": [
+   "qualify"
+  ],
+  "إِبَادَة|NOUN": [
+   "extermination",
+   "annihilation"
+  ],
+  "تَحْدِيث|NOUN": [
+   "modernization",
+   "update"
+  ],
+  "فِدْيَة|NOUN": [
+   "ransom"
+  ],
+  "مُبَالَغَة|NOUN": [
+   "exaggeration"
+  ],
+  "نَذِير|NOUN": [
+   "warning"
+  ],
+  "اِنْتِقَام|NOUN": [
+   "revenge"
+  ],
+  "تَكْرِيم|NOUN": [
+   "honoring"
+  ],
+  "نَقِيّ|ADJ": [
+   "pure"
+  ],
+  "اِغْتِصَاب|NOUN": [
+   "rape"
+  ],
+  "صِفَة|NOUN": [
+   "quality",
+   "feature",
+   "adjective"
+  ],
+  "مُحَاكَاة|NOUN": [
+   "simulation",
+   "imitation"
+  ],
+  "وَاقِعِيّ|ADJ": [
+   "realistic",
+   "real"
+  ],
+  "اِعْتِقَاد|NOUN": [
+   "belief"
+  ],
+  "بُرْهَان|NOUN": [
+   "proof"
+  ],
+  "مَعْجُون|NOUN": [
+   "paste"
+  ],
+  "أَصْلِيّ|ADJ": [
+   "original"
+  ],
+  "مُتَمَيِّز|ADJ": [
+   "distinguished",
+   "distinctive"
+  ],
+  "رَبِيع|NOUN": [
+   "spring"
+  ],
+  "شَاجَرَ|VERB": [
+   "quarrel"
+  ],
+  "مَقُولَة|NOUN": [
+   "saying"
+  ],
+  "حُظْوَة|NOUN": [
+   "favor"
+  ],
+  "هُدْنَة|NOUN": [
+   "truce"
+  ],
+  "صَرَّحَ|VERB": [
+   "declare",
+   "announce"
+  ],
+  "عُصْفُور|NOUN": [
+   "sparrow",
+   "bird"
+  ],
+  "إِدْمَان|NOUN": [
+   "addiction"
+  ],
+  "اِسْتِمَاع|NOUN": [
+   "listening"
+  ],
+  "تَصْلِيح|NOUN": [
+   "fixing",
+   "mending"
+  ],
+  "شِفَاء|NOUN": [
+   "recovery",
+   "healing"
+  ],
+  "أَخْفَى|VERB": [
+   "hide",
+   "conceal"
+  ],
+  "تَفْوِيض|NOUN": [
+   "delegation"
+  ],
+  "مَظْهَر|NOUN": [
+   "appearance"
+  ],
+  "هَدَّدَ|VERB": [
+   "threaten"
+  ],
+  "أَقْلَعَ|VERB": [
+   "take",
+   "off"
+  ],
+  "اِسْتَبْدَلَ|VERB": [
+   "replace",
+   "substitute"
+  ],
+  "بَنْد|NOUN": [
+   "clause",
+   "item"
+  ],
+  "كَثْرَة|NOUN": [
+   "abundance"
+  ],
+  "أَسَّسَ|VERB": [
+   "found",
+   "establish"
+  ],
+  "ثَقْب|NOUN": [
+   "hole"
   ]
  }
 }

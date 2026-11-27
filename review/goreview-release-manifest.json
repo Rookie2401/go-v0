@@ -5,11 +5,11 @@
   "releaseEligible": true,
   "buildMode": "release",
   "git": {
-    "commit": "f4b2a70e6035bde49c3b068584c9a1fc26559929",
-    "tree": "464d37471c7a5a528be13859d0f41c1b9c9c5df6",
+    "commit": "ffc980e11c8f63831b9c6beb01d7f61e50c195a0",
+    "tree": "70dc417c576ef4f7fc8280608a0bca029fc5e20b",
     "dirty": false
   },
-  "sourceManifestSha256": "f6953bea18c9b9dbd5da1b21f9c2ee0ef8e14b9993ac82141a5fc84f4872bee7",
+  "sourceManifestSha256": "94b14a1c28caf05f12578ebf0cc8451ce57ee17a637ce39205f0d6b16c4198e7",
   "sourceFiles": [
     {
       "path": "THIRD-PARTY-NOTICES.md",
@@ -513,7 +513,7 @@
     },
     {
       "path": "packages/goreview/app/packFacts.ts",
-      "sha256": "69205f61d73b362ef2ef37baf356a1055b3e24cfa2972d43409a230bae1b8c4b"
+      "sha256": "3012d1a60efd03b4821d68527d93236a62b8a215782520e0d93419ab080f101a"
     },
     {
       "path": "packages/goreview/app/photos/athens.webp",
@@ -865,11 +865,15 @@
     },
     {
       "path": "packages/goreview/src/facts/deck-gate.ts",
-      "sha256": "5fe3e9104c23159dc046b7af2a30de7eb429def5ba2c87997e1dbddafebc80d5"
+      "sha256": "a2183341252e661440d2f8b4c8d67611a3d32c553a3e0cb81bb0a2a2a4f0b38b"
     },
     {
       "path": "packages/goreview/src/facts/deck-known-limits.ts",
-      "sha256": "948d777778bab59c95d5e629e72c3bf6c6720a34533dbc271c0b2378378bdd2a"
+      "sha256": "6d6373345bb3e61b97c8e062d2f45cc8fb35cb9bf67237e2168656948c86c68b"
+    },
+    {
+      "path": "packages/goreview/src/facts/deck-lead-senses.ts",
+      "sha256": "38f2e269d6ec981324f6a9755c5e28e3282bf13d5319bee07e4f3360e475babb"
     },
     {
       "path": "packages/goreview/src/facts/index.ts",
@@ -4681,7 +4685,7 @@
     },
     {
       "path": "src/adapters/albanian/function-minor.ts",
-      "sha256": "a13e4fcc0547fef58ba416879ac0a799cc849d3c35759612be343eac6dc5e7fd"
+      "sha256": "1d7decb3cb1448ec75459f3b1747b5be0319b9273c265dd04d6d94fb02f86f2c"
     },
     {
       "path": "src/adapters/albanian/function-pronouns.ts",
@@ -4773,11 +4777,11 @@
     },
     {
       "path": "src/adapters/albanian/sentence-perfect.ts",
-      "sha256": "e23d72c79d8f45e0729f847a781c019b6a66d32c4960b39980928ed28a8cdaf7"
+      "sha256": "30f4bbf5fb390e5758bea2f84519ef9636b27a87224b43b63def69b6c97ce1c9"
     },
     {
       "path": "src/adapters/albanian/sentence.ts",
-      "sha256": "36cee8144fc31618ac06e8e52b5ae4298e428db2b46e4559b3369680d1ffe2b1"
+      "sha256": "acae3712f015447468e7988a62ea4348671e011a639eaeac45951062f66acc14"
     },
     {
       "path": "src/adapters/albanian/sentences.ts",
@@ -4841,7 +4845,7 @@
     },
     {
       "path": "src/adapters/fr.ts",
-      "sha256": "fc3d82fa260f4fee026cc2be7a521e4d97c4ddaaa2a93e7c45251a1e4bfaf0db"
+      "sha256": "e9f085bf67ab8af21e776582569cb43e55eceea9fe163cdb2cd43940b4fa1cd5"
     },
     {
       "path": "src/adapters/french/construction-texts.ts",
@@ -4857,7 +4861,7 @@
     },
     {
       "path": "src/adapters/french/disambiguate.ts",
-      "sha256": "e0e853c39d7f7230ea0ac5cb72f0cc91366160417347f142a69c11d3890e251b"
+      "sha256": "74258c92f667d1d7695468f76231fb9130fd1b52d3cb9f68b43cccc8c079c8bb"
     },
     {
       "path": "src/adapters/french/entries.ts",
@@ -5033,7 +5037,7 @@
     },
     {
       "path": "src/adapters/german/lexicon-verbs.ts",
-      "sha256": "aab02c407f13864ee85e988c9f7d98894d956b03d2092f95ef6d2bf1f4ba5811"
+      "sha256": "ecd37f5d8109ba4325b05dc9327fc88d3df1b44b04e8273ad769b0afb31f7e40"
     },
     {
       "path": "src/adapters/german/lexicon.ts",
@@ -5301,7 +5305,7 @@
     },
     {
       "path": "src/adapters/hindi/disambiguate.ts",
-      "sha256": "262f409133e41d0c131c55ad98164af6c10cb347041bf2e63fd5a46b624fb22e"
+      "sha256": "491df677e6de8d432bba3e534dd0b71cf75c365c54934f6e78090ab1334f0a23"
     },
     {
       "path": "src/adapters/hindi/entries.ts",
@@ -5325,7 +5329,7 @@
     },
     {
       "path": "src/adapters/hindi/lexicon-ladder-fixes.ts",
-      "sha256": "a8c0faf4e34c76432f8e7603ae6529cd59916fbf05c665220809469f379a4914"
+      "sha256": "efd288cfd5df80e2795cbc987221c33ac61b05417c55a1267c515c34c1b8b089"
     },
     {
       "path": "src/adapters/hindi/lexicon-modifiers.ts",
@@ -5366,6 +5370,10 @@
     {
       "path": "src/adapters/hindi/lexicon-verbs.ts",
       "sha256": "9b25b6988d3a825a632d5d1cd1c8d55c690a72258bbfe97871be367ae359bab8"
+    },
+    {
+      "path": "src/adapters/hindi/misreadings.ts",
+      "sha256": "2956455d9e4437a0ea541cfd1d1359800c72f5451be1b9a69ed0168afb73d5a9"
     },
     {
       "path": "src/adapters/hindi/morph-causative.ts",
@@ -5721,7 +5729,7 @@
     },
     {
       "path": "src/adapters/russian/analyze.ts",
-      "sha256": "937d9d298e6c09acb022b03750394e7a12c77f160b4bf9ab0236e9943d57962e"
+      "sha256": "000056c94d854cb45f7cdcd0b5cbf278b73129cd60465f4001e268669012d4dc"
     },
     {
       "path": "src/adapters/russian/aspect.ts",
@@ -5789,7 +5797,7 @@
     },
     {
       "path": "src/adapters/russian/sentence.ts",
-      "sha256": "6ff40d846dfee80ca0a2536ceebdf30a6749c3ab7f6e15053e4d8045e92aef8d"
+      "sha256": "f7c25eec1f2b323ed1e384c4ae9fc4bb00426fbc7d5d1e02f1fc557cc00e80da"
     },
     {
       "path": "src/adapters/russian/shards.ts",
@@ -5833,7 +5841,7 @@
     },
     {
       "path": "src/adapters/spanish/disambiguate.ts",
-      "sha256": "b02971d7c2b6214ddf7ff80ad0aad17fdd716339eee85bf87ceb8c832a584b32"
+      "sha256": "67b12f0e1a755cf0b604fbf6f3d873759a805f989c1e4c6f3bb369910fb8e90e"
     },
     {
       "path": "src/adapters/spanish/entries.ts",
@@ -5853,11 +5861,11 @@
     },
     {
       "path": "src/adapters/spanish/lexicon-modifiers.ts",
-      "sha256": "46e21ca91517fd2bd867f7b50b50810297e2658d1a0880e022222aa5c53c9299"
+      "sha256": "467d54b6622b6b80ff2ed4804501ed0b5c040ad8b7dbad58ec0ff3e3a2d0b092"
     },
     {
       "path": "src/adapters/spanish/lexicon-nouns.ts",
-      "sha256": "d8e76c2c16282769726adb9868fbe18710c49b627107c3c9746ed6c8debe6282"
+      "sha256": "27bf3a6fec8c9aec706ced91ebbc1239eab95959548d83c0da422032bc957b49"
     },
     {
       "path": "src/adapters/spanish/lexicon-verbs.ts",
@@ -6932,6 +6940,7 @@
     "packages/goreview/src/exercises/written-recognition.ts",
     "packages/goreview/src/facts/deck-gate.ts",
     "packages/goreview/src/facts/deck-known-limits.ts",
+    "packages/goreview/src/facts/deck-lead-senses.ts",
     "packages/goreview/src/facts/index.ts",
     "packages/goreview/src/facts/paradigm-table.ts",
     "packages/goreview/src/facts/provider.ts",
@@ -7297,6 +7306,7 @@
     "src/adapters/hindi/lexicon-nouns-world.ts",
     "src/adapters/hindi/lexicon-numbers-time.ts",
     "src/adapters/hindi/lexicon-verbs.ts",
+    "src/adapters/hindi/misreadings.ts",
     "src/adapters/hindi/morph-causative.ts",
     "src/adapters/hindi/morph-describe.ts",
     "src/adapters/hindi/morph-noun.ts",
@@ -7513,7 +7523,7 @@
     "algorithm": "FSRS-6.0",
     "sha256": "4968e995b7b7c3356cf843fc73c6f75cd5f2e1595315bde7caec9d2dd10bb287"
   },
-  "artifactManifestSha256": "22f5cbabbea86a522113600c33d71749240ecd2ccaf7abc5db145fbb5d3072e5",
+  "artifactManifestSha256": "620d127ca7fd26f1bf352188a14fe07723fbb41dba7d03988552ef2d28d6e76e",
   "artifactFiles": [
     {
       "path": "EB-Garamond-OFL.txt",
@@ -7604,8 +7614,8 @@
       "sha256": "d1940ad0216fb0cf1d4a01b60892734106d2e4ae35e21cfb695a57f04936a60d"
     },
     {
-      "path": "assets/index-BYjY1HiE.js",
-      "sha256": "8d0c0f82ffdb58c70b638b70c48b9223e22955c6fcaa2fa76387c52d44ff518b"
+      "path": "assets/index-D1_STq9T.js",
+      "sha256": "52b477c0d420e0170f4b21eb2168578a73841b48b3e6764431073b179bedfd61"
     },
     {
       "path": "assets/jerusalem-YWyJNBCG.webp",
@@ -7624,20 +7634,20 @@
       "sha256": "c7324768bd26c74911f4d583d18cc3d0f62fcbbc14da15668ef4b4cb855bb868"
     },
     {
-      "path": "assets/lang-de-izy4WiCV.js",
-      "sha256": "853124d3d04bf507d00e013cc4bc54edffe5c9443688dbafa01d2ad7312b1aa9"
+      "path": "assets/lang-de-CE5_8VKy.js",
+      "sha256": "fc1f2b12a34ea46c3c63e4f45090f9ed0188ac02effaa901a22c9555b6a475bc"
     },
     {
-      "path": "assets/lang-el-BvPawAgS.js",
-      "sha256": "03eceac53eb1bdff0b3e33eb3d94f6eff271c41e8158c2b45918ab63b57e0a8f"
+      "path": "assets/lang-el-BiEQikfc.js",
+      "sha256": "264ab7346ca86d5b2b77801d9c0b6edfd10c3499d7d36cff88d456ca9dfd570f"
     },
     {
-      "path": "assets/lang-es-DcjxTH0U.js",
-      "sha256": "100a15b405ee9036c4ab6027edc3821dee294b26a964b0534ff4bba6cae49bb8"
+      "path": "assets/lang-es-DXIynlnG.js",
+      "sha256": "588816b5b22fd657ca49285ffdd2987a6c53912062a183c1488b32e82c75b3b4"
     },
     {
-      "path": "assets/lang-fr-ClWdK9yE.js",
-      "sha256": "9ee17b45a2feedd7a792f0c033de85d31772d85073a2dff572434c628572a258"
+      "path": "assets/lang-fr-BsFg8Hqv.js",
+      "sha256": "60216f475300ceaec63ade41ede27e64e1c8a43d5fd1eb437ee5e521334847bb"
     },
     {
       "path": "assets/lang-french-CIGjcOcX.js",
@@ -7648,8 +7658,8 @@
       "sha256": "cacf110d70dd5bd5150466097d9412286d6cc2dbbbb96f617ea9a5754af36c82"
     },
     {
-      "path": "assets/lang-he-C87TnxPn.js",
-      "sha256": "845678ea01aff6bc3a30b3917e8dac1cda067ad560941638defd3f944ab937f3"
+      "path": "assets/lang-he-BzuoxFS-.js",
+      "sha256": "5ef0f9c16371ae33283e0fe95686b160f38e5dc6f9f4c7ad53b86813ec938279"
     },
     {
       "path": "assets/lang-hebrew-Bsnip4qd.js",
@@ -7660,36 +7670,36 @@
       "sha256": "fa0a59464851c6d94c25e39cd9a1706bede329c8f8b6d856911a5a63912048a0"
     },
     {
-      "path": "assets/lang-hi-tRVMp9pt.js",
-      "sha256": "2fe0595d0f772427269e661322ed818a090d34232fd5e2dcc180a9fae713b27d"
+      "path": "assets/lang-hi-B7O5nxi5.js",
+      "sha256": "ddce7b4a706abe12857d2c23db4ba8525b75bd58c2b7880e60c4bc345291dbdd"
     },
     {
       "path": "assets/lang-hindi-DyM6_O99.js",
       "sha256": "1c7e6f34552d45229be3030177ba78df56300e64ccadf5f6e454c34b24b54548"
     },
     {
-      "path": "assets/lang-la-DMZhqMJY.js",
-      "sha256": "bc310fa6dc737a40b028435f5bb87b0e2bdf4789085cefb16dc6e919c7bcb20a"
+      "path": "assets/lang-la-B2q0d_PL.js",
+      "sha256": "bb047fbaa72fbc567a1c817a447572ddf08fdacb02ee504c709ace5439c715d4"
     },
     {
-      "path": "assets/lang-nb-DxAcrh7W.js",
-      "sha256": "6316e6c8f496b1077634ad27adf4478b42dfe1072d865ba0fb4cb2513b9177ba"
+      "path": "assets/lang-nb-DAVvSCGp.js",
+      "sha256": "773e8451e77bd155c98da97f7917629671fc875d23278188d556660f73e201a3"
     },
     {
-      "path": "assets/lang-nn-BlUiBJYT.js",
-      "sha256": "a0385a2c7a243cc93dccf92d82d130d43ada80ba732d36dbbb7bee31dc5365c4"
+      "path": "assets/lang-nn-DB0jIMP5.js",
+      "sha256": "0942fe90012d3495b469d2cd379de658709fc056cec4ef344e60c2ae15b8e024"
     },
     {
-      "path": "assets/lang-norwegian-CHKLk1qh.js",
-      "sha256": "6d158526c12e296ae03055adf69a9f2b65d8b75b439d0294e188cfedc66825ce"
+      "path": "assets/lang-norwegian-CKuVQCsM.js",
+      "sha256": "44a344402960c19e321f4b1ce299ddec7934c261a1e2a738c75345df3670fd93"
     },
     {
-      "path": "assets/lang-ru-DGSGcP_D.js",
-      "sha256": "4e0297fb7281d018e45e200d09eba9a52f509ce02ff61a09d4256744ced885d8"
+      "path": "assets/lang-ru-dkvdo35f.js",
+      "sha256": "d5a54e1cead2390d6600e2c4015f2fe34de20fafe5c669fa3228ca6e4819f473"
     },
     {
-      "path": "assets/lang-sq-DbwV1AJK.js",
-      "sha256": "eb8b4c0f9f1b6d9a51b39f559cd214525b9ccfa0d970afd64db4c32b41dad993"
+      "path": "assets/lang-sq-DVF0mmwp.js",
+      "sha256": "79155774787f4f0bf5db205e3b7efede6a647184bbe216ac51dfec85bc49cbfa"
     },
     {
       "path": "assets/lang-th-PKk-XJpB.js",
@@ -7700,8 +7710,8 @@
       "sha256": "56a6f2a93f2a6677a715110c74adb6220e068ef34cd5c5e7d13072c9b9e84484"
     },
     {
-      "path": "assets/languageChoices-Ikb5X5GJ.js",
-      "sha256": "6825061395dcb9cdc9bd8023a9c066d10e2c4511db58166c92195ee63d38fde3"
+      "path": "assets/languageChoices-CKTQmfxG.js",
+      "sha256": "4b33e8f261dc6bc9c136b6d08de4d8787ec15815db1fc50edb0253fba19128d7"
     },
     {
       "path": "assets/nb-DD4vZ02j.js",
@@ -7764,8 +7774,8 @@
       "sha256": "80fa8b92d9c1653a1a67c61db2bc76d90a4008a8368a2a9b7eae8aa043fc4cea"
     },
     {
-      "path": "assets/th-Ceo5IDSp.js",
-      "sha256": "d56d783fba0fc86d0c54997f13e42f69c783548a928ccea2a925a9dc7247e7df"
+      "path": "assets/th-CHjZ2pA4.js",
+      "sha256": "7edc83e7128192c315985df73917a6161d1480797dc93fdfd4cd3c7f233c426a"
     },
     {
       "path": "assets/valle-de-angeles-BxOTzEvC.webp",
@@ -7805,7 +7815,7 @@
     },
     {
       "path": "index.html",
-      "sha256": "79572bc0315e775e9091ddadaabc1095af6f3cfe8875417fb4467abaedf6dbe8"
+      "sha256": "472745dc45ca9ac870ccbb4aeadb82fd5eb5adee084265e9baf7671733108aa6"
     },
     {
       "path": "lexicon/el/ancient/_.json.gz",
@@ -10621,7 +10631,7 @@
     },
     {
       "path": "sw.js",
-      "sha256": "3465fec305d43145f50ed7b6a76f76b0f6d7d4671f8f30dc6e9fbae15211b11e"
+      "sha256": "5e586e03c9210d5cd455b9bb2508091174a998c4beca2995556614622303c36e"
     }
   ]
 }

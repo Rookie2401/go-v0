@@ -20,7 +20,7 @@
  */
 'use strict';
 
-var BUILD_ID = '69a8e8e9ccb4';
+var BUILD_ID = '98032433c5b7';
 var PRECACHE = [
   "./",
   "./EB-Garamond-OFL.txt",
@@ -45,10 +45,10 @@ var PRECACHE = [
   "./assets/he-CDT9jrOs.js",
   "./assets/hebrew-script-CnsZhqS-.js",
   "./assets/hi-DahJF875.js",
-  "./assets/index-BYjY1HiE.js",
+  "./assets/index-D1_STq9T.js",
   "./assets/jerusalem-YWyJNBCG.webp",
   "./assets/la-CwaQG1iI.js",
-  "./assets/languageChoices-Ikb5X5GJ.js",
+  "./assets/languageChoices-CKTQmfxG.js",
   "./assets/nb-DD4vZ02j.js",
   "./assets/nn-BFIvrq7f.js",
   "./assets/norwegian-CE2nWb77.js",
@@ -64,7 +64,7 @@ var PRECACHE = [
   "./assets/src-BdSvOU29.js",
   "./assets/style-BYagmCNE.css",
   "./assets/syntax-CGmPxLTF.js",
-  "./assets/th-Ceo5IDSp.js",
+  "./assets/th-CHjZ2pA4.js",
   "./assets/valle-de-angeles-BxOTzEvC.webp",
   "./assets/varanasi-D-p-TlCF.webp",
   "./config.json",
@@ -86,51 +86,51 @@ var LANG_CHUNKS = {
     "./assets/lang-aramaic-B5WkUau3.js"
   ],
   "de": [
-    "./assets/lang-de-izy4WiCV.js"
+    "./assets/lang-de-CE5_8VKy.js"
   ],
   "el": [
-    "./assets/lang-el-BvPawAgS.js"
+    "./assets/lang-el-BiEQikfc.js"
   ],
   "es": [
-    "./assets/lang-es-DcjxTH0U.js"
+    "./assets/lang-es-DXIynlnG.js"
   ],
   "fr": [
-    "./assets/lang-fr-ClWdK9yE.js"
+    "./assets/lang-fr-BsFg8Hqv.js"
   ],
   "french": [
     "./assets/lang-french-CIGjcOcX.js",
     "./assets/lang-french-LVX0gXcx.js"
   ],
   "he": [
-    "./assets/lang-he-C87TnxPn.js"
+    "./assets/lang-he-BzuoxFS-.js"
   ],
   "hebrew": [
     "./assets/lang-hebrew-Bsnip4qd.js",
     "./assets/lang-hebrew-apRjTzMX.js"
   ],
   "hi": [
-    "./assets/lang-hi-tRVMp9pt.js"
+    "./assets/lang-hi-B7O5nxi5.js"
   ],
   "hindi": [
     "./assets/lang-hindi-DyM6_O99.js"
   ],
   "la": [
-    "./assets/lang-la-DMZhqMJY.js"
+    "./assets/lang-la-B2q0d_PL.js"
   ],
   "nb": [
-    "./assets/lang-nb-DxAcrh7W.js"
+    "./assets/lang-nb-DAVvSCGp.js"
   ],
   "nn": [
-    "./assets/lang-nn-BlUiBJYT.js"
+    "./assets/lang-nn-DB0jIMP5.js"
   ],
   "norwegian": [
-    "./assets/lang-norwegian-CHKLk1qh.js"
+    "./assets/lang-norwegian-CKuVQCsM.js"
   ],
   "ru": [
-    "./assets/lang-ru-DGSGcP_D.js"
+    "./assets/lang-ru-dkvdo35f.js"
   ],
   "sq": [
-    "./assets/lang-sq-DbwV1AJK.js"
+    "./assets/lang-sq-DVF0mmwp.js"
   ],
   "th": [
     "./assets/lang-th-PKk-XJpB.js"

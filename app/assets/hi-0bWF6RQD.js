@@ -1,0 +1,1 @@
+import{t as e}from"./hi-CIJxtJC5.js";export{e as adapter};

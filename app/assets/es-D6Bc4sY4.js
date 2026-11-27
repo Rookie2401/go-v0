@@ -1,0 +1,1 @@
+import{t as e}from"./es-51XRfCv_.js";export{e as adapter};

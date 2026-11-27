@@ -20,7 +20,7 @@
  */
 'use strict';
 
-var BUILD_ID = '98032433c5b7';
+var BUILD_ID = '0cba8a2fc1fe';
 var PRECACHE = [
   "./",
   "./EB-Garamond-OFL.txt",
@@ -45,10 +45,10 @@ var PRECACHE = [
   "./assets/he-CDT9jrOs.js",
   "./assets/hebrew-script-CnsZhqS-.js",
   "./assets/hi-DahJF875.js",
-  "./assets/index-D1_STq9T.js",
+  "./assets/index-bNfNFQWk.js",
   "./assets/jerusalem-YWyJNBCG.webp",
   "./assets/la-CwaQG1iI.js",
-  "./assets/languageChoices-CKTQmfxG.js",
+  "./assets/languageChoices-BqkhgjO2.js",
   "./assets/nb-DD4vZ02j.js",
   "./assets/nn-BFIvrq7f.js",
   "./assets/norwegian-CE2nWb77.js",
@@ -64,7 +64,7 @@ var PRECACHE = [
   "./assets/src-BdSvOU29.js",
   "./assets/style-BYagmCNE.css",
   "./assets/syntax-CGmPxLTF.js",
-  "./assets/th-CHjZ2pA4.js",
+  "./assets/th-B1PkpJLm.js",
   "./assets/valle-de-angeles-BxOTzEvC.webp",
   "./assets/varanasi-D-p-TlCF.webp",
   "./config.json",
@@ -86,51 +86,57 @@ var LANG_CHUNKS = {
     "./assets/lang-aramaic-B5WkUau3.js"
   ],
   "de": [
-    "./assets/lang-de-CE5_8VKy.js"
+    "./assets/lang-de-BPU-vMRH.js"
   ],
   "el": [
-    "./assets/lang-el-BiEQikfc.js"
+    "./assets/lang-el-BWB4q_sB.js"
   ],
   "es": [
-    "./assets/lang-es-DXIynlnG.js"
+    "./assets/lang-es-hov62ngZ.js"
   ],
   "fr": [
-    "./assets/lang-fr-BsFg8Hqv.js"
+    "./assets/lang-fr-BqT5f7K-.js"
   ],
   "french": [
     "./assets/lang-french-CIGjcOcX.js",
     "./assets/lang-french-LVX0gXcx.js"
   ],
   "he": [
-    "./assets/lang-he-BzuoxFS-.js"
+    "./assets/lang-he-CjhwNGd2.js"
   ],
   "hebrew": [
     "./assets/lang-hebrew-Bsnip4qd.js",
     "./assets/lang-hebrew-apRjTzMX.js"
   ],
   "hi": [
-    "./assets/lang-hi-B7O5nxi5.js"
+    "./assets/lang-hi-BfBhGnXq.js"
   ],
   "hindi": [
     "./assets/lang-hindi-DyM6_O99.js"
   ],
   "la": [
-    "./assets/lang-la-B2q0d_PL.js"
+    "./assets/lang-la-DsSjeVGn.js"
+  ],
+  "latin": [
+    "./assets/lang-latin-BIDFCMcr.js",
+    "./assets/lang-latin-BVNDi284.js",
+    "./assets/lang-latin-CdZiKPt5.js",
+    "./assets/lang-latin-DuUtURpr.js"
   ],
   "nb": [
-    "./assets/lang-nb-DAVvSCGp.js"
+    "./assets/lang-nb-BKSRnCkU.js"
   ],
   "nn": [
-    "./assets/lang-nn-DB0jIMP5.js"
+    "./assets/lang-nn-y303sFH_.js"
   ],
   "norwegian": [
-    "./assets/lang-norwegian-CKuVQCsM.js"
+    "./assets/lang-norwegian-Cngt901A.js"
   ],
   "ru": [
-    "./assets/lang-ru-dkvdo35f.js"
+    "./assets/lang-ru-D19wosAs.js"
   ],
   "sq": [
-    "./assets/lang-sq-DVF0mmwp.js"
+    "./assets/lang-sq-DjW9It82.js"
   ],
   "th": [
     "./assets/lang-th-PKk-XJpB.js"

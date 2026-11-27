@@ -1,0 +1,1 @@
+import{p as e}from"./index-CGWefGrH.js";export{e as adapter};

@@ -1,0 +1,1 @@
+import{t as e}from"./hi-DNRoYXV2.js";export{e as adapter};

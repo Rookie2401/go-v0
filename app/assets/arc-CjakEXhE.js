@@ -1,0 +1,1 @@
+import{t as e}from"./arc-C1fi6b5x.js";export{e as adapter};

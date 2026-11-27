@@ -185,8 +185,8 @@ Readings whose confidence RISES down the list (must be 0): **0** of 22325 analys
 
 ## (g) Time
 
-- adapter tokenize + analyze, one sentence at a time: 22325 word tokens in 22.06 s = **1012 tokens per second** (analysis cache warm for repeats, as in a host).
-- loading 26 of 26 shards (every shard the run needed, including the gold headwords): 1.06 s (disk, no network).
+- adapter tokenize + analyze, one sentence at a time: 22325 word tokens in 46.20 s = **483 tokens per second** (analysis cache warm for repeats, as in a host).
+- loading 26 of 26 shards (every shard the run needed, including the gold headwords): 1.19 s (disk, no network).
 
 
 ## (e) Confident and wrong: the 60 commonest tokens
@@ -430,8 +430,8 @@ From the "form not explained" class: gold chain morphemes (normalised) that no r
 
 | mode | adapter | sentences | scored | (a) strict | (a') lenient | (b) any | (c) pos | (e) unconfirmed | (e') confident+wrong | exact chain | order violations | tokens/s |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
-| token | - | 2066 | 21945 | 90.59 % | 93.84 % | 92.67 % | 83.96 % | 13.68 % | 5.13 % | 89.07 % | 0 | 1232 |
-| adapter | adapter ko@1 | 2066 | 21945 | 91.01 % | 94.22 % | 92.68 % | 87.59 % | 13.66 % | 4.72 % | 89.53 % | 0 | 1012 |
+| token | - | 2066 | 21945 | 90.59 % | 93.84 % | 92.67 % | 83.97 % | 13.67 % | 5.13 % | 89.09 % | 0 | 1457 |
+| adapter | adapter ko@1 | 2066 | 21945 | 91.01 % | 94.22 % | 92.68 % | 87.59 % | 13.66 % | 4.72 % | 89.53 % | 0 | 483 |
 
 ## What this does not measure
 

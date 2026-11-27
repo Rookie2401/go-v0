@@ -699,3 +699,13 @@ describe('the confidence helpers', () => {
     expect(koOrderSentences(tokens, base)[1][0].morph.Complement).toBe('Yes');
   });
 });
+
+// audit of 2d71345d: the object chooses the verb
+describe('an object chooses the rarer verb (the audit of 2d71345d)', () => {
+  it.each([['개가 사람을 물었어요.', '물었어요', '물다'], ['모기가 팔을 물었어요.', '물었어요', '물다'], ['칼을 갈게요.', '갈게요', '갈다'], ['커피를 갈게요.', '갈게요', '갈다']] as const)(
+    '%s: %s is %s', (sentence, form, verb) => {
+      const out = koAdapter.analyze(koAdapter.tokenize(sentence));
+      const a = out.find((x) => x.token.surface === form);
+      expect((a?.candidates[0]?.lemma ?? '').replace(/[⁰¹²³⁴⁵⁶⁷⁸⁹]/gu, '')).toBe(verb);
+    });
+});

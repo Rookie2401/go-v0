@@ -468,16 +468,17 @@ consonant (ㅂ or ㄴ) becomes the final of the nominal's last syllable: 겁니�
   stands and both stay creditable. There is no construction for -(으)ㄹ 것이다 as future or presumption in
   `constructions.ts`, for 갈 거예요 as little as for 갈 겁니다: a stated gap, not added here.
 
-**A rare rival is not a live rival** (`KO_RARE_RIVAL_RULE` in `analyze.ts`: `on`, and a measured clause `dwarfed20` that
-stays off). At token level the rarer of two readings of different headwords within the creditable band is set aside at
-0.45 in two cases only: (i) two PREDICATES spell the form with the same ending, the form is not an adnominal, the leader
-is at least four times commoner and the rarer is counted under 30 (주세요: 줄다 20 beside 주다 916; 갈게요, 가세요: 갈다;
-길어요: 긷다); (ii) a listed whole word with no count at all stands against a counted first reading (이게, 그게, 누가
-"Luke", 목이 "wood ear"). Never touched: a listed word that has a count (알 "egg", 가지, 가게, 정도, 회의), noun + particle
-against a predicate (실을, 물을, 입을), the contracted copula's verb, a homonym set's undecided reading. Not released by
-it, and so still shown as two words: 가요 (가요 "song" 32 beside 가다), 해요 (해 75 beside 하다), 올 (올 has a count of 2).
-The clause for a rival that is counted but dwarfed (leader twenty times commoner) was measured and left off: it fixed
-nothing and made 가지, 가게 and 정도 confident verbs.
+**A listed word with no count is not a live rival** (`KO_RARE_RIVAL_RULE` in `analyze.ts`). At token level a listed
+whole word with no count at all, standing against a counted first reading of the same letters, is set aside at 0.45
+(이게, 그게; 누가 "Luke"; 목이 "wood ear"). Never touched: a listed word that has a count, noun + particle against a
+predicate, the contracted copula's verb, a homonym set's undecided reading.
+
+A second clause, one verb against a much rarer verb spelled the same (주세요: 줄다 beside 주다), was tried and is OFF
+(`predicates: false`). It removed the rarer verb before the sentence was read, so an object could no longer choose it:
+개가 사람을 물었어요 read 묻다 "to ask" and 칼을 갈게요 read 가다 "to go", both confidently (the independent audit found
+it). So 주세요, 갈게요, 가세요 and 길어요 are shown as two words and are not drilled from those sentences, as are 가요 and
+해요. Doing better needs to know which verbs take an object, which the lexicon does not hold. The clause for a rival
+that is counted but dwarfed (`dwarfed20`) is off as before.
 
 ## Constructions (`korean/constructions.ts`, `detectPatterns`)
 

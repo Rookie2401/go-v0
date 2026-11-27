@@ -337,8 +337,10 @@ const isExist = (stem: string): boolean => /[있없밌]$/u.test(stem) || stem ==
 const KO_CORE_PARTICLE_IDS: ReadonlySet<string> = new Set(['subject', 'object', 'topic', 'also', 'of', 'to', 'at', 'at-short', 'and', 'only', 'by', 'to-person', 'to-person-hante', 'to-person-hon', 'from', 'until']);
 
 /** Rule 2 (round fourteen): at token level a RARE rival of another headword is set aside below the credit floor (see finish()). The
- *  owner may reverse it: switch it off here. The second clause (a common rival dwarfed twenty times) is measured only, not on. */
-export const KO_RARE_RIVAL_RULE = { on: true, dwarfed20: false };
+ *  owner may reverse it: switch it off here. `predicates` (one verb against a rarer verb of the same form) is OFF since the audit of
+ *  2d71345d: setting the rarer verb aside before the sentence is read made 개가 사람을 물었어요 a confident 묻다 "to ask" and 칼을
+ *  갈게요 a confident 가다 "to go" (an object no longer could choose 물다 or 갈다). The twenty-times clause is measured only, not on. */
+export const KO_RARE_RIVAL_RULE = { on: true, predicates: false, dwarfed20: false };
 
 let orderSeq = 0;
 function baseScore(entry: KoLexEntry | undefined, stemSyl: number, nMorph: number, violations: number): number {
@@ -1303,7 +1305,7 @@ function finish(c: Ctx, readings: Reading[]): AnalysisCandidate[] {
       const lastEnding = (x: Reading) => [...x.parts].reverse().find((p) => p.ending)?.ending?.id;
       const predPair = KO_PREDICATE_TAGS.has(lead.stemTag) && KO_PREDICATE_TAGS.has(r.stemTag) && lastEnding(lead) === lastEnding(r) && ![...r.parts].reverse().find((p) => p.ending)?.ending?.tag?.startsWith('ETM') && leadN >= 4 * n && n < 30;
       const uncountedWhole = r.parts.length === 1 && !KO_PREDICATE_TAGS.has(r.stemTag) && !!r.entry && r.sourceId !== KO_SOURCE_IDS.closed && n === 0;
-      if (predPair || uncountedWhole || (KO_RARE_RIVAL_RULE.dwarfed20 && leadN >= 20 * n)) { r.cap = CAP.floor; r.notes.credit = 'a rare rival'; }
+      if ((KO_RARE_RIVAL_RULE.predicates && predPair) || uncountedWhole || (KO_RARE_RIVAL_RULE.dwarfed20 && leadN >= 20 * n)) { r.cap = CAP.floor; r.notes.credit = 'a rare rival'; }
     }
     list = [list[0], ...list.slice(1).sort(order)];
   }

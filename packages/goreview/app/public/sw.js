@@ -5,7 +5,7 @@
  *                Served cache-first (the cached index and its hashed assets are one consistent version); a new build installs
  *                beside it and WAITS: the page offers "Update ready - reload" and only then sends SKIP_WAITING.
  *   config.json  the kept copy at once, refreshed from the network for the next start (the network only when nothing is kept).
- *   dict/        the dictionary shards are NOT precached (hundreds of MB): cached on demand in "goreview-dict-v1", capped. The hosted
+ *   dict/        the dictionary shards are NOT precached (hundreds of MB): cached on demand in DICT_CACHE ("goreview-dict-v2" since 2026-11-27, when the Russian and French full shards were republished gzipped; activation deletes an older one), capped. The hosted
  *                edition reads them from BESIDE the app (config.json assetBaseUrl "../", so one dictionary tree serves every app of the site):
  *                that folder is outside this worker's scope, and its dict/ files are kept all the same (the third token below names it;
  *                until 2026-11-11 they were passed by, so the hosted app had no dictionary without a connection).
@@ -27,7 +27,7 @@ var LANG_CHUNKS = __LANG_CHUNKS__;
 
 var SHELL_PREFIX = 'goreview-shell-';
 var SHELL_CACHE = SHELL_PREFIX + BUILD_ID;
-var DICT_CACHE = 'goreview-dict-v1';
+var DICT_CACHE = 'goreview-dict-v2'; // v1 -> v2 2026-11-27: dict/ru and dict/fr full shards became f-xx.json.gz, so a cached v1 manifest named files that are gone
 var LEXICON_PREFIX = 'goreview-lexicon-';
 var LEXICON_CACHE = LEXICON_PREFIX + BUILD_ID;
 var LANG_PREFIX = 'goreview-lang-';
@@ -116,7 +116,7 @@ self.addEventListener('activate', function (event) {
   event.waitUntil(
     caches.keys().then(function (keys) {
       return Promise.all(keys.filter(function (k) {
-        return (k.indexOf(SHELL_PREFIX) === 0 && k !== SHELL_CACHE) || (k.indexOf(LEXICON_PREFIX) === 0 && k !== LEXICON_CACHE) || (k.indexOf(LANG_PREFIX) === 0 && k !== LANG_CACHE);
+        return (k.indexOf(SHELL_PREFIX) === 0 && k !== SHELL_CACHE) || (k.indexOf(LEXICON_PREFIX) === 0 && k !== LEXICON_CACHE) || (k.indexOf(LANG_PREFIX) === 0 && k !== LANG_CACHE) || (k.indexOf('goreview-dict-') === 0 && k !== DICT_CACHE);
       }).map(function (k) { return caches.delete(k); }));
     }).then(function () { return self.clients.claim(); })
   );

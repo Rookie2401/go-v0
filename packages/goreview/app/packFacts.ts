@@ -89,6 +89,7 @@ export const SOURCE_RETRY_DELAY_MS = 400;
 export function packFactsFor(opts: { fetch: typeof fetch; baseUrl: string; lexiconBaseUrl?: string; /** false: the facts as the pack gives them, without the deck gate (src/facts/deck-gate.ts); for the deck audit's before-and-after only */ deckGate?: boolean }): PackFacts {
   const runtimes = new Map<string, ReturnType<typeof createPackRuntime>>();
   const formsIndexes = new Map<string, ReturnType<typeof createFormsSource>>();
+  const gateFormsIndexes = new Map<string, ReturnType<typeof createFormsSource>>();
   const runtimeSourceFailures = new Map<string, number>();
   const hebrewLoaders = new Map<string, Promise<HebrewShardLoader>>();
   const greekLoaders = new Map<string, Promise<GreekShardLoader>>();
@@ -370,6 +371,19 @@ export function packFactsFor(opts: { fetch: typeof fetch; baseUrl: string; lexic
     // facts' own runtime: the same files, read once (no second request for a shard the facts already hold), and a read that fails counts as a failed source like
     // any other, so the facts are asked again later; meanwhile the gate holds what it could not check.
     const dictionary = runtime;
+    // the pack's forms index, where its dictionary has one (a language without one answers nothing): which words a written form is listed under
+    const identitiesOf = async (form: string): Promise<Array<{ lemma: string; pos?: string }>> => {
+      let index = gateFormsIndexes.get(languageId);
+      if (!index) {
+        const dictionaryPath = manifest.lexical.dictionary?.baseUrl;
+        if (!dictionaryPath) return [];
+        const root = dictionaryPath.replace(new RegExp(`/?${languageId}/?$`, 'u'), '');
+        index = createFormsSource(languageId as Parameters<typeof createFormsSource>[0], { fetch: opts.fetch, base: `${opts.baseUrl.replace(/\/+$/u, '')}${root ? `/${root.replace(/^\/+|\/+$/gu, '')}` : ''}` });
+        gateFormsIndexes.set(languageId, index);
+      }
+      const rows = await index.lookupForms([form]);
+      return (rows.get(form) ?? []).map((hit) => ({ lemma: hit.lemma, ...(hit.pos ? { pos: hit.pos } : {}) }));
+    };
     const gated: Provider = {
       prime: raw.prime, clearPrime: raw.clearPrime,
       factsFor: async (unitId, requestedLanguage, varietyId) => {
@@ -377,7 +391,7 @@ export function packFactsFor(opts: { fetch: typeof fetch; baseUrl: string; lexic
         if (!facts || requestedLanguage !== languageId) return facts;
         return applyDeckGate(facts, {
           languageId, varietyId: varietyId ?? manifest.varietyId, gloss: (lemma, pos, forms) => dictionary.gloss(lemma, pos, forms),
-          factsOf: (id) => gated.factsFor(id, requestedLanguage, varietyId), known: (id) => deckKnownLimit(languageId, id),
+          factsOf: (id) => gated.factsFor(id, requestedLanguage, varietyId), known: (id) => deckKnownLimit(languageId, id), formIdentities: identitiesOf,
         });
       },
     } as Provider;

@@ -199,3 +199,118 @@ and are off the list. A verdict is given in a sentence; when a fix changes which
 **For a native speaker or a Hellenist to review:** the 18 held units and the 11 remaining; the rule that a Modern reading takes over the
 certainty of a Koine reading of the same letters; "I begin" for every middle form of ἄρχω and "it is necessary" for δεῖ; the dependent forms
 (παίξουμε after θα) shown as plain presents; every verdict (the readers were AI models).
+
+## Follow-up 2 (2026-11-27): confident misreadings (Bokmål, Nynorsk, German, Thai) and the form card
+
+The second part of the follow-up: the cards where the analyser read the written word as another word, with confidence. This part changes three
+analysers (Norwegian, both standards; German; Thai) and adds three rules to the gate for form cards in every language without attested forms.
+The dictionary's own first sense (Thai กล้อง "pipe") and the misreadings of Russian, Hebrew and French are the next part.
+
+### What was wrong, and the rule that fixes it
+
+| Cause | Fix | Cards |
+|---|---|---|
+| **Norwegian:** a noun was carded as its look-alike verb and the other way round (`drikke`, `reise`, `snø`, `lære`, `stige`, `fiske`, `tunge`), because the place of an infinitive was only looked for right after `å` or a modal | `norwegian/context.ts`: the infinitive's place is found across adverbs, inversion and coordination (`vil gjerne lære`, `kan ikke drikke`, `å lese og skrive`); an object pronoun is not a subject; an imperative stands at the head of an instruction and after `og`; adjective against noun or verb, preposition against noun, by the neighbours | 38 of the 49 misread words collected from both standards' texts |
+| **Norwegian:** a verb with its particle chose the wrong unit, and a few ordinary words were not in the word list at all | `norwegian/units.ts` (the particle belongs to the verb before it, not to a noun); new rows: `stige`, `mål`, `fiskar`, `røre`, `klare`, `tilsette`, `skrelle`, `fortsatt`, `like`, `legge fram`, `leggje fram`, `ta ut` | |
+| **German:** `bitte` in the middle of a sentence was read as an imperative of `bitten`; bare `lieber` as the adjective `lieb`; a noun after a phrase as a verb (`Gebühren`, `Zwiebeln`, `Verfahren`, `Linken`) | `german/context-verbs.ts` (a stray imperative is demoted), `german/context-words.ts` (bare `lieber`; the word after a determiner phrase), rows for `abgehen`, `ankündigen`, `link`, `Verfahren` | 7 of the 8 named; the eighth (`Autobahn`) is a right card now |
+| **Thai:** the ICU cutter left pieces of longer words, and a piece was carded as a word of its own (ชาน from ชานชาลา, มาส + อง for มา + สอง, ว่าย + อด + ขาย for ว่า + ยอดขาย) | new `thai/recut.ts`: ICU's pieces are checked against the course list and the installed dictionary's headwords and re-cut where another cut is clearly cheaper; `ว่า` after a verb of saying is cut off as "that"; a piece whose cut cannot be settled gets no confirmed reading, so no card. It never invents a word | 17 of the 28 named; the other 11 are the dictionary's first sense (next part) and stay held |
+| **Every language whose forms are not attested in a table (all but Greek, Hebrew, Aramaic):** a form card is made from the spelling alone. Where the spelling is more than one word (Bokmål `lære`: "learn" and "doctrine"; Spanish `tarde`), it showed whichever word the spelling read alone came out as, whatever the sentence had said | the gate: a form whose own facts carry another reading gets no form card (`form-two-words`); a form the analyser only guessed, which the forms index lists under more than one headword, gets none either (`form-of-another`). The word's lemma card, made from the reading in the sentence, is untouched | Bokmål `hvile`, `lære`, `reise`, `rør`, `snø`, `stige`, and on the fresh texts `pakke`, `prøve`, `varme`; French `noël` |
+| **German:** a finite form may be the stem half of a separable verb whose prefix stands at the end of the clause (`holt … ab` is `abholen`), and the form card `holt` showed `holen` | the gate: a finite form of a simple German verb gets no form card (`form-separable`); the infinitive, the participles, and a verb that already carries its prefix (`herankam`) keep theirs | nine form cards on the fresh text (`fängst`, `holt`, `kaufte`, `kündigt`, `mach`, `machte`, `ruft`, `schmecke`, `stellte`) |
+
+### No other reading made worse (measured before and after)
+
+| Measure | Before | After |
+|---|---|---|
+| Bokmål gold (`test/adapters/norwegian-gold.test.ts`): words with lemma and class right | 311 of 311; second set 116 of 116 | the same |
+| Nynorsk gold | 91 of 91 | the same |
+| Norwegian held-out (`norwegian-holdout.test.ts`), lemma / class / both: Bokmål | 398 / 404 / 396 of 406 | the same |
+| The same, Nynorsk | 112 / 118 / 112 of 118 | the same |
+| German gold (`scripts/de-gold.mts`), sentences right, four rounds | 84 of 84, 35 of 35, 46 of 48, 13 of 21 (the ten misses are its recorded limits) | byte-identical output |
+| Shared gold sets (`scripts/gold-score.mts`), lemma / class / both. Thai: dev (214) | 198 / 174 / 174 | 199 / 175 / 175 |
+| Thai: hard (74) | 58 / 50 / 49 | 59 / 53 / 51 |
+| Thai: unseen (80) | 73 / 58 / 58 | the same |
+| German: dev (215), hard (72), unseen (80) | 207 / 209 / 204; 69 / 68 / 68; 77 / 70 / 69 | the same |
+| Bokmål: dev (215), hard (73), unseen (70) | 208 / 213 / 206; 53 / 62 / 53; 70 / 69 / 69 | the same, but hard 54 / 63 / 54 |
+| Nynorsk: dev (215), hard (76), unseen (70) | 187 / 206 / 181; 52 / 63 / 51; 60 / 70 / 60 | the same |
+
+No golden was re-recorded and no adapter version was raised. One floor was restated with its reason: `test/audit/linguistic.layers.test.ts`
+counted 98 of 199 Albanian units it could ask about and now counts 97 (one more form is held by the form-card rules).
+
+### What the form-card rules cost
+
+The three rules hold form cards only; every lemma card is as it was. Cards admitted, development text / the old held-out text:
+
+| Set | At the landing | Now |
+|---|---|---|
+| Albanian | 244 / 383 | 243 / 383 |
+| Spanish | 305 / 579 | 302 / 576 |
+| Hindi | 237 / 387 | 237 / 387 |
+| Latin | 456 / 362 | 442 / 349 |
+| Russian | 539 / 546 | 517 / 525 |
+| French | 630 / 646 | 630 / 645 |
+| German | 247 / 572 | 236 / 538 |
+| Bokmål | 302 / 505 | 285 / 477 |
+| Nynorsk | 387 / 389 | 372 / 371 |
+| Thai | 371 / 753 | 373 / 717 |
+
+In German, Norwegian and Thai the analyser changes move the counts too (Thai gains the words the re-cut finds).
+
+What the rules hold, against what the readers had said of those same form cards before the rules existed (a form with no earlier verdict was
+never a card: another check already held it):
+
+| Language | Rule | Forms held | Read right before | Read false before |
+|---|---|---|---|---|
+| Bokmål | two words | 47 | 31 | 13 (`lære`, `reise`, `stige`, `varme`, `prøve`, `pakke`, `på`, `av`, `under` …) |
+| Nynorsk | two words | 32 | 25 | 6 (`tunge`, `stige`, `lys`, `opne`, `unge`, `få`) |
+| German | separable | 111 | 17 | 22 (`holt`, `ruft`, `fängst`, `machte`, `kaufte`, `ist`, `war`, `wurde` …) |
+| German | of another word | 52 | 32 | 6 (`Gebühren`, `Zwiebeln`, `Verfahren`, `Buch`, `schöner`, `enge`) |
+| German | two words | 12 | 9 | 2 |
+| Thai | two words | 26 | 22 | 3 |
+| Russian | two words | 43 | 34 | 9 (`в`, `о`, `есть`, `дни`, `стать`, `буду` …) |
+| Latin | two words | 24 | 21 | 3 |
+| Latin | of another word | 6 | 3 | 2 |
+| Spanish | two words | 4 | 4 | 0 |
+| Albanian, French | of another word | 1 each | 1 each | 0 |
+| Hindi | none | 0 | | |
+
+So about one form in four that these rules hold had been read as a false card, and three in four as a right one; each right one is a form card
+that repeated its word's lemma card, which is still made. One pinned test moved for this, with its reason in the file:
+`test/course/latin-goreview-gloss.test.ts` asserted the Vulgate lead "sin" on the form card `peccatum`; the form is two words (the noun and
+the participle of `pecco`) and is held now, so the lead is asserted on the word's own card.
+
+### The figures
+
+The old held-out halves of the four sets are development material now (`dev2.txt`); each has a fresh `heldout.txt` of 90 sentences written for it
+by an AI model (no Bible translation, no quoted text). It was read for the first time after the analyser rules were written and before the two
+form-card rules were: the first-reading column is the blind figure.
+
+| Set | Old named residue | Now, on that text | Fresh held-out: words / cards | New cards read / false at the first reading | Held by the rules written after it | Remaining, named |
+|---|---|---|---|---|---|---|
+| Bokmål | 17 | 0: the word is read rightly or the form is held (16), a right card (1) | 938 / 456 | 140 / 4 | 3 | 1 |
+| Nynorsk | 4 | 0: all four read rightly | 934 / 376 | 84 / 3 | 0 | 3 |
+| German | 8 | 0: seven read rightly or held by rule, one a right card | 1,035 / 426 | 164 / 13 | 9 | 4 |
+| Thai | 28 | 0 admitted: 17 are no longer cards (the re-cut), 11 are on the known-limits list (ten first-sense cards and the piece ชาน) | 1,295 / 792 | 301 / 9 | 0 | 9 |
+
+Known-limits units: Bokmål 7 → 1, Nynorsk 11 → 1, German 9 → 5, Thai 27 → 21; 95 in all languages (112 at the landing, 121 after the Greek part). The residue of the
+other sets is as it was, except French 7 → 6: Albanian 1, Spanish 2, Hindi 3, Latin 7, Russian 13, French 6, Modern Greek 7, Koine 4, Modern Hebrew
+14, Biblical Hebrew 2, Aramaic 0. With these four the named residue is 76 (130 at the landing, 117 after the Greek part).
+
+**Held on the known-limits list.** Bokmål: `klare` read as the verb where the text has the adjective `klar`. Nynorsk: `tre` the numeral read as
+the noun. German: the form cards `an` and `mit` (verb particles shown as prepositions), `morgen` (in `heute Morgen`), `Uhr` "hours", and
+`verletzen` "to hurt oneself". Thai, misreadings: ชาน, นัก (twice), เหลือ, เจ้า; Thai, the dictionary's first sense (the next part): กล้อง "pipe",
+น้ำตาล "palmyra palm juice", ภาค "good luck", เจ็บ "to be sick", เต้น "to spring", แต่ง, โล่ง "bare", กิโล "kilometer", as form and lemma.
+
+**Remaining on the fresh held-out texts (17), named in `verdicts.json`.** Bokmål and Nynorsk: `når` "when" read as the verb `nå`; Nynorsk `annan`
+shown "second", `like` in `like ved` read as the verb. German: `Die Fischer` read as the surname, `blass` as `blasen`, `weich` as `weichen`,
+`das Rauchen` shown "to smoke". Thai: ทาสี "to paint" read as the noun "female slave", พริก cut out of พริกไทย, and the first senses วิดีโอ "VHS
+cassette", แป้ง "meal", เงิน "silver" on the form card (the lemma card says "money; silver").
+
+Four verdicts were read twice in the same sentence and the two readings disagreed (`Rauchen`, เงิน, กิโล as form and lemma); the stricter one
+stands. A second reading overturns a verdict only when the fix changed the sentence the card comes from.
+
+**For a native speaker to review.** Norwegian: the sentences of `test/adapters/norwegian-misreadings.test.ts`, the rule that a word after
+`og` at the head of an instruction is an imperative, and the particle pieces left as they were (`ta med`: `med` stays an adverb of the unit).
+German: the sentences of `german-misreadings.test.ts`; whether a finite form of a simple verb should have no form card at all, or only
+verbs known to take a prefix. Thai: every re-cut in `thai-missegmentation.test.ts`, the two compounds kept split on the course plan's word
+(ช่วย + เหลือ, ชาน + ชาลา), and the weights of the re-cut. All four: the fresh held-out sentences themselves (an AI model wrote them), the
+held units, the remaining ones, and every verdict (the readers were AI models, not native speakers).

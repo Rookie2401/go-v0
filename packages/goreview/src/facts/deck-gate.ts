@@ -41,6 +41,8 @@ export interface DeckGateDeps {
   factsOf(unitId: string): Promise<GatedFacts | undefined>;
   /** The learner's target variety (a period variety of Greek or Hebrew decides which sources a reading may come from). */
   varietyId?: string;
+  /** The words the pack's forms index lists this written form under (lemma and class), where the dictionary has such an index; [] where it has none. */
+  formIdentities?(form: string): Promise<Array<{ lemma: string; pos?: string }>>;
   /** (d) Why this unit is on the language's known-limits list, or undefined. */
   known?(unitId: string): string | undefined;
 }
@@ -49,6 +51,12 @@ export interface DeckGateDeps {
 const NOT_CURRENT = new Set(['obsolete', 'archaic', 'dated', 'rare', 'historical', 'alt-of', 'form-of', 'misspelling', 'nonstandard', 'uncommon', 'no-gloss']);
 /** The languages whose form cards rest on an attested form source (MorphGNT, the Open Scriptures Hebrew Bible, the Wiktionary tables) and show the lemma's own meaning by construction. */
 const ATTESTED_FORMS = new Set(['el', 'he', 'arc']);
+/** The languages whose verbs separate: a finite form may be the stem half of a separable verb whose prefix stands at the end of the clause (German fängst … an = anfangen). */
+const SEPARABLE_PREFIXES: Readonly<Record<string, readonly string[]>> = {
+  de: ['ab', 'an', 'auf', 'aus', 'bei', 'dar', 'durch', 'ein', 'empor', 'entgegen', 'fest', 'fort', 'her', 'heran', 'heraus', 'herein', 'herum', 'herunter', 'hervor', 'hin', 'hinaus', 'hinein', 'hinter', 'hinzu', 'los', 'mit', 'nach', 'nieder', 'um', 'vor', 'voran', 'voraus', 'vorbei', 'weg', 'weiter', 'wieder', 'zu', 'zurück', 'zusammen'],
+};
+/** A verb that already carries a separable prefix (herankommen): its joined finite forms (herankam) are that verb's and nothing else's. */
+const carriesPrefix = (lang: string, lemma: string): boolean => (SEPARABLE_PREFIXES[lang] ?? []).some((pre) => lemma.toLowerCase().startsWith(pre) && lemma.length >= pre.length + 4);
 const VERBAL = new Set(['VERB', 'AUX']);
 const NOMINAL = new Set(['NOUN', 'PROPN']);
 const posCompatible = (a: string, b: string): boolean => a === b || (VERBAL.has(a) && VERBAL.has(b)) || (NOMINAL.has(a) && NOMINAL.has(b));
@@ -92,6 +100,9 @@ const REASON: Record<string, string> = {
   'meaning-unreviewed': 'No one has checked that the first meaning the dictionary gives fits this word, so it is not added to review yet.',
   'form-meaning': 'The dictionary meaning found for this written form is not a meaning of its own word, so the form is not made a review card; the word itself is.',
   'word-held': 'The word this form belongs to is not made a review card, so neither is the form.',
+  'form-two-words': 'This written form is more than one word in the word list, and a form alone has no sentence to say which, so the form is not made a review card; the word read in its sentence is.',
+  'form-separable': 'A finite verb form can be half of a separable verb whose prefix stands at the end of the clause, which the written form alone does not show, so the form is not made a review card; the verb read in its sentence is.',
+  'form-of-another': 'The dictionary also lists this spelling as a form of another word, and the spelling alone does not say which word it is here, so it is not made a review card.',
   'other-variety': 'This reading comes from another period of the language than the one being studied, so it is not made a review card.',
 };
 
@@ -193,8 +204,28 @@ export async function applyDeckGate(facts: UnitFacts | undefined, deps: DeckGate
   }
 
   // ── a form ──
+  // A form unit has no sentence: it stands for every occurrence of its spelling, with the capital lost. A spelling the pack's forms index lists under more than one
+  // word (German linken: the verb, the adjective link, the nouns Linke and Linker; Gebühren, the plural of Gebühr, beside the verb gebühren) is not decided by
+  // the spelling when the reading of it is only a GUESS (a rule's, with no entry of the pack's own word list behind it). A reading the word list confirms stands
+  // as it did (Spanish agua is the noun, whatever aguar's forms are); so does one headword listed under two classes (und), and a place name beside a common word.
+  let listed: Array<{ lemma: string; pos?: string }> = [];
+  const guessed = !facts.lemma || facts.unit.provenance?.source === 'rule' || facts.unit.provenance?.source === 'parser';
+  if (guessed && !ATTESTED_FORMS.has(lang)) { try { listed = (await deps.formIdentities?.(facts.unit.label)) ?? []; } catch { listed = []; } }
+  const commonListed = listed.some((h) => h.pos !== 'PROPN') ? listed.filter((h) => h.pos !== 'PROPN') : listed;
+  const words = new Set(commonListed.map((h) => h.lemma.normalize('NFC')));
+  if (words.size > 1) return held(facts, 'undecided-entry', REASON['form-of-another']);
   const lemma = meaning.base ? facts.lexicalRecognition?.lemma : facts.lemma;
   const pos = meaning.base ? facts.lexicalRecognition?.pos ?? facts.pos : facts.pos;
+  if (!ATTESTED_FORMS.has(lang)) {
+    // The analyser's own word list reads this spelling as another word too (Bokmål lære: the verb "to learn" and the noun "doctrine"; Spanish tarde: "afternoon" and
+    // "late"). In a sentence the analyser decides, and the word's lemma card is made from that; a form card has no sentence, and showed whichever word the
+    // spelling read alone came out as.
+    if ((f.alternativeReadings ?? []).length > 0) return held(facts, 'undecided-entry', REASON['form-two-words']);
+    // German: a finite form of a simple verb may be the stem half of a separable verb (holt … ab is abholen, not holen); a verb that carries its prefix already is itself
+    const verbal = pos === 'VERB' || pos === 'AUX';
+    const finite = facts.features?.VerbForm === 'Fin' || !!facts.features?.Person || (meaning.base && !/^ge|en$|end$/u.test(facts.unit.label));
+    if (SEPARABLE_PREFIXES[lang] && verbal && !!lemma && !carriesPrefix(lang, lemma) && facts.unit.label.normalize('NFC').toLowerCase() !== lemma.normalize('NFC').toLowerCase() && finite) return held(facts, 'undecided-entry', REASON['form-separable']);
+  }
   if (lemma) {
     // (e) a form card shows a meaning of its own word, or it is not a card; (a)–(d) are its word's
     const own = await deps.factsOf(lemmaUnitId(lang, lemma, pos)).catch(() => undefined);
@@ -224,6 +255,10 @@ export async function applyDeckGate(facts: UnitFacts | undefined, deps: DeckGate
   let senses: Sense[] = [];
   try { const d = await deps.gloss(facts.unit.label, facts.pos); senses = d && !d.via ? d.senses : []; } catch { senses = []; }
   if (!senses.length) return held(facts, 'unlisted', REASON.unlisted);
+  // (c) a spelling the forms index lists under another word too is not decided by the spelling: a form unit has lost its capital, so German Gebühren (the plural
+  // of Gebühr) found the verb gebühren, and Zwiebeln the verb zwiebeln (a place name beside a common word does not count, as below)
+  const another = commonListed.some((h) => h.lemma.normalize('NFC').toLowerCase() !== facts.unit.label.normalize('NFC').toLowerCase());
+  if (another) return held(facts, 'undecided-entry', REASON['form-of-another']);
   // (c) a spelling the dictionary files under several word classes is not decided by the spelling (a place name beside a common word does not count)
   const common = senses.filter((s) => s.pos !== 'PROPN' && current(s) && !isCrossReferenceOnly(s.gloss));
   const pool = common.length ? common : senses;

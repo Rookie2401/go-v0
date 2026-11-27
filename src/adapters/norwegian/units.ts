@@ -73,6 +73,8 @@ legge til = add
 legge igjen = leave behind
 legge fra seg = put down
 legge ut = post; lay out
+legge fram = put forward
+legge frem = put forward
 legge opp = plan
 hente ut = pick up (collect)
 kjøre bort = drive away
@@ -167,6 +169,7 @@ slå av = switch off
 ta på seg = put on (clothes)
 ta av seg = take off (clothes)
 ta med = bring along
+ta ut = take out
 ta imot = receive
 skrive ned = write down
 sjå ut = look; appear
@@ -177,6 +180,7 @@ halde på = be busy; keep on
 setje seg ned = sit down
 leggje ned = shut down; lay down
 leggje til = add
+leggje fram = put forward
 sende inn = send in
 sende ut = send out
 vaske opp = wash up
@@ -217,6 +221,8 @@ export interface UnitToken {
   nominal: boolean;
   /** The token can be a conjunction or subordinator. */
   conj: boolean;
+  /** The word is not in the word list (so it may be a noun phrase's first word). */
+  unknown?: boolean;
   /** Punctuation text for a non-word token. */
   punct?: string;
 }
@@ -236,8 +242,9 @@ export function findUnits(toks: readonly UnitToken[], units: readonly NoUnit[]):
     if (!t.isWord || !t.verbLemmas.length) continue;
     const cands = t.verbLemmas.flatMap((l) => byVerb.get(l) ?? []);
     if (!cands.length) continue;
-    // longest unit first: "ta på seg" before "ta på"
+    // longest unit first: "ta på seg" before "ta på"; but the particle nearest to the verb decides between two units (tar den ut av formen = ta ut, not ta av)
     cands.sort((a, b) => b.display.length - a.display.length);
+    const found: Array<{ u: NoUnit; particleAt: number; reflexAt: number; gapNominal: boolean }> = [];
     for (const u of cands) {
       let particleAt = -1;
       let reflexAt = -1;
@@ -254,6 +261,17 @@ export function findUnits(toks: readonly UnitToken[], units: readonly NoUnit[]):
       }
       if (particleAt < 0) continue;
       if (u.reflexive && reflexAt < 0) continue;
+      // a nearer reading of the same verb is the head (La oss legge til: legge, not la, which is also a form of legge)
+      if (toks.slice(i + 1, particleAt).some((y) => y.isWord && y.verbLemmas.includes(u.verb))) continue;
+      // a preposition-like particle after a noun phrase and in front of another is the preposition of that phrase (la forslaget til statsbudsjett)
+      if (gapNominal && PREPOSITION_LIKE.has(u.particle)) {
+        const after = toks[particleAt + 1];
+        if (after && after.isWord && (after.nominal || after.unknown)) continue;
+      }
+      found.push({ u, particleAt, reflexAt, gapNominal });
+    }
+    found.sort((a, b) => (a.particleAt - b.particleAt) || (b.u.display.length - a.u.display.length));
+    for (const { u, particleAt, reflexAt, gapNominal } of found) {
       const pieces = [i, particleAt, reflexAt].filter((x) => x >= 0).sort((a, b) => a - b);
       if (pieces.some((p) => p !== i && taken.has(p))) continue;
       const gap = particleAt - i - 1;

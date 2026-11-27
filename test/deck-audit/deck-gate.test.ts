@@ -131,7 +131,7 @@ describe('the deck gate: form units', () => {
   });
   it('a base-meaning card shows what the word\'s own card shows first', async () => {
     const sein = facts('lemma:de:sein:AUX', { lemma: 'sein', pos: 'AUX', lexicon: ['to be'], inWordList: true });
-    const f = facts('form:de:ist', { pos: 'AUX', base: { lemma: 'sein', pos: 'AUX', glosses: ['forms the present perfect and past perfect tenses of certain verbs', 'to be'] } });
+    const f = facts('form:de:gewesen', { pos: 'AUX', base: { lemma: 'sein', pos: 'AUX', glosses: ['forms the present perfect and past perfect tenses of certain verbs', 'to be'] } });
     const g = await applyDeckGate(f, deps('de', {}, { 'lemma:de:sein:AUX': sein }));
     expect(shown(g)).toBe('to be');
   });
@@ -197,5 +197,64 @@ describe('pointers with a slash between labels', () => {
   it('"imperfect middle/passive indicative of X" is a pointer', () => {
     expect(isCrossReferenceOnly('third-person singular imperfect middle/passive indicative of πυνθάνομαι (punthánomai)')).toBe(true);
     expect(crossReferenceTarget('third-person singular imperfect middle/passive indicative of πυνθάνομαι (punthánomai)')).toBe('πυνθάνομαι');
+  });
+});
+
+describe('a written form the forms index lists under another word', () => {
+  const verb = [{ gloss: 'to be due, to be owed', pos: 'VERB' }];
+  const withIndex = (hits: Array<{ lemma: string; pos?: string }>): DeckGateDeps => ({ ...deps('de', { 'gebühren': verb, sonntag: [{ gloss: 'Sunday', pos: 'NOUN' }] }), formIdentities: async () => hits });
+  it('is undecided by its spelling: German Gebühren (plural of Gebühr) is not the verb gebühren', async () => {
+    const g = await applyDeckGate(facts('form:de:gebühren', { dictionary: ['to be due, to be owed'] }), withIndex([{ lemma: 'Gebühr', pos: 'NOUN' }, { lemma: 'gebühren', pos: 'VERB' }]));
+    expect(g?.reviewHold?.kind).toBe('undecided-entry');
+    expect(g?.reviewHold?.reason).toContain('form of another word');
+  });
+  it('a form listed under its own headword only, or beside a place name, passes', async () => {
+    const own = await applyDeckGate(facts('form:de:sonntag', { dictionary: ['Sunday'] }), withIndex([{ lemma: 'Sonntag', pos: 'NOUN' }, { lemma: 'Sonntag', pos: 'PROPN' }]));
+    expect(own?.reviewHold).toBeUndefined();
+    const none = await applyDeckGate(facts('form:de:sonntag', { dictionary: ['Sunday'] }), withIndex([]));
+    expect(none?.reviewHold).toBeUndefined();
+  });
+});
+
+describe('a form card whose spelling is several words', () => {
+  const lemma = facts('lemma:de:linken:VERB', { lemma: 'linken', pos: 'VERB', dictionary: ['to deceive'] });
+  const d: DeckGateDeps = { ...deps('de', { linken: [{ gloss: 'to deceive', pos: 'VERB' }] }, { 'lemma:de:linken:VERB': lemma }),
+    formIdentities: async () => [{ lemma: 'linken', pos: 'VERB' }, { lemma: 'link', pos: 'ADJ' }, { lemma: 'Linke', pos: 'NOUN' }] };
+  const form = (source: string): UnitFacts => { const f = facts('form:de:linken', { lemma: 'linken', pos: 'VERB', dictionary: ['to deceive'] }); return { ...f, unit: { ...f.unit, provenance: { ...f.unit.provenance, source } } } as UnitFacts; };
+  it('is held when the reading of it is only a rule\u2019s guess (German linken), and the word\u2019s own lemma card is not touched', async () => {
+    expect((await applyDeckGate(form('rule'), d))?.reviewHold?.kind).toBe('undecided-entry');
+    expect((await applyDeckGate(lemma, d))?.reviewHold).toBeUndefined();
+  });
+  it('stands when the pack\u2019s own word list confirms the reading, and when one headword is listed under two classes', async () => {
+    expect((await applyDeckGate(form('hand-lexicon'), d))?.reviewHold).toBeUndefined();
+    const und: DeckGateDeps = { ...deps('de', { und: [{ gloss: 'and', pos: 'CONJ' }] }), formIdentities: async () => [{ lemma: 'und', pos: 'CONJ' }, { lemma: 'und', pos: 'INTJ' }] };
+    expect((await applyDeckGate(facts('form:de:und', { dictionary: ['and'] }), und))?.reviewHold).toBeUndefined();
+  });
+});
+
+describe('a form card has no sentence', () => {
+  it('a spelling the word list reads as another word too gets no form card; its lemma card is untouched', async () => {
+    const lemma = facts('lemma:nb:lære:NOUN', { lemma: 'lære', pos: 'NOUN', lexicon: ['teaching; doctrine'], inWordList: true });
+    const form = { ...facts('form:nb:lære', { lemma: 'lære', pos: 'NOUN', dictionary: ['teaching; doctrine'] }), alternativeReadings: [{ lemma: 'lære', pos: 'VERB', glosses: ['learn; teach'] }] } as UnitFacts;
+    const g = await applyDeckGate(form, deps('nb', {}, { 'lemma:nb:lære:NOUN': lemma }));
+    expect(g?.reviewHold?.kind).toBe('undecided-entry');
+    expect(g?.reviewHold?.reason).toContain('more than one word');
+    expect(await applyDeckGate(lemma, deps('nb', {}))).toBe(lemma);
+  });
+  it('German: a finite verb form may be half of a separable verb and gets no form card; the infinitive and a participle keep theirs', async () => {
+    const holen = facts('lemma:de:holen:VERB', { lemma: 'holen', pos: 'VERB', lexicon: ['to fetch'], inWordList: true });
+    const d = deps('de', {}, { 'lemma:de:holen:VERB': holen });
+    const form = (label: string, features: Record<string, string>): UnitFacts => ({ ...facts(`form:de:${label}`, { lemma: 'holen', pos: 'VERB', dictionary: ['to fetch'] }), features }) as UnitFacts;
+    expect((await applyDeckGate(form('holt', { VerbForm: 'Fin', Person: '3', Number: 'Sing' }), d))?.reviewHold?.reason).toContain('separable');
+    expect((await applyDeckGate(form('holen', { VerbForm: 'Inf' }), d))?.reviewHold).toBeUndefined();
+    expect((await applyDeckGate(form('geholt', { VerbForm: 'Part' }), d))?.reviewHold).toBeUndefined();
+    // a verb that carries its prefix already: its joined finite form is its own (dass er sie abholt)
+    const abholen = facts('lemma:de:abholen:VERB', { lemma: 'abholen', pos: 'VERB', lexicon: ['to pick up'], inWordList: true });
+    const abholt = { ...facts('form:de:abholt', { lemma: 'abholen', pos: 'VERB', dictionary: ['to pick up'] }), features: { VerbForm: 'Fin', Person: '3' } } as UnitFacts;
+    expect((await applyDeckGate(abholt, deps('de', {}, { 'lemma:de:abholen:VERB': abholen })))?.reviewHold).toBeUndefined();
+    // another language's finite forms are not touched by this rule
+    const hacer = facts('lemma:es:hacer:VERB', { lemma: 'hacer', pos: 'VERB', lexicon: ['to do'], inWordList: true });
+    const hace = { ...facts('form:es:hace', { lemma: 'hacer', pos: 'VERB', dictionary: ['to do'] }), features: { VerbForm: 'Fin', Person: '3' } } as UnitFacts;
+    expect((await applyDeckGate(hace, deps('es', {}, { 'lemma:es:hacer:VERB': hacer })))?.reviewHold).toBeUndefined();
   });
 });

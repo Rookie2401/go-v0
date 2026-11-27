@@ -33,6 +33,7 @@ import { thaiSyntax } from './thai/syntax';
 import { createThaiSegmentations, type ThaiSegmentation } from './thai/segmentations';
 import type { SegmentationCut } from '../core/paradigm';
 import { thFeaturesFromTableTags } from './thai/table-tags';
+import { isDoubtToken } from './thai/recut';
 import { segmentThaiProse } from './thai/prose';
 import { THAI_DICTIONARY_ID, dictionaryPartsOfSpeech, isDictionaryWord } from './thai/dictionary-words';
 import {
@@ -205,6 +206,9 @@ const NORTH_OF = new Set(['ทิศ', 'ภาค', 'ทาง', 'ด้าน',
 const SPREAD = new Set(['เสื่อ', 'ผ้า', 'พรม', 'ที่นอน', 'พื้น', 'กระเบื้อง']); // ปูเสื่อ "spread a mat"
 const CHOPPED = new Set(['ผัก', 'หอม', 'กระเทียม', 'หมู', 'เนื้อ', 'ต้นหอม', 'พริก']); // ซอยผัก "chop vegetables"
 const SCOOPED = new Set(['ขึ้น', 'ปลา', 'ลูกน้ำ']); // ช้อนปลา "scoop up fish"
+// what follows ว่า "to scold": a question word (ไม่ได้ว่าอะไร) or a person
+const WA_OBJECT_WORD = new Set(['อะไร', 'ใคร']);
+const WA_OBJECT_PRONOUN = new Set(['ผม', 'ฉัน', 'เขา', 'เธอ', 'เรา', 'มัน', 'คุณ', 'ลูก', 'น้อง', 'เด็ก', 'หนู']);
 const DIGITS = /^[\d๐-๙]+$/u;
 
 /**
@@ -267,6 +271,20 @@ function contextualWord(i: number, tokens: RawToken[], base: AnalysisCandidate[]
   const prev = base[i - 1]?.[0];
   const before = tokens[i - 1]?.normalized ?? '';
   const after = tokens[i + 1]?.normalized ?? '';
+  // ละ after a noun and before a number is "each, per" (ชามละห้าสิบบาท, วันละสามครั้ง); elsewhere it is the particle (ไปละ)
+  if (w === 'ละ' && cands.some((c) => c.pos === 'DET')) {
+    const nounBefore = base[i - 1]?.some((c) => c.pos === 'NOUN' || c.pos === 'CLF') ?? false;
+    const numberAfter = base[i + 1]?.some((c) => c.pos === 'NUM') || DIGITS.test(tokens[i + 1]?.surface ?? '');
+    return nounBefore && numberAfter ? pick('DET', 0.8) : pick('PART', 0.92);
+  }
+  // ว่า after a negator and before an object (ไม่ได้ว่าอะไร) is the verb "to scold; to say (about someone)", not "that"; before a
+  // pronoun the clause after a negated "say" is possible too (ไม่ได้ว่าเขาจะมา), so the two readings are left close: undecided
+  if (w === 'ว่า' && cands.some((c) => c.pos === 'VERB') && cands.some((c) => c.pos === 'SCONJ')) {
+    const negated = before === 'ถูก' || before === 'โดน' || (before === 'ได้' && tokens[i - 2]?.normalized === 'ไม่') || before === 'ไม่';
+    if (negated && WA_OBJECT_WORD.has(after)) return pick('VERB', 0.8);
+    if (negated && WA_OBJECT_PRONOUN.has(after)) return [{ ...cands.find((c) => c.pos === 'VERB')!, confidence: 0.7 }, ...cands.filter((c) => c.pos !== 'VERB').map((c) => ({ ...c, confidence: 0.62 }))];
+    return pick('SCONJ', 0.92);
+  }
   if (w === 'เหนือ') return NORTH_OF.has(before) ? pick('NOUN', 0.8) : pick('ADP', 0.8);
   if (w === 'ไว้') return base[i + 1]?.[0]?.pos === 'NOUN' && prev?.pos !== 'VERB' ? pick('VERB', 0.6) : pick('PART', 0.75);
   if (w === 'เกาะ') return after === 'อยู่' ? pick('VERB', 0.7) : pick('NOUN', 0.7);
@@ -345,6 +363,15 @@ function annotate(a: AnalyzedToken): AnalyzedToken {
     return next;
   });
   return { ...a, candidates };
+}
+
+/**
+ * A token whose cut the tokenizer could not settle (thai/recut.ts: a piece that may belong to a longer word, a cut about as likely
+ * as another) keeps its readings but every one of them is unconfirmed: nothing downstream makes a card from it.
+ */
+function markCutDoubt(a: AnalyzedToken): AnalyzedToken {
+  if (!isDoubtToken(a.token) || !a.candidates.length) return a;
+  return { ...a, candidates: a.candidates.map((c) => ({ ...c, unconfirmed: true, notes: { ...(c.notes ?? {}), cutDoubt: 'yes' } })) };
 }
 
 // phrase units are matched on the adapter's own tokens (so ทั้งๆที่ is ทั้ง + ๆ + ที่ here as in running text)
@@ -440,7 +467,7 @@ export const thAdapter: LanguageAdapter = {
   normalize,
   searchNormalize: (q) => normalize(q).trim(),
 
-  analyze: (tokens) => lexiconAnalyze(tokens, thLexicon, ANALYZER, { contextual, unknown: unknownThai }).map(annotate),
+  analyze: (tokens) => lexiconAnalyze(tokens, thLexicon, ANALYZER, { contextual, unknown: unknownThai }).map(annotate).map(markCutDoubt),
 
   detectPhrases: (tokens, analyses) => matchPhraseRules(tokens, analyses, PHRASES, normalize),
 

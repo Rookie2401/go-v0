@@ -228,6 +228,7 @@ function applyUnits(slots: Slot[], tokens: RawToken[], eng: Engine): void {
       finite: verbs.some((c) => /Fin/.test(c.morph.VerbForm ?? '') && !/Inf/.test(c.morph.VerbForm ?? '')),
       nominal: !!s.cands[0] && ['NOUN', 'PROPN', 'DET', 'ADJ', 'NUM'].includes(s.cands[0].pos),
       conj: !!s.cands[0] && (s.cands[0].pos === 'CONJ' || s.cands[0].pos === 'SCONJ'),
+      unknown: t.isWord && s.cands.length === 0,
       punct: t.isWord ? undefined : t.surface,
     };
   });

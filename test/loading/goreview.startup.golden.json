@@ -1269,7 +1269,7 @@
   {
    "text": "음악을 들어요.",
    "summary": "음악을=음악/NOUN 들어요=듣다/VERB",
-   "sha256": "4a270a68e1e16d2d58bad4766e6a23f93c5b8d38b8a27fee92ca939081cce2d9"
+   "sha256": "e799386f3b9a5e3ad26db46b3bd4903146af7aebc0f460b5ac86c021c7f4f60a"
   },
   {
    "text": "날씨가 추워요.",
@@ -1309,7 +1309,7 @@
   {
    "text": "내일 갈 수 있어요.",
    "summary": "내일=내일/NOUN 갈=가다/VERB 수=수¹/NOUN 있어요=있다/ADJ",
-   "sha256": "96bffffd1ce4c0f8b0e098b89700a15db8b441494addf8de13f7f1a54733562b"
+   "sha256": "492e5156b21916fd7316ba6549396bbd3dedca2b46198b5009369c7314f17983"
   },
   {
    "text": "어제 가지 않았어요.",
@@ -1324,7 +1324,7 @@
   {
    "text": "방에 책이 있어요.",
    "summary": "방에=방/NOUN 책이=책/NOUN 있어요=있다/ADJ",
-   "sha256": "b77b09ff190286fddebafc040048f0f124c472f2aadbcda459907b1248bb781d"
+   "sha256": "47d2b32fa8cd7217e9cd3f89346cb3b3385fd2fe5e6014f0003288638687b7e9"
   },
   {
    "text": "Xyzqwk",

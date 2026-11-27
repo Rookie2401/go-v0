@@ -12,6 +12,10 @@ const WHY = 'The deck audit found this word read or glossed wrongly in ordinary 
 const list = (units: string[]): Readonly<Record<string, string>> => Object.fromEntries(units.map((u) => [u, WHY]));
 
 export const DECK_KNOWN_LIMITS: Readonly<Record<string, Readonly<Record<string, string>>>> = {
+  // Arabic: units a reader found false that no rule catches (the generated sweep list, generated/deck-limits.ts, is reached separately by deckKnownLimit)
+  ar: list([
+    "lemma:ar:طَلْق:NOUN",
+  ]),
   arc: list([
     "lemma:arc:לָהֵן:CONJ",
   ]),

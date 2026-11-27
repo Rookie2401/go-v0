@@ -1617,6 +1617,1346 @@
     "shown": "day",
     "v": "ok"
    }
+  ],
+  "lemma:ar:أَتَى:VERB": [
+   {
+    "shown": "to come",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:أَخَذَ:VERB": [
+   {
+    "shown": "to take",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:أَرَادَ:VERB": [
+   {
+    "shown": "to want",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:أَرْض:NOUN": [
+   {
+    "shown": "earth",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:أَزْرَق:ADJ": [
+   {
+    "shown": "blue",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:أَغْلَقَ:VERB": [
+   {
+    "shown": "to close",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:أَمَّا:CONJ": [
+   {
+    "shown": "as for",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:أَمْر:NOUN": [
+   {
+    "shown": "matter",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:أَمْكَنَ:VERB": [
+   {
+    "shown": "to be possible",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:أَيْضًا:ADV": [
+   {
+    "shown": "also",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:أُجْرَة:NOUN": [
+   {
+    "shown": "pay",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:إِنَّمَا:PART": [
+   {
+    "shown": "only, but; indeed",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:السَّبْت:NOUN": [
+   {
+    "shown": "Saturday",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:الَّتِي:PRON": [
+   {
+    "shown": "who, which, that (f. sg.)",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:اِبْتَسَمَ:VERB": [
+   {
+    "shown": "to smile",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:اِتَّصَلَ:VERB": [
+   {
+    "shown": "to be in contact",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:اِحْتَاجَ:VERB": [
+   {
+    "shown": "to need",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:اِخْتَفَى:VERB": [
+   {
+    "shown": "to vanish",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:اِسْتَرَاحَ:VERB": [
+   {
+    "shown": "to rest",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:اِسْتَطَاعَ:VERB": [
+   {
+    "shown": "to be able",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:اِسْتَعْمَلَ:VERB": [
+   {
+    "shown": "to use",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:اِسْتِوَائِيّ:ADJ": [
+   {
+    "shown": "equatorial",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:اِشْتَرَى:VERB": [
+   {
+    "shown": "to buy",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:اِصْطَادَ:VERB": [
+   {
+    "shown": "to hunt, to catch",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:اِعْتَقَدَ:VERB": [
+   {
+    "shown": "to believe",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:اِنْبَغَى:VERB": [
+   {
+    "shown": "to beseem",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:اِنْتَشَرَ:VERB": [
+   {
+    "shown": "to be widespread",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:اِنْتَهَى:VERB": [
+   {
+    "shown": "to end",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:اِنْخَفَضَ:VERB": [
+   {
+    "shown": "to go down",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:بَعِيد:ADJ": [
+   {
+    "shown": "far",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:بَعْض:NOUN": [
+   {
+    "shown": "some",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:بَلْ:CONJ": [
+   {
+    "shown": "but rather, on the contrary",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:بَيْنَ:ADP": [
+   {
+    "shown": "between, among",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:بُرْتُقَال:NOUN": [
+   {
+    "shown": "orange, oranges",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:بِطَاقَة:NOUN": [
+   {
+    "shown": "card",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:بِنْت:NOUN": [
+   {
+    "shown": "girl",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:تَأَخَّرَ:VERB": [
+   {
+    "shown": "to be late",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:تَاجِر:NOUN": [
+   {
+    "shown": "merchant, trader",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:تَحَدَّثَ:VERB": [
+   {
+    "shown": "to speak, to talk",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:تَحَسَّنَ:VERB": [
+   {
+    "shown": "to improve",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:تَذْكِرَة:NOUN": [
+   {
+    "shown": "ticket",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:تَرَاجَعَ:VERB": [
+   {
+    "shown": "to retreat",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:تَعَلَّمَ:VERB": [
+   {
+    "shown": "to learn",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:تَعْلِيم:NOUN": [
+   {
+    "shown": "teaching",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:تَغَيَّرَ:VERB": [
+   {
+    "shown": "to change",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:تَقْرِيبًا:ADV": [
+   {
+    "shown": "approximately",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:تَقْرِير:NOUN": [
+   {
+    "shown": "report",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:تَنَاوَلَ:VERB": [
+   {
+    "shown": "to take",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:تَنَفَّسَ:VERB": [
+   {
+    "shown": "to breathe",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:تُفَّاح:NOUN": [
+   {
+    "shown": "apple",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:تِكْنُولُوجْيَا:NOUN": [
+   {
+    "shown": "technology",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:ثَامِن:ADJ": [
+   {
+    "shown": "eighth",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:ثَلَاثَة:NUM": [
+   {
+    "shown": "three",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:ثَمَن:NOUN": [
+   {
+    "shown": "a price",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:ثَمِين:ADJ": [
+   {
+    "shown": "valuable",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:ثَوْب:NOUN": [
+   {
+    "shown": "clothes",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:ثُمَّ:CONJ": [
+   {
+    "shown": "then, afterwards",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:جَعَلَ:VERB": [
+   {
+    "shown": "to make: to create",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:جَمَعَ:VERB": [
+   {
+    "shown": "to gather",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:جَوّ:NOUN": [
+   {
+    "shown": "weather",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:جَيِّد:ADJ": [
+   {
+    "shown": "of good quality",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:جِهَاز:NOUN": [
+   {
+    "shown": "device",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:حَارّ:ADJ": [
+   {
+    "shown": "hot",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:حَاسُوب:NOUN": [
+   {
+    "shown": "computer",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:حَتَّى:ADP": [
+   {
+    "shown": "until, even",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:حَجَزَ:VERB": [
+   {
+    "shown": "to detain",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:حَرَارَة:NOUN": [
+   {
+    "shown": "heat",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:حَشَرَة:NOUN": [
+   {
+    "shown": "insect",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:حَقِيقِيّ:ADJ": [
+   {
+    "shown": "true",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:حَلِيب:NOUN": [
+   {
+    "shown": "milk",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:حَوْلَ:ADP": [
+   {
+    "shown": "around, about",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:حَيَاة:NOUN": [
+   {
+    "shown": "life",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:حِين:NOUN": [
+   {
+    "shown": "time",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:خَارِج:NOUN": [
+   {
+    "shown": "outside",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:خَافَ:VERB": [
+   {
+    "shown": "to fear",
+    "v": "ok",
+    "note": "the false reading found in the first reading (يخف, from خفّ) is fixed in the analyser; the words that credit this card now are فخاف and يخاف, which are خاف"
+   }
+  ],
+  "lemma:ar:خَامِس:ADJ": [
+   {
+    "shown": "fifth",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:خَشَبِيّ:ADJ": [
+   {
+    "shown": "wooden",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:خَمْسَة:NUM": [
+   {
+    "shown": "five",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:دَافِئ:ADJ": [
+   {
+    "shown": "warm",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:دَجَاج:NOUN": [
+   {
+    "shown": "chickens, poultry",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:دَرَجَة:NOUN": [
+   {
+    "shown": "degree",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:دَفَعَ:VERB": [
+   {
+    "shown": "to pay",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:دَوَاء:NOUN": [
+   {
+    "shown": "remedy, medicine",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:دُونَ:ADP": [
+   {
+    "shown": "below; without",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:ذَكِيّ:ADJ": [
+   {
+    "shown": "intelligent",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:ذَهَاب:NOUN": [
+   {
+    "shown": "going",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:ذَهَبَ:VERB": [
+   {
+    "shown": "to go",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:ذٰلِكَ:PRON": [
+   {
+    "shown": "that (m. sg.)",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:رَجَعَ:VERB": [
+   {
+    "shown": "to return",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:رَكَضَ:VERB": [
+   {
+    "shown": "to race, to rush",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:رَمَى:VERB": [
+   {
+    "shown": "to throw",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:زَيْت:NOUN": [
+   {
+    "shown": "oil",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:زِرَاعَة:NOUN": [
+   {
+    "shown": "agriculture",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:سَاحِلِيّ:ADJ": [
+   {
+    "shown": "coastal",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:سَاعَة:NOUN": [
+   {
+    "shown": "hour",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:سَاعَدَ:VERB": [
+   {
+    "shown": "to help",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:سَافَرَ:VERB": [
+   {
+    "shown": "to travel",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:سَبَب:NOUN": [
+   {
+    "shown": "cause",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:سَبَقَ:VERB": [
+   {
+    "shown": "to precede",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:سَرِير:NOUN": [
+   {
+    "shown": "bed",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:سَمَك:NOUN": [
+   {
+    "shown": "fish",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:سَمَّى:VERB": [
+   {
+    "shown": "to name",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:سَمِعَ:VERB": [
+   {
+    "shown": "to hear",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:سَوْفَ:PART": [
+   {
+    "shown": "will (future)",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:سَيَّارَة:NOUN": [
+   {
+    "shown": "car",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:شَاي:NOUN": [
+   {
+    "shown": "tea",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:شَرِبَ:VERB": [
+   {
+    "shown": "to drink",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:شَكَرَ:VERB": [
+   {
+    "shown": "to thank",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:شَمَال:NOUN": [
+   {
+    "shown": "north",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:شَهْر:NOUN": [
+   {
+    "shown": "month",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:شَيْء:NOUN": [
+   {
+    "shown": "thing",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:شُرْطَة:NOUN": [
+   {
+    "shown": "police",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:صَائِغ:NOUN": [
+   {
+    "shown": "goldsmith",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:صَبَاحًا:ADV": [
+   {
+    "shown": "in the morning",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:صَدِيق:NOUN": [
+   {
+    "shown": "friend",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:صَعْب:ADJ": [
+   {
+    "shown": "hard",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:صَيْدَلِيَّة:NOUN": [
+   {
+    "shown": "pharmacy, drugstore",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:صُدَاع:NOUN": [
+   {
+    "shown": "headache",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:صُنْدُوق:NOUN": [
+   {
+    "shown": "box",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:ضَرُورِيّ:ADJ": [
+   {
+    "shown": "necessary",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:ضَيْف:NOUN": [
+   {
+    "shown": "guest",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:طَاقَة:NOUN": [
+   {
+    "shown": "power",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:طَبِيب:NOUN": [
+   {
+    "shown": "doctor",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:طَرِيقَة:NOUN": [
+   {
+    "shown": "way",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:طَلْق:NOUN": [
+   {
+    "shown": "talc, talcum",
+    "v": "false-reading",
+    "note": "The word is الطلق in الهواء الطلق (open air), طَلْق meaning free or open, not طلق (talc)."
+   }
+  ],
+  "lemma:ar:ظَنَّ:VERB": [
+   {
+    "shown": "to think",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:ظَهَرَ:VERB": [
+   {
+    "shown": "to appear",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:عَائِلَة:NOUN": [
+   {
+    "shown": "family",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:عَمَّا:CONJ": [
+   {
+    "shown": "about what",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:عُضْو:NOUN": [
+   {
+    "shown": "organ",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:عُطْلَة:NOUN": [
+   {
+    "shown": "vacation, holiday",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:عُلْبَة:NOUN": [
+   {
+    "shown": "box, chest",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:عِنْدَ:ADP": [
+   {
+    "shown": "at, with, near (someone)",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:عِيَادَة:NOUN": [
+   {
+    "shown": "clinic",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:غَابَة:NOUN": [
+   {
+    "shown": "forest",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:غَادَرَ:VERB": [
+   {
+    "shown": "to leave",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:غَد:NOUN": [
+   {
+    "shown": "tomorrow",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:غَدًا:ADV": [
+   {
+    "shown": "tomorrow",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:غَرَامَة:NOUN": [
+   {
+    "shown": "fine",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:غَسَلَ:VERB": [
+   {
+    "shown": "to wash",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:غَطَّى:VERB": [
+   {
+    "shown": "to cover up",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:غَيَّرَ:VERB": [
+   {
+    "shown": "to change, to alter",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:غَيْر:NOUN": [
+   {
+    "shown": "other than",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:غُرْفَة:NOUN": [
+   {
+    "shown": "room",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:فَازَ:VERB": [
+   {
+    "shown": "to win",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:فَعَلَ:VERB": [
+   {
+    "shown": "to do",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:فَقَطْ:ADV": [
+   {
+    "shown": "only",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:فُنْدُق:NOUN": [
+   {
+    "shown": "inn, hotel",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:قَبْلَ:ADP": [
+   {
+    "shown": "before",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:قَدْ:PART": [
+   {
+    "shown": "already; may (with the imperfect)",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:قَرَّرَ:VERB": [
+   {
+    "shown": "to decide",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:قَصِير:ADJ": [
+   {
+    "shown": "short",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:قَضَى:VERB": [
+   {
+    "shown": "to decide",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:قَلِيل:ADJ": [
+   {
+    "shown": "few",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:قَمَر:NOUN": [
+   {
+    "shown": "moon",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:قَمْح:NOUN": [
+   {
+    "shown": "wheat",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:قَهْوَة:NOUN": [
+   {
+    "shown": "coffee",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:قُوَّة:NOUN": [
+   {
+    "shown": "power",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:كَأْس:NOUN": [
+   {
+    "shown": "a glass",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:كَائِن:NOUN": [
+   {
+    "shown": "creature, a living thing",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:كَتَبَ:VERB": [
+   {
+    "shown": "to write",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:كَثِير:ADJ": [
+   {
+    "shown": "many",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:كَلْب:NOUN": [
+   {
+    "shown": "dog",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:كَمَا:CONJ": [
+   {
+    "shown": "as, just as",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:كَمْ:ADV": [
+   {
+    "shown": "how many?",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:كَيْفَ:ADV": [
+   {
+    "shown": "how?",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:كُرَة:NOUN": [
+   {
+    "shown": "ball",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:كُلَّمَا:CONJ": [
+   {
+    "shown": "whenever",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:لَا:PART": [
+   {
+    "shown": "no, not; do not (+ jussive)",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:لَاعِب:NOUN": [
+   {
+    "shown": "player",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:لَدَى:ADP": [
+   {
+    "shown": "at, with",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:لَنْ:ADV": [
+   {
+    "shown": "will not (future)",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:لَوْن:NOUN": [
+   {
+    "shown": "color",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:لَيْل:NOUN": [
+   {
+    "shown": "night",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:لَيْلَة:NOUN": [
+   {
+    "shown": "a night",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:لِأَنَّ:CONJ": [
+   {
+    "shown": "because (+ accusative subject)",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:لٰكِنَّ:CONJ": [
+   {
+    "shown": "but (+ accusative subject)",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:مَا:PRON": [
+   {
+    "shown": "what? that which",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:مَاضٍ:NOUN": [
+   {
+    "shown": "past",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:مَال:NOUN": [
+   {
+    "shown": "wealth",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:مَجْلِس:NOUN": [
+   {
+    "shown": "council",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:مَرَّتَيْنِ:ADV": [
+   {
+    "shown": "twice",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:مَرْكَز:NOUN": [
+   {
+    "shown": "center",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:مَعًا:ADV": [
+   {
+    "shown": "together",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:مَكَان:NOUN": [
+   {
+    "shown": "place",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:مَكْتَب:NOUN": [
+   {
+    "shown": "desk",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:مَلِيء:ADJ": [
+   {
+    "shown": "full, filled",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:مَنَحَ:VERB": [
+   {
+    "shown": "to give, to award",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:مَوْعِد:NOUN": [
+   {
+    "shown": "appointment",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:مَوْقِف:NOUN": [
+   {
+    "shown": "parking",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:مُفِيد:ADJ": [
+   {
+    "shown": "useful, beneficial",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:مُوَظَّف:NOUN": [
+   {
+    "shown": "employee",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:مِئَة:NUM": [
+   {
+    "shown": "hundred",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:مِثْل:NOUN": [
+   {
+    "shown": "something similar",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:مِحْفَظَة:NOUN": [
+   {
+    "shown": "wallet",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:مِفْتَاح:NOUN": [
+   {
+    "shown": "key",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:مِنْطَقَة:NOUN": [
+   {
+    "shown": "zone",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:نَافِذَة:NOUN": [
+   {
+    "shown": "window",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:نَجَحَ:VERB": [
+   {
+    "shown": "to succeed",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:نَحْنُ:PRON": [
+   {
+    "shown": "we",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:نَسِيَ:VERB": [
+   {
+    "shown": "to forget",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:نَظَرَ:VERB": [
+   {
+    "shown": "to look",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:نَظِيف:ADJ": [
+   {
+    "shown": "clean",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:نَفْس:NOUN": [
+   {
+    "shown": "self",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:نَمَا:VERB": [
+   {
+    "shown": "to grow",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:نَهَار:NOUN": [
+   {
+    "shown": "day",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:نَوْع:NOUN": [
+   {
+    "shown": "type",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:نِصْف:NOUN": [
+   {
+    "shown": "half",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:نِهَايَة:NOUN": [
+   {
+    "shown": "end",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:هَاتِف:NOUN": [
+   {
+    "shown": "telephone",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:هَادِئ:ADJ": [
+   {
+    "shown": "calm",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:هَضْمِيّ:ADJ": [
+   {
+    "shown": "digestive",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:هَلْ:PART": [
+   {
+    "shown": "(question word: is…? does…?)",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:هُدُوء:NOUN": [
+   {
+    "shown": "calm",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:هٰذِهِ:PRON": [
+   {
+    "shown": "this (f. sg.)",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:وَاحِد:NUM": [
+   {
+    "shown": "one",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:وَاسِع:ADJ": [
+   {
+    "shown": "wide",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:وَجَبَ:VERB": [
+   {
+    "shown": "to be necessary",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:وَرَقَة:NOUN": [
+   {
+    "shown": "leaf",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:وَضَعَ:VERB": [
+   {
+    "shown": "to put",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:وَفِير:ADJ": [
+   {
+    "shown": "abundant",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:وَقْت:NOUN": [
+   {
+    "shown": "time",
+    "v": "ok"
+   }
+  ],
+  "lemma:ar:يَد:NOUN": [
+   {
+    "shown": "the hand",
+    "v": "ok"
+   }
   ]
  }
 }

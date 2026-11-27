@@ -24,10 +24,11 @@ const MAX_LOADED: Readonly<Record<string, number>> = { ko: 64 };
  * The languages whose word list is loaded BEFORE a scan of Active or Reading Analysis analyses a page (the card has always prepared its own text).
  * Korean: its compiled core holds about a fifth of the lexicon and names other lemmas than the full lexicon does (감자 → 감다), so a scan on the core
  * alone would name one item and the card another, and a page's answer would change after any lookup. Greek, Hebrew and Russian keep loading on the
- * first lookup, as they did, until their own measurement says otherwise (their shard sets are far larger). Arabic is NOT in the list: its full word list
- * is 179 shards (7.9 MB) and whether a scan should wait for it is a measurement nobody has made (AR-PROVISIONAL, docs/arabic).
+ * first lookup, as they did, until their own measurement says otherwise (their shard sets are far larger). Arabic IS in the list (the lead's decision): a first scan made with the compiled
+ * core alone and never repeated under-credits a page (a core key that is only partial credits no lemma until its shard loads). Its full word list is
+ * 179 shards (7.9 MB), so the wait has a cost; measured: AR-PROVISIONAL (scripts/loadcheck/golearn/ar.mjs steps E3-E5: shard requests and bytes before the first highlight).
  */
-export const PREPARE_BEFORE_SCAN: ReadonlySet<string> = new Set(['ko']);
+export const PREPARE_BEFORE_SCAN: ReadonlySet<string> = new Set(['ko', 'ar']);
 
 export function lexiconUrl(chromeApi: UrlLoaderApi | undefined, base: string | undefined, path: string): string {
   return chromeApi?.runtime.getURL ? chromeApi.runtime.getURL(`lexicon/${path}`) : new URL(`/dist/lexicon/${path}`, base).href;

@@ -63,7 +63,7 @@ export const AR_VALIDATION: ValidationCase[] = [
   { id: 'v-la', surface: 'لا', sentence: KNOWS, expect: { lemma: 'لَا', pos: 'PART', status: 'high-confidence' } },
   { id: 'v-ayna', surface: 'أين', sentence: KNOWS, expect: { lemma: 'أَيْنَ', pos: 'ADV', status: 'requires-review' } },
   { id: 'v-yarif', surface: 'يعرف', sentence: KNOWS, expect: { lemma: 'عَرَفَ', pos: 'VERB', features: { Aspect: 'Imp', Person: '3', Gender: 'Masc', Number: 'Sing', Form: 'I' }, status: 'conflicted' } },
-  { id: 'v-mariid', surface: 'مريض', sentence: ILL, expect: { lemma: 'مَرِيض', pos: 'ADJ', features: { Gender: 'Masc' }, status: 'high-confidence' } },
+  { id: 'v-mariid', surface: 'مريض', sentence: ILL, expect: { lemma: 'مَرِيض', pos: 'ADJ', features: { Gender: 'Masc' }, status: 'requires-review' } },
   { id: 'v-kana', surface: 'كان', sentence: WAS, expect: { lemma: 'كَانَ', pos: 'VERB', features: { Aspect: 'Perf', Person: '3', Gender: 'Masc', Number: 'Sing' }, status: 'provisional' } },
   // the core's limit, stated: a real word outside it has no reading until its shard has loaded
   { id: 'v-core-limit', surface: 'الْوَلَدُ', sentence: WROTE, expect: { readings: 'none' } },

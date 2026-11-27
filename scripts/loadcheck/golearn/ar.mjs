@@ -490,6 +490,19 @@ async function main() {
     report.lexicon = { requests: shardReq.length, bytes, manifest: manifestReq && { status: manifestReq.status, bytes: manifestReq.bytes }, perLookupShards: report.cards.filter((x) => x.set === 'prose').map((x) => [x.label, x.shardInfo]), lookupsWithShardsFinishingAfterTheirCard: lateShards, perLookup: undefined, files: shardReq.slice(0, 40).map((n) => ({ f: n.url.split('/lexicon/ar/standard/')[1], status: n.status, bytes: n.bytes, failed: n.failed })), allUrls: [...new Set([...net.values()].map((n) => n.url.replace(/\?.*/, '')).filter((u) => !u.startsWith(`http://127.0.0.1:${WEB}`)).map((u) => u.replace(/chrome-extension:\/\/[a-z]+\//, 'ext:/')))].slice(0, 60) };
     step('B1', 'full word list (lexicon/ar/standard) loads for the page words before the first card', shardReq.length > 0 && shardReq.every((n) => n.status === 200 || n.status === undefined) && lateShards.length === 0 ? 'PASS' : shardReq.length ? 'CHECK' : 'FAIL', { shardRequests: shardReq.length, bytes, requestedBeforeCard: beforeCard.length, finishedAfterCard: lateShards.length, manifest: report.lexicon.manifest, note: 'the content script awaits the shards before it parses; "before" cannot be observed in this run, see B2 (no-shard run)', sample: report.lexicon.files.slice(0, 5) });
     const got = Object.values(results).filter((r) => r.card && !r.card.nocard).length;
+    // C7: the undecided كتب (s4, alone in its sentence) SAYS it is undecided, through Korean's card state (the review-hold note or the undecided-entry line); FAILS when the first view has no such line
+    {
+      const kc = results['كتب (s4)']?.card;
+      const ktext = kc?.text ?? '';
+      const says = /undecided|several readings|which of these|Not added to review|Other possible readings/i.test(ktext);
+      step('C7', 'the card of the undecided كتب (s4) says it is undecided (Korean card state), on the first view', kc && says ? 'PASS' : 'FAIL', { hasCard: !!kc, line: ktext.slice(0, 300) });
+    }
+    // C8: a held word's card shows "Not added to review" with its reason: some looked-up word carries the line, and the line says more than the phrase. FAILS when no looked-up word is held (add one to the list) or the reason is missing
+    {
+      const heldCards = Object.entries(results).filter(([, r]) => /Not added to review/i.test(r.card?.text ?? ''));
+      const reasoned = heldCards.filter(([, r]) => /Not added to review[^\n]{12,}/i.test(r.card.text));
+      step('C8', 'a held word shows "Not added to review" with the reason', heldCards.length && reasoned.length === heldCards.length ? 'PASS' : 'FAIL', { held: heldCards.map(([k, r]) => [k, (r.card.text.match(/Not added to review[^\n]*/i) ?? [''])[0].slice(0, 160)]) });
+    }
     step('C1', 'lookups on prose.html: a card for each word', got === W.length ? 'PASS' : 'FAIL', { cards: got, of: W.length });
     const mism = report.cards.filter((x) => x.set === 'prose' && x.expectBare && !x.matched).map((x) => ({ word: x.label, expected: x.expectBare, lemma: x.card?.lemma, undecided: x.undecided, meaning: x.card?.meaning?.slice(0, 80) }));
     step('C2', 'lemma on each card is the one expected (hand-written expectation)', mism.length === 0 ? 'PASS' : 'FAIL', { checked: W.filter((w) => w[3]).length, mismatches: mism });
@@ -616,6 +629,9 @@ async function main() {
     const t0 = Date.now();
     const pg = await B.open(page('prose'), 'prose-active');
     await c.send('Target.activateTarget', { targetId: pg.t });
+    // the first highlight: the time from switching Active on, and the lexicon/ar shards requested and finished by then (the prepared scan waits for them)
+    let firstHlAt;
+    for (let i = 0; i < 240 && !firstHlAt; i++) { const h0 = await highlights(pg); if (rangesFlat(h0).length) firstHlAt = Date.now(); else await sleep(250); }
     let st = await waitScan(pg);
     const firstScanMs = Date.now() - t0;
     await sleep(5000);
@@ -639,8 +655,27 @@ async function main() {
     report.timings.activeScan = { firstScanSeenMs: firstScanMs, scanMs: st?.activeState?.scanMs, profileMs: st?.activeState?.profileMs, scanned: st?.activeState?.scanned };
     step('E1', 'Active on prose.html: words are marked (levels, which)', st?.activeState?.scanned > 0 && all.length > 0 ? 'PASS' : 'FAIL', { on: on?.settings?.active, languages: st?.activeState?.languages, scanned: st?.activeState?.scanned, marked: st?.activeState?.marked, skipped: st?.activeState?.skipped, confirmed: st?.activeState?.confirmed, unconfirmed: st?.activeState?.unconfirmed, reason: st?.activeState?.reason, highlightWorld: hl.world, ranges: all.length, wordsOnPage, levelNames: Object.keys(hl.ranges ?? {}), 'الكتاب': levelOf('الكتاب'), 'كتب': levelOf('كتب'), 'وبالكتاب': levelOf('وبالكتاب'), 'فسيكتبونها': levelOf('فسيكتبونها'), 'كتابه': levelOf('كتابه'), by });
     step('E2', "the page's own text and DOM are unchanged by Active; nothing gets the extension's font", textSame && htmlSame && before?.docFonts === after?.docFonts && JSON.stringify(before?.ff) === JSON.stringify(after?.ff) ? 'PASS' : 'FAIL', { textSame, htmlSame, domNodesBefore: before?.count, domNodesAfter: after?.count, docFontsBefore: before?.docFonts, docFontsAfter: after?.docFonts, fontFamiliesBefore: before?.ff, fontFamiliesAfter: after?.ff, styleElements: [before?.styles, after?.styles], adoptedSheets: [before?.adopted, after?.adopted] });
+    // E3: what the Arabic prepare-before-scan cost (measured: AR-PROVISIONAL). Shard requests of lexicon/ar from switching Active on to the first highlight.
+    const shardsBeforeHl = [...net.values()].filter((n) => n.url.includes('/lexicon/ar/') && n.at >= t0 && n.at <= (firstHlAt ?? Infinity));
+    report.timings.activePrepare = { msToFirstHighlight: firstHlAt ? firstHlAt - t0 : null, shardRequestsBeforeFirstHighlight: shardsBeforeHl.length, bytesBeforeFirstHighlight: shardsBeforeHl.reduce((a, n) => a + (n.bytes ?? 0), 0), shardsNotFinishedAtFirstHighlight: shardsBeforeHl.filter((n) => !n.doneAt || n.doneAt > (firstHlAt ?? 0)).length };
+    step('E3', 'Active on prose.html: lexicon/ar shard requests and bytes before the first highlight, and the time from switching Active on to it', firstHlAt ? 'INFO' : 'FAIL', report.timings.activePrepare);
+    // E4: credited units after the scan. The ids themselves never leave the content script, so the credited set is read as what the scan MARKED: each highlighted range with its level (a lemma id or a form id decides the level), plus the scan's own counts.
+    const creditedFirst = [...new Set(all)].sort();
+    report.active.credited = { ranges: creditedFirst.length, marked: st?.activeState?.marked, confirmed: st?.activeState?.confirmed, unconfirmed: st?.activeState?.unconfirmed };
+    step('E4', 'Active on prose.html: units credited after the scan (ranges by level, scan counts)', creditedFirst.length ? 'INFO' : 'FAIL', report.active.credited);
     report.activeZoomNote = 'joining is judged by eye from the zoomed shots in the report (activeZoom, activeZoom2); the DOM check above shows no span is inserted';
     await B.close(pg.t);
+    // E5: a second visit to the same page must mark the same set (the prepared scan is stable); a different set FAILS
+    {
+      const pg2 = await B.open(page('prose'), 'prose-active-2');
+      await c.send('Target.activateTarget', { targetId: pg2.t });
+      const st2 = await waitScan(pg2);
+      await sleep(5000);
+      const second = [...new Set(rangesFlat(await highlights(pg2)))].sort();
+      const onlyFirst = creditedFirst.filter((x) => !second.includes(x)), onlySecond = second.filter((x) => !creditedFirst.includes(x));
+      step('E5', 'a second visit to prose.html credits the same marked set as the first (stable prepared scan)', creditedFirst.length && !onlyFirst.length && !onlySecond.length ? 'PASS' : 'FAIL', { first: creditedFirst.length, second: second.length, markedFirst: st?.activeState?.marked, markedSecond: st2?.activeState?.marked, onlyFirst: onlyFirst.slice(0, 12), onlySecond: onlySecond.slice(0, 12) });
+      await B.close(pg2.t);
+    }
   } else await msg({ type: 'golearn:active', op: 'set', patch: { active: true } });
 
   // ═════════ G. other pages: language handling ═════════

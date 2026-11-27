@@ -27,6 +27,7 @@ import type { ExampleSentence, FactsProvider, UnitFacts } from '../types';
 import { FORM_HELD_REASON, holdsDeck } from './deck-holds';
 import { held } from './deck-gate';
 import type { ReviewKind } from '../../../../src/core/review-gate';
+import { arCleanSense, arUnitRecords, type ArFullRecord } from '../../../../src/adapters/arabic/answers';
 import ANSWER_EXCLUSIONS from '../../../../src/adapters/arabic/answer-exclusions.json';
 import type { ExampleReading, FeatureDef, FormGroup, FormInfo, ReviewFacts } from './review-facts';
 
@@ -474,23 +475,29 @@ export function createFactsProvider(deps: FactsProviderDeps): FactsProvider & { 
     const { examples, readings } = collect((o) => lemmaMatches(o, lemma, pos));
     const lexGloss = read.cand && !read.cand.unconfirmed && read.cand.gloss ? [read.cand.gloss] : [];
     const g = await glossesOf(lemma, pos, lexGloss);
-    // A language held to the deck rule: the meanings shown and accepted come from ONE source entry, the one the unit names. When the head + part of speech has
-    // several source entries (the analyser says so: notes.homonyms), the dictionary records under the key cannot be told apart by their vocalized head, so they are
-    // told apart by MEANING: only the record that has a sense containing the lead gloss (the index's one-line gloss) supplies dictionary senses; if none or several
-    // do, the card shows and accepts the lead gloss alone. notes.homonymMeanings ("another word spelled the same: To nap") is shown elsewhere and is never an answer.
-    if (holdsDeck(lang) && Number(read.cand?.notes?.homonyms) > 1 && read.cand?.gloss) {
+    // A language held to the deck rule: the meanings shown and accepted come from ONE source entry, the one the unit names (src/adapters/arabic/answers.ts).
+    // The level-1 dictionary is keyed by the unvocalized spelling and holds the senses of every word written alike, so the dictionary senses are taken only from the FULL
+    // records whose vocalized head and part of speech are the unit's. Several such records (the analyser: notes.homonyms) are told apart by MEANING: only the record that
+    // has a sense containing the lead gloss supplies senses; if none or several do, the card shows and accepts the lead gloss alone. No record, no senses. Every alternative
+    // that is no meaning (a usage note, a pointer, Arabic script, "etc.") is dropped. notes.homonymMeanings is shown elsewhere and is never an answer.
+    if (holdsDeck(lang)) {
       const strip = (t: string): string => t.toLowerCase().replace(/\([^)]*\)|\[[^\]]*\]/gu, ' ');
       const content = (t: string): string[] => [...new Set(strip(t).split(/[^a-z]+/u).filter((w) => w && !['to', 'a', 'the'].includes(w)))];
-      const lead = content(read.cand.gloss);
+      const leadGloss = read.cand?.gloss ?? '';
+      const lead = content(leadGloss);
       let chosen: string[] = [];
       try {
         const e = await pack.runtime.entry?.(lemma, pos);
-        const ofPos = ((e?.records ?? []) as Array<{ p?: string; s?: Array<{ g: string }> }>).filter((r) => !pos || !r.p || r.p === pos);
-        const matching = ofPos.map((r) => (r.s ?? []).map((x) => x.g)).filter((gs) => lead.length > 0 && gs.some((x) => { const w = new Set(content(x)); return lead.every((c) => w.has(c)); }));
-        if (matching.length === 1) chosen = matching[0];
+        const mine = arUnitRecords((e?.records ?? []) as ArFullRecord[], lemma, pos, posCompatible);
+        const senseTexts = (r: ArFullRecord): string[] => (r.s ?? []).map((x) => x.g);
+        if (mine.length === 1) chosen = senseTexts(mine[0]);
+        else if (mine.length > 1) {
+          const matching = mine.filter((r) => lead.length > 0 && senseTexts(r).some((x) => { const w = new Set(content(x)); return lead.every((c) => w.has(c)); }));
+          if (matching.length === 1) chosen = senseTexts(matching[0]);
+        }
       } catch { chosen = []; }
       const have = new Set(g.glosses.slice(0, g.lexiconCount).map((x) => x.trim().toLowerCase()));
-      g.glosses = [...g.glosses.slice(0, g.lexiconCount), ...chosen.filter((x) => x && !have.has(x.trim().toLowerCase()))];
+      g.glosses = [...g.glosses.slice(0, g.lexiconCount), ...chosen.map(arCleanSense).filter((x) => x && !have.has(x.trim().toLowerCase()))];
     }
     // A language held to the deck rule: reviewed exclusions (src/adapters/arabic/answer-exclusions.json). A whole alternative that equals an excluded string is dropped from
     // the meaning SHOWN as well as from the accepted answers, so the card never shows an answer it then refuses.

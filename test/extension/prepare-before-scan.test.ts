@@ -1,6 +1,6 @@
 // @vitest-environment jsdom
 /**
- * Only the languages in PREPARE_BEFORE_SCAN (Korean) load their word list before Active's scan or a Reading Analysis run analyses a page.
+ * Only the languages in PREPARE_BEFORE_SCAN (Korean, Arabic) load their word list before Active's scan or a Reading Analysis run analyses a page.
  * Greek, Hebrew and Russian keep loading on the first lookup: a page of theirs requests no lexicon file, and the marks and the table are what the
  * same code gives with no preparer at all.
  */
@@ -38,7 +38,7 @@ afterEach(() => { active?.stop(); active = undefined; rig?.controller.dispose();
 const marked = (): string[] => [...registry.values()].flatMap((h) => [...(h as FakeHighlight).ranges].map((r) => r.toString())).sort();
 
 describe('the table', () => {
-  it('only Korean is prepared before a scan', () => { expect([...PREPARE_BEFORE_SCAN]).toEqual(['ko']); });
+  it('only Korean and Arabic are prepared before a scan', () => { expect([...PREPARE_BEFORE_SCAN]).toEqual(['ko', 'ar']); });
 });
 
 describe.each(PAGES)('a $lang page', ({ lang, variety, html }) => {

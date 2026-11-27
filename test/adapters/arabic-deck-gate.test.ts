@@ -16,6 +16,7 @@ const BAYT = 'بَيْتزَجْز'; // Sense=Ord
 const DAR = 'دَارزَجْز'; // no Sense key
 const NAHR = 'نَهْرزَجْز'; // Sense=One, empty gloss
 const LAB = 'سَبَبزَجْز'; // Sense=Lab
+const ZED = '\u0632\u064E\u062F\u064E\u0632\u064E\u062C\u0652\u0632'; // an invented head with no other part of speech
 const NOT_LISTED = 'زَكَر'; // no row anywhere
 
 const row = (head: string, gloss: string, lex: string): [string, string, string, string, number] => [head, gloss, 'NOUN', lex, 10];
@@ -167,7 +168,7 @@ describe('rule (f): the first meaning fits the part of speech', () => {
     lemmas: {
       [`${FI3L}|VERB`]: [FI3L, 'to do', 'VERB', 'Sense=One', 5],
       [`${FI3L2}|VERB`]: [FI3L2, 'come !', 'VERB', 'Sense=One', 5],
-      [`${KITAB}|ADJ`]: [KITAB, 'to be big', 'ADJ', 'Sense=One', 5],
+      [`${ZED}|ADJ`]: [ZED, 'to be big', 'ADJ', 'Sense=One', 5],
     },
   };
   beforeAll(() => installArabicIndex(EXTRA));
@@ -176,7 +177,7 @@ describe('rule (f): the first meaning fits the part of speech', () => {
     expect(id(PLAIN, [cand(FI3L, { pos: 'VERB', gloss: 'to do' })])).toBeUndefined();
     expect(id(PLAIN, [cand(FI3L, { pos: 'VERB', gloss: '1. to do 2. to make' })])).toBe('numbered-gloss');
     expect(id(PLAIN, [cand(FI3L2, { pos: 'VERB', gloss: 'come !' })])).toBe('gloss-pos');
-    expect(id(PLAIN, [cand(KITAB, { pos: 'ADJ', gloss: 'to be big' })])).toBe('gloss-pos');
+    expect(id(PLAIN, [cand(ZED, { pos: 'ADJ', gloss: 'to be big' })])).toBe('gloss-pos');
     expect(id(PLAIN, [cand(KITAB, { pos: 'NOUN', gloss: 'book' })])).toBeUndefined();
   });
 });
@@ -191,7 +192,7 @@ describe('rule (e) for a closed-class lexeme: a single hand gloss, never a numbe
 
 describe('rule (g): a numbered merge of dictionary entries is held, and stops being held when the gloss is one meaning', () => {
   it('holds "1. chief, leader 2. big" and "1. to say 2. To nap"; passes the clean meaning', () => {
-    const KB = '\u0643\u064E\u0628\u0650\u064A\u0631';
+    const KB = '\u0643\u064E\u0628\u0650\u064A\u0631\u0632\u064E\u062C\u0652\u0632';
     const extra: ArabicFormIndex = { ...SYNTHETIC, id: 'deck-gate-test-num', lemmas: { [`${KB}|ADJ`]: [KB, 'big', 'ADJ', 'Sense=Rev', 5] } };
     installArabicIndex(extra);
     try {
@@ -206,7 +207,7 @@ describe('rule (g): a numbered merge of dictionary entries is held, and stops be
 describe('reviewKind and reviewRivals (the names the GoLearn card reads)', () => {
   const KINDS: Record<string, string> = {
     'no-reading': 'unlisted', 'not-an-entry': 'unlisted', derived: 'unlisted', 'no-meaning': 'no-meaning', undecided: 'two-words', 'two-lexemes': 'two-words',
-    'numbered-gloss': 'undecided-entry', guess: 'low-confidence', 'restored-spelling': 'low-confidence', 'known-misread-form': 'known-limit', 'known-misread-lemma': 'known-limit',
+    'numbered-gloss': 'undecided-entry', 'same-spelling': 'meaning-unreviewed', guess: 'low-confidence', 'restored-spelling': 'low-confidence', 'known-misread-form': 'known-limit', 'known-misread-lemma': 'known-limit',
     'plural-entry': 'other-listed-word', 'pronoun-form': 'other-listed-word', dialect: 'other-variety', 'sense-unreviewed': 'meaning-unreviewed', 'gloss-pos': 'meaning-unreviewed',
   };
   it('every rule of the table has the agreed kind, and kind 2 (meaning) rules set no reviewGate', () => {
@@ -246,5 +247,25 @@ describe('closed-class eligibility with hand glosses, and the six the lead does 
     const ma = AR_UNREVIEWED_CLOSED.find((e) => e.pos === 'ADV')!;
     expect(ma.head).toBe('مَا');
     expect(AR_UNREVIEWED_CLOSED.filter((e) => e.head === ma.head && !e.pos)).toEqual([]);
+  });
+});
+
+describe('rule: the same spelling is also another word with another meaning', () => {
+  const HEAD = 'مُحَمَّدزَجْز';
+  const idx = (adjGloss: string): ArabicFormIndex => ({ ...SYNTHETIC, id: 'deck-gate-test-same', lemmas: { [`${HEAD}|NOUN`]: [HEAD, 'name of a prophet', 'NOUN', 'Sense=One', 5], [`${HEAD}|ADJ`]: [HEAD, adjGloss, 'ADJ', 'Sense=One', 5] } });
+  it('holds a lemma whose head is also an adjective with a meaning that shares no content word, and passes one whose meaning is shared', () => {
+    const a = idx('commendable'); installArabicIndex(a);
+    try {
+      const v = arDeckVerdict(PLAIN, [cand(HEAD, { pos: 'NOUN', gloss: 'name of a prophet' })]);
+      expect(v?.id).toBe('same-spelling');
+      expect(arDeckVerdict(PLAIN, [cand(HEAD, { pos: 'NOUN', gloss: 'name of a prophet', notes: { identity: 'sentence' } })])).toBeUndefined();
+    } finally { uninstallArabicIndex(a.id); }
+    const b = idx('prophet'); installArabicIndex(b);
+    try { expect(arDeckVerdict(PLAIN, [cand(HEAD, { pos: 'NOUN', gloss: 'name of a prophet' })])).toBeUndefined(); } finally { uninstallArabicIndex(b.id); }
+  });
+  it('is a meaning hold: no reviewGate, the lemma stays credited', () => {
+    const l = AR_DECK_LIMITS.find((x) => x.id === 'same-spelling')!;
+    expect(l.reading).toBe(false);
+    expect(l.kind).toBe('meaning-unreviewed');
   });
 });

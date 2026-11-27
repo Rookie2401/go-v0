@@ -1,9 +1,6 @@
 {
  "readBy": "AI models (Claude), not native speakers; each card judged once, in the first sentence it came from, against the brief in docs/ecosystem/DECK-GATE.md. 2026-11-26. Where the sentence's word has a gold lemma and meaning in test/fixtures/arabic/deck-audit.json (written by the same agents that wrote the text) the card was read against it first; the rest were read by hand.",
- "residual": [
-  "lemma:ar:إِذَنْ:ADV",
-  "lemma:ar:عَجِبَ:VERB"
- ],
+ "residual": [],
  "cards": {
   "form:ar:أحد": [
    {
@@ -4596,6 +4593,7 @@
     "note": "The shown meaning is a garbled dictionary fragment (title — and \"anything that serves as an indication...\"); the ordinary meaning is address (also title). | bad answers: title — and \"anything that serves as an indication of another thing is called its عُنْوَان"
    }
   ],
-  "note": "The first two blind texts (374 cards, 7 false; 323 cards, 7 false) were folded into the development text after reading. Arabic uses the stricter rule: no card for a word whose first meaning nobody has checked."
+  "note": "The first two blind texts (374 cards, 7 false; 323 cards, 7 false) were folded into the development text after reading. Arabic uses the stricter rule: no card for a word whose first meaning nobody has checked.",
+  "afterFixes": "After the rule fixes that followed the measurement (analyser e8ebecaf, the dash rule of the gloss cleaner) none of the five false cards is admitted when this text is run again. That re-run is not a blind measurement: the figure of this set is the one above, 301 of 306."
  }
 }

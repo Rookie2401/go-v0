@@ -6,7 +6,7 @@ import { sourceTitle } from '../../../repository-contract/src/sources';
 import type { AppContext } from '../context';
 import { append, button, clear, field, h, langProps, p, setStatus, statusLine } from '../dom';
 import { itemMarked } from '../events';
-import { languageName } from '../format';
+import { languageName, unitLabel } from '../format';
 import type { View } from './view';
 
 const LEVELS: Array<KnowledgeLevel | 'all'> = ['all', 'new', 'seen', 'recognized', 'familiar', 'known', 'automatic'];
@@ -121,8 +121,9 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
 
   function itemRow(item: VocabularyItem): HTMLElement {
     const unitId = item.knowledge.unitId;
-    // a Korean homonym number (눈²) is identity, not spelling: the title is the headword
-    const title = displayLemma(item.unit?.languageId ?? activeIdentity.languageId, item.unit?.label || unitId);
+    // a Korean homonym number (눈²) is identity, not spelling: the title is the headword.
+    // A record the Repository holds no unit for shows the word its id carries, never the id.
+    const title = item.unit?.label ? displayLemma(item.unit.languageId ?? activeIdentity.languageId, item.unit.label) : unitLabel(unitId);
     const kind = item.unit?.kind ?? unitId.split(':', 1)[0];
     const kindLabel = UNIT_KIND_LABEL[kind] ?? kind;
     const variants = [...new Set(item.surfaceForms.filter((x) => x && x !== title))].slice(0, 25);

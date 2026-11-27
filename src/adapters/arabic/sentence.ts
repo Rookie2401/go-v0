@@ -277,7 +277,9 @@ export class ArSentence {
         for (const c of base) if (G.lexemeOf(c) === k && c.confidence >= 0.5) { c.confidence = UNDECIDED; ctx(c, 'A noun is expected here; a plural cell does not decide which noun.'); changed = true; }
       }
     }
-    if (lex.size === 1 && this.raise[i]) {
+    // a sole lexeme the reviewed list holds as balanced (identity 'undecided': the index may lack the other word) is not raised by a window
+    const soleDoubted = lex.size === 1 && new Set(all.filter((c) => !c.unconfirmed && !!c.lemma).map(G.lexemeOf)).size === 1 && base.every((c) => c.notes?.identity === 'undecided');
+    if (lex.size === 1 && this.raise[i] && !soleDoubted) {
       const only = [...lex][0];
       const group = base.filter((c) => G.lexemeOf(c) === only);
       const best = Math.max(...group.map((c) => c.confidence));
@@ -407,7 +409,7 @@ const countOf = (c: Cand): number => (c.lemma && c.pos ? lookupArabicLemma(`${c.
  * least five times as frequent as every other that has one; otherwise nothing is decided (the order stays).
  */
 function chooseJussive(s: ArSentence, j: number, name: string, only: (c: Cand) => boolean = () => true): void {
-  const isJus = (c: Cand): boolean => G.isImperfect(c) && G.hasVal(c, 'Mood', 'Jus') && only(c);
+  const isJus = (c: Cand): boolean => G.isImperfect(c) && G.hasVal(c, 'Mood', 'Jus') && only(c) && !hasQuestionCut(c);
   const imp = s.cands[j].filter((c) => isJus(c) && s.pageOk(j, c) !== false);
   if (!imp.length) return;
   const lexes = new Map<string, Cand[]>();
@@ -428,6 +430,30 @@ const isLamOfCommandCut = (c: Cand): boolean => !!c.parts?.some((q) => q.kind ==
 const JUSSIVE_LICENSERS = new Set(['لم', 'لما', 'لا', 'إن', 'ان', 'من', 'ما', 'مهما', 'متى', 'أين', 'اين', 'أينما', 'اينما', 'حيثما', 'كيفما', 'أي', 'اي', 'إذما', 'اذما', 'كلما', 'فمن', 'فما']);
 
 /**
+ * Directly after a particle that takes the IMPERFECT (لَمْ, لَنْ, كَيْ, لِكَيْ, أَنْ not after بَعْدَ / قَبْلَ / مُنْذُ, the forbidding لَا, a lām of command) a
+ * PERFECT (or imperative) reading is excluded (تَدَخَّلَ for تدخلوا after أَنْ), and so is a cut with the question أ (أَ + يَأْسَ for أيأس after لَمْ: nothing stands between
+ * these particles and their verb). They drop to 0.35, so a reading of an imperfect leads. Only where the word has an imperfect reading, and the page prints no vowels.
+ */
+function capAfterImperfectParticle(s: ArSentence, j: number, name: string): void {
+  if (!s.edit[j] || tashkilLevel(s.surface(j)) !== 'none') return;
+  const cs = s.cands[j];
+  const hasImperfect = cs.some((c) => G.isImperfect(c) && !hasQuestionCut(c));
+  if (!hasImperfect) { capQuestionCut(s, j, name); return; }
+  let changed = false;
+  for (const c of cs) {
+    if (c.confidence <= 0.35) continue;
+    if ((G.isFiniteVerb(c) && !G.isImperfect(c)) || hasQuestionCut(c)) { c.confidence = 0.35; ctx(c, `After ${name} the verb is imperfect: a perfect or imperative reading, or a cut with the question أ, is excluded.`); changed = true; }
+  }
+  if (changed) s.resort(j);
+}
+const hasQuestionCut = (c: Cand): boolean => !!c.parts?.some((q) => q.kind === 'prefix' && /question/.test(q.role ?? ''));
+function capQuestionCut(s: ArSentence, j: number, name: string): void {
+  let changed = false;
+  for (const c of s.cands[j]) if (hasQuestionCut(c) && c.confidence > 0.35) { c.confidence = 0.35; ctx(c, `After ${name} no question أ can stand: this cut is excluded.`); changed = true; }
+  if (changed) s.resort(j);
+}
+
+/**
  * After أَنْ, لَنْ, كَيْ, لِكَيْ, حَتَّى (before a verb) the verb is SUBJUNCTIVE, never jussive: a reading that exists only as a jussive (يَخَفْ of خَافَ) is impossible
  * there, so it drops to 0.35 and a rival reading leads. When exactly one lexeme is left with a subjunctive cell it is the word (the usual decision rules apply).
  * Window: the verb right after the particle (the caller has said the particle is that one).
@@ -441,6 +467,11 @@ function restrictToSubjunctive(s: ArSentence, j: number, name: string): void {
   for (const c of imp) if (jussiveOnly(c) && !lexSub.has(G.lexemeOf(c)) && c.confidence > 0.35) { c.confidence = 0.35; ctx(c, `After ${name} a verb is subjunctive, never jussive: a form that exists only as a jussive is impossible here.`); changed = true; }
   if (changed) s.resort(j);
   if (lexSub.size === 1) s.decide(j, (c) => G.isImperfect(c) && G.hasVal(c, 'Mood', 'Sub'), `after ${name} the verb has a subjunctive cell on this spelling, and only this verb does`);
+  else {
+    // the reviewed preferences among the verbs that remain (دَخَلَ over دَخَّلَ)
+    const pick = settleLexemes(imp.filter((c) => G.hasVal(c, 'Mood', 'Sub')), s.keys[j]);
+    if (pick) s.decide(j, (c) => G.isImperfect(c) && G.hasVal(c, 'Mood', 'Sub') && G.lexemeOf(c) === pick.lexeme, `after ${name} the verb is subjunctive, and this verb is reviewed as the likelier`);
+  }
 }
 
 /**
@@ -493,8 +524,11 @@ function ruleMoodParticles(s: ArSentence): void {
     const name = vocalizedName(t.c, t.key);
     // a question: لِمَ يَكْتُبُ؟ ("why does he write?") is not لَمْ
     if (t.key === 'لم' && !t.certain) continue;
+    // nothing stands between the particle and its verb: no perfect reading, no cut with the question أ (decided BEFORE the verb is chosen)
+    const afterPrep = ['بعد', 'منذ', 'مذ'].includes(s.keys[s.prev(i)] ?? '');
+    if ((spec.certain && t.certain || (t.key === 'أن' && verbOnly && !afterPrep)) && t.key !== 'حتى') capAfterImperfectParticle(s, j, name);
     if (spec.certain && t.certain) {
-      s.decide(j, G.isImperfect, `after ${name} the word is a verb, ${spec.moodWord}`);
+      s.decide(j, (c) => G.isImperfect(c) && !hasQuestionCut(c), `after ${name} the word is a verb, ${spec.moodWord}`);
     } else if (!verbOnly) continue;
     else s.prefer(j, G.isImperfect, `after ${name} a verb stands`);
     s.noteMood(j, spec.mood, `after ${name}`);
@@ -518,7 +552,7 @@ function ruleLa(s: ArSentence): void {
     if (j < 0) continue;
     if (!s.edit[j]) continue;
     // a prohibition: لَا + a 2nd person verb that is nothing but a verb (لَا تَخَفْ); a word that is also a noun is left
-    if (s.any(j, (c) => G.isImperfect(c) && G.valsOf(c, 'Person').includes('2')) && s.effAll(j, (c) => G.isFiniteVerb(c)) && (t.certain || s.keys[i] === 'لا')) chooseJussive(s, j, 'the forbidding لَا');
+    if (s.any(j, (c) => G.isImperfect(c) && G.valsOf(c, 'Person').includes('2')) && s.effAll(j, (c) => G.isFiniteVerb(c)) && (t.certain || s.keys[i] === 'لا')) { capAfterImperfectParticle(s, j, 'the forbidding لَا'); chooseJussive(s, j, 'the forbidding لَا'); }
     for (const c of s.cands[j]) {
       if (!G.isImperfect(c)) continue;
       const persons = G.valsOf(c, 'Person');

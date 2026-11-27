@@ -77,3 +77,63 @@ describe.skipIf(!fs.existsSync(MANIFEST))('the four classes, with the real index
     expect(lexemes(run('جاء النجار إلى البيت')[1].candidates).length).toBeLessThanOrEqual(1);
   });
 });
+
+// ───────────────────────────── batch 2: six false readings from the second blind text ─────────────────────────────
+
+describe.skipIf(!fs.existsSync(MANIFEST))('batch 2 with the real index', () => {
+  beforeAll(() => {
+    resetArabicIndexes();
+    const man = JSON.parse(fs.readFileSync(MANIFEST, 'utf8')) as { shards: Record<string, { file: string }> };
+    for (const s of Object.values(man.shards)) installArabicIndex(JSON.parse(zlib.gunzipSync(fs.readFileSync(path.join(DIR, s.file))).toString('utf8')) as ArabicFormIndex);
+  });
+  afterAll(() => resetArabicIndexes());
+  const word = (t: string, surface: string): AnalysisCandidate[] => run(t).find((x) => x.token.surface === surface)!.candidates;
+  const credited = (cs: AnalysisCandidate[]): string[] => lexemes(cs);
+
+  it('1. no question أ stands between لم / لن and the verb: لم أيأس is not أَسِيَ (the audited sentence and two of mine)', () => {
+    for (const [t, w] of [['لم أجد عملا في الأسبوع الأول لكنني لم أيأس وواصلت البحث', 'أيأس'], ['لن أيأس من النجاح', 'أيأس'], ['لم أيأس أبدا من الحياة', 'أيأس']] as Array<[string, string]>) {
+      const cs = word(t, w);
+      expect(cs.filter((c) => c.parts?.some((q) => q.kind === 'prefix' && /question/.test(q.role ?? ''))).every((c) => c.confidence < 0.5), t).toBe(true);
+      expect(credited(cs).includes('أَسِيَ|VERB|'), t).toBe(false);
+    }
+  });
+  it('2. after أن / لا a perfect reading is excluded: تدخلوا is not تَدَخَّلَ (Form V); a Form I / IV / II imperfect leads; بعد أن + a perfect is untouched', () => {
+    for (const t of ['ضعوا هداياكم قبل أن تدخلوا إلى الصالة', 'يجب أن تدخلوا بهدوء', 'لا تدخلوا الغرفة']) {
+      const cs = word(t, 'تدخلوا');
+      expect(cs.filter((c) => c.lemma === 'تَدَخَّلَ').every((c) => c.confidence <= 0.35), t).toBe(true);
+      expect(cs[0].lemma, t).not.toBe('تَدَخَّلَ');
+    }
+    expect(word('بعد أن دخلوا البيت ذهبوا', 'دخلوا').some((c) => c.confidence >= 0.5)).toBe(true);
+  });
+  it('3. homonym siblings: تزال is held only by the second زَالَ, so the reading carries ITS meaning and a note (the lead\'s "to disappear" is wrong)', () => {
+    for (const t of ['بنيت هذه القلعة قبل ثمانمائة سنة ولا تزال أسوارها قوية', 'لا تزال المدينة جميلة', 'لا تزال الأسعار مرتفعة']) {
+      const c = word(t, 'تزال')[0];
+      expect(c.lemma, t).toBe('زَالَ');
+      expect(c.notes?.siblingNotLead, t).toBe('yes');
+      expect(c.gloss, t).not.toBe('to disappear');
+    }
+  });
+  it('4/5. a citation form that is also a broken plural / a feminine of another lexeme is never decided on a prior: السرقة, المقصورة (the audited sentences and two of mine each)', () => {
+    for (const [t, w] of [['اتهمت الشرطة رجلين بهذه السرقة', 'السرقة'], ['عقوبة السرقة شديدة', 'السرقة'], ['انتشرت السرقة في المدينة', 'السرقة'],
+      ['لم يكن في المقصورة مكان فارغ', 'المقصورة'], ['جلس في المقصورة الأولى', 'المقصورة'], ['دخل المقصورة', 'المقصورة']] as Array<[string, string]>) {
+      expect(credited(word(t, w)), t).toEqual([]);
+    }
+  });
+  it('4/5. controls: الكلاب, المدرسة and the plain adjectives read as before (a noun with its own count is still decided)', () => {
+    expect(word('الكلاب في الشارع', 'الكلاب')[0]).toMatchObject({ lemma: 'كَلْب', pos: 'NOUN' });
+    expect(word('الكلاب في الشارع', 'الكلاب')[0].confidence).toBeGreaterThanOrEqual(0.5);
+    expect(word('ذهب إلى المدرسة', 'المدرسة')[0]).toMatchObject({ lemma: 'مَدْرَسَة' });
+    expect(word('المدينة الكبيرة', 'الكبيرة')[0].lemma).toBe('كَبِير');
+  });
+  it('6. a cut that needs TWO attached pronouns never leads: واتركه is وَ + اُتْرُكْ + هُ (the audited sentence and two of mine); واذهب فاكتب وافعل still read', () => {
+    for (const [t, w] of [['أضف قليلا من الملح إلى الأرز واتركه يغلي عشر دقائق', 'واتركه'], ['خذ الكتاب واتركها هناك', 'واتركها'], ['اشرب الماء واتركه', 'واتركه']] as Array<[string, string]>) {
+      const cs = word(t, w);
+      expect(cs[0].lemma, t).toBe('تَرَكَ');
+      expect(cs.filter((c) => (c.parts ?? []).filter((q) => q.kind === 'suffix').length >= 2).every((c) => c.confidence <= 0.35), t).toBe(true);
+    }
+    for (const [w, lemma] of [['واذهب', 'ذَهَبَ'], ['فاكتب', 'كَتَبَ'], ['وافعل', 'فَعَلَ']]) expect(word(`${w} الآن`, w)[0], w).toMatchObject({ lemma, confidence: 0.85 });
+  });
+  it('7. the reviewed-choice picker takes the sense whose alternative IS the keyword: صَبَاح is "morning"', () => {
+    expect(lookupArabicLemma('صَبَاح|NOUN')?.[1]).toBe('morning');
+  });
+});

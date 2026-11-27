@@ -549,6 +549,7 @@ console.log(`read ${fmt(stats.lines)} lines: ${fmt(stats.lemmaEntries)} lemma en
 const lemmaIds: string[] = [];
 const glossChoices: Record<string, string[]> = !flags.has('no-gloss-choices') && fs.existsSync(GLOSS_CHOICES_PATH) ? ((JSON.parse(fs.readFileSync(GLOSS_CHOICES_PATH, 'utf8')) as { choices?: Record<string, string[]> }).choices ?? {}) : {};
 const glossChoiceNone: string[] = [];
+const pickerChanges: string[] = [];
 const reviewedHolder = new Map<string, number>(); // lexeme → the lemma id whose entry holds the sense a reviewed choice matched
 function setLex(l: number, key: string, val: string): void {
   const kv: Record<string, string> = {};
@@ -603,7 +604,22 @@ const byKey = new Map<string, number[]>(); // key of a head → lemma numbers
         const t = hitAlt ? tidy(hitAlt) : '';
         return t.length >= 2 ? t : '';
       };
-      outer: for (const firstOnly of [true, false]) for (const m of members) for (const sg of m.senseGlosses) { const c = pick(sg, firstOnly); if (c) { hit = { m, text: c }; break outer; } }
+      // a pass BEFORE those two: an alternative that IS the keyword (a leading "to ", "a ", "an ", "the " allowed, nothing else) wins over a sense that merely holds it
+      // only the reviewer's FIRST keyword may win this way (a later keyword must not overturn the order the reviewer gave), and a verb's alternative must be a verb gloss
+      const isKeyword = (sg: string, verb: boolean): string => {
+        const alts = stripBrackets(sg).split(';').flatMap((seg) => seg.split(',')).flatMap((seg) => seg.split(':'));
+        for (const alt of alts) {
+          const bare = alt.trim().replace(/^(?:to|a|an|the)\s+/i, '').trim().toLowerCase();
+          if (verb && !/^\s*to\s/i.test(alt)) continue;
+          if (bare && kws[0].toLowerCase() === bare) { const t = tidy(alt); if (t.length >= 2) return t; }
+        }
+        return '';
+      };
+      let oldHit: { m: Ent; text: string } | undefined;
+      outerOld: for (const firstOnly of [true, false]) for (const m of members) for (const sg of m.senseGlosses) { const c = pick(sg, firstOnly); if (c) { oldHit = { m, text: c }; break outerOld; } }
+      outer: for (const m of members) for (const sg of m.senseGlosses) { const c = isKeyword(sg, m.pos === 'VERB'); if (c) { hit = { m, text: c }; break outer; } }
+      if (!hit) hit = oldHit;
+      if (hit && (!oldHit || oldHit.text !== hit.text || oldHit.m !== hit.m)) pickerChanges.push([g, oldHit?.text ?? '(none)', hit.text, kws.join(', ')].join('\t'));
       if (hit) {
         stats.glossChoiceTaken++;
         lemmaRows[hit.m.lemma][1] = hit.text;
@@ -614,6 +630,8 @@ const byKey = new Map<string, number[]>(); // key of a head → lemma numbers
     for (const m of members) if (!/(^|\|)Sense=/.test(lemmaRows[m.lemma][3])) setLex(m.lemma, 'Sense', m.senseClass);
   }
 }
+if (process.env.AR_PICKER_CHANGES) fs.writeFileSync(process.env.AR_PICKER_CHANGES, `lexeme\told gloss\tnew gloss\tkeywords\n${pickerChanges.join('\n')}\n`);
+console.log(`reviewed-choice picker: ${pickerChanges.length} lexemes change by the keyword-alternative pass`);
 // the root of a merged entry fills a gap of the entry it merged into
 for (const en of ents) if (en.root && !lemmaRows[en.lemma][5]) lemmaRows[en.lemma][5] = en.root;
 console.log(`${fmt(lemmaIds.length)} lemma ids (${fmt(stats.mergedIds)} merged by the head convention, ${fmt(stats.homonymPairs)} head+POS pairs with several entries)`);

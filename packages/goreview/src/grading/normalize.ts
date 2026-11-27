@@ -88,8 +88,8 @@ export function glossParts(gloss: string): string[] {
   let depth = 0;
   let cur = '';
   for (const ch of whole) {
-    if (ch === '(') depth += 1;
-    if (ch === ')') depth = Math.max(0, depth - 1);
+    if (ch === '(' || ch === '[') depth += 1;
+    if (ch === ')' || ch === ']') depth = Math.max(0, depth - 1);
     if ((ch === ',' || ch === ';') && depth === 0) { parts.push(cur); cur = ''; continue; }
     cur += ch;
   }

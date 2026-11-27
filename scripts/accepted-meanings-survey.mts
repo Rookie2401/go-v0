@@ -12,11 +12,31 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { acceptedMeanings } from '../packages/goreview/src/exercises/shared';
 import type { UnitFacts } from '../packages/goreview/src/types';
+import { glossParts } from '../packages/goreview/src/grading/normalize';
+
+/** glossParts as it was before square brackets counted as brackets (only '(' ')' opened a bracket). The second table compares it with the present one. */
+function legacyGlossParts(gloss: string): string[] {
+  const whole = String(gloss ?? '').trim();
+  if (!whole) return [];
+  const parts: string[] = [];
+  let depth = 0; let cur = '';
+  for (const ch of whole) {
+    if (ch === '(') depth += 1;
+    if (ch === ')') depth = Math.max(0, depth - 1);
+    if ((ch === ',' || ch === ';') && depth === 0) { parts.push(cur); cur = ''; continue; }
+    cur += ch;
+  }
+  parts.push(cur);
+  const cleaned = parts.map((p) => p.trim()).filter((p) => p && /\p{L}/u.test(p));
+  return [...new Set([whole, ...cleaned])];
+}
 
 const NUMBERED = /(?:^|\s)\d+\.\s+\p{L}/u;
 const facts = (g: string): UnitFacts => ({ glosses: [g], lexiconGlossCount: 0, glossAttribution: 'x' }) as unknown as UnitFacts;
 const root = path.resolve('public/dict');
 const rows: string[] = [];
+const bracketRows: string[] = [];
+let allBracket = 0;
 let allTotal = 0;
 let allNumbered = 0;
 for (const lang of fs.readdirSync(root).sort()) {
@@ -28,12 +48,18 @@ for (const lang of fs.readdirSync(root).sort()) {
   let numbered = 0;
   let changed = 0;
   const examples: string[] = [];
+  let bracketChanged = 0;
+  const bracketExamples: string[] = [];
   for (const file of shards) {
     const shard = JSON.parse(fs.readFileSync(path.join(dir, file), 'utf8')) as Record<string, Array<{ s?: Array<{ g?: string }> }>>;
     for (const [head, entries] of Object.entries(shard)) for (const e of entries) for (const sense of e.s ?? []) {
       const g = sense.g;
       if (!g) continue;
       total++;
+      if (/\[/u.test(g)) {
+        const before = legacyGlossParts(g); const after = glossParts(g);
+        if (JSON.stringify(before) !== JSON.stringify(after)) { bracketChanged++; if (bracketExamples.length < 3) bracketExamples.push(`  - ${head}: "${g.slice(0, 90)}"\n    - before: ${JSON.stringify(before)}\n    - after: ${JSON.stringify(after)}`); }
+      }
       if (!NUMBERED.test(g)) continue;
       numbered++;
       const before = acceptedMeanings(facts(g), { splitNumbers: false });
@@ -42,7 +68,9 @@ for (const lang of fs.readdirSync(root).sort()) {
       if (examples.length < 3) examples.push(`  - ${head}: "${g.slice(0, 90)}"\n    - before: ${JSON.stringify(before)}\n    - after: ${JSON.stringify(after)}`);
     }
   }
-  allTotal += total; allNumbered += numbered;
+  allTotal += total; allNumbered += numbered; allBracket += bracketChanged;
+  bracketRows.push(`| ${lang} | ${total} | ${bracketChanged} |`);
+  bracketRows.push(`<!--${lang}-->${bracketExamples.length ? `\n${bracketExamples.join('\n')}` : '\n  - (none)'}`);
   rows.push(`| ${lang} | ${shards.length} | ${total} | ${numbered} | ${changed} |`);
   rows.push(`<!--${lang}-->${examples.length ? `\n${examples.join('\n')}` : '\n  - (none)'}`);
 }
@@ -59,6 +87,17 @@ const out = [
   '## Three examples per language (accepted answers before -> after)',
   '',
   ...rows.flatMap((r, i) => (r.startsWith('<!--') ? [] : [`**${r.split('|')[1].trim()}**`, rows[i + 1].replace(/^<!--[^>]*-->/u, '')])),
+  '',
+  '## Second change: a comma inside SQUARE brackets is not an item boundary',
+  '',
+  'Over the same senses: how many have a square bracket whose comma or semicolon the splitter used to cut at (`glossParts`, packages/goreview/src/grading/normalize.ts; round brackets were already respected, and the long-sense path `splitTop` always was). Before and after are the splitter\'s parts of the sense.',
+  '',
+  '| language | senses sampled | senses whose parts change |',
+  '|---|---|---|',
+  ...bracketRows.filter((r) => r.startsWith('|')),
+  `| **all** | ${allTotal} | ${allBracket} |`,
+  '',
+  ...bracketRows.flatMap((r, i) => (r.startsWith('<!--') ? [] : [`**${r.split('|')[1].trim()}**`, bracketRows[i + 1].replace(/^<!--[^>]*-->/u, '')])),
   '',
 ].join('\n');
 fs.writeFileSync(path.resolve('docs/arabic/ACCEPTED-MEANINGS.md'), out, 'utf8');

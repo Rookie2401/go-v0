@@ -540,9 +540,13 @@ const endsBare = (m: Merged): boolean => m.rows.some((r) => { const k = r.stemKe
 let PAGE_ANY = false;
 function isMarginal(m: Merged, all: Merged[]): boolean {
   const others = all.filter((o) => o.lexeme !== m.lexeme);
+  // a cut that needs TWO attached pronouns (وَاتَرَ + كَ + هُ for واتركه) is marginal beside any reading of the same spelling that needs fewer
+  if (m.seg.enclitics.length >= 2 && others.some((o) => o.seg.enclitics.length < 2 && !o.rows.every((r) => r.viaLoose))) return true;
+  // ... and the imperative (with its prosthetic alif, behind وَ / فَ) with ONE pronoun is no marginal cell against such readings (وَ + اُتْرُكْ + هُ)
+  const imperativeAgainstDouble = only(m.morph.Mood, 'Imp') && m.seg.proclitics.length > 0 && m.seg.enclitics.length === 1 && others.length > 0 && others.every((o) => o.seg.enclitics.length >= 2);
   // the page's own vowels selected this cell: a short form of a hollow verb (قُمْ, مُتْ) is not marginal where the marks print it
   // (only where no plain rival is supported as well by the printed marks: طَالِب and the imperative طَالِبْ are told apart by the noun, not by the marks)
-  if (marginalByCell(m) && !(PAGE_FULL && m.agreed > 0 && others.filter((o) => !marginalByCell(o)).every((o) => o.agreed < m.agreed))) {
+  if (marginalByCell(m) && !imperativeAgainstDouble && !(PAGE_FULL && m.agreed > 0 && others.filter((o) => !marginalByCell(o)).every((o) => o.agreed < m.agreed))) {
     const mo = m.morph;
     const jussiveLike = (only(mo.Mood, 'Imp') || only(mo.Mood, 'Jus')) && !only(mo.Voice, 'Pass') && !only(mo.Number, 'Dual');
     const passivePerfect3 = only(mo.Voice, 'Pass') && has(mo.Aspect, 'Perf') && only(mo.Person, '3') && only(mo.Number, 'Sing') && only(mo.Gender, 'Masc');
@@ -580,7 +584,8 @@ function isMarginal(m: Merged, all: Merged[]): boolean {
   if (all.some((x) => x.lexeme === m.lexeme && x.citation) && nominal(m) && !has(m.morph.PluralType, 'Broken')
     && countOf(m) > 0 && others.some((o) => !o.citation && has(o.morph.PluralType, 'Broken') && nominal(o) && sameProcl(o) && countOf(o) >= 5 * countOf(m))) return true;
   // a verbal noun or participle that has no entry of its own is marginal against any reading of a real lemma (its own verb included)
-  if (m.rows.every((r) => r.derived) && others.some((o) => o.rows.every((r) => !r.derived) && !(m.morph.VerbForm === 'Part' && o.morph.VerbForm === 'Vnoun'))) return true;
+  // (not against a broken-plural cell that is no citation form: السرقة is the verbal noun سَرِقَة or the plural of سَارِق, and nothing decides)
+  if (m.rows.every((r) => r.derived) && others.some((o) => o.rows.every((r) => !r.derived) && !(m.morph.VerbForm === 'Part' && o.morph.VerbForm === 'Vnoun') && !(has(o.morph.PluralType, 'Broken') && !o.citation && !o.rows.every((r) => r.viaLoose)))) return true;
   // a proper name against a common word (a name the source cites with the article, اَلمَلِك, الرُّوم: the common noun under ال, مَلِك, leads and the name is listed below it)
   if (m.pos === 'PROPN' && others.some((o) => o.pos !== 'PROPN' && !o.rows.every((r) => r.viaLoose))) return true;
   // a cut against a whole word that is a lemma's own citation form (unless that word has no frequency evidence at all)
@@ -604,7 +609,7 @@ function isMarginal(m: Merged, all: Merged[]): boolean {
   const pm = m.morph.Person;
   const firstImperfect = pm === '1' && has(m.morph.Aspect, 'Imp') && only(m.morph.Number, 'Sing');
   const sameShape = (o: Merged): boolean => o.seg.proclitics.length === m.seg.proclitics.length && (o.seg.enclitics.length > 0) === (m.seg.enclitics.length > 0);
-  if ((pm === '1' || pm === '2') && (m.pos === 'VERB' || m.pos === 'AUX') && !firstImperfect && others.some((o) => sameShape(o) && (o.pos === 'VERB' || o.pos === 'AUX') && o.morph.Person && has(o.morph.Person, '3') && !marginalByCell(o))) return true;
+  if ((pm === '1' || pm === '2') && (m.pos === 'VERB' || m.pos === 'AUX') && !firstImperfect && others.some((o) => sameShape(o) && (o.pos === 'VERB' || o.pos === 'AUX') && o.morph.Person && has(o.morph.Person, '3') && !(has(o.morph.Person, '2') && !o.morph.Aspect) && !marginalByCell(o))) return true;
   return false;
 }
 
@@ -661,8 +666,8 @@ function decide(key: string, merged: Merged[], printed: Printed, partial = false
   const lexemes = [...new Set(merged.map((m) => m.lexeme))];
   const v: Verdict = { top: new Set(), cap: new Map() };
   if (lexemes.length <= 1) {
-    // a key the reviewed list holds as balanced (null) is not credited by one فَعَّال noun the index happens to hold (an occupation noun: خَضَّار "greengrocer", حَمَّام, نَجَّار …), since the plain noun of the same letters may be missing: the index may lack the other (the extract has no خُضَار "vegetables", only the greengrocer خَضَّار)
-    if (lexemes.length === 1 && !printed.any && !partial && (arMainOf(key) === null || merged.some((m) => arMainOf(m.stemKey) === null)) && merged.every((m) => m.pos === 'NOUN' && /^..ا.$/.test(m.stemKey) && m.head.includes('ّ'))) v.identity = 'undecided';
+    // a key the reviewed list holds as balanced (null) is not credited by one فَعَّال noun the index happens to hold (an occupation noun: خَضَّار "greengrocer", حَمَّام, نَجَّار …) or a feminine cell of an adjective (المقصورة "compartment" is read as مَقْصُور), since the noun of the same letters may be missing: the index may lack the other (the extract has no خُضَار "vegetables", only the greengrocer خَضَّار)
+    if (lexemes.length === 1 && !printed.any && !partial && (arMainOf(key) === null || merged.some((m) => arMainOf(m.stemKey) === null)) && merged.every((m) => (m.pos === 'NOUN' && /^..ا.$/.test(m.stemKey) && m.head.includes('ّ')) || (m.pos === 'ADJ' && !m.citation && has(m.morph.Gender, 'Fem') && !only(m.morph.Gender, 'Masc') && m.seg.enclitics.length === 0))) v.identity = 'undecided';
     return v;
   }
   // readings reached only through the loose fold are not rivals of a lexeme read as written: one direct lexeme is the word
@@ -822,9 +827,24 @@ function toCandidate(m: Merged, p: Printed, confidence: number, identity: string
     const cls = groupOf(m.pos) ?? [m.pos];
     const memberPos = cls.filter((p) => lexemeIds(m.head, p).length > 0);
     // ONE clean meaning: the gloss of the lexeme that is CREDITED (its part of speech, and among homonym siblings the LEAD one); the others go to notes
-    const own = lexemeIds(m.head, m.pos).map((id) => lookupArabicLemma(id)).filter((r): r is ArLemmaRow => !!r);
+    const ownIds = lexemeIds(m.head, m.pos);
+    const own = ownIds.map((id) => lookupArabicLemma(id)).filter((r): r is ArLemmaRow => !!r);
     const lead = own.find((r) => /(^|\|)Lead=Yes(\||$)/.test(r[3])) ?? own[0];
-    if (lead) {
+    // homonym siblings share a head and a part of speech: the sibling(s) whose table HOLDS the row that matched give the gloss, the root and the sense class;
+    // when the lead sibling does not hold it (تَزَالُ is of the verb زَالَ "to cease", not of the lead زَالَ "to disappear"), the reading carries that meaning and a note
+    const held = new Set(m.rows.map((r) => r.lemmaId));
+    const holders = ownIds.filter((id) => held.has(id)).map((id) => lookupArabicLemma(id)).filter((r): r is ArLemmaRow => !!r);
+    const leadHolds = !holders.length || holders.includes(lead);
+    if (!leadHolds && own.length > 1) {
+      const gl = [...new Set(holders.map((r) => r[1]).filter(Boolean))];
+      gloss = gl[0] ?? gloss;
+      root = holders.find((r) => r[5])?.[5] ?? root;
+      notes.siblingNotLead = 'yes';
+      const sense = lexOf(holders[0]).Sense;
+      if (sense) notes.senseClass = sense;
+      notes.homonymMeanings = `another word spelled the same: ${[...new Set(own.filter((r) => !holders.includes(r)).map((r) => r[1]).filter((g) => g && !gl.includes(g)))].join('; ')}`;
+      notes.homonyms = String(own.length);
+    } else if (lead) {
       gloss = lead[1] || gloss;
       const rowRoots = [...new Set(m.rows.map((r) => r.info.root).filter((x): x is string => !!x))];
       root = rowRoots[0] ?? lead[5] ?? root;
@@ -1114,6 +1134,8 @@ function readSurface(token: RawToken, text: string, at: number[] | undefined, qu
       else c = directExists ? Math.min(c, CONF_UNDECIDED) : CLOSED_POS.has(m.pos) ? Math.min(c, CONF_STRUCTURAL) : Math.min(c, CONF_UNDECIDED);
       if (!identity) identity = 'restored';
     }
+    // a cut that needs TWO attached pronouns never leads beside a reading that needs fewer (وَاتَرَ + كَ + هُ for واتركه): the excluded level
+    if (m.seg.enclitics.length >= 2 && merged.some((o) => o.seg.enclitics.length < 2 && !o.rows.every((r) => r.viaLoose))) c = Math.min(c, 0.35);
     if (partial && !(verdict.identity === 'main' && verdict.reviewed && topLexeme)) { c = Math.min(c, CONF_UNDECIDED); identity = 'partial'; }
     if (verdict.identity === 'closed' && partial && topLexeme) { c = Math.min(base(m), CONF_CLOSED); identity = 'closed'; }
     return { m, c, identity, top: topLexeme, marginal: merged.length > 1 && isMarginal(m, merged) };

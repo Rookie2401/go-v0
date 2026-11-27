@@ -13,10 +13,10 @@ Lemma string convention: `arHeadForm` of `arabic/text.ts`.
 | lemma entries / form pages (of which "ar-verb form" pages) / lemma entries that also hold form-of senses | 27,090 / 50,698 (41,350) / 2,982 |
 | pages that are only alternative spellings (alt-of) | 1,021 |
 | participle entries (verb class in the extract, head "active / passive participle of X"; made ADJ with VerbForm=Part, Voice, Of=verb) / of those with Of | 14 / 10 |
-| lemma glosses changed by the clean-gloss rule (batch 6; counted before the reviewed choices) | 13,202 |
-| gloss trust class (Sense= in lex): Rev (a reviewed choice matched) / One (a single real sense) / Lab (the lead stands after labelled senses) / Ord (the source's order, unreviewed): over all lemma ids with rows / over the 2,000 highest-count lexemes (leads) | 1276 / 13724 / 140 / 10161; 1145 / 599 / 5 / 251 |
+| lemma glosses changed by the clean-gloss rule (batch 6; counted before the reviewed choices) | 13,220 |
+| gloss trust class (Sense= in lex): Rev (a reviewed choice matched) / One (a single real sense) / Lab (the lead stands after labelled senses) / Ord (the source's order, unreviewed): over all lemma ids with rows / over the 2,000 highest-count lexemes (leads) | 1889 / 13724 / 139 / 9549; 1234 / 599 / 5 / 162 |
 | lexemes with homonym siblings (Homonyms=N on each id, Lead=Yes on the lead) / glosses that differ from the batch-6 choice because of the sense labels | 787 / 172 |
-| reviewed gloss choices (gloss-choices.json): lexemes that took one / lexemes where no sense matched (keeping the default) | 1,276 / 7: أَنَا|PRON, زَهْرَة|NOUN, زَوْج|NOUN, فَقِير|ADJ, قَرْيَة|NOUN, مَتَى|ADP, وَاحِد|PRON |
+| reviewed gloss choices (gloss-choices.json): lexemes that took one / lexemes where no sense matched (keeping the default) | 1,889 / 7: أَنَا|PRON, زَهْرَة|NOUN, زَوْج|NOUN, فَقِير|ADJ, قَرْيَة|NOUN, مَتَى|ADP, وَاحِد|PRON |
 | lemma ids by part of speech | NOUN 12,758, VERB 7,366, ADJ 3,814, PROPN 2,357, ADV 366, ADP 113, INTJ 90, CONJ 80, NUM 53, PRON 44, PART 42, DET 6 |
 | lemma ids (with at least one row) | 27,089 (25,301) |
 | head + POS pairs with more than one entry (extra ids `|2`, `|3` … ordered by etymology number, then first gloss) | 787 (927 extra ids) |
@@ -43,7 +43,7 @@ Lemma string convention: `arHeadForm` of `arabic/text.ts`.
 | verb-form lines that gave no vocalized form (page word used) / form-of senses with no target word / verb-form lines that did not parse / whose form is another key / pages without a form / form pages whose own table mixed senses | 838 / 0 / 161 / 0 / 10 / 36 |
 | Gender of nouns: from the canonical row's labels / from the head template | 13,861 / 767 |
 | Decl: lemmas whose rows agree on one class / that mix classes (no Decl) | 14,308 / 2,698 |
-| lex features on lemma ids | Sense=One 15,401, Decl=Trip 13,087, Sense=Ord 10,270, Gender=Masc 9,293, Gender=Fem 5,219, Form=I 2,870, Homonyms=2 1,360, Sense=Rev 1,276, Form=II 1,184, Reg=Cla 812, Lead=Yes 787, Decl=Dip 780, Form=IV 659, Form=V 570, Form=VIII 467, Decl=Indecl 440, Form=III 333, Form=X 309, Form=VI 308, Form=Iq 237, Homonyms=3 237, Form=VII 172, Sense=Lab 142, Gender=Fem,Masc 115, Homonyms=4 92, Form=IIq 80, Homonyms=5 25, Form=IX 23, Form=IVq 20, Form=XII 19, Form=IIIq 15, VerbForm=Part 14, Form=XI 13, Voice=Act 6, Reg=Msa 4, Voice=Pass 4, Form=XIII 3, Of=بَسَطَ 1, Of=ذَهَبَ 1, Of=رَاحَ 1 |
+| lex features on lemma ids | Sense=One 15,401, Decl=Trip 13,087, Sense=Ord 9,658, Gender=Masc 9,293, Gender=Fem 5,219, Form=I 2,870, Sense=Rev 1,889, Homonyms=2 1,360, Form=II 1,184, Reg=Cla 812, Lead=Yes 787, Decl=Dip 780, Form=IV 659, Form=V 570, Form=VIII 467, Decl=Indecl 440, Form=III 333, Form=X 309, Form=VI 308, Form=Iq 237, Homonyms=3 237, Form=VII 172, Sense=Lab 141, Gender=Fem,Masc 115, Homonyms=4 92, Form=IIq 80, Homonyms=5 25, Form=IX 23, Form=IVq 20, Form=XII 19, Form=IIIq 15, VerbForm=Part 14, Form=XI 13, Voice=Act 6, Reg=Msa 4, Voice=Pass 4, Form=XIII 3, Of=بَسَطَ 1, Of=ذَهَبَ 1, Of=رَاحَ 1 |
 | Reg=Cla (every sense Classical, archaic or obsolete) / Reg=Msa (every sense Modern) — lemma entries | 812 / 4 |
 | roots (the ar-root / ar-rootbox template, else the root category of the senses; malformed templates ignored: 0) | NOUN 4,688/12,758 (36.7 %), VERB 4,745/7,366 (64.4 %), ADJ 1,464/3,814 (38.4 %), PROPN 217/2,357 (9.2 %), ADV 55/366 (15.0 %), ADP 28/113 (24.8 %), INTJ 11/90 (12.2 %), CONJ 7/80 (8.8 %), NUM 11/53 (20.8 %), PRON 0/44 (0.0 %), PART 3/42 (7.1 %), DET 0/6 (0.0 %) |
 | shards | 179 (prefixes of up to 3 letters; limit 1,500,000 bytes of JSON) |
@@ -51,13 +51,13 @@ Lemma string convention: `arHeadForm` of `arabic/text.ts`.
 | largest shard | `ب` 1.01 MB plain, 0.20 MB gzip (largest gzip: `ب` 0.20 MB) |
 | merging experiment (upper bound of rows storable once: same key, lemma, labels but case, vowels but the last letter's) | 259,144 rows, 5,109,289 bytes of JSON |
 | core rows | seen (seen = a chosen lemma's rows under keys that occur in ar_50k and under its own written form; all = every row) |
-| core keys: completed (the missing lexemes' rows added; at most 8 rows and 3 lexemes) / flagged `partial` (the full index has lexemes the core lacks) / share of ar_50k running words on flagged keys | 877 / 979 / 18.87 % |
+| core keys: completed (the missing lexemes' rows added; at most 8 rows and 3 lexemes) / flagged `partial` (the full index has lexemes the core lacks) / share of ar_50k running words on flagged keys | 878 / 979 / 18.87 % |
 | closed-class clitic entries kept out of the word keys (tatweel at an edge, or one bare letter: بِـ, ـهَا, وَ, أَ …) | 27: وَ (CONJ), وَ (ADP), بِـ (ADP), تَ (ADP), أَ (PART), سَـ (PART), فَـ (CONJ), كَـ (ADP), ـكَ (PRON), ـكِ (PRON), لِـ (ADP), لَـ (ADP), لِـ (CONJ), لِـ (PART), لَـ (PART), ـهُ (PRON), هَـ (PART), ـهُمْ (PRON), ـهُنّ (PRON), ـهُمَا (PRON), ـنَا (PRON), آ (PART), ـهَا (PRON), ـكُمْ (PRON), ـكُنَّ (PRON), ـكُمَا (PRON), ـني (PRON) |
 | lemma entries with no table at all / of those with a row under their written form (the source's canonical row, code `canonical…`) | 2,520 / 2,015 (without: 505, of which multi-word heads 505) |
 | adjective lemmas with a feminine row (any origin) / of all adjective lemma ids; "feminine … of X" form pages of adjectives resolved (rows new, the rest already in the adjective's table) | 3,538 / 3,814; 930 (49 new) |
 | core ranking | marginal (own = weight of a lemma's own keys per byte; marginal = frequency of the keys it adds to those already covered, per byte) |
-| core | 1676 lemmas (255 of closed classes, 2 seeded), 2597 keys, 12771 rows, 499,491 bytes of JSON (budget 500,000) |
-| core token coverage on ar_50k (running words whose key is a core key) | 55.94 % of 149,102,962 (clitic forms are not keys) |
+| core | 1678 lemmas (255 of closed classes, 2 seeded), 2598 keys, 12795 rows, 499,968 bytes of JSON (budget 500,000) |
+| core token coverage on ar_50k (running words whose key is a core key) | 55.95 % of 149,102,962 (clitic forms are not keys) |
 | identity checks accepted through a numbered sibling of the main id / through the loose fold | 2 / 2 (counted apart from the clean ones above) |
 | lexeme preferences (--identities): candidate loser/winner pairs / dropped as one lexeme (same head, same part-of-speech group) / dropped as both directions (b) / dropped as balanced (c) / closed-class loser to open winner dropped (d) | 1,904 / 75 / 7 / 109 / 2 |
 | reviewed preferences (preferences-reviewed.json) merged / derived pairs they overrode / pairs removed by its balanced list / lexemes not in the index (skipped); derived pairs before the merge | 103 / 0 / 5 / 0; 1,291 |
@@ -74,8 +74,8 @@ Share of ar_50k running words by the number of lemma ids their key has in this i
 ## Core budget projections (not stored)
 
 - 350,000 bytes: 679 lemmas, tokenCoverage 0.5223
-- 500,000 bytes: 884 lemmas, tokenCoverage 0.5594
-- 800,000 bytes: 1327 lemmas, tokenCoverage 0.6007
+- 500,000 bytes: 885 lemmas, tokenCoverage 0.5595
+- 800,000 bytes: 1328 lemmas, tokenCoverage 0.6008
 
 ## Register and period labels found on senses (counts of senses)
 

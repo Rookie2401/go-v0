@@ -18,6 +18,7 @@
  *   guess               is a guess from the shape of the word (`unconfirmed`);
  *   derived             is a participle or verbal noun that has no entry of its own (notes.derivedFrom);
  *   no-meaning          has no English meaning (the entry's gloss is empty);
+ *   description-only    has a shown meaning that is only a description in brackets ("(question word: is…? does…?)"): nothing to type;
  *   numbered-gloss     has a gloss that numbers several dictionary entries ("1. chief 2. big"): the reviewed choice does not lead;
  *   same-spelling       is also another NOUN / ADJ / PROPN of the same head with a meaning that shares no content word, and no sentence rule decided (kind 2);
  *   gloss-pos          has a first meaning that does not fit its part of speech (a verb's begins 'to ', a noun's does not);
@@ -58,6 +59,7 @@ export const AR_DECK_LIMITS: readonly ArDeckLimit[] = [
   { id: 'guess', test: 'the top reading is a guess from the shape of the word (unconfirmed)', reason: 'a guess from the shape of the word, not an entry of the word list', reading: true, kind: 'low-confidence' },
   { id: 'derived', test: 'the top reading is a participle or verbal noun with no entry of its own (notes.derivedFrom)', reason: 'a participle or verbal noun with no entry of its own: its lexeme is not in the word list', reading: true, kind: 'unlisted' },
   { id: 'no-meaning', test: 'the entry has no English gloss', reason: 'no English meaning', reading: false, kind: 'no-meaning' },
+  { id: 'description-only', test: 'the shown meaning, with its bracketed text removed, leaves no letter: nothing a learner could type', reason: 'a grammar word with no single English meaning to type', reading: false, kind: 'no-meaning' },
   { id: 'numbered-gloss', test: 'the reading\'s gloss is a numbered merge of several dictionary entries ("1. ... 2. ...")', reason: 'several dictionary entries share this headword: the meaning shown has not been separated', reading: true, kind: 'undecided-entry' },
   { id: 'gloss-pos', test: "the first meaning does not match the part of speech: a VERB's must begin 'to ', a NOUN / ADJ / PRON meaning must not", reason: "its first meaning does not fit its part of speech (a verb's meaning begins 'to ')", reading: false, kind: 'meaning-unreviewed' },
   { id: 'dialect', test: 'the reading is flagged dialect or foreign (notes.variety)', reason: 'flagged as dialect or foreign: not read as Standard Arabic', reading: true, kind: 'other-variety' },
@@ -246,6 +248,7 @@ export function arDeckVerdict(surface: string, cands: readonly AnalysisCandidate
   const closed = closedGloss(top.lemma, top.pos);
   if (!row && closed === undefined) return verdict('not-an-entry');
   if (!(closed ?? row?.[1] ?? '').trim()) return verdict('no-meaning');
+  if (!/\p{L}/u.test((top.gloss ?? closed ?? row?.[1] ?? '').replace(/\([^()]*\)|\[[^[\]]*\]/gu, ' '))) return verdict('description-only');
   if (/(^|\s)\d+\.\s/u.test(top.gloss ?? '')) return verdict('numbered-gloss');
   const lead = (top.gloss ?? closed ?? row?.[1] ?? '').replace(/^\s*\d+\.\s*/u, '').trim();
   const verbal = top.pos === 'VERB' || top.pos === 'AUX';

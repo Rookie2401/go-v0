@@ -207,7 +207,7 @@ describe('rule (g): a numbered merge of dictionary entries is held, and stops be
 describe('reviewKind and reviewRivals (the names the GoLearn card reads)', () => {
   const KINDS: Record<string, string> = {
     'no-reading': 'unlisted', 'not-an-entry': 'unlisted', derived: 'unlisted', 'no-meaning': 'no-meaning', undecided: 'two-words', 'two-lexemes': 'two-words',
-    'numbered-gloss': 'undecided-entry', 'same-spelling': 'meaning-unreviewed', guess: 'low-confidence', 'restored-spelling': 'low-confidence', 'known-misread-form': 'known-limit', 'known-misread-lemma': 'known-limit',
+    'numbered-gloss': 'undecided-entry', 'description-only': 'no-meaning', 'same-spelling': 'meaning-unreviewed', guess: 'low-confidence', 'restored-spelling': 'low-confidence', 'known-misread-form': 'known-limit', 'known-misread-lemma': 'known-limit',
     'plural-entry': 'other-listed-word', 'pronoun-form': 'other-listed-word', dialect: 'other-variety', 'sense-unreviewed': 'meaning-unreviewed', 'gloss-pos': 'meaning-unreviewed',
   };
   it('every rule of the table has the agreed kind, and kind 2 (meaning) rules set no reviewGate', () => {
@@ -267,5 +267,13 @@ describe('rule: the same spelling is also another word with another meaning', ()
     const l = AR_DECK_LIMITS.find((x) => x.id === 'same-spelling')!;
     expect(l.reading).toBe(false);
     expect(l.kind).toBe('meaning-unreviewed');
+  });
+});
+
+describe('rule: a meaning that is only a description', () => {
+  it('holds a gloss that is only bracketed text, passes one with a word outside the brackets', () => {
+    expect(id(PLAIN, [cand(KITAB, { gloss: '(question word: is…? does…?)', notes: { glossSource: 'closed' } })])).toBe('description-only');
+    expect(arDeckVerdict(PLAIN, [cand(KITAB, { gloss: '(question word: is…?)' })])?.reason).toBe('a grammar word with no single English meaning to type');
+    expect(id(PLAIN, [cand(KITAB, { gloss: 'book (printed)' })])).toBeUndefined();
   });
 });

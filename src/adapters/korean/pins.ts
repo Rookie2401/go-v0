@@ -11,10 +11,11 @@ import { koBareLemma, koEntryLemma, koSharedPos, koStemKey, lookupKoreanStem } f
 export interface KoPin {
   /** The written word. */
   form: RegExp;
-  /** The word before / after it, and any word of the sentence. All given conditions must hold. */
+  /** The word before / after it, any word of the sentence, and all the words before it (`lead`). All given conditions must hold. */
   prev?: RegExp;
   next?: RegExp;
   sentence?: RegExp;
+  lead?: RegExp;
   /** What it is here: the headword and class; `hom` picks the entry of that number. */
   lemma: string;
   pos: string;
@@ -25,7 +26,8 @@ export interface KoPin {
 }
 
 export const KO_PINS: readonly KoPin[] = [
-  { form: /^(컸|자랐)/u, sentence: /(아이|아기|아들|딸|손자|손녀)/u, lemma: '크다', pos: 'VERB', why: 'a child 컸다: grew' },
+  // 크다 "grew" only where the child is the SUBJECT and a word of change stands before it: 아이 옷이 컸어요 is the clothes being big
+  { form: /^컸/u, lead: /(^|\s)(아이|아기|아들|딸|손자|손녀)(들)?(가|이|는|은|도)(\s(그새|그동안|벌써|정말|참|이제|어느새))*\s(많이|부쩍|몰라보게|훌쩍|쑥|그새|어느새)$/u, lemma: '크다', pos: 'VERB', why: '아이가 많이 컸다: grew' },
   { form: /^국가(를|는)?$/u, next: /^(부르|불러|불렀|부를|제창|연주)/u, lemma: '국가', pos: 'NOUN', hom: 2, why: '국가를 부르다: the anthem' },
   { form: /^자신(이|은|도)?$/u, next: /^(없|있었|있어|있다|있습|생겼|생겨|붙)/u, prev: /^(?!(나|너|저|그|그녀|자기|우리)$)/u, lemma: '자신', pos: 'NOUN', hom: 2, why: '자신이 없다: confidence' },
   { form: /^과정(에|을|은|이)?$/u, prev: /(석사|박사|학사|교육|훈련|연수|정규|전문|대학원)$/u, lemma: '과정', pos: 'NOUN', hom: 2, why: '석사 과정: a course of study' },
@@ -39,7 +41,8 @@ export const KO_PINS: readonly KoPin[] = [
   { form: /^성(을|에)$/u, next: /^(구경|쌓|짓|지었|지은|공격|방문|함락)/u, lemma: '성', pos: 'NOUN', hom: 5, why: '성을 구경하다: a castle' },
   { form: /^창(을|으로)$/u, next: /^(던지|던졌|던져|찌르|찔러|찔렀)/u, lemma: '창', pos: 'NOUN', hom: 2, why: '창을 던지다: a spear' },
   { form: /^창(을)$/u, next: /^들/u, sentence: /(군인|병사|기사|전사|무사)/u, lemma: '창', pos: 'NOUN', hom: 2, why: '군인이 창을 들다: a spear' },
-  { form: /^걸어$/u, next: /^(잠[갔그궜근금]|놓|두었|둔|뒀|두세|주세)/u, lemma: '걸다', pos: 'VERB', why: '걸어 잠그다 / 놓다: 걸다, not 걷다' },
+  // 걸어 + 잠그다 / 놓다 / 두다 only after an object (not a road: 길을 걸어 …); 걸어 주세요 is "please walk" and is left alone
+  { form: /^걸어$/u, prev: /^(?!(길|거리|골목|산길)(을|를)$).+(을|를)$/u, next: /^(잠[갔그궜근금]|놓[았아는을고]|뒀|두었|두세요)/u, lemma: '걸다', pos: 'VERB', why: '문을 걸어 잠그다: 걸다, not 걷다' },
   { form: /^걸어$/u, prev: /^(그림|옷|전화|말|간판|액자|시계|자물쇠|목도리)(을|를)$/u, lemma: '걸다', pos: 'VERB', why: '그림을 걸어: to hang' },
   { form: /^빚은$/u, next: /^(만두|송편|떡|술|도자기|그릇)/u, lemma: '빚다', pos: 'VERB', why: '빚은 만두: shaped by hand' },
   { form: /^보다$/u, next: /^(가까이|나은|나아|높은|넓은|좋은|많은|깊이|쉽게|빠르게|정확|효과|자세히)/u, lemma: '보다', pos: 'ADV', why: '보다 가까이: more' },
@@ -80,6 +83,7 @@ export function applyKoPins(tokens: readonly RawToken[], analyzed: AnalyzedToken
       if (pin.prev && !pin.prev.test(words[k - 1]?.t.surface ?? '')) continue;
       if (pin.next && !pin.next.test(words[k + 1]?.t.surface ?? '')) continue;
       if (pin.sentence && !pin.sentence.test(sentence)) continue;
+      if (pin.lead && !pin.lead.test(words.slice(0, k).map((x) => x.t.surface).join(' '))) continue;
       const hit = pinned(pin, token.candidates);
       if (!hit) continue;
       const notes = { ...(hit.notes ?? {}) };

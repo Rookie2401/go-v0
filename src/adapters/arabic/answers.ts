@@ -8,7 +8,9 @@
  *      another headword; a record with no vocalized head gives nothing.
  *  (b) ONLY MEANINGS. An alternative of a sense that is no meaning is dropped: Arabic script inside it, a colon (a usage note: "enjoined: followed by على"),
  *      "etc.", a pointer ("plural of ..."), a bare grammar word ("plural"), a usage
- *      description ("In reduplication, ..."). Language-neutral pointers are read by src/core/review-meaning.ts (isCrossReferenceOnly), which is reused.
+ *      description ("In reduplication, ...", "having a copulative effect"), a bare function word ("with", "and") of an open-class word, and everything after "e.g." (examples).
+ *      Transliterations of an English name of a thing (qanun, kanoon, ganoun for the instrument; husainiya) are genuine meanings and are kept.
+ *      Language-neutral pointers are read by src/core/review-meaning.ts (isCrossReferenceOnly), which is reused.
  * A later sense of the word's OWN entry that a reader thinks wrong is not decided here: answer-exclusions.json is the reviewed table for that.
  */
 import { isCrossReferenceOnly } from '../../core/review-meaning';
@@ -18,23 +20,32 @@ export interface ArFullRecord { p?: string; f?: Array<{ f: string; t: string[] }
 
 const GRAMMAR_WORD = /^(?:plural|singular|dual|feminine|masculine|collective|verbal noun|masdar|passive|active|imperative|infinitive|participle|elative|comparative|superlative|construct|definite|indefinite|nominative|genitive|accusative)$/iu;
 const USAGE_NOTE = /^(?:in reduplication\b|used (?:to|in|with|for|as|after|before|when|of)\b|followed by\b|usually\b|often\b|especially\b|with (?:the )?(?:genitive|accusative|nominative|jussive|subjunctive|preposition)\b|expresses\b|denotes\b|as in\b|indicates\b|introduces\b|marks\b)/iu;
+/** A word that is no meaning of an open-class word whatever it stands alone as ("to become acquainted, with, to meet" cut at its commas leaves "with"). */
+const FUNCTION_WORD = /^(?:and|or|with|the|a|an|of|to|in|on|at|by|for|from|as|if|then|but|so|that|which|who)$/iu;
+/** A description of the word's grammar, not a meaning ("having a copulative effect, usually inserted when ..."). */
+const GRAMMAR_NOTE = /\b(?:copulative|inserted when|grammatical|syntactic(?:ally)?)\b/iu;
+/** From here a sense gives examples, not meanings ("to break, tear, e.g., a rope, a string"). */
+const EXAMPLE_CUT = /,?\s*\b(?:e\.g\.|i\.e\.|for example|for instance|such as)\s*,?/iu;
 const bare = (s: string): string => s.replace(/\([^()]*\)|\[[^[\]]*\]/gu, ' ').replace(/\s+/gu, ' ').trim();
 
 /** True when this alternative of a sense is no meaning of the word (see (b) above). */
-export function isFragmentAlternative(alt: string): boolean {
+export function isFragmentAlternative(alt: string, opts: { functionWords?: boolean } = {}): boolean {
   const a = alt.trim();
   if (!a || !/\p{L}/u.test(a)) return true;
   if (/\p{Script=Arabic}/u.test(a) || a.includes(':') || /\betc\b/iu.test(a)) return true;
   const b = bare(a);
   if (!b) return true;
-  if (GRAMMAR_WORD.test(b) || USAGE_NOTE.test(b) || isCrossReferenceOnly(a)) return true;
+  if (GRAMMAR_WORD.test(b) || USAGE_NOTE.test(b) || GRAMMAR_NOTE.test(b) || isCrossReferenceOnly(a)) return true;
+  if (opts.functionWords !== false && FUNCTION_WORD.test(b)) return true;
   return false;
 }
 
 /** A sense with its fragment alternatives taken out ("a, b; c" keeps its separators); empty when nothing is left. */
-export function arCleanSense(sense: string): string {
+export function arCleanSense(sense: string, opts: { functionWords?: boolean } = {}): string {
+  const cut = sense.search(EXAMPLE_CUT);
+  if (cut >= 0) sense = sense.slice(0, cut);
   // a final full stop is the sentence's, not the meaning's ("the lift(s)." would leave "the lift ." once its aside is taken out)
-  return sense.split(/\s*;\s*/u).map((part) => part.split(/\s*,\s*/u).filter((alt) => !isFragmentAlternative(alt)).map((alt) => alt.replace(/[.\s]+$/u, '')).join(', ')).filter(Boolean).join('; ').trim();
+  return sense.split(/\s*;\s*/u).map((part) => part.split(/\s*,\s*/u).filter((alt) => !isFragmentAlternative(alt, opts)).map((alt) => alt.replace(/[.\s]+$/u, '')).join(', ')).filter(Boolean).join('; ').trim();
 }
 
 const canonicalOf = (r: ArFullRecord): string | undefined => r.f?.find((x) => x.t.includes('canonical'))?.f;

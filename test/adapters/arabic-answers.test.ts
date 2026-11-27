@@ -40,3 +40,19 @@ describe('class (b): only meanings', () => {
     expect(isFragmentAlternative('in the morning')).toBe(false);
   });
 });
+
+describe('second pass (the fresh text, 2026-11-26)', () => {
+  it('an open-class word drops a bare function word cut from a list, the examples after "e.g.", and a grammar description', () => {
+    expect(arCleanSense('to become acquainted, with, to meet')).toBe('to become acquainted, to meet');
+    expect(arCleanSense('(with فَ (fa, "then")) and then, and; thereupon, whereupon')).not.toMatch(/(^|, |; )and$/u);
+    expect(arCleanSense('to break, break apart, tear, snap (intransitive), e.g., a rope, a string)')).toBe('to break, break apart, tear, snap (intransitive)');
+    expect(arCleanSense('having a copulative effect, usually inserted when both the مُبْتَدَأ and خَبَر are definite.')).toBe('');
+  });
+  it('a closed-class word keeps its function words (with, in, to are its meanings)', () => {
+    expect(arCleanSense('with, together with', { functionWords: false })).toBe('with, together with');
+  });
+  it('transliterated English names of a thing are GENUINE and kept: qanun, kanoon, ganoun (the instrument), husainiya', () => {
+    expect(arCleanSense('qanun, kanoon, or ganoun (a musical instrument similar to a zither)')).toContain('qanun');
+    expect(arCleanSense('husainiya')).toBe('husainiya');
+  });
+});

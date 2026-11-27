@@ -497,7 +497,7 @@ export function createFactsProvider(deps: FactsProviderDeps): FactsProvider & { 
         }
       } catch { chosen = []; }
       const have = new Set(g.glosses.slice(0, g.lexiconCount).map((x) => x.trim().toLowerCase()));
-      g.glosses = [...g.glosses.slice(0, g.lexiconCount), ...chosen.map(arCleanSense).filter((x) => x && !have.has(x.trim().toLowerCase()))];
+      g.glosses = [...g.glosses.slice(0, g.lexiconCount), ...chosen.map((x) => arCleanSense(x, { functionWords: read.cand?.notes?.glossSource !== 'closed' })).filter((x) => x && !have.has(x.trim().toLowerCase()))];
     }
     // A language held to the deck rule: reviewed exclusions (src/adapters/arabic/answer-exclusions.json). A whole alternative that equals an excluded string is dropped from
     // the meaning SHOWN as well as from the accepted answers, so the card never shows an answer it then refuses.

@@ -35,6 +35,7 @@ Every reason of `AR_DECK_LIMITS`, which kind it is, whether it sets `notes.revie
 | known-misread-lemma | reading | yes | form id |
 | pronoun-form | reading | yes | form id |
 | numbered-gloss (safety net) | reading | yes | form id |
+| structural-prior (a word in a sentence settled by a structural prior alone) | reading | yes | form id |
 | sense-unreviewed | meaning | no | **lemma id** |
 | gloss-pos | meaning | no | **lemma id** |
 | no-meaning | meaning | no | **lemma id** |
@@ -48,7 +49,7 @@ Each rule also writes `notes.reviewKind` (the shared gate's class of reason, whi
 | no-meaning | no-meaning |
 | two-words | undecided, two-lexemes (`notes.reviewRivals` = the other lexemes' vocalized headwords, best first, at most 6) |
 | undecided-entry | numbered-gloss |
-| low-confidence | guess, restored-spelling |
+| low-confidence | guess, restored-spelling, structural-prior |
 | known-limit | known-misread-form, known-misread-lemma |
 | other-listed-word | plural-entry, pronoun-form |
 | other-variety | dialect |
@@ -114,3 +115,8 @@ Nothing is taken away from the reading. A held word is still read by the analyse
 * **Answers come from ONE headword** (`src/adapters/arabic/answers.ts`): an Arabic lemma card takes dictionary senses only from the FULL records whose vocalized head (through `arHeadForm`) and part of speech are the unit's; a bound form (a leading dash: ـهُمَا) and a record with no vocalized head give nothing. The level-1 dictionary is keyed by the unvocalized spelling, and `headMatches` compares only the VOWELS of a romanization, so it cannot tell أَب from أَبّ or بَلَغَ from بَلَّغَ (a doubled letter adds no vowel).
 * **Alternatives that are no meaning are dropped**: Arabic script inside, a colon, "etc.", a pointer ("plural of ..."), a bare grammar word, a usage note ("In reduplication ...", "as in ...", "indicates ..."); a final full stop is cut. Pointers are read by `src/core/review-meaning.ts`.
 * **Same spelling, another word** (rule `same-spelling`, kind 2): a lemma is held when the same vocalized head is also a NOUN / ADJ / PROPN lexeme of the index with a meaning that shares no content word, unless a sentence rule decided (`notes.identity = 'sentence'`). A lemma card is judged on the head read alone, so the sentence's other readings do not reach it (`AR_RIVAL_MODE=both` would read them and hold 7-8 % of the cards for nothing the card can see).
+
+## Batch 9: no card from a structural prior; each item of a sense judged alone
+
+* **`structural-prior`** is a READING hold (kind `low-confidence`, `reviewGate` yes, `reviewRivals` = the other headwords; credited to the form id only), set where the sentence's candidates are marked (`arMarkForDeck`), and only for a word read in a sentence: a word whose top reading has `notes.identity = 'structural'` makes no lemma unit from that sentence ("which word this spelling is was settled by a general rule, not by the sentence or a checked list"); the lemma can still be credited from another sentence where the reading is firmer. The lemma read alone is not held by it. Cost on the two read texts: 33 of 356 cards lost on text 1 (31 read ok, 0 bad) and 33 of 322 on text 2 (30 ok, 3 bad); of the 6 false readings of the fresh text 3 leave (تَدَخَّلَ, سَارِق, وَاتَرَ) and 3 remain (أَسِيَ, زَالَ, مَقْصُور). `AR_STRUCTURAL_PRIOR=off` gives the state before it (measurement only).
+* **Answers**: each comma- or semicolon-separated item of a sense is judged alone; an item over four words is dropped when short items stand beside it and none of them is capitalised (صَبَاح: "the time from sunrise to noon, morning" now gives "morning").

@@ -207,7 +207,7 @@ describe('rule (g): a numbered merge of dictionary entries is held, and stops be
 describe('reviewKind and reviewRivals (the names the GoLearn card reads)', () => {
   const KINDS: Record<string, string> = {
     'no-reading': 'unlisted', 'not-an-entry': 'unlisted', derived: 'unlisted', 'no-meaning': 'no-meaning', undecided: 'two-words', 'two-lexemes': 'two-words',
-    'numbered-gloss': 'undecided-entry', 'description-only': 'no-meaning', 'same-spelling': 'meaning-unreviewed', guess: 'low-confidence', 'restored-spelling': 'low-confidence', 'known-misread-form': 'known-limit', 'known-misread-lemma': 'known-limit',
+    'numbered-gloss': 'undecided-entry', 'description-only': 'no-meaning', 'same-spelling': 'meaning-unreviewed', 'structural-prior': 'low-confidence', guess: 'low-confidence', 'restored-spelling': 'low-confidence', 'known-misread-form': 'known-limit', 'known-misread-lemma': 'known-limit',
     'plural-entry': 'other-listed-word', 'pronoun-form': 'other-listed-word', dialect: 'other-variety', 'sense-unreviewed': 'meaning-unreviewed', 'gloss-pos': 'meaning-unreviewed',
   };
   it('every rule of the table has the agreed kind, and kind 2 (meaning) rules set no reviewGate', () => {
@@ -275,5 +275,24 @@ describe('rule: a meaning that is only a description', () => {
     expect(id(PLAIN, [cand(KITAB, { gloss: '(question word: is…? does…?)', notes: { glossSource: 'closed' } })])).toBe('description-only');
     expect(arDeckVerdict(PLAIN, [cand(KITAB, { gloss: '(question word: is…?)' })])?.reason).toBe('a grammar word with no single English meaning to type');
     expect(id(PLAIN, [cand(KITAB, { gloss: 'book (printed)' })])).toBeUndefined();
+  });
+});
+
+describe('rule: no card from a structural prior (a reading hold, in a sentence only)', () => {
+  it('holds a word read in a sentence whose reading was settled by identity structural; the head read alone, and other identities, are not held', () => {
+    expect(arDeckVerdict(PLAIN, [cand(KITAB, { notes: { identity: 'structural' } }), cand(QALAM, { confidence: 0.35 })], true)?.id).toBe('structural-prior');
+    expect(arDeckVerdict(PLAIN, [cand(KITAB, { notes: { identity: 'structural' } })])).toBeUndefined();
+    for (const identity of ['main', 'sentence', 'closed', 'printed']) expect(arDeckVerdict(PLAIN, [cand(KITAB, { notes: { identity } })], true)).toBeUndefined();
+    const l = AR_DECK_LIMITS.find((x) => x.id === 'structural-prior')!;
+    expect([l.reading, l.kind]).toEqual([true, 'low-confidence']);
+  });
+  it('marks the sentence token as a reading hold: reviewGate yes, kind low-confidence, rivals; a lone word is not marked', () => {
+    const two = [{ surface: PLAIN, normalized: PLAIN, start: 0, end: 3, isWord: true }, { surface: PLAIN, normalized: PLAIN, start: 4, end: 7, isWord: true }] as RawToken[];
+    const mk = (): AnalyzedToken[] => two.map((t) => ({ token: t, candidates: [cand(KITAB, { notes: { identity: 'structural' } }), cand(QALAM, { confidence: 0.35 })], analyzer: 'ar' }) as AnalyzedToken);
+    const out = arMarkForDeck(two, mk());
+    expect(out[0].candidates[0].notes).toMatchObject({ reviewStatus: 'requires-review', reviewKind: 'low-confidence', reviewGate: 'yes', deckLimit: 'structural-prior' });
+    expect(out[0].candidates[0].notes?.reviewRivals).toEqual([QALAM]);
+    const lone = arMarkForDeck([two[0]], [mk()[0]]);
+    expect(lone[0].candidates[0].notes?.deckLimit).toBeUndefined();
   });
 });

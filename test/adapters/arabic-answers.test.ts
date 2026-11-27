@@ -56,3 +56,14 @@ describe('second pass (the fresh text, 2026-11-26)', () => {
     expect(arCleanSense('husainiya')).toBe('husainiya');
   });
 });
+
+describe('each item of a sense is judged on its own', () => {
+  it('a long item is dropped, the short ones of the same sense stay: صَبَاح gives "morning"', () => {
+    expect(arCleanSense('the time from sunrise to noon, morning')).toBe('morning');
+    expect(arCleanSense('the time from morning twilight to sunrise, dayspring')).toBe('dayspring');
+    expect(arCleanSense('the time from sunrise to noon')).toBe('the time from sunrise to noon');
+  });
+  it('prose with a capitalised item is not cut into a list', () => {
+    expect(arCleanSense('a city in the north of Egypt, Africa')).toBe('a city in the north of Egypt, Africa');
+  });
+});

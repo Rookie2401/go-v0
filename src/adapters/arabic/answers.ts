@@ -41,11 +41,25 @@ export function isFragmentAlternative(alt: string, opts: { functionWords?: boole
 }
 
 /** A sense with its fragment alternatives taken out ("a, b; c" keeps its separators); empty when nothing is left. */
+/** The words of an item outside its brackets. */
+const wordsOutside = (item: string): number => bare(item).split(/\s+/u).filter(Boolean).length;
+const MAX_ITEM_WORDS = 4;
+
+/**
+ * A sense with its fragment alternatives taken out ("a, b; c" keeps its separators); empty when nothing is left. Each comma- or semicolon-separated item is
+ * judged on its own: an item of more than four words (a definition: "the time from sunrise to noon") is dropped when the same sense has short items beside it ("morning"),
+ * so one long item no longer takes the whole list with it. Not when a short item is capitalised (a name: "a city in Egypt, Africa" is prose, not a list).
+ */
 export function arCleanSense(sense: string, opts: { functionWords?: boolean } = {}): string {
   const cut = sense.search(EXAMPLE_CUT);
   if (cut >= 0) sense = sense.slice(0, cut);
   // a final full stop is the sentence's, not the meaning's ("the lift(s)." would leave "the lift ." once its aside is taken out)
-  return sense.split(/\s*;\s*/u).map((part) => part.split(/\s*,\s*/u).filter((alt) => !isFragmentAlternative(alt, opts)).map((alt) => alt.replace(/[.\s]+$/u, '')).join(', ')).filter(Boolean).join('; ').trim();
+  const parts = sense.split(/\s*;\s*/u).map((part) => part.split(/\s*,\s*/u).filter((alt) => !isFragmentAlternative(alt, opts)).map((alt) => alt.replace(/[.\s]+$/u, '')));
+  const all = parts.flat();
+  const shortItems = all.filter((x) => wordsOutside(x) <= MAX_ITEM_WORDS);
+  const dropLong = shortItems.length > 0 && shortItems.length < all.length && shortItems.every((x) => !/^\p{Lu}/u.test(x));
+  const kept = dropLong ? parts.map((p) => p.filter((x) => wordsOutside(x) <= MAX_ITEM_WORDS)) : parts;
+  return kept.map((p) => p.join(', ')).filter(Boolean).join('; ').trim();
 }
 
 const canonicalOf = (r: ArFullRecord): string | undefined => r.f?.find((x) => x.t.includes('canonical'))?.f;

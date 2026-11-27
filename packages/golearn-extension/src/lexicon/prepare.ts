@@ -26,7 +26,7 @@ const MAX_LOADED: Readonly<Record<string, number>> = { ko: 64 };
  * alone would name one item and the card another, and a page's answer would change after any lookup. Greek, Hebrew and Russian keep loading on the
  * first lookup, as they did, until their own measurement says otherwise (their shard sets are far larger). Arabic IS in the list (the lead's decision): a first scan made with the compiled
  * core alone and never repeated under-credits a page (a core key that is only partial credits no lemma until its shard loads). Its full word list is
- * 179 shards (7.9 MB), so the wait has a cost; measured: AR-PROVISIONAL (scripts/loadcheck/golearn/ar.mjs steps E3-E5: shard requests and bytes before the first highlight).
+ * 179 shards (7.9 MB), so the wait could cost. Measured (rig runs F and H, ar.mjs step E3, 113-word prose page, 2026-11-26): 1,470 ms (run F, after the run's earlier lookups) and 1,100 ms (run H, Active alone on a fresh profile) from switching Active on to the first highlight, with 0 lexicon/ar shard requests before it in both. The request log of run H shows no lexicon/ar request at all, so the 0 is not proof the wait is free: whether the shards were not needed or the requests are not visible to the rig is OPEN (AR-PROVISIONAL; no cold figure on a page with many non-core words).
  */
 export const PREPARE_BEFORE_SCAN: ReadonlySet<string> = new Set(['ko', 'ar']);
 

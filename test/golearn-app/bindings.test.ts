@@ -38,9 +38,9 @@ describe('the pack bindings', () => {
     expect(b.packFor('constructor')).toBeUndefined();
   });
 
-  it('languages: thirteen, in the catalogue’s order; Norwegian asks for its written standard, Spanish offers a regional preference, and every choice names a pack that exists', () => {
+  it('languages: fourteen, in the catalogue’s order; Norwegian asks for its written standard, Spanish offers a regional preference, and every choice names a pack that exists', () => {
     const languages = b.languages();
-    expect(languages).toHaveLength(13);
+    expect(languages).toHaveLength(14);
     expect(languages.map((l) => l.languageId)).toEqual(LP.LANGUAGE_CATALOGUE.map((e) => e.languageId));
     expect(languages.map((l) => l.name.split(' ')[0])).toEqual(['Norwegian', 'German', 'Albanian', 'Hindi', 'Thai', 'Spanish', 'Latin', 'Hebrew', 'Greek', 'Aramaic', 'Russian', 'French', 'Korean', 'Arabic']);
     for (const l of languages) {

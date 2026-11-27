@@ -48,6 +48,15 @@ export function elMorphFromTags(tags: readonly string[]): Record<string, string>
     const [k, v] = hit;
     for (const piece of v.split(',')) if (!(sets[k] ??= []).includes(piece)) sets[k].push(piece);
   }
+  // Modern Greek: the tables call the simple past (the aorist: αγόρασα, έγραψε) "past", beside "perfective"; the imperfect has its own label. A form so labelled,
+  // with no other tense named, is the aorist. Without this it had no tense at all and its English was written as a present (αγοράσαμε "We buy").
+  // The dependent form (αγοράσουμε, after θα / να) carries "dependent" and no "past": it stays without a tense.
+  const has = (label: string): boolean => tags.some((t) => t.normalize('NFC').trim().toLowerCase() === label);
+  // A tense named only by the table's header is not this row's tense when the row itself says what it is: the Modern tables file the simple past and the dependent
+  // form under a header "perfect" (the perfective aspect's section), which made γέμισαν "They have filled".
+  const rowNamesTense = tags.some((t) => { const hit = LABELS[t.normalize('NFC').trim().toLowerCase().replace(/\s+/g, '-')]; return !!hit && hit[0] === 'Tense'; });
+  if (!rowNamesTense && (has('past') || has('dependent')) && (has('perfective') || has('imperfective'))) delete sets.Tense;
+  if (!sets.Tense && has('past')) sets.Tense = ['Aor'];
   const out: Record<string, string> = {};
   for (const [k, vs] of Object.entries(sets)) {
     const order = ORDER[k];

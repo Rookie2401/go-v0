@@ -132,7 +132,7 @@ review of each language's core meanings, which has not been done for any live la
 ## Running it
 
 ```
-npm run deck:audit -- <set> [--part dev|heldout] [--no-gate] [--strict] [--cards] [--held] [--json <file>]
+npm run deck:audit -- <set> [--part dev|dev2|heldout] [--no-gate] [--strict] [--cards] [--held] [--json <file>]
 npx vitest run test/deck-audit
 ```
 
@@ -143,3 +143,59 @@ takes about twenty minutes.
 
 When a reading or a meaning is fixed, take the unit off `deck-known-limits.ts` (or off `residual`) and let the test say whether the card is
 right now.
+
+## Follow-up 1 (2026-11-27): Greek
+
+The owner, 2026-11-26, on the named residue: "Do it". Fixed by cause where a rule can; what no rule fixes is held and named. This part is Greek
+(Modern and Koine); the other languages follow in parts of their own.
+
+### What was wrong, and the rule that fixes it
+
+| Cause | Fix | Cards |
+|---|---|---|
+| The Modern Greek tables label the simple past "past" + "perfective"; the tag table read no tense from that, so the form's English was a present (αγοράσαμε "We buy") | `greek/tags.ts`: "past" with no other tense named is the aorist; a tense named only by the table's header ("perfect" = the perfective section) is not the row's tense | 11 of the 17 named, and 2 more on the fresh text |
+| The analyser ordered its readings by the sentence's period but left the confidences alone, and GoLearn credits the reading of the highest confidence: in Modern text με and σε were credited as the Koine pronouns ἐγώ and σύ, μητέρα as μήτηρ, Δευτέρα as δεύτερος | `greek/analyze.ts`: across the ancient / modern divide a reading of the other side is kept below the sentence's own; where the sentence's own readings are one word, or the same word as the other side's best (μετά, δύο), that word takes the certainty over | the "ancient lemma" cards of the first audit; τρίτος |
+| A weekday written with a capital inside a sentence was read as the ordinal (την Τρίτη "third") | the capitalised common noun is the reading; a proper name is left alone | Τρίτη, Δευτέρα |
+| A Koine learner's lemma card showed the Ancient tables' first sense (θεωρέω "to be sent to consult an oracle", ῥύμη "force, rush") though the New Testament lexicon has the word | the adapter offers the period source's own headword meaning (`headwordGloss`); the facts provider reports it, the gate shows it | θεωρέω, ἀπειλή, ῥύμη, ἐγγίζειν |
+| MorphGNT files the impersonal δεῖ under δέω "I bind" and the middle ἄρχομαι under ἄρχω "I reign" | a reading of one of them names that word and its meaning ("it is necessary", "I begin") | δεῖ, ἔδει, ἤρξατο, ἤρξαντο (184 New Testament occurrences in all) |
+| A parenthetical note in a verb's citation was split at its own commas ("We washed (your body"); "come or go away from" was inflected as "came or go away from" | `core/english-verb.ts`: the note is dropped before the senses are split; the second verb of an "or" pair is dropped | πλύναμε, ἀπῆλθεν |
+| "third-person singular imperfect middle/passive indicative of X" was not seen as a pointer | `core/review-meaning.ts` | ἐπυνθάνετο |
+
+### No other reading made worse (measured before and after)
+
+| Measure | Before | After |
+|---|---|---|
+| Modern Greek gold (`test/adapters/greek-modern-gold.json`, 294 words), the analyser's first reading: lemma / lemma + class | 281 / 280 | 281 / 280 |
+| The same, the reading GoLearn credits (highest confidence) | 271 / 270 | 281 / 280 |
+| Perseus treebank, 8 ancient texts × 3,000 tokens (`npm run el:audit-treebank`) | — | identical, but Plato's lemma score 85.2 → 85.3 % (δεῖ, five times) |
+| Words credited in the 947-word Modern text (dev2) | 740 | 713: the 27 no longer credited were all credited to a WRONG word before (με, σε, μου, σου as Koine pronouns; δώσω as δίδωμι); 21 others are now credited to the right Modern headword (μεγάλη → μεγάλος, μητέρα, πρώτη, Τρίτη, πέντε, τρία …) |
+| Greek tests, goldens | the same two files fail before and after as on master (`hebrew-greek-packs` pack:el, the `goreview.startup` el golden, with the same difference); no golden re-recorded | |
+
+### The figures
+
+The old held-out halves have been read, so they are development material now (`dev2.txt`); each set has a fresh `heldout.txt` (Modern: 90 new
+sentences written for it; Koine: Luke 15:11-32, SBL edition).
+
+| Set | Old named residue | Now, on that text | Fresh held-out: cards | False at its first reading | Fixed by rule after that reading | Remaining, named |
+|---|---|---|---|---|---|---|
+| Modern Greek | 17 | 0 admitted: 12 fixed by rule, 5 held on the known-limits list | 325 | 9 | 2 (the table-header tense, twice) | 7 |
+| Koine Greek | 7 | 0 admitted: 6 fixed by rule, 1 held on the known-limits list | 174 | 8 | 4 (ἔδει, ἤρξατο, ἤρξαντο, the pointer) | 4 |
+
+The fresh held-out figure that is blind is the first reading (9 and 8 false or unknown cards); the rules in the next column were written after reading it.
+
+**Held on the known-limits list (Greek: 18 units), by kind.** The source's own first sense is not the ordinary meaning, and the source has no
+better order to take: έναντι "towards (in part payment)", ίδιος "own", κόσμος "Universe, cosmos", ρεύμα "air current", υπολογιστής. The analyser
+reads another word: Βάλτε as βάλτος, Έβαλε as βάλλω, Τι as τις, Σ' as the numeral, ἤρχου as ἄρχω (the extension has no full New Testament
+index), συνιῶσιν, πλούτου as the god. The lexicon's citation leads with the causative where the form is intransitive: ἀνέτειλεν, ἀνάστηθι,
+ἀναστάς, εἱστήκεισαν; and ἐπικαλουμένους.
+
+**Remaining on the fresh held-out texts (11), named in `verdicts.json`.** Modern: ανέκαμψε "reappeared" (recovered), συναντηθήκαμε "We were met"
+(we met), βιάσου read as βιάζω, and four first senses of the source (βόλτα "turn", διασταύρωση "crossbreeding", καταβάλλω "to overcome",
+ρίχνω "to drop (anchor)"). Koine: παρεκάλει "was summoning", ἀπέχοντος "having in full", ἀπολωλώς "having destroyed", ἄσωτος "not saved".
+
+One verdict of the first audit was stale and is corrected: `lemma:el:τρίτος` and `lemma:el:δεύτερος` are now met only as the ordinals they are,
+and are off the list. A verdict is given in a sentence; when a fix changes which sentences credit a unit, the unit is read again.
+
+**For a native speaker or a Hellenist to review:** the 18 held units and the 11 remaining; the rule that a Modern reading takes over the
+certainty of a Koine reading of the same letters; "I begin" for every middle form of ἄρχω and "it is necessary" for δεῖ; the dependent forms
+(παίξουμε after θα) shown as plain presents; every verdict (the readers were AI models).

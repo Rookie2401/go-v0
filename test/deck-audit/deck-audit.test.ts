@@ -3,7 +3,8 @@
  * 2026-11-26: "Enforce the same rule for all the other languages"). One test per audited set (a language, or one period variety of it).
  *
  * Each set has two texts under data/deck-audit/<set>/: dev.txt (read while the gate and the known-limits list were written) and heldout.txt (never read
- * for that; run only to measure). Every card GoReview would admit from them, through the real path (test/deck-audit/support.ts), was read by a reader
+ * for that; run only to measure). A set whose held-out half has since been read to fix what it showed has it as dev2.txt, development material too, and a
+ * fresh heldout.txt. Every card GoReview would admit from them, through the real path (test/deck-audit/support.ts), was read by a reader
  * and given a verdict in verdicts.json: ok, false-reading (the sentence's word is another word), false-meaning (the right word, a wrong first meaning),
  * unknown (not a real word, or no real meaning), unsure. The readers were AI models, not native speakers; the file says so.
  *
@@ -20,7 +21,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { describe, expect, it } from 'vitest';
 import { DECK_KNOWN_LIMITS } from '../../packages/goreview/src/facts/deck-known-limits';
-import { AUDIT_SETS, ROOT, auditText, dataPresent, readSentences, runDeckAudit, type AuditCard } from './support';
+import { AUDIT_SETS, ROOT, auditText, dataPresent, devParts, readSentences, runDeckAudit, type AuditCard, type AuditPart } from './support';
 
 interface Verdict { shown: string; v: 'ok' | 'false-reading' | 'false-meaning' | 'unknown' | 'unsure'; note?: string }
 interface VerdictFile { readBy: string; cards: Record<string, Verdict[]>; residual: string[] }
@@ -36,9 +37,11 @@ describe.each(AUDIT_SETS.map((s) => [s.id, s] as const))('deck audit: %s', (_id,
   const ready = dataPresent(set.lang) && !!file && fs.existsSync(auditText(set.id, 'dev')) && fs.existsSync(auditText(set.id, 'heldout'));
 
   it.skipIf(!ready)(`${set.name}: no unknown card, no unread card, no false card on the development text, and exactly the named residue on the held-out text`, async () => {
-    const dev = await runDeckAudit(set.lang, readSentences(auditText(set.id, 'dev')), { varietyId: set.varietyId });
-    const heldout = await runDeckAudit(set.lang, readSentences(auditText(set.id, 'heldout')), { varietyId: set.varietyId });
-    for (const [part, result] of [['dev', dev], ['heldout', heldout]] as const) {
+    const runs: Array<[AuditPart, Awaited<ReturnType<typeof runDeckAudit>>]> = [];
+    for (const part of [...devParts(set.id), 'heldout' as const]) runs.push([part, await runDeckAudit(set.lang, readSentences(auditText(set.id, part)), { varietyId: set.varietyId })]);
+    const heldout = runs.find(([part]) => part === 'heldout')![1];
+    const devCards = runs.filter(([part]) => part !== 'heldout').flatMap(([, r]) => r.cards);
+    for (const [part, result] of runs) {
       // 1 — machine findings
       expect(result.cards.filter((c) => c.xref).map((c) => `${c.unitId} = ${c.shown}`), `${part}: meaning is only a cross-reference`).toEqual([]);
       expect(result.cards.filter((c) => !c.listed).map((c) => c.unitId), `${part}: headword in no word list or dictionary`).toEqual([]);
@@ -48,9 +51,9 @@ describe.each(AUDIT_SETS.map((s) => [s.id, s] as const))('deck audit: %s', (_id,
     }
     const bad = (cards: AuditCard[]): string[] => cards.filter((c) => BAD.has(verdictFor(file!, c)!.v)).map((c) => c.unitId).sort();
     // 3 — the development text
-    expect(bad(dev.cards), 'development text: false or unknown cards still admitted').toEqual([]);
+    expect([...new Set(bad(devCards))], 'development texts: false or unknown cards still admitted').toEqual([]);
     // 4 — the held-out text: what remains, by name (a unit also met in the development text is counted there)
-    const devUnits = new Set(dev.cards.map((c) => c.unitId));
+    const devUnits = new Set(devCards.map((c) => c.unitId));
     expect(bad(heldout.cards.filter((c) => !devUnits.has(c.unitId))), 'held-out text: the named residue').toEqual([...file!.residual].sort());
   }, 600_000);
 

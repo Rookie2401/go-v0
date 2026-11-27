@@ -192,3 +192,10 @@ describe('the deck gate: grammar notes, machine word lists and periods', () => {
 describe('pointers written as grammar', () => {
   it.each(['to-infinitive of עָבַד (avád).', 'bare infinitive (infinitive construct) of בא', 'infinitive construct of בא'])('%s', (g) => { expect(isCrossReferenceOnly(g)).toBe(true); });
 });
+
+describe('pointers with a slash between labels', () => {
+  it('"imperfect middle/passive indicative of X" is a pointer', () => {
+    expect(isCrossReferenceOnly('third-person singular imperfect middle/passive indicative of πυνθάνομαι (punthánomai)')).toBe(true);
+    expect(crossReferenceTarget('third-person singular imperfect middle/passive indicative of πυνθάνομαι (punthánomai)')).toBe('πυνθάνομαι');
+  });
+});

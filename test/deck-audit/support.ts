@@ -282,7 +282,11 @@ export const AUDIT_SETS: readonly AuditSet[] = [
   { id: 'arc', lang: 'arc', varietyId: 'arc-bib', name: 'Biblical Aramaic' },
 ];
 export const auditSet = (id: string): AuditSet => { const s = AUDIT_SETS.find((x) => x.id === id); if (!s) throw new Error(`no audit set ${id}`); return s; };
-export const auditText = (id: string, part: 'dev' | 'heldout'): string => path.join(ROOT, 'data/deck-audit', id, `${part}.txt`);
+/** `dev2` is a set's former held-out half, once it has been read to fix what it showed: development material from then on, with a fresh held-out half beside it. */
+export type AuditPart = 'dev' | 'dev2' | 'heldout';
+export const auditText = (id: string, part: AuditPart): string => path.join(ROOT, 'data/deck-audit', id, `${part}.txt`);
+/** The development halves a set has: dev, and dev2 where there is one. */
+export const devParts = (id: string): AuditPart[] => (fs.existsSync(auditText(id, 'dev2')) ? ['dev', 'dev2'] : ['dev']);
 
 /** The sentences of an audit text file: one per line; blank lines and lines starting with # are not sentences. */
 export function readSentences(file: string): string[] {

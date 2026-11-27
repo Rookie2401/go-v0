@@ -39,6 +39,8 @@ export interface FactsAdapter {
   describeMorph?(morph: Record<string, string>, pos?: AnalysisCandidate['pos']): string;
   detectPhrases?(tokens: RawToken[], analyses: AnalyzedToken[]): PhraseCandidate[];
   pronunciation?(token: RawToken, analysis?: AnalyzedToken): { notes?: string[] };
+  /** The meaning the learner's period source gives a headword (core/adapters.ts `headwordGloss`). */
+  headwordGloss?(lemma: string, pos: string | undefined, varietyId: string): string | undefined;
   readonly sources?: Readonly<Record<string, { label: string; licence?: string }>>;
 }
 
@@ -449,6 +451,12 @@ export function createFactsProvider(deps: FactsProviderDeps): FactsProvider & { 
 
   const inWordList = (c: AnalysisCandidate | undefined): boolean => !!c && !c.unconfirmed && c.origin !== 'rule' && !(!c.origin && c.notes?.source === 'rule');
 
+  /** The meaning the learner's period source gives a headword, when the adapter holds one. */
+  const periodGloss = (lemma: string, pos: string | undefined): string | undefined => {
+    if (!deps.varietyId) return undefined;
+    try { return adapter.headwordGloss?.(lemma, pos, deps.varietyId) || undefined; } catch { return undefined; }
+  };
+
   // ───────── lemma ─────────
   async function lemmaFacts(unitId: string, rec: RepositoryUnit | undefined): Promise<ReviewFacts | undefined> {
     const parsed = parseLemmaId(unitId, lang);
@@ -478,6 +486,9 @@ export function createFactsProvider(deps: FactsProviderDeps): FactsProvider & { 
         const best = mine.filter(fits).sort((a, b) => b.confidence - a.confidence)[0];
         periodReading = { attested: !!best, inPeriod: fits(read.cand), ...(best?.gloss ? { gloss: best.gloss } : {}) };
       }
+      // the period source's own meaning of the headword leads, where the adapter holds one (Koine θεωρέω: "I behold, look at", not the Ancient tables' first sense)
+      const own = periodGloss(lemma, pos);
+      if (own && own !== read.cand.gloss) periodReading = { attested: true, inPeriod: false, gloss: own };
     }
     const featureDefsUsed: Record<string, FeatureDef> = { ...featureDefs };
     return {
@@ -589,7 +600,7 @@ export function createFactsProvider(deps: FactsProviderDeps): FactsProvider & { 
     const own: FormInfo[] = lemma ? formsOfLemma(lemma, lemmaPos) : [];
     const morphDescription = describe(features, pos);
     const wordAnalysis = lang === 'el'
-      ? greekWordAnalysis({ surface: label, lemma, pos, lemmaGloss: lexCand?.gloss, morph: features,
+      ? greekWordAnalysis({ surface: label, lemma, pos, lemmaGloss: lexCand?.gloss ? (lemma ? periodGloss(lemma, lemmaPos ?? pos) : undefined) ?? lexCand.gloss : lexCand?.gloss, morph: features,
           source: topAlone?.sourceId ?? unit.provenance.ref, confidence: topAlone?.confidence,
           alternatives: (alone?.candidates.slice(1) ?? []).map((c) => ({ morph: c.morph, confidence: c.confidence })) })
       : projectWordAnalysis({ language: lang, surface: label, normalizedForm: formNorm, ...(lemma ? { lemma } : {}), ...(pos ? { pos } : {}),

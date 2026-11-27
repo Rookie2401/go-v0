@@ -19,7 +19,9 @@ const SHORT_FOR = /^(?:\((?:[^)]*)\)\s*)*short for\b/iu;
 export function isCrossReferenceOnly(meaning: string | undefined): boolean {
   const g = (meaning ?? '').trim();
   if (!g) return false;
-  if (!(XREF.test(g) || SHORT_FOR.test(g))) return false;
+  // "imperfect middle/passive indicative of X": a slash between two labels is read as a space
+  const plain = g.replace(/\s*\/\s*/g, ' ');
+  if (!(XREF.test(g) || XREF.test(plain) || SHORT_FOR.test(g))) return false;
   // "plural of X: houses" / "alternative form of X; a house": the part after the pointer is a meaning of its own
   const tail = /(?::|;|—|–| - )\s*(.+)$/u.exec(g)?.[1]?.trim();
   if (tail && /\p{L}{2}/u.test(tail) && !XREF.test(tail)) return false;
@@ -30,7 +32,8 @@ export function isCrossReferenceOnly(meaning: string | undefined): boolean {
 export function crossReferenceTarget(meaning: string | undefined): string | undefined {
   const g = (meaning ?? '').trim();
   if (!isCrossReferenceOnly(g)) return undefined;
-  const after = g.replace(XREF, '').replace(SHORT_FOR, '').trim();
+  const read = XREF.test(g) || SHORT_FOR.test(g) ? g : g.replace(/\s*\/\s*/g, ' ');
+  const after = read.replace(XREF, '').replace(SHORT_FOR, '').trim();
   const head = after.split(/[,;:(—–]| - /u)[0]?.trim().replace(/[.]+$/u, '');
   return head || undefined;
 }

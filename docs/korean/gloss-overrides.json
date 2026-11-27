@@ -527,6 +527,16 @@
     {"lemma":"해소","pos":"NOUN","hom":0,"gloss":"resolution, relief (e.g. of stress); dissolving, clearing up","was":"solution","own":true},
     {"lemma":"허리","pos":"NOUN","hom":0,"gloss":"waist; lower back","was":"side of waist or hip","own":true},
     {"lemma":"확보","pos":"NOUN","hom":0,"gloss":"securing, ensuring (obtaining enough of something)","was":"guarantee","own":true},
-    {"lemma":"흔들다","pos":"VERB","hom":0,"gloss":"to shake, wave, sway","was":"to cause to dangle","own":true}
+    {"lemma":"흔들다","pos":"VERB","hom":0,"gloss":"to shake, wave, sway","was":"to cause to dangle","own":true},
+    {"lemma":"계시다","pos":"VERB","hom":0,"gloss":"to be, to stay (honorific of 있다)","senses":[1],"was":"honorific of 있다 (itda)"},
+    {"lemma":"뵙다","pos":"VERB","hom":0,"gloss":"to see, to meet (someone honoured; humble)","senses":[1],"was":"to see a very respected person","own":true},
+    {"lemma":"배우다","pos":"VERB","hom":0,"gloss":"to learn","senses":[1],"was":"to learn (of)"},
+    {"lemma":"아기","pos":"NOUN","hom":0,"gloss":"baby; child","senses":[1],"was":"unweaned baby"},
+    {"lemma":"씨","pos":"NOUN","hom":2,"gloss":"Mr., Ms. (polite title after a name)","senses":[1],"was":"sir or madam","own":true},
+    {"lemma":"문자","pos":"NOUN","hom":0,"gloss":"letter, character; text message","senses":[1,3],"was":"letter"},
+    {"lemma":"찾다","pos":"VERB","hom":0,"gloss":"to look for; to find","senses":[1,2],"was":"to search"},
+    {"lemma":"일어나다","pos":"VERB","hom":0,"gloss":"to get up; to happen, occur","senses":[1,2],"was":"to arise"},
+    {"lemma":"깎다","pos":"VERB","hom":0,"gloss":"to cut, shave, peel; to reduce (a price)","senses":[1,2],"was":"to cut"},
+    {"lemma":"정류장","pos":"NOUN","hom":0,"gloss":"stop, station (for buses)","senses":[1],"was":"stop"}
   ]
 }

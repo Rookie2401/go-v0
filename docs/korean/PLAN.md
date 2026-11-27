@@ -474,6 +474,16 @@ removed the rarer verb before the sentence was read, so 개가 사람을 물었�
 both confidently (the independent audit). So 주세요, 갈게요, 가세요, 길어요, 이게, 그게, 누가, 가요 and 해요 are shown as two words
 and are not drilled from those sentences. Doing better needs to know which verbs take an object.
 
+## Hand corrections (`korean/pins.ts`, 2026-11-27)
+
+On the owner's instruction ("manually fix the Korean cards"), the words the rules read confidently wrong are corrected one by
+one: each entry names the written form, the neighbouring words under which it is meant, and the headword (and dictionary
+entry) it is there. A pin fires only on those neighbours and invents no word: it takes a reading the token already has, the
+reading of the spelled-out form (원치 as 원하지, 테야 as 터야), or the same form under another entry of the same spelling.
+Pins run after the sentence layer and before the review gate. Every pin has a sentence it fixes and a look-alike it must
+leave alone (`test/adapters/korean/pins.test.ts`). They are not rules about Korean: another sentence with another
+neighbour is still read as before. Written by the model that built the pack; no Korean speaker has reviewed them.
+
 ## Constructions (`korean/constructions.ts`, `detectPatterns`)
 
 Keys (each `syntax:ko:<key>`): `ko-progressive` -고 있다, `ko-resultative` -아/어 있다, `ko-want` -고 싶다,

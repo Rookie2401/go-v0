@@ -184,7 +184,7 @@ export const PACK_EVIDENCE: Readonly<Record<string, PackEvidence>> = Object.free
   // development part was looked at while the rules were written, so it is not evidence. The treebank's train part gave the lexicon its counts.
   ko: {
     lemmaSources: [
-      { kind: 'analyser-lexicon', id: 'kaikki-ko-lexicon', label: 'the headwords of the pack’s Wiktionary dictionary, filed by stem, which the analyser reads itself', size: { count: 37047, unit: 'entries' }, source: 'docs/korean/INDEX.md' },
+      { kind: 'analyser-lexicon', id: 'kaikki-ko-lexicon', label: 'the headwords of the pack’s Wiktionary dictionary, filed by stem, which the analyser reads itself', size: { count: 37048, unit: 'entries' }, source: 'docs/korean/INDEX.md' },
       formsIndex('ko', 'kaikki-ko@2026-10-30'),
     ],
     lemmaMeasurements: [

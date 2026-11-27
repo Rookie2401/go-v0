@@ -31,6 +31,7 @@ import { detectKoPhrases } from './korean/phrases';
 import { koSyntax } from './korean/syntax';
 import { checkKoProduction } from './korean/production';
 import { koReviewGate } from './korean/review-gate';
+import { applyKoPins } from './korean/pins';
 import { koSpeechNormalize } from './korean/speech';
 import { koPronunciation, koStandardPronunciation, KO_ROMANIZATION_SCHEME } from './korean/pronunciation';
 import { koFeaturesFromTableTags, koParadigm } from './korean/paradigm';
@@ -75,6 +76,7 @@ const SUPPORT: AdapterSupport = {
 const NEIGHBOURS = new WeakMap<RawToken, { next?: string; prev?: string; prevProspective?: boolean }>();
 
 function recordNeighbours(tokens: RawToken[], analyzed: AnalyzedToken[]): void {
+  applyKoPins(tokens, analyzed); // hand corrections first, so the gate marks the final readings
   koReviewGate(tokens, analyzed); // the review gate's ONE call (analyze and refine both end here): marks the readings GoReview must not drill; the card is unchanged
   for (let i = 0; i < tokens.length; i++) {
     const t = tokens[i];

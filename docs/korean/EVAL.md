@@ -99,14 +99,14 @@ Total: 25278 gold 어절 = 21945 scored + 3333 excluded.
 
 | measure | all | form seen in train | form not seen in train | with copula | touches an annotation convention | touches none |
 |---|---|---|---|---|---|---|
-| (a) FIRST reading has the right headword, STRICT | 19973 / 21945 (91.01 %) | 14356 / 15443 (92.96 %) | 5617 / 6502 (86.39 %) | 838 / 1167 (71.81 %) | 3782 / 4887 (77.39 %) | 16191 / 17058 (94.92 %) |
-| (a') FIRST reading has the right headword, LENIENT | 20676 / 21945 (94.22 %) | 14824 / 15443 (95.99 %) | 5852 / 6502 (90.00 %) | 1087 / 1167 (93.14 %) | 4485 / 4887 (91.77 %) | 16191 / 17058 (94.92 %) |
-| (b) right headword in ANY reading, STRICT (recall) | 20338 / 21945 (92.68 %) | 14661 / 15443 (94.94 %) | 5677 / 6502 (87.31 %) | 857 / 1167 (73.44 %) | 3818 / 4887 (78.13 %) | 16520 / 17058 (96.85 %) |
-| (b') right headword in ANY reading, LENIENT | 21049 / 21945 (95.92 %) | 15140 / 15443 (98.04 %) | 5909 / 6502 (90.88 %) | 1122 / 1167 (96.14 %) | 4529 / 4887 (92.67 %) | 16520 / 17058 (96.85 %) |
-| (c) first reading's shared part of speech right, overall | 19222 / 21945 (87.59 %) | 13857 / 15443 (89.73 %) | 5365 / 6502 (82.51 %) | 1126 / 1167 (96.49 %) | 4119 / 4887 (84.28 %) | 15103 / 17058 (88.54 %) |
-| (c') first reading's part of speech right, given the right headword first | 18403 / 19973 (92.14 %) | 13371 / 14356 (93.14 %) | 5032 / 5617 (89.59 %) | 822 / 838 (98.09 %) | 3567 / 3782 (94.32 %) | 14836 / 16191 (91.63 %) |
+| (a) FIRST reading has the right headword, STRICT | 19976 / 21945 (91.03 %) | 14357 / 15443 (92.97 %) | 5619 / 6502 (86.42 %) | 839 / 1167 (71.89 %) | 3782 / 4887 (77.39 %) | 16194 / 17058 (94.93 %) |
+| (a') FIRST reading has the right headword, LENIENT | 20679 / 21945 (94.23 %) | 14825 / 15443 (96.00 %) | 5854 / 6502 (90.03 %) | 1088 / 1167 (93.23 %) | 4485 / 4887 (91.77 %) | 16194 / 17058 (94.93 %) |
+| (b) right headword in ANY reading, STRICT (recall) | 20341 / 21945 (92.69 %) | 14662 / 15443 (94.94 %) | 5679 / 6502 (87.34 %) | 858 / 1167 (73.52 %) | 3818 / 4887 (78.13 %) | 16523 / 17058 (96.86 %) |
+| (b') right headword in ANY reading, LENIENT | 21052 / 21945 (95.93 %) | 15141 / 15443 (98.04 %) | 5911 / 6502 (90.91 %) | 1123 / 1167 (96.23 %) | 4529 / 4887 (92.67 %) | 16523 / 17058 (96.86 %) |
+| (c) first reading's shared part of speech right, overall | 19228 / 21945 (87.62 %) | 13863 / 15443 (89.77 %) | 5365 / 6502 (82.51 %) | 1126 / 1167 (96.49 %) | 4119 / 4887 (84.28 %) | 15109 / 17058 (88.57 %) |
+| (c') first reading's part of speech right, given the right headword first | 18410 / 19976 (92.16 %) | 13377 / 14357 (93.17 %) | 5033 / 5619 (89.57 %) | 823 / 839 (98.09 %) | 3567 / 3782 (94.32 %) | 14843 / 16194 (91.66 %) |
 | (e) first reading unconfirmed (or no reading) | 2998 / 21945 (13.66 %) | 534 / 15443 (3.46 %) | 2464 / 6502 (37.90 %) | 195 / 1167 (16.71 %) | 1469 / 4887 (30.06 %) | 1529 / 17058 (8.96 %) |
-| (e') CONFIDENT AND WRONG: first reading confidence >= 0.8, not unconfirmed, headword wrong (strict) | 1035 / 21945 (4.72 %) | 823 / 15443 (5.33 %) | 212 / 6502 (3.26 %) | 211 / 1167 (18.08 %) | 540 / 4887 (11.05 %) | 495 / 17058 (2.90 %) |
+| (e') CONFIDENT AND WRONG: first reading confidence >= 0.8, not unconfirmed, headword wrong (strict) | 1032 / 21945 (4.70 %) | 822 / 15443 (5.32 %) | 210 / 6502 (3.23 %) | 210 / 1167 (17.99 %) | 540 / 4887 (11.05 %) | 492 / 17058 (2.88 %) |
 | no reading at all | 0 / 21945 (0.00 %) | 0 / 15443 (0.00 %) | 0 / 6502 (0.00 %) | 0 / 1167 (0.00 %) | 0 / 4887 (0.00 %) | 0 / 17058 (0.00 %) |
 
 (a) counts a first reading whose headword is exactly the gold one; (c) is judged on the first reading whatever the headword; (c') only where the headword is right. "Touches an annotation convention" are the 어절 whose gold derivation used a rule from the convention table below (compound, 적/씩 suffix, prefix, derived 하다 verb, numeral + unit, auxiliary/copula 어절 with the lemma column holding only the stem; plural 들 does not count).
@@ -116,30 +116,30 @@ Total: 25278 gold 어절 = 21945 scored + 3333 excluded.
 
 | measure | NOUN | PROPN | PRON | NUM | CLF | VERB | ADJ | AUX | DET | ADV | CONJ | INTJ |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
-| (a) first headword right, strict | 10319 / 11248 (91.74 %) | 774 / 875 (88.46 %) | 613 / 637 (96.23 %) | 120 / 127 (94.49 %) | 81 / 88 (92.05 %) | 3995 / 4531 (88.17 %) | 1435 / 1735 (82.71 %) | 980 / 993 (98.69 %) | 377 / 397 (94.96 %) | 984 / 1006 (97.81 %) | 295 / 305 (96.72 %) | 0 / 3 (0.00 %) |
-| (a') first headword right, lenient | 10954 / 11248 (97.39 %) | 800 / 875 (91.43 %) | 613 / 637 (96.23 %) | 120 / 127 (94.49 %) | 81 / 88 (92.05 %) | 4033 / 4531 (89.01 %) | 1439 / 1735 (82.94 %) | 980 / 993 (98.69 %) | 377 / 397 (94.96 %) | 984 / 1006 (97.81 %) | 295 / 305 (96.72 %) | 0 / 3 (0.00 %) |
-| (b) right headword in any reading | 10379 / 11248 (92.27 %) | 785 / 875 (89.71 %) | 630 / 637 (98.90 %) | 121 / 127 (95.28 %) | 86 / 88 (97.73 %) | 4104 / 4531 (90.58 %) | 1572 / 1735 (90.61 %) | 986 / 993 (99.30 %) | 390 / 397 (98.24 %) | 987 / 1006 (98.11 %) | 298 / 305 (97.70 %) | 0 / 3 (0.00 %) |
-| (c) first part of speech right | 10695 / 11248 (95.08 %) | 329 / 875 (37.60 %) | 574 / 637 (90.11 %) | 112 / 127 (88.19 %) | 35 / 88 (39.77 %) | 4031 / 4531 (88.96 %) | 1258 / 1735 (72.51 %) | 691 / 993 (69.59 %) | 327 / 397 (82.37 %) | 892 / 1006 (88.67 %) | 278 / 305 (91.15 %) | 0 / 3 (0.00 %) |
+| (a) first headword right, strict | 10320 / 11248 (91.75 %) | 774 / 875 (88.46 %) | 613 / 637 (96.23 %) | 120 / 127 (94.49 %) | 82 / 88 (93.18 %) | 3996 / 4531 (88.19 %) | 1435 / 1735 (82.71 %) | 980 / 993 (98.69 %) | 377 / 397 (94.96 %) | 984 / 1006 (97.81 %) | 295 / 305 (96.72 %) | 0 / 3 (0.00 %) |
+| (a') first headword right, lenient | 10955 / 11248 (97.40 %) | 800 / 875 (91.43 %) | 613 / 637 (96.23 %) | 120 / 127 (94.49 %) | 82 / 88 (93.18 %) | 4034 / 4531 (89.03 %) | 1439 / 1735 (82.94 %) | 980 / 993 (98.69 %) | 377 / 397 (94.96 %) | 984 / 1006 (97.81 %) | 295 / 305 (96.72 %) | 0 / 3 (0.00 %) |
+| (b) right headword in any reading | 10380 / 11248 (92.28 %) | 785 / 875 (89.71 %) | 630 / 637 (98.90 %) | 121 / 127 (95.28 %) | 87 / 88 (98.86 %) | 4105 / 4531 (90.60 %) | 1572 / 1735 (90.61 %) | 986 / 993 (99.30 %) | 390 / 397 (98.24 %) | 987 / 1006 (98.11 %) | 298 / 305 (97.70 %) | 0 / 3 (0.00 %) |
+| (c) first part of speech right | 10695 / 11248 (95.08 %) | 329 / 875 (37.60 %) | 574 / 637 (90.11 %) | 112 / 127 (88.19 %) | 36 / 88 (40.91 %) | 4031 / 4531 (88.96 %) | 1258 / 1735 (72.51 %) | 691 / 993 (69.59 %) | 327 / 397 (82.37 %) | 897 / 1006 (89.17 %) | 278 / 305 (91.15 %) | 0 / 3 (0.00 %) |
 | (e) unconfirmed first reading | 2092 / 11248 (18.60 %) | 402 / 875 (45.94 %) | 2 / 637 (0.31 %) | 5 / 127 (3.94 %) | 5 / 88 (5.68 %) | 331 / 4531 (7.31 %) | 113 / 1735 (6.51 %) | 7 / 993 (0.70 %) | 6 / 397 (1.51 %) | 33 / 1006 (3.28 %) | 2 / 305 (0.66 %) | 0 / 3 (0.00 %) |
-| (e') confident and wrong | 583 / 11248 (5.18 %) | 29 / 875 (3.31 %) | 19 / 637 (2.98 %) | 2 / 127 (1.57 %) | 7 / 88 (7.95 %) | 168 / 4531 (3.71 %) | 182 / 1735 (10.49 %) | 6 / 993 (0.60 %) | 15 / 397 (3.78 %) | 13 / 1006 (1.29 %) | 8 / 305 (2.62 %) | 3 / 3 (100.00 %) |
+| (e') confident and wrong | 582 / 11248 (5.17 %) | 29 / 875 (3.31 %) | 19 / 637 (2.98 %) | 2 / 127 (1.57 %) | 6 / 88 (6.82 %) | 167 / 4531 (3.69 %) | 182 / 1735 (10.49 %) | 6 / 993 (0.60 %) | 15 / 397 (3.78 %) | 13 / 1006 (1.29 %) | 8 / 305 (2.62 %) | 3 / 3 (100.00 %) |
 
 ### Rank of the right headword (strict)
 
 | rank of the first reading with the gold headword | 어절 |
 |---|---|
-| 1 | 19973 / 21945 (91.01 %) |
+| 1 | 19976 / 21945 (91.03 %) |
 | 2 | 346 / 21945 (1.58 %) |
 | 3 | 12 / 21945 (0.05 %) |
 | 4+ | 7 / 21945 (0.03 %) |
-| none | 1607 / 21945 (7.32 %) |
+| none | 1604 / 21945 (7.31 %) |
 
 ### Homonym state of the first reading
 
 | first reading is | 어절 |
 |---|---|
-| plain (a bare headword, no number) | 20631 / 21945 (94.01 %) |
-| undecided (the bare lemma of a balanced homonym set) | 986 / 21945 (4.49 %) |
-| numbered (눈¹) | 328 / 21945 (1.49 %) |
+| plain (a bare headword, no number) | 20630 / 21945 (94.01 %) |
+| undecided (the bare lemma of a balanced homonym set) | 985 / 21945 (4.49 %) |
+| numbered (눈¹) | 330 / 21945 (1.50 %) |
 | no reading | 0 / 21945 (0.00 %) |
 
 ## (d) Segmentation: particles and endings
@@ -150,15 +150,15 @@ Comparable 어절: 21288 (gold chain texts known and a first reading present); n
 
 | measure | value |
 |---|---|
-| exact chain match (same normalised morphemes, same order), all comparable | 19059 / 21288 (89.53 %) |
-| chain letters match (same text, ignoring where the cuts fall), all comparable | 19201 / 21288 (90.20 %) |
-| exact chain match, where the headword is also right (strict) | 18675 / 19325 (96.64 %) |
-| chain letters match, where the headword is also right | 18816 / 19325 (97.37 %) |
-| exact chain match WITHOUT the convention differences (no compound, 적-type suffix, prefix, derived verb, numeral+unit) | 16018 / 17370 (92.22 %) |
-| chain letters match WITHOUT the convention differences | 16139 / 17370 (92.91 %) |
-| per-morpheme F1 (bag of normalised morphemes), all comparable | P 92.93 % (19376 / 20849), R 90.55 % (19376 / 21397), F1 91.73 % |
-| per-morpheme F1, where the headword is right | P 96.04 % (17837 / 18573), R 97.12 % (17837 / 18365), F1 96.58 % |
-| per-morpheme F1, without the convention differences | P 92.91 % (15144 / 16299), R 93.01 % (15144 / 16282), F1 92.96 % |
+| exact chain match (same normalised morphemes, same order), all comparable | 19066 / 21288 (89.56 %) |
+| chain letters match (same text, ignoring where the cuts fall), all comparable | 19208 / 21288 (90.23 %) |
+| exact chain match, where the headword is also right (strict) | 18682 / 19328 (96.66 %) |
+| chain letters match, where the headword is also right | 18823 / 19328 (97.39 %) |
+| exact chain match WITHOUT the convention differences (no compound, 적-type suffix, prefix, derived verb, numeral+unit) | 16025 / 17370 (92.26 %) |
+| chain letters match WITHOUT the convention differences | 16146 / 17370 (92.95 %) |
+| per-morpheme F1 (bag of normalised morphemes), all comparable | P 92.96 % (19377 / 20844), R 90.56 % (19377 / 21397), F1 91.74 % |
+| per-morpheme F1, where the headword is right | P 96.06 % (17840 / 18571), R 97.12 % (17840 / 18369), F1 96.59 % |
+| per-morpheme F1, without the convention differences | P 92.95 % (15145 / 16294), R 93.02 % (15145 / 16282), F1 92.98 % |
 
 ### Convention differences between the two annotation schemes
 
@@ -185,8 +185,8 @@ Readings whose confidence RISES down the list (must be 0): **0** of 22325 analys
 
 ## (g) Time
 
-- adapter tokenize + analyze, one sentence at a time: 22325 word tokens in 41.96 s = **532 tokens per second** (analysis cache warm for repeats, as in a host).
-- loading 26 of 26 shards (every shard the run needed, including the gold headwords): 0.91 s (disk, no network).
+- adapter tokenize + analyze, one sentence at a time: 22325 word tokens in 46.45 s = **481 tokens per second** (analysis cache warm for repeats, as in a host).
+- loading 26 of 26 shards (every shard the run needed, including the gold headwords): 1.11 s (disk, no network).
 
 
 ## (e) Confident and wrong: the 60 commonest tokens
@@ -258,20 +258,20 @@ First reading confidence >= 0.8, not unconfirmed, headword wrong against strict 
 
 ## Error classes (first-reading headword wrong, strict)
 
-1972 of 21945 scored 어절 have a wrong first headword (strict). Each is placed in ONE class by cause, in this order: no reading at all; alignment failure (adapter mode); right under the lenient alternatives (annotation scheme); headword missing from the lexicon; headword in the lexicon only under another class; the right headword is a LATER reading (split by what the first reading is); the first reading is unconfirmed; the right headword is never produced. The share is of all 1972 errors. Examples are the commonest 어절 of the class: form → first reading | gold.
+1969 of 21945 scored 어절 have a wrong first headword (strict). Each is placed in ONE class by cause, in this order: no reading at all; alignment failure (adapter mode); right under the lenient alternatives (annotation scheme); headword missing from the lexicon; headword in the lexicon only under another class; the right headword is a LATER reading (split by what the first reading is); the first reading is unconfirmed; the right headword is never produced. The share is of all 1969 errors. Examples are the commonest 어절 of the class: form → first reading | gold.
 
 | # | class | tokens | share of errors | by gold class | examples |
 |---|---|---|---|---|---|
-| 1 | annotation scheme: xsn-derived (right under the lenient alternatives) | 638 | 32.35 % | NOUN 612, PROPN 26 | 정치적 → 정치적/NOUN | gold 정치/NOUN ×14<br>자본주의적 → 자본주의적/DET | gold 자본주의/NOUN ×13<br>경제적 → 경제적/NOUN | gold 경제/NOUN ×11<br>사회적 → 사회적/DET | gold 사회/NOUN ×8<br>정신적 → 정신적/NOUN | gold 정신/NOUN ×8<br>이데올로기적 → 이데올로기적/DET | gold 이데올로기/NOUN ×7<br>지적 → 지적/NOUN | gold 지/NOUN ×7<br>비평적 → 비평적/DET | gold 비평/NOUN ×7 |
-| 2 | headword missing from the lexicon (VERB) | 312 | 15.82 % | VERB 312 | 지향하는 → 지향하/NOUN (unconfirmed) | gold 지향하다/VERB ×4<br>지향하지만 → 지향하/NOUN (unconfirmed) | gold 지향하다/VERB ×3<br>겨냥한 → 겨냥한/X (unconfirmed) | gold 겨냥하다/VERB ×2<br>저술한 → 저술한/X (unconfirmed) | gold 저술하다/VERB ×2<br>부가되는 → 부/NOUN | gold 부가되다/VERB ×2<br>증대된 → 증대된/X (unconfirmed) | gold 증대되다/VERB ×2<br>중단될 → 중단될/X (unconfirmed) | gold 중단되다/VERB ×2<br>배포했기 → 배포했기/X (unconfirmed) | gold 배포하다/VERB ×2 |
-| 3 | headword missing from the lexicon (NOUN) | 209 | 10.60 % | NOUN 209 | 프롤레타리아트는 → 프롤레타리아/NOUN | gold 프롤레타리아트/NOUN ×6<br>인쇄술의 → 인쇄/NOUN | gold 인쇄술/NOUN ×5<br>프롤레타리아트의 → 프롤레타리아/NOUN | gold 프롤레타리아트/NOUN ×5<br>부르조아 → 부르조/NOUN (unconfirmed) | gold 부르조아/NOUN ×4<br>신명을 → 시다/ADJ | gold 신명/NOUN ×3<br>일본여자들이 → 일본여자들이/NOUN (unconfirmed) | gold 일본여자/NOUN ×2<br>서지학적 → 서다/VERB | gold 서지학/NOUN ×2<br>금세기 → 금세/NOUN | gold 금세기/NOUN ×2 |
-| 4 | headword missing from the lexicon (ADJ) | 111 | 5.63 % | ADJ 111 | 광범위한 → 광범위한/X (unconfirmed) | gold 광범위하다/ADJ ×4<br>저렴한 → 저렴한/X (unconfirmed) | gold 저렴하다/ADJ ×3<br>비근한 → 비근한/X (unconfirmed) | gold 비근하다/ADJ ×3<br>해박한 → 해박한/X (unconfirmed) | gold 해박하다/ADJ ×2<br>협소한 → 협소한/X (unconfirmed) | gold 협소하다/ADJ ×2<br>냉정하게 → 냉정하게/X (unconfirmed) | gold 냉정하다/ADJ ×2<br>가치로운 → 가치로운/X (unconfirmed) | gold 가치롭다/ADJ ×2<br>덧없이 → 덧없/NOUN (unconfirmed) | gold 덧없다/ADJ ×2 |
-| 5 | headword present, never produced: predicate form not derived (irregular, contraction, missing ending in this context) | 102 | 5.17 % | VERB 60, ADJ 42 | 같이 → 같이/ADV | gold 같다/ADJ ×12<br>없이 → 없이/ADV | gold 없다/ADJ ×12<br>달리 → 달리/ADV | gold 다르다/ADJ ×6<br>끊임없이 → 끊임없이/ADV | gold 끊임없다/ADJ ×3<br>살펴본다 → 살펴보다/VERB | gold 살피다/VERB ×2<br>알아본다 → 알아보다/VERB | gold 알다/VERB ×2<br>늘어났다 → 늘어나다/VERB | gold 늘다/VERB ×2<br>빼놓을 → 빼놓다/VERB | gold 빼다/VERB ×2 |
-| 6 | right reading ranked below the first: wrong class (DET first, gold ADJ) | 89 | 4.51 % | ADJ 89 | 다른 → 다른/DET | gold 다르다/ADJ ×34<br>이런 → 이런/DET | gold 이렇다/ADJ ×24<br>그런 → 그런/DET | gold 그렇다/ADJ ×22<br>어떤 → 어떤/DET | gold 어떻다/ADJ ×5<br>오랜 → 오랜/DET | gold 오래다/ADJ ×2<br>아무런 → 아무런/DET | gold 아무렇다/ADJ<br>이상한 → 이상한/DET | gold 이상하다/ADJ |
-| 7 | form not explained although every ending is known elsewhere (stem form not reachable: irregular, contraction or spacing) | 71 | 3.60 % | NOUN 41, VERB 17, ADJ 5, PROPN 2 | 구체적인 → 구체적인/NOUN (unconfirmed) | gold 구체/NOUN ×12<br>인간적인 → 인간적인/NOUN (unconfirmed) | gold 인간/NOUN ×3<br>속엔 → 속엔/X (unconfirmed) | gold 속/NOUN ×2<br>사람들이다 → 사람들이/NOUN (unconfirmed) | gold 사람/NOUN ×2<br>부딛치는 → 부딛치/NOUN (unconfirmed) | gold 부딪치다/VERB<br>생각해서인지 → 생각해서인지/NOUN (unconfirmed) | gold 생각하다/VERB<br>얹혀서 → 얹혀서/X (unconfirmed) | gold 얹다/VERB<br>아가씨들이다 → 아가씨들이/NOUN (unconfirmed) | gold 아가씨/NOUN |
+| 1 | annotation scheme: xsn-derived (right under the lenient alternatives) | 638 | 32.40 % | NOUN 612, PROPN 26 | 정치적 → 정치적/NOUN | gold 정치/NOUN ×14<br>자본주의적 → 자본주의적/DET | gold 자본주의/NOUN ×13<br>경제적 → 경제적/NOUN | gold 경제/NOUN ×11<br>사회적 → 사회적/DET | gold 사회/NOUN ×8<br>정신적 → 정신적/NOUN | gold 정신/NOUN ×8<br>이데올로기적 → 이데올로기적/DET | gold 이데올로기/NOUN ×7<br>지적 → 지적/NOUN | gold 지/NOUN ×7<br>비평적 → 비평적/DET | gold 비평/NOUN ×7 |
+| 2 | headword missing from the lexicon (VERB) | 312 | 15.85 % | VERB 312 | 지향하는 → 지향하/NOUN (unconfirmed) | gold 지향하다/VERB ×4<br>지향하지만 → 지향하/NOUN (unconfirmed) | gold 지향하다/VERB ×3<br>겨냥한 → 겨냥한/X (unconfirmed) | gold 겨냥하다/VERB ×2<br>저술한 → 저술한/X (unconfirmed) | gold 저술하다/VERB ×2<br>부가되는 → 부/NOUN | gold 부가되다/VERB ×2<br>증대된 → 증대된/X (unconfirmed) | gold 증대되다/VERB ×2<br>중단될 → 중단될/X (unconfirmed) | gold 중단되다/VERB ×2<br>배포했기 → 배포했기/X (unconfirmed) | gold 배포하다/VERB ×2 |
+| 3 | headword missing from the lexicon (NOUN) | 209 | 10.61 % | NOUN 209 | 프롤레타리아트는 → 프롤레타리아/NOUN | gold 프롤레타리아트/NOUN ×6<br>인쇄술의 → 인쇄/NOUN | gold 인쇄술/NOUN ×5<br>프롤레타리아트의 → 프롤레타리아/NOUN | gold 프롤레타리아트/NOUN ×5<br>부르조아 → 부르조/NOUN (unconfirmed) | gold 부르조아/NOUN ×4<br>신명을 → 시다/ADJ | gold 신명/NOUN ×3<br>일본여자들이 → 일본여자들이/NOUN (unconfirmed) | gold 일본여자/NOUN ×2<br>서지학적 → 서다/VERB | gold 서지학/NOUN ×2<br>금세기 → 금세/NOUN | gold 금세기/NOUN ×2 |
+| 4 | headword missing from the lexicon (ADJ) | 111 | 5.64 % | ADJ 111 | 광범위한 → 광범위한/X (unconfirmed) | gold 광범위하다/ADJ ×4<br>저렴한 → 저렴한/X (unconfirmed) | gold 저렴하다/ADJ ×3<br>비근한 → 비근한/X (unconfirmed) | gold 비근하다/ADJ ×3<br>해박한 → 해박한/X (unconfirmed) | gold 해박하다/ADJ ×2<br>협소한 → 협소한/X (unconfirmed) | gold 협소하다/ADJ ×2<br>냉정하게 → 냉정하게/X (unconfirmed) | gold 냉정하다/ADJ ×2<br>가치로운 → 가치로운/X (unconfirmed) | gold 가치롭다/ADJ ×2<br>덧없이 → 덧없/NOUN (unconfirmed) | gold 덧없다/ADJ ×2 |
+| 5 | headword present, never produced: predicate form not derived (irregular, contraction, missing ending in this context) | 101 | 5.13 % | VERB 59, ADJ 42 | 같이 → 같이/ADV | gold 같다/ADJ ×12<br>없이 → 없이/ADV | gold 없다/ADJ ×12<br>달리 → 달리/ADV | gold 다르다/ADJ ×6<br>끊임없이 → 끊임없이/ADV | gold 끊임없다/ADJ ×3<br>살펴본다 → 살펴보다/VERB | gold 살피다/VERB ×2<br>알아본다 → 알아보다/VERB | gold 알다/VERB ×2<br>늘어났다 → 늘어나다/VERB | gold 늘다/VERB ×2<br>빼놓을 → 빼놓다/VERB | gold 빼다/VERB ×2 |
+| 6 | right reading ranked below the first: wrong class (DET first, gold ADJ) | 89 | 4.52 % | ADJ 89 | 다른 → 다른/DET | gold 다르다/ADJ ×34<br>이런 → 이런/DET | gold 이렇다/ADJ ×24<br>그런 → 그런/DET | gold 그렇다/ADJ ×22<br>어떤 → 어떤/DET | gold 어떻다/ADJ ×5<br>오랜 → 오랜/DET | gold 오래다/ADJ ×2<br>아무런 → 아무런/DET | gold 아무렇다/ADJ<br>이상한 → 이상한/DET | gold 이상하다/ADJ |
+| 7 | form not explained although every ending is known elsewhere (stem form not reachable: irregular, contraction or spacing) | 71 | 3.61 % | NOUN 41, VERB 17, ADJ 5, PROPN 2 | 구체적인 → 구체적인/NOUN (unconfirmed) | gold 구체/NOUN ×12<br>인간적인 → 인간적인/NOUN (unconfirmed) | gold 인간/NOUN ×3<br>속엔 → 속엔/X (unconfirmed) | gold 속/NOUN ×2<br>사람들이다 → 사람들이/NOUN (unconfirmed) | gold 사람/NOUN ×2<br>부딛치는 → 부딛치/NOUN (unconfirmed) | gold 부딪치다/VERB<br>생각해서인지 → 생각해서인지/NOUN (unconfirmed) | gold 생각하다/VERB<br>얹혀서 → 얹혀서/X (unconfirmed) | gold 얹다/VERB<br>아가씨들이다 → 아가씨들이/NOUN (unconfirmed) | gold 아가씨/NOUN |
 | 8 | right reading ranked below the first: another headword of the same class and spelling | 66 | 3.35 % | VERB 38, PRON 13, NOUN 13, ADV 1 | 내가 → 나/PRON | gold 내/PRON ×10<br>등에 → 등에/NOUN | gold 등/NOUN ×5<br>이루어지지 → 이루어지다/VERB | gold 이루다/VERB ×5<br>이루어지는 → 이루어지다/VERB | gold 이루다/VERB ×4<br>후의 → 후의/NOUN | gold 후/NOUN ×3<br>내 → 나/PRON | gold 내/PRON ×3<br>이루어질 → 이루어지다/VERB | gold 이루다/VERB ×2<br>이루어진다 → 이루어지다/VERB | gold 이루다/VERB ×2 |
-| 9 | headword missing from the lexicon (PROPN) | 63 | 3.19 % | PROPN 63 | 이승만 → 이승/NOUN | gold 이승만/PROPN ×2<br>보신각의 → 보다/VERB | gold 보신각/PROPN<br>보신각에서 → 보다/VERB | gold 보신각/PROPN<br>흥화문이라는 → 흥화/NOUN | gold 흥화문/PROPN<br>간도로 → 가다/VERB | gold 간도/PROPN<br>연동 → 열다/VERB | gold 연동/PROPN<br>게일 → 게/NOUN | gold 게일/PROPN<br>밀러 → 밀다/VERB | gold 밀러/PROPN |
-| 10 | right reading ranked below the first: predicate read as noun | 49 | 2.48 % | VERB 39, ADJ 7, AUX 3 | 한 → 한/NUM | gold 하다/VERB ×14<br>나와 → 나/PRON | gold 나오다/VERB ×6<br>어려움을 → 어려움/NOUN | gold 어렵다/ADJ ×3<br>두는 → 두/NUM | gold 두다/VERB ×2<br>나니까요 → 나/PRON | gold 나다/VERB<br>여기는 → 여기/PRON | gold 여기다/VERB<br>잡기가 → 잡기/NOUN | gold 잡다/VERB<br>하는 → 하/NOUN | gold 하다/VERB |
+| 9 | headword missing from the lexicon (PROPN) | 63 | 3.20 % | PROPN 63 | 이승만 → 이승/NOUN | gold 이승만/PROPN ×2<br>보신각의 → 보다/VERB | gold 보신각/PROPN<br>보신각에서 → 보다/VERB | gold 보신각/PROPN<br>흥화문이라는 → 흥화/NOUN | gold 흥화문/PROPN<br>간도로 → 가다/VERB | gold 간도/PROPN<br>연동 → 열다/VERB | gold 연동/PROPN<br>게일 → 게/NOUN | gold 게일/PROPN<br>밀러 → 밀다/VERB | gold 밀러/PROPN |
+| 10 | right reading ranked below the first: predicate read as noun | 49 | 2.49 % | VERB 39, ADJ 7, AUX 3 | 한 → 한/NUM | gold 하다/VERB ×14<br>나와 → 나/PRON | gold 나오다/VERB ×6<br>어려움을 → 어려움/NOUN | gold 어렵다/ADJ ×3<br>두는 → 두/NUM | gold 두다/VERB ×2<br>나니까요 → 나/PRON | gold 나다/VERB<br>여기는 → 여기/PRON | gold 여기다/VERB<br>잡기가 → 잡기/NOUN | gold 잡다/VERB<br>하는 → 하/NOUN | gold 하다/VERB |
 | 11 | annotation scheme: derived-verb, headword absent from the lexicon, and the first reading does NOT name the light verb (the rest of the 어절 is read as a particle or ending of the noun) | 38 | 1.93 % | VERB 38 | 악용되기도 → 악용/NOUN | gold 악용되다/VERB ×2<br>결성하여 → 결성/NOUN | gold 결성하다/VERB<br>통용되는 → 통용/NOUN | gold 통용되다/VERB<br>악용되어 → 악용/NOUN | gold 악용되다/VERB<br>퇴색하고 → 퇴색/NOUN (unconfirmed) | gold 퇴색하다/VERB<br>통용되었다 → 통용/NOUN | gold 통용되다/VERB<br>동참하고 → 동참/NOUN (unconfirmed) | gold 동참하다/VERB<br>거듭되었다 → 거듭/ADV | gold 거듭되다/VERB |
 | 12 | right reading ranked below the first: noun read as predicate | 27 | 1.37 % | NOUN 11, PROPN 9, CLF 5, NUM 1 | 알 → 알다/VERB | gold 알/PROPN ×6<br>가지다 → 가지다/VERB | gold 가지/CLF ×5<br>운 → 울다/VERB | gold 운/NOUN<br>입을 → 입다/VERB | gold 입/NOUN<br>한 → 하다/VERB | gold 한/NUM<br>요한 → 요하다/VERB | gold 요한/PROPN<br>막을 → 막다/VERB | gold 막/NOUN<br>벌일 → 벌이다/VERB | gold 벌/NOUN |
 | 13 | form not explained: an ending or particle the analyser never produced | 24 | 1.22 % | VERB 11, NOUN 7, AUX 3, ADJ 2 | 지적세계의 → 지적세계/NOUN (unconfirmed) | gold 지/NOUN<br>법적통제 → 법적통제/NOUN (unconfirmed) | gold 법/NOUN<br>사이엔 → 사이엔/X (unconfirmed) | gold 사이/NOUN<br>보게나 → 보게/NOUN (unconfirmed) | gold 보다/VERB<br>된단 → 된단/X (unconfirmed) | gold 되다/VERB<br>되었던가 → 되었던/NOUN (unconfirmed) | gold 되다/AUX<br>입었데도 → 입었데/NOUN (unconfirmed) | gold 입다/VERB<br>줌세 → 줌세/X (unconfirmed) | gold 주다/AUX |
@@ -280,8 +280,8 @@ First reading confidence >= 0.8, not unconfirmed, headword wrong against strict 
 | 16 | headword missing from the lexicon (ADV) | 18 | 0.91 % | ADV 18 | 이렇듯 → 이렇다/ADJ | gold 이렇듯/ADV ×3<br>가차없이 → 가차/NOUN | gold 가차없이/ADV ×2<br>오래도록 → 오래다/ADJ | gold 오래도록/ADV<br>오래오래 → 오래다/ADJ | gold 오래오래/ADV<br>그렇듯 → 그렇다/ADJ | gold 그렇듯/ADV<br>뿌리채 → 뿌리/NOUN | gold 뿌리채/ADV<br>휘둘러 → 휘두르다/VERB | gold 휘둘러/ADV<br>하기야 → 하다/VERB | gold 하기야/ADV |
 | 17 | right reading ranked below the first: wrong class (VERB first, gold ADJ) | 15 | 0.76 % | ADJ 15 | 없어지고 → 없어지다/VERB | gold 없다/ADJ ×2<br>없어졌다 → 없어지다/VERB | gold 없다/ADJ ×2<br>없어져 → 없어지다/VERB | gold 없다/ADJ<br>커지자 → 커지다/VERB | gold 크다/ADJ<br>많아지자 → 많아지다/VERB | gold 많다/ADJ<br>거칠게 → 거치다/VERB | gold 거칠다/ADJ<br>좋아졌지만 → 좋아지다/VERB | gold 좋다/ADJ<br>높아진 → 높아지다/VERB | gold 높다/ADJ |
 | 18 | right reading ranked below the first: wrong class (ADV first, gold VERB) | 13 | 0.66 % | VERB 13 | 이어 → 이어/ADV | gold 잇다/VERB ×6<br>더불어 → 더불어/ADV | gold 더불다/VERB ×6<br>앞서 → 앞서/ADV | gold 앞서다/VERB |
-| 19 | headword present, never produced: another analysis of the nominal preferred, whole headword not read | 10 | 0.51 % | NOUN 5, PRON 2, NUM 2, CLF 1 | 제게 → 저/PRON | gold 제/PRON<br>수천가지가 → 수천가/NOUN | gold 수천/NUM<br>한마디로 → 한마디/NOUN | gold 한/NUM<br>테야 → 테/NOUN | gold 터/NOUN<br>대로 → 대로/NOUN | gold 데/NOUN<br>겁니다 → 거/NOUN | gold 것/NOUN<br>건 → 거/NOUN | gold 것/NOUN<br>년간의 → 년간/NOUN | gold 년/CLF |
-| 20 | headword missing from the lexicon (CONJ) | 7 | 0.35 % | CONJ 7 | 말하자면 → 말하자/NOUN (unconfirmed) | gold 말하자면/CONJ ×2<br>그러면서 → 그렇다/ADJ | gold 그러면서/CONJ ×2<br>그러면서도 → 그렇다/ADJ | gold 그러면서/CONJ<br>그렇다면 → 그렇다/ADJ | gold 그렇다면/CONJ<br>이러니 → 이렇다/ADJ | gold 이러니/CONJ |
+| 19 | headword present, never produced: another analysis of the nominal preferred, whole headword not read | 9 | 0.46 % | NOUN 4, PRON 2, NUM 2, CLF 1 | 제게 → 저/PRON | gold 제/PRON<br>수천가지가 → 수천가/NOUN | gold 수천/NUM<br>한마디로 → 한마디/NOUN | gold 한/NUM<br>대로 → 대로/NOUN | gold 데/NOUN<br>겁니다 → 거/NOUN | gold 것/NOUN<br>건 → 거/NOUN | gold 것/NOUN<br>년간의 → 년간/NOUN | gold 년/CLF<br>뭔가 → 뭐/PRON | gold 무어/PRON |
+| 20 | headword missing from the lexicon (CONJ) | 7 | 0.36 % | CONJ 7 | 말하자면 → 말하자/NOUN (unconfirmed) | gold 말하자면/CONJ ×2<br>그러면서 → 그렇다/ADJ | gold 그러면서/CONJ ×2<br>그러면서도 → 그렇다/ADJ | gold 그러면서/CONJ<br>그렇다면 → 그렇다/ADJ | gold 그렇다면/CONJ<br>이러니 → 이렇다/ADJ | gold 이러니/CONJ |
 | 21 | right reading ranked below the first: wrong class (VERB first, gold DET) | 5 | 0.25 % | DET 5 | 온 → 오다/VERB | gold 온/DET ×3<br>본 → 보다/VERB | gold 본/DET ×2 |
 | 22 | right reading ranked below the first: wrong class (CONJ first, gold VERB) | 5 | 0.25 % | VERB 5 | 따라서 → 따라서/CONJ | gold 따르다/VERB ×2<br>하지만 → 하지만/CONJ | gold 하다/VERB ×2<br>그러자 → 그러자/CONJ | gold 그러다/VERB |
 | 23 | headword in the lexicon only under another class (gold DET; lexicon XPN/NOUN/PRON/XSN) | 5 | 0.25 % | DET 5 | 제 → 저/PRON | gold 제/DET ×5 |
@@ -299,19 +299,18 @@ First reading confidence >= 0.8, not unconfirmed, headword wrong against strict 
 | 35 | right reading ranked below the first: wrong class (PRON first, gold DET) | 2 | 0.10 % | DET 2 | 전 → 저/PRON | gold 전/DET ×2 |
 | 36 | headword in the lexicon only under another class (gold CONJ; lexicon ADV/NOUN) | 2 | 0.10 % | CONJ 2 | 내지 → 내다/VERB | gold 내지/CONJ ×2 |
 | 37 | headword in the lexicon only under another class (gold DET; lexicon PRON/NOUN/ADV/XPN) | 1 | 0.05 % | DET 1 | 내 → 나/PRON | gold 내/DET |
-| 38 | headword missing from the lexicon (CLF) | 1 | 0.05 % | CLF 1 | 줌의 → 주다/VERB | gold 줌/CLF |
-| 39 | right reading ranked below the first: wrong class (ADJ first, gold ADV) | 1 | 0.05 % | ADV 1 | 이렇게 → 이렇다/ADJ | gold 이렇게/ADV |
-| 40 | headword in the lexicon only under another class (gold DET; lexicon NOUN) | 1 | 0.05 % | DET 1 | 제반요인들이 → 제반요인들이/NOUN (unconfirmed) | gold 제반/DET |
-| 41 | right reading ranked below the first: wrong class (PRON first, gold NOUN) | 1 | 0.05 % | NOUN 1 | 내 → 나/PRON | gold 내/NOUN |
-| 42 | headword in the lexicon only under another class (gold CONJ; lexicon ADV) | 1 | 0.05 % | CONJ 1 | 때문에, → 때문/NOUN | gold 때문에/CONJ |
-| 43 | right reading ranked below the first: wrong class (PROPN first, gold NOUN) | 1 | 0.05 % | NOUN 1 | 가의 → 가의/PROPN | gold 가/NOUN |
-| 44 | right reading ranked below the first: wrong class (CONJ first, gold ADJ) | 1 | 0.05 % | ADJ 1 | 그렇지만 → 그렇지만/CONJ | gold 그렇다/ADJ |
-| 45 | headword in the lexicon only under another class (gold NOUN; lexicon ADV) | 1 | 0.05 % | NOUN 1 | 그나마의 → 그/PRON | gold 그나마/NOUN |
-| 46 | right reading ranked below the first: wrong class (PRON first, gold PROPN) | 1 | 0.05 % | PROPN 1 | 누가 → 누구/PRON | gold 누가/PROPN |
+| 38 | right reading ranked below the first: wrong class (ADJ first, gold ADV) | 1 | 0.05 % | ADV 1 | 이렇게 → 이렇다/ADJ | gold 이렇게/ADV |
+| 39 | headword in the lexicon only under another class (gold DET; lexicon NOUN) | 1 | 0.05 % | DET 1 | 제반요인들이 → 제반요인들이/NOUN (unconfirmed) | gold 제반/DET |
+| 40 | right reading ranked below the first: wrong class (PRON first, gold NOUN) | 1 | 0.05 % | NOUN 1 | 내 → 나/PRON | gold 내/NOUN |
+| 41 | headword in the lexicon only under another class (gold CONJ; lexicon ADV) | 1 | 0.05 % | CONJ 1 | 때문에, → 때문/NOUN | gold 때문에/CONJ |
+| 42 | right reading ranked below the first: wrong class (PROPN first, gold NOUN) | 1 | 0.05 % | NOUN 1 | 가의 → 가의/PROPN | gold 가/NOUN |
+| 43 | right reading ranked below the first: wrong class (CONJ first, gold ADJ) | 1 | 0.05 % | ADJ 1 | 그렇지만 → 그렇지만/CONJ | gold 그렇다/ADJ |
+| 44 | headword in the lexicon only under another class (gold NOUN; lexicon ADV) | 1 | 0.05 % | NOUN 1 | 그나마의 → 그/PRON | gold 그나마/NOUN |
+| 45 | right reading ranked below the first: wrong class (PRON first, gold PROPN) | 1 | 0.05 % | PROPN 1 | 누가 → 누구/PRON | gold 누가/PROPN |
 
 ### Headwords missing from the lexicon: the 80 commonest
 
-731 tokens, 565 distinct headword/class pairs. By gold class: VERB 312, NOUN 209, ADJ 111, PROPN 63, ADV 18, CONJ 7, DET 4, INTJ 3, PRON 3, CLF 1. "Missing" = no row of that headword (any homonym) under a compatible class in the core or in any shard loaded.
+730 tokens, 564 distinct headword/class pairs. By gold class: VERB 312, NOUN 209, ADJ 111, PROPN 63, ADV 18, CONJ 7, DET 4, INTJ 3, PRON 3. "Missing" = no row of that headword (any homonym) under a compatible class in the core or in any shard loaded.
 
 | headword/class | tokens |
 |---|---|
@@ -430,8 +429,8 @@ From the "form not explained" class: gold chain morphemes (normalised) that no r
 
 | mode | adapter | sentences | scored | (a) strict | (a') lenient | (b) any | (c) pos | (e) unconfirmed | (e') confident+wrong | exact chain | order violations | tokens/s |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
-| token | - | 2066 | 21945 | 90.59 % | 93.84 % | 92.67 % | 83.97 % | 13.67 % | 5.13 % | 89.09 % | 0 | 1457 |
-| adapter | adapter ko@1 | 2066 | 21945 | 91.01 % | 94.22 % | 92.68 % | 87.59 % | 13.66 % | 4.72 % | 89.53 % | 0 | 532 |
+| token | - | 2066 | 21945 | 90.60 % | 93.84 % | 92.68 % | 83.98 % | 13.67 % | 5.13 % | 89.09 % | 0 | 664 |
+| adapter | adapter ko@1 | 2066 | 21945 | 91.03 % | 94.23 % | 92.69 % | 87.62 % | 13.66 % | 4.70 % | 89.56 % | 0 | 481 |
 
 ## What this does not measure
 

@@ -14,6 +14,16 @@ the sentences of block K with 겁니다 (갈, 먹을, 올, 제), 겁니까 (언�
 Added 2026-11-27 (older than every round, found by the release manager's reading): 문을 걸어 잠갔다 and 벽에 그림을 걸어 놓았어요
 read 걷다 "to walk" where the word is 걸다 "to hang, to lock". Both are held from review (the word list also has 걸다) and listed.
 
+## Hand corrections (2026-11-27, `korean/pins.ts`)
+
+Every confidently wrong reading of a real sentence in this table was corrected by hand: 크다 "grew", 국가 "anthem", 자신
+"confidence", 과정 "course", 위 "stomach", 주장 "captain", 부르다 "full", 완전 "totally", 꼭 "tightly", 선 "goodness", 돌
+"first birthday", 성 "castle", 창 "spear", 걸어 (걸다), 빚은 (빚다); with the deck audit's 보다 "more", 줌 "handful"
+(added to the lexicon), 테야 (터) and 원치 (원하다). With every shard 116 of 14,160 checks are still wrong or undecided
+(131 before), with the core alone 159 of 14,198 (173). What still reads confidently "wrong" in the table is only in its
+generated frames, where the wanted word is one nobody writes that way (거 as a pronoun, 삼다 as a noun, 오 as a surname
+before a particle, 오래 before 이): the analyser's reading there is the one a reader would expect, so they are left.
+
 ## Method
 
 - Expectations are what a careful Korean teacher would say the word is, decided before the analyser was run; a corrected expectation is listed below. Nothing has been reviewed by a native speaker.

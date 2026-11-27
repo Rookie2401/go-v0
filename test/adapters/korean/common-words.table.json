@@ -1,6 +1,6 @@
 {
   "note": "Package W common-word sweep (test/adapters/korean/common-words.test.ts). entries and blocks are hand-written (expectations decided before the analyser was run; a corrected expectation says so in its note); frameNouns is generated from the lexicon by tmp-mem/ko-sweep/merge.mts: every noun and pronoun of the entries and blocks, then the 400 commonest one- and two-syllable lexicon nouns. known / frameKnown: the checks wrong when the table was written (word|bare|state, word|sN|state, B or C|sentence|token|state, F|noun|frame|bare or sent|state); the test fails when one starts passing.",
-  "known": ["P|문을 걸어 잠갔다.|걸어@core","P|문을 걸어 잠갔다.|걸어@shards","P|벽에 그림을 걸어 놓았어요.|걸어@core","P|벽에 그림을 걸어 놓았어요.|걸어@shards",
+  "known": [
     "B|그는 힘이 세요.|세요@core",
     "B|그는 힘이 세요.|세요@shards",
     "B|이 주 동안 휴가예요.|주@core",
@@ -43,30 +43,30 @@
     "감|s1@shards",
     "같이|s1@core",
     "같이|s1@shards",
-    "과정|s1@core",
-    "과정|s1@shards",
+    
+    
     "구|s1@core",
     "구|s1@shards",
     "구조|s1@core",
     "구조|s1@shards",
-    "국가|s1@core",
-    "국가|s1@shards",
+    
+    
     "군|s0@core",
     "군|s0@shards",
     "군|s1@core",
     "군|s1@shards",
     "김|s1@core",
     "김|s1@shards",
-    "꼭|s1@core",
-    "꼭|s1@shards",
+    
+    
     "남|s1@core",
     "남|s1@shards",
     "대|s0@core",
     "대|s0@shards",
     "대|s1@core",
     "대|s1@shards",
-    "돌|s1@core",
-    "돌|s1@shards",
+    
+    
     "들었어요|s0@core",
     "들었어요|s0@shards",
     "등|s0@core",
@@ -106,19 +106,19 @@
     "보이다|s1@shards",
     "본|s0@core",
     "본|s0@shards",
-    "부르다|s1@shards",
+    
     "사|bare@core",
     "사|bare@shards",
     "산|s2@core",
     "산|s2@shards",
     "상|s1@core",
     "상|s1@shards",
-    "선|s1@core",
-    "선|s1@shards",
+    
+    
     "성|s0@core",
     "성|s0@shards",
-    "성|s1@core",
-    "성|s1@shards",
+    
+    
     "신|s0@core",
     "신|s0@shards",
     "신|s1@core",
@@ -137,9 +137,9 @@
     "아니면|s1@shards",
     "온|s0@core",
     "온|s0@shards",
-    "완전|s0@shards",
-    "위|s1@core",
-    "위|s1@shards",
+    
+    
+    
     "의식|s0@core",
     "의식|s0@shards",
     "의식|s1@core",
@@ -152,8 +152,8 @@
     "잇다|s1@shards",
     "자|s1@core",
     "자|s1@shards",
-    "자신|s1@core",
-    "자신|s1@shards",
+    
+    
     "장|s1@core",
     "장|s1@shards",
     "재|s0@core",
@@ -170,16 +170,16 @@
     "주|s0@shards",
     "주|s1@core",
     "주|s1@shards",
-    "주장|s1@core",
-    "주장|s1@shards",
+    
+    
     "쪽|s0@core",
     "쪽|s0@shards",
     "쪽|s1@core",
     "쪽|s1@shards",
     "차|s1@core",
     "차|s1@shards",
-    "창|s1@core",
-    "창|s1@shards",
+    
+    
     "천|s1@core",
     "천|s1@shards",
     "철|s0@core",
@@ -188,8 +188,8 @@
     "철|s1@shards",
     "초|s1@core",
     "초|s1@shards",
-    "크다|s1@core",
-    "크다|s1@shards",
+    
+    
     "키|s1@core",
     "키|s1@shards",
     "타|s1@core",
@@ -2017,7 +2017,7 @@
     "T|대가|s0@core",
     "T|대가|s0@shards",
     "T|불은|s1@shards",
-    "T|빚은|s1@core",
+    
     "T|산|s1@core",
     "T|산|s1@shards",
     "T|속도|s0@core",

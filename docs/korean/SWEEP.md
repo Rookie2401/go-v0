@@ -2,6 +2,15 @@
 
 The regression table for the commonest Korean words (package W): `test/adapters/korean/common-words.table.json`, checked by `test/adapters/korean/common-words.test.ts`.
 
+## Since the list below (2026-11-27)
+
+The counts and the known-limits list further down were written at 40895780. At `de336fe4` (the contracted copula and the
+rare-rival rule, `docs/korean/PLAN.md`) fourteen of those lines are right in both lexicon states and are no longer limits:
+the sentences of block K with 겁니다 (갈, 먹을, 올, 제), 겁니까 (언제, 누구), 건데요, 거니까, 접니다 (누구세요?), 뭡니까,
+얼맙니까, 누굽니까, 어딥니까 and 친굽니다. Wrong now: with every shard 129 of 14,158 checks (143 before), with the core alone
+171 of 14,196 (185). The test's own known lists (`common-words.table.json`) are the current record; nothing was added to them.
+그는 다리를 접니다 stays listed. The two-sided gate is unchanged.
+
 ## Method
 
 - Expectations are what a careful Korean teacher would say the word is, decided before the analyser was run; a corrected expectation is listed below. Nothing has been reviewed by a native speaker.

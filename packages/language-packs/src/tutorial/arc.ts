@@ -1,11 +1,11 @@
 /**
  * Minimal, AI-drafted orientation to Biblical Aramaic. It is not a grammar course and has not been checked by a specialist.
- * The short practice example is from Daniel 2:4 in the WLC text; it is Biblical text, not newly composed dialogue.
+ * The short practice example is a two-word phrase from Daniel 2:4 in the WLC text; it is Biblical text, not newly composed dialogue.
  */
 import { orientation } from './orientation';
 import type { Tutorial, TutorialStep } from './types';
 
-const DAN_2_4 = "מַלְכָּא֙ לְעָלְמִ֣ין חֱיִ֔י אֱמַ֥ר חֶלְמָ֛א לְעַבְדָ֖ךְ וּפִשְׁרָ֥א נְחַוֵּֽא׃";
+const DAN_2_4 = "מַלְכָּא֙ לְעָלְמִ֣ין";
 
 export const ARC_TUTORIAL_STEPS_OWN: TutorialStep[] = [
   {
@@ -60,7 +60,7 @@ export const ARC_TUTORIAL: Tutorial = orientation({
   languageId: 'arc',
   languageName: 'Aramaic',
   practice: {
-    instruction: 'Select the word for “king” in this excerpt from Daniel 2:4 and look at its noun state.',
+    instruction: 'Select the word for “king” in this phrase from Daniel 2:4 and look at its noun state.',
     sentence: DAN_2_4,
     target: 'מַלְכָּא֙',
   },

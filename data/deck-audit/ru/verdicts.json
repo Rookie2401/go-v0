@@ -1,20 +1,6 @@
 {
  "readBy": "AI models (Claude), not native speakers; each card judged once, in the first sentence it came from, against the brief in docs/ecosystem/DECK-GATE.md. 2026-11-26.",
- "residual": [
-  "form:ru:за",
-  "form:ru:линия",
-  "form:ru:нельзя",
-  "form:ru:проезд",
-  "lemma:ru:душа:NOUN",
-  "lemma:ru:за:ADP",
-  "lemma:ru:нельзя:ADJ",
-  "lemma:ru:повод:NOUN",
-  "lemma:ru:получиться:VERB",
-  "lemma:ru:проезд:NOUN",
-  "lemma:ru:разводить:VERB",
-  "lemma:ru:село:NOUN",
-  "lemma:ru:уборка:NOUN"
- ],
+ "residual": [],
  "cards": {
   "form:ru:автобус": [
    {
@@ -38,6 +24,11 @@
    {
     "shown": "chemist (store); drugstore; pharmacy",
     "v": "ok"
+   },
+   {
+    "shown": "chemist (store)",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:ru:бабушка": [
@@ -74,6 +65,12 @@
   "form:ru:безработица": [
    {
     "shown": "unemployment",
+    "v": "ok"
+   }
+  ],
+  "form:ru:бельё": [
+   {
+    "shown": "underwear, skivvies, underclothes, undergarment, undies",
     "v": "ok"
    }
   ],
@@ -139,6 +136,12 @@
     "note": "shown is only a grammar note, not a meaning (в = in, into)"
    }
   ],
+  "form:ru:варенье": [
+   {
+    "shown": "jam, varenye",
+    "v": "ok"
+   }
+  ],
   "form:ru:вдвое": [
    {
     "shown": "twice",
@@ -187,6 +190,12 @@
     "v": "ok"
    }
   ],
+  "form:ru:вниз": [
+   {
+    "shown": "downwards",
+    "v": "ok"
+   }
+  ],
   "form:ru:во": [
    {
     "shown": "to, into",
@@ -218,6 +227,12 @@
     "note": "воздух means air; air raid siren is a marginal sense"
    }
   ],
+  "form:ru:возле": [
+   {
+    "shown": "beside, by, near",
+    "v": "ok"
+   }
+  ],
   "form:ru:впервые": [
    {
     "shown": "for the first time",
@@ -234,6 +249,31 @@
    {
     "shown": "always",
     "v": "ok"
+   }
+  ],
+  "form:ru:выбрать": [
+   {
+    "shown": "to choose, to select",
+    "v": "ok"
+   }
+  ],
+  "form:ru:выйти": [
+   {
+    "shown": "to exit, to go out",
+    "v": "ok"
+   }
+  ],
+  "form:ru:выпить": [
+   {
+    "shown": "to drink, to drink up",
+    "v": "ok"
+   }
+  ],
+  "form:ru:выставка": [
+   {
+    "shown": "exhibiting, showing",
+    "v": "false-meaning",
+    "note": "выставка is mainly 'exhibition'; 'exhibiting, showing' is the act sense only"
    }
   ],
   "form:ru:где": [
@@ -266,9 +306,33 @@
     "v": "ok"
    }
   ],
+  "form:ru:губа": [
+   {
+    "shown": "lip",
+    "v": "ok"
+   }
+  ],
   "form:ru:давно": [
    {
     "shown": "long ago",
+    "v": "ok"
+   }
+  ],
+  "form:ru:даже": [
+   {
+    "shown": "even",
+    "v": "ok"
+   }
+  ],
+  "form:ru:дар": [
+   {
+    "shown": "gift, present",
+    "v": "ok"
+   }
+  ],
+  "form:ru:движение": [
+   {
+    "shown": "movement, motion",
     "v": "ok"
    }
   ],
@@ -281,6 +345,12 @@
   "form:ru:девочка": [
    {
     "shown": "girl",
+    "v": "ok"
+   }
+  ],
+  "form:ru:дед": [
+   {
+    "shown": "grandfather",
     "v": "ok"
    }
   ],
@@ -345,6 +415,12 @@
     "v": "ok"
    }
   ],
+  "form:ru:дом": [
+   {
+    "shown": "house, building (a residential building)",
+    "v": "ok"
+   }
+  ],
   "form:ru:домой": [
    {
     "shown": "home, homewards, to the house",
@@ -360,6 +436,12 @@
   "form:ru:дядя": [
    {
     "shown": "uncle",
+    "v": "ok"
+   }
+  ],
+  "form:ru:едва": [
+   {
+    "shown": "hardly, barely",
     "v": "ok"
    }
   ],
@@ -380,6 +462,11 @@
    {
     "shown": "to expect",
     "v": "ok"
+   },
+   {
+    "shown": "to wait for (to stay where one is or delay action)",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:ru:же": [
@@ -424,6 +511,18 @@
     "v": "ok"
    }
   ],
+  "form:ru:загрузить": [
+   {
+    "shown": "to load",
+    "v": "ok"
+   }
+  ],
+  "form:ru:заклеить": [
+   {
+    "shown": "to glue up, to stick up",
+    "v": "ok"
+   }
+  ],
   "form:ru:зал": [
    {
     "shown": "hall",
@@ -433,6 +532,18 @@
   "form:ru:здесь": [
    {
     "shown": "here",
+    "v": "ok"
+   }
+  ],
+  "form:ru:зелень": [
+   {
+    "shown": "greenery, verdure (vegetation)",
+    "v": "ok"
+   }
+  ],
+  "form:ru:зуб": [
+   {
+    "shown": "tooth",
     "v": "ok"
    }
   ],
@@ -454,9 +565,21 @@
     "v": "ok"
    }
   ],
+  "form:ru:изменить": [
+   {
+    "shown": "to change, to alter, to modify",
+    "v": "ok"
+   }
+  ],
   "form:ru:или": [
    {
     "shown": "or",
+    "v": "ok"
+   }
+  ],
+  "form:ru:иначе": [
+   {
+    "shown": "differently, in a different way; otherwise",
     "v": "ok"
    }
   ],
@@ -469,6 +592,12 @@
   "form:ru:картофель": [
    {
     "shown": "potatoes",
+    "v": "ok"
+   }
+  ],
+  "form:ru:касса": [
+   {
+    "shown": "pay desk, cash desk, checkout",
     "v": "ok"
    }
   ],
@@ -487,6 +616,12 @@
   "form:ru:квартал": [
    {
     "shown": "quarter (of a year)",
+    "v": "ok"
+   }
+  ],
+  "form:ru:колесо": [
+   {
+    "shown": "wheel",
     "v": "ok"
    }
   ],
@@ -514,9 +649,21 @@
     "v": "ok"
    }
   ],
+  "form:ru:кошелёк": [
+   {
+    "shown": "wallet, purse, billfold",
+    "v": "ok"
+   }
+  ],
   "form:ru:кошка": [
    {
     "shown": "cat",
+    "v": "ok"
+   }
+  ],
+  "form:ru:красить": [
+   {
+    "shown": "to color, to paint, to dye",
     "v": "ok"
    }
   ],
@@ -529,6 +676,18 @@
   "form:ru:кроме": [
    {
     "shown": "except, besides",
+    "v": "ok"
+   }
+  ],
+  "form:ru:кто-то": [
+   {
+    "shown": "somebody",
+    "v": "ok"
+   }
+  ],
+  "form:ru:куда": [
+   {
+    "shown": "where?",
     "v": "ok"
    }
   ],
@@ -573,6 +732,11 @@
     "shown": "a cloth hall",
     "v": "false-meaning",
     "note": "линия means line; cloth hall is not a sense"
+   },
+   {
+    "shown": "line (path through two or more points, or figuratively)",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:ru:ловить": [
@@ -608,6 +772,16 @@
   "form:ru:мама": [
    {
     "shown": "mama, mummy, mommy, mum, mom (mother)",
+    "v": "ok"
+   }
+  ],
+  "form:ru:материал": [
+   {
+    "shown": "material (matter from which physical things are made or which is otherwise used…",
+    "v": "ok"
+   },
+   {
+    "shown": "material",
     "v": "ok"
    }
   ],
@@ -689,6 +863,12 @@
     "v": "ok"
    }
   ],
+  "form:ru:над": [
+   {
+    "shown": "above, over",
+    "v": "ok"
+   }
+  ],
   "form:ru:надеть": [
    {
     "shown": "to put on, to get on",
@@ -724,6 +904,10 @@
     "shown": "it is impossible (perfective aspect)",
     "v": "false-meaning",
     "note": "нельзя means one must not/it is not allowed (or impossible); perfective aspect label is nonsense for an adverbial predicate"
+   },
+   {
+    "shown": "one cannot",
+    "v": "ok"
    }
   ],
   "form:ru:несколько": [
@@ -756,6 +940,10 @@
     "shown": "nominal number",
     "v": "false-meaning",
     "note": "номер means number (issue, hotel room); 'nominal number' is misleading"
+   },
+   {
+    "shown": "number (various senses)",
+    "v": "ok"
    }
   ],
   "form:ru:нужно": [
@@ -796,6 +984,12 @@
     "v": "ok"
    }
   ],
+  "form:ru:одеяло": [
+   {
+    "shown": "blanket, counterpane",
+    "v": "ok"
+   }
+  ],
   "form:ru:окно": [
    {
     "shown": "window",
@@ -826,9 +1020,33 @@
     "v": "ok"
    }
   ],
+  "form:ru:осень": [
+   {
+    "shown": "autumn, fall",
+    "v": "ok"
+   }
+  ],
   "form:ru:особенно": [
    {
     "shown": "especially",
+    "v": "ok"
+   }
+  ],
+  "form:ru:оставить": [
+   {
+    "shown": "to leave, to leave alone",
+    "v": "ok"
+   }
+  ],
+  "form:ru:оставлять": [
+   {
+    "shown": "to leave, to leave alone",
+    "v": "ok"
+   }
+  ],
+  "form:ru:отделение": [
+   {
+    "shown": "department, division, branch",
     "v": "ok"
    }
   ],
@@ -838,9 +1056,21 @@
     "v": "ok"
    }
   ],
+  "form:ru:открыть": [
+   {
+    "shown": "to open",
+    "v": "ok"
+   }
+  ],
   "form:ru:отпуск": [
    {
     "shown": "leave, vacation, holiday, furlough",
+    "v": "ok"
+   }
+  ],
+  "form:ru:отремонтировать": [
+   {
+    "shown": "to repair, to refit, to recondition",
     "v": "ok"
    }
   ],
@@ -853,6 +1083,12 @@
   "form:ru:очень": [
    {
     "shown": "very, really, much, very much",
+    "v": "ok"
+   }
+  ],
+  "form:ru:очередь": [
+   {
+    "shown": "queue, line",
     "v": "ok"
    }
   ],
@@ -881,6 +1117,18 @@
     "note": "парк means park; steaming belongs to a different word"
    }
   ],
+  "form:ru:паспорт": [
+   {
+    "shown": "passport",
+    "v": "ok"
+   }
+  ],
+  "form:ru:перевести": [
+   {
+    "shown": "to lead, to convey, to transfer",
+    "v": "ok"
+   }
+  ],
   "form:ru:перед": [
    {
     "shown": "in front of, before",
@@ -904,6 +1152,17 @@
     "shown": "clothes, clothing",
     "v": "false-meaning",
     "note": "платье means dress; 'clothes' is archaic/marginal"
+   },
+   {
+    "shown": "dress, gown, frock",
+    "v": "ok"
+   }
+  ],
+  "form:ru:пломба": [
+   {
+    "shown": "lead, seal, stamp",
+    "v": "false-meaning",
+    "note": "пломба is a seal or tooth filling; 'lead' is not its meaning"
    }
   ],
   "form:ru:площадь": [
@@ -911,6 +1170,11 @@
     "shown": "space, living space",
     "v": "false-meaning",
     "note": "площадь means square (plaza) or area; 'living space' is not the main meaning"
+   },
+   {
+    "shown": "square (open area in a town or city)",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:ru:по": [
@@ -919,9 +1183,21 @@
     "v": "ok"
    }
   ],
+  "form:ru:по-моему": [
+   {
+    "shown": "in my opinion; methinks",
+    "v": "ok"
+   }
+  ],
   "form:ru:повышать": [
    {
     "shown": "to raise, to increase, to heighten",
+    "v": "ok"
+   }
+  ],
+  "form:ru:подарок": [
+   {
+    "shown": "present, gift",
     "v": "ok"
    }
   ],
@@ -946,6 +1222,11 @@
    {
     "shown": "to ride, to drive",
     "v": "ok"
+   },
+   {
+    "shown": "to go (in a conveyance or on horseback)",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:ru:пожалуйста": [
@@ -957,6 +1238,18 @@
   "form:ru:пожить": [
    {
     "shown": "to live for a while",
+    "v": "ok"
+   }
+  ],
+  "form:ru:позавчера": [
+   {
+    "shown": "day before yesterday",
+    "v": "ok"
+   }
+  ],
+  "form:ru:поздно": [
+   {
+    "shown": "late",
     "v": "ok"
    }
   ],
@@ -990,6 +1283,12 @@
     "v": "ok"
    }
   ],
+  "form:ru:порошок": [
+   {
+    "shown": "powder",
+    "v": "ok"
+   }
+  ],
   "form:ru:посадить": [
    {
     "shown": "to seat, to set",
@@ -1005,6 +1304,12 @@
   "form:ru:посмотреть": [
    {
     "shown": "to look",
+    "v": "ok"
+   }
+  ],
+  "form:ru:посёлок": [
+   {
+    "shown": "small settlement, village",
     "v": "ok"
    }
   ],
@@ -1054,6 +1359,23 @@
    {
     "shown": "to bring (by foot), to fetch",
     "v": "ok"
+   },
+   {
+    "shown": "to bring (by foot)",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
+   }
+  ],
+  "form:ru:приступить": [
+   {
+    "shown": "to set about, to start",
+    "v": "ok"
+   }
+  ],
+  "form:ru:продлить": [
+   {
+    "shown": "to extend, to prolong, to elongate",
+    "v": "ok"
    }
   ],
   "form:ru:проезд": [
@@ -1061,11 +1383,21 @@
     "shown": "journey",
     "v": "false-meaning",
     "note": "проезд means passage/fare for travel, not journey"
+   },
+   {
+    "shown": "passage, thoroughfare",
+    "v": "ok"
    }
   ],
   "form:ru:пройти": [
    {
     "shown": "to pass, to go, to walk",
+    "v": "ok"
+   }
+  ],
+  "form:ru:прокол": [
+   {
+    "shown": "puncture, pinhole",
     "v": "ok"
    }
   ],
@@ -1087,15 +1419,39 @@
     "v": "ok"
    }
   ],
+  "form:ru:разглядывать": [
+   {
+    "shown": "to examine, to view, to scrutinize",
+    "v": "ok"
+   }
+  ],
+  "form:ru:разговаривать": [
+   {
+    "shown": "to speak, to talk",
+    "v": "ok"
+   }
+  ],
   "form:ru:рано": [
    {
     "shown": "early",
     "v": "ok"
    }
   ],
+  "form:ru:река": [
+   {
+    "shown": "river, stream",
+    "v": "ok"
+   }
+  ],
   "form:ru:ремонт": [
    {
     "shown": "repair, overhaul",
+    "v": "ok"
+   }
+  ],
+  "form:ru:ресторан": [
+   {
+    "shown": "restaurant",
     "v": "ok"
    }
   ],
@@ -1109,6 +1465,13 @@
    {
     "shown": "growth (in a living organism)",
     "v": "ok"
+   }
+  ],
+  "form:ru:руль": [
+   {
+    "shown": "rudder",
+    "v": "false-meaning",
+    "note": "руль is mainly steering wheel/handlebars; rudder is secondary"
    }
   ],
   "form:ru:с": [
@@ -1141,6 +1504,12 @@
     "v": "ok"
    }
   ],
+  "form:ru:сделать": [
+   {
+    "shown": "to make, to do",
+    "v": "ok"
+   }
+  ],
   "form:ru:сейчас": [
    {
     "shown": "now (very recently in the past)",
@@ -1166,10 +1535,21 @@
     "v": "ok"
    }
   ],
+  "form:ru:склон": [
+   {
+    "shown": "slope",
+    "v": "ok"
+   }
+  ],
   "form:ru:слишком": [
    {
     "shown": "too (more than enough), too much",
     "v": "ok"
+   },
+   {
+    "shown": "too (more than enough)",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:ru:сначала": [
@@ -1184,9 +1564,21 @@
     "v": "ok"
    }
   ],
+  "form:ru:снимать": [
+   {
+    "shown": "to take off, to take away",
+    "v": "ok"
+   }
+  ],
   "form:ru:снова": [
    {
     "shown": "anew",
+    "v": "ok"
+   }
+  ],
+  "form:ru:снять": [
+   {
+    "shown": "to take off, to take away",
     "v": "ok"
    }
   ],
@@ -1220,6 +1612,13 @@
     "v": "ok"
    }
   ],
+  "form:ru:сохранить": [
+   {
+    "shown": "to save (to write a file to a disk)",
+    "v": "false-meaning",
+    "note": "сохранить is mainly 'to preserve, keep'; file-saving is a technical sense"
+   }
+  ],
   "form:ru:спасибо": [
    {
     "shown": "thank you, thanks",
@@ -1250,6 +1649,17 @@
     "v": "ok"
    }
   ],
+  "form:ru:справка": [
+   {
+    "shown": "certificate (confirming something), note, statement, reference",
+    "v": "ok"
+   },
+   {
+    "shown": "certificate (confirming something)",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
+   }
+  ],
   "form:ru:сразу": [
    {
     "shown": "at once, simultaneously",
@@ -1275,9 +1685,21 @@
     "note": "стать means to become; to begin is a secondary sense"
    }
   ],
+  "form:ru:стоимость": [
+   {
+    "shown": "cost, value, worth",
+    "v": "ok"
+   }
+  ],
   "form:ru:стол": [
    {
     "shown": "table",
+    "v": "ok"
+   }
+  ],
+  "form:ru:судья": [
+   {
+    "shown": "judge",
     "v": "ok"
    }
   ],
@@ -1285,6 +1707,11 @@
    {
     "shown": "invoice, bill",
     "v": "ok"
+   },
+   {
+    "shown": "count (the result of a tally that reveals the number of items in a set)",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:ru:такси": [
@@ -1321,6 +1748,11 @@
    {
     "shown": "tram (passenger vehicle), streetcar",
     "v": "ok"
+   },
+   {
+    "shown": "tram (passenger vehicle)",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:ru:туда": [
@@ -1341,6 +1773,12 @@
     "v": "ok"
    }
   ],
+  "form:ru:уехать": [
+   {
+    "shown": "to go away, to drive off",
+    "v": "ok"
+   }
+  ],
   "form:ru:уже": [
    {
     "shown": "already",
@@ -1353,9 +1791,33 @@
     "v": "ok"
    }
   ],
+  "form:ru:узнать": [
+   {
+    "shown": "to recognize",
+    "v": "ok"
+   }
+  ],
+  "form:ru:уйти": [
+   {
+    "shown": "to leave, to depart",
+    "v": "ok"
+   }
+  ],
+  "form:ru:уровень": [
+   {
+    "shown": "level, standard, amount",
+    "v": "ok"
+   }
+  ],
   "form:ru:урожай": [
    {
     "shown": "crop, harvest, yield (yield of harvesting)",
+    "v": "ok"
+   }
+  ],
+  "form:ru:усталость": [
+   {
+    "shown": "weariness, tiredness, fatigue, languor, lassitude",
     "v": "ok"
    }
   ],
@@ -1368,6 +1830,12 @@
   "form:ru:учитель": [
    {
     "shown": "teacher, instructor",
+    "v": "ok"
+   }
+  ],
+  "form:ru:файл": [
+   {
+    "shown": "file",
     "v": "ok"
    }
   ],
@@ -1395,6 +1863,12 @@
     "v": "ok"
    }
   ],
+  "form:ru:цепь": [
+   {
+    "shown": "chain",
+    "v": "ok"
+   }
+  ],
   "form:ru:час": [
    {
     "shown": "hour, o'clock, time, time of day",
@@ -1413,6 +1887,24 @@
     "v": "ok"
    }
   ],
+  "form:ru:четверг": [
+   {
+    "shown": "Thursday",
+    "v": "ok"
+   }
+  ],
+  "form:ru:читать": [
+   {
+    "shown": "to read",
+    "v": "ok"
+   }
+  ],
+  "form:ru:чуть": [
+   {
+    "shown": "a little, slightly",
+    "v": "ok"
+   }
+  ],
   "form:ru:школа": [
    {
     "shown": "school",
@@ -1423,12 +1915,24 @@
    {
     "shown": "fair (market), funfair, county fair",
     "v": "ok"
+   },
+   {
+    "shown": "fair (market)",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "lemma:ru:а:CONJ": [
    {
     "shown": "but",
     "v": "ok"
+   }
+  ],
+  "lemma:ru:авария:NOUN": [
+   {
+    "shown": "damage",
+    "v": "false-meaning",
+    "note": "авария is accident/breakdown, not 'damage'"
    }
   ],
   "lemma:ru:автобус:NOUN": [
@@ -1512,6 +2016,12 @@
   "lemma:ru:белый:ADJ": [
    {
     "shown": "white",
+    "v": "ok"
+   }
+  ],
+  "lemma:ru:бельё:NOUN": [
+   {
+    "shown": "underwear",
     "v": "ok"
    }
   ],
@@ -1611,9 +2121,22 @@
     "v": "ok"
    }
   ],
+  "lemma:ru:бутерброд:NOUN": [
+   {
+    "shown": "butterbrot",
+    "v": "unknown",
+    "note": "'butterbrot' is a transliteration, not an English meaning (open sandwich)"
+   }
+  ],
   "lemma:ru:бы:PART": [
    {
     "shown": "A verbal particle used to render conditional and subjunctive mood",
+    "v": "ok"
+   }
+  ],
+  "lemma:ru:бывать:VERB": [
+   {
+    "shown": "to be",
     "v": "ok"
    }
   ],
@@ -1652,6 +2175,12 @@
     "v": "ok"
    }
   ],
+  "lemma:ru:варенье:NOUN": [
+   {
+    "shown": "jam",
+    "v": "ok"
+   }
+  ],
   "lemma:ru:варить:VERB": [
    {
     "shown": "to cook",
@@ -1682,6 +2211,24 @@
     "v": "ok"
    }
   ],
+  "lemma:ru:велосипед:NOUN": [
+   {
+    "shown": "bicycle",
+    "v": "ok"
+   }
+  ],
+  "lemma:ru:верхний:ADJ": [
+   {
+    "shown": "upper",
+    "v": "ok"
+   }
+  ],
+  "lemma:ru:весить:VERB": [
+   {
+    "shown": "to weigh (to have a certain weight)",
+    "v": "ok"
+   }
+  ],
   "lemma:ru:ветер:NOUN": [
    {
     "shown": "wind",
@@ -1700,6 +2247,12 @@
     "v": "ok"
    }
   ],
+  "lemma:ru:взлётный:ADJ": [
+   {
+    "shown": "takeoff (of an airplane, etc.)",
+    "v": "ok"
+   }
+  ],
   "lemma:ru:взять:VERB": [
    {
     "shown": "to take",
@@ -1709,6 +2262,18 @@
   "lemma:ru:вид:NOUN": [
    {
     "shown": "look",
+    "v": "ok"
+   }
+  ],
+  "lemma:ru:видеть:VERB": [
+   {
+    "shown": "to see (perceive by eyesight)",
+    "v": "ok"
+   }
+  ],
+  "lemma:ru:видный:ADJ": [
+   {
+    "shown": "visible",
     "v": "ok"
    }
   ],
@@ -1736,6 +2301,12 @@
     "v": "ok"
    }
   ],
+  "lemma:ru:вниз:ADV": [
+   {
+    "shown": "downwards",
+    "v": "ok"
+   }
+  ],
   "lemma:ru:вовремя:ADV": [
    {
     "shown": "in time",
@@ -1753,6 +2324,13 @@
     "v": "ok"
    }
   ],
+  "lemma:ru:водитель:NOUN": [
+   {
+    "shown": "guide",
+    "v": "false-meaning",
+    "note": "водитель is 'driver', not 'guide'"
+   }
+  ],
   "lemma:ru:водить:VERB": [
    {
     "shown": "to lead",
@@ -1762,6 +2340,18 @@
   "lemma:ru:воздух:NOUN": [
    {
     "shown": "air; the veil for church communion vessels",
+    "v": "ok"
+   }
+  ],
+  "lemma:ru:возле:ADP": [
+   {
+    "shown": "beside",
+    "v": "ok"
+   }
+  ],
+  "lemma:ru:возможность:NOUN": [
+   {
+    "shown": "opportunity",
     "v": "ok"
    }
   ],
@@ -1795,6 +2385,12 @@
     "v": "ok"
    }
   ],
+  "lemma:ru:вполголоса:ADV": [
+   {
+    "shown": "sotto voce (quietly (of speech))",
+    "v": "ok"
+   }
+  ],
   "lemma:ru:впустить:VERB": [
    {
     "shown": "to let in",
@@ -1806,6 +2402,10 @@
     "shown": "therapist",
     "v": "false-meaning",
     "note": "врач means doctor/physician, not therapist"
+   },
+   {
+    "shown": "doc, vet, medic, physician, doctor",
+    "v": "ok"
    }
   ],
   "lemma:ru:время:NOUN": [
@@ -1856,7 +2456,37 @@
     "v": "ok"
    }
   ],
+  "lemma:ru:выбежать:VERB": [
+   {
+    "shown": "to run out (outside)",
+    "v": "ok"
+   }
+  ],
+  "lemma:ru:выбрать:VERB": [
+   {
+    "shown": "to choose",
+    "v": "ok"
+   }
+  ],
+  "lemma:ru:вывозить:VERB": [
+   {
+    "shown": "to take out (by vehicle)",
+    "v": "ok"
+   }
+  ],
+  "lemma:ru:выживать:VERB": [
+   {
+    "shown": "to survive (continue to live)",
+    "v": "ok"
+   }
+  ],
   "lemma:ru:вызвать:VERB": [
+   {
+    "shown": "to call",
+    "v": "ok"
+   }
+  ],
+  "lemma:ru:вызывать:VERB": [
    {
     "shown": "to call",
     "v": "ok"
@@ -1897,6 +2527,16 @@
     "shown": "to sign out",
     "v": "false-meaning",
     "note": "выписать means to write out/prescribe/discharge; 'sign out' is not the main meaning"
+   },
+   {
+    "shown": "to write, to write out",
+    "v": "ok"
+   }
+  ],
+  "lemma:ru:выпить:VERB": [
+   {
+    "shown": "to drink",
+    "v": "ok"
    }
   ],
   "lemma:ru:выпускать:VERB": [
@@ -1915,6 +2555,13 @@
    {
     "shown": "tall",
     "v": "ok"
+   }
+  ],
+  "lemma:ru:выставка:NOUN": [
+   {
+    "shown": "exhibiting",
+    "v": "false-meaning",
+    "note": "выставка is mainly 'exhibition'; 'exhibiting' is the act sense only"
    }
   ],
   "lemma:ru:выучить:VERB": [
@@ -2067,15 +2714,46 @@
     "v": "ok"
    }
   ],
+  "lemma:ru:гриб:NOUN": [
+   {
+    "shown": "fungus (a category of eukaryotic organism, having cell walls but no chlorophyll)",
+    "v": "ok"
+   }
+  ],
   "lemma:ru:грипп:NOUN": [
    {
     "shown": "influenza",
     "v": "ok"
    }
   ],
+  "lemma:ru:гроза:NOUN": [
+   {
+    "shown": "thunder",
+    "v": "false-meaning",
+    "note": "гроза is a thunderstorm; thunder is гром"
+   }
+  ],
+  "lemma:ru:грубый:ADJ": [
+   {
+    "shown": "uncouth",
+    "v": "ok"
+   }
+  ],
+  "lemma:ru:грузчик:NOUN": [
+   {
+    "shown": "loader",
+    "v": "ok"
+   }
+  ],
   "lemma:ru:группа:NOUN": [
    {
     "shown": "group",
+    "v": "ok"
+   }
+  ],
+  "lemma:ru:губа:NOUN": [
+   {
+    "shown": "lip; polypore; bay or inlet of a sea or lake (usually at the mouth of a large river)",
     "v": "ok"
    }
   ],
@@ -2097,9 +2775,27 @@
     "v": "ok"
    }
   ],
+  "lemma:ru:давление:NOUN": [
+   {
+    "shown": "pressure (physics: amount of force divided by area)",
+    "v": "ok"
+   }
+  ],
   "lemma:ru:давно:ADV": [
    {
     "shown": "long ago",
+    "v": "ok"
+   }
+  ],
+  "lemma:ru:даже:ADV": [
+   {
+    "shown": "even",
+    "v": "ok"
+   }
+  ],
+  "lemma:ru:дар:NOUN": [
+   {
+    "shown": "gift",
     "v": "ok"
    }
   ],
@@ -2133,15 +2829,33 @@
     "v": "ok"
    }
   ],
+  "lemma:ru:дверь:NOUN": [
+   {
+    "shown": "door",
+    "v": "ok"
+   }
+  ],
   "lemma:ru:двести:NUM": [
    {
     "shown": "two hundred (200)",
     "v": "ok"
    }
   ],
+  "lemma:ru:двигатель:NOUN": [
+   {
+    "shown": "engine",
+    "v": "ok"
+   }
+  ],
   "lemma:ru:двигаться:VERB": [
    {
     "shown": "to move (intransitive)",
+    "v": "ok"
+   }
+  ],
+  "lemma:ru:движение:NOUN": [
+   {
+    "shown": "movement",
     "v": "ok"
    }
   ],
@@ -2166,6 +2880,12 @@
   "lemma:ru:девятый:ADJ": [
    {
     "shown": "ninth",
+    "v": "ok"
+   }
+  ],
+  "lemma:ru:дед:NOUN": [
+   {
+    "shown": "grandfather",
     "v": "ok"
    }
   ],
@@ -2195,6 +2915,12 @@
   "lemma:ru:день:NOUN": [
    {
     "shown": "day",
+    "v": "ok"
+   }
+  ],
+  "lemma:ru:деньги:NOUN": [
+   {
+    "shown": "money",
     "v": "ok"
    }
   ],
@@ -2252,6 +2978,18 @@
     "v": "ok"
    }
   ],
+  "lemma:ru:директор:NOUN": [
+   {
+    "shown": "manager",
+    "v": "ok"
+   }
+  ],
+  "lemma:ru:дискета:NOUN": [
+   {
+    "shown": "floppy disk",
+    "v": "ok"
+   }
+  ],
   "lemma:ru:для:ADP": [
    {
     "shown": "for",
@@ -2276,6 +3014,12 @@
     "v": "ok"
    }
   ],
+  "lemma:ru:довоенный:ADJ": [
+   {
+    "shown": "antebellum",
+    "v": "ok"
+   }
+  ],
   "lemma:ru:дождь:NOUN": [
    {
     "shown": "rain",
@@ -2285,6 +3029,12 @@
   "lemma:ru:дойти:VERB": [
    {
     "shown": "to go to",
+    "v": "ok"
+   }
+  ],
+  "lemma:ru:документ:NOUN": [
+   {
+    "shown": "document",
     "v": "ok"
    }
   ],
@@ -2316,6 +3066,12 @@
     "v": "ok"
    }
   ],
+  "lemma:ru:дрожать:VERB": [
+   {
+    "shown": "to shiver",
+    "v": "ok"
+   }
+  ],
   "lemma:ru:друг:NOUN": [
    {
     "shown": "close friend; other",
@@ -2325,6 +3081,19 @@
   "lemma:ru:другой:DET": [
    {
     "shown": "other",
+    "v": "ok"
+   }
+  ],
+  "lemma:ru:дух:NOUN": [
+   {
+    "shown": "spirit",
+    "v": "false-reading",
+    "note": "духами is perfume (духи, pl.), not дух 'spirit'"
+   }
+  ],
+  "lemma:ru:душ:NOUN": [
+   {
+    "shown": "shower (device for bathing)",
     "v": "ok"
    }
   ],
@@ -2344,6 +3113,12 @@
   "lemma:ru:еда:NOUN": [
    {
     "shown": "food",
+    "v": "ok"
+   }
+  ],
+  "lemma:ru:едва:ADV": [
+   {
+    "shown": "hardly",
     "v": "ok"
    }
   ],
@@ -2441,6 +3216,10 @@
     "shown": "to",
     "v": "false-meaning",
     "note": "за means for/behind; to is wrong"
+   },
+   {
+    "shown": "for; to; by; after; over",
+    "v": "ok"
    }
   ],
   "lemma:ru:заблудиться:VERB": [
@@ -2449,9 +3228,21 @@
     "v": "ok"
    }
   ],
+  "lemma:ru:забывать:VERB": [
+   {
+    "shown": "to forget",
+    "v": "ok"
+   }
+  ],
   "lemma:ru:забыть:VERB": [
    {
     "shown": "to forget",
+    "v": "ok"
+   }
+  ],
+  "lemma:ru:зависимость:NOUN": [
+   {
+    "shown": "dependence",
     "v": "ok"
    }
   ],
@@ -2479,9 +3270,45 @@
     "v": "ok"
    }
   ],
+  "lemma:ru:загрузить:VERB": [
+   {
+    "shown": "to load",
+    "v": "ok"
+   }
+  ],
+  "lemma:ru:задний:ADJ": [
+   {
+    "shown": "rear",
+    "v": "ok"
+   }
+  ],
   "lemma:ru:зайти:VERB": [
    {
     "shown": "to go (to see)",
+    "v": "ok"
+   }
+  ],
+  "lemma:ru:заказывать:VERB": [
+   {
+    "shown": "to order",
+    "v": "ok"
+   }
+  ],
+  "lemma:ru:заклеить:VERB": [
+   {
+    "shown": "to glue up",
+    "v": "ok"
+   }
+  ],
+  "lemma:ru:закончить:VERB": [
+   {
+    "shown": "to finish",
+    "v": "ok"
+   }
+  ],
+  "lemma:ru:закрутить:VERB": [
+   {
+    "shown": "to twirl",
     "v": "ok"
    }
   ],
@@ -2490,11 +3317,21 @@
     "shown": "to cover",
     "v": "false-meaning",
     "note": "закрыть means to close/shut; 'to cover' is secondary"
+   },
+   {
+    "shown": "to close, to shut",
+    "v": "ok"
    }
   ],
   "lemma:ru:зал:NOUN": [
    {
     "shown": "hall",
+    "v": "ok"
+   }
+  ],
+  "lemma:ru:заливать:VERB": [
+   {
+    "shown": "to flood (in terms of bodies of water)",
     "v": "ok"
    }
   ],
@@ -2521,11 +3358,21 @@
     "shown": "to borrow",
     "v": "false-meaning",
     "note": "занять means to occupy/take (a place); 'to borrow' is secondary"
+   },
+   {
+    "shown": "to occupy, to take up",
+    "v": "ok"
    }
   ],
   "lemma:ru:записать:VERB": [
    {
     "shown": "to write down",
+    "v": "ok"
+   }
+  ],
+  "lemma:ru:записаться:VERB": [
+   {
+    "shown": "to register for",
     "v": "ok"
    }
   ],
@@ -2535,9 +3382,27 @@
     "v": "ok"
    }
   ],
+  "lemma:ru:запуск:NOUN": [
+   {
+    "shown": "startup (act)",
+    "v": "ok"
+   }
+  ],
   "lemma:ru:запустить:VERB": [
    {
     "shown": "to launch (a missile, rocket, a probe, etc.)",
+    "v": "ok"
+   }
+  ],
+  "lemma:ru:застегнуть:VERB": [
+   {
+    "shown": "to buckle up",
+    "v": "ok"
+   }
+  ],
+  "lemma:ru:застрять:VERB": [
+   {
+    "shown": "to become stuck",
     "v": "ok"
    }
   ],
@@ -2556,6 +3421,12 @@
   "lemma:ru:защитный:ADJ": [
    {
     "shown": "protective",
+    "v": "ok"
+   }
+  ],
+  "lemma:ru:звено:NOUN": [
+   {
+    "shown": "link (element of a chain)",
     "v": "ok"
    }
   ],
@@ -2583,9 +3454,22 @@
     "v": "ok"
    }
   ],
+  "lemma:ru:знак:NOUN": [
+   {
+    "shown": "sign",
+    "v": "false-reading",
+    "note": "значок is a separate word (badge, icon), not знак"
+   }
+  ],
   "lemma:ru:знать:VERB": [
    {
     "shown": "to know: to be familiar with or accustomed to a person",
+    "v": "ok"
+   }
+  ],
+  "lemma:ru:золотистый:ADJ": [
+   {
+    "shown": "goldish",
     "v": "ok"
    }
   ],
@@ -2595,15 +3479,33 @@
     "v": "ok"
    }
   ],
+  "lemma:ru:зуб:NOUN": [
+   {
+    "shown": "tooth",
+    "v": "ok"
+   }
+  ],
   "lemma:ru:и:CONJ": [
    {
     "shown": "and",
     "v": "ok"
    }
   ],
+  "lemma:ru:игра:NOUN": [
+   {
+    "shown": "game",
+    "v": "ok"
+   }
+  ],
   "lemma:ru:играть:VERB": [
    {
     "shown": "to play",
+    "v": "ok"
+   }
+  ],
+  "lemma:ru:игрок:NOUN": [
+   {
+    "shown": "player",
     "v": "ok"
    }
   ],
@@ -2637,6 +3539,12 @@
     "v": "ok"
    }
   ],
+  "lemma:ru:изменить:VERB": [
+   {
+    "shown": "to change",
+    "v": "ok"
+   }
+  ],
   "lemma:ru:изучать:VERB": [
    {
     "shown": "to study",
@@ -2646,6 +3554,12 @@
   "lemma:ru:или:CONJ": [
    {
     "shown": "or",
+    "v": "ok"
+   }
+  ],
+  "lemma:ru:иначе:ADV": [
+   {
+    "shown": "differently",
     "v": "ok"
    }
   ],
@@ -2667,6 +3581,12 @@
     "v": "ok"
    }
   ],
+  "lemma:ru:испугаться:VERB": [
+   {
+    "shown": "to be frightened (of)",
+    "v": "ok"
+   }
+  ],
   "lemma:ru:исследователь:NOUN": [
    {
     "shown": "researcher",
@@ -2679,9 +3599,21 @@
     "v": "ok"
    }
   ],
+  "lemma:ru:исчезать:VERB": [
+   {
+    "shown": "to disappear",
+    "v": "ok"
+   }
+  ],
   "lemma:ru:к:ADP": [
    {
     "shown": "to",
+    "v": "ok"
+   }
+  ],
+  "lemma:ru:кабинет:NOUN": [
+   {
+    "shown": "office (building or room)",
     "v": "ok"
    }
   ],
@@ -2709,15 +3641,51 @@
     "v": "ok"
    }
   ],
+  "lemma:ru:камень:NOUN": [
+   {
+    "shown": "stone",
+    "v": "ok"
+   }
+  ],
+  "lemma:ru:камера:NOUN": [
+   {
+    "shown": "camera",
+    "v": "ok"
+   }
+  ],
+  "lemma:ru:карман:NOUN": [
+   {
+    "shown": "pocket",
+    "v": "ok"
+   }
+  ],
   "lemma:ru:карта:NOUN": [
    {
     "shown": "map",
     "v": "ok"
    }
   ],
+  "lemma:ru:картина:NOUN": [
+   {
+    "shown": "picture (representation of visible reality produced by drawing, etc.)",
+    "v": "ok"
+   }
+  ],
   "lemma:ru:картофель:NOUN": [
    {
     "shown": "potatoes",
+    "v": "ok"
+   }
+  ],
+  "lemma:ru:картошка:NOUN": [
+   {
+    "shown": "potato",
+    "v": "ok"
+   }
+  ],
+  "lemma:ru:касса:NOUN": [
+   {
+    "shown": "pay desk",
     "v": "ok"
    }
   ],
@@ -2787,6 +3755,36 @@
     "v": "ok"
    }
   ],
+  "lemma:ru:кнопка:NOUN": [
+   {
+    "shown": "button (a mechanical device meant to be pressed with a finger)",
+    "v": "ok"
+   }
+  ],
+  "lemma:ru:колено:NOUN": [
+   {
+    "shown": "knee; bend (in a river, etc.); joint",
+    "v": "ok"
+   }
+  ],
+  "lemma:ru:колесо:NOUN": [
+   {
+    "shown": "wheel",
+    "v": "ok"
+   }
+  ],
+  "lemma:ru:коллекционер:NOUN": [
+   {
+    "shown": "collector (e.g. of stamps, books, etc.)",
+    "v": "ok"
+   }
+  ],
+  "lemma:ru:коллекция:NOUN": [
+   {
+    "shown": "collection",
+    "v": "ok"
+   }
+  ],
   "lemma:ru:колонна:NOUN": [
    {
     "shown": "column",
@@ -2840,11 +3838,21 @@
     "shown": "what",
     "v": "false-meaning",
     "note": "который means which/who, not 'what'"
+   },
+   {
+    "shown": "which, that, who, whom",
+    "v": "ok"
    }
   ],
   "lemma:ru:кофе:NOUN": [
    {
     "shown": "coffee (in the form of a beverage)",
+    "v": "ok"
+   }
+  ],
+  "lemma:ru:кошелёк:NOUN": [
+   {
+    "shown": "wallet",
     "v": "ok"
    }
   ],
@@ -2866,9 +3874,19 @@
     "v": "ok"
    }
   ],
+  "lemma:ru:красить:VERB": [
+   {
+    "shown": "to color",
+    "v": "ok"
+   }
+  ],
   "lemma:ru:кредит:NOUN": [
    {
     "shown": "loan; credit (specifically in reference to credits and debits in double-entry…",
+    "v": "ok"
+   },
+   {
+    "shown": "loan; credit",
     "v": "ok"
    }
   ],
@@ -2890,15 +3908,33 @@
     "v": "ok"
    }
   ],
+  "lemma:ru:крыжовник:NOUN": [
+   {
+    "shown": "gooseberries",
+    "v": "ok"
+   }
+  ],
   "lemma:ru:крыша:NOUN": [
    {
     "shown": "roof",
     "v": "ok"
    }
   ],
+  "lemma:ru:кто-то:PRON": [
+   {
+    "shown": "somebody",
+    "v": "ok"
+   }
+  ],
   "lemma:ru:кубик:NOUN": [
    {
     "shown": "block",
+    "v": "ok"
+   }
+  ],
+  "lemma:ru:куда:ADV": [
+   {
+    "shown": "where?",
     "v": "ok"
    }
   ],
@@ -2914,9 +3950,27 @@
     "v": "ok"
    }
   ],
+  "lemma:ru:куртка:NOUN": [
+   {
+    "shown": "jacket (a short coat)",
+    "v": "ok"
+   }
+  ],
+  "lemma:ru:курьер:NOUN": [
+   {
+    "shown": "courier (person who delivers messages)",
+    "v": "ok"
+   }
+  ],
   "lemma:ru:кухня:NOUN": [
    {
     "shown": "kitchen",
+    "v": "ok"
+   }
+  ],
+  "lemma:ru:левый:ADJ": [
+   {
+    "shown": "left",
     "v": "ok"
    }
   ],
@@ -2935,6 +3989,12 @@
   "lemma:ru:лес:NOUN": [
    {
     "shown": "forest",
+    "v": "ok"
+   }
+  ],
+  "lemma:ru:лестница:NOUN": [
+   {
+    "shown": "stair",
     "v": "ok"
    }
   ],
@@ -2977,6 +4037,12 @@
   "lemma:ru:лист:NOUN": [
    {
     "shown": "leaf (flat green organ of a plant); sheet (thin, flat, inexpansible solid object)",
+    "v": "ok"
+   }
+  ],
+  "lemma:ru:лишайник:NOUN": [
+   {
+    "shown": "lichen (symbiotic organism)",
     "v": "ok"
    }
   ],
@@ -3040,6 +4106,22 @@
     "v": "ok"
    }
   ],
+  "lemma:ru:масло:NOUN": [
+   {
+    "shown": "butter",
+    "v": "ok"
+   }
+  ],
+  "lemma:ru:материал:NOUN": [
+   {
+    "shown": "material (matter from which physical things are made or which is otherwise used…",
+    "v": "ok"
+   },
+   {
+    "shown": "material",
+    "v": "ok"
+   }
+  ],
   "lemma:ru:матч:NOUN": [
    {
     "shown": "match",
@@ -3098,6 +4180,10 @@
    {
     "shown": "to dream (to imagine something, usually intensely but often unrealistically…",
     "v": "ok"
+   },
+   {
+    "shown": "to dream",
+    "v": "ok"
    }
   ],
   "lemma:ru:минздрав:NOUN": [
@@ -3145,6 +4231,18 @@
   "lemma:ru:мокрый:ADJ": [
    {
     "shown": "wet",
+    "v": "ok"
+   }
+  ],
+  "lemma:ru:молния:NOUN": [
+   {
+    "shown": "lightning",
+    "v": "ok"
+   }
+  ],
+  "lemma:ru:молодость:NOUN": [
+   {
+    "shown": "youth (state of being young)",
     "v": "ok"
    }
   ],
@@ -3214,6 +4312,12 @@
     "v": "ok"
    }
   ],
+  "lemma:ru:мусор:NOUN": [
+   {
+    "shown": "garbage",
+    "v": "ok"
+   }
+  ],
   "lemma:ru:мы:PRON": [
    {
     "shown": "we",
@@ -3249,9 +4353,21 @@
     "v": "ok"
    }
   ],
+  "lemma:ru:над:ADP": [
+   {
+    "shown": "above",
+    "v": "ok"
+   }
+  ],
   "lemma:ru:надеть:VERB": [
    {
     "shown": "to put on",
+    "v": "ok"
+   }
+  ],
+  "lemma:ru:нажать:VERB": [
+   {
+    "shown": "to press; to reap",
     "v": "ok"
    }
   ],
@@ -3267,15 +4383,33 @@
     "v": "ok"
    }
   ],
+  "lemma:ru:наливать:VERB": [
+   {
+    "shown": "to pour (liquid into a container)",
+    "v": "ok"
+   }
+  ],
   "lemma:ru:налить:VERB": [
    {
     "shown": "to pour (in, out) (liquid)",
     "v": "ok"
    }
   ],
+  "lemma:ru:наличный:ADJ": [
+   {
+    "shown": "available",
+    "v": "ok"
+   }
+  ],
   "lemma:ru:напоминать:VERB": [
    {
     "shown": "to remind (cause one to experience a memory; bring to a person's notice)",
+    "v": "ok"
+   }
+  ],
+  "lemma:ru:направление:NOUN": [
+   {
+    "shown": "direction",
     "v": "ok"
    }
   ],
@@ -3303,9 +4437,28 @@
     "v": "ok"
    }
   ],
+  "lemma:ru:настоящий:ADJ": [
+   {
+    "shown": "present",
+    "v": "false-meaning",
+    "note": "настоящий mainly means real/genuine; 'present' is secondary"
+   }
+  ],
   "lemma:ru:наступить:VERB": [
    {
     "shown": "to tread",
+    "v": "ok"
+   }
+  ],
+  "lemma:ru:наступление:NOUN": [
+   {
+    "shown": "offensive",
+    "v": "ok"
+   }
+  ],
+  "lemma:ru:насыпать:VERB": [
+   {
+    "shown": "to strew",
     "v": "ok"
    }
   ],
@@ -3333,6 +4486,12 @@
     "v": "ok"
    }
   ],
+  "lemma:ru:начинать:VERB": [
+   {
+    "shown": "to begin",
+    "v": "ok"
+   }
+  ],
   "lemma:ru:наш:PRON": [
    {
     "shown": "our",
@@ -3348,6 +4507,12 @@
   "lemma:ru:небольшой:ADJ": [
    {
     "shown": "small",
+    "v": "ok"
+   }
+  ],
+  "lemma:ru:невысокий:ADJ": [
+   {
+    "shown": "not tall",
     "v": "ok"
    }
   ],
@@ -3369,11 +4534,21 @@
     "v": "ok"
    }
   ],
+  "lemma:ru:некоторый:PRON": [
+   {
+    "shown": "some",
+    "v": "ok"
+   }
+  ],
   "lemma:ru:нельзя:ADJ": [
    {
     "shown": "it is impossible (perfective aspect)",
     "v": "false-meaning",
     "note": "нельзя means must not/not allowed; perfective aspect note is wrong"
+   },
+   {
+    "shown": "one cannot",
+    "v": "ok"
    }
   ],
   "lemma:ru:необычный:ADJ": [
@@ -3441,6 +4616,10 @@
     "shown": "nominal number",
     "v": "false-meaning",
     "note": "номер means number (issue, hotel room); 'nominal number' is misleading"
+   },
+   {
+    "shown": "number (various senses)",
+    "v": "ok"
    }
   ],
   "lemma:ru:носить:VERB": [
@@ -3458,6 +4637,16 @@
   "lemma:ru:ночь:NOUN": [
    {
     "shown": "night",
+    "v": "ok"
+   }
+  ],
+  "lemma:ru:нравиться:VERB": [
+   {
+    "shown": "to please [with dative ‘someone’] (idiomatically translated with English like…",
+    "v": "ok"
+   },
+   {
+    "shown": "to please [with dative ‘someone’]",
     "v": "ok"
    }
   ],
@@ -3591,6 +4780,12 @@
     "v": "ok"
    }
   ],
+  "lemma:ru:огонь:NOUN": [
+   {
+    "shown": "fire (also figurative)",
+    "v": "ok"
+   }
+  ],
   "lemma:ru:огород:NOUN": [
    {
     "shown": "vegetable garden",
@@ -3606,6 +4801,12 @@
   "lemma:ru:огурец:NOUN": [
    {
     "shown": "cucumber",
+    "v": "ok"
+   }
+  ],
+  "lemma:ru:одеяло:NOUN": [
+   {
+    "shown": "blanket",
     "v": "ok"
    }
   ],
@@ -3627,6 +4828,12 @@
     "v": "ok"
    }
   ],
+  "lemma:ru:оказаться:VERB": [
+   {
+    "shown": "to turn out",
+    "v": "ok"
+   }
+  ],
   "lemma:ru:окно:NOUN": [
    {
     "shown": "window",
@@ -3644,6 +4851,16 @@
     "shown": "to gather round",
     "v": "false-meaning",
     "note": "окружить means to surround, not 'gather round'"
+   },
+   {
+    "shown": "to surround, to lavish",
+    "v": "ok"
+   }
+  ],
+  "lemma:ru:октябрь:NOUN": [
+   {
+    "shown": "October",
+    "v": "ok"
    }
   ],
   "lemma:ru:он:PRON": [
@@ -3655,6 +4872,12 @@
   "lemma:ru:она:PRON": [
    {
     "shown": "she",
+    "v": "ok"
+   }
+  ],
+  "lemma:ru:онеметь:VERB": [
+   {
+    "shown": "to become dumb",
     "v": "ok"
    }
   ],
@@ -3676,6 +4899,24 @@
     "v": "ok"
    }
   ],
+  "lemma:ru:опустить:VERB": [
+   {
+    "shown": "to let down",
+    "v": "ok"
+   }
+  ],
+  "lemma:ru:осень:NOUN": [
+   {
+    "shown": "autumn",
+    "v": "ok"
+   }
+  ],
+  "lemma:ru:осмотреть:VERB": [
+   {
+    "shown": "to examine",
+    "v": "ok"
+   }
+  ],
   "lemma:ru:особенно:ADV": [
    {
     "shown": "especially",
@@ -3685,6 +4926,12 @@
   "lemma:ru:оставаться:VERB": [
    {
     "shown": "to remain",
+    "v": "ok"
+   }
+  ],
+  "lemma:ru:оставить:VERB": [
+   {
+    "shown": "to leave",
     "v": "ok"
    }
   ],
@@ -3718,6 +4965,18 @@
     "v": "ok"
    }
   ],
+  "lemma:ru:отвёртка:NOUN": [
+   {
+    "shown": "screwdriver",
+    "v": "ok"
+   }
+  ],
+  "lemma:ru:отделение:NOUN": [
+   {
+    "shown": "department",
+    "v": "ok"
+   }
+  ],
   "lemma:ru:отец:NOUN": [
    {
     "shown": "father",
@@ -3736,6 +4995,12 @@
     "v": "ok"
    }
   ],
+  "lemma:ru:отметка:NOUN": [
+   {
+    "shown": "mark",
+    "v": "ok"
+   }
+  ],
   "lemma:ru:отмечать:VERB": [
    {
     "shown": "to mark",
@@ -3745,6 +5010,12 @@
   "lemma:ru:отпуск:NOUN": [
    {
     "shown": "leave",
+    "v": "ok"
+   }
+  ],
+  "lemma:ru:отремонтировать:VERB": [
+   {
+    "shown": "to repair",
     "v": "ok"
    }
   ],
@@ -3772,6 +5043,12 @@
     "v": "ok"
    }
   ],
+  "lemma:ru:очередь:NOUN": [
+   {
+    "shown": "queue",
+    "v": "ok"
+   }
+  ],
   "lemma:ru:очистка:NOUN": [
    {
     "shown": "cleaning",
@@ -3788,7 +5065,7 @@
    {
     "shown": "point",
     "v": "false-reading",
-    "note": "очки here is 'glasses/goggles' (a separate word), not очко 'point'"
+    "note": "очки here is glasses (pl. tantum), not очко 'point'"
    }
   ],
   "lemma:ru:пакет:NOUN": [
@@ -3809,6 +5086,12 @@
     "v": "ok"
    }
   ],
+  "lemma:ru:паспорт:NOUN": [
+   {
+    "shown": "passport",
+    "v": "ok"
+   }
+  ],
   "lemma:ru:пахнуть:VERB": [
    {
     "shown": "to smell",
@@ -3821,10 +5104,23 @@
     "v": "ok"
    }
   ],
+  "lemma:ru:пена:NOUN": [
+   {
+    "shown": "foam",
+    "v": "ok"
+   }
+  ],
   "lemma:ru:первый:ADJ": [
    {
     "shown": "first",
     "v": "ok"
+   }
+  ],
+  "lemma:ru:перевести:VERB": [
+   {
+    "shown": "to lead",
+    "v": "false-meaning",
+    "note": "'to lead' alone misleads; перевести is transfer/translate/move across"
    }
   ],
   "lemma:ru:перед:ADP": [
@@ -3856,6 +5152,10 @@
     "shown": "to exceed",
     "v": "false-meaning",
     "note": "перекрыть means to block/close off (also overlap); 'exceed' is marginal"
+   },
+   {
+    "shown": "to stop up, to block",
+    "v": "ok"
    }
   ],
   "lemma:ru:перекрёсток:NOUN": [
@@ -3899,6 +5199,17 @@
     "shown": "clothes",
     "v": "false-meaning",
     "note": "платье means dress; 'clothes' is archaic/marginal"
+   },
+   {
+    "shown": "dress, gown, frock",
+    "v": "ok"
+   }
+  ],
+  "lemma:ru:пломба:NOUN": [
+   {
+    "shown": "lead",
+    "v": "false-meaning",
+    "note": "пломба is a seal or tooth filling; 'lead' is not its meaning"
    }
   ],
   "lemma:ru:площадка:NOUN": [
@@ -3916,6 +5227,18 @@
   "lemma:ru:плыть:VERB": [
    {
     "shown": "to swim",
+    "v": "ok"
+   }
+  ],
+  "lemma:ru:плёнка:NOUN": [
+   {
+    "shown": "film",
+    "v": "ok"
+   }
+  ],
+  "lemma:ru:по-моему:ADV": [
+   {
+    "shown": "in my opinion",
     "v": "ok"
    }
   ],
@@ -3945,6 +5268,10 @@
     "shown": "rein; cause",
     "v": "false-meaning",
     "note": "повод primary meaning is cause/occasion; rein is marginal"
+   },
+   {
+    "shown": "cause, ground, occasion",
+    "v": "ok"
    }
   ],
   "lemma:ru:повторить:VERB": [
@@ -3965,9 +5292,21 @@
     "v": "ok"
    }
   ],
+  "lemma:ru:под:ADP": [
+   {
+    "shown": "under, below",
+    "v": "ok"
+   }
+  ],
   "lemma:ru:подарить:VERB": [
    {
     "shown": "to give; to favour/favor",
+    "v": "ok"
+   }
+  ],
+  "lemma:ru:подарок:NOUN": [
+   {
+    "shown": "present",
     "v": "ok"
    }
   ],
@@ -3983,6 +5322,13 @@
     "v": "ok"
    }
   ],
+  "lemma:ru:поднимать:VERB": [
+   {
+    "shown": "to raise",
+    "v": "false-reading",
+    "note": "подниматься is reflexive 'to climb/go up', not 'to raise'"
+   }
+  ],
   "lemma:ru:подождать:VERB": [
    {
     "shown": "to wait",
@@ -3995,15 +5341,33 @@
     "v": "ok"
    }
   ],
+  "lemma:ru:подруга:NOUN": [
+   {
+    "shown": "girlfriend",
+    "v": "ok"
+   }
+  ],
   "lemma:ru:подсказать:VERB": [
    {
     "shown": "to tell (to help by telling, often discreetly)",
     "v": "ok"
    }
   ],
+  "lemma:ru:подходить:VERB": [
+   {
+    "shown": "to fit (of an object, to match another object)",
+    "v": "ok"
+   }
+  ],
   "lemma:ru:поезд:NOUN": [
    {
     "shown": "train",
+    "v": "ok"
+   }
+  ],
+  "lemma:ru:поездка:NOUN": [
+   {
+    "shown": "tour",
     "v": "ok"
    }
   ],
@@ -4031,6 +5395,12 @@
     "v": "ok"
    }
   ],
+  "lemma:ru:позавчера:ADV": [
+   {
+    "shown": "day before yesterday",
+    "v": "ok"
+   }
+  ],
   "lemma:ru:позвать:VERB": [
    {
     "shown": "to call",
@@ -4043,6 +5413,12 @@
     "v": "ok"
    }
   ],
+  "lemma:ru:поздно:ADV": [
+   {
+    "shown": "late",
+    "v": "ok"
+   }
+  ],
   "lemma:ru:пойти:VERB": [
    {
     "shown": "to go",
@@ -4052,6 +5428,18 @@
   "lemma:ru:покрывать:VERB": [
    {
     "shown": "to cover",
+    "v": "ok"
+   }
+  ],
+  "lemma:ru:полдень:NOUN": [
+   {
+    "shown": "noon",
+    "v": "ok"
+   }
+  ],
+  "lemma:ru:поливать:VERB": [
+   {
+    "shown": "to pour",
     "v": "ok"
    }
   ],
@@ -4085,6 +5473,12 @@
     "v": "ok"
    }
   ],
+  "lemma:ru:полоса:NOUN": [
+   {
+    "shown": "stripe",
+    "v": "ok"
+   }
+  ],
   "lemma:ru:полуфинал:NOUN": [
    {
     "shown": "semifinal",
@@ -4102,6 +5496,10 @@
     "shown": "to come in",
     "v": "false-meaning",
     "note": "получиться means to turn out/result; to come in is wrong"
+   },
+   {
+    "shown": "to result",
+    "v": "ok"
    }
   ],
   "lemma:ru:помидор:NOUN": [
@@ -4119,6 +5517,12 @@
   "lemma:ru:помощь:NOUN": [
    {
     "shown": "help",
+    "v": "ok"
+   }
+  ],
+  "lemma:ru:понедельник:NOUN": [
+   {
+    "shown": "Monday",
     "v": "ok"
    }
   ],
@@ -4146,9 +5550,21 @@
     "v": "ok"
    }
   ],
+  "lemma:ru:порошок:NOUN": [
+   {
+    "shown": "powder",
+    "v": "ok"
+   }
+  ],
   "lemma:ru:посадить:VERB": [
    {
     "shown": "to seat",
+    "v": "ok"
+   }
+  ],
+  "lemma:ru:посетитель:NOUN": [
+   {
+    "shown": "visitor",
     "v": "ok"
    }
   ],
@@ -4188,6 +5604,12 @@
     "v": "ok"
    }
   ],
+  "lemma:ru:постукивать:VERB": [
+   {
+    "shown": "to tap on",
+    "v": "ok"
+   }
+  ],
   "lemma:ru:посуда:NOUN": [
    {
     "shown": "tableware",
@@ -4197,6 +5619,17 @@
   "lemma:ru:посыпать:VERB": [
    {
     "shown": "to pour (of friable/solid objects, such as sands, not liquids; sometimes used…",
+    "v": "ok"
+   },
+   {
+    "shown": "to pour",
+    "v": "false-meaning",
+    "note": "посыпать means to sprinkle or strew (here: sprinkle with herbs); a bare 'to pour' misleads, as it suggests pouring liquid."
+   }
+  ],
+  "lemma:ru:посёлок:NOUN": [
+   {
+    "shown": "small settlement",
     "v": "ok"
    }
   ],
@@ -4209,6 +5642,18 @@
   "lemma:ru:потому:ADV": [
    {
     "shown": "therefore",
+    "v": "ok"
+   }
+  ],
+  "lemma:ru:потратить:VERB": [
+   {
+    "shown": "to spend",
+    "v": "ok"
+   }
+  ],
+  "lemma:ru:почему:ADV": [
+   {
+    "shown": "why (due to what, on what grounds)",
     "v": "ok"
    }
   ],
@@ -4248,9 +5693,21 @@
     "v": "ok"
    }
   ],
+  "lemma:ru:предупредить:VERB": [
+   {
+    "shown": "to warn",
+    "v": "ok"
+   }
+  ],
   "lemma:ru:предупреждать:VERB": [
    {
     "shown": "to warn",
+    "v": "ok"
+   }
+  ],
+  "lemma:ru:прежний:ADJ": [
+   {
+    "shown": "former",
     "v": "ok"
    }
   ],
@@ -4263,6 +5720,12 @@
   "lemma:ru:приблизиться:VERB": [
    {
     "shown": "to draw near",
+    "v": "ok"
+   }
+  ],
+  "lemma:ru:прививка:NOUN": [
+   {
+    "shown": "inoculation",
     "v": "ok"
    }
   ],
@@ -4290,6 +5753,18 @@
     "v": "ok"
    }
   ],
+  "lemma:ru:прикладывать:VERB": [
+   {
+    "shown": "to put (next to)",
+    "v": "ok"
+   }
+  ],
+  "lemma:ru:примерно:ADV": [
+   {
+    "shown": "about",
+    "v": "ok"
+   }
+  ],
   "lemma:ru:принести:VERB": [
    {
     "shown": "to bring (by foot)",
@@ -4311,6 +5786,12 @@
   "lemma:ru:принять:VERB": [
    {
     "shown": "to take",
+    "v": "ok"
+   }
+  ],
+  "lemma:ru:приступить:VERB": [
+   {
+    "shown": "to set about",
     "v": "ok"
    }
   ],
@@ -4338,11 +5819,21 @@
     "v": "ok"
    }
   ],
+  "lemma:ru:продлить:VERB": [
+   {
+    "shown": "to extend",
+    "v": "ok"
+   }
+  ],
   "lemma:ru:проезд:NOUN": [
    {
     "shown": "journey",
     "v": "false-meaning",
     "note": "проезд means passage/fare, not journey"
+   },
+   {
+    "shown": "passage, thoroughfare",
+    "v": "ok"
    }
   ],
   "lemma:ru:проект:NOUN": [
@@ -4363,6 +5854,12 @@
     "v": "ok"
    }
   ],
+  "lemma:ru:прокол:NOUN": [
+   {
+    "shown": "puncture",
+    "v": "ok"
+   }
+  ],
   "lemma:ru:просить:VERB": [
    {
     "shown": "to ask for",
@@ -4372,6 +5869,18 @@
   "lemma:ru:проснуться:VERB": [
    {
     "shown": "to awake",
+    "v": "ok"
+   }
+  ],
+  "lemma:ru:проспать:VERB": [
+   {
+    "shown": "to oversleep",
+    "v": "ok"
+   }
+  ],
+  "lemma:ru:просторный:ADJ": [
+   {
+    "shown": "spacious",
     "v": "ok"
    }
   ],
@@ -4405,6 +5914,18 @@
     "v": "ok"
    }
   ],
+  "lemma:ru:прятаться:VERB": [
+   {
+    "shown": "to hide",
+    "v": "ok"
+   }
+  ],
+  "lemma:ru:птица:NOUN": [
+   {
+    "shown": "bird",
+    "v": "ok"
+   }
+  ],
   "lemma:ru:путешествовать:VERB": [
    {
     "shown": "to travel",
@@ -4420,6 +5941,12 @@
   "lemma:ru:пшеница:NOUN": [
    {
     "shown": "wheat",
+    "v": "ok"
+   }
+  ],
+  "lemma:ru:пыльный:ADJ": [
+   {
+    "shown": "dusty",
     "v": "ok"
    }
   ],
@@ -4459,16 +5986,32 @@
     "v": "ok"
    }
   ],
+  "lemma:ru:разболеться:VERB": [
+   {
+    "shown": "to fall ill (badly or continuously); to start to hurt/ache (of a body part)",
+    "v": "ok"
+   }
+  ],
   "lemma:ru:разводить:VERB": [
    {
     "shown": "to take along",
     "v": "false-meaning",
     "note": "разводить means to breed/dilute/part; to take along is wrong"
+   },
+   {
+    "shown": "to part, to move apart",
+    "v": "ok"
    }
   ],
   "lemma:ru:разглядывать:VERB": [
    {
     "shown": "to examine",
+    "v": "ok"
+   }
+  ],
+  "lemma:ru:разговаривать:VERB": [
+   {
+    "shown": "to speak; to dissuade (someone)",
     "v": "ok"
    }
   ],
@@ -4502,9 +6045,21 @@
     "v": "ok"
    }
   ],
+  "lemma:ru:рассказать:VERB": [
+   {
+    "shown": "to tell",
+    "v": "ok"
+   }
+  ],
   "lemma:ru:рассказывать:VERB": [
    {
     "shown": "to tell",
+    "v": "ok"
+   }
+  ],
+  "lemma:ru:растение:NOUN": [
+   {
+    "shown": "plant (living organism)",
     "v": "ok"
    }
   ],
@@ -4544,6 +6099,12 @@
     "v": "ok"
    }
   ],
+  "lemma:ru:ресторан:NOUN": [
+   {
+    "shown": "restaurant",
+    "v": "ok"
+   }
+  ],
   "lemma:ru:решить:VERB": [
    {
     "shown": "to solve",
@@ -4562,6 +6123,12 @@
     "v": "ok"
    }
   ],
+  "lemma:ru:розетка:NOUN": [
+   {
+    "shown": "socket",
+    "v": "ok"
+   }
+  ],
   "lemma:ru:рост:NOUN": [
    {
     "shown": "growth (in a living organism)",
@@ -4574,6 +6141,13 @@
     "v": "ok"
    }
   ],
+  "lemma:ru:руль:NOUN": [
+   {
+    "shown": "rudder",
+    "v": "false-meaning",
+    "note": "руль is mainly steering wheel/handlebars; rudder is secondary"
+   }
+  ],
   "lemma:ru:рыба:NOUN": [
    {
     "shown": "fish (as a living animal)",
@@ -4583,6 +6157,12 @@
   "lemma:ru:рыбалка:NOUN": [
    {
     "shown": "fishing trip",
+    "v": "ok"
+   }
+  ],
+  "lemma:ru:рынок:NOUN": [
+   {
+    "shown": "marketplace",
     "v": "ok"
    }
   ],
@@ -4616,6 +6196,12 @@
   "lemma:ru:сайт:NOUN": [
    {
     "shown": "website",
+    "v": "ok"
+   }
+  ],
+  "lemma:ru:самостоятельность:NOUN": [
+   {
+    "shown": "independence (state of having sufficient means for a comfortable livelihood)",
     "v": "ok"
    }
   ],
@@ -4673,6 +6259,18 @@
     "v": "ok"
    }
   ],
+  "lemma:ru:сдать:VERB": [
+   {
+    "shown": "to deliver",
+    "v": "ok"
+   }
+  ],
+  "lemma:ru:сделать:VERB": [
+   {
+    "shown": "to make",
+    "v": "ok"
+   }
+  ],
   "lemma:ru:себя:PRON": [
    {
     "shown": "myself",
@@ -4716,6 +6314,12 @@
     "v": "ok"
    }
   ],
+  "lemma:ru:семья:NOUN": [
+   {
+    "shown": "family",
+    "v": "ok"
+   }
+  ],
   "lemma:ru:сентябрь:NOUN": [
    {
     "shown": "September",
@@ -4734,15 +6338,31 @@
     "v": "ok"
    }
   ],
+  "lemma:ru:сесть:VERB": [
+   {
+    "shown": "to sit down",
+    "v": "ok"
+   }
+  ],
   "lemma:ru:сибирь:PROPN": [
    {
     "shown": "Siberia (the region of Russia in Asia, stretching from the Pacific Ocean to…",
+    "v": "ok"
+   },
+   {
+    "shown": "Siberia",
     "v": "ok"
    }
   ],
   "lemma:ru:сидеть:VERB": [
    {
     "shown": "to sit",
+    "v": "ok"
+   }
+  ],
+  "lemma:ru:сила:NOUN": [
+   {
+    "shown": "strength",
     "v": "ok"
    }
   ],
@@ -4756,7 +6376,7 @@
    {
     "shown": "branch of meteorology concerned with weather forecasting",
     "v": "false-reading",
-    "note": "the word is синоптик (weather forecaster); 'синоптика' is a different, rare noun"
+    "note": "Синоптики is 'forecasters' (синоптик), not синоптика the field"
    }
   ],
   "lemma:ru:сирень:NOUN": [
@@ -4771,6 +6391,12 @@
     "v": "ok"
    }
   ],
+  "lemma:ru:склон:NOUN": [
+   {
+    "shown": "slope",
+    "v": "ok"
+   }
+  ],
   "lemma:ru:сковорода:NOUN": [
    {
     "shown": "frying pan (long-handled, shallow pan used for frying food)",
@@ -4780,6 +6406,18 @@
   "lemma:ru:скорый:ADJ": [
    {
     "shown": "fast",
+    "v": "ok"
+   }
+  ],
+  "lemma:ru:слабый:ADJ": [
+   {
+    "shown": "weak",
+    "v": "ok"
+   }
+  ],
+  "lemma:ru:сладкий:ADJ": [
+   {
+    "shown": "sweet (having a pleasant taste)",
     "v": "ok"
    }
   ],
@@ -4813,6 +6451,12 @@
     "v": "ok"
    }
   ],
+  "lemma:ru:смазать:VERB": [
+   {
+    "shown": "to smear",
+    "v": "ok"
+   }
+  ],
   "lemma:ru:смешать:VERB": [
    {
     "shown": "to mix",
@@ -4843,9 +6487,21 @@
     "v": "ok"
    }
   ],
+  "lemma:ru:снегопад:NOUN": [
+   {
+    "shown": "snowfall",
+    "v": "ok"
+   }
+  ],
   "lemma:ru:снизить:VERB": [
    {
     "shown": "to bring down",
+    "v": "ok"
+   }
+  ],
+  "lemma:ru:снимать:VERB": [
+   {
+    "shown": "to take off",
     "v": "ok"
    }
   ],
@@ -4858,6 +6514,12 @@
   "lemma:ru:снова:ADV": [
    {
     "shown": "anew",
+    "v": "ok"
+   }
+  ],
+  "lemma:ru:снять:VERB": [
+   {
+    "shown": "to take off",
     "v": "ok"
    }
   ],
@@ -4921,6 +6583,24 @@
     "v": "ok"
    }
   ],
+  "lemma:ru:создать:VERB": [
+   {
+    "shown": "to create",
+    "v": "ok"
+   }
+  ],
+  "lemma:ru:сонливость:NOUN": [
+   {
+    "shown": "sleepiness (property of being sleepy)",
+    "v": "ok"
+   }
+  ],
+  "lemma:ru:сообщать:VERB": [
+   {
+    "shown": "to communicate",
+    "v": "ok"
+   }
+  ],
   "lemma:ru:сообщить:VERB": [
    {
     "shown": "to communicate",
@@ -4930,6 +6610,12 @@
   "lemma:ru:соперник:NOUN": [
    {
     "shown": "rival",
+    "v": "ok"
+   }
+  ],
+  "lemma:ru:сорвать:VERB": [
+   {
+    "shown": "to pick",
     "v": "ok"
    }
   ],
@@ -4949,6 +6635,17 @@
    {
     "shown": "collaborator",
     "v": "ok"
+   },
+   {
+    "shown": "employee, associate",
+    "v": "ok"
+   }
+  ],
+  "lemma:ru:сохранить:VERB": [
+   {
+    "shown": "to save (to write a file to a disk)",
+    "v": "false-meaning",
+    "note": "сохранить is mainly 'to preserve, keep'; file-saving is a technical sense"
    }
   ],
   "lemma:ru:спасибо:INTJ": [
@@ -4961,7 +6658,7 @@
    {
     "shown": "to abate",
     "v": "false-reading",
-    "note": "спала is the past of спать (to sleep), not спасть (to abate)"
+    "note": "спала is past of спать 'to sleep', not спасть"
    }
   ],
   "lemma:ru:спать:VERB": [
@@ -4982,9 +6679,21 @@
     "v": "ok"
    }
   ],
+  "lemma:ru:специальный:ADJ": [
+   {
+    "shown": "special",
+    "v": "ok"
+   }
+  ],
   "lemma:ru:спешить:VERB": [
    {
     "shown": "to hurry",
+    "v": "ok"
+   }
+  ],
+  "lemma:ru:спортзал:NOUN": [
+   {
+    "shown": "gymnasium",
     "v": "ok"
    }
   ],
@@ -4994,9 +6703,21 @@
     "v": "ok"
    }
   ],
+  "lemma:ru:способный:ADJ": [
+   {
+    "shown": "capable (at)",
+    "v": "ok"
+   }
+  ],
   "lemma:ru:справа:ADV": [
    {
     "shown": "on the right",
+    "v": "ok"
+   }
+  ],
+  "lemma:ru:справка:NOUN": [
+   {
+    "shown": "certificate (confirming something)",
     "v": "ok"
    }
   ],
@@ -5009,6 +6730,13 @@
    {
     "shown": "demand (for something)",
     "v": "ok"
+   }
+  ],
+  "lemma:ru:спускать:VERB": [
+   {
+    "shown": "to let down",
+    "v": "false-reading",
+    "note": "Спускаться is reflexive 'to descend', not 'to let down'"
    }
   ],
   "lemma:ru:спутник:NOUN": [
@@ -5039,6 +6767,18 @@
     "v": "ok"
    }
   ],
+  "lemma:ru:средство:NOUN": [
+   {
+    "shown": "means",
+    "v": "ok"
+   }
+  ],
+  "lemma:ru:срок:NOUN": [
+   {
+    "shown": "period",
+    "v": "ok"
+   }
+  ],
   "lemma:ru:стабильный:ADJ": [
    {
     "shown": "stable",
@@ -5048,6 +6788,12 @@
   "lemma:ru:стакан:NOUN": [
    {
     "shown": "glass",
+    "v": "ok"
+   }
+  ],
+  "lemma:ru:стараться:VERB": [
+   {
+    "shown": "to try",
     "v": "ok"
    }
   ],
@@ -5074,11 +6820,39 @@
     "shown": "to stand (in a certain location or near someone or something)",
     "v": "false-meaning",
     "note": "стать mainly means to become; 'to stand' is secondary"
+   },
+   {
+    "shown": "to become, to get, to grow",
+    "v": "ok"
+   }
+  ],
+  "lemma:ru:стена:NOUN": [
+   {
+    "shown": "wall",
+    "v": "ok"
+   }
+  ],
+  "lemma:ru:стереть:VERB": [
+   {
+    "shown": "to wipe",
+    "v": "ok"
+   }
+  ],
+  "lemma:ru:стиральный:ADJ": [
+   {
+    "shown": "washing",
+    "v": "ok"
    }
   ],
   "lemma:ru:сто:NUM": [
    {
     "shown": "hundred (100)",
+    "v": "ok"
+   }
+  ],
+  "lemma:ru:стоимость:NOUN": [
+   {
+    "shown": "cost",
     "v": "ok"
    }
   ],
@@ -5118,6 +6892,12 @@
     "v": "ok"
    }
   ],
+  "lemma:ru:строитель:NOUN": [
+   {
+    "shown": "builder",
+    "v": "ok"
+   }
+  ],
   "lemma:ru:строить:VERB": [
    {
     "shown": "to build",
@@ -5136,6 +6916,12 @@
     "v": "ok"
    }
   ],
+  "lemma:ru:судья:NOUN": [
+   {
+    "shown": "judge",
+    "v": "ok"
+   }
+  ],
   "lemma:ru:суета:NOUN": [
    {
     "shown": "bustle",
@@ -5145,6 +6931,18 @@
   "lemma:ru:сумка:NOUN": [
    {
     "shown": "bag",
+    "v": "ok"
+   }
+  ],
+  "lemma:ru:сумма:NOUN": [
+   {
+    "shown": "sum (quantity obtained by addition or aggregation)",
+    "v": "ok"
+   }
+  ],
+  "lemma:ru:сунуть:VERB": [
+   {
+    "shown": "to put (in)",
     "v": "ok"
    }
   ],
@@ -5178,15 +6976,45 @@
     "v": "ok"
    }
   ],
+  "lemma:ru:таз:NOUN": [
+   {
+    "shown": "basin (a wide, relatively shallow vessel, e.g. for washing or cooking); a Lada automobile",
+    "v": "ok"
+   }
+  ],
   "lemma:ru:такси:NOUN": [
    {
     "shown": "taxi",
     "v": "ok"
    }
   ],
+  "lemma:ru:там:ADV": [
+   {
+    "shown": "there",
+    "v": "ok"
+   }
+  ],
+  "lemma:ru:таскать:VERB": [
+   {
+    "shown": "to carry",
+    "v": "ok"
+   }
+  ],
   "lemma:ru:твой:PRON": [
    {
     "shown": "your",
+    "v": "ok"
+   }
+  ],
+  "lemma:ru:телевизор:NOUN": [
+   {
+    "shown": "television set",
+    "v": "ok"
+   }
+  ],
+  "lemma:ru:телефон:NOUN": [
+   {
+    "shown": "telephone",
     "v": "ok"
    }
   ],
@@ -5220,6 +7048,13 @@
     "v": "ok"
    }
   ],
+  "lemma:ru:терапевт:NOUN": [
+   {
+    "shown": "therapeutist",
+    "v": "false-meaning",
+    "note": "терапевт is a general practitioner/internist; 'therapeutist' is garbled"
+   }
+  ],
   "lemma:ru:территория:NOUN": [
    {
     "shown": "territory",
@@ -5241,6 +7076,12 @@
   "lemma:ru:тишина:NOUN": [
    {
     "shown": "silence",
+    "v": "ok"
+   }
+  ],
+  "lemma:ru:ткань:NOUN": [
+   {
+    "shown": "fabric",
     "v": "ok"
    }
   ],
@@ -5268,6 +7109,12 @@
     "v": "ok"
    }
   ],
+  "lemma:ru:трасса:NOUN": [
+   {
+    "shown": "route",
+    "v": "ok"
+   }
+  ],
   "lemma:ru:требовать:VERB": [
    {
     "shown": "to demand",
@@ -5283,6 +7130,18 @@
   "lemma:ru:три:NUM": [
    {
     "shown": "three (3)",
+    "v": "ok"
+   }
+  ],
+  "lemma:ru:трудный:ADJ": [
+   {
+    "shown": "hard",
+    "v": "ok"
+   }
+  ],
+  "lemma:ru:тряпка:NOUN": [
+   {
+    "shown": "rag (piece of cloth)",
     "v": "ok"
    }
   ],
@@ -5332,6 +7191,18 @@
     "v": "ok"
    }
   ],
+  "lemma:ru:тёмный:ADJ": [
+   {
+    "shown": "dark",
+    "v": "ok"
+   }
+  ],
+  "lemma:ru:тёплый:ADJ": [
+   {
+    "shown": "warm",
+    "v": "ok"
+   }
+  ],
   "lemma:ru:у:ADP": [
    {
     "shown": "at",
@@ -5343,11 +7214,33 @@
     "shown": "harvest",
     "v": "false-meaning",
     "note": "уборка means cleaning/tidying; harvest is a marginal sense"
+   },
+   {
+    "shown": "cleaning, tidying up, doing up",
+    "v": "ok"
+   }
+  ],
+  "lemma:ru:угол:NOUN": [
+   {
+    "shown": "corner",
+    "v": "ok"
    }
   ],
   "lemma:ru:угостить:VERB": [
    {
     "shown": "to treat (someone to something)",
+    "v": "ok"
+   }
+  ],
+  "lemma:ru:удалить:VERB": [
+   {
+    "shown": "to remove",
+    "v": "ok"
+   }
+  ],
+  "lemma:ru:удерживать:VERB": [
+   {
+    "shown": "to retain",
     "v": "ok"
    }
   ],
@@ -5358,6 +7251,12 @@
    },
    {
     "shown": "satisfaction",
+    "v": "ok"
+   }
+  ],
+  "lemma:ru:уехать:VERB": [
+   {
+    "shown": "to go away",
     "v": "ok"
    }
   ],
@@ -5379,6 +7278,24 @@
     "v": "ok"
    }
   ],
+  "lemma:ru:узнать:VERB": [
+   {
+    "shown": "to recognize",
+    "v": "ok"
+   }
+  ],
+  "lemma:ru:уйти:VERB": [
+   {
+    "shown": "to leave",
+    "v": "ok"
+   }
+  ],
+  "lemma:ru:укол:NOUN": [
+   {
+    "shown": "prick",
+    "v": "ok"
+   }
+  ],
   "lemma:ru:улица:NOUN": [
    {
     "shown": "street",
@@ -5388,6 +7305,18 @@
   "lemma:ru:университет:NOUN": [
    {
     "shown": "university",
+    "v": "ok"
+   }
+  ],
+  "lemma:ru:упор:NOUN": [
+   {
+    "shown": "support",
+    "v": "ok"
+   }
+  ],
+  "lemma:ru:уровень:NOUN": [
+   {
+    "shown": "level",
     "v": "ok"
    }
   ],
@@ -5403,9 +7332,27 @@
     "v": "ok"
    }
   ],
+  "lemma:ru:усталость:NOUN": [
+   {
+    "shown": "weariness",
+    "v": "ok"
+   }
+  ],
+  "lemma:ru:устроить:VERB": [
+   {
+    "shown": "to arrange",
+    "v": "ok"
+   }
+  ],
   "lemma:ru:утро:NOUN": [
    {
     "shown": "morning",
+    "v": "ok"
+   }
+  ],
+  "lemma:ru:участок:NOUN": [
+   {
+    "shown": "part",
     "v": "ok"
    }
   ],
@@ -5433,6 +7380,12 @@
     "v": "ok"
    }
   ],
+  "lemma:ru:файл:NOUN": [
+   {
+    "shown": "file",
+    "v": "ok"
+   }
+  ],
   "lemma:ru:ферма:NOUN": [
    {
     "shown": "farm",
@@ -5454,6 +7407,12 @@
   "lemma:ru:финал:NOUN": [
    {
     "shown": "finale",
+    "v": "ok"
+   }
+  ],
+  "lemma:ru:фотография:NOUN": [
+   {
+    "shown": "photograph",
     "v": "ok"
    }
   ],
@@ -5505,9 +7464,33 @@
     "v": "ok"
    }
   ],
+  "lemma:ru:хотеться:VERB": [
+   {
+    "shown": "to want",
+    "v": "ok"
+   }
+  ],
   "lemma:ru:цвести:VERB": [
    {
     "shown": "to bloom",
+    "v": "ok"
+   }
+  ],
+  "lemma:ru:цвет:NOUN": [
+   {
+    "shown": "color/colour; blossom",
+    "v": "ok"
+   }
+  ],
+  "lemma:ru:цветочный:ADJ": [
+   {
+    "shown": "flower",
+    "v": "ok"
+   }
+  ],
+  "lemma:ru:целый:ADJ": [
+   {
+    "shown": "whole",
     "v": "ok"
    }
   ],
@@ -5520,6 +7503,18 @@
   "lemma:ru:центр:NOUN": [
    {
     "shown": "center",
+    "v": "ok"
+   }
+  ],
+  "lemma:ru:центральный:ADJ": [
+   {
+    "shown": "central",
+    "v": "ok"
+   }
+  ],
+  "lemma:ru:цепь:NOUN": [
+   {
+    "shown": "chain",
     "v": "ok"
    }
   ],
@@ -5565,15 +7560,33 @@
     "v": "ok"
    }
   ],
+  "lemma:ru:четверг:NOUN": [
+   {
+    "shown": "Thursday",
+    "v": "ok"
+   }
+  ],
   "lemma:ru:четыре:NUM": [
    {
     "shown": "four (4)",
     "v": "ok"
    }
   ],
+  "lemma:ru:чинить:VERB": [
+   {
+    "shown": "to repair; to cause",
+    "v": "ok"
+   }
+  ],
   "lemma:ru:чистый:ADJ": [
    {
     "shown": "clean",
+    "v": "ok"
+   }
+  ],
+  "lemma:ru:читатель:NOUN": [
+   {
+    "shown": "reader",
     "v": "ok"
    }
   ],
@@ -5589,15 +7602,34 @@
     "v": "ok"
    }
   ],
+  "lemma:ru:чуть:ADV": [
+   {
+    "shown": "a little",
+    "v": "ok"
+   }
+  ],
   "lemma:ru:чёрный:ADJ": [
    {
     "shown": "black",
     "v": "ok"
    }
   ],
+  "lemma:ru:шапка:NOUN": [
+   {
+    "shown": "warm",
+    "v": "false-meaning",
+    "note": "шапка is 'hat/cap', not 'warm'"
+   }
+  ],
   "lemma:ru:шахта:NOUN": [
    {
     "shown": "mine",
+    "v": "ok"
+   }
+  ],
+  "lemma:ru:шина:NOUN": [
+   {
+    "shown": "tire/tyre",
     "v": "ok"
    }
   ],
@@ -5613,9 +7645,33 @@
     "v": "ok"
    }
   ],
+  "lemma:ru:школьный:ADJ": [
+   {
+    "shown": "school",
+    "v": "ok"
+   }
+  ],
   "lemma:ru:шум:NOUN": [
    {
     "shown": "noise",
+    "v": "ok"
+   }
+  ],
+  "lemma:ru:шумный:ADJ": [
+   {
+    "shown": "loud",
+    "v": "ok"
+   }
+  ],
+  "lemma:ru:шуруп:NOUN": [
+   {
+    "shown": "wood screw (fastener)",
+    "v": "ok"
+   }
+  ],
+  "lemma:ru:щелчок:NOUN": [
+   {
+    "shown": "flick",
     "v": "ok"
    }
   ],
@@ -5637,6 +7693,16 @@
     "v": "ok"
    }
   ],
+  "lemma:ru:экскурсовод:NOUN": [
+   {
+    "shown": "guide (a trained specialist who leads guided tours at a museum or other…",
+    "v": "ok"
+   },
+   {
+    "shown": "guide",
+    "v": "ok"
+   }
+  ],
   "lemma:ru:эксперт:NOUN": [
    {
     "shown": "expert",
@@ -5646,6 +7712,12 @@
   "lemma:ru:электромобиль:NOUN": [
    {
     "shown": "electric car",
+    "v": "ok"
+   }
+  ],
+  "lemma:ru:этаж:NOUN": [
+   {
+    "shown": "floor",
     "v": "ok"
    }
   ],
@@ -5673,6 +7745,12 @@
     "v": "ok"
    }
   ],
+  "lemma:ru:январь:NOUN": [
+   {
+    "shown": "January",
+    "v": "ok"
+   }
+  ],
   "lemma:ru:ярмарка:NOUN": [
    {
     "shown": "fair (market)",
@@ -5685,5 +7763,27 @@
     "v": "ok"
    }
   ]
- }
+ },
+ "heldResidue": [
+  "form:ru:выставка",
+  "form:ru:пломба",
+  "form:ru:руль",
+  "form:ru:сохранить",
+  "lemma:ru:авария:NOUN",
+  "lemma:ru:бутерброд:NOUN",
+  "lemma:ru:водитель:NOUN",
+  "lemma:ru:выставка:NOUN",
+  "lemma:ru:гроза:NOUN",
+  "lemma:ru:дух:NOUN",
+  "lemma:ru:знак:NOUN",
+  "lemma:ru:настоящий:ADJ",
+  "lemma:ru:перевести:VERB",
+  "lemma:ru:пломба:NOUN",
+  "lemma:ru:поднимать:VERB",
+  "lemma:ru:руль:NOUN",
+  "lemma:ru:сохранить:VERB",
+  "lemma:ru:спускать:VERB",
+  "lemma:ru:терапевт:NOUN",
+  "lemma:ru:шапка:NOUN"
+ ]
 }

@@ -1,8 +1,6 @@
 {
  "readBy": "AI models (Claude), not native speakers; each card judged once, in the first sentence it came from, against the brief in docs/ecosystem/DECK-GATE.md. 2026-11-26.",
- "residual": [
-  "form:sq:na"
- ],
+ "residual": [],
  "cards": {
   "form:sq:a": [
    {
@@ -22,10 +20,21 @@
     "v": "ok"
    }
   ],
+  "form:sq:as": [
+   {
+    "shown": "not even; nor",
+    "v": "ok"
+   }
+  ],
   "form:sq:askush": [
    {
     "shown": "no one, nobody",
     "v": "ok"
+   },
+   {
+    "shown": "nobody, no one",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:sq:atje": [
@@ -44,9 +53,21 @@
     "v": "ok"
    }
   ],
+  "form:sq:autobus": [
+   {
+    "shown": "bus",
+    "v": "ok"
+   }
+  ],
   "form:sq:ballkon": [
    {
     "shown": "balcony",
+    "v": "ok"
+   }
+  ],
+  "form:sq:banesë": [
+   {
+    "shown": "home, flat",
     "v": "ok"
    }
   ],
@@ -60,11 +81,22 @@
    {
     "shown": "library (institution and building)",
     "v": "ok"
+   },
+   {
+    "shown": "library",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:sq:biletë": [
    {
     "shown": "ticket",
+    "v": "ok"
+   }
+  ],
+  "form:sq:bisedoj": [
+   {
+    "shown": "to talk, to converse",
     "v": "ok"
    }
   ],
@@ -96,6 +128,11 @@
    {
     "shown": "supper, dinner (evening meal)",
     "v": "ok"
+   },
+   {
+    "shown": "dinner, supper",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:sq:deri": [
@@ -117,6 +154,18 @@
   "form:sq:dhomë": [
    {
     "shown": "room, chamber",
+    "v": "ok"
+   }
+  ],
+  "form:sq:dhëmb": [
+   {
+    "shown": "tooth",
+    "v": "ok"
+   }
+  ],
+  "form:sq:dimër": [
+   {
+    "shown": "winter",
     "v": "ok"
    }
   ],
@@ -144,6 +193,24 @@
     "v": "ok"
    }
   ],
+  "form:sq:dritë": [
+   {
+    "shown": "light",
+    "v": "ok"
+   }
+  ],
+  "form:sq:dua": [
+   {
+    "shown": "to want",
+    "v": "ok"
+   }
+  ],
+  "form:sq:durim": [
+   {
+    "shown": "patience",
+    "v": "ok"
+   }
+  ],
   "form:sq:dy": [
    {
     "shown": "two",
@@ -159,6 +226,18 @@
   "form:sq:dyzet": [
    {
     "shown": "forty",
+    "v": "ok"
+   }
+  ],
+  "form:sq:dëgjoj": [
+   {
+    "shown": "to hear",
+    "v": "ok"
+   }
+  ],
+  "form:sq:dëshiroj": [
+   {
+    "shown": "to wish, to desire",
     "v": "ok"
    }
   ],
@@ -184,6 +263,17 @@
    {
     "shown": "thank you",
     "v": "ok"
+   }
+  ],
+  "form:sq:frikë": [
+   {
+    "shown": "fear (fright)",
+    "v": "ok"
+   },
+   {
+    "shown": "fear",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:sq:frymë": [
@@ -218,9 +308,21 @@
     "v": "ok"
    }
   ],
+  "form:sq:gazetë": [
+   {
+    "shown": "newspaper",
+    "v": "ok"
+   }
+  ],
   "form:sq:gjithmonë": [
    {
     "shown": "always, all the time",
+    "v": "ok"
+   }
+  ],
+  "form:sq:gjithçka": [
+   {
+    "shown": "everything",
     "v": "ok"
    }
   ],
@@ -228,6 +330,34 @@
    {
     "shown": "a half, ¹⁄₂",
     "v": "ok"
+   }
+  ],
+  "form:sq:gjë": [
+   {
+    "shown": "thing",
+    "v": "ok"
+   }
+  ],
+  "form:sq:gotë": [
+   {
+    "shown": "glass (for drinking)",
+    "v": "ok"
+   },
+   {
+    "shown": "glass",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
+   }
+  ],
+  "form:sq:grua": [
+   {
+    "shown": "woman (mature female human)",
+    "v": "ok"
+   },
+   {
+    "shown": "woman; wife",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:sq:gusht": [
@@ -243,6 +373,12 @@
    },
    {
     "shown": "medicine",
+    "v": "ok"
+   }
+  ],
+  "form:sq:jashtë": [
+   {
+    "shown": "outside",
     "v": "ok"
    }
   ],
@@ -287,6 +423,12 @@
     "v": "ok"
    }
   ],
+  "form:sq:kripë": [
+   {
+    "shown": "salt",
+    "v": "ok"
+   }
+  ],
   "form:sq:ku": [
    {
     "shown": "where",
@@ -297,10 +439,21 @@
     "v": "ok"
    }
   ],
+  "form:sq:kurrë": [
+   {
+    "shown": "never",
+    "v": "ok"
+   }
+  ],
   "form:sq:kush": [
    {
     "shown": "who (as an interrogative pronoun)",
     "v": "ok"
+   },
+   {
+    "shown": "who",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:sq:ky": [
@@ -309,9 +462,21 @@
     "v": "ok"
    }
   ],
+  "form:sq:kënaqësi": [
+   {
+    "shown": "pleasure, gratification, satisfaction",
+    "v": "ok"
+   }
+  ],
   "form:sq:kërkoj": [
    {
     "shown": "to look for, to seek",
+    "v": "ok"
+   }
+  ],
+  "form:sq:këtu": [
+   {
+    "shown": "here, on this side",
     "v": "ok"
    }
   ],
@@ -325,6 +490,18 @@
   "form:sq:libër": [
    {
     "shown": "book",
+    "v": "ok"
+   }
+  ],
+  "form:sq:lloj": [
+   {
+    "shown": "kind, sort",
+    "v": "ok"
+   }
+  ],
+  "form:sq:lojë": [
+   {
+    "shown": "game, play",
     "v": "ok"
    }
   ],
@@ -373,6 +550,12 @@
     "v": "ok"
    }
   ],
+  "form:sq:mendoj": [
+   {
+    "shown": "to think",
+    "v": "ok"
+   }
+  ],
   "form:sq:mesditë": [
    {
     "shown": "midday",
@@ -391,9 +574,27 @@
     "v": "ok"
    }
   ],
+  "form:sq:mjegull": [
+   {
+    "shown": "fog",
+    "v": "ok"
+   }
+  ],
+  "form:sq:muze": [
+   {
+    "shown": "museum",
+    "v": "ok"
+   }
+  ],
   "form:sq:mëngjes": [
    {
     "shown": "morning",
+    "v": "ok"
+   }
+  ],
+  "form:sq:mësoj": [
+   {
+    "shown": "to learn, to teach",
     "v": "ok"
    }
   ],
@@ -401,7 +602,7 @@
    {
     "shown": "we",
     "v": "false-meaning",
-    "note": "na is the clitic us (told us), not nominative we"
+    "note": "na is the clitic us / to us (oblique of ne we), not we"
    }
   ],
   "form:sq:ndihmoj": [
@@ -413,6 +614,12 @@
   "form:sq:ndihmë": [
    {
     "shown": "help",
+    "v": "ok"
+   }
+  ],
+  "form:sq:ndërtesë": [
+   {
+    "shown": "building, facility",
     "v": "ok"
    }
   ],
@@ -438,6 +645,12 @@
     "v": "ok"
    }
   ],
+  "form:sq:ngjyrë": [
+   {
+    "shown": "colour",
+    "v": "ok"
+   }
+  ],
   "form:sq:ngrihem": [
    {
     "shown": "to rise",
@@ -456,15 +669,32 @@
     "v": "ok"
    }
   ],
+  "form:sq:njëzet": [
+   {
+    "shown": "twenty",
+    "v": "ok"
+   }
+  ],
   "form:sq:në": [
    {
     "shown": "at",
     "v": "ok"
+   },
+   {
+    "shown": "in, into, to, at",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:sq:nën": [
    {
     "shown": "under",
+    "v": "ok"
+   }
+  ],
+  "form:sq:nëpër": [
+   {
+    "shown": "through, along, around",
     "v": "ok"
    }
   ],
@@ -478,6 +708,11 @@
    {
     "shown": "behind, beyond",
     "v": "ok"
+   },
+   {
+    "shown": "after, behind",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:sq:pasnesër": [
@@ -510,15 +745,57 @@
     "v": "ok"
    }
   ],
+  "form:sq:pjatë": [
+   {
+    "shown": "plate",
+    "v": "ok"
+   }
+  ],
   "form:sq:por": [
    {
     "shown": "but; however",
     "v": "ok"
    }
   ],
+  "form:sq:portë": [
+   {
+    "shown": "gate",
+    "v": "ok"
+   }
+  ],
+  "form:sq:poshtë": [
+   {
+    "shown": "down, downwards",
+    "v": "ok"
+   }
+  ],
+  "form:sq:prandaj": [
+   {
+    "shown": "therefore, thus",
+    "v": "ok"
+   }
+  ],
   "form:sq:prej": [
    {
     "shown": "from",
+    "v": "ok"
+   }
+  ],
+  "form:sq:provoj": [
+   {
+    "shown": "to try",
+    "v": "ok"
+   }
+  ],
+  "form:sq:pse": [
+   {
+    "shown": "why",
+    "v": "ok"
+   }
+  ],
+  "form:sq:pyll": [
+   {
+    "shown": "forest, wood",
     "v": "ok"
    }
   ],
@@ -611,6 +888,12 @@
     "v": "ok"
    }
   ],
+  "form:sq:shkoj": [
+   {
+    "shown": "to go, pass",
+    "v": "ok"
+   }
+  ],
   "form:sq:shkollë": [
    {
     "shown": "school",
@@ -635,6 +918,12 @@
     "v": "ok"
    }
   ],
+  "form:sq:shtunë": [
+   {
+    "shown": "Saturday (e shtunë)",
+    "v": "ok"
+   }
+  ],
   "form:sq:shumicë": [
    {
     "shown": "majority",
@@ -650,6 +939,12 @@
   "form:sq:sipas": [
    {
     "shown": "according to",
+    "v": "ok"
+   }
+  ],
+  "form:sq:sobë": [
+   {
+    "shown": "stove",
     "v": "ok"
    }
   ],
@@ -688,10 +983,21 @@
     "v": "ok"
    }
   ],
+  "form:sq:telefonoj": [
+   {
+    "shown": "to telephone",
+    "v": "ok"
+   }
+  ],
   "form:sq:tokë": [
    {
     "shown": "land, earth, world; ground, floor",
     "v": "ok"
+   },
+   {
+    "shown": "earth, land, soil",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:sq:tre": [
@@ -742,6 +1048,12 @@
     "v": "ok"
    }
   ],
+  "form:sq:vaj": [
+   {
+    "shown": "oil",
+    "v": "ok"
+   }
+  ],
   "form:sq:vend": [
    {
     "shown": "place",
@@ -783,9 +1095,21 @@
     "v": "ok"
    }
   ],
+  "form:sq:vonë": [
+   {
+    "shown": "late",
+    "v": "ok"
+   }
+  ],
   "form:sq:vëlla": [
    {
     "shown": "brother",
+    "v": "ok"
+   }
+  ],
+  "form:sq:xhaketë": [
+   {
+    "shown": "jacket",
     "v": "ok"
    }
   ],
@@ -804,6 +1128,12 @@
   "form:sq:zgjohem": [
    {
     "shown": "to wake up",
+    "v": "ok"
+   }
+  ],
+  "form:sq:zjarr": [
+   {
+    "shown": "fire",
     "v": "ok"
    }
   ],
@@ -829,6 +1159,11 @@
    {
     "shown": "each, every",
     "v": "ok"
+   },
+   {
+    "shown": "every, each",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:sq:çfarë": [
@@ -873,6 +1208,12 @@
     "v": "ok"
    }
   ],
+  "lemma:sq:ajër:NOUN": [
+   {
+    "shown": "air",
+    "v": "ok"
+   }
+  ],
   "lemma:sq:aksident:NOUN": [
    {
     "shown": "accident",
@@ -909,6 +1250,12 @@
     "v": "ok"
    }
   ],
+  "lemma:sq:as:ADV": [
+   {
+    "shown": "not even; nor",
+    "v": "ok"
+   }
+  ],
   "lemma:sq:askush:PRON": [
    {
     "shown": "nobody, no one",
@@ -942,6 +1289,12 @@
   "lemma:sq:ballkon:NOUN": [
    {
     "shown": "balcony",
+    "v": "ok"
+   }
+  ],
+  "lemma:sq:banesë:NOUN": [
+   {
+    "shown": "home, flat",
     "v": "ok"
    }
   ],
@@ -993,6 +1346,18 @@
     "v": "ok"
    }
   ],
+  "lemma:sq:bisedoj:VERB": [
+   {
+    "shown": "to talk, to converse",
+    "v": "ok"
+   }
+  ],
+  "lemma:sq:biçikletë:NOUN": [
+   {
+    "shown": "bicycle",
+    "v": "ok"
+   }
+  ],
   "lemma:sq:blej:VERB": [
    {
     "shown": "to buy",
@@ -1002,6 +1367,12 @@
   "lemma:sq:borë:NOUN": [
    {
     "shown": "snow",
+    "v": "ok"
+   }
+  ],
+  "lemma:sq:breg:NOUN": [
+   {
+    "shown": "shore, bank",
     "v": "ok"
    }
   ],
@@ -1017,6 +1388,12 @@
     "v": "ok"
    }
   ],
+  "lemma:sq:byrek:NOUN": [
+   {
+    "shown": "byrek (savoury pie)",
+    "v": "ok"
+   }
+  ],
   "lemma:sq:bëj:VERB": [
    {
     "shown": "to do, to make",
@@ -1026,6 +1403,12 @@
   "lemma:sq:cili:PRON": [
    {
     "shown": "which, which one; who, which (relative)",
+    "v": "ok"
+   }
+  ],
+  "lemma:sq:copëtoj:VERB": [
+   {
+    "shown": "to break into pieces, to cut up",
     "v": "ok"
    }
   ],
@@ -1053,6 +1436,12 @@
     "v": "ok"
    }
   ],
+  "lemma:sq:derë:NOUN": [
+   {
+    "shown": "door",
+    "v": "ok"
+   }
+  ],
   "lemma:sq:det:NOUN": [
    {
     "shown": "sea",
@@ -1077,9 +1466,21 @@
     "v": "ok"
    }
   ],
+  "lemma:sq:dhëmb:NOUN": [
+   {
+    "shown": "tooth",
+    "v": "ok"
+   }
+  ],
   "lemma:sq:di:VERB": [
    {
     "shown": "to know (a fact)",
+    "v": "ok"
+   }
+  ],
+  "lemma:sq:diel:NOUN": [
+   {
+    "shown": "Sunday (e diel)",
     "v": "ok"
    }
   ],
@@ -1137,9 +1538,27 @@
     "v": "ok"
    }
   ],
+  "lemma:sq:dollap:NOUN": [
+   {
+    "shown": "cupboard, wardrobe",
+    "v": "ok"
+   }
+  ],
+  "lemma:sq:domate:NOUN": [
+   {
+    "shown": "tomato",
+    "v": "ok"
+   }
+  ],
   "lemma:sq:drekë:NOUN": [
    {
     "shown": "lunch",
+    "v": "ok"
+   }
+  ],
+  "lemma:sq:dridhem:VERB": [
+   {
+    "shown": "to tremble, to shiver",
     "v": "ok"
    }
   ],
@@ -1149,15 +1568,45 @@
     "v": "ok"
    }
   ],
+  "lemma:sq:dritë:NOUN": [
+   {
+    "shown": "light",
+    "v": "ok"
+   }
+  ],
   "lemma:sq:dua:VERB": [
    {
     "shown": "to want, to love",
     "v": "ok"
    }
   ],
+  "lemma:sq:dukem:VERB": [
+   {
+    "shown": "to seem, to appear",
+    "v": "ok"
+   }
+  ],
+  "lemma:sq:durim:NOUN": [
+   {
+    "shown": "patience",
+    "v": "ok"
+   }
+  ],
   "lemma:sq:dy:NUM": [
    {
     "shown": "two (2)",
+    "v": "ok"
+   }
+  ],
+  "lemma:sq:dyqan:NOUN": [
+   {
+    "shown": "shop",
+    "v": "ok"
+   }
+  ],
+  "lemma:sq:dysheme:NOUN": [
+   {
+    "shown": "floor",
     "v": "ok"
    }
   ],
@@ -1173,9 +1622,21 @@
     "v": "ok"
    }
   ],
+  "lemma:sq:dëmtoj:VERB": [
+   {
+    "shown": "to damage",
+    "v": "ok"
+   }
+  ],
   "lemma:sq:dërgoj:VERB": [
    {
     "shown": "to send",
+    "v": "ok"
+   }
+  ],
+  "lemma:sq:dëshiroj:VERB": [
+   {
+    "shown": "to wish, to desire",
     "v": "ok"
    }
   ],
@@ -1200,6 +1661,18 @@
   "lemma:sq:ekonomi:NOUN": [
    {
     "shown": "economy",
+    "v": "ok"
+   }
+  ],
+  "lemma:sq:ekran:NOUN": [
+   {
+    "shown": "screen",
+    "v": "ok"
+   }
+  ],
+  "lemma:sq:emër:NOUN": [
+   {
+    "shown": "name; noun",
     "v": "ok"
    }
   ],
@@ -1257,6 +1730,12 @@
     "v": "ok"
    }
   ],
+  "lemma:sq:fik:VERB": [
+   {
+    "shown": "to switch off, to put out",
+    "v": "ok"
+   }
+  ],
   "lemma:sq:fillim:NOUN": [
    {
     "shown": "beginning",
@@ -1299,6 +1778,12 @@
     "v": "ok"
    }
   ],
+  "lemma:sq:frikë:NOUN": [
+   {
+    "shown": "fear",
+    "v": "ok"
+   }
+  ],
   "lemma:sq:frutë:NOUN": [
    {
     "shown": "fruit",
@@ -1326,6 +1811,12 @@
   "lemma:sq:fundjavë:NOUN": [
    {
     "shown": "weekend",
+    "v": "ok"
+   }
+  ],
+  "lemma:sq:furrë:NOUN": [
+   {
+    "shown": "oven; bakery",
     "v": "ok"
    }
   ],
@@ -1365,9 +1856,21 @@
     "v": "ok"
    }
   ],
+  "lemma:sq:gjej:VERB": [
+   {
+    "shown": "to find",
+    "v": "ok"
+   }
+  ],
   "lemma:sq:gjithmonë:ADV": [
    {
     "shown": "always",
+    "v": "ok"
+   }
+  ],
+  "lemma:sq:gjithçka:PRON": [
+   {
+    "shown": "everything",
     "v": "ok"
    }
   ],
@@ -1395,6 +1898,18 @@
     "v": "ok"
    }
   ],
+  "lemma:sq:gjë:NOUN": [
+   {
+    "shown": "thing",
+    "v": "ok"
+   }
+  ],
+  "lemma:sq:gotë:NOUN": [
+   {
+    "shown": "glass",
+    "v": "ok"
+   }
+  ],
   "lemma:sq:grua:NOUN": [
    {
     "shown": "woman; wife",
@@ -1419,9 +1934,33 @@
     "v": "ok"
    }
   ],
+  "lemma:sq:harroj:VERB": [
+   {
+    "shown": "to forget",
+    "v": "ok"
+   }
+  ],
+  "lemma:sq:hartë:NOUN": [
+   {
+    "shown": "map",
+    "v": "ok"
+   }
+  ],
   "lemma:sq:hedh:VERB": [
    {
     "shown": "to throw",
+    "v": "ok"
+   }
+  ],
+  "lemma:sq:heq:VERB": [
+   {
+    "shown": "to remove, to take away",
+    "v": "ok"
+   }
+  ],
+  "lemma:sq:herë:NOUN": [
+   {
+    "shown": "time, occasion (një herë, dy herë)",
     "v": "ok"
    }
   ],
@@ -1446,6 +1985,12 @@
   "lemma:sq:hyj:VERB": [
    {
     "shown": "to enter",
+    "v": "ok"
+   }
+  ],
+  "lemma:sq:hënë:NOUN": [
+   {
+    "shown": "moon; Monday (e hënë)",
     "v": "ok"
    }
   ],
@@ -1485,9 +2030,21 @@
     "v": "ok"
    }
   ],
+  "lemma:sq:i gjelbër:ADJ": [
+   {
+    "shown": "green",
+    "v": "ok"
+   }
+  ],
   "lemma:sq:i lartë:ADJ": [
    {
     "shown": "high, tall",
+    "v": "ok"
+   }
+  ],
+  "lemma:sq:i lehtë:ADJ": [
+   {
+    "shown": "light, easy",
     "v": "ok"
    }
   ],
@@ -1501,6 +2058,13 @@
    {
     "shown": "big, great",
     "v": "ok"
+   }
+  ],
+  "lemma:sq:i marrë:ADJ": [
+   {
+    "shown": "foolish, mad",
+    "v": "false-reading",
+    "note": "marre here is subjunctive of marr take (marre ngjyre), not the adjective i marre foolish"
    }
   ],
   "lemma:sq:i mirë:ADJ": [
@@ -1521,6 +2085,12 @@
     "v": "ok"
    }
   ],
+  "lemma:sq:i ngushtë:ADJ": [
+   {
+    "shown": "narrow, tight",
+    "v": "ok"
+   }
+  ],
   "lemma:sq:i parë:ADJ": [
    {
     "shown": "first",
@@ -1533,9 +2103,45 @@
     "v": "ok"
    }
   ],
+  "lemma:sq:i qetë:ADJ": [
+   {
+    "shown": "calm, quiet",
+    "v": "ok"
+   }
+  ],
   "lemma:sq:i ri:ADJ": [
    {
     "shown": "young, new",
+    "v": "ok"
+   }
+  ],
+  "lemma:sq:i rëndë:ADJ": [
+   {
+    "shown": "heavy",
+    "v": "ok"
+   }
+  ],
+  "lemma:sq:i saj:DET": [
+   {
+    "shown": "her, hers",
+    "v": "ok"
+   }
+  ],
+  "lemma:sq:i shkurtër:ADJ": [
+   {
+    "shown": "short",
+    "v": "ok"
+   }
+  ],
+  "lemma:sq:i shtrenjtë:ADJ": [
+   {
+    "shown": "expensive",
+    "v": "ok"
+   }
+  ],
+  "lemma:sq:i thatë:ADJ": [
+   {
+    "shown": "dry",
     "v": "ok"
    }
   ],
@@ -1569,6 +2175,12 @@
     "v": "ok"
    }
   ],
+  "lemma:sq:i verdhë:ADJ": [
+   {
+    "shown": "yellow",
+    "v": "ok"
+   }
+  ],
   "lemma:sq:i vetëm:ADJ": [
    {
     "shown": "alone, only",
@@ -1587,6 +2199,24 @@
     "v": "ok"
    }
   ],
+  "lemma:sq:i vështirë:ADJ": [
+   {
+    "shown": "difficult",
+    "v": "ok"
+   }
+  ],
+  "lemma:sq:iki:VERB": [
+   {
+    "shown": "to leave, to flee",
+    "v": "ok"
+   }
+  ],
+  "lemma:sq:ikonë:NOUN": [
+   {
+    "shown": "icon",
+    "v": "ok"
+   }
+  ],
   "lemma:sq:ilaç:NOUN": [
    {
     "shown": "medicine",
@@ -1596,6 +2226,12 @@
   "lemma:sq:im:DET": [
    {
     "shown": "my, mine",
+    "v": "ok"
+   }
+  ],
+  "lemma:sq:internet:NOUN": [
+   {
+    "shown": "the internet",
     "v": "ok"
    }
   ],
@@ -1614,6 +2250,12 @@
   "lemma:sq:jap:VERB": [
    {
     "shown": "to give",
+    "v": "ok"
+   }
+  ],
+  "lemma:sq:jashtë:ADV": [
+   {
+    "shown": "outside",
     "v": "ok"
    }
   ],
@@ -1650,6 +2292,12 @@
   "lemma:sq:kafe:NOUN": [
    {
     "shown": "coffee",
+    "v": "ok"
+   }
+  ],
+  "lemma:sq:kafene:NOUN": [
+   {
+    "shown": "café",
     "v": "ok"
    }
   ],
@@ -1699,7 +2347,7 @@
    {
     "shown": "church",
     "v": "false-reading",
-    "note": "kisha here is past of kam (I had), not church"
+    "note": "kishe here is you had (past of kam), not the noun kishe church"
    }
   ],
   "lemma:sq:kohë:NOUN": [
@@ -1726,9 +2374,21 @@
     "v": "ok"
    }
   ],
+  "lemma:sq:kontrolloj:VERB": [
+   {
+    "shown": "to check, to control",
+    "v": "ok"
+   }
+  ],
   "lemma:sq:kopsht:NOUN": [
    {
     "shown": "garden",
+    "v": "ok"
+   }
+  ],
+  "lemma:sq:kripë:NOUN": [
+   {
+    "shown": "salt",
     "v": "ok"
    }
   ],
@@ -1750,11 +2410,23 @@
     "v": "ok"
    }
   ],
+  "lemma:sq:kurrë:ADV": [
+   {
+    "shown": "never, ever",
+    "v": "ok"
+   }
+  ],
   "lemma:sq:kurs:NOUN": [
    {
     "shown": "course",
     "v": "false-reading",
     "note": "kurse here is conjunction meaning whereas, not course"
+   }
+  ],
+  "lemma:sq:kursim:NOUN": [
+   {
+    "shown": "saving (kursime: savings)",
+    "v": "ok"
    }
   ],
   "lemma:sq:kush:PRON": [
@@ -1781,9 +2453,33 @@
     "v": "ok"
    }
   ],
+  "lemma:sq:kënaqësi:NOUN": [
+   {
+    "shown": "pleasure",
+    "v": "ok"
+   }
+  ],
+  "lemma:sq:këpucë:NOUN": [
+   {
+    "shown": "shoe",
+    "v": "ok"
+   }
+  ],
   "lemma:sq:kërkoj:VERB": [
    {
     "shown": "to look for, to ask for",
+    "v": "ok"
+   }
+  ],
+  "lemma:sq:këshilloj:VERB": [
+   {
+    "shown": "to advise",
+    "v": "ok"
+   }
+  ],
+  "lemma:sq:këtu:ADV": [
+   {
+    "shown": "here",
     "v": "ok"
    }
   ],
@@ -1796,6 +2492,24 @@
   "lemma:sq:laj:VERB": [
    {
     "shown": "to wash",
+    "v": "ok"
+   }
+  ],
+  "lemma:sq:largohem:VERB": [
+   {
+    "shown": "to go away, to withdraw",
+    "v": "ok"
+   }
+  ],
+  "lemma:sq:lart:ADV": [
+   {
+    "shown": "up, above",
+    "v": "ok"
+   }
+  ],
+  "lemma:sq:leh:VERB": [
+   {
+    "shown": "to bark",
     "v": "ok"
    }
   ],
@@ -1817,6 +2531,12 @@
     "v": "ok"
    }
   ],
+  "lemma:sq:lidh:VERB": [
+   {
+    "shown": "to tie, to connect",
+    "v": "ok"
+   }
+  ],
   "lemma:sq:limon:NOUN": [
    {
     "shown": "lemon",
@@ -1832,6 +2552,18 @@
   "lemma:sq:liqen:NOUN": [
    {
     "shown": "lake",
+    "v": "ok"
+   }
+  ],
+  "lemma:sq:llogari:NOUN": [
+   {
+    "shown": "account; calculation",
+    "v": "ok"
+   }
+  ],
+  "lemma:sq:lloj:NOUN": [
+   {
+    "shown": "kind, sort",
     "v": "ok"
    }
   ],
@@ -1853,6 +2585,18 @@
     "v": "ok"
    }
   ],
+  "lemma:sq:luginë:NOUN": [
+   {
+    "shown": "valley",
+    "v": "ok"
+   }
+  ],
+  "lemma:sq:lule:NOUN": [
+   {
+    "shown": "flower",
+    "v": "ok"
+   }
+  ],
   "lemma:sq:lumë:NOUN": [
    {
     "shown": "river",
@@ -1862,6 +2606,12 @@
   "lemma:sq:lutem:VERB": [
    {
     "shown": "to pray",
+    "v": "ok"
+   }
+  ],
+  "lemma:sq:lë:VERB": [
+   {
+    "shown": "to leave, to let",
     "v": "ok"
    }
   ],
@@ -1901,6 +2651,18 @@
     "v": "ok"
    }
   ],
+  "lemma:sq:matematikë:NOUN": [
+   {
+    "shown": "mathematics",
+    "v": "ok"
+   }
+  ],
+  "lemma:sq:mbaj:VERB": [
+   {
+    "shown": "to hold, to keep",
+    "v": "ok"
+   }
+  ],
   "lemma:sq:mbaroj:VERB": [
    {
     "shown": "to finish",
@@ -1928,6 +2690,12 @@
   "lemma:sq:mbrëmje:NOUN": [
    {
     "shown": "evening",
+    "v": "ok"
+   }
+  ],
+  "lemma:sq:mbrëmë:ADV": [
+   {
+    "shown": "last night, yesterday evening",
     "v": "ok"
    }
   ],
@@ -1961,6 +2729,12 @@
     "v": "ok"
    }
   ],
+  "lemma:sq:miell:NOUN": [
+   {
+    "shown": "flour",
+    "v": "ok"
+   }
+  ],
   "lemma:sq:mik:NOUN": [
    {
     "shown": "friend; guest",
@@ -1982,6 +2756,12 @@
   "lemma:sq:mirëmëngjes:INTJ": [
    {
     "shown": "good morning",
+    "v": "ok"
+   }
+  ],
+  "lemma:sq:mjegull:NOUN": [
+   {
+    "shown": "fog",
     "v": "ok"
    }
   ],
@@ -2015,9 +2795,33 @@
     "v": "ok"
    }
   ],
+  "lemma:sq:mungoj:VERB": [
+   {
+    "shown": "to be absent, to be missing",
+    "v": "ok"
+   }
+  ],
+  "lemma:sq:mur:NOUN": [
+   {
+    "shown": "wall",
+    "v": "ok"
+   }
+  ],
+  "lemma:sq:muze:NOUN": [
+   {
+    "shown": "museum",
+    "v": "ok"
+   }
+  ],
   "lemma:sq:mëngjes:NOUN": [
    {
     "shown": "morning; breakfast",
+    "v": "ok"
+   }
+  ],
+  "lemma:sq:mërkurë:NOUN": [
+   {
+    "shown": "Wednesday (e mërkurë)",
     "v": "ok"
    }
   ],
@@ -2063,6 +2867,12 @@
     "v": "ok"
    }
   ],
+  "lemma:sq:ndez:VERB": [
+   {
+    "shown": "to light, to switch on",
+    "v": "ok"
+   }
+  ],
   "lemma:sq:ndihmoj:VERB": [
    {
     "shown": "to help",
@@ -2072,6 +2882,12 @@
   "lemma:sq:ndihmë:NOUN": [
    {
     "shown": "help",
+    "v": "ok"
+   }
+  ],
+  "lemma:sq:ndjej:VERB": [
+   {
+    "shown": "to feel (ndihem: I feel)",
     "v": "ok"
    }
   ],
@@ -2099,6 +2915,12 @@
     "v": "ok"
    }
   ],
+  "lemma:sq:ndërtesë:NOUN": [
+   {
+    "shown": "building",
+    "v": "ok"
+   }
+  ],
   "lemma:sq:ndërtoj:VERB": [
    {
     "shown": "to build",
@@ -2123,6 +2945,24 @@
     "v": "ok"
    }
   ],
+  "lemma:sq:ngadalë:ADV": [
+   {
+    "shown": "slowly",
+    "v": "ok"
+   }
+  ],
+  "lemma:sq:ngjit:VERB": [
+   {
+    "shown": "to climb up, to go up (ngjitem: I climb)",
+    "v": "ok"
+   }
+  ],
+  "lemma:sq:ngjyrë:NOUN": [
+   {
+    "shown": "colour",
+    "v": "ok"
+   }
+  ],
   "lemma:sq:ngre:VERB": [
    {
     "shown": "to raise, to lift",
@@ -2135,9 +2975,21 @@
     "v": "ok"
    }
   ],
+  "lemma:sq:nivel:NOUN": [
+   {
+    "shown": "level",
+    "v": "ok"
+   }
+  ],
   "lemma:sq:njeri:NOUN": [
    {
     "shown": "person, human being",
+    "v": "ok"
+   }
+  ],
+  "lemma:sq:njoftim:NOUN": [
+   {
+    "shown": "notice, announcement",
     "v": "ok"
    }
   ],
@@ -2165,6 +3017,12 @@
     "v": "ok"
    }
   ],
+  "lemma:sq:njëzet:NUM": [
+   {
+    "shown": "twenty (20)",
+    "v": "ok"
+   }
+  ],
   "lemma:sq:notoj:VERB": [
    {
     "shown": "to swim",
@@ -2183,6 +3041,12 @@
     "v": "ok"
    }
   ],
+  "lemma:sq:nxënës:NOUN": [
+   {
+    "shown": "pupil",
+    "v": "ok"
+   }
+  ],
   "lemma:sq:në:ADP": [
    {
     "shown": "in, into, to, at",
@@ -2198,6 +3062,12 @@
   "lemma:sq:nënë:NOUN": [
    {
     "shown": "mother",
+    "v": "ok"
+   }
+  ],
+  "lemma:sq:nëpër:ADP": [
+   {
+    "shown": "through, along, around",
     "v": "ok"
    }
   ],
@@ -2234,6 +3104,12 @@
   "lemma:sq:paguaj:VERB": [
    {
     "shown": "to pay",
+    "v": "ok"
+   }
+  ],
+  "lemma:sq:pallat:NOUN": [
+   {
+    "shown": "apartment block, large building",
     "v": "ok"
    }
   ],
@@ -2291,6 +3167,12 @@
     "v": "ok"
    }
   ],
+  "lemma:sq:pazar:NOUN": [
+   {
+    "shown": "bazaar, market",
+    "v": "ok"
+   }
+  ],
   "lemma:sq:pemë:NOUN": [
    {
     "shown": "tree; fruit tree",
@@ -2327,15 +3209,33 @@
     "v": "ok"
    }
   ],
+  "lemma:sq:pjatë:NOUN": [
+   {
+    "shown": "plate",
+    "v": "ok"
+   }
+  ],
   "lemma:sq:pjek:VERB": [
    {
     "shown": "to bake, to roast",
     "v": "ok"
    }
   ],
+  "lemma:sq:pjesë:NOUN": [
+   {
+    "shown": "part",
+    "v": "ok"
+   }
+  ],
   "lemma:sq:plot:ADJ": [
    {
     "shown": "full (plot me: full of)",
+    "v": "ok"
+   }
+  ],
+  "lemma:sq:pluhur:NOUN": [
+   {
+    "shown": "dust",
     "v": "ok"
    }
   ],
@@ -2351,15 +3251,45 @@
     "v": "ok"
    }
   ],
+  "lemma:sq:portë:NOUN": [
+   {
+    "shown": "gate",
+    "v": "ok"
+   }
+  ],
+  "lemma:sq:poshtë:ADV": [
+   {
+    "shown": "down, below",
+    "v": "ok"
+   }
+  ],
+  "lemma:sq:prandaj:CONJ": [
+   {
+    "shown": "therefore, that is why",
+    "v": "ok"
+   }
+  ],
   "lemma:sq:pranoj:VERB": [
    {
     "shown": "to accept",
     "v": "ok"
    }
   ],
+  "lemma:sq:pranverë:NOUN": [
+   {
+    "shown": "spring",
+    "v": "ok"
+   }
+  ],
   "lemma:sq:prej:ADP": [
    {
     "shown": "from, by",
+    "v": "ok"
+   }
+  ],
+  "lemma:sq:premte:NOUN": [
+   {
+    "shown": "Friday (e premte)",
     "v": "ok"
    }
   ],
@@ -2387,6 +3317,24 @@
     "v": "ok"
    }
   ],
+  "lemma:sq:provoj:VERB": [
+   {
+    "shown": "to try, to test",
+    "v": "ok"
+   }
+  ],
+  "lemma:sq:provë:NOUN": [
+   {
+    "shown": "test, trial; proof",
+    "v": "ok"
+   }
+  ],
+  "lemma:sq:pse:ADV": [
+   {
+    "shown": "why",
+    "v": "ok"
+   }
+  ],
   "lemma:sq:punoj:VERB": [
    {
     "shown": "to work",
@@ -2399,9 +3347,27 @@
     "v": "ok"
    }
   ],
+  "lemma:sq:punëtor:NOUN": [
+   {
+    "shown": "worker",
+    "v": "ok"
+   }
+  ],
   "lemma:sq:pushim:NOUN": [
    {
     "shown": "rest; holiday",
+    "v": "ok"
+   }
+  ],
+  "lemma:sq:pushoj:VERB": [
+   {
+    "shown": "to rest",
+    "v": "ok"
+   }
+  ],
+  "lemma:sq:pyes:VERB": [
+   {
+    "shown": "to ask",
     "v": "ok"
    }
   ],
@@ -2429,6 +3395,12 @@
     "v": "ok"
    }
   ],
+  "lemma:sq:përfundoj:VERB": [
+   {
+    "shown": "to conclude, to end",
+    "v": "ok"
+   }
+  ],
   "lemma:sq:përgjigjem:VERB": [
    {
     "shown": "to answer",
@@ -2438,6 +3410,24 @@
   "lemma:sq:përsëri:ADV": [
    {
     "shown": "again",
+    "v": "ok"
+   }
+  ],
+  "lemma:sq:përvojë:NOUN": [
+   {
+    "shown": "experience",
+    "v": "ok"
+   }
+  ],
+  "lemma:sq:përziej:VERB": [
+   {
+    "shown": "to mix, to stir",
+    "v": "ok"
+   }
+  ],
+  "lemma:sq:qen:NOUN": [
+   {
+    "shown": "dog",
     "v": "ok"
    }
   ],
@@ -2462,6 +3452,12 @@
   "lemma:sq:qeveri:NOUN": [
    {
     "shown": "government",
+    "v": "ok"
+   }
+  ],
+  "lemma:sq:qumësht:NOUN": [
+   {
+    "shown": "milk",
     "v": "ok"
    }
   ],
@@ -2531,9 +3527,21 @@
     "v": "ok"
    }
   ],
+  "lemma:sq:ruaj:VERB": [
+   {
+    "shown": "to guard, to keep",
+    "v": "ok"
+   }
+  ],
   "lemma:sq:sallatë:NOUN": [
    {
     "shown": "salad",
+    "v": "ok"
+   }
+  ],
+  "lemma:sq:sallë:NOUN": [
+   {
+    "shown": "hall, large room (salla e pritjes: waiting room)",
     "v": "ok"
    }
   ],
@@ -2552,6 +3560,12 @@
   "lemma:sq:sheqer:NOUN": [
    {
     "shown": "sugar",
+    "v": "ok"
+   }
+  ],
+  "lemma:sq:shes:VERB": [
+   {
+    "shown": "to sell",
     "v": "ok"
    }
   ],
@@ -2579,6 +3593,12 @@
     "v": "ok"
    }
   ],
+  "lemma:sq:shkallë:NOUN": [
+   {
+    "shown": "stairs; step",
+    "v": "ok"
+   }
+  ],
   "lemma:sq:shkoj:VERB": [
    {
     "shown": "to go",
@@ -2597,9 +3617,27 @@
     "v": "ok"
    }
   ],
+  "lemma:sq:shofer:NOUN": [
+   {
+    "shown": "driver",
+    "v": "ok"
+   }
+  ],
   "lemma:sq:shoh:VERB": [
    {
     "shown": "to see",
+    "v": "ok"
+   }
+  ],
+  "lemma:sq:shok:NOUN": [
+   {
+    "shown": "friend, comrade",
+    "v": "ok"
+   }
+  ],
+  "lemma:sq:shoqe:NOUN": [
+   {
+    "shown": "female friend",
     "v": "ok"
    }
   ],
@@ -2607,6 +3645,19 @@
    {
     "shown": "often",
     "v": "ok"
+   }
+  ],
+  "lemma:sq:shpjegoj:VERB": [
+   {
+    "shown": "to explain",
+    "v": "ok"
+   }
+  ],
+  "lemma:sq:shpëtim:NOUN": [
+   {
+    "shown": "salvation",
+    "v": "false-meaning",
+    "note": "ordinary sense is a rescue/save (a goalkeeper save); salvation is the marginal religious sense"
    }
   ],
   "lemma:sq:shqetësoj:VERB": [
@@ -2651,6 +3702,12 @@
     "v": "ok"
    }
   ],
+  "lemma:sq:shtyp:VERB": [
+   {
+    "shown": "to press, to print",
+    "v": "ok"
+   }
+  ],
   "lemma:sq:shtëpi:NOUN": [
    {
     "shown": "house, home",
@@ -2687,6 +3744,30 @@
     "v": "ok"
    }
   ],
+  "lemma:sq:sistem:NOUN": [
+   {
+    "shown": "system",
+    "v": "ok"
+   }
+  ],
+  "lemma:sq:sjell:VERB": [
+   {
+    "shown": "to bring",
+    "v": "ok"
+   }
+  ],
+  "lemma:sq:skuadër:NOUN": [
+   {
+    "shown": "team, squad",
+    "v": "ok"
+   }
+  ],
+  "lemma:sq:sobë:NOUN": [
+   {
+    "shown": "stove",
+    "v": "ok"
+   }
+  ],
   "lemma:sq:sonte:ADV": [
    {
     "shown": "tonight",
@@ -2711,9 +3792,27 @@
     "v": "ok"
    }
   ],
+  "lemma:sq:stinë:NOUN": [
+   {
+    "shown": "season",
+    "v": "ok"
+   }
+  ],
+  "lemma:sq:stuhi:NOUN": [
+   {
+    "shown": "storm",
+    "v": "ok"
+   }
+  ],
   "lemma:sq:supë:NOUN": [
    {
     "shown": "soup",
+    "v": "ok"
+   }
+  ],
+  "lemma:sq:tabelë:NOUN": [
+   {
+    "shown": "board, table (chart)",
     "v": "ok"
    }
   ],
@@ -2738,6 +3837,18 @@
   "lemma:sq:te:ADP": [
    {
     "shown": "at, to (a person or a place)",
+    "v": "ok"
+   }
+  ],
+  "lemma:sq:telefon:NOUN": [
+   {
+    "shown": "telephone",
+    "v": "ok"
+   }
+  ],
+  "lemma:sq:telefonoj:VERB": [
+   {
+    "shown": "to telephone",
     "v": "ok"
    }
   ],
@@ -2795,6 +3906,12 @@
     "v": "ok"
    }
   ],
+  "lemma:sq:udhëtim:NOUN": [
+   {
+    "shown": "journey, trip",
+    "v": "ok"
+   }
+  ],
   "lemma:sq:udhëtoj:VERB": [
    {
     "shown": "to travel",
@@ -2810,6 +3927,12 @@
   "lemma:sq:ulem:VERB": [
    {
     "shown": "to sit down",
+    "v": "ok"
+   }
+  ],
+  "lemma:sq:universitet:NOUN": [
+   {
+    "shown": "university",
     "v": "ok"
    }
   ],
@@ -2837,9 +3960,21 @@
     "v": "ok"
    }
   ],
+  "lemma:sq:vaj:NOUN": [
+   {
+    "shown": "oil",
+    "v": "ok"
+   }
+  ],
   "lemma:sq:vajzë:NOUN": [
    {
     "shown": "girl; daughter",
+    "v": "ok"
+   }
+  ],
+  "lemma:sq:vapë:NOUN": [
+   {
+    "shown": "heat (hot weather)",
     "v": "ok"
    }
   ],
@@ -2903,9 +4038,21 @@
     "v": "ok"
    }
   ],
+  "lemma:sq:vjeshtë:NOUN": [
+   {
+    "shown": "autumn",
+    "v": "ok"
+   }
+  ],
   "lemma:sq:vjeç:ADJ": [
    {
     "shown": "years old (after a number)",
+    "v": "ok"
+   }
+  ],
+  "lemma:sq:vonë:ADV": [
+   {
+    "shown": "late",
     "v": "ok"
    }
   ],
@@ -2918,6 +4065,18 @@
   "lemma:sq:vëlla:NOUN": [
    {
     "shown": "brother",
+    "v": "ok"
+   }
+  ],
+  "lemma:sq:xhaketë:NOUN": [
+   {
+    "shown": "jacket",
+    "v": "ok"
+   }
+  ],
+  "lemma:sq:xhep:NOUN": [
+   {
+    "shown": "pocket",
     "v": "ok"
    }
   ],
@@ -2945,9 +4104,21 @@
     "v": "ok"
    }
   ],
+  "lemma:sq:zgjedh:VERB": [
+   {
+    "shown": "to choose",
+    "v": "ok"
+   }
+  ],
   "lemma:sq:zgjoj:VERB": [
    {
     "shown": "to wake (someone)",
+    "v": "ok"
+   }
+  ],
+  "lemma:sq:zjarr:NOUN": [
+   {
+    "shown": "fire",
     "v": "ok"
    }
   ],
@@ -3005,5 +4176,9 @@
     "v": "ok"
    }
   ]
- }
+ },
+ "heldResidue": [
+  "lemma:sq:i marrë:ADJ",
+  "lemma:sq:shpëtim:NOUN"
+ ]
 }

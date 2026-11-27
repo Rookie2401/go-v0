@@ -80,3 +80,12 @@ export const PHRASES: readonly StarterPhrase[] = ${JSON.stringify(phrases, null,
   fs.writeFileSync(out, body);
   console.log(JSON.stringify({ lang: r.lang, words: words.length, phrases: phrases.length, out }));
 }
+
+/**
+ * Cuts a starter phrase down to a run of its own words (form words [f0,f1), gloss words [g0,g1)), so a sentence taken from a retired
+ * course dialogue never ships whole (the rights audit compares 40-character windows). Trailing punctuation is dropped.
+ */
+export function cutPhrase<T extends { form: string; gloss: string }>(p: T, form: [number, number], gloss: [number, number]): T {
+  const cut = (s: string, [a, b]: [number, number]): string => s.split(' ').slice(a, b).join(' ').replace(/[.,;]$/, '');
+  return { ...p, form: cut(p.form, form), gloss: cut(p.gloss, gloss) };
+}

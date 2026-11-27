@@ -1,6 +1,6 @@
 /// <reference types="node" />
 /**
- * npm run deck:audit -- <set> [--part dev|heldout] [--no-gate] [--strict] [--text <file>] [--json <file>] [--cards] [--held] [--no-forms]
+ * npm run deck:audit -- <set> [--part dev|dev2|heldout] [--no-gate] [--strict] [--text <file>] [--json <file>] [--cards] [--held] [--no-forms]
  *
  * The deck audit of one language (test/deck-audit/support.ts): every card GoReview would admit from an ordinary text, through the real path, with what
  * each card shows. A set is a language or one period variety (AUDIT_SETS); its texts are data/deck-audit/<set>/dev.txt and heldout.txt. --no-gate measures the state before the deck gate. It prints the counts, the machine findings and the held words; --json writes
@@ -16,7 +16,7 @@ const lang = args.find((a) => !a.startsWith('--') && args[args.indexOf(a) - 1]?.
 if (!lang) { console.error('usage: deck-audit <lang> [--variety id] [--text file] [--json file] [--no-forms]'); process.exit(2); }
 
 const set = auditSet(lang);
-const part = flag('--part') === 'heldout' ? 'heldout' : 'dev';
+const part = flag('--part') === 'heldout' ? 'heldout' : flag('--part') === 'dev2' ? 'dev2' : 'dev';
 const textFile = flag('--text') ?? auditText(set.id, part);
 const result = await runDeckAudit(set.lang, readSentences(textFile), { varietyId: flag('--variety') ?? set.varietyId, forms: !args.includes('--no-forms'), gate: !args.includes('--no-gate'), strictReadings: args.includes('--strict') });
 const { cards, held } = result;

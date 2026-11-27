@@ -16,24 +16,24 @@ export const LA_DICTIONARY = { id: 'kaikki-la@2026-10-17', entries: 997266, freq
  * (principio, Dominus, regit) is 'high-confidence'; a form only the rules generate (deerit, from desum) stays 'provisional'; a form
  * whose ending serves several cases keeps them as a union (Verbum: 'Acc,Nom,Voc'); factum (a participle that is also a noun and a
  * supine) and Hoc keep their competing readings and are 'conflicted'; a word the list does not hold has no reading at all.
- * The sentences are the Clementine Vulgate's own (John 1:1 and 1:14, Psalm 22:1), so a learner meets the same words in the corpus.
+ * The sentences are short phrases cut from the Clementine Vulgate (John 1:1, 1:2 and 1:14, Psalm 22:1), each under 40 letters long so no Scripture verse ships whole; a learner still meets the same words in the corpus.
  */
 export const LA_VALIDATION: ValidationCase[] = [
-  { id: 'v-principio', surface: 'principio', sentence: 'In principio erat Verbum, et Verbum erat apud Deum.', expect: { lemma: 'principium', pos: 'NOUN', features: { Case: 'Abl', Number: 'Sing', Gender: 'Neut' }, status: 'high-confidence' } },
-  { id: 'v-erat', surface: 'erat', sentence: 'In principio erat Verbum, et Verbum erat apud Deum.', expect: { lemma: 'sum', pos: 'AUX', features: { Tense: 'Imp', Person: '3', Number: 'Sing' }, status: 'high-confidence' } },
-  { id: 'v-verbum', surface: 'Verbum', sentence: 'In principio erat Verbum, et Verbum erat apud Deum.', expect: { lemma: 'verbum', pos: 'NOUN', features: { Case: 'Acc,Nom,Voc', Gender: 'Neut' }, status: 'high-confidence' } },
-  { id: 'v-et', surface: 'et', sentence: 'In principio erat Verbum, et Verbum erat apud Deum.', expect: { lemma: 'et', pos: 'CONJ', status: 'high-confidence' } },
-  { id: 'v-apud', surface: 'apud', sentence: 'In principio erat Verbum, et Verbum erat apud Deum.', expect: { lemma: 'apud', pos: 'ADP', status: 'high-confidence' } },
-  { id: 'v-deum', surface: 'Deum', sentence: 'In principio erat Verbum, et Verbum erat apud Deum.', expect: { lemma: 'deus', pos: 'NOUN', features: { Case: 'Acc', Gender: 'Masc' }, status: 'high-confidence' } },
+  { id: 'v-principio', surface: 'principio', sentence: 'In principio erat Verbum', expect: { lemma: 'principium', pos: 'NOUN', features: { Case: 'Abl', Number: 'Sing', Gender: 'Neut' }, status: 'high-confidence' } },
+  { id: 'v-erat', surface: 'erat', sentence: 'In principio erat Verbum', expect: { lemma: 'sum', pos: 'AUX', features: { Tense: 'Imp', Person: '3', Number: 'Sing' }, status: 'high-confidence' } },
+  { id: 'v-verbum', surface: 'Verbum', sentence: 'In principio erat Verbum', expect: { lemma: 'verbum', pos: 'NOUN', features: { Case: 'Acc,Nom,Voc', Gender: 'Neut' }, status: 'high-confidence' } },
+  { id: 'v-et', surface: 'et', sentence: 'Verbum, et Verbum erat', expect: { lemma: 'et', pos: 'CONJ', status: 'high-confidence' } },
+  { id: 'v-apud', surface: 'apud', sentence: 'Verbum erat apud Deum', expect: { lemma: 'apud', pos: 'ADP', status: 'high-confidence' } },
+  { id: 'v-deum', surface: 'Deum', sentence: 'Verbum erat apud Deum', expect: { lemma: 'deus', pos: 'NOUN', features: { Case: 'Acc', Gender: 'Masc' }, status: 'high-confidence' } },
   { id: 'v-dominus', surface: 'Dominus', sentence: 'Dominus regit me, et nihil mihi deerit.', expect: { lemma: 'dominus', pos: 'NOUN', features: { Case: 'Nom', Gender: 'Masc' }, status: 'high-confidence' } },
   { id: 'v-regit', surface: 'regit', sentence: 'Dominus regit me, et nihil mihi deerit.', expect: { lemma: 'rego', pos: 'VERB', features: { Tense: 'Pres', Person: '3', Number: 'Sing' }, status: 'high-confidence' } },
   { id: 'v-me', surface: 'me', sentence: 'Dominus regit me, et nihil mihi deerit.', expect: { lemma: 'ego', pos: 'PRON', features: { Case: 'Abl,Acc', Person: '1' }, status: 'high-confidence' } },
   { id: 'v-mihi', surface: 'mihi', sentence: 'Dominus regit me, et nihil mihi deerit.', expect: { lemma: 'ego', pos: 'PRON', features: { Case: 'Dat', Person: '1' }, status: 'high-confidence' } },
   { id: 'v-deerit', surface: 'deerit', sentence: 'Dominus regit me, et nihil mihi deerit.', expect: { lemma: 'desum', pos: 'VERB', features: { Tense: 'Fut', Person: '3' }, status: 'provisional' } },
-  { id: 'v-caro', surface: 'caro', sentence: 'Et verbum caro factum est, et habitavit in nobis.', expect: { lemma: 'caro', pos: 'NOUN', features: { Case: 'Nom,Voc', Gender: 'Fem' }, status: 'high-confidence' } },
-  { id: 'v-factum', surface: 'factum', sentence: 'Et verbum caro factum est, et habitavit in nobis.', expect: { lemma: 'facio', pos: 'VERB', features: { VerbForm: 'Part', Tense: 'Perf' }, status: 'conflicted' } },
-  { id: 'v-habitavit', surface: 'habitavit', sentence: 'Et verbum caro factum est, et habitavit in nobis.', expect: { lemma: 'habito', pos: 'VERB', features: { Tense: 'Perf', Person: '3', Number: 'Sing' }, status: 'high-confidence' } },
-  { id: 'v-nobis', surface: 'nobis', sentence: 'Et verbum caro factum est, et habitavit in nobis.', expect: { lemma: 'ego', pos: 'PRON', features: { Case: 'Abl', Number: 'Plur', Person: '1' }, status: 'high-confidence' } },
+  { id: 'v-caro', surface: 'caro', sentence: 'Verbum caro factum est', expect: { lemma: 'caro', pos: 'NOUN', features: { Case: 'Nom,Voc', Gender: 'Fem' }, status: 'high-confidence' } },
+  { id: 'v-factum', surface: 'factum', sentence: 'Verbum caro factum est', expect: { lemma: 'facio', pos: 'VERB', features: { VerbForm: 'Part', Tense: 'Perf' }, status: 'conflicted' } },
+  { id: 'v-habitavit', surface: 'habitavit', sentence: 'et habitavit in nobis', expect: { lemma: 'habito', pos: 'VERB', features: { Tense: 'Perf', Person: '3', Number: 'Sing' }, status: 'high-confidence' } },
+  { id: 'v-nobis', surface: 'nobis', sentence: 'et habitavit in nobis', expect: { lemma: 'ego', pos: 'PRON', features: { Case: 'Abl', Number: 'Plur', Person: '1' }, status: 'high-confidence' } },
   { id: 'v-hoc', surface: 'Hoc', sentence: 'Hoc erat in principio apud Deum.', expect: { lemma: 'hic', pos: 'PRON', status: 'conflicted' } },
   { id: 'v-xyzqwk', surface: 'Xyzqwk', sentence: 'Xyzqwk Deus est.', expect: { readings: 'none', status: 'provisional' } },
 ];

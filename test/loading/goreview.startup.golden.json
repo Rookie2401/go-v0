@@ -555,89 +555,89 @@
  ],
  "la": [
   {
-   "text": "In principio erat Verbum, et Verbum erat apud Deum.",
-   "summary": "in=in/ADP principio=principium/NOUN erat=sum/AUX verbum=verbum/NOUN et=et/CONJ verbum=verbum/NOUN erat=sum/AUX apud=apud/ADP deum=deus/NOUN",
-   "sha256": "22014432706350e94ae93f3623d4e56119b3e9a609309b58ea64d828d20792df"
+   "text": "In principio erat Verbum",
+   "summary": "in=in/ADP principio=principium/NOUN erat=sum/AUX verbum=verbum/NOUN",
+   "sha256": "884985c786c0eadaee99fe81d2ac224565ab36974c2899ef0cb8bc0d6290e0f0"
   },
   {
-   "text": "In principio erat Verbum, et Verbum erat apud Deum.",
-   "summary": "in=in/ADP principio=principium/NOUN erat=sum/AUX verbum=verbum/NOUN et=et/CONJ verbum=verbum/NOUN erat=sum/AUX apud=apud/ADP deum=deus/NOUN",
-   "sha256": "22014432706350e94ae93f3623d4e56119b3e9a609309b58ea64d828d20792df"
+   "text": "In principio erat Verbum",
+   "summary": "in=in/ADP principio=principium/NOUN erat=sum/AUX verbum=verbum/NOUN",
+   "sha256": "884985c786c0eadaee99fe81d2ac224565ab36974c2899ef0cb8bc0d6290e0f0"
   },
   {
-   "text": "In principio erat Verbum, et Verbum erat apud Deum.",
-   "summary": "in=in/ADP principio=principium/NOUN erat=sum/AUX verbum=verbum/NOUN et=et/CONJ verbum=verbum/NOUN erat=sum/AUX apud=apud/ADP deum=deus/NOUN",
-   "sha256": "22014432706350e94ae93f3623d4e56119b3e9a609309b58ea64d828d20792df"
+   "text": "In principio erat Verbum",
+   "summary": "in=in/ADP principio=principium/NOUN erat=sum/AUX verbum=verbum/NOUN",
+   "sha256": "884985c786c0eadaee99fe81d2ac224565ab36974c2899ef0cb8bc0d6290e0f0"
   },
   {
-   "text": "In principio erat Verbum, et Verbum erat apud Deum.",
-   "summary": "in=in/ADP principio=principium/NOUN erat=sum/AUX verbum=verbum/NOUN et=et/CONJ verbum=verbum/NOUN erat=sum/AUX apud=apud/ADP deum=deus/NOUN",
-   "sha256": "22014432706350e94ae93f3623d4e56119b3e9a609309b58ea64d828d20792df"
+   "text": "Verbum, et Verbum erat",
+   "summary": "verbum=verbum/NOUN et=et/CONJ verbum=verbum/NOUN erat=sum/AUX",
+   "sha256": "cf14243e0736d1700e2b81e48d191c55f5bd40b2a996f6d75d6d42dc739e4e41"
   },
   {
-   "text": "In principio erat Verbum, et Verbum erat apud Deum.",
-   "summary": "in=in/ADP principio=principium/NOUN erat=sum/AUX verbum=verbum/NOUN et=et/CONJ verbum=verbum/NOUN erat=sum/AUX apud=apud/ADP deum=deus/NOUN",
-   "sha256": "22014432706350e94ae93f3623d4e56119b3e9a609309b58ea64d828d20792df"
+   "text": "Verbum erat apud Deum",
+   "summary": "verbum=verbum/NOUN erat=sum/AUX apud=apud/ADP deum=deus/NOUN",
+   "sha256": "875b6e0d6ba0710b01f1426134780408b0faa398164846defa37a62a167ec036"
   },
   {
-   "text": "In principio erat Verbum, et Verbum erat apud Deum.",
-   "summary": "in=in/ADP principio=principium/NOUN erat=sum/AUX verbum=verbum/NOUN et=et/CONJ verbum=verbum/NOUN erat=sum/AUX apud=apud/ADP deum=deus/NOUN",
-   "sha256": "22014432706350e94ae93f3623d4e56119b3e9a609309b58ea64d828d20792df"
-  },
-  {
-   "text": "Dominus regit me, et nihil mihi deerit.",
-   "summary": "dominus=dominus/NOUN regit=rego/VERB me=ego/PRON et=et/CONJ nihil=nihil/PRON mihi=ego/PRON deerit=desum/VERB",
-   "sha256": "7d501494556c360cd91ab6e0ecf295ee4fe255f4c103e83ade4f1995a69cded8"
+   "text": "Verbum erat apud Deum",
+   "summary": "verbum=verbum/NOUN erat=sum/AUX apud=apud/ADP deum=deus/NOUN",
+   "sha256": "875b6e0d6ba0710b01f1426134780408b0faa398164846defa37a62a167ec036"
   },
   {
    "text": "Dominus regit me, et nihil mihi deerit.",
-   "summary": "dominus=dominus/NOUN regit=rego/VERB me=ego/PRON et=et/CONJ nihil=nihil/PRON mihi=ego/PRON deerit=desum/VERB",
-   "sha256": "7d501494556c360cd91ab6e0ecf295ee4fe255f4c103e83ade4f1995a69cded8"
+   "summary": "dominus=dominus/NOUN regit=rego/VERB me=ego/PRON et=et/CONJ nihil=nihil/NOUN mihi=ego/PRON deerit=desum/VERB",
+   "sha256": "b1e4d2eb5c7d76d538fcd96ec3a2cc94b1f78f427e1a978be1eb02de9c4ea0b9"
   },
   {
    "text": "Dominus regit me, et nihil mihi deerit.",
-   "summary": "dominus=dominus/NOUN regit=rego/VERB me=ego/PRON et=et/CONJ nihil=nihil/PRON mihi=ego/PRON deerit=desum/VERB",
-   "sha256": "7d501494556c360cd91ab6e0ecf295ee4fe255f4c103e83ade4f1995a69cded8"
+   "summary": "dominus=dominus/NOUN regit=rego/VERB me=ego/PRON et=et/CONJ nihil=nihil/NOUN mihi=ego/PRON deerit=desum/VERB",
+   "sha256": "b1e4d2eb5c7d76d538fcd96ec3a2cc94b1f78f427e1a978be1eb02de9c4ea0b9"
   },
   {
    "text": "Dominus regit me, et nihil mihi deerit.",
-   "summary": "dominus=dominus/NOUN regit=rego/VERB me=ego/PRON et=et/CONJ nihil=nihil/PRON mihi=ego/PRON deerit=desum/VERB",
-   "sha256": "7d501494556c360cd91ab6e0ecf295ee4fe255f4c103e83ade4f1995a69cded8"
+   "summary": "dominus=dominus/NOUN regit=rego/VERB me=ego/PRON et=et/CONJ nihil=nihil/NOUN mihi=ego/PRON deerit=desum/VERB",
+   "sha256": "b1e4d2eb5c7d76d538fcd96ec3a2cc94b1f78f427e1a978be1eb02de9c4ea0b9"
   },
   {
    "text": "Dominus regit me, et nihil mihi deerit.",
-   "summary": "dominus=dominus/NOUN regit=rego/VERB me=ego/PRON et=et/CONJ nihil=nihil/PRON mihi=ego/PRON deerit=desum/VERB",
-   "sha256": "7d501494556c360cd91ab6e0ecf295ee4fe255f4c103e83ade4f1995a69cded8"
+   "summary": "dominus=dominus/NOUN regit=rego/VERB me=ego/PRON et=et/CONJ nihil=nihil/NOUN mihi=ego/PRON deerit=desum/VERB",
+   "sha256": "b1e4d2eb5c7d76d538fcd96ec3a2cc94b1f78f427e1a978be1eb02de9c4ea0b9"
   },
   {
-   "text": "Et verbum caro factum est, et habitavit in nobis.",
-   "summary": "et=et/CONJ verbum=verbum/NOUN caro=caro/NOUN factum=facio/VERB est=sum/AUX et=et/CONJ habitavit=habito/VERB in=in/ADP nobis=ego/PRON",
-   "sha256": "328b64523073cd0cad6dad2fa23f969d2511e2ee4256ecb2d9156ebc120b2e6b"
+   "text": "Dominus regit me, et nihil mihi deerit.",
+   "summary": "dominus=dominus/NOUN regit=rego/VERB me=ego/PRON et=et/CONJ nihil=nihil/NOUN mihi=ego/PRON deerit=desum/VERB",
+   "sha256": "b1e4d2eb5c7d76d538fcd96ec3a2cc94b1f78f427e1a978be1eb02de9c4ea0b9"
   },
   {
-   "text": "Et verbum caro factum est, et habitavit in nobis.",
-   "summary": "et=et/CONJ verbum=verbum/NOUN caro=caro/NOUN factum=facio/VERB est=sum/AUX et=et/CONJ habitavit=habito/VERB in=in/ADP nobis=ego/PRON",
-   "sha256": "328b64523073cd0cad6dad2fa23f969d2511e2ee4256ecb2d9156ebc120b2e6b"
+   "text": "Verbum caro factum est",
+   "summary": "verbum=verbum/NOUN caro=caro/NOUN factum=facio/VERB est=sum/AUX",
+   "sha256": "6701c6c6201a650460624b9969b9b5504acadffe330e1ad9ac0cb62fab8686c5"
   },
   {
-   "text": "Et verbum caro factum est, et habitavit in nobis.",
-   "summary": "et=et/CONJ verbum=verbum/NOUN caro=caro/NOUN factum=facio/VERB est=sum/AUX et=et/CONJ habitavit=habito/VERB in=in/ADP nobis=ego/PRON",
-   "sha256": "328b64523073cd0cad6dad2fa23f969d2511e2ee4256ecb2d9156ebc120b2e6b"
+   "text": "Verbum caro factum est",
+   "summary": "verbum=verbum/NOUN caro=caro/NOUN factum=facio/VERB est=sum/AUX",
+   "sha256": "6701c6c6201a650460624b9969b9b5504acadffe330e1ad9ac0cb62fab8686c5"
   },
   {
-   "text": "Et verbum caro factum est, et habitavit in nobis.",
-   "summary": "et=et/CONJ verbum=verbum/NOUN caro=caro/NOUN factum=facio/VERB est=sum/AUX et=et/CONJ habitavit=habito/VERB in=in/ADP nobis=ego/PRON",
-   "sha256": "328b64523073cd0cad6dad2fa23f969d2511e2ee4256ecb2d9156ebc120b2e6b"
+   "text": "et habitavit in nobis",
+   "summary": "et=et/CONJ habitavit=habito/VERB in=in/ADP nobis=ego/PRON",
+   "sha256": "c56016b728fe07bbd6e19354d39d43530165269c8a8240b980b8f84db2daefd9"
+  },
+  {
+   "text": "et habitavit in nobis",
+   "summary": "et=et/CONJ habitavit=habito/VERB in=in/ADP nobis=ego/PRON",
+   "sha256": "c56016b728fe07bbd6e19354d39d43530165269c8a8240b980b8f84db2daefd9"
   },
   {
    "text": "Hoc erat in principio apud Deum.",
    "summary": "hoc=hic/PRON erat=sum/AUX in=in/ADP principio=principium/NOUN apud=apud/ADP deum=deus/NOUN",
-   "sha256": "cdc7c5447a9d39ed6bc6c962eebeb9d96f90b245c5958b09378ccea8a22002f1"
+   "sha256": "2a6a7dd396daea00b3cde2c02d83bb9b663a76f29b4b9518a45388c3d7dd1f05"
   },
   {
    "text": "Xyzqwk Deus est.",
    "summary": "xyzqwk=?/? deus=deus/NOUN est=sum/AUX",
-   "sha256": "1308f83527612658fb7fe04edc362556d61ffd66827663a5d74506a82bcb5893"
+   "sha256": "6dc95a7ac89f71e1fa41c8ca1d5c9a90576a7112b8a6e6c3374b7fcf878aaf34"
   },
   {
    "text": "Xyzqwk",
@@ -647,64 +647,64 @@
  ],
  "he": [
   {
-   "text": "בְּרֵאשִׁ֖ית בָּרָ֣א אֱלֹהִ֑ים אֵ֥ת הַשָּׁמַ֖יִם וְאֵ֥ת הָאָֽרֶץ׃",
-   "summary": "בְּרֵאשִׁית=?/? בָּרָא=?/? אֱלֹהִים=אֱלֹהִים/NOUN אֵת=אֵת/PART הַשָּׁמַיִם=שָׁמַיִם/NOUN וְאֵת=אֵת/PART הָאָרֶץ=אֶרֶץ/NOUN",
-   "sha256": "56d4874414b20d3c07fd001beb17a71a5c63af24bf44774f98b4e6eb5be7110c"
+   "text": "בָּרָ֣א אֱלֹהִ֑ים",
+   "summary": "בָּרָא=?/? אֱלֹהִים=אֱלֹהִים/NOUN",
+   "sha256": "8fa8c7f4290347478269e4ce3e8bf11cd01435dcc99b12bf2447c0dae056562c"
   },
   {
-   "text": "בְּרֵאשִׁ֖ית בָּרָ֣א אֱלֹהִ֑ים אֵ֥ת הַשָּׁמַ֖יִם וְאֵ֥ת הָאָֽרֶץ׃",
-   "summary": "בְּרֵאשִׁית=?/? בָּרָא=?/? אֱלֹהִים=אֱלֹהִים/NOUN אֵת=אֵת/PART הַשָּׁמַיִם=שָׁמַיִם/NOUN וְאֵת=אֵת/PART הָאָרֶץ=אֶרֶץ/NOUN",
-   "sha256": "56d4874414b20d3c07fd001beb17a71a5c63af24bf44774f98b4e6eb5be7110c"
+   "text": "אֱלֹהִ֑ים אֵ֥ת",
+   "summary": "אֱלֹהִים=אֱלֹהִים/NOUN אֵת=אֵת/PART",
+   "sha256": "6cf96c0e461168be3ba7aaf4cdf253bbf4b1eb6c6a310f69b704c61cdc46f740"
   },
   {
-   "text": "בְּרֵאשִׁ֖ית בָּרָ֣א אֱלֹהִ֑ים אֵ֥ת הַשָּׁמַ֖יִם וְאֵ֥ת הָאָֽרֶץ׃",
-   "summary": "בְּרֵאשִׁית=?/? בָּרָא=?/? אֱלֹהִים=אֱלֹהִים/NOUN אֵת=אֵת/PART הַשָּׁמַיִם=שָׁמַיִם/NOUN וְאֵת=אֵת/PART הָאָרֶץ=אֶרֶץ/NOUN",
-   "sha256": "56d4874414b20d3c07fd001beb17a71a5c63af24bf44774f98b4e6eb5be7110c"
+   "text": "אֵ֥ת הַשָּׁמַ֖יִם",
+   "summary": "אֵת=אֵת/PART הַשָּׁמַיִם=שָׁמַיִם/NOUN",
+   "sha256": "e0ba3626640e95b4147214d45c5a07717ea442c4fb1ffc51dc0e3060122e7b26"
   },
   {
-   "text": "בְּרֵאשִׁ֖ית בָּרָ֣א אֱלֹהִ֑ים אֵ֥ת הַשָּׁמַ֖יִם וְאֵ֥ת הָאָֽרֶץ׃",
-   "summary": "בְּרֵאשִׁית=?/? בָּרָא=?/? אֱלֹהִים=אֱלֹהִים/NOUN אֵת=אֵת/PART הַשָּׁמַיִם=שָׁמַיִם/NOUN וְאֵת=אֵת/PART הָאָרֶץ=אֶרֶץ/NOUN",
-   "sha256": "56d4874414b20d3c07fd001beb17a71a5c63af24bf44774f98b4e6eb5be7110c"
+   "text": "וְאֵ֥ת הָאָֽרֶץ׃",
+   "summary": "וְאֵת=אֵת/PART הָאָרֶץ=אֶרֶץ/NOUN",
+   "sha256": "abf5e9d001448cbfc159079f5990ed83e5120379b7ac8f2a694bb4ac5289ee2c"
   },
   {
-   "text": "בְּרֵאשִׁ֖ית בָּרָ֣א אֱלֹהִ֑ים אֵ֥ת הַשָּׁמַ֖יִם וְאֵ֥ת הָאָֽרֶץ׃",
-   "summary": "בְּרֵאשִׁית=?/? בָּרָא=?/? אֱלֹהִים=אֱלֹהִים/NOUN אֵת=אֵת/PART הַשָּׁמַיִם=שָׁמַיִם/NOUN וְאֵת=אֵת/PART הָאָרֶץ=אֶרֶץ/NOUN",
-   "sha256": "56d4874414b20d3c07fd001beb17a71a5c63af24bf44774f98b4e6eb5be7110c"
+   "text": "וְאֵ֥ת הָאָֽרֶץ׃",
+   "summary": "וְאֵת=אֵת/PART הָאָרֶץ=אֶרֶץ/NOUN",
+   "sha256": "abf5e9d001448cbfc159079f5990ed83e5120379b7ac8f2a694bb4ac5289ee2c"
   },
   {
-   "text": "וַיֹּ֥אמֶר אֱלֹהִ֖ים יְהִ֣י א֑וֹר וַֽיְהִי־אֽוֹר׃",
-   "summary": "וַיֹּאמֶר=אָמַר/VERB אֱלֹהִים=אֱלֹהִים/NOUN יְהִי=הָיָה/VERB אוֹר=?/? וַיְהִי=הָיָה/VERB אוֹר=?/?",
-   "sha256": "a76d06a99e52a8530667027843ea37dabc2b3ec83ee20c9e88c2e606041fa39b"
+   "text": "וַיֹּ֥אמֶר אֱלֹהִ֖ים",
+   "summary": "וַיֹּאמֶר=אָמַר/VERB אֱלֹהִים=אֱלֹהִים/NOUN",
+   "sha256": "535cfab6a765a2244f943b491a29e83f61b4fce69aa94d306b643507ca7c5d2b"
   },
   {
-   "text": "וַיֹּ֥אמֶר אֱלֹהִ֖ים יְהִ֣י א֑וֹר וַֽיְהִי־אֽוֹר׃",
-   "summary": "וַיֹּאמֶר=אָמַר/VERB אֱלֹהִים=אֱלֹהִים/NOUN יְהִי=הָיָה/VERB אוֹר=?/? וַיְהִי=הָיָה/VERB אוֹר=?/?",
-   "sha256": "a76d06a99e52a8530667027843ea37dabc2b3ec83ee20c9e88c2e606041fa39b"
+   "text": "אֱלֹהִ֖ים יְהִ֣י א֑וֹר",
+   "summary": "אֱלֹהִים=אֱלֹהִים/NOUN יְהִי=הָיָה/VERB אוֹר=?/?",
+   "sha256": "24115ea6679a17dd6a63f34232e5e9b7aac4d7f0efe1f3c6b57f0afc71d4fffb"
   },
   {
-   "text": "וַיְהִי־עֶ֥רֶב וַיְהִי־בֹ֖קֶר י֥וֹם אֶחָֽד׃",
-   "summary": "וַיְהִי=הָיָה/VERB עֶרֶב=עֶרֶב/NOUN וַיְהִי=הָיָה/VERB בֹקֶר=בֹּקֶר/NOUN יוֹם=יוֹם/NOUN אֶחָד=אֶחָד/NUM",
-   "sha256": "fba3b2516dfbcf4ded975995eed5d77de3c8682c964fab3090378dca737619c8"
+   "text": "וַיְהִי־בֹ֖קֶר י֥וֹם אֶחָֽד׃",
+   "summary": "וַיְהִי=הָיָה/VERB בֹקֶר=בֹּקֶר/NOUN יוֹם=יוֹם/NOUN אֶחָד=אֶחָד/NUM",
+   "sha256": "9e1d83ac742d0119dce460d58654207971a48bd1d840f5a3b81bd456d44d8994"
   },
   {
-   "text": "וַיְהִי־עֶ֥רֶב וַיְהִי־בֹ֖קֶר י֥וֹם אֶחָֽד׃",
-   "summary": "וַיְהִי=הָיָה/VERB עֶרֶב=עֶרֶב/NOUN וַיְהִי=הָיָה/VERB בֹקֶר=בֹּקֶר/NOUN יוֹם=יוֹם/NOUN אֶחָד=אֶחָד/NUM",
-   "sha256": "fba3b2516dfbcf4ded975995eed5d77de3c8682c964fab3090378dca737619c8"
+   "text": "וַיְהִי־בֹ֖קֶר י֥וֹם אֶחָֽד׃",
+   "summary": "וַיְהִי=הָיָה/VERB בֹקֶר=בֹּקֶר/NOUN יוֹם=יוֹם/NOUN אֶחָד=אֶחָד/NUM",
+   "sha256": "9e1d83ac742d0119dce460d58654207971a48bd1d840f5a3b81bd456d44d8994"
   },
   {
-   "text": "שְׁמַ֖ע יִשְׂרָאֵ֑ל יְהוָ֥ה אֱלֹהֵ֖ינוּ יְהוָ֥ה ׀ אֶחָֽד׃",
-   "summary": "שְׁמַע=שָׁמַע/VERB יִשְׂרָאֵל=יִשְׂרָאֵל/PROPN יְהוָה=יְהֹוָה/PROPN אֱלֹהֵינוּ=אֱלֹהִים/NOUN יְהוָה=יְהֹוָה/PROPN אֶחָד=אֶחָד/NUM",
-   "sha256": "6577a41fc0ef4b8f346ad72d3451466689f612392761cc8544f9b6457e0960a6"
+   "text": "שְׁמַ֖ע יִשְׂרָאֵ֑ל",
+   "summary": "שְׁמַע=שָׁמַע/VERB יִשְׂרָאֵל=יִשְׂרָאֵל/PROPN",
+   "sha256": "f30b5723c2edf0e42442191a8bb2fc493f415b1ac9c21c805299598472aeb081"
   },
   {
-   "text": "שְׁמַ֖ע יִשְׂרָאֵ֑ל יְהוָ֥ה אֱלֹהֵ֖ינוּ יְהוָ֥ה ׀ אֶחָֽד׃",
-   "summary": "שְׁמַע=שָׁמַע/VERB יִשְׂרָאֵל=יִשְׂרָאֵל/PROPN יְהוָה=יְהֹוָה/PROPN אֱלֹהֵינוּ=אֱלֹהִים/NOUN יְהוָה=יְהֹוָה/PROPN אֶחָד=אֶחָד/NUM",
-   "sha256": "6577a41fc0ef4b8f346ad72d3451466689f612392761cc8544f9b6457e0960a6"
+   "text": "שְׁמַ֖ע יִשְׂרָאֵ֑ל",
+   "summary": "שְׁמַע=שָׁמַע/VERB יִשְׂרָאֵל=יִשְׂרָאֵל/PROPN",
+   "sha256": "f30b5723c2edf0e42442191a8bb2fc493f415b1ac9c21c805299598472aeb081"
   },
   {
-   "text": "שְׁמַ֖ע יִשְׂרָאֵ֑ל יְהוָ֥ה אֱלֹהֵ֖ינוּ יְהוָ֥ה ׀ אֶחָֽד׃",
-   "summary": "שְׁמַע=שָׁמַע/VERB יִשְׂרָאֵל=יִשְׂרָאֵל/PROPN יְהוָה=יְהֹוָה/PROPN אֱלֹהֵינוּ=אֱלֹהִים/NOUN יְהוָה=יְהֹוָה/PROPN אֶחָד=אֶחָד/NUM",
-   "sha256": "6577a41fc0ef4b8f346ad72d3451466689f612392761cc8544f9b6457e0960a6"
+   "text": "יְהוָ֥ה אֱלֹהֵ֖ינוּ",
+   "summary": "יְהוָה=יְהֹוָה/PROPN אֱלֹהֵינוּ=אֱלֹהִים/NOUN",
+   "sha256": "fd9710b10def5ec05955783268188093b5f57cdeff6a6ff129c7fcb3f18c1cdd"
   },
   {
    "text": "כִּ֤י לֹ֨א אִ֣ישׁ אֵ֔ל",
@@ -737,9 +737,9 @@
    "sha256": "f4a7755b921c9f40018cd3bafbc8f0fb1235b1ddcac45c941fbcdc650332ef6b"
   },
   {
-   "text": "בְּרֵאשִׁ֖ית בָּרָ֣א אֱלֹהִ֑ים אֵ֥ת הַשָּׁמַ֖יִם וְאֵ֥ת הָאָֽרֶץ׃",
-   "summary": "בְּרֵאשִׁית=?/? בָּרָא=?/? אֱלֹהִים=אֱלֹהִים/NOUN אֵת=אֵת/PART הַשָּׁמַיִם=שָׁמַיִם/NOUN וְאֵת=אֵת/PART הָאָרֶץ=אֶרֶץ/NOUN",
-   "sha256": "56d4874414b20d3c07fd001beb17a71a5c63af24bf44774f98b4e6eb5be7110c"
+   "text": "בָּרָ֣א",
+   "summary": "בָּרָא=?/?",
+   "sha256": "211c52c5d03856170376ee491e9874212ced7ebca122c65c9dde6eca43b185f1"
   },
   {
    "text": "הילדים קוראים ספר.",
@@ -754,84 +754,84 @@
  ],
  "el": [
   {
-   "text": "Ἐν ἀρχῇ ἦν ὁ λόγος, καὶ ὁ λόγος ἦν πρὸς τὸν θεόν, καὶ θεὸς ἦν ὁ λόγος.",
-   "summary": "ἐν=ἐν/ADP ἀρχῇ=ἀρχή/NOUN ἦν=εἰμί/VERB ὁ=ὁ/DET λόγος=λόγος/NOUN καί=καί/CONJ ὁ=ὁ/DET λόγος=λόγος/NOUN ἦν=εἰμί/VERB πρός=πρός/ADP τόν=ὁ/DET θεόν=θεός/NOUN καί=καί/CONJ θεός=θεός/NOUN ἦν=εἰμί/VERB ὁ=ὁ/DET λόγος=λόγος/NOUN",
-   "sha256": "e26775c2da086b27054c7676eb9d9bb5049740dd4618fefd85707268d688df62"
+   "text": "Ἐν ἀρχῇ ἦν ὁ λόγος,",
+   "summary": "ἐν=ἐν/ADP ἀρχῇ=ἀρχή/NOUN ἦν=εἰμί/VERB ὁ=ὁ/DET λόγος=λόγος/NOUN",
+   "sha256": "f04f3ba833e533cfbd0ccf2552c2820e8b87383586956db84b399efed0e14727"
   },
   {
-   "text": "Ἐν ἀρχῇ ἦν ὁ λόγος, καὶ ὁ λόγος ἦν πρὸς τὸν θεόν, καὶ θεὸς ἦν ὁ λόγος.",
-   "summary": "ἐν=ἐν/ADP ἀρχῇ=ἀρχή/NOUN ἦν=εἰμί/VERB ὁ=ὁ/DET λόγος=λόγος/NOUN καί=καί/CONJ ὁ=ὁ/DET λόγος=λόγος/NOUN ἦν=εἰμί/VERB πρός=πρός/ADP τόν=ὁ/DET θεόν=θεός/NOUN καί=καί/CONJ θεός=θεός/NOUN ἦν=εἰμί/VERB ὁ=ὁ/DET λόγος=λόγος/NOUN",
-   "sha256": "e26775c2da086b27054c7676eb9d9bb5049740dd4618fefd85707268d688df62"
+   "text": "Ἐν ἀρχῇ ἦν ὁ λόγος,",
+   "summary": "ἐν=ἐν/ADP ἀρχῇ=ἀρχή/NOUN ἦν=εἰμί/VERB ὁ=ὁ/DET λόγος=λόγος/NOUN",
+   "sha256": "f04f3ba833e533cfbd0ccf2552c2820e8b87383586956db84b399efed0e14727"
   },
   {
-   "text": "Ἐν ἀρχῇ ἦν ὁ λόγος, καὶ ὁ λόγος ἦν πρὸς τὸν θεόν, καὶ θεὸς ἦν ὁ λόγος.",
-   "summary": "ἐν=ἐν/ADP ἀρχῇ=ἀρχή/NOUN ἦν=εἰμί/VERB ὁ=ὁ/DET λόγος=λόγος/NOUN καί=καί/CONJ ὁ=ὁ/DET λόγος=λόγος/NOUN ἦν=εἰμί/VERB πρός=πρός/ADP τόν=ὁ/DET θεόν=θεός/NOUN καί=καί/CONJ θεός=θεός/NOUN ἦν=εἰμί/VERB ὁ=ὁ/DET λόγος=λόγος/NOUN",
-   "sha256": "e26775c2da086b27054c7676eb9d9bb5049740dd4618fefd85707268d688df62"
+   "text": "Ἐν ἀρχῇ ἦν ὁ λόγος,",
+   "summary": "ἐν=ἐν/ADP ἀρχῇ=ἀρχή/NOUN ἦν=εἰμί/VERB ὁ=ὁ/DET λόγος=λόγος/NOUN",
+   "sha256": "f04f3ba833e533cfbd0ccf2552c2820e8b87383586956db84b399efed0e14727"
   },
   {
-   "text": "Ἐν ἀρχῇ ἦν ὁ λόγος, καὶ ὁ λόγος ἦν πρὸς τὸν θεόν, καὶ θεὸς ἦν ὁ λόγος.",
-   "summary": "ἐν=ἐν/ADP ἀρχῇ=ἀρχή/NOUN ἦν=εἰμί/VERB ὁ=ὁ/DET λόγος=λόγος/NOUN καί=καί/CONJ ὁ=ὁ/DET λόγος=λόγος/NOUN ἦν=εἰμί/VERB πρός=πρός/ADP τόν=ὁ/DET θεόν=θεός/NOUN καί=καί/CONJ θεός=θεός/NOUN ἦν=εἰμί/VERB ὁ=ὁ/DET λόγος=λόγος/NOUN",
-   "sha256": "e26775c2da086b27054c7676eb9d9bb5049740dd4618fefd85707268d688df62"
+   "text": "ἦν πρὸς τὸν θεόν,",
+   "summary": "ἦν=εἰμί/VERB πρός=πρός/ADP τόν=ὁ/DET θεόν=θεός/NOUN",
+   "sha256": "f5361d93bf8b51af37b0b78763508c698cab1e6a3ea513659848a442363a16ff"
   },
   {
-   "text": "Ἐν ἀρχῇ ἦν ὁ λόγος, καὶ ὁ λόγος ἦν πρὸς τὸν θεόν, καὶ θεὸς ἦν ὁ λόγος.",
-   "summary": "ἐν=ἐν/ADP ἀρχῇ=ἀρχή/NOUN ἦν=εἰμί/VERB ὁ=ὁ/DET λόγος=λόγος/NOUN καί=καί/CONJ ὁ=ὁ/DET λόγος=λόγος/NOUN ἦν=εἰμί/VERB πρός=πρός/ADP τόν=ὁ/DET θεόν=θεός/NOUN καί=καί/CONJ θεός=θεός/NOUN ἦν=εἰμί/VERB ὁ=ὁ/DET λόγος=λόγος/NOUN",
-   "sha256": "e26775c2da086b27054c7676eb9d9bb5049740dd4618fefd85707268d688df62"
+   "text": "ἦν πρὸς τὸν θεόν,",
+   "summary": "ἦν=εἰμί/VERB πρός=πρός/ADP τόν=ὁ/DET θεόν=θεός/NOUN",
+   "sha256": "f5361d93bf8b51af37b0b78763508c698cab1e6a3ea513659848a442363a16ff"
   },
   {
-   "text": "Ἐν ἀρχῇ ἦν ὁ λόγος, καὶ ὁ λόγος ἦν πρὸς τὸν θεόν, καὶ θεὸς ἦν ὁ λόγος.",
-   "summary": "ἐν=ἐν/ADP ἀρχῇ=ἀρχή/NOUN ἦν=εἰμί/VERB ὁ=ὁ/DET λόγος=λόγος/NOUN καί=καί/CONJ ὁ=ὁ/DET λόγος=λόγος/NOUN ἦν=εἰμί/VERB πρός=πρός/ADP τόν=ὁ/DET θεόν=θεός/NOUN καί=καί/CONJ θεός=θεός/NOUN ἦν=εἰμί/VERB ὁ=ὁ/DET λόγος=λόγος/NOUN",
-   "sha256": "e26775c2da086b27054c7676eb9d9bb5049740dd4618fefd85707268d688df62"
+   "text": "ἦν πρὸς τὸν θεόν,",
+   "summary": "ἦν=εἰμί/VERB πρός=πρός/ADP τόν=ὁ/DET θεόν=θεός/NOUN",
+   "sha256": "f5361d93bf8b51af37b0b78763508c698cab1e6a3ea513659848a442363a16ff"
   },
   {
-   "text": "Ἐν ἀρχῇ ἦν ὁ λόγος, καὶ ὁ λόγος ἦν πρὸς τὸν θεόν, καὶ θεὸς ἦν ὁ λόγος.",
-   "summary": "ἐν=ἐν/ADP ἀρχῇ=ἀρχή/NOUN ἦν=εἰμί/VERB ὁ=ὁ/DET λόγος=λόγος/NOUN καί=καί/CONJ ὁ=ὁ/DET λόγος=λόγος/NOUN ἦν=εἰμί/VERB πρός=πρός/ADP τόν=ὁ/DET θεόν=θεός/NOUN καί=καί/CONJ θεός=θεός/NOUN ἦν=εἰμί/VERB ὁ=ὁ/DET λόγος=λόγος/NOUN",
-   "sha256": "e26775c2da086b27054c7676eb9d9bb5049740dd4618fefd85707268d688df62"
+   "text": "Ἐν ἀρχῇ ἦν ὁ λόγος,",
+   "summary": "ἐν=ἐν/ADP ἀρχῇ=ἀρχή/NOUN ἦν=εἰμί/VERB ὁ=ὁ/DET λόγος=λόγος/NOUN",
+   "sha256": "f04f3ba833e533cfbd0ccf2552c2820e8b87383586956db84b399efed0e14727"
   },
   {
-   "text": "Οὕτως γὰρ ἠγάπησεν ὁ θεὸς τὸν κόσμον, ὥστε τὸν υἱὸν τὸν μονογενῆ ἔδωκεν.",
-   "summary": "οὕτως=οὕτω(ς)/ADV γάρ=γάρ/CONJ ἠγάπησεν=ἀγαπάω/VERB ὁ=ὁ/DET θεός=θεός/NOUN τόν=ὁ/DET κόσμον=κόσμος/NOUN ὥστε=ὥστε/CONJ τόν=ὁ/DET υἱόν=υἱός/NOUN τόν=ὁ/DET μονογενῆ=?/? ἔδωκεν=δίδωμι/VERB",
-   "sha256": "287a33c5e82ebd275eea54349a3c5bfb7d70be676d8d443107fb6fecaa54a9f3"
+   "text": "Οὕτως γὰρ ἠγάπησεν ὁ θεὸς",
+   "summary": "οὕτως=οὕτω(ς)/ADV γάρ=γάρ/CONJ ἠγάπησεν=ἀγαπάω/VERB ὁ=ὁ/DET θεός=θεός/NOUN",
+   "sha256": "967232492372d179398b27f61af5a9ff55301411e29d5219d86fbc012e560039"
   },
   {
-   "text": "Οὕτως γὰρ ἠγάπησεν ὁ θεὸς τὸν κόσμον, ὥστε τὸν υἱὸν τὸν μονογενῆ ἔδωκεν.",
-   "summary": "οὕτως=οὕτω(ς)/ADV γάρ=γάρ/CONJ ἠγάπησεν=ἀγαπάω/VERB ὁ=ὁ/DET θεός=θεός/NOUN τόν=ὁ/DET κόσμον=κόσμος/NOUN ὥστε=ὥστε/CONJ τόν=ὁ/DET υἱόν=υἱός/NOUN τόν=ὁ/DET μονογενῆ=?/? ἔδωκεν=δίδωμι/VERB",
-   "sha256": "287a33c5e82ebd275eea54349a3c5bfb7d70be676d8d443107fb6fecaa54a9f3"
+   "text": "θεὸς τὸν κόσμον,",
+   "summary": "θεός=θεός/NOUN τόν=ὁ/DET κόσμον=κόσμος/NOUN",
+   "sha256": "181caddbf8020004f8dcfc880f67af26e95106ae0e1264274f0fc21e1740f7bb"
   },
   {
-   "text": "Οὕτως γὰρ ἠγάπησεν ὁ θεὸς τὸν κόσμον, ὥστε τὸν υἱὸν τὸν μονογενῆ ἔδωκεν.",
-   "summary": "οὕτως=οὕτω(ς)/ADV γάρ=γάρ/CONJ ἠγάπησεν=ἀγαπάω/VERB ὁ=ὁ/DET θεός=θεός/NOUN τόν=ὁ/DET κόσμον=κόσμος/NOUN ὥστε=ὥστε/CONJ τόν=ὁ/DET υἱόν=υἱός/NOUN τόν=ὁ/DET μονογενῆ=?/? ἔδωκεν=δίδωμι/VERB",
-   "sha256": "287a33c5e82ebd275eea54349a3c5bfb7d70be676d8d443107fb6fecaa54a9f3"
+   "text": "ὥστε τὸν υἱὸν",
+   "summary": "ὥστε=ὥστε/CONJ τόν=ὁ/DET υἱόν=υἱός/NOUN",
+   "sha256": "d94973b8410a50fc1d7a1033900b5cc6d07e8ec328d1a93b65fb287194ccb5a2"
   },
   {
-   "text": "Οὕτως γὰρ ἠγάπησεν ὁ θεὸς τὸν κόσμον, ὥστε τὸν υἱὸν τὸν μονογενῆ ἔδωκεν.",
-   "summary": "οὕτως=οὕτω(ς)/ADV γάρ=γάρ/CONJ ἠγάπησεν=ἀγαπάω/VERB ὁ=ὁ/DET θεός=θεός/NOUN τόν=ὁ/DET κόσμον=κόσμος/NOUN ὥστε=ὥστε/CONJ τόν=ὁ/DET υἱόν=υἱός/NOUN τόν=ὁ/DET μονογενῆ=?/? ἔδωκεν=δίδωμι/VERB",
-   "sha256": "287a33c5e82ebd275eea54349a3c5bfb7d70be676d8d443107fb6fecaa54a9f3"
+   "text": "υἱὸν τὸν μονογενῆ ἔδωκεν.",
+   "summary": "υἱόν=υἱός/NOUN τόν=ὁ/DET μονογενῆ=?/? ἔδωκεν=δίδωμι/VERB",
+   "sha256": "f1ff0cb793ca2ab140cfc3e3bfd0ede83863a6f94af36f1b66f0e616f24b4d56"
   },
   {
-   "text": "Οὕτως γὰρ ἠγάπησεν ὁ θεὸς τὸν κόσμον, ὥστε τὸν υἱὸν τὸν μονογενῆ ἔδωκεν.",
-   "summary": "οὕτως=οὕτω(ς)/ADV γάρ=γάρ/CONJ ἠγάπησεν=ἀγαπάω/VERB ὁ=ὁ/DET θεός=θεός/NOUN τόν=ὁ/DET κόσμον=κόσμος/NOUN ὥστε=ὥστε/CONJ τόν=ὁ/DET υἱόν=υἱός/NOUN τόν=ὁ/DET μονογενῆ=?/? ἔδωκεν=δίδωμι/VERB",
-   "sha256": "287a33c5e82ebd275eea54349a3c5bfb7d70be676d8d443107fb6fecaa54a9f3"
+   "text": "Οὕτως γὰρ ἠγάπησεν ὁ θεὸς",
+   "summary": "οὕτως=οὕτω(ς)/ADV γάρ=γάρ/CONJ ἠγάπησεν=ἀγαπάω/VERB ὁ=ὁ/DET θεός=θεός/NOUN",
+   "sha256": "967232492372d179398b27f61af5a9ff55301411e29d5219d86fbc012e560039"
   },
   {
-   "text": "Ἐγώ εἰμι ἡ ὁδὸς καὶ ἡ ἀλήθεια καὶ ἡ ζωή.",
-   "summary": "ἐγώ=ἐγώ/PRON εἰμι=εἰμί/VERB ἡ=ὁ/DET ὁδός=ὁδός/NOUN καί=καί/CONJ ἡ=ὁ/DET ἀλήθεια=ἀλήθεια/NOUN καί=καί/CONJ ἡ=ὁ/DET ζωή=ζωή/NOUN",
-   "sha256": "c556cd63ed9302f75ee5604ae40e39e8198ed771183cd6911b8ca2414f6b26e7"
+   "text": "Ἐγώ εἰμι ἡ ὁδὸς",
+   "summary": "ἐγώ=ἐγώ/PRON εἰμι=εἰμί/VERB ἡ=ὁ/DET ὁδός=ὁδός/NOUN",
+   "sha256": "dfaeab0d3c3453f1b187bbee55b3ee3af8a49cf9f3d758ee855a75ac16fecb3b"
   },
   {
-   "text": "Ἐγώ εἰμι ἡ ὁδὸς καὶ ἡ ἀλήθεια καὶ ἡ ζωή.",
-   "summary": "ἐγώ=ἐγώ/PRON εἰμι=εἰμί/VERB ἡ=ὁ/DET ὁδός=ὁδός/NOUN καί=καί/CONJ ἡ=ὁ/DET ἀλήθεια=ἀλήθεια/NOUN καί=καί/CONJ ἡ=ὁ/DET ζωή=ζωή/NOUN",
-   "sha256": "c556cd63ed9302f75ee5604ae40e39e8198ed771183cd6911b8ca2414f6b26e7"
+   "text": "Ἐγώ εἰμι ἡ ὁδὸς",
+   "summary": "ἐγώ=ἐγώ/PRON εἰμι=εἰμί/VERB ἡ=ὁ/DET ὁδός=ὁδός/NOUN",
+   "sha256": "dfaeab0d3c3453f1b187bbee55b3ee3af8a49cf9f3d758ee855a75ac16fecb3b"
   },
   {
-   "text": "Ἐγώ εἰμι ἡ ὁδὸς καὶ ἡ ἀλήθεια καὶ ἡ ζωή.",
-   "summary": "ἐγώ=ἐγώ/PRON εἰμι=εἰμί/VERB ἡ=ὁ/DET ὁδός=ὁδός/NOUN καί=καί/CONJ ἡ=ὁ/DET ἀλήθεια=ἀλήθεια/NOUN καί=καί/CONJ ἡ=ὁ/DET ζωή=ζωή/NOUN",
-   "sha256": "c556cd63ed9302f75ee5604ae40e39e8198ed771183cd6911b8ca2414f6b26e7"
+   "text": "καὶ ἡ ζωή.",
+   "summary": "καί=καί/CONJ ἡ=ὁ/DET ζωή=ζωή/NOUN",
+   "sha256": "2df9858ff2ea34b3497636370d19f2b9a186a1af422720d8332f5e4ee1e90afc"
   },
   {
-   "text": "Ἐγώ εἰμι ἡ ὁδὸς καὶ ἡ ἀλήθεια καὶ ἡ ζωή.",
-   "summary": "ἐγώ=ἐγώ/PRON εἰμι=εἰμί/VERB ἡ=ὁ/DET ὁδός=ὁδός/NOUN καί=καί/CONJ ἡ=ὁ/DET ἀλήθεια=ἀλήθεια/NOUN καί=καί/CONJ ἡ=ὁ/DET ζωή=ζωή/NOUN",
-   "sha256": "c556cd63ed9302f75ee5604ae40e39e8198ed771183cd6911b8ca2414f6b26e7"
+   "text": "Ἐγώ εἰμι ἡ ὁδὸς",
+   "summary": "ἐγώ=ἐγώ/PRON εἰμι=εἰμί/VERB ἡ=ὁ/DET ὁδός=ὁδός/NOUN",
+   "sha256": "dfaeab0d3c3453f1b187bbee55b3ee3af8a49cf9f3d758ee855a75ac16fecb3b"
   },
   {
    "text": "Πιστεύω εἰς τὸν θεόν.",
@@ -842,6 +842,46 @@
    "text": "οὐκ ἔστιν ὧδε",
    "summary": "οὐκ=οὐ/ADV ἔστιν=εἰμί/VERB ὧδε=ὧδε/ADV",
    "sha256": "0326d831751192553171fa71eed2af54422b3dfc97650cae02e04516943ec5bb"
+  },
+  {
+   "text": "σὺ εἶ ἀγαθός.",
+   "summary": "σύ=σύ/PRON εἶ=εἰμί/VERB ἀγαθός=ἀγαθός/ADJ",
+   "sha256": "0c91dc27c6615860a8f02b0ee750cd3b38b3883a911e0ce3042baa0df8e97197"
+  },
+  {
+   "text": "ἡμεῖς ἐσμὲν φίλοι.",
+   "summary": "ἡμεῖς=ἐγώ/PRON ἐσμέν=εἰμί/VERB φίλοι=?/?",
+   "sha256": "95ea57d55095a479cc1af09e9ee96a64035359ffdf4d2eca0785f73405a397b2"
+  },
+  {
+   "text": "ὑμεῖς ἐστὲ φίλοι.",
+   "summary": "ὑμεῖς=σύ/PRON ἐστέ=εἰμί/VERB φίλοι=?/?",
+   "sha256": "007ab8ddca91f2cc5266c0eb418ce782438ecd2bc6e7a51afd7d0929e9e5a2b9"
+  },
+  {
+   "text": "αὐτοὶ εἰσὶν φίλοι.",
+   "summary": "αὐτοί=αὐτός/PRON εἰσίν=εἰμί/VERB φίλοι=?/?",
+   "sha256": "570520d5ae2dbce8698a46c8234a8c35c62855ea443cf4b9978aaef6f83d700d"
+  },
+  {
+   "text": "ἔχω βιβλίον.",
+   "summary": "ἔχω=ἔχω/VERB βιβλίον=?/?",
+   "sha256": "296649ea9650e6521106707ab5b485c8ce836cc611515cce6af219b4e1ffd73a"
+  },
+  {
+   "text": "ἔχεις βιβλίον.",
+   "summary": "ἔχεις=ἔχω/VERB βιβλίον=?/?",
+   "sha256": "14915358c48aa81b59fb487f4b49e2e1f905a03c9d9c45daa1dae34fdba8d30e"
+  },
+  {
+   "text": "ἔχει βιβλίον.",
+   "summary": "ἔχει=ἔχω/VERB βιβλίον=?/?",
+   "sha256": "514818f818ba76d2202455891acff62550dedb7cf14188465ea90fef06c05bb4"
+  },
+  {
+   "text": "καὶ ἦλθεν πρὸς αὐτόν.",
+   "summary": "καί=καί/CONJ ἦλθεν=ἔρχομαι/VERB πρός=πρός/ADP αὐτόν=αὐτός/PRON",
+   "sha256": "bc68e944b5422adc2665ef6c75709a8c0402f0d06a7d6a177a3bb02c2560a923"
   },
   {
    "text": "Ο λόγος είναι ελεύθερος.",
@@ -861,69 +901,69 @@
  ],
  "arc": [
   {
-   "text": "מַלְכָּא֙ לְעָלְמִ֣ין חֱיִ֔י אֱמַ֥ר חֶלְמָ֛א לְעַבְדָ֖ךְ וּפִשְׁרָ֥א נְחַוֵּֽא׃",
-   "summary": "מַלְכָּא=מֶלֶךְ/NOUN לְעָלְמִין=עָלַם/NOUN חֱיִי=חֲיָא/VERB אֱמַר=אֲמַר/VERB חֶלְמָא=חֵלֶם/NOUN לְעַבְדָךְ=עֲבַד/NOUN וּפִשְׁרָא=פְּשַׁר/NOUN נְחַוֵּא=חֲוָא/VERB",
-   "sha256": "7c067d2789b04531dbc6f7b9e713349e61604e8bed227820f09d533dba996c75"
+   "text": "מַלְכָּא֙ לְעָלְמִ֣ין",
+   "summary": "מַלְכָּא=מֶלֶךְ/NOUN לְעָלְמִין=עָלַם/NOUN",
+   "sha256": "9163cb1957651d3a5aae3203cf34b39ed277a08e3750d37be960036f262dc22e"
   },
   {
-   "text": "מַלְכָּא֙ לְעָלְמִ֣ין חֱיִ֔י אֱמַ֥ר חֶלְמָ֛א לְעַבְדָ֖ךְ וּפִשְׁרָ֥א נְחַוֵּֽא׃",
-   "summary": "מַלְכָּא=מֶלֶךְ/NOUN לְעָלְמִין=עָלַם/NOUN חֱיִי=חֲיָא/VERB אֱמַר=אֲמַר/VERB חֶלְמָא=חֵלֶם/NOUN לְעַבְדָךְ=עֲבַד/NOUN וּפִשְׁרָא=פְּשַׁר/NOUN נְחַוֵּא=חֲוָא/VERB",
-   "sha256": "7c067d2789b04531dbc6f7b9e713349e61604e8bed227820f09d533dba996c75"
+   "text": "מַלְכָּא֙ לְעָלְמִ֣ין",
+   "summary": "מַלְכָּא=מֶלֶךְ/NOUN לְעָלְמִין=עָלַם/NOUN",
+   "sha256": "9163cb1957651d3a5aae3203cf34b39ed277a08e3750d37be960036f262dc22e"
   },
   {
-   "text": "מַלְכָּא֙ לְעָלְמִ֣ין חֱיִ֔י אֱמַ֥ר חֶלְמָ֛א לְעַבְדָ֖ךְ וּפִשְׁרָ֥א נְחַוֵּֽא׃",
-   "summary": "מַלְכָּא=מֶלֶךְ/NOUN לְעָלְמִין=עָלַם/NOUN חֱיִי=חֲיָא/VERB אֱמַר=אֲמַר/VERB חֶלְמָא=חֵלֶם/NOUN לְעַבְדָךְ=עֲבַד/NOUN וּפִשְׁרָא=פְּשַׁר/NOUN נְחַוֵּא=חֲוָא/VERB",
-   "sha256": "7c067d2789b04531dbc6f7b9e713349e61604e8bed227820f09d533dba996c75"
+   "text": "לְעָלְמִ֣ין חֱיִ֔י",
+   "summary": "לְעָלְמִין=עָלַם/NOUN חֱיִי=חֲיָא/VERB",
+   "sha256": "4a73d40a39fe709785d85f1902b10d1a7adb6bd0147602fe59e7096156cfabec"
   },
   {
-   "text": "מַלְכָּא֙ לְעָלְמִ֣ין חֱיִ֔י אֱמַ֥ר חֶלְמָ֛א לְעַבְדָ֖ךְ וּפִשְׁרָ֥א נְחַוֵּֽא׃",
-   "summary": "מַלְכָּא=מֶלֶךְ/NOUN לְעָלְמִין=עָלַם/NOUN חֱיִי=חֲיָא/VERB אֱמַר=אֲמַר/VERB חֶלְמָא=חֵלֶם/NOUN לְעַבְדָךְ=עֲבַד/NOUN וּפִשְׁרָא=פְּשַׁר/NOUN נְחַוֵּא=חֲוָא/VERB",
-   "sha256": "7c067d2789b04531dbc6f7b9e713349e61604e8bed227820f09d533dba996c75"
+   "text": "חֱיִ֔י אֱמַ֥ר",
+   "summary": "חֱיִי=חֲיָא/VERB אֱמַר=אֲמַר/VERB",
+   "sha256": "e36bd66a8102418232b47f9bb754c30387b3d700654af94bc6c43a0821c45aba"
   },
   {
-   "text": "מַלְכָּא֙ לְעָלְמִ֣ין חֱיִ֔י אֱמַ֥ר חֶלְמָ֛א לְעַבְדָ֖ךְ וּפִשְׁרָ֥א נְחַוֵּֽא׃",
-   "summary": "מַלְכָּא=מֶלֶךְ/NOUN לְעָלְמִין=עָלַם/NOUN חֱיִי=חֲיָא/VERB אֱמַר=אֲמַר/VERB חֶלְמָא=חֵלֶם/NOUN לְעַבְדָךְ=עֲבַד/NOUN וּפִשְׁרָא=פְּשַׁר/NOUN נְחַוֵּא=חֲוָא/VERB",
-   "sha256": "7c067d2789b04531dbc6f7b9e713349e61604e8bed227820f09d533dba996c75"
+   "text": "חֶלְמָ֛א לְעַבְדָ֖ךְ",
+   "summary": "חֶלְמָא=חֵלֶם/NOUN לְעַבְדָךְ=עֲבַד/NOUN",
+   "sha256": "b2d43ade21dcde4720d476b746813327b9047d522959ae7e20e660d10817b18d"
   },
   {
-   "text": "מַלְכָּא֙ לְעָלְמִ֣ין חֱיִ֔י אֱמַ֥ר חֶלְמָ֛א לְעַבְדָ֖ךְ וּפִשְׁרָ֥א נְחַוֵּֽא׃",
-   "summary": "מַלְכָּא=מֶלֶךְ/NOUN לְעָלְמִין=עָלַם/NOUN חֱיִי=חֲיָא/VERB אֱמַר=אֲמַר/VERB חֶלְמָא=חֵלֶם/NOUN לְעַבְדָךְ=עֲבַד/NOUN וּפִשְׁרָא=פְּשַׁר/NOUN נְחַוֵּא=חֲוָא/VERB",
-   "sha256": "7c067d2789b04531dbc6f7b9e713349e61604e8bed227820f09d533dba996c75"
+   "text": "לְעַבְדָ֖ךְ וּפִשְׁרָ֥א",
+   "summary": "לְעַבְדָךְ=עֲבַד/NOUN וּפִשְׁרָא=פְּשַׁר/NOUN",
+   "sha256": "44987a0c2107a54593380f26723827b985a3ce69133ecbced6ab7f5370f138f9"
   },
   {
-   "text": "מַלְכָּא֙ לְעָלְמִ֣ין חֱיִ֔י אֱמַ֥ר חֶלְמָ֛א לְעַבְדָ֖ךְ וּפִשְׁרָ֥א נְחַוֵּֽא׃",
-   "summary": "מַלְכָּא=מֶלֶךְ/NOUN לְעָלְמִין=עָלַם/NOUN חֱיִי=חֲיָא/VERB אֱמַר=אֲמַר/VERB חֶלְמָא=חֵלֶם/NOUN לְעַבְדָךְ=עֲבַד/NOUN וּפִשְׁרָא=פְּשַׁר/NOUN נְחַוֵּא=חֲוָא/VERB",
-   "sha256": "7c067d2789b04531dbc6f7b9e713349e61604e8bed227820f09d533dba996c75"
+   "text": "וּפִשְׁרָ֥א נְחַוֵּֽא׃",
+   "summary": "וּפִשְׁרָא=פְּשַׁר/NOUN נְחַוֵּא=חֲוָא/VERB",
+   "sha256": "9839becf14bb7335eff92685203ba0cd32f3a08cf374a00c4bcea83002e5faf3"
   },
   {
-   "text": "עָנֵ֤ה דָֽנִיֵּאל֙ וְאָמַ֔ר לֶהֱוֵ֨א שְׁמֵ֤הּ דִּֽי־אֱלָהָא֙ מְבָרַ֔ךְ מִן־עָלְמָ֖א וְעַ֣ד־עָלְמָ֑א דִּ֧י חָכְמְתָ֛א וּגְבוּרְתָ֖א דִּ֥י לֵֽהּ־הִֽיא׃",
-   "summary": "עָנֵה=עֲנָה/VERB דָנִיֵּאל=דָּנִיֵּאל/PROPN וְאָמַר=אֲמַר/VERB לֶהֱוֵא=הָוָא/VERB שְׁמֵהּ=שֻׁם/NOUN דִּי=דִּי/SCONJ אֱלָהָא=אֱלָהּ/NOUN מְבָרַךְ=בְּרַךְ/VERB מִן=מִן/ADP עָלְמָא=עָלַם/NOUN וְעַד=עַד/ADP עָלְמָא=עָלַם/NOUN דִּי=דִּי/CONJ חָכְמְתָא=חׇכְמָה/NOUN וּגְבוּרְתָא=גְּבוּרָה/NOUN דִּי=דִּי/SCONJ לֵהּ=לְ/ADP הִיא=הוּא/PART",
-   "sha256": "29a5d4d83ba2a3cd8859da2dc30e0ce25524827105150814da0aa578c539db8b"
+   "text": "דָֽנִיֵּאל֙ וְאָמַ֔ר",
+   "summary": "דָנִיֵּאל=דָּנִיֵּאל/PROPN וְאָמַר=אֲמַר/VERB",
+   "sha256": "ff81e60855205cb38476ba42a8ef2fe595d15f851682968375943282a3317de7"
   },
   {
-   "text": "עָנֵ֤ה דָֽנִיֵּאל֙ וְאָמַ֔ר לֶהֱוֵ֨א שְׁמֵ֤הּ דִּֽי־אֱלָהָא֙ מְבָרַ֔ךְ מִן־עָלְמָ֖א וְעַ֣ד־עָלְמָ֑א דִּ֧י חָכְמְתָ֛א וּגְבוּרְתָ֖א דִּ֥י לֵֽהּ־הִֽיא׃",
-   "summary": "עָנֵה=עֲנָה/VERB דָנִיֵּאל=דָּנִיֵּאל/PROPN וְאָמַר=אֲמַר/VERB לֶהֱוֵא=הָוָא/VERB שְׁמֵהּ=שֻׁם/NOUN דִּי=דִּי/SCONJ אֱלָהָא=אֱלָהּ/NOUN מְבָרַךְ=בְּרַךְ/VERB מִן=מִן/ADP עָלְמָא=עָלַם/NOUN וְעַד=עַד/ADP עָלְמָא=עָלַם/NOUN דִּי=דִּי/CONJ חָכְמְתָא=חׇכְמָה/NOUN וּגְבוּרְתָא=גְּבוּרָה/NOUN דִּי=דִּי/SCONJ לֵהּ=לְ/ADP הִיא=הוּא/PART",
-   "sha256": "29a5d4d83ba2a3cd8859da2dc30e0ce25524827105150814da0aa578c539db8b"
+   "text": "דָֽנִיֵּאל֙ וְאָמַ֔ר",
+   "summary": "דָנִיֵּאל=דָּנִיֵּאל/PROPN וְאָמַר=אֲמַר/VERB",
+   "sha256": "ff81e60855205cb38476ba42a8ef2fe595d15f851682968375943282a3317de7"
   },
   {
-   "text": "עָנֵ֤ה דָֽנִיֵּאל֙ וְאָמַ֔ר לֶהֱוֵ֨א שְׁמֵ֤הּ דִּֽי־אֱלָהָא֙ מְבָרַ֔ךְ מִן־עָלְמָ֖א וְעַ֣ד־עָלְמָ֑א דִּ֧י חָכְמְתָ֛א וּגְבוּרְתָ֖א דִּ֥י לֵֽהּ־הִֽיא׃",
-   "summary": "עָנֵה=עֲנָה/VERB דָנִיֵּאל=דָּנִיֵּאל/PROPN וְאָמַר=אֲמַר/VERB לֶהֱוֵא=הָוָא/VERB שְׁמֵהּ=שֻׁם/NOUN דִּי=דִּי/SCONJ אֱלָהָא=אֱלָהּ/NOUN מְבָרַךְ=בְּרַךְ/VERB מִן=מִן/ADP עָלְמָא=עָלַם/NOUN וְעַד=עַד/ADP עָלְמָא=עָלַם/NOUN דִּי=דִּי/CONJ חָכְמְתָא=חׇכְמָה/NOUN וּגְבוּרְתָא=גְּבוּרָה/NOUN דִּי=דִּי/SCONJ לֵהּ=לְ/ADP הִיא=הוּא/PART",
-   "sha256": "29a5d4d83ba2a3cd8859da2dc30e0ce25524827105150814da0aa578c539db8b"
+   "text": "וְאָמַ֔ר לֶהֱוֵ֨א",
+   "summary": "וְאָמַר=אֲמַר/VERB לֶהֱוֵא=הָוָא/VERB",
+   "sha256": "4542d9f27d5bf29d42893e0c467c739f41356e763b363eb2faae3005de4eeea1"
   },
   {
-   "text": "עָנֵ֤ה דָֽנִיֵּאל֙ וְאָמַ֔ר לֶהֱוֵ֨א שְׁמֵ֤הּ דִּֽי־אֱלָהָא֙ מְבָרַ֔ךְ מִן־עָלְמָ֖א וְעַ֣ד־עָלְמָ֑א דִּ֧י חָכְמְתָ֛א וּגְבוּרְתָ֖א דִּ֥י לֵֽהּ־הִֽיא׃",
-   "summary": "עָנֵה=עֲנָה/VERB דָנִיֵּאל=דָּנִיֵּאל/PROPN וְאָמַר=אֲמַר/VERB לֶהֱוֵא=הָוָא/VERB שְׁמֵהּ=שֻׁם/NOUN דִּי=דִּי/SCONJ אֱלָהָא=אֱלָהּ/NOUN מְבָרַךְ=בְּרַךְ/VERB מִן=מִן/ADP עָלְמָא=עָלַם/NOUN וְעַד=עַד/ADP עָלְמָא=עָלַם/NOUN דִּי=דִּי/CONJ חָכְמְתָא=חׇכְמָה/NOUN וּגְבוּרְתָא=גְּבוּרָה/NOUN דִּי=דִּי/SCONJ לֵהּ=לְ/ADP הִיא=הוּא/PART",
-   "sha256": "29a5d4d83ba2a3cd8859da2dc30e0ce25524827105150814da0aa578c539db8b"
+   "text": "לֶהֱוֵ֨א שְׁמֵ֤הּ",
+   "summary": "לֶהֱוֵא=הָוָא/VERB שְׁמֵהּ=שֻׁם/NOUN",
+   "sha256": "2a475ed40a5367cd4eeb32890a5aa88b241ab815cc24d9c49870783f4008a95f"
   },
   {
-   "text": "עָנֵ֤ה דָֽנִיֵּאל֙ וְאָמַ֔ר לֶהֱוֵ֨א שְׁמֵ֤הּ דִּֽי־אֱלָהָא֙ מְבָרַ֔ךְ מִן־עָלְמָ֖א וְעַ֣ד־עָלְמָ֑א דִּ֧י חָכְמְתָ֛א וּגְבוּרְתָ֖א דִּ֥י לֵֽהּ־הִֽיא׃",
-   "summary": "עָנֵה=עֲנָה/VERB דָנִיֵּאל=דָּנִיֵּאל/PROPN וְאָמַר=אֲמַר/VERB לֶהֱוֵא=הָוָא/VERB שְׁמֵהּ=שֻׁם/NOUN דִּי=דִּי/SCONJ אֱלָהָא=אֱלָהּ/NOUN מְבָרַךְ=בְּרַךְ/VERB מִן=מִן/ADP עָלְמָא=עָלַם/NOUN וְעַד=עַד/ADP עָלְמָא=עָלַם/NOUN דִּי=דִּי/CONJ חָכְמְתָא=חׇכְמָה/NOUN וּגְבוּרְתָא=גְּבוּרָה/NOUN דִּי=דִּי/SCONJ לֵהּ=לְ/ADP הִיא=הוּא/PART",
-   "sha256": "29a5d4d83ba2a3cd8859da2dc30e0ce25524827105150814da0aa578c539db8b"
+   "text": "שְׁמֵ֤הּ דִּֽי־אֱלָהָא֙",
+   "summary": "שְׁמֵהּ=שֻׁם/NOUN דִּי=דִּי/SCONJ אֱלָהָא=אֱלָהּ/NOUN",
+   "sha256": "3d26f41897802ad351dfa7a25510e033f361bdcfbf7c1fe7d005ec6a62b2ce1e"
   },
   {
-   "text": "עָנֵ֤ה דָֽנִיֵּאל֙ וְאָמַ֔ר לֶהֱוֵ֨א שְׁמֵ֤הּ דִּֽי־אֱלָהָא֙ מְבָרַ֔ךְ מִן־עָלְמָ֖א וְעַ֣ד־עָלְמָ֑א דִּ֧י חָכְמְתָ֛א וּגְבוּרְתָ֖א דִּ֥י לֵֽהּ־הִֽיא׃",
-   "summary": "עָנֵה=עֲנָה/VERB דָנִיֵּאל=דָּנִיֵּאל/PROPN וְאָמַר=אֲמַר/VERB לֶהֱוֵא=הָוָא/VERB שְׁמֵהּ=שֻׁם/NOUN דִּי=דִּי/SCONJ אֱלָהָא=אֱלָהּ/NOUN מְבָרַךְ=בְּרַךְ/VERB מִן=מִן/ADP עָלְמָא=עָלַם/NOUN וְעַד=עַד/ADP עָלְמָא=עָלַם/NOUN דִּי=דִּי/CONJ חָכְמְתָא=חׇכְמָה/NOUN וּגְבוּרְתָא=גְּבוּרָה/NOUN דִּי=דִּי/SCONJ לֵהּ=לְ/ADP הִיא=הוּא/PART",
-   "sha256": "29a5d4d83ba2a3cd8859da2dc30e0ce25524827105150814da0aa578c539db8b"
+   "text": "שְׁמֵ֤הּ דִּֽי־אֱלָהָא֙",
+   "summary": "שְׁמֵהּ=שֻׁם/NOUN דִּי=דִּי/SCONJ אֱלָהָא=אֱלָהּ/NOUN",
+   "sha256": "3d26f41897802ad351dfa7a25510e033f361bdcfbf7c1fe7d005ec6a62b2ce1e"
   },
   {
    "text": "Xyzqwk",

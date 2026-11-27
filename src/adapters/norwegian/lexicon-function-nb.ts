@@ -152,6 +152,8 @@ slik|SCONJ|so that (colloquial)|slik
 forat|SCONJ|so that (older spelling of for at)|forat:#archaic @nb-riksmal
 // ── adverbs ──
 endelig|ADV|at last, finally|endelig
+fortsatt|ADV|still|fortsatt
+like|ADV|just, right (before a preposition or adverb)|like
 før|ADV|before, earlier|før
 fjor|ADV|last year (i fjor)|fjor
 ikke|ADV|not|ikke:neg

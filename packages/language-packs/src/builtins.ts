@@ -16,7 +16,7 @@ import { hiAdapter } from '../../../src/adapters/hi';
 import { thAdapter } from '../../../src/adapters/th';
 import { nbAdapter } from '../../../src/adapters/nb';
 import { nnAdapter } from '../../../src/adapters/nn';
-import { laAdapter } from '../../../src/adapters/la';
+import { laAdapter, loadLatinLexicon } from '../../../src/adapters/la';
 import { arcAdapter } from '../../../src/adapters/arc';
 import { heAdapter } from '../../../src/adapters/he';
 import { elAdapter } from '../../../src/adapters/el';
@@ -46,6 +46,8 @@ export function loadBuiltInAdapter(languageId: string): Promise<LanguageAdapter 
   // French reads a lemma list beside its hand word list (a lazily loaded module: src/adapters/french/lexicon-full). Whoever waits for the
   // analyser waits for that list too, here as in the lean loaders, so every path reads a French word the same way; it settles either way.
   if (languageId === 'fr') return loadFrenchLexicon().catch(() => undefined).then(() => builtInAdapter(languageId));
+  // Latin likewise reads its full lexicon beside the seed list (the owner, 2026-11-27)
+  if (languageId === 'la') return loadLatinLexicon().catch(() => undefined).then(() => builtInAdapter(languageId));
   return Promise.resolve(builtInAdapter(languageId));
 }
 

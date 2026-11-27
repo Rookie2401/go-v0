@@ -4,12 +4,15 @@
  */
 import type { RawToken, Span } from '../../core';
 import { makeWordTokenizer, nfc } from '../shared';
+import { recutThai } from './recut';
 
 export const normalizeThai = (s: string) => nfc(s).replace(/ํา/gu, 'ำ').replace(/[​﻿]/gu, '');
 
 /** Words ICU splits but the course treats as one lexical unit (matched on ICU's own pieces of the word). */
 const BASE_COMPOUNDS = ['นิรันดร์', 'พระบุตร', 'ตอนนี้', 'ทุกคน', 'วันหนึ่ง', 'หลอกลวง', 'สัตย์ซื่อ', 'ทั้งสิ้น',
-  'ผู้หญิง', 'โรงพยาบาล', 'ผลไม้', 'วันนี้', 'พรุ่งนี้', 'เมื่อวาน', 'พระเยซู', 'พระคัมภีร์', 'คริสตจักร', 'น่าจะ', 'ดังนั้น', 'ดังนี้', 'ของขวัญ'];
+  'ผู้หญิง', 'โรงพยาบาล', 'ผลไม้', 'วันนี้', 'พรุ่งนี้', 'เมื่อวาน', 'พระเยซู', 'พระคัมภีร์', 'คริสตจักร', 'น่าจะ', 'ดังนั้น', 'ดังนี้', 'ของขวัญ',
+  // the deck-gate follow-up (adapter-th@5): ICU cuts these, and a piece (เหลือ, ประทาน, เจ้า, เบา, ท้อง, เสมอ) is a wrong card
+  'รับประทาน', 'เจ้าหน้าที่', 'เบาหวาน', 'ท้องถิ่น', 'เสมอภาค'];
 
 /**
  * Words that stay ONE token wherever they stand in the text (adapter-th@4). ICU cuts these differently from one context to
@@ -201,7 +204,7 @@ export function makeThaiTokenizer(known: (normalized: string) => boolean, inDict
   });
   return (text) => {
     const base = splitRepeat(thaiTokenize(text));
-    if (!text.includes(ZWSP)) return inDictionary ? repair(text, base) : base;
+    if (!text.includes(ZWSP)) return inDictionary ? recutThai(text, repair(text, base), { known, compound: (w) => THAI_COMPOUNDS.includes(w), inDictionary, normalize: normalizeThai }) : base;
     const chunkOf = (at: number): [number, number] => {
       let a = at; while (a > 0 && !CHUNK_CUTS.test(text[a - 1])) a--;
       let b = at; while (b < text.length && !CHUNK_CUTS.test(text[b])) b++;

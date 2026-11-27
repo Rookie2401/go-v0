@@ -1,95 +1,95 @@
-# HELD-OUT half (nn): never read while the gate or a known-limits list was written. Written for the deck audit by an AI model (not a native speaker); no rights are claimed by anyone else. One sentence per line.
+# HELD-OUT half (nn), written 2026-11-27: never read while a rule or a known-limits list was written. Written for the deck audit by an AI model (not a native speaker); no rights are claimed by anyone else. One sentence per line.
 # everyday narrative
-Onkelen min dyrkar poteter og gulrøter på ein liten gard ved fjorden.
-Då vi kom fram til hytta, hadde det alt snødd i to dagar.
-Eg har alltid vore redd for høgder, men eg prøvde klatrevegg i går.
-Ho kjøpte ei ny sykkel fordi den gamle var full av rust.
-Medan han ventar på bussen, les han gjerne avisa.
-Barnebarna kjem på besøk kvar sommar og blir verande i tre veker.
-Eg skal reise til Trondheim neste månad for å treffe ein gammal ven.
-Ho sat ved vindauget og såg på regnet som fall over taka.
-Vi hadde ikkje rekna med at turen skulle ta så lang tid.
-Faren min fortel ofte om då han var fiskar i Nord-Noreg.
-Eg gløymde å betale straumrekninga, og no må eg betale ekstra.
-Dei to søstrene liknar kvarandre så mykje at folk trur dei er tvillingar.
-Han lærte seg å symje då han var femten år gammal.
-Etter at ho vart pensjonist, har ho hatt meir tid til å male.
-Eg plar ta trappa i staden for heisen kvar dag.
-Guten kasta ballen så høgt at han vart hengande i treet.
-Vi sat oppe til midnatt og snakka om alt og ingenting.
-Kvar laurdag handlar mora mi på torget, for der er grønsakene ferskast.
-Ho trur ikkje at ho kjem til å klare eksamen utan hjelp.
-Eg såg ein stor elg medan eg køyrde heim frå jobb i går.
-Fyrst la vi ut på tur, og så byrja det å blåse.
-Det beste eg veit, er å sitje ute og høyre på fuglane om morgonen.
-Naboane hadde ein fest som varte til tre om natta.
-Han måtte skrive oppgåva om igjen fordi han hadde mista fila.
-Vi bytte plass slik at dei minste borna kunne sjå betre.
-Bestemora mi strikkar alltid ei ny lue til meg før jul.
-Eg har aldri vore i Island, men eg håpar å reise dit snart.
-Ho smilte då ho opna pakka og fann ei gamal bok.
-Dei flytta til ein mindre by fordi livet i storbyen var for hektisk.
-Medan eg venta på legen, bladde eg i eit gammalt blad.
+Eg vakna tidleg i morges og slo på radioen for å høyra vêrmeldinga.
+Han har arbeidd på same kontor i meir enn tjue år.
+Vi bestemde oss for å byggja eit nytt hus ved sjøen.
+Ho kan svara og skriva samtidig utan å gjera feil.
+Borna spelte fotball i parken til det vart mørkt.
+Eg trudde at toget skulle koma klokka åtte, men det var forseinka.
+Mora mi planlegg ei lang reise til fjells i sommar.
+Etter middagen tok vi med oss hunden og gjekk ein tur langs elva.
+Det var lett å finna vegen fordi skilta var tydelege.
+Naboen flytta til ein annan by og tok med seg alle møblane.
+Eg likar å lesa bøker og drikka te om kvelden.
+Ho gav opp å leita etter nøklane og ringde til låssmeden.
+Han kjøpte ei gammal sykkel og sette henne i stand sjølv.
+Vi kom fram til hytta seint fredag kveld.
+Læraren stilte eit vanskeleg spørsmål, og ingen kunne svaret.
+Eg har aldri vore i Bergen, men eg vil gjerne reisa dit.
+Ho såg på dei gamle bileta og smilte for seg sjølv.
+Sola står opp over åsen, og lyset fell på gardane.
+Vi må finna ut kven som tok med paraplyen.
+Han bruker mykje tid på å laga mat til familien.
+Dei hadde ikkje råd til å kjøpa ein ny bil i fjor.
+Fuglane syng i trea, og borna leikar i hagen.
+Eg skal landa i Oslo klokka ti i morgon tidleg.
+Det beste med sommaren er at dagane er lange og varme.
+Systera mi vann ein liten pris for den første romanen sin.
+Vi sat under taket og venta på at regnet skulle gje seg.
+Han tok feil, men han innrømde det med ein gong.
+Ho kjenner ein mann som sel gamle plater på marknaden.
+Alle skal få ei sjanse til å prøva seg.
+Eg hugsar godt dagen då vi flytta inn i leilegheita.
 # news register
-Prisane på bustader har stige med nesten ti prosent berre dei siste tolv månadene.
-Næringslivet ber regjeringa om å senke skattane for små bedrifter.
-Ein kraftig storm har ført til at fleire ferjer er innstilte på Vestlandet.
-Ordføraren opna den nye brua over fjorden under ei lita markering i går.
-Kommunen vil ta i bruk elektriske bussar på alle rutene innan fem år.
-Handballandslaget tapte finalen etter ei dramatisk forlenging.
-Utøvaren seier at ho ikkje har tenkt å gi seg før ho har vunne gull.
-Astronomar har oppdaga ei ukjend stjerne som lyser sterkare enn sola.
-Ei ny studie viser at dei som går tretti minutt kvar dag, lever lenger.
-Legeforeininga åtvarar mot at mange pasientar må vente for lenge på time.
-Talet på sjukmeldingar har auka sterkt sidan sist vinter.
-Fiskeria melder om rekordhøge fangstar av torsk i Barentshavet.
-Mange bedrifter får problem fordi dei ikkje finn nok kvalifisert arbeidskraft.
-Ein tolv år gammal gut fekk pris for å ha redda ein hund frå isen.
-Folk som bur nær elva, vart bedne om å flytte verdisakene til øvste etasje.
-Skuleelevane har fått ein ny nettstad der dei kan lese læreboka gratis.
-Fylkeskommunen har sett av tjue millionar kroner til vedlikehald av vegane.
-Snøen kjem truleg tidlegare i år enn normalt, ifølgje det siste varselet.
-Forskarane meiner at nye batteri kan halde dobbelt så lenge.
-Det blir ein open dag på brannstasjonen for alle som er nysgjerrige på arbeidet.
+Straumprisane har gått ned med ti prosent sidan i fjor.
+Meteorologane varslar kraftig regn og sterk vind langs kysten i helga.
+Kommunestyret vedtok i går å byggja ei ny skule i sentrum.
+Laget vann kampen med tre mål mot eitt framfor nesten fem tusen tilskodarar.
+Forskarar har funne ut at søvn er viktigare for minnet enn ein trudde.
+Mange verksemder slit med å finna nok folk til å arbeida i sommar.
+Helsestyresmaktene oppmodar alle over seksti år til å ta influensasprøyta.
+Arbeidsløysa fall litt gjennom hausten, viser nye tal.
+Kommunen vil kutta i budsjettet og bruka mindre pengar på vegane.
+Bustadprisane har stige meir i byane enn i bygdene.
+Ei ny undersøking viser at fleire nordmenn handlar mat på nett.
+Snøen kom tidleg i år, og fleire fjellvegar er alt stengde.
+Løparen sprang halvmaraton på under éin time og tjue minutt.
+Sjukehuset opnar ei ny avdeling for born i løpet av neste år.
+Politikarane er usamde om kor mykje pengar som bør gå til kollektivtrafikk.
+Eit forskarlag har utvikla ei ny metode som kan oppdaga sjukdom tidlegare.
+Fiskarane fryktar at bestanden av torsk blir mindre om ikkje kvotane blir sette ned.
+Bussane køyrer sjeldnare i ferien, og rutetidene blir endra frå måndag.
+Det blir mildare vêr mot slutten av veka, men det kan koma litt regn.
+Bondelaget meiner at prisen på korn må opp for at gardane skal overleva.
 # conversation
-Kor lenge har du budd her i byen?
-I snart ti år, men eg kjem opphavleg frå ei lita bygd nord i landet.
-Kan du låne meg ein penn? Eg har gløymt pennalet heime.
-Her har du ein, men du må gi han tilbake etterpå.
-Kva tid opnar apoteket i dag?
-Eg trur dei opnar klokka ni, men dei stenger tidleg på laurdagar.
-Eg treng ein time hos tannlegen, for eg har hatt vondt i ei tann lenge.
-Vi har ledig tid onsdag føremiddag, passar det for deg?
-Det går fint, takk. Eg skal berre ringe sjefen min først.
-Orsak, men eg trur du sit på plassen min.
-Å nei, det er eg lei for! Eg såg ikkje billetten din.
-Skal vi ta bussen eller gå til sentrum?
-La oss gå, for det er fint vêr og vi har god tid.
-Har du sett mobilen min nokon stad?
-Ja, han ligg på kjøkenbenken ved sida av brødboksa.
-Eg vil gjerne ha to billettar til førestillinga i kveld.
-Då må eg dessverre seie at det berre er ståplassar att.
-Kva meiner du om den nye læraren?
-Eg synest ho forklarar tydeleg, men ho snakkar litt fort.
-Kor mange timar jobbar du i veka?
-Vanlegvis trettiseks, men denne veka har eg teke ekstra vakter.
-Gler du deg til ferien?
-Ja, vi skal vere to veker på ei lita øy i Hellas.
-Kan du hjelpe meg å bere denne tunge kassa opp trappa?
-Sjølvsagt, berre sei frå kvar du vil ha ho.
+God morgon! Har du sove godt i natt?
+Ja takk, men eg vakna litt tidleg.
+Kan du ta med mjølk når du går i butikken?
+Sjølvsagt, treng vi noko meir?
+Ja, kjøp litt brød og tre eple.
+Kva kan eg hjelpa deg med i dag?
+Eg leitar etter ei varm jakke til vinteren.
+Denne er billegare, men den andre er lettare.
+Eg tek den lette, og kan du vera snill og pakka henne inn?
+Korleis har du det? Du ser blek ut.
+Eg har hatt vondt i halsen og hovudet sidan i går.
+Opne munnen og sei «aaa», så skal eg sjå på det.
+Du bør kvila og drikka mykje vatn i nokre dagar.
+Skal vi spela kort eller sjå ein film i kveld?
+Eg vil heller gå ein tur om det ikkje regnar.
+Når skal du starta på det nye prosjektet?
+Vi byrjar på måndag, men planen er ikkje ferdig.
+Kan eg få svar innan fredag, takk?
+Orsak, eg rekk det ikkje før neste veke.
+Orsak, går dette toget til Trondheim?
+Nei, du må bytta på stasjonen og venta ein time.
+Kor mykje kostar ein billett til flyplassen?
+Den kostar hundre og tjue kroner for vaksne.
+Har de eit ledig rom for to netter?
+Ja, rom nummer fire ligg i andre etasje og har utsikt over hamna.
 # description and instructions
-Hakk løken fint og stek han i smør til han blir blank.
-Ha i hakka tomatar, salt og pepar, og la sausen koke i femten minutt.
-Server pastaen varm med revet ost og litt friske urter på toppen.
-Gå ned gata til du ser ei stor kyrkje, og sving så til høgre.
-Stasjonen ligg bak torget, berre nokre få minutt frå hovudgata.
-Landsbyen ligg langt inne i ein dal og har knapt tre hundre innbyggjarar.
-Om vinteren er det kaldt og mørkt, men sommarkveldane er lange og lyse.
-Klasserommet er lyst og romsleg, med store vindauge mot skogen.
-Alle elevane må ha på seg innesko når dei kjem inn i bygget.
-Det er ikkje lov å ta med mat eller drikke inn i lesesalen.
-Fyll vatn i kjelen og set han på ei varm kokeplate.
-Les nøye gjennom rettleiinga før du set saman hylla.
-Ved brannalarm skal alle forlate bygget roleg og samle seg på parkeringsplassen.
-Museet viser gamle reiskapar som bøndene brukte for over to hundre år sidan.
-Hamna er full av små fiskebåtar, og lufta luktar salt og tang.
+Skjer løken i små bitar og stek han i smør til han blir mjuk.
+Tilset mjøl og rør godt, og hell så i mjølka litt etter litt.
+La suppa koka i ti minutt, og smak til med salt og pepar.
+Gå rett fram til neste lyskryss og ta til venstre ved kyrkja.
+Følg vegen langs elva til du ser ei stor bru, og kryss henne.
+Byen ligg ved ein fjord og er omgitt av høge fjell.
+I sentrum finn du eit lite torg, fleire kafear og eit gammalt teater.
+Skulen har tre hundre elevar og ligg like ved idrettsplassen.
+Elevane byrjar klokka åtte og har fri klokka tre.
+Alle må ta av seg skoa før dei går inn i gymsalen.
+Det er forbode å parkera framfor inngangen.
+Slå av lyset og lukk døra når du går ut av rommet.
+Les teksten nøye og svar på alle spørsmåla på arket.
+Bruk ein mjuk klut og lunka vatn når du vaskar vindauga.
+Ta med legitimasjon, og vent til namnet ditt blir ropa opp.

@@ -32,6 +32,12 @@
     "v": "ok"
    }
   ],
+  "lemma:arc:אֲתַר:NOUN": [
+   {
+    "shown": "a place; (adverb) after",
+    "v": "ok"
+   }
+  ],
   "lemma:arc:אִיתַי:PART": [
    {
     "shown": "properly, entity; used only as a particle of affirmation, there is",
@@ -50,6 +56,12 @@
     "v": "ok"
    }
   ],
+  "lemma:arc:אֶבֶן:NOUN": [
+   {
+    "shown": "stone",
+    "v": "ok"
+   }
+  ],
   "lemma:arc:אַתּוּן:NOUN": [
    {
     "shown": "probably a fire-place, i.e. furnace",
@@ -59,6 +71,18 @@
   "lemma:arc:אֻמָּה:NOUN": [
    {
     "shown": "nation",
+    "v": "ok"
+   }
+  ],
+  "lemma:arc:אׇחֳרִי:ADJ": [
+   {
+    "shown": "other",
+    "v": "ok"
+   }
+  ],
+  "lemma:arc:אׇחֳרָן:ADJ": [
+   {
+    "shown": "other",
     "v": "ok"
    }
   ],
@@ -80,6 +104,12 @@
     "v": "ok"
    }
   ],
+  "lemma:arc:דִּכֵּן:PRON": [
+   {
+    "shown": "this",
+    "v": "ok"
+   }
+  ],
   "lemma:arc:דָּנִיֵּאל:PROPN": [
    {
     "shown": "Danijel, the Hebrew prophet",
@@ -92,9 +122,27 @@
     "v": "ok"
    }
   ],
+  "lemma:arc:הֵא:PART": [
+   {
+    "shown": "behold like",
+    "v": "ok"
+   }
+  ],
   "lemma:arc:זְמָן:NOUN": [
    {
     "shown": "time",
+    "v": "ok"
+   }
+  ],
+  "lemma:arc:חֲסַף:NOUN": [
+   {
+    "shown": "a clod",
+    "v": "ok"
+   }
+  ],
+  "lemma:arc:חֵלֶם:NOUN": [
+   {
+    "shown": "a dream",
     "v": "ok"
    }
   ],
@@ -116,6 +164,12 @@
     "v": "ok"
    }
   ],
+  "lemma:arc:טָב:ADJ": [
+   {
+    "shown": "good",
+    "v": "ok"
+   }
+  ],
   "lemma:arc:יְדַע:VERB": [
    {
     "shown": "know",
@@ -134,6 +188,12 @@
     "v": "ok"
    }
   ],
+  "lemma:arc:יַד:NOUN": [
+   {
+    "shown": "hand",
+    "v": "ok"
+   }
+  ],
   "lemma:arc:יַצִּיב:ADJ": [
    {
     "shown": "fixed, sure; concretely, certainty",
@@ -149,6 +209,12 @@
   "lemma:arc:יוֹם:NOUN": [
    {
     "shown": "a day",
+    "v": "ok"
+   }
+  ],
+  "lemma:arc:כְּסַף:NOUN": [
+   {
+    "shown": "silver",
     "v": "ok"
    }
   ],
@@ -174,7 +240,7 @@
    {
     "shown": "therefore",
     "v": "false-meaning",
-    "note": "Aramaic להן means \"except, unless\", not \"therefore\""
+    "note": "Aramaic lahen means except/unless/but; therefore is the Hebrew-Ruth sense"
    }
   ],
   "lemma:arc:מְאָה:NUM": [
@@ -216,6 +282,12 @@
   "lemma:arc:נְבוּכַדְנֶצַּר:PROPN": [
    {
     "shown": "Nebuchadnezzar",
+    "v": "ok"
+   }
+  ],
+  "lemma:arc:נְחָשׁ:NOUN": [
+   {
+    "shown": "copper",
     "v": "ok"
    }
   ],
@@ -273,6 +345,12 @@
     "v": "ok"
    }
   ],
+  "lemma:arc:עִם:ADP": [
+   {
+    "shown": "with",
+    "v": "ok"
+   }
+  ],
   "lemma:arc:עַד:ADP": [
    {
     "shown": "even to",
@@ -291,15 +369,39 @@
     "v": "ok"
    }
   ],
+  "lemma:arc:עוֹף:NOUN": [
+   {
+    "shown": "fowl",
+    "v": "ok"
+   }
+  ],
   "lemma:arc:פְּסַנְטֵרִין:NOUN": [
    {
     "shown": "psalterion; a lyre",
     "v": "ok"
    }
   ],
+  "lemma:arc:פְּשַׁר:NOUN": [
+   {
+    "shown": "an interpretation",
+    "v": "ok"
+   }
+  ],
+  "lemma:arc:פַּרְזֶל:NOUN": [
+   {
+    "shown": "iron",
+    "v": "ok"
+   }
+  ],
   "lemma:arc:קְיָם:NOUN": [
    {
     "shown": "an edict (as arising in law)",
+    "v": "ok"
+   }
+  ],
+  "lemma:arc:קְצָת:NOUN": [
+   {
+    "shown": "end",
     "v": "ok"
    }
   ],
@@ -321,6 +423,13 @@
     "v": "ok"
    }
   ],
+  "lemma:arc:קַיִט:NOUN": [
+   {
+    "shown": "harvest",
+    "v": "false-meaning",
+    "note": "qayit is summer (summer threshing floors); harvest is inexact"
+   }
+  ],
   "lemma:arc:קָל:NOUN": [
    {
     "shown": "voice",
@@ -333,9 +442,27 @@
     "v": "ok"
    }
   ],
+  "lemma:arc:רֵאשׁ:NOUN": [
+   {
+    "shown": "the head; figuratively, the sum",
+    "v": "ok"
+   }
+  ],
+  "lemma:arc:רַב:ADJ": [
+   {
+    "shown": "great",
+    "v": "ok"
+   }
+  ],
   "lemma:arc:רוּחַ:NOUN": [
    {
     "shown": "wind",
+    "v": "ok"
+   }
+  ],
+  "lemma:arc:שְׁלֵט:VERB": [
+   {
+    "shown": "have power",
     "v": "ok"
    }
   ],
@@ -381,6 +508,12 @@
     "v": "ok"
    }
   ],
+  "lemma:arc:שַׂגִּיא:ADJ": [
+   {
+    "shown": "large (in size, quantity or number, also adverbial)",
+    "v": "ok"
+   }
+  ],
   "lemma:arc:תְּלָת:NUM": [
    {
     "shown": "three or third",
@@ -393,5 +526,8 @@
     "v": "ok"
    }
   ]
- }
+ },
+ "heldResidue": [
+  "lemma:arc:קַיִט:NOUN"
+ ]
 }

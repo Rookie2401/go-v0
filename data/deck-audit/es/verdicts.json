@@ -1,13 +1,16 @@
 {
  "readBy": "AI models (Claude), not native speakers; each card judged once, in the first sentence it came from, against the brief in docs/ecosystem/DECK-GATE.md. 2026-11-26.",
- "residual": [
-  "form:es:derecho",
-  "lemma:es:marcar:VERB"
- ],
+ "residual": [],
  "cards": {
   "form:es:a": [
    {
     "shown": "to",
+    "v": "ok"
+   }
+  ],
+  "form:es:abuela": [
+   {
+    "shown": "grandmother, female equivalent of abuelo",
     "v": "ok"
    }
   ],
@@ -21,11 +24,28 @@
    {
     "shown": "accident (unexpected event with negative consequences)",
     "v": "ok"
+   },
+   {
+    "shown": "accident",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
+   }
+  ],
+  "form:es:aceite": [
+   {
+    "shown": "oil",
+    "v": "ok"
    }
   ],
   "form:es:además": [
    {
     "shown": "in addition, moreover, furthermore, further, also",
+    "v": "ok"
+   }
+  ],
+  "form:es:agosto": [
+   {
+    "shown": "August",
     "v": "ok"
    }
   ],
@@ -39,11 +59,33 @@
    {
     "shown": "now (at the present time)",
     "v": "ok"
+   },
+   {
+    "shown": "now",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:es:aire": [
    {
     "shown": "air (the substance constituting earth's atmosphere)",
+    "v": "ok"
+   },
+   {
+    "shown": "air",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
+   }
+  ],
+  "form:es:ajo": [
+   {
+    "shown": "garlic",
+    "v": "ok"
+   }
+  ],
+  "form:es:aldea": [
+   {
+    "shown": "village",
     "v": "ok"
    }
   ],
@@ -85,6 +127,12 @@
     "v": "ok"
    }
   ],
+  "form:es:amanecer": [
+   {
+    "shown": "to dawn",
+    "v": "ok"
+   }
+  ],
   "form:es:ancho": [
    {
     "shown": "wide; broad",
@@ -111,11 +159,28 @@
    {
     "shown": "old, former, erstwhile, quondam, one-time, onetime",
     "v": "ok"
+   },
+   {
+    "shown": "ancient, old",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:es:arrancar": [
    {
     "shown": "to pull out",
+    "v": "ok"
+   }
+  ],
+  "form:es:arreglar": [
+   {
+    "shown": "to fix, to repair, to mend",
+    "v": "ok"
+   }
+  ],
+  "form:es:arriba": [
+   {
+    "shown": "up, above",
     "v": "ok"
    }
   ],
@@ -155,6 +220,12 @@
     "v": "ok"
    }
   ],
+  "form:es:barato": [
+   {
+    "shown": "cheap",
+    "v": "ok"
+   }
+  ],
   "form:es:barrio": [
    {
     "shown": "neighbourhood",
@@ -183,6 +254,17 @@
    {
     "shown": "well (adverbial form of bueno)",
     "v": "ok"
+   },
+   {
+    "shown": "well",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
+   }
+  ],
+  "form:es:boca": [
+   {
+    "shown": "mouth, oral cavity",
+    "v": "ok"
    }
   ],
   "form:es:boleto": [
@@ -209,6 +291,29 @@
     "v": "ok"
    }
   ],
+  "form:es:bota": [
+   {
+    "shown": "boot",
+    "v": "ok"
+   }
+  ],
+  "form:es:botón": [
+   {
+    "shown": "button (clothing, mechanical)",
+    "v": "ok"
+   },
+   {
+    "shown": "button",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
+   }
+  ],
+  "form:es:buscar": [
+   {
+    "shown": "to look for, seek",
+    "v": "ok"
+   }
+  ],
   "form:es:cabeza": [
    {
     "shown": "head",
@@ -227,6 +332,36 @@
     "v": "ok"
    }
   ],
+  "form:es:calma": [
+   {
+    "shown": "calm, stillness, peacefulness",
+    "v": "ok"
+   }
+  ],
+  "form:es:cambiar": [
+   {
+    "shown": "to change, to shift, to switch",
+    "v": "ok"
+   }
+  ],
+  "form:es:caminar": [
+   {
+    "shown": "to walk",
+    "v": "ok"
+   }
+  ],
+  "form:es:camisa": [
+   {
+    "shown": "shirt",
+    "v": "ok"
+   }
+  ],
+  "form:es:campo": [
+   {
+    "shown": "countryside, country",
+    "v": "ok"
+   }
+  ],
   "form:es:carretera": [
    {
     "shown": "highway, main road",
@@ -242,17 +377,33 @@
     "shown": "cart",
     "v": "false-meaning",
     "note": "carro means cart/wagon in the standard sense; the sentence (and Honduran usage) means car, so the card misleads"
+   },
+   {
+    "shown": "car (Latin America; in Spain, a cart)",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:es:carta": [
    {
     "shown": "letter (document)",
     "v": "ok"
+   },
+   {
+    "shown": "letter; card; menu",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:es:casi": [
    {
     "shown": "almost",
+    "v": "ok"
+   }
+  ],
+  "form:es:cebolla": [
+   {
+    "shown": "onion",
     "v": "ok"
    }
   ],
@@ -296,6 +447,12 @@
     "v": "ok"
    }
   ],
+  "form:es:cero": [
+   {
+    "shown": "zero",
+    "v": "ok"
+   }
+  ],
   "form:es:cielo": [
    {
     "shown": "sky",
@@ -305,6 +462,12 @@
   "form:es:cinco": [
    {
     "shown": "five",
+    "v": "ok"
+   }
+  ],
+  "form:es:cincuenta": [
+   {
+    "shown": "fifty",
     "v": "ok"
    }
   ],
@@ -330,6 +493,12 @@
   "form:es:cocinar": [
    {
     "shown": "to cook",
+    "v": "ok"
+   }
+  ],
+  "form:es:colegio": [
+   {
+    "shown": "school",
     "v": "ok"
    }
   ],
@@ -359,6 +528,12 @@
   "form:es:con": [
    {
     "shown": "with",
+    "v": "ok"
+   }
+  ],
+  "form:es:conducir": [
+   {
+    "shown": "to drive; to conduct",
     "v": "ok"
    }
   ],
@@ -414,9 +589,21 @@
     "v": "ok"
    }
   ],
+  "form:es:cuerda": [
+   {
+    "shown": "rope, cord, string",
+    "v": "ok"
+   }
+  ],
   "form:es:culto": [
    {
     "shown": "worship",
+    "v": "ok"
+   }
+  ],
+  "form:es:cuándo": [
+   {
+    "shown": "when",
     "v": "ok"
    }
   ],
@@ -448,6 +635,18 @@
     "v": "ok"
    }
   ],
+  "form:es:decir": [
+   {
+    "shown": "to say, to tell, to name",
+    "v": "ok"
+   }
+  ],
+  "form:es:delgado": [
+   {
+    "shown": "thin, slender, skinny",
+    "v": "ok"
+   }
+  ],
   "form:es:demasiado": [
    {
     "shown": "too much, excessively, far too much",
@@ -458,6 +657,11 @@
    {
     "shown": "inside (for space)",
     "v": "ok"
+   },
+   {
+    "shown": "inside",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:es:derecho": [
@@ -485,6 +689,12 @@
     "v": "ok"
    }
   ],
+  "form:es:desierto": [
+   {
+    "shown": "desert",
+    "v": "ok"
+   }
+  ],
   "form:es:después": [
    {
     "shown": "after, afterwards",
@@ -492,6 +702,12 @@
    },
    {
     "shown": "later, afterwards, afterward, post",
+    "v": "ok"
+   }
+  ],
+  "form:es:devolver": [
+   {
+    "shown": "to give back, return",
     "v": "ok"
    }
   ],
@@ -541,6 +757,11 @@
    {
     "shown": "lady of the house",
     "v": "ok"
+   },
+   {
+    "shown": "Doña (title of respect before a woman's first name)",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:es:durante": [
@@ -553,6 +774,11 @@
    {
     "shown": "day (any period of 24 hours)",
     "v": "ok"
+   },
+   {
+    "shown": "day",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:es:dónde": [
@@ -581,6 +807,12 @@
     "v": "ok"
    }
   ],
+  "form:es:elegir": [
+   {
+    "shown": "to choose",
+    "v": "ok"
+   }
+  ],
   "form:es:ella": [
    {
     "shown": "she",
@@ -603,6 +835,18 @@
     "v": "ok"
    }
   ],
+  "form:es:encender": [
+   {
+    "shown": "to light, ignite",
+    "v": "ok"
+   }
+  ],
+  "form:es:encontrar": [
+   {
+    "shown": "to find; to meet (encontrarse: to be located)",
+    "v": "ok"
+   }
+  ],
   "form:es:enfrente": [
    {
     "shown": "in front of, across from, opposite",
@@ -621,9 +865,21 @@
     "v": "ok"
    }
   ],
+  "form:es:entrar": [
+   {
+    "shown": "to enter",
+    "v": "ok"
+   }
+  ],
   "form:es:entre": [
    {
     "shown": "between",
+    "v": "ok"
+   }
+  ],
+  "form:es:enviar": [
+   {
+    "shown": "to send",
     "v": "ok"
    }
   ],
@@ -644,6 +900,12 @@
     "v": "ok"
    }
   ],
+  "form:es:esperar": [
+   {
+    "shown": "to wait for; to hope; to expect",
+    "v": "ok"
+   }
+  ],
   "form:es:esposa": [
    {
     "shown": "wife",
@@ -659,6 +921,18 @@
   "form:es:este": [
    {
     "shown": "this",
+    "v": "ok"
+   }
+  ],
+  "form:es:estudiar": [
+   {
+    "shown": "to study",
+    "v": "ok"
+   }
+  ],
+  "form:es:evacuar": [
+   {
+    "shown": "to evacuate",
     "v": "ok"
    }
   ],
@@ -774,6 +1048,12 @@
     "v": "ok"
    }
   ],
+  "form:es:guardar": [
+   {
+    "shown": "to keep",
+    "v": "ok"
+   }
+  ],
   "form:es:guitarra": [
    {
     "shown": "guitar",
@@ -783,6 +1063,12 @@
   "form:es:haber": [
    {
     "shown": "to have; forms the perfect aspect",
+    "v": "ok"
+   }
+  ],
+  "form:es:hablar": [
+   {
+    "shown": "to speak, talk",
     "v": "ok"
    }
   ],
@@ -818,6 +1104,10 @@
    {
     "shown": "sister; female equivalent of hermano (“brother",
     "v": "ok"
+   },
+   {
+    "shown": "sister; female equivalent of hermano (“brother”)",
+    "v": "ok"
    }
   ],
   "form:es:hermano": [
@@ -836,6 +1126,12 @@
     "v": "ok"
    }
   ],
+  "form:es:hervir": [
+   {
+    "shown": "to boil",
+    "v": "ok"
+   }
+  ],
   "form:es:hija": [
    {
     "shown": "daughter; female equivalent of hijo",
@@ -845,6 +1141,12 @@
   "form:es:hola": [
    {
     "shown": "hello, hi, hey",
+    "v": "ok"
+   }
+  ],
+  "form:es:hombre": [
+   {
+    "shown": "man, (adult male human)",
     "v": "ok"
    }
   ],
@@ -875,6 +1177,41 @@
   "form:es:iglesia": [
    {
     "shown": "church",
+    "v": "ok"
+   }
+  ],
+  "form:es:importante": [
+   {
+    "shown": "important, that cares, that matters.",
+    "v": "ok"
+   }
+  ],
+  "form:es:incendio": [
+   {
+    "shown": "fire (especially burning buildings or forests)",
+    "v": "ok"
+   },
+   {
+    "shown": "fire (blaze)",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
+   }
+  ],
+  "form:es:indicar": [
+   {
+    "shown": "to indicate, signal, designate",
+    "v": "ok"
+   }
+  ],
+  "form:es:infancia": [
+   {
+    "shown": "childhood",
+    "v": "ok"
+   }
+  ],
+  "form:es:injusto": [
+   {
+    "shown": "unjust",
     "v": "ok"
    }
   ],
@@ -912,6 +1249,12 @@
     "v": "ok"
    }
   ],
+  "form:es:jefe": [
+   {
+    "shown": "boss, chief",
+    "v": "ok"
+   }
+  ],
   "form:es:jueves": [
    {
     "shown": "Thursday",
@@ -922,6 +1265,11 @@
    {
     "shown": "just",
     "v": "ok"
+   },
+   {
+    "shown": "righteous, just",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:es:la": [
@@ -962,6 +1310,12 @@
     "v": "ok"
    }
   ],
+  "form:es:leche": [
+   {
+    "shown": "milk",
+    "v": "ok"
+   }
+  ],
   "form:es:lentes": [
    {
     "shown": "eyeglasses",
@@ -975,6 +1329,12 @@
   "form:es:lento": [
    {
     "shown": "slow",
+    "v": "ok"
+   }
+  ],
+  "form:es:leña": [
+   {
+    "shown": "firewood",
     "v": "ok"
    }
   ],
@@ -1010,6 +1370,11 @@
    {
     "shown": "then (afterward)",
     "v": "ok"
+   },
+   {
+    "shown": "then, later",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:es:lugar": [
@@ -1021,6 +1386,18 @@
   "form:es:lunes": [
    {
     "shown": "Monday",
+    "v": "ok"
+   }
+  ],
+  "form:es:luz": [
+   {
+    "shown": "light",
+    "v": "ok"
+   }
+  ],
+  "form:es:madrugada": [
+   {
+    "shown": "early morning",
     "v": "ok"
    }
   ],
@@ -1058,6 +1435,12 @@
     "shown": "butterfingers",
     "v": "false-meaning",
     "note": "manzana means apple; butterfingers is a marginal slang sense"
+   }
+  ],
+  "form:es:mar": [
+   {
+    "shown": "sea",
+    "v": "ok"
    }
   ],
   "form:es:marta": [
@@ -1128,6 +1511,13 @@
     "v": "ok"
    }
   ],
+  "form:es:mezcla": [
+   {
+    "shown": "mixture, mix, mixing, combination, admixture, medley",
+    "v": "false-reading",
+    "note": "Mezcla here is the imperative of the verb mezclar (mix), not the noun mezcla"
+   }
+  ],
   "form:es:mi": [
    {
     "shown": "apocopic form of mío, my",
@@ -1138,9 +1528,33 @@
     "v": "ok"
    }
   ],
+  "form:es:miedo": [
+   {
+    "shown": "fear",
+    "v": "ok"
+   }
+  ],
+  "form:es:mirar": [
+   {
+    "shown": "to look at, watch",
+    "v": "ok"
+   }
+  ],
   "form:es:mismo": [
    {
     "shown": "same",
+    "v": "ok"
+   }
+  ],
+  "form:es:mitad": [
+   {
+    "shown": "half",
+    "v": "ok"
+   }
+  ],
+  "form:es:montaña": [
+   {
+    "shown": "mountain",
     "v": "ok"
    }
   ],
@@ -1166,6 +1580,12 @@
     "v": "ok"
    }
   ],
+  "form:es:médico": [
+   {
+    "shown": "doctor",
+    "v": "ok"
+   }
+  ],
   "form:es:nada": [
    {
     "shown": "nothing, zero, zilch, not...anything",
@@ -1176,6 +1596,11 @@
    {
     "shown": "to swim (move through water)",
     "v": "ok"
+   },
+   {
+    "shown": "to swim",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:es:nadie": [
@@ -1194,10 +1619,33 @@
     "v": "ok"
    }
   ],
+  "form:es:niña": [
+   {
+    "shown": "girl, female equivalent of niño",
+    "v": "ok"
+   }
+  ],
+  "form:es:niño": [
+   {
+    "shown": "boy; child",
+    "v": "ok"
+   }
+  ],
   "form:es:no": [
    {
     "shown": "not",
     "v": "ok"
+   }
+  ],
+  "form:es:norte": [
+   {
+    "shown": "north (compass point)",
+    "v": "ok"
+   },
+   {
+    "shown": "north",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:es:nueve": [
@@ -1222,11 +1670,39 @@
    {
     "shown": "number (counting)",
     "v": "ok"
+   },
+   {
+    "shown": "number",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:es:o": [
    {
     "shown": "or",
+    "v": "ok"
+   }
+  ],
+  "form:es:obra": [
+   {
+    "shown": "work (usually literary or artistic)",
+    "v": "ok"
+   },
+   {
+    "shown": "work (a work of art, a building work)",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
+   }
+  ],
+  "form:es:oficina": [
+   {
+    "shown": "office",
+    "v": "ok"
+   }
+  ],
+  "form:es:oscuridad": [
+   {
+    "shown": "darkness",
     "v": "ok"
    }
   ],
@@ -1248,6 +1724,12 @@
     "v": "ok"
    }
   ],
+  "form:es:pan": [
+   {
+    "shown": "bread",
+    "v": "ok"
+   }
+  ],
   "form:es:para": [
    {
     "shown": "for, to (expressing a recipient)",
@@ -1260,9 +1742,32 @@
     "v": "ok"
    }
   ],
+  "form:es:partir": [
+   {
+    "shown": "to leave; to split",
+    "v": "ok"
+   }
+  ],
+  "form:es:pastilla": [
+   {
+    "shown": "pill",
+    "v": "ok"
+   }
+  ],
   "form:es:país": [
    {
     "shown": "country (the territory of a nation)",
+    "v": "ok"
+   },
+   {
+    "shown": "country",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
+   }
+  ],
+  "form:es:pedir": [
+   {
+    "shown": "to ask for, request",
     "v": "ok"
    }
   ],
@@ -1270,7 +1775,12 @@
    {
     "shown": "film (layer)",
     "v": "false-meaning",
-    "note": "película is a film/movie; layer is a marginal sense"
+    "note": "película means movie/film; a thin layer is a secondary sense shown first, misleading here"
+   },
+   {
+    "shown": "film",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:es:pequeño": [
@@ -1303,11 +1813,40 @@
     "note": "persona means person; the shown gloss is a rare sense"
    }
   ],
+  "form:es:pintar": [
+   {
+    "shown": "to paint (to apply paint to)",
+    "v": "ok"
+   },
+   {
+    "shown": "to paint",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
+   }
+  ],
+  "form:es:piso": [
+   {
+    "shown": "floor, ground (surface of the earth)",
+    "v": "ok"
+   }
+  ],
+  "form:es:playa": [
+   {
+    "shown": "beach",
+    "v": "ok"
+   }
+  ],
   "form:es:policía": [
    {
     "shown": "Civility, polity, public order, police, fineness",
     "v": "false-meaning",
     "note": "policía is police (force) or police officer; Civility/polity is archaic"
+   }
+  ],
+  "form:es:poner": [
+   {
+    "shown": "to put",
+    "v": "ok"
    }
   ],
   "form:es:por": [
@@ -1322,6 +1861,17 @@
     "v": "ok"
    }
   ],
+  "form:es:primavera": [
+   {
+    "shown": "spring (season)",
+    "v": "ok"
+   },
+   {
+    "shown": "spring",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
+   }
+  ],
   "form:es:primero": [
    {
     "shown": "first, first up",
@@ -1334,10 +1884,21 @@
     "v": "ok"
    }
   ],
+  "form:es:pronto": [
+   {
+    "shown": "soon",
+    "v": "ok"
+   }
+  ],
   "form:es:próximo": [
    {
     "shown": "near",
     "v": "ok"
+   },
+   {
+    "shown": "next; near",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:es:pueblo": [
@@ -1360,6 +1921,12 @@
   "form:es:pues": [
    {
     "shown": "so, then; in that case",
+    "v": "ok"
+   }
+  ],
+  "form:es:público": [
+   {
+    "shown": "public",
     "v": "ok"
    }
   ],
@@ -1421,6 +1988,18 @@
     "v": "ok"
    }
   ],
+  "form:es:reposar": [
+   {
+    "shown": "to repose, to rest",
+    "v": "ok"
+   }
+  ],
+  "form:es:reunión": [
+   {
+    "shown": "meeting, session, appointment",
+    "v": "ok"
+   }
+  ],
   "form:es:revisar": [
    {
     "shown": "to check, review",
@@ -1428,6 +2007,24 @@
    },
    {
     "shown": "to revise",
+    "v": "ok"
+   }
+  ],
+  "form:es:reír": [
+   {
+    "shown": "to laugh",
+    "v": "ok"
+   }
+  ],
+  "form:es:ropa": [
+   {
+    "shown": "clothes",
+    "v": "ok"
+   }
+  ],
+  "form:es:sala": [
+   {
+    "shown": "living room, hall",
     "v": "ok"
    }
   ],
@@ -1471,6 +2068,12 @@
     "v": "ok"
    }
   ],
+  "form:es:servicio": [
+   {
+    "shown": "service",
+    "v": "ok"
+   }
+  ],
   "form:es:señora": [
    {
     "shown": "Ms",
@@ -1511,6 +2114,18 @@
     "v": "ok"
    }
   ],
+  "form:es:sol": [
+   {
+    "shown": "sun",
+    "v": "ok"
+   }
+  ],
+  "form:es:sopa": [
+   {
+    "shown": "soup",
+    "v": "ok"
+   }
+  ],
   "form:es:su": [
    {
     "shown": "apocopic form of suyo",
@@ -1537,6 +2152,12 @@
   "form:es:taller": [
    {
     "shown": "workshop",
+    "v": "ok"
+   }
+  ],
+  "form:es:también": [
+   {
+    "shown": "also, too, as well",
     "v": "ok"
    }
   ],
@@ -1592,6 +2213,11 @@
    {
     "shown": "land",
     "v": "ok"
+   },
+   {
+    "shown": "earth, land, soil",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:es:tocar": [
@@ -1639,6 +2265,12 @@
     "v": "ok"
    }
   ],
+  "form:es:trabajar": [
+   {
+    "shown": "to work",
+    "v": "ok"
+   }
+  ],
   "form:es:tranquilamente": [
    {
     "shown": "calmly; tranquilly",
@@ -1654,6 +2286,12 @@
   "form:es:treinta": [
    {
     "shown": "thirty",
+    "v": "ok"
+   }
+  ],
+  "form:es:tren": [
+   {
+    "shown": "train",
     "v": "ok"
    }
   ],
@@ -1673,6 +2311,11 @@
    {
     "shown": "an; a",
     "v": "ok"
+   },
+   {
+    "shown": "a, an",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:es:universidad": [
@@ -1730,6 +2373,12 @@
     "v": "ok"
    }
   ],
+  "form:es:vecino": [
+   {
+    "shown": "neighbour (male)",
+    "v": "ok"
+   }
+  ],
   "form:es:veinte": [
    {
     "shown": "twenty",
@@ -1746,11 +2395,22 @@
    {
     "shown": "window (opening for light and air)",
     "v": "ok"
+   },
+   {
+    "shown": "window",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:es:ventanilla": [
    {
     "shown": "window of a vehicle, porthole",
+    "v": "ok"
+   }
+  ],
+  "form:es:ver": [
+   {
+    "shown": "to see, to spot",
     "v": "ok"
    }
   ],
@@ -1764,6 +2424,17 @@
    {
     "shown": "truth",
     "v": "ok"
+   }
+  ],
+  "form:es:verde": [
+   {
+    "shown": "green (color/colour)",
+    "v": "ok"
+   },
+   {
+    "shown": "green",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:es:vez": [
@@ -1790,6 +2461,12 @@
     "v": "ok"
    }
   ],
+  "form:es:voz": [
+   {
+    "shown": "voice",
+    "v": "ok"
+   }
+  ],
   "form:es:y": [
    {
     "shown": "and",
@@ -1800,6 +2477,11 @@
    {
     "shown": "now, right now",
     "v": "ok"
+   },
+   {
+    "shown": "already; now",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:es:yo": [
@@ -1812,6 +2494,11 @@
    {
     "shown": "fox (carnivore)",
     "v": "ok"
+   },
+   {
+    "shown": "fox",
+    "v": "ok",
+    "note": "derived: the form shows its word's own first meaning now, and that card was read right"
    }
   ],
   "form:es:último": [
@@ -1878,6 +2565,12 @@
     "v": "ok"
    }
   ],
+  "lemma:es:abuela:NOUN": [
+   {
+    "shown": "grandmother",
+    "v": "ok"
+   }
+  ],
   "lemma:es:abuelo:NOUN": [
    {
     "shown": "grandfather",
@@ -1902,6 +2595,18 @@
     "v": "ok"
    }
   ],
+  "lemma:es:aceite:NOUN": [
+   {
+    "shown": "oil",
+    "v": "ok"
+   }
+  ],
+  "lemma:es:acercar:VERB": [
+   {
+    "shown": "to bring near (acercarse: to approach)",
+    "v": "ok"
+   }
+  ],
   "lemma:es:acostar:VERB": [
    {
     "shown": "to put to bed (acostarse: to lie down, go to bed)",
@@ -1923,6 +2628,12 @@
   "lemma:es:agarrar:VERB": [
    {
     "shown": "to grab, take hold of",
+    "v": "ok"
+   }
+  ],
+  "lemma:es:agosto:NOUN": [
+   {
+    "shown": "August",
     "v": "ok"
    }
   ],
@@ -1962,9 +2673,21 @@
     "v": "ok"
    }
   ],
+  "lemma:es:ajo:NOUN": [
+   {
+    "shown": "garlic",
+    "v": "ok"
+   }
+  ],
   "lemma:es:al:ADP": [
    {
     "shown": "to the (a + el)",
+    "v": "ok"
+   }
+  ],
+  "lemma:es:aldea:NOUN": [
+   {
+    "shown": "village",
     "v": "ok"
    }
   ],
@@ -2022,9 +2745,27 @@
     "v": "ok"
    }
   ],
+  "lemma:es:amanecer:VERB": [
+   {
+    "shown": "to dawn; to wake up (somewhere)",
+    "v": "ok"
+   }
+  ],
+  "lemma:es:amarillo:ADJ": [
+   {
+    "shown": "yellow",
+    "v": "ok"
+   }
+  ],
   "lemma:es:amiga:NOUN": [
    {
     "shown": "friend (female)",
+    "v": "ok"
+   }
+  ],
+  "lemma:es:amigo:NOUN": [
+   {
+    "shown": "friend (male)",
     "v": "ok"
    }
   ],
@@ -2088,6 +2829,12 @@
     "v": "ok"
    }
   ],
+  "lemma:es:arriba:ADV": [
+   {
+    "shown": "up, above",
+    "v": "ok"
+   }
+  ],
   "lemma:es:arroz:NOUN": [
    {
     "shown": "rice",
@@ -2118,6 +2865,12 @@
     "v": "ok"
    }
   ],
+  "lemma:es:avisar:VERB": [
+   {
+    "shown": "to warn, let know",
+    "v": "ok"
+   }
+  ],
   "lemma:es:ayer:ADV": [
    {
     "shown": "yesterday",
@@ -2145,6 +2898,12 @@
   "lemma:es:bajar:VERB": [
    {
     "shown": "to go down; to lower; to download",
+    "v": "ok"
+   }
+  ],
+  "lemma:es:barato:ADJ": [
+   {
+    "shown": "cheap",
     "v": "ok"
    }
   ],
@@ -2190,6 +2949,12 @@
     "v": "ok"
    }
   ],
+  "lemma:es:boca:NOUN": [
+   {
+    "shown": "mouth",
+    "v": "ok"
+   }
+  ],
   "lemma:es:boleto:NOUN": [
    {
     "shown": "ticket (travel, events)",
@@ -2202,6 +2967,12 @@
     "v": "ok"
    }
   ],
+  "lemma:es:bolsillo:NOUN": [
+   {
+    "shown": "pocket",
+    "v": "ok"
+   }
+  ],
   "lemma:es:bonito:ADJ": [
    {
     "shown": "pretty, nice",
@@ -2211,6 +2982,18 @@
   "lemma:es:bosque:NOUN": [
    {
     "shown": "forest",
+    "v": "ok"
+   }
+  ],
+  "lemma:es:bota:NOUN": [
+   {
+    "shown": "boot",
+    "v": "ok"
+   }
+  ],
+  "lemma:es:botón:NOUN": [
+   {
+    "shown": "button",
     "v": "ok"
    }
   ],
@@ -2244,9 +3027,45 @@
     "v": "ok"
    }
   ],
+  "lemma:es:callar:VERB": [
+   {
+    "shown": "to be quiet, fall silent",
+    "v": "ok"
+   }
+  ],
+  "lemma:es:calma:NOUN": [
+   {
+    "shown": "calm",
+    "v": "ok"
+   }
+  ],
+  "lemma:es:cambiar:VERB": [
+   {
+    "shown": "to change",
+    "v": "ok"
+   }
+  ],
   "lemma:es:caminar:VERB": [
    {
     "shown": "to walk",
+    "v": "ok"
+   }
+  ],
+  "lemma:es:camisa:NOUN": [
+   {
+    "shown": "shirt",
+    "v": "ok"
+   }
+  ],
+  "lemma:es:campo:NOUN": [
+   {
+    "shown": "countryside; field",
+    "v": "ok"
+   }
+  ],
+  "lemma:es:cansar:VERB": [
+   {
+    "shown": "to tire (cansarse: to get tired)",
     "v": "ok"
    }
   ],
@@ -2311,6 +3130,18 @@
     "v": "ok"
    }
   ],
+  "lemma:es:cero:NUM": [
+   {
+    "shown": "zero",
+    "v": "ok"
+   }
+  ],
+  "lemma:es:cerrar:VERB": [
+   {
+    "shown": "to close",
+    "v": "ok"
+   }
+  ],
   "lemma:es:cielo:NOUN": [
    {
     "shown": "sky; heaven",
@@ -2323,15 +3154,33 @@
     "v": "ok"
    }
   ],
+  "lemma:es:cierto:ADJ": [
+   {
+    "shown": "certain, true",
+    "v": "ok"
+   }
+  ],
   "lemma:es:cinco:NUM": [
    {
     "shown": "five",
     "v": "ok"
    }
   ],
+  "lemma:es:cincuenta:NUM": [
+   {
+    "shown": "fifty",
+    "v": "ok"
+   }
+  ],
   "lemma:es:cipote:NOUN": [
    {
     "shown": "boy, kid; a vulgar word in Spain",
+    "v": "ok"
+   }
+  ],
+  "lemma:es:cita:NOUN": [
+   {
+    "shown": "appointment; quotation",
     "v": "ok"
    }
   ],
@@ -2359,6 +3208,12 @@
     "v": "ok"
    }
   ],
+  "lemma:es:colegio:NOUN": [
+   {
+    "shown": "school (often secondary or private)",
+    "v": "ok"
+   }
+  ],
   "lemma:es:comenzar:VERB": [
    {
     "shown": "to begin",
@@ -2368,8 +3223,7 @@
   "lemma:es:comer:VERB": [
    {
     "shown": "to eat",
-    "v": "false-reading",
-    "note": "comida is the noun food/meal, not a form of the verb comer"
+    "v": "ok"
    }
   ],
   "lemma:es:comprar:VERB": [
@@ -2387,6 +3241,12 @@
   "lemma:es:con:ADP": [
    {
     "shown": "with",
+    "v": "ok"
+   }
+  ],
+  "lemma:es:conducir:VERB": [
+   {
+    "shown": "to drive; to lead (general Spanish; manejar is the everyday Latin American word for driving)",
     "v": "ok"
    }
   ],
@@ -2456,6 +3316,12 @@
     "v": "ok"
    }
   ],
+  "lemma:es:creer:VERB": [
+   {
+    "shown": "to believe",
+    "v": "ok"
+   }
+  ],
   "lemma:es:cuando:SCONJ": [
    {
     "shown": "when",
@@ -2486,6 +3352,18 @@
     "v": "ok"
    }
   ],
+  "lemma:es:cubrir:VERB": [
+   {
+    "shown": "to cover",
+    "v": "ok"
+   }
+  ],
+  "lemma:es:cuerda:NOUN": [
+   {
+    "shown": "rope, string",
+    "v": "ok"
+   }
+  ],
   "lemma:es:cuidar:VERB": [
    {
     "shown": "to take care of",
@@ -2495,6 +3373,12 @@
   "lemma:es:culto:NOUN": [
    {
     "shown": "worship, church service",
+    "v": "ok"
+   }
+  ],
+  "lemma:es:cuándo:ADV": [
+   {
+    "shown": "when",
     "v": "ok"
    }
   ],
@@ -2534,6 +3418,12 @@
     "v": "ok"
    }
   ],
+  "lemma:es:decidir:VERB": [
+   {
+    "shown": "to decide",
+    "v": "ok"
+   }
+  ],
   "lemma:es:decir:VERB": [
    {
     "shown": "to say",
@@ -2552,6 +3442,12 @@
     "v": "ok"
    }
   ],
+  "lemma:es:delgado:ADJ": [
+   {
+    "shown": "thin",
+    "v": "ok"
+   }
+  ],
   "lemma:es:demasiado:ADV": [
    {
     "shown": "too much",
@@ -2561,6 +3457,12 @@
   "lemma:es:dentro:ADV": [
    {
     "shown": "inside",
+    "v": "ok"
+   }
+  ],
+  "lemma:es:derecho:ADV": [
+   {
+    "shown": "straight ahead",
     "v": "ok"
    }
   ],
@@ -2594,6 +3496,12 @@
     "v": "ok"
    }
   ],
+  "lemma:es:desierto:NOUN": [
+   {
+    "shown": "desert; wilderness",
+    "v": "ok"
+   }
+  ],
   "lemma:es:después:ADV": [
    {
     "shown": "after, afterwards",
@@ -2603,6 +3511,12 @@
   "lemma:es:detener:VERB": [
    {
     "shown": "to stop, detain",
+    "v": "ok"
+   }
+  ],
+  "lemma:es:devolver:VERB": [
+   {
+    "shown": "to give back, return",
     "v": "ok"
    }
   ],
@@ -2672,6 +3586,12 @@
     "v": "ok"
    }
   ],
+  "lemma:es:dólar:NOUN": [
+   {
+    "shown": "dollar",
+    "v": "ok"
+   }
+  ],
   "lemma:es:dónde:ADV": [
    {
     "shown": "where",
@@ -2684,9 +3604,21 @@
     "v": "ok"
    }
   ],
+  "lemma:es:echar:VERB": [
+   {
+    "shown": "to throw; to put in",
+    "v": "ok"
+   }
+  ],
   "lemma:es:el:DET": [
    {
     "shown": "the",
+    "v": "ok"
+   }
+  ],
+  "lemma:es:elegir:VERB": [
+   {
+    "shown": "to choose, elect",
     "v": "ok"
    }
   ],
@@ -2711,6 +3643,12 @@
   "lemma:es:en:ADP": [
    {
     "shown": "in, on",
+    "v": "ok"
+   }
+  ],
+  "lemma:es:encantar:VERB": [
+   {
+    "shown": "to delight (me encanta: I love it)",
     "v": "ok"
    }
   ],
@@ -2747,6 +3685,12 @@
   "lemma:es:entonces:ADV": [
    {
     "shown": "then, so",
+    "v": "ok"
+   }
+  ],
+  "lemma:es:entrar:VERB": [
+   {
+    "shown": "to enter, go in",
     "v": "ok"
    }
   ],
@@ -2834,6 +3778,12 @@
     "v": "ok"
    }
   ],
+  "lemma:es:estudiar:VERB": [
+   {
+    "shown": "to study",
+    "v": "ok"
+   }
+  ],
   "lemma:es:explicar:VERB": [
    {
     "shown": "to explain",
@@ -2864,6 +3814,12 @@
     "v": "ok"
    }
   ],
+  "lemma:es:feliz:ADJ": [
+   {
+    "shown": "happy",
+    "v": "ok"
+   }
+  ],
   "lemma:es:fiebre:NOUN": [
    {
     "shown": "fever",
@@ -2891,6 +3847,12 @@
   "lemma:es:finca:NOUN": [
    {
     "shown": "farm, estate",
+    "v": "ok"
+   }
+  ],
+  "lemma:es:flor:NOUN": [
+   {
+    "shown": "flower",
     "v": "ok"
    }
   ],
@@ -2927,6 +3889,12 @@
   "lemma:es:fuerte:ADJ": [
    {
     "shown": "strong",
+    "v": "ok"
+   }
+  ],
+  "lemma:es:gallina:NOUN": [
+   {
+    "shown": "hen",
     "v": "ok"
    }
   ],
@@ -2972,6 +3940,12 @@
     "v": "ok"
    }
   ],
+  "lemma:es:guardar:VERB": [
+   {
+    "shown": "to keep, put away",
+    "v": "ok"
+   }
+  ],
   "lemma:es:guitarra:NOUN": [
    {
     "shown": "guitar",
@@ -2981,8 +3955,7 @@
   "lemma:es:gustar:VERB": [
    {
     "shown": "to be pleasing (me gusta: I like it)",
-    "v": "false-reading",
-    "note": "gusto is the noun pleasure/liking, not a form of gustar"
+    "v": "ok"
    }
   ],
   "lemma:es:haber:AUX": [
@@ -3069,9 +4042,21 @@
     "v": "ok"
    }
   ],
+  "lemma:es:hoja:NOUN": [
+   {
+    "shown": "leaf; sheet",
+    "v": "ok"
+   }
+  ],
   "lemma:es:hola:INTJ": [
    {
     "shown": "hello",
+    "v": "ok"
+   }
+  ],
+  "lemma:es:hombre:NOUN": [
+   {
+    "shown": "man; mankind",
     "v": "ok"
    }
   ],
@@ -3111,9 +4096,39 @@
     "v": "ok"
    }
   ],
+  "lemma:es:importante:ADJ": [
+   {
+    "shown": "important",
+    "v": "ok"
+   }
+  ],
+  "lemma:es:incendio:NOUN": [
+   {
+    "shown": "fire (blaze)",
+    "v": "ok"
+   }
+  ],
+  "lemma:es:indicar:VERB": [
+   {
+    "shown": "to indicate, point out",
+    "v": "ok"
+   }
+  ],
+  "lemma:es:infancia:NOUN": [
+   {
+    "shown": "childhood",
+    "v": "ok"
+   }
+  ],
   "lemma:es:informar:VERB": [
    {
     "shown": "to inform",
+    "v": "ok"
+   }
+  ],
+  "lemma:es:injusto:ADJ": [
+   {
+    "shown": "unjust",
     "v": "ok"
    }
   ],
@@ -3144,6 +4159,12 @@
   "lemma:es:jardín:NOUN": [
    {
     "shown": "garden",
+    "v": "ok"
+   }
+  ],
+  "lemma:es:jefe:NOUN": [
+   {
+    "shown": "boss, chief",
     "v": "ok"
    }
   ],
@@ -3213,6 +4234,12 @@
     "v": "ok"
    }
   ],
+  "lemma:es:leche:NOUN": [
+   {
+    "shown": "milk",
+    "v": "ok"
+   }
+  ],
   "lemma:es:leer:VERB": [
    {
     "shown": "to read",
@@ -3237,6 +4264,12 @@
     "v": "ok"
    }
   ],
+  "lemma:es:leña:NOUN": [
+   {
+    "shown": "firewood",
+    "v": "ok"
+   }
+  ],
   "lemma:es:libre:ADJ": [
    {
     "shown": "free",
@@ -3246,6 +4279,12 @@
   "lemma:es:libro:NOUN": [
    {
     "shown": "book",
+    "v": "ok"
+   }
+  ],
+  "lemma:es:limpiar:VERB": [
+   {
+    "shown": "to cleanse",
     "v": "ok"
    }
   ],
@@ -3273,9 +4312,21 @@
     "v": "ok"
    }
   ],
+  "lemma:es:llenar:VERB": [
+   {
+    "shown": "to fill",
+    "v": "ok"
+   }
+  ],
   "lemma:es:llevar:VERB": [
    {
     "shown": "to carry, take; to wear",
+    "v": "ok"
+   }
+  ],
+  "lemma:es:llorar:VERB": [
+   {
+    "shown": "to cry",
     "v": "ok"
    }
   ],
@@ -3327,6 +4378,18 @@
     "v": "ok"
    }
   ],
+  "lemma:es:luz:NOUN": [
+   {
+    "shown": "light",
+    "v": "ok"
+   }
+  ],
+  "lemma:es:madrugada:NOUN": [
+   {
+    "shown": "early morning",
+    "v": "ok"
+   }
+  ],
   "lemma:es:maestra:NOUN": [
    {
     "shown": "teacher (female)",
@@ -3351,11 +4414,16 @@
     "v": "ok"
    }
   ],
+  "lemma:es:mar:NOUN": [
+   {
+    "shown": "sea",
+    "v": "ok"
+   }
+  ],
   "lemma:es:marcar:VERB": [
    {
     "shown": "to mark; to dial",
-    "v": "false-reading",
-    "note": "here marca is the noun mark/record, not a form of the verb marcar"
+    "v": "ok"
    }
   ],
   "lemma:es:martes:NOUN": [
@@ -3406,6 +4474,12 @@
     "v": "ok"
    }
   ],
+  "lemma:es:mejorar:VERB": [
+   {
+    "shown": "to improve",
+    "v": "ok"
+   }
+  ],
   "lemma:es:menor:ADJ": [
    {
     "shown": "younger, smaller; lesser",
@@ -3430,9 +4504,28 @@
     "v": "ok"
    }
   ],
+  "lemma:es:meter:VERB": [
+   {
+    "shown": "to put in",
+    "v": "ok"
+   }
+  ],
+  "lemma:es:mezcla:NOUN": [
+   {
+    "shown": "mixture",
+    "v": "false-reading",
+    "note": "Mezcla here is the imperative of the verb mezclar (mix), not the noun mezcla"
+   }
+  ],
   "lemma:es:mi:DET": [
    {
     "shown": "my",
+    "v": "ok"
+   }
+  ],
+  "lemma:es:miedo:NOUN": [
+   {
+    "shown": "fear",
     "v": "ok"
    }
   ],
@@ -3460,6 +4553,24 @@
     "v": "ok"
    }
   ],
+  "lemma:es:mitad:NOUN": [
+   {
+    "shown": "half",
+    "v": "ok"
+   }
+  ],
+  "lemma:es:montaña:NOUN": [
+   {
+    "shown": "mountain",
+    "v": "ok"
+   }
+  ],
+  "lemma:es:mover:VERB": [
+   {
+    "shown": "to move",
+    "v": "ok"
+   }
+  ],
   "lemma:es:mucho:ADV": [
    {
     "shown": "a lot, much",
@@ -3481,6 +4592,12 @@
   "lemma:es:más:ADV": [
    {
     "shown": "more",
+    "v": "ok"
+   }
+  ],
+  "lemma:es:médico:NOUN": [
+   {
+    "shown": "doctor",
     "v": "ok"
    }
   ],
@@ -3544,6 +4661,12 @@
     "v": "ok"
    }
   ],
+  "lemma:es:niña:NOUN": [
+   {
+    "shown": "girl",
+    "v": "ok"
+   }
+  ],
   "lemma:es:niño:NOUN": [
    {
     "shown": "boy; child",
@@ -3559,6 +4682,12 @@
   "lemma:es:noche:NOUN": [
    {
     "shown": "night",
+    "v": "ok"
+   }
+  ],
+  "lemma:es:norte:NOUN": [
+   {
+    "shown": "north",
     "v": "ok"
    }
   ],
@@ -3610,6 +4739,24 @@
     "v": "ok"
    }
   ],
+  "lemma:es:obligar:VERB": [
+   {
+    "shown": "to force, oblige",
+    "v": "ok"
+   }
+  ],
+  "lemma:es:obra:NOUN": [
+   {
+    "shown": "work (a work of art, a building work)",
+    "v": "ok"
+   }
+  ],
+  "lemma:es:obrero:NOUN": [
+   {
+    "shown": "worker, labourer",
+    "v": "ok"
+   }
+  ],
   "lemma:es:ocho:NUM": [
    {
     "shown": "eight",
@@ -3622,9 +4769,33 @@
     "v": "ok"
    }
   ],
+  "lemma:es:oficina:NOUN": [
+   {
+    "shown": "office",
+    "v": "ok"
+   }
+  ],
+  "lemma:es:oler:VERB": [
+   {
+    "shown": "to smell",
+    "v": "ok"
+   }
+  ],
+  "lemma:es:olvidar:VERB": [
+   {
+    "shown": "to forget",
+    "v": "ok"
+   }
+  ],
   "lemma:es:ordenar:VERB": [
    {
     "shown": "to order; to tidy",
+    "v": "ok"
+   }
+  ],
+  "lemma:es:oscuridad:NOUN": [
+   {
+    "shown": "darkness",
     "v": "ok"
    }
   ],
@@ -3664,9 +4835,21 @@
     "v": "ok"
    }
   ],
+  "lemma:es:pared:NOUN": [
+   {
+    "shown": "wall",
+    "v": "ok"
+   }
+  ],
   "lemma:es:parque:NOUN": [
    {
     "shown": "park",
+    "v": "ok"
+   }
+  ],
+  "lemma:es:partir:VERB": [
+   {
+    "shown": "to leave; to split",
     "v": "ok"
    }
   ],
@@ -3682,9 +4865,21 @@
     "v": "ok"
    }
   ],
+  "lemma:es:patata:NOUN": [
+   {
+    "shown": "potato (Spain; Latin America says papa)",
+    "v": "ok"
+   }
+  ],
   "lemma:es:país:NOUN": [
    {
     "shown": "country",
+    "v": "ok"
+   }
+  ],
+  "lemma:es:pedir:VERB": [
+   {
+    "shown": "to ask for, request",
     "v": "ok"
    }
   ],
@@ -3697,6 +4892,18 @@
   "lemma:es:pequeño:ADJ": [
    {
     "shown": "small, little",
+    "v": "ok"
+   }
+  ],
+  "lemma:es:perder:VERB": [
+   {
+    "shown": "to lose, perish",
+    "v": "ok"
+   }
+  ],
+  "lemma:es:perdonar:VERB": [
+   {
+    "shown": "to forgive",
     "v": "ok"
    }
   ],
@@ -3724,9 +4931,27 @@
     "v": "ok"
    }
   ],
+  "lemma:es:pescado:NOUN": [
+   {
+    "shown": "fish (as food)",
+    "v": "ok"
+   }
+  ],
   "lemma:es:pierna:NOUN": [
    {
     "shown": "leg",
+    "v": "ok"
+   }
+  ],
+  "lemma:es:pintar:VERB": [
+   {
+    "shown": "to paint",
+    "v": "ok"
+   }
+  ],
+  "lemma:es:piso:NOUN": [
+   {
+    "shown": "floor; flat",
     "v": "ok"
    }
   ],
@@ -3739,6 +4964,12 @@
   "lemma:es:plato:NOUN": [
    {
     "shown": "plate, dish",
+    "v": "ok"
+   }
+  ],
+  "lemma:es:playa:NOUN": [
+   {
+    "shown": "beach",
     "v": "ok"
    }
   ],
@@ -3826,9 +5057,21 @@
     "v": "ok"
    }
   ],
+  "lemma:es:primavera:NOUN": [
+   {
+    "shown": "spring",
+    "v": "ok"
+   }
+  ],
   "lemma:es:primero:ADJ": [
    {
     "shown": "first",
+    "v": "ok"
+   }
+  ],
+  "lemma:es:primo:NOUN": [
+   {
+    "shown": "cousin (male)",
     "v": "ok"
    }
   ],
@@ -3838,9 +5081,27 @@
     "v": "ok"
    }
   ],
+  "lemma:es:principio:NOUN": [
+   {
+    "shown": "beginning; principle",
+    "v": "ok"
+   }
+  ],
   "lemma:es:probar:VERB": [
    {
     "shown": "to try; to test; to taste",
+    "v": "ok"
+   }
+  ],
+  "lemma:es:profesora:NOUN": [
+   {
+    "shown": "teacher, professor (female)",
+    "v": "ok"
+   }
+  ],
+  "lemma:es:pronto:ADV": [
+   {
+    "shown": "soon",
     "v": "ok"
    }
   ],
@@ -3862,9 +5123,21 @@
     "v": "ok"
    }
   ],
+  "lemma:es:puerta:NOUN": [
+   {
+    "shown": "door",
+    "v": "ok"
+   }
+  ],
   "lemma:es:pues:CONJ": [
    {
     "shown": "since, well then",
+    "v": "ok"
+   }
+  ],
+  "lemma:es:público:ADJ": [
+   {
+    "shown": "public",
     "v": "ok"
    }
   ],
@@ -3877,6 +5150,12 @@
   "lemma:es:quedar:VERB": [
    {
     "shown": "to remain, be left; to arrange to meet (quedarse: to stay)",
+    "v": "ok"
+   }
+  ],
+  "lemma:es:quemar:VERB": [
+   {
+    "shown": "to burn",
     "v": "ok"
    }
   ],
@@ -3895,6 +5174,12 @@
   "lemma:es:quien:PRON": [
    {
     "shown": "who, whom",
+    "v": "ok"
+   }
+  ],
+  "lemma:es:quitar:VERB": [
+   {
+    "shown": "to remove, take away",
     "v": "ok"
    }
   ],
@@ -3934,9 +5219,33 @@
     "v": "ok"
    }
   ],
+  "lemma:es:reloj:NOUN": [
+   {
+    "shown": "clock, watch",
+    "v": "ok"
+   }
+  ],
+  "lemma:es:retrasar:VERB": [
+   {
+    "shown": "to delay",
+    "v": "ok"
+   }
+  ],
+  "lemma:es:reunión:NOUN": [
+   {
+    "shown": "meeting",
+    "v": "ok"
+   }
+  ],
   "lemma:es:revisar:VERB": [
    {
     "shown": "to check, review",
+    "v": "ok"
+   }
+  ],
+  "lemma:es:reír:VERB": [
+   {
+    "shown": "to laugh",
     "v": "ok"
    }
   ],
@@ -3952,6 +5261,12 @@
     "v": "ok"
    }
   ],
+  "lemma:es:ropa:NOUN": [
+   {
+    "shown": "clothes",
+    "v": "ok"
+   }
+  ],
   "lemma:es:saber:VERB": [
    {
     "shown": "to know (a fact); to know how to",
@@ -3964,6 +5279,12 @@
     "v": "ok"
    }
   ],
+  "lemma:es:sala:NOUN": [
+   {
+    "shown": "living room, hall",
+    "v": "ok"
+   }
+  ],
   "lemma:es:salir:VERB": [
    {
     "shown": "to go out, leave",
@@ -3973,6 +5294,12 @@
   "lemma:es:salud:NOUN": [
    {
     "shown": "health",
+    "v": "ok"
+   }
+  ],
+  "lemma:es:salvar:VERB": [
+   {
+    "shown": "to save, rescue",
     "v": "ok"
    }
   ],
@@ -4084,6 +5411,18 @@
     "v": "ok"
    }
   ],
+  "lemma:es:sol:NOUN": [
+   {
+    "shown": "sun",
+    "v": "ok"
+   }
+  ],
+  "lemma:es:sopa:NOUN": [
+   {
+    "shown": "soup",
+    "v": "ok"
+   }
+  ],
   "lemma:es:su:DET": [
    {
     "shown": "his/her/their",
@@ -4102,6 +5441,12 @@
     "v": "ok"
    }
   ],
+  "lemma:es:sueldo:NOUN": [
+   {
+    "shown": "salary",
+    "v": "ok"
+   }
+  ],
   "lemma:es:sur:NOUN": [
    {
     "shown": "south",
@@ -4111,6 +5456,12 @@
   "lemma:es:sábado:NOUN": [
    {
     "shown": "Saturday",
+    "v": "ok"
+   }
+  ],
+  "lemma:es:sábana:NOUN": [
+   {
+    "shown": "sheet",
     "v": "ok"
    }
   ],
@@ -4126,6 +5477,12 @@
     "v": "ok"
    }
   ],
+  "lemma:es:también:ADV": [
+   {
+    "shown": "also",
+    "v": "ok"
+   }
+  ],
   "lemma:es:tan:ADV": [
    {
     "shown": "so, as",
@@ -4135,6 +5492,18 @@
   "lemma:es:tanto:ADV": [
    {
     "shown": "so much, so often",
+    "v": "ok"
+   }
+  ],
+  "lemma:es:tanto:DET": [
+   {
+    "shown": "so much, as much",
+    "v": "ok"
+   }
+  ],
+  "lemma:es:tardar:VERB": [
+   {
+    "shown": "to take (time), be long",
     "v": "ok"
    }
   ],
@@ -4183,6 +5552,12 @@
   "lemma:es:terminar:VERB": [
    {
     "shown": "to finish, end",
+    "v": "ok"
+   }
+  ],
+  "lemma:es:tibio:ADJ": [
+   {
+    "shown": "lukewarm",
     "v": "ok"
    }
   ],
@@ -4258,6 +5633,12 @@
     "v": "ok"
    }
   ],
+  "lemma:es:tren:NOUN": [
+   {
+    "shown": "train",
+    "v": "ok"
+   }
+  ],
   "lemma:es:tres:NUM": [
    {
     "shown": "three",
@@ -4324,6 +5705,12 @@
     "v": "ok"
    }
   ],
+  "lemma:es:vacío:ADJ": [
+   {
+    "shown": "empty",
+    "v": "ok"
+   }
+  ],
   "lemma:es:varios:DET": [
    {
     "shown": "several",
@@ -4360,6 +5747,12 @@
     "v": "ok"
    }
   ],
+  "lemma:es:venir:VERB": [
+   {
+    "shown": "to come",
+    "v": "ok"
+   }
+  ],
   "lemma:es:ventana:NOUN": [
    {
     "shown": "window",
@@ -4384,6 +5777,12 @@
     "v": "ok"
    }
   ],
+  "lemma:es:verde:ADJ": [
+   {
+    "shown": "green",
+    "v": "ok"
+   }
+  ],
   "lemma:es:vez:NOUN": [
    {
     "shown": "time (occasion)",
@@ -4393,6 +5792,12 @@
   "lemma:es:viajar:VERB": [
    {
     "shown": "to travel",
+    "v": "ok"
+   }
+  ],
+  "lemma:es:viejo:ADJ": [
+   {
+    "shown": "old",
     "v": "ok"
    }
   ],
@@ -4426,6 +5831,18 @@
     "v": "ok"
    }
   ],
+  "lemma:es:votar:VERB": [
+   {
+    "shown": "to vote",
+    "v": "ok"
+   }
+  ],
+  "lemma:es:voz:NOUN": [
+   {
+    "shown": "voice",
+    "v": "ok"
+   }
+  ],
   "lemma:es:y:CONJ": [
    {
     "shown": "and",
@@ -4441,6 +5858,12 @@
   "lemma:es:yo:PRON": [
    {
     "shown": "I",
+    "v": "ok"
+   }
+  ],
+  "lemma:es:zanahoria:NOUN": [
+   {
+    "shown": "carrot",
     "v": "ok"
    }
   ],
@@ -4474,5 +5897,9 @@
     "v": "ok"
    }
   ]
- }
+ },
+ "heldResidue": [
+  "form:es:mezcla",
+  "lemma:es:mezcla:NOUN"
+ ]
 }

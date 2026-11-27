@@ -64,7 +64,9 @@ export function analyzeLatinSentence(tokens: RawToken[]): AnalysisCandidate[][] 
           note(c, `case governed by the preposition ${preps[0].lemma}`);
           if (HEAD.has(c.pos)) { hasHead = true; matchedHead = true; }
         } else {
-          c.confidence = Math.round(c.confidence * 0.55 * 100) / 100;
+          // the word right after the preposition that is ALSO a noun in the governed case (ab oris: os, oris beside ora): the governed one is meant more firmly
+          const alsoGoverned = k === 1 && cands.some((o) => o.pos && HEAD.has(o.pos) && caseSet(o).some((x) => gov.includes(x)));
+          c.confidence = Math.round(c.confidence * (alsoGoverned && c.pos && HEAD.has(c.pos) ? 0.3 : 0.55) * 100) / 100;
           note(c, `not in the case ${preps[0].lemma} governs (${gov.join(' / ')})`);
         }
       }

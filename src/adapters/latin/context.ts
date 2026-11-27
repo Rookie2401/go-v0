@@ -46,6 +46,26 @@ export function applyContextRules(tokens: RawToken[], base: AnalysisCandidate[][
       scale(list, (c) => c.pos === 'PROPN', 1.6, 'a capitalised word inside a sentence: a name');
     }
 
+    // a capitalised sentence-opener with a reading as a name whose every common-noun reading is plural, followed by a singular nominative noun it cannot agree with
+    // (Maria virgo mater Dei est: Mary, not the plural of mare): the name; "Maria sunt magna" and "Maria alta" keep the plural
+    if (startsSentence && /^\p{Lu}/u.test(surface) && list.some((c) => c.pos === 'PROPN') && w + 1 < words.length) {
+      const common = list.filter((c) => c.pos === 'NOUN');
+      const next = base[words[w + 1]].slice().sort((a, b) => b.confidence - a.confidence)[0];
+      const stops = tokens.slice(i + 1, words[w + 1]).some((t) => /^[.;:?!,]$/.test(t.surface));
+      if (common.length && common.every((c) => c.morph.Number === 'Plur') && !!next && !stops && next.pos === 'NOUN' && next.morph.Number === 'Sing' && has(next, 'Case', 'Nom')) {
+        scale(list, (c) => c.pos !== 'PROPN', 0.2, 'a capitalised sentence-opener beside a singular noun it cannot agree with: a name');
+        scale(list, (c) => c.pos === 'PROPN', 1.6, 'a capitalised sentence-opener beside a singular noun it cannot agree with: a name');
+      }
+    }
+    // the greeting: salve, ave, vale (and salvete ...) opening a sentence and followed by a comma, a stop or a name is the imperative of salveo, aveo, valeo, not salvus
+    if (startsSentence && /^(salve|salvete|ave|avete|vale|valete)$/.test(tokens[i].normalized) && /^[,!.]$/.test(tokens[i + 1]?.surface ?? '') ) {
+      const greet = (c: AnalysisCandidate): boolean => (c.pos === 'INTJ' && /^(salve|ave|vale)$/.test(c.lemma ?? '')) || ((c.lemma === 'salveo' || c.lemma === 'aveo' || c.lemma === 'valeo') && has(c, 'Mood', 'Imp') && !list.some((o) => o.pos === 'INTJ'));
+      if (list.some(greet)) {
+        scale(list, greet, 4, 'a greeting: the imperative of the verb, as the first word before a comma');
+        scale(list, (c) => !greet(c), 0.4, 'a greeting: the imperative of the verb, as the first word before a comma');
+      }
+    }
+
     const key = tokens[i].normalized;
     // vis: you wish (volo), or force (vis): force follows a preposition, an adjective or a determiner and is rare beside the verb
     if (key === 'vis' && list.some((c) => c.lemma === 'volo') && list.some((c) => c.lemma === 'vis')) {
@@ -61,7 +81,15 @@ export function applyContextRules(tokens: RawToken[], base: AnalysisCandidate[][
       const next = w + 1 < words.length ? base[words[w + 1]].slice().sort((a, b) => b.confidence - a.confidence)[0] : undefined;
       const stops = w + 1 < words.length && tokens.slice(words[w] + 1, words[w + 1]).some((t) => /^[.;:?!,]$/.test(t.surface));
       const nounFollows = !!next && !stops && (next.pos === 'NOUN' || next.pos === 'PROPN');
-      if (!nounFollows) {
+      // a noun BEFORE it that the possessive adjective agrees with (panem nostrum quotidianum, patrem vestrum): the adjective, not the partitive genitive
+      const prevNoun = before(tokens, base, words, w);
+      const stopBefore = w > 0 && tokens.slice(words[w - 1] + 1, words[w]).some((t) => /^[.;:?!,]$/.test(t.surface));
+      const agrees = /um$/.test(key) && !!prevNoun && !stopBefore && prevNoun.pos === 'NOUN' && prevNoun.morph.Number === 'Sing'
+        && list.some((c) => c.pos === 'ADJ' && c.morph.Number === 'Sing' && (c.morph.Case ?? '').split(',').some((k) => has(prevNoun, 'Case', k)) && (c.morph.Gender ?? '').split(',').some((g) => has(prevNoun, 'Gender', g)));
+      if (agrees) {
+        scale(list, (c) => c.pos === 'PRON', 0.3, 'possessive adjective: a noun it agrees with stands before it');
+        scale(list, (c) => c.pos === 'ADJ', 1.6, 'possessive adjective: a noun it agrees with stands before it');
+      } else if (!nounFollows) {
         scale(list, (c) => c.pos === 'PRON', 3, 'genitive of the personal pronoun: no noun follows');
         scale(list, (c) => c.pos === 'ADJ', 0.4, 'genitive of the personal pronoun: no noun follows');
       }

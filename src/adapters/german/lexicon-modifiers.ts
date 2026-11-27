@@ -279,6 +279,7 @@ wüst = waste; desolate
 finster = dark; gloomy
 heimlich = secret; secretive
 recht = right; proper; just
+link = left (on the left-hand side)
 übrig = left over; remaining
 mitleidig = compassionate; pitying
 hungerig = hungry (older form) [archaic]

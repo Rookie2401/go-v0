@@ -1820,8 +1820,8 @@ export const PHRASES: readonly StarterPhrase[] = [
   "source": "data/corpus/de/dialogue-01.json (course-authored, drafter-glossed)"
  },
  {
-  "form": "Ich verstehe nicht, warum Gott die Sünde vergibt.",
-  "gloss": "I do not understand why God forgives sin.",
+  "form": "Ich verstehe nicht, warum Gott",
+  "gloss": "I do not understand why God",
   "source": "data/corpus/de/dialogue-01.json (course-authored, drafter-glossed)"
  },
  {

@@ -44,6 +44,8 @@ export const LADDER_FIX_ROWS = `
 अंकल/m = uncle (a polite address to an older man) [inv english-loan everyday]
 ## d:house
 सोफ़ा/m = sofa [english-loan everyday]
+## d:feelings
+गौरव/m = dignity, honour, pride (also the boy's name Gaurav, listed under PROPN) [sanskritic formal]
 
 # PROPN
 ## d:people
@@ -83,9 +85,11 @@ export const LADDER_FIX_ROWS = `
 कँटीला = thorny, prickly [everyday] | @adj
 दायाँ = right (the right hand, the right side) [everyday] | दायाँ:m sg dir; दाएँ:m sg obl; दाएँ:m pl dir; दाएँ:m pl obl; दायीं:f sg; दायीं:f pl; दाईं:f sg; दाईं:f pl
 बायाँ = left (the left hand, the left side) [everyday] | बायाँ:m sg dir; बाएँ:m sg obl; बाएँ:m pl dir; बाएँ:m pl obl; बायीं:f sg; बायीं:f pl; बाईं:f sg; बाईं:f pl
+मना = forbidden, prohibited (मना है; मना करना "to forbid, to refuse") [inv everyday]
 
 # VERB
 बँधना = to be tied, to be bound [noerg] | @verb:c
 मचलना = to fuss and insist like a small child, to be restless with wanting [noerg] | @verb:c
 दुबकना = to crouch, to hide oneself low (a cat, a child) [noerg] | @verb:c
+छाना = to spread over, to hang over, to cover (fog, clouds, gloom, a mood) [noerg] | @verb:v
 `;

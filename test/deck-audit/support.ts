@@ -249,7 +249,9 @@ export async function runDeckAudit(lang: string, sentences: string[], opts: Audi
     if ('unavailable' in built) { hold(id, 'build', built.reason); continue; }
     const baseMeaning = (built.builtFrom?.facts ?? []).includes('meaning:lexical-base');
     const explanation = built.answerKey.explanation ?? '';
-    const explained = /(?:means|base meaning) [“"]([^”"]+)[”"]/u.exec(explanation)?.[1];
+    // the WHOLE meaning, up to the closing quote of the sentence: a meaning with quotes inside it (Thai ที 'time, turn (as in ทีหนึ่ง "once")') was
+    // cut at the first of them until 2026-11-27, so the reader judged a fragment the card does not show
+    const explained = /(?:means|base meaning) “([\s\S]*?)”(?=[.;]|$)/u.exec(explanation)?.[1];
     const shown = explained ?? built.answerKey.accepted[0] ?? '';
     const headword = u.kind === 'form' ? f.unit.label : f.lemma ?? f.unit.label;
     const lemma = baseMeaning ? f.lexicalRecognition?.lemma : f.lemma;
@@ -284,7 +286,11 @@ export const AUDIT_SETS: readonly AuditSet[] = [
   { id: 'ko', lang: 'ko', name: 'Korean' },
 ];
 export const auditSet = (id: string): AuditSet => { const s = AUDIT_SETS.find((x) => x.id === id); if (!s) throw new Error(`no audit set ${id}`); return s; };
-export const auditText = (id: string, part: 'dev' | 'heldout'): string => path.join(ROOT, 'data/deck-audit', id, `${part}.txt`);
+/** `dev2` is a set's former held-out half, once it has been read to fix what it showed: development material from then on, with a fresh held-out half beside it. */
+export type AuditPart = 'dev' | 'dev2' | 'heldout';
+export const auditText = (id: string, part: AuditPart): string => path.join(ROOT, 'data/deck-audit', id, `${part}.txt`);
+/** The development halves a set has: dev, and dev2 where there is one. */
+export const devParts = (id: string): AuditPart[] => (fs.existsSync(auditText(id, 'dev2')) ? ['dev', 'dev2'] : ['dev']);
 
 /** The sentences of an audit text file: one per line; blank lines and lines starting with # are not sentences. */
 export function readSentences(file: string): string[] {

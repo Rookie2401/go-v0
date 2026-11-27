@@ -237,6 +237,7 @@ unterstellen = to insinuate; to assume
 const SEPARABLE = `
 // ── separable verbs (parts are those of the verb without its prefix)
 // ab-
+ab|gehen = to leave; to depart; to come off | geht, ging, gegangen, sein
 ab|biegen = to turn off | biegt, bog, gebogen, sein
 ab|brechen = to break off; to cancel | bricht, brach, gebrochen
 ab|fahren = to depart; to leave (by vehicle) | fährt, fuhr, gefahren, sein
@@ -255,6 +256,7 @@ ab|waschen = to wash up; to wash off | wäscht, wusch, gewaschen
 ab|warten = to wait and see
 // an-
 an|bieten = to offer | bietet, bot, geboten
+an|kündigen = to announce
 an|fangen = to begin; to start | fängt, fing, gefangen
 an|geben = to state; to show off | gibt, gab, gegeben
 an|gehen = to concern; to begin (lights) | geht, ging, gegangen, sein
@@ -752,7 +754,7 @@ sich verstehen = to get along | versteht, verstand, verstanden
 sich beklagen = to complain
 sich bekehren = to be converted
 sich erkälten = to catch a cold
-sich verletzen = to hurt oneself
+verletzen = to injure; to hurt (sich verletzen: to hurt oneself)
 sich erholen = to recover; to relax
 sich streiten = to quarrel | streitet, stritt, gestritten
 sich einigen = to agree

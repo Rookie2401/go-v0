@@ -1,18 +1,14 @@
 {
  "readBy": "AI models (Claude), not native speakers; each card judged once, in the first sentence it came from, against the brief in docs/ecosystem/DECK-GATE.md. 2026-11-26.",
- "residual": [
-  "form:el:δεῖ",
-  "form:el:θεωροῦντες",
-  "form:el:ἐγγίζειν",
-  "lemma:el:θεωρέω:VERB",
-  "lemma:el:ἀπειλή:NOUN",
-  "lemma:el:ἄρχω:VERB",
-  "lemma:el:ῥύμη:NOUN"
- ],
+ "residual": [],
  "cards": {
   "form:el:αὐξανόμενα": [
    {
     "shown": "being made grow",
+    "v": "ok"
+   },
+   {
+    "shown": "being caused to increase",
     "v": "ok"
    }
   ],
@@ -40,6 +36,12 @@
     "v": "ok"
    }
   ],
+  "form:el:βόσκειν": [
+   {
+    "shown": "to feed",
+    "v": "ok"
+   }
+  ],
   "form:el:γίνεται": [
    {
     "shown": "He, she, or it becomes",
@@ -49,6 +51,10 @@
     "shown": "He, she, or it ionics",
     "v": "unknown",
     "note": "'ionics' is not a meaning; γίνεται means 'it becomes/happens'"
+   },
+   {
+    "shown": "He, she, or it comes into being",
+    "v": "ok"
    }
   ],
   "form:el:γενομένης": [
@@ -60,6 +66,10 @@
     "shown": "having ioniced",
     "v": "unknown",
     "note": "'ioniced' is not a meaning; γενομένης means 'having become'"
+   },
+   {
+    "shown": "having come into being",
+    "v": "ok"
    }
   ],
   "form:el:γνώσεσθε": [
@@ -86,6 +96,12 @@
     "v": "ok"
    }
   ],
+  "form:el:δαπανήσαντος": [
+   {
+    "shown": "having spent",
+    "v": "ok"
+   }
+  ],
   "form:el:δεδεμένους": [
    {
     "shown": "bound",
@@ -105,15 +121,57 @@
     "v": "ok"
    }
   ],
+  "form:el:διεσκόρπισεν": [
+   {
+    "shown": "I scatter, winnow, disperse, waste",
+    "v": "ok"
+   }
+  ],
+  "form:el:διεῖλεν": [
+   {
+    "shown": "He, she, or it divided",
+    "v": "ok"
+   }
+  ],
   "form:el:διώκεις": [
    {
     "shown": "You pursue",
     "v": "ok"
    }
   ],
+  "form:el:δουλεύω": [
+   {
+    "shown": "I am a slave",
+    "v": "ok"
+   }
+  ],
+  "form:el:δραμών": [
+   {
+    "shown": "having run",
+    "v": "ok"
+   }
+  ],
+  "form:el:δός": [
+   {
+    "shown": "Offer!",
+    "v": "ok"
+   }
+  ],
+  "form:el:δότε": [
+   {
+    "shown": "Offer! (plural)",
+    "v": "ok"
+   }
+  ],
   "form:el:δῆσαι": [
    {
     "shown": "to bind",
+    "v": "ok"
+   }
+  ],
+  "form:el:εἰμί": [
+   {
+    "shown": "I am",
     "v": "ok"
    }
   ],
@@ -127,11 +185,21 @@
    {
     "shown": "They led in or into",
     "v": "ok"
+   },
+   {
+    "shown": "They led in",
+    "v": "ok"
    }
   ],
   "form:el:εἰσίν": [
    {
     "shown": "They are",
+    "v": "ok"
+   }
+  ],
+  "form:el:εἰσελθεῖν": [
+   {
+    "shown": "to go in",
     "v": "ok"
    }
   ],
@@ -151,17 +219,36 @@
    {
     "shown": "He, she, or it went into",
     "v": "ok"
+   },
+   {
+    "shown": "He, she, or it went in",
+    "v": "ok"
    }
   ],
   "form:el:εἱστήκεισαν": [
    {
     "shown": "They had stood",
     "v": "ok"
+   },
+   {
+    "shown": "They had caused to stand",
+    "v": "false-meaning",
+    "note": "pluperfect of histemi is intransitive 'had stood'; 'had caused to stand' is wrong"
+   }
+  ],
+  "form:el:εἴη": [
+   {
+    "shown": "He, she, or it might be",
+    "v": "ok"
    }
   ],
   "form:el:εἴσελθε": [
    {
     "shown": "Go into!",
+    "v": "ok"
+   },
+   {
+    "shown": "Go in!",
     "v": "ok"
    }
   ],
@@ -175,6 +262,10 @@
    {
     "shown": "He, she, or it looked with the eyes",
     "v": "ok"
+   },
+   {
+    "shown": "He, she, or it saw",
+    "v": "ok"
    }
   ],
   "form:el:εἶπεν": [
@@ -186,6 +277,30 @@
   "form:el:εἶχεν": [
    {
     "shown": "He, she, or it had",
+    "v": "ok"
+   }
+  ],
+  "form:el:εὐφρανθῆναι": [
+   {
+    "shown": "to be cheered",
+    "v": "ok"
+   }
+  ],
+  "form:el:εὐφρανθῶ": [
+   {
+    "shown": "I may be cheered",
+    "v": "ok"
+   }
+  ],
+  "form:el:εὐφρανθῶμεν": [
+   {
+    "shown": "We may be cheered",
+    "v": "ok"
+   }
+  ],
+  "form:el:εὑρέθη": [
+   {
+    "shown": "He, she, or it was found",
     "v": "ok"
    }
   ],
@@ -206,6 +321,10 @@
     "shown": "being sent ) to consult an oracle",
     "v": "false-meaning",
     "note": "θεωρέω means \"to look at, behold, observe\"; the oracle-envoy sense is a rare technical one"
+   },
+   {
+    "shown": "beholding",
+    "v": "ok"
    }
   ],
   "form:el:καθῆσθαι": [
@@ -232,6 +351,24 @@
     "v": "ok"
    }
   ],
+  "form:el:καταφαγών": [
+   {
+    "shown": "I eat till it is finished",
+    "v": "ok"
+   }
+  ],
+  "form:el:κατεφίλησεν": [
+   {
+    "shown": "I kiss affectionately",
+    "v": "ok"
+   }
+  ],
+  "form:el:κληθῆναι": [
+   {
+    "shown": "to be called",
+    "v": "ok"
+   }
+  ],
   "form:el:λέγει": [
    {
     "shown": "He, she, or it says",
@@ -254,6 +391,10 @@
    {
     "shown": "He, she, or it will be talked",
     "v": "ok"
+   },
+   {
+    "shown": "He, she, or it will be spoken",
+    "v": "ok"
    }
   ],
   "form:el:λαμβάνουσιν": [
@@ -265,6 +406,18 @@
   "form:el:μέριμναι": [
    {
     "shown": "care, worry, anxiety",
+    "v": "ok"
+   }
+  ],
+  "form:el:μίσθιοι": [
+   {
+    "shown": "a paid worker",
+    "v": "ok"
+   }
+  ],
+  "form:el:μισθίων": [
+   {
+    "shown": "a paid worker",
     "v": "ok"
    }
   ],
@@ -280,9 +433,28 @@
     "v": "ok"
    }
   ],
+  "form:el:παρεκάλει": [
+   {
+    "shown": "He, she, or it was summoning",
+    "v": "false-meaning",
+    "note": "parekalei here 'urged/pleaded'; 'was summoning' misleads"
+   }
+  ],
+  "form:el:παρῆλθον": [
+   {
+    "shown": "I passed by",
+    "v": "ok"
+   }
+  ],
   "form:el:περιήστραψεν": [
    {
     "shown": "I flash around like lightning",
+    "v": "ok"
+   }
+  ],
+  "form:el:περισσεύονται": [
+   {
+    "shown": "They exceed",
     "v": "ok"
    }
   ],
@@ -298,9 +470,25 @@
     "v": "ok"
    }
   ],
+  "form:el:ποίησόν": [
+   {
+    "shown": "Do!",
+    "v": "ok"
+   }
+  ],
   "form:el:ποιεῖν": [
    {
     "shown": "to make",
+    "v": "ok"
+   },
+   {
+    "shown": "to do",
+    "v": "ok"
+   }
+  ],
+  "form:el:πορευθείς": [
+   {
+    "shown": "having traveled",
     "v": "ok"
    }
   ],
@@ -322,9 +510,19 @@
     "v": "ok"
    }
   ],
+  "form:el:πορεύσομαι": [
+   {
+    "shown": "I will travel",
+    "v": "ok"
+   }
+  ],
   "form:el:προσελθών": [
    {
     "shown": "having arrived",
+    "v": "ok"
+   },
+   {
+    "shown": "having come near",
     "v": "ok"
    }
   ],
@@ -334,15 +532,31 @@
     "v": "ok"
    }
   ],
+  "form:el:προσκαλεσάμενος": [
+   {
+    "shown": "I summon",
+    "v": "ok"
+   }
+  ],
   "form:el:πρόσκαιροί": [
    {
     "shown": "temporary",
     "v": "ok"
    }
   ],
+  "form:el:σιτευτόν": [
+   {
+    "shown": "fattened",
+    "v": "ok"
+   }
+  ],
   "form:el:σκανδαλίζονται": [
    {
     "shown": "They are snared",
+    "v": "ok"
+   },
+   {
+    "shown": "They are caused to stumble",
     "v": "ok"
    }
   ],
@@ -394,16 +608,31 @@
     "v": "ok"
    }
   ],
+  "form:el:συναγαγών": [
+   {
+    "shown": "having gathered together",
+    "v": "ok"
+   }
+  ],
   "form:el:συνιῶσιν": [
    {
     "shown": "They may send together",
     "v": "false-meaning",
     "note": "συνιῶσιν is from συνίημι 'understand'; 'send together' is only the etymology"
+   },
+   {
+    "shown": "They may consider",
+    "v": "false-meaning",
+    "note": "synio/synion is understand, comprehend; consider is not the meaning"
    }
   ],
   "form:el:συνοδεύοντες": [
    {
     "shown": "accompanying",
+    "v": "ok"
+   },
+   {
+    "shown": "journeying with",
     "v": "ok"
    }
   ],
@@ -413,9 +642,33 @@
     "v": "ok"
    }
   ],
+  "form:el:φαγόντες": [
+   {
+    "shown": "having eaten",
+    "v": "ok"
+   }
+  ],
+  "form:el:χαρῆναι": [
+   {
+    "shown": "to be rejoiced",
+    "v": "ok"
+   }
+  ],
   "form:el:χειραγωγοῦντες": [
    {
     "shown": "I lead by the hand",
+    "v": "ok"
+   }
+  ],
+  "form:el:χορῶν": [
+   {
+    "shown": "a dance, dancing",
+    "v": "ok"
+   }
+  ],
+  "form:el:χοῖροι": [
+   {
+    "shown": "swine",
     "v": "ok"
    }
   ],
@@ -472,6 +725,11 @@
     "shown": "Active of the present!",
     "v": "false-meaning",
     "note": "ἀνάστηθι means \"Rise! Get up!\"; the shown text is a grammar label, not a meaning"
+   },
+   {
+    "shown": "Raise up!",
+    "v": "false-meaning",
+    "note": "anastethi is intransitive 'arise/get up'; 'Raise up!' reads as transitive"
    }
   ],
   "form:el:ἀνέβησαν": [
@@ -486,10 +744,21 @@
     "v": "ok"
    }
   ],
+  "form:el:ἀνέζησεν": [
+   {
+    "shown": "He, she, or it came to life again",
+    "v": "ok"
+   }
+  ],
   "form:el:ἀνέτειλεν": [
    {
     "shown": "He, she, or it raised up",
     "v": "ok"
+   },
+   {
+    "shown": "He, she, or it made to rise",
+    "v": "false-meaning",
+    "note": "anéteilen here is intransitive 'rose' (of the sun); 'made to rise' misleads"
    }
   ],
   "form:el:ἀναβλέψῃ": [
@@ -509,11 +778,22 @@
     "shown": "having actived of the present",
     "v": "false-meaning",
     "note": "ἀναστάς means \"having risen/stood up\"; the shown text is garbled grammar"
+   },
+   {
+    "shown": "having raised up",
+    "v": "false-meaning",
+    "note": "anastas is intransitive 'having risen'; 'having raised up' is transitive and wrong"
    }
   ],
   "form:el:ἀνεῳγμένων": [
    {
     "shown": "opened",
+    "v": "ok"
+   }
+  ],
+  "form:el:ἀπέλαβεν": [
+   {
+    "shown": "He, she, or it got back",
     "v": "ok"
    }
   ],
@@ -529,9 +809,38 @@
     "v": "ok"
    }
   ],
+  "form:el:ἀπέχοντος": [
+   {
+    "shown": "having in full",
+    "v": "false-meaning",
+    "note": "apecho here 'be distant'; 'having in full' is garbled and wrong for the sentence"
+   }
+  ],
+  "form:el:ἀπεδήμησεν": [
+   {
+    "shown": "I go into another country",
+    "v": "ok"
+   }
+  ],
+  "form:el:ἀπολωλώς": [
+   {
+    "shown": "having destroyed",
+    "v": "false-meaning",
+    "note": "apolololos is intransitive 'lost/perished'; 'having destroyed' is active and wrong"
+   }
+  ],
   "form:el:ἀπῆλθεν": [
    {
     "shown": "He, she, or it went away from",
+    "v": "ok"
+   },
+   {
+    "shown": "He, she, or it came or go away from",
+    "v": "false-meaning",
+    "note": "garbled 'came or go away from'; should be 'went away'"
+   },
+   {
+    "shown": "He, she, or it came away from",
     "v": "ok"
    }
   ],
@@ -576,6 +885,10 @@
     "shown": "He, she, or it ioniced",
     "v": "unknown",
     "note": "'ioniced' is not a meaning; ἐγένετο means 'it became/happened'"
+   },
+   {
+    "shown": "He, she, or it came into being",
+    "v": "ok"
    }
   ],
   "form:el:ἐγγίζειν": [
@@ -583,6 +896,10 @@
     "shown": "to bring near",
     "v": "false-meaning",
     "note": "here ἐγγίζω is intransitive \"to draw near, approach\", not \"bring near\""
+   },
+   {
+    "shown": "to come near",
+    "v": "ok"
    }
   ],
   "form:el:ἐδίδασκεν": [
@@ -603,15 +920,37 @@
     "v": "ok"
    }
   ],
+  "form:el:ἐκολλήθη": [
+   {
+    "shown": "I glue, cleave, keep company with",
+    "v": "ok"
+   }
+  ],
+  "form:el:ἐλθών": [
+   {
+    "shown": "having come",
+    "v": "ok"
+   }
+  ],
   "form:el:ἐμβάντα": [
    {
     "shown": "having stepped into",
+    "v": "ok"
+   },
+   {
+    "shown": "having embarked",
     "v": "ok"
    }
   ],
   "form:el:ἐνίσχυσεν": [
    {
     "shown": "I invigorate, strengthen",
+    "v": "ok"
+   }
+  ],
+  "form:el:ἐνδύσατε": [
+   {
+    "shown": "Put on! (plural)",
     "v": "ok"
    }
   ],
@@ -627,9 +966,33 @@
     "v": "ok"
    }
   ],
+  "form:el:ἐξελθών": [
+   {
+    "shown": "having gone out",
+    "v": "ok"
+   }
+  ],
+  "form:el:ἐξενέγκατε": [
+   {
+    "shown": "Bring out! (plural)",
+    "v": "ok"
+   }
+  ],
   "form:el:ἐξῆλθεν": [
    {
     "shown": "He, she, or it went out",
+    "v": "ok"
+   }
+  ],
+  "form:el:ἐπέπεσεν": [
+   {
+    "shown": "He, she, or it fell upon",
+    "v": "ok"
+   }
+  ],
+  "form:el:ἐπεθύμει": [
+   {
+    "shown": "He, she, or it was longing for",
     "v": "ok"
    }
   ],
@@ -637,17 +1000,30 @@
    {
     "shown": "having laid",
     "v": "ok"
+   },
+   {
+    "shown": "having put",
+    "v": "ok"
    }
   ],
   "form:el:ἐπικαλουμένους": [
    {
     "shown": "calling upon a god",
     "v": "ok"
+   },
+   {
+    "shown": "calling by an additional name",
+    "v": "false-meaning",
+    "note": "epikaloumenous means 'calling on (a name)', not 'calling by an additional name'"
    }
   ],
   "form:el:ἐπιστρέψωσιν": [
    {
     "shown": "They may turn about",
+    "v": "ok"
+   },
+   {
+    "shown": "They may turn back to",
     "v": "ok"
    }
   ],
@@ -655,9 +1031,43 @@
    {
     "shown": "He, she, or it made",
     "v": "ok"
+   },
+   {
+    "shown": "He, she, or it did",
+    "v": "ok"
+   }
+  ],
+  "form:el:ἐπυνθάνετο": [
+   {
+    "shown": "He, she, or it was asking",
+    "v": "ok"
+   }
+  ],
+  "form:el:ἐρχόμενος": [
+   {
+    "shown": "coming",
+    "v": "ok"
+   }
+  ],
+  "form:el:ἐρῶ": [
+   {
+    "shown": "I will say",
+    "v": "ok"
+   }
+  ],
+  "form:el:ἐσπλαγχνίσθη": [
+   {
+    "shown": "He, she, or it had pity on",
+    "v": "ok"
    }
   ],
   "form:el:ἐστίν": [
+   {
+    "shown": "He, she, or it is",
+    "v": "ok"
+   }
+  ],
+  "form:el:ἐστιν": [
    {
     "shown": "He, she, or it is",
     "v": "ok"
@@ -669,9 +1079,40 @@
     "v": "ok"
    }
   ],
+  "form:el:ἔδει": [
+   {
+    "shown": "He, she, or it was binding",
+    "v": "false-reading",
+    "note": "edei is imperfect of dei 'it was necessary', not deo 'bind'"
+   }
+  ],
+  "form:el:ἔδωκας": [
+   {
+    "shown": "You offered",
+    "v": "ok"
+   }
+  ],
   "form:el:ἔδωκεν": [
    {
     "shown": "He, she, or it offered",
+    "v": "ok"
+   }
+  ],
+  "form:el:ἔζησεν": [
+   {
+    "shown": "He, she, or it lived",
+    "v": "ok"
+   }
+  ],
+  "form:el:ἔθυσας": [
+   {
+    "shown": "You sacrificed",
+    "v": "ok"
+   }
+  ],
+  "form:el:ἔθυσεν": [
+   {
+    "shown": "He, she, or it sacrificed",
     "v": "ok"
    }
   ],
@@ -681,9 +1122,21 @@
     "v": "ok"
    }
   ],
+  "form:el:ἔπεμψεν": [
+   {
+    "shown": "He, she, or it sent",
+    "v": "ok"
+   }
+  ],
   "form:el:ἔπιεν": [
    {
     "shown": "He, she, or it drank",
+    "v": "ok"
+   }
+  ],
+  "form:el:ἔριφον": [
+   {
+    "shown": "a goat",
     "v": "ok"
    }
   ],
@@ -696,6 +1149,12 @@
   "form:el:ἔφαγεν": [
    {
     "shown": "He, she, or it ate",
+    "v": "ok"
+   }
+  ],
+  "form:el:ἔφη": [
+   {
+    "shown": "He, she, or it was saying",
     "v": "ok"
    }
   ],
@@ -721,11 +1180,27 @@
    {
     "shown": "He, she, or it was awakened",
     "v": "ok"
+   },
+   {
+    "shown": "He, she, or it was woken",
+    "v": "ok"
    }
   ],
   "form:el:ἠρώτων": [
    {
     "shown": "They were asking",
+    "v": "ok"
+   }
+  ],
+  "form:el:ἤγγισεν": [
+   {
+    "shown": "He, she, or it came near",
+    "v": "ok"
+   }
+  ],
+  "form:el:ἤθελεν": [
+   {
+    "shown": "He, she, or it was wishing",
     "v": "ok"
    }
   ],
@@ -738,6 +1213,32 @@
   "form:el:ἤκουσεν": [
    {
     "shown": "He, she, or it heard",
+    "v": "ok"
+   }
+  ],
+  "form:el:ἤρξαντο": [
+   {
+    "shown": "They reigned",
+    "v": "false-meaning",
+    "note": "erxanto is middle 'they began', not 'reigned'"
+   }
+  ],
+  "form:el:ἤρξατο": [
+   {
+    "shown": "He, she, or it reigned",
+    "v": "false-meaning",
+    "note": "erxato is middle 'he began', not 'reigned'"
+   }
+  ],
+  "form:el:ἤσθιον": [
+   {
+    "shown": "They were eating",
+    "v": "ok"
+   }
+  ],
+  "form:el:ἥκει": [
+   {
+    "shown": "He, she, or it has come",
     "v": "ok"
    }
   ],
@@ -763,6 +1264,10 @@
    {
     "shown": "They may look with the eyes",
     "v": "ok"
+   },
+   {
+    "shown": "They may see",
+    "v": "ok"
    }
   ],
   "form:el:ὄντας": [
@@ -771,9 +1276,25 @@
     "v": "ok"
    }
   ],
+  "form:el:ὑγιαίνοντα": [
+   {
+    "shown": "being well",
+    "v": "ok"
+   }
+  ],
   "form:el:ὑποδείξω": [
    {
     "shown": "I will show",
+    "v": "ok"
+   },
+   {
+    "shown": "I will show plainly",
+    "v": "ok"
+   }
+  ],
+  "form:el:ὑστερεῖσθαι": [
+   {
+    "shown": "to be lacking",
     "v": "ok"
    }
   ],
@@ -799,6 +1320,12 @@
   "lemma:el:αὐτός:PRON": [
    {
     "shown": "he, she, it, they, them, same",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:βίος:NOUN": [
+   {
+    "shown": "life, manner of life, livelihood",
     "v": "ok"
    }
   ],
@@ -832,6 +1359,12 @@
     "v": "ok"
    }
   ],
+  "lemma:el:γεμίζω:VERB": [
+   {
+    "shown": "I fill, load",
+    "v": "ok"
+   }
+  ],
   "lemma:el:γινώσκω:VERB": [
    {
     "shown": "I come to know, learn, realize",
@@ -860,6 +1393,10 @@
    {
     "shown": "to bind, tie, fasten, fetter",
     "v": "ok"
+   },
+   {
+    "shown": "I bind",
+    "v": "ok"
    }
   ],
   "lemma:el:δίδωμι:VERB": [
@@ -868,9 +1405,27 @@
     "v": "ok"
    }
   ],
+  "lemma:el:δακτύλιος:NOUN": [
+   {
+    "shown": "a finger-ring",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:δεῖ:VERB": [
+   {
+    "shown": "it is necessary, one must",
+    "v": "ok"
+   }
+  ],
   "lemma:el:διά:ADP": [
    {
     "shown": "through, on account of",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:διαιρέω:VERB": [
+   {
+    "shown": "I divide, distribute",
     "v": "ok"
    }
   ],
@@ -898,6 +1453,24 @@
     "v": "ok"
    }
   ],
+  "lemma:el:δουλεύω:VERB": [
+   {
+    "shown": "I am a slave, am subject to, obey",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:δοῦλος:NOUN": [
+   {
+    "shown": "a male slave",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:δύο:ADJ": [
+   {
+    "shown": "two",
+    "v": "ok"
+   }
+  ],
   "lemma:el:εἰμί:VERB": [
    {
     "shown": "I am, exist",
@@ -913,6 +1486,10 @@
   "lemma:el:εἰσέρχομαι:VERB": [
    {
     "shown": "to go into; to enter; to invade",
+    "v": "ok"
+   },
+   {
+    "shown": "I go in, come in, enter",
     "v": "ok"
    }
   ],
@@ -940,6 +1517,12 @@
     "v": "ok"
    }
   ],
+  "lemma:el:εὐφραίνω:VERB": [
+   {
+    "shown": "I cheer, am glad, make merry",
+    "v": "ok"
+   }
+  ],
   "lemma:el:εὑρίσκω:VERB": [
    {
     "shown": "I find",
@@ -952,11 +1535,21 @@
     "v": "ok"
    }
   ],
+  "lemma:el:θέλω:VERB": [
+   {
+    "shown": "I will, wish, desire",
+    "v": "ok"
+   }
+  ],
   "lemma:el:θεωρέω:VERB": [
    {
     "shown": "to be sent (as a θεωρός (theōrós)) to consult an oracle",
     "v": "false-meaning",
     "note": "θεωρέω means \"to look at, behold, observe\"; the oracle-envoy sense is a rare technical one"
+   },
+   {
+    "shown": "I behold, look at, experience",
+    "v": "ok"
    }
   ],
   "lemma:el:θεός:NOUN": [
@@ -987,6 +1580,10 @@
    {
     "shown": "to call, summon",
     "v": "ok"
+   },
+   {
+    "shown": "I call, invite, name",
+    "v": "ok"
    }
   ],
   "lemma:el:καλός:ADJ": [
@@ -1007,6 +1604,12 @@
     "v": "ok"
    }
   ],
+  "lemma:el:κεράτιον:NOUN": [
+   {
+    "shown": "a husk of the carob",
+    "v": "ok"
+   }
+  ],
   "lemma:el:κύριος:NOUN": [
    {
     "shown": "lord, Lord, master, sir",
@@ -1023,6 +1626,10 @@
    {
     "shown": "to talk, chat, prattle",
     "v": "ok"
+   },
+   {
+    "shown": "I speak, say",
+    "v": "ok"
    }
   ],
   "lemma:el:λαμβάνω:VERB": [
@@ -1031,9 +1638,19 @@
     "v": "ok"
    }
   ],
+  "lemma:el:λιμός:NOUN": [
+   {
+    "shown": "a famine, hunger",
+    "v": "ok"
+   }
+  ],
   "lemma:el:λοιπός:ADJ": [
    {
     "shown": "remaining, the rest of, other",
+    "v": "ok"
+   },
+   {
+    "shown": "left, left behind, the remainder",
     "v": "ok"
    }
   ],
@@ -1049,6 +1666,12 @@
     "v": "ok"
    }
   ],
+  "lemma:el:μέρος:NOUN": [
+   {
+    "shown": "a part, portion",
+    "v": "ok"
+   }
+  ],
   "lemma:el:μή:ADV": [
    {
     "shown": "not, lest",
@@ -1058,6 +1681,12 @@
   "lemma:el:μαθητής:NOUN": [
    {
     "shown": "a learner, disciple, pupil",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:μακρός:ADJ": [
+   {
+    "shown": "long, distant",
     "v": "ok"
    }
   ],
@@ -1085,6 +1714,18 @@
     "v": "ok"
    }
   ],
+  "lemma:el:μόσχος:NOUN": [
+   {
+    "shown": "a calf",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:νεκρός:ADJ": [
+   {
+    "shown": "dead, a corpse",
+    "v": "ok"
+   }
+  ],
   "lemma:el:οἰκία:NOUN": [
    {
     "shown": "a house, household",
@@ -1103,9 +1744,21 @@
     "v": "ok"
    }
   ],
+  "lemma:el:οὐδέποτε:ADV": [
+   {
+    "shown": "never",
+    "v": "ok"
+   }
+  ],
   "lemma:el:οὐδείς:ADJ": [
    {
     "shown": "no one, none, nothing",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:οὐκέτι:ADV": [
+   {
+    "shown": "no longer, no more",
     "v": "ok"
    }
   ],
@@ -1133,9 +1786,21 @@
     "v": "ok"
    }
   ],
+  "lemma:el:πάντοτε:ADV": [
+   {
+    "shown": "always, at all times",
+    "v": "ok"
+   }
+  ],
   "lemma:el:πάσχω:VERB": [
    {
     "shown": "I am acted upon, suffer",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:πέμπω:VERB": [
+   {
+    "shown": "I send",
     "v": "ok"
    }
   ],
@@ -1160,6 +1825,28 @@
   "lemma:el:παραδέχομαι:VERB": [
    {
     "shown": "to admit, accept, concede, allow (confess to be true or to be the case, typically with reluctance)",
+    "v": "ok"
+   },
+   {
+    "shown": "I receive, accept, acknowledge",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:παρακαλέω:VERB": [
+   {
+    "shown": "I summon, entreat, admonish, comfort",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:πατήρ:NOUN": [
+   {
+    "shown": "father, Father, ancestor",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:παῖς:NOUN": [
+   {
+    "shown": "a boy or girl child",
     "v": "ok"
    }
   ],
@@ -1191,6 +1878,16 @@
    {
     "shown": "to make",
     "v": "ok"
+   },
+   {
+    "shown": "I do, make",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:πολίτης:NOUN": [
+   {
+    "shown": "a citizen",
+    "v": "ok"
    }
   ],
   "lemma:el:πολύς:ADJ": [
@@ -1205,9 +1902,19 @@
     "v": "ok"
    }
   ],
+  "lemma:el:πούς:NOUN": [
+   {
+    "shown": "the foot",
+    "v": "ok"
+   }
+  ],
   "lemma:el:προσέρχομαι:VERB": [
    {
     "shown": "to arrive, show up (formal)",
+    "v": "ok"
+   },
+   {
+    "shown": "I come near, consent to",
     "v": "ok"
    }
   ],
@@ -1223,9 +1930,21 @@
     "v": "ok"
    }
   ],
+  "lemma:el:πρῶτος:ADJ": [
+   {
+    "shown": "first, before",
+    "v": "ok"
+   }
+  ],
   "lemma:el:πόλις:NOUN": [
    {
     "shown": "a city",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:πόρνη:NOUN": [
+   {
+    "shown": "a prostitute",
     "v": "ok"
    }
   ],
@@ -1244,6 +1963,24 @@
   "lemma:el:σκεῦος:NOUN": [
    {
     "shown": "a vessel to contain liquid, utensil, tackle",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:στολή:NOUN": [
+   {
+    "shown": "a long robe",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:συμφωνία:NOUN": [
+   {
+    "shown": "harmony of instruments, music",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:συνάγω:VERB": [
+   {
+    "shown": "I gather together",
     "v": "ok"
    }
   ],
@@ -1272,6 +2009,12 @@
     "note": "συνιῶσιν is from συνίημι 'understand', not σύνειμι 'be with'"
    }
   ],
+  "lemma:el:τέκνον:NOUN": [
+   {
+    "shown": "a child, descendant, inhabitant",
+    "v": "ok"
+   }
+  ],
   "lemma:el:τίς:PRON": [
    {
     "shown": "who, which, what",
@@ -1281,6 +2024,24 @@
   "lemma:el:τις:PRON": [
    {
     "shown": "any one, some one",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:τοσοῦτος:PRON": [
+   {
+    "shown": "so great",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:τράχηλος:NOUN": [
+   {
+    "shown": "the neck",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:τρέχω:VERB": [
+   {
+    "shown": "I run, exercise myself",
     "v": "ok"
    }
   ],
@@ -1308,6 +2069,12 @@
     "v": "ok"
    }
   ],
+  "lemma:el:φημί:VERB": [
+   {
+    "shown": "I say",
+    "v": "ok"
+   }
+  ],
   "lemma:el:φωνή:NOUN": [
    {
     "shown": "a sound, noise, voice",
@@ -1320,6 +2087,12 @@
     "v": "ok"
    }
   ],
+  "lemma:el:χαίρω:VERB": [
+   {
+    "shown": "I rejoice, am glad",
+    "v": "ok"
+   }
+  ],
   "lemma:el:χαρά:NOUN": [
    {
     "shown": "joy, gladness",
@@ -1329,6 +2102,12 @@
   "lemma:el:χείρ:NOUN": [
    {
     "shown": "a hand",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:ἀγρός:NOUN": [
+   {
+    "shown": "a field, the country",
     "v": "ok"
    }
   ],
@@ -1361,6 +2140,10 @@
     "shown": "active of the present, imperfect, future, and first aorist, and the perfect active ᾰ̓νέστᾰκᾰ (ănéstăkă)",
     "v": "false-meaning",
     "note": "ἀνίστημι means \"to raise up; to rise\"; shown text is a grammar label"
+   },
+   {
+    "shown": "I raise up, set up, rise from",
+    "v": "ok"
    }
   ],
   "lemma:el:ἀναβαίνω:VERB": [
@@ -1379,6 +2162,10 @@
    {
     "shown": "to go away from, depart from",
     "v": "ok"
+   },
+   {
+    "shown": "I come or go away from, depart, return",
+    "v": "ok"
    }
   ],
   "lemma:el:ἀπειλή:NOUN": [
@@ -1386,6 +2173,10 @@
     "shown": "boastful promises, boasts",
     "v": "false-meaning",
     "note": "ἀπειλή means \"threat, threatening\"; boasts is a marginal sense"
+   },
+   {
+    "shown": "a threatening, threat",
+    "v": "ok"
    }
   ],
   "lemma:el:ἀποστέλλω:VERB": [
@@ -1397,6 +2188,12 @@
   "lemma:el:ἀπό:ADP": [
    {
     "shown": "from, away from",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:ἀπόλλυμι:VERB": [
+   {
+    "shown": "I destroy, lose, am perishing",
     "v": "ok"
    }
   ],
@@ -1424,11 +2221,47 @@
     "v": "ok"
    }
   ],
+  "lemma:el:ἄν:PART": [
+   {
+    "shown": "an untranslatable word that makes a statement contingent",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:ἄνθρωπος:NOUN": [
+   {
+    "shown": "a man, one of the human race",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:ἄξιος:ADJ": [
+   {
+    "shown": "worthy, worthy of, deserving",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:ἄρτος:NOUN": [
+   {
+    "shown": "bread, a loaf, food",
+    "v": "ok"
+   }
+  ],
   "lemma:el:ἄρχω:VERB": [
    {
     "shown": "to begin",
     "v": "false-reading",
     "note": "ἤρχου is imperfect of ἔρχομαι \"you were coming\", not ἄρχω \"begin\""
+   },
+   {
+    "shown": "I reign, rule",
+    "v": "false-reading",
+    "note": "erchou is from erchomai 'you were going', not archo"
+   }
+  ],
+  "lemma:el:ἄσωτος:ADJ": [
+   {
+    "shown": "not saved; abandoned",
+    "v": "false-meaning",
+    "note": "asotos means profligate/dissolute; 'not saved; abandoned' is etymological and misleading"
    }
   ],
   "lemma:el:ἅγιος:ADJ": [
@@ -1443,9 +2276,19 @@
     "v": "ok"
    }
   ],
+  "lemma:el:ἐγγίζω:VERB": [
+   {
+    "shown": "I come near, approach",
+    "v": "ok"
+   }
+  ],
   "lemma:el:ἐγείρω:VERB": [
    {
     "shown": "to awaken, wake up, rouse, stir",
+    "v": "ok"
+   },
+   {
+    "shown": "I wake, arouse, raise up",
     "v": "ok"
    }
   ],
@@ -1458,6 +2301,12 @@
   "lemma:el:ἐκ:ADP": [
    {
     "shown": "from out, out from among, from",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:ἐκεῖ:ADV": [
+   {
+    "shown": "there, yonder, thither",
     "v": "ok"
    }
   ],
@@ -1477,11 +2326,27 @@
    {
     "shown": "to blow or breathe upon",
     "v": "ok"
+   },
+   {
+    "shown": "I breathe, breathe into, inhale",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:ἐμός:ADJ": [
+   {
+    "shown": "mine",
+    "v": "ok"
    }
   ],
   "lemma:el:ἐν:ADP": [
    {
     "shown": "in, on, among",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:ἐντολή:NOUN": [
+   {
+    "shown": "an ordinance, injunction, command",
     "v": "ok"
    }
   ],
@@ -1494,6 +2359,10 @@
   "lemma:el:ἐξέρχομαι:VERB": [
    {
     "shown": "to go out, come out (usually with genitive)",
+    "v": "ok"
+   },
+   {
+    "shown": "I go out, come out",
     "v": "ok"
    }
   ],
@@ -1525,17 +2394,36 @@
    {
     "shown": "to lay, put or place upon",
     "v": "ok"
+   },
+   {
+    "shown": "I put, place upon, lay on",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:ἐπυνθάνετο:VERB": [
+   {
+    "shown": "third-person singular imperfect middle/passive indicative of πῠνθάνομαι (pŭnthánomai)",
+    "v": "unknown",
+    "note": "shown is only a grammatical pointer, and the headword is an inflected form, not a lemma"
    }
   ],
   "lemma:el:ἐρωτάω:VERB": [
    {
     "shown": "to ask",
     "v": "ok"
+   },
+   {
+    "shown": "I ask, question, request",
+    "v": "ok"
    }
   ],
   "lemma:el:ἐσθίω:VERB": [
    {
     "shown": "to eat; to devour; to consume",
+    "v": "ok"
+   },
+   {
+    "shown": "I eat",
     "v": "ok"
    }
   ],
@@ -1569,6 +2457,12 @@
     "v": "ok"
    }
   ],
+  "lemma:el:ἔτος:NOUN": [
+   {
+    "shown": "a year",
+    "v": "ok"
+   }
+  ],
   "lemma:el:ἔχω:VERB": [
    {
     "shown": "I have, hold, possess",
@@ -1584,6 +2478,12 @@
   "lemma:el:ἤ:CONJ": [
    {
     "shown": "or, than",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:ἥκω:VERB": [
+   {
+    "shown": "I have come, am present",
     "v": "ok"
    }
   ],
@@ -1609,6 +2509,10 @@
    {
     "shown": "to stand; to set (to make stand)",
     "v": "ok"
+   },
+   {
+    "shown": "I cause to stand, stand",
+    "v": "ok"
    }
   ],
   "lemma:el:Ἰερουσαλήμ:PROPN": [
@@ -1632,6 +2536,12 @@
   "lemma:el:Ἰσραήλ:PROPN": [
    {
     "shown": "Israel",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:ὀργίζω:VERB": [
+   {
+    "shown": "to anger, irritate",
     "v": "ok"
    }
   ],
@@ -1662,6 +2572,10 @@
   "lemma:el:ὁράω:VERB": [
    {
     "shown": "to look with the eyes",
+    "v": "ok"
+   },
+   {
+    "shown": "I see, look upon, experience",
     "v": "ok"
    }
   ],
@@ -1723,6 +2637,16 @@
    {
     "shown": "to show",
     "v": "ok"
+   },
+   {
+    "shown": "I show plainly, teach, warn",
+    "v": "ok"
+   }
+  ],
+  "lemma:el:ὑστερέω:VERB": [
+   {
+    "shown": "I am lacking, fall short, suffer need",
+    "v": "ok"
    }
   ],
   "lemma:el:ὡς:CONJ": [
@@ -1754,7 +2678,17 @@
     "shown": "force, swing, rush of a body in motion",
     "v": "false-meaning",
     "note": "in the NT ῥύμη is \"lane, street\"; \"force, rush\" is a marginal classical sense"
+   },
+   {
+    "shown": "a street, lane",
+    "v": "ok"
    }
   ]
- }
+ },
+ "heldResidue": [
+  "form:el:παρεκάλει",
+  "form:el:ἀπέχοντος",
+  "form:el:ἀπολωλώς",
+  "lemma:el:ἄσωτος:ADJ"
+ ]
 }

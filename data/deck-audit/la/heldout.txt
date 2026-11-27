@@ -1,95 +1,91 @@
-# HELD-OUT half (la): never read while the gate or a known-limits list was written. Written for the deck audit by an AI model (not a native speaker); no rights are claimed by anyone else. One sentence per line.
-# simple narrative
-Agricola in agro laborat et filiam suam docet.
-Puer ad scholam it, sed magistrum non videt.
-Romani urbem magnis muris munierunt.
-Mater cum liberis in horto sedebat et fabulam narrabat.
-Nautae navem in portum duxerunt, quia tempestas appropinquabat.
-Hostes ex silva venerunt et castra nostra oppugnaverunt.
-Pater filium ad urbem misit, ut libros emeret.
-Duces exercitum trans flumen duxerunt et in colle castra posuerunt.
-Puellae in via ambulabant et flores carpebant.
-Servus dominum suum per forum secutus est.
-Cum sol occidisset, omnes in villam rediverunt.
-Magister discipulos tacere et audire iussit.
-Equites in proelium cucurrerunt, sed hostes fugerunt.
-Rex civibus pacem dedit et bellum finivit.
-In villa nostra multae oves et boves vivunt.
-Frater meus librum legit, soror autem cantat.
-Viator iter longum fecerat et fessus ad tabernam venit.
-Milites per tres dies sine cibo pugnabant.
-Aqua ex monte currit et agros nostros rigat.
-Femina vetula in casa parva habitabat, quae prope silvam erat.
-Consul cum senatoribus de bello consilium cepit.
-Pueri in schola litteras discunt et poetas legunt.
-Postquam nuntius venit, urbs tota timebat.
-Canis fidelis dominum per noctem custodiebat.
-Agricolae frumentum metunt, nam aestas iam finem habet.
-Puella matrem rogavit ut sibi pomum daret.
-Legati ad regem missi sunt, qui pacem peterent.
-In urbe magna templa et alta aedificia erant.
-Navis per mare lente navigabat, et nautae terram non videbant.
-Paucis diebus post, pater domum rediit multaque dona attulit.
-Hostes oppidum obsederunt, sed cives fortiter se defenderunt.
-Liberi in via ludebant, cum subito pluvia coepit.
-Dominus servos ad agrum misit, ut arbores caederent.
-Magister librum novum discipulis ostendit, quem pueri laeti spectaverunt.
-Olim in Italia rex bonus regnabat, qui populum suum amabat.
-# dialogue
-Salve, amice! Quomodo te habes hodie?
-Bene me habeo, gratias tibi ago. Et tu?
-Quo vadis, Marce, tam mane?
-Ad forum eo, nam panem emere volo.
-Quid agis, mater? Cenam paras?
-Ita, fili, sed adiuva me, quaeso.
-Ubi est liber meus? Eum nusquam invenio.
-In mensa iacet, prope lucernam.
-Cur tam tristis es, Livia?
-Quia frater meus aegrotat et medicus non venit.
-Quantum constat hic piscis, mercator?
-Quinque denarios postulo, sed tibi quattuor dabo.
-Quando domum redibis, pater?
-Ante noctem redibo, si deus voluerit.
+# HELD-OUT half (la), written 2026-11-27: no rule or list was written from it (it was read once with the seed list alone). Written for the deck audit by an AI model (not a Latinist); no rights are claimed by anyone else. One sentence per line.
+Hesterno die ad forum cum patre ambulavi.
+Puella in silva parvam aquam vidit.
+Milites per noctem ad montem contenderunt.
+Pater nobis de longa via narravit.
+Aestate in villam avi iter fecimus.
+Servus panem et vinum ad dominum portavit.
+Cum in urbem venissem, amicum meum statim quaesivi.
+Mater filiam ad medicum duxit, quia dolebat.
+Nautae tempestatem timuerunt et in portum redierunt.
+Magister pueros in scholam vocavit et librum ostendit.
+Heri multas horas in agro laboravimus.
+Puer canem in via invenit et domum portavit.
+Postquam sol occidit, omnes ad cenam convenerunt.
+Viator fessus sub arbore diu sedit.
+Agricola equum vendidit et novum bovem emit.
+Ego in flumine natavi, sed aqua frigida erat.
+Soror mea litteras ad patrem scripsit.
+Pastor ovem perditam in monte tandem invenit.
+Quo vadis, amice, tam mane?
+Ad forum eo, ut panem emam.
+Quid agis hodie, mater mea carissima?
+Bene valeo, sed multum laboro.
+Cur tam tristis es, frater?
+Quia librum meum in horto amisi.
+Quanti constat hic equus tuus, mercator?
+Centum denarios pro equo postulo, domine.
+Ubi habitas, puer, et quis pater tuus est?
+In parva casa prope fluvium habito.
 Potesne mihi viam ad portum monstrare?
-Recta via procede, deinde ad sinistram flecte.
-Quis hoc fecit? Dic mihi verum!
-Ego non feci, domine, sed servus tuus.
-Veni mecum, amice, et spectabimus ludos.
-Libenter veniam, sed prius opus meum finire debeo.
-# sententiae
-Qui multa promittit, raro omnia praestat.
-Amicus verus in adversis rebus cognoscitur.
-Labor longus est magister optimus.
-Nemo sapiens est qui se ipsum non cognoscit.
-Facta diu manent, verba cito pereunt.
-Divitiae sine sapientia custodem non habent.
-Qui tacet, non semper assentitur.
-Dies celeriter currunt, sed virtus semper manet.
-Pauper non est qui parvo contentus vivit.
-Quod difficile est, saepe maxime utile est.
-Stultus vitium alterius videt, suum non videt.
-Prudens futura prospicit, stultus praeterita lamentatur.
-Fortuna inconstans est, virtus firma.
-Iustitia sine misericordia crudelitas est.
-Qui parum curat de hodie, cras dolebit.
-# ecclesiastical
-Sacerdos in ecclesia missam celebrat, et populus devote orat.
-Fideles ad altare conveniunt ut Deum laudent.
-Episcopus hodie novum templum benedixit.
-Monachi in monasterio mane surgunt et psalmos cantant.
-Parochus pauperibus panem dat et infirmos visitat.
-Maria virgo mater Dei est et omnibus gratiam impetrat.
-Dominus noster nos amat et peccata nostra ignoscit.
-Pueri catechismum discunt ut fidem suam bene cognoscant.
-Omnes christiani in die dominico ad ecclesiam veniunt.
-Sancti pro nobis orant apud Deum.
-Peregrini ad sanctum sepulcrum iter fecerunt et ibi diu oraverunt.
-Abbas fratribus dixit eos in caritate vivere debere.
-Campanae ecclesiae sonant, et fideles ad vesperas vocantur.
-Quando ecclesiam intramus, genua flectimus et signum crucis facimus.
-Papa epistolam ad omnes episcopos misit de pace et iustitia.
-Peccatores veniam petunt, et Deus misericors eos recipit.
-In Quadragesima ieiunamus et eleemosynam pauperibus damus.
-Sacerdos infantem baptizavit et nomen sancti ei dedit.
-Spes nostra in Christo est, qui mortem vicit.
-Orate, fratres, ut Deus preces nostras exaudiat.
+Recta via ambula et ad forum perveni.
+Quid hodie in cena habemus?
+Pisces et olivas et panem habemus.
+Cur tam sero ad domum venisti, serve?
+Via longa erat et pluvia magna.
+Visne mecum in hortum venire?
+Libenter veniam, sed prius patrem rogabo.
+Hodie consules novi in senatum venerunt.
+Magna tempestas naves in mari delevit.
+Hostes ad portas urbis appropinquant.
+In foro hodie multi cives convenerunt.
+Rex legatos ad finitimos populos misit.
+Incendium domos multas in urbe consumpsit.
+Agricolae propter siccitatem frumentum non habent.
+Pons novus super flumen aedificatur.
+Ludi magni in circo mox fient.
+Senatores de pace diu disputaverunt.
+Nuntius ex Graecia litteras novas attulit.
+Aqua fluminis agros vicinos inundavit.
+Exercitus noster hostes in proelio vicit.
+Mercatores ex Asia multas merces in portum advexerunt.
+Medicus novum remedium contra febrem invenit.
+Cras iudices causam difficilem audient.
+Montes nive alta teguntur et via clausa est.
+Multi cives in theatro fabulam novam spectaverunt.
+Aquam in ollam funde et ignem accende.
+Carnem cum oleo et sale coque.
+Farinam cum aqua misce et panem fac.
+Portam claude et clavem in mensa pone.
+Equum ad flumen duc et aquam ei da.
+Librum aperi et primam paginam lege.
+Semina in terram pone et aquam adde.
+Noli in via currere, sed lente ambula.
+Stilum cape et nomen tuum in tabula scribe.
+Vinum aqua miscete antequam bibatis.
+Lucernam accende, nam nox iam venit.
+Navem ad ripam religa et nautas expecta.
+Ante cenam manus tuas aqua lava.
+Cave canem et ianuam clausam tene.
+Oleum in lucernam infunde, ne lumen exstinguatur.
+Pueri, tacete et magistrum diligenter audite.
+Cultrum acutum cape et caseum divide.
+Rotam currus repara, nam fracta est.
+Domus nostra parva est, sed hortus magnus.
+Vicinus meus senex est et saepe fabulas narrat.
+Hiems frigida est et dies breves sunt.
+In urbe multae viae angustae et altae domus sunt.
+Avus meus vir sapiens erat et omnes eum amabant.
+Aestate flores in agris pulchri sunt.
+Templum antiquum in summo monte stat.
+Puella pulchra cantat et omnes eam audiunt.
+Mare hodie quietum est et caelum clarum.
+Silva densa est et arbores altae sunt.
+Magister noster severus est, sed iustus.
+Pueri in schola libenter discunt, sed ludos magis amant.
+Hortus avi plenus erat malorum et florum.
+Nox obscura erat et luna non lucebat.
+Mater mea coquit optime et omnes cenam laudant.
+Fons frigidus sub arbore magna fluit.
+Equus albus celer est, sed asinus lentus.
+Autumnus fructus dulces et vinum bonum nobis dat.

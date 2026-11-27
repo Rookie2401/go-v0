@@ -138,7 +138,7 @@ export const LA_TUTORIAL_STEPS_OWN: TutorialStep[] = [
 export const LA_TUTORIAL: Tutorial = orientation({
   languageId: 'la',
   languageName: 'Latin',
-  practice: { instruction: 'Select the word that means word.', sentence: 'In principio erat Verbum, et Verbum erat apud Deum.', target: 'Verbum' },
+  practice: { instruction: 'Select the word that means word.', sentence: 'In principio erat Verbum', target: 'Verbum' },
   cardFeatureNote: 'A Latin card shows the case and gender of a noun, for example “Nom,Acc” where one ending serves both, and the person, number and tense of a verb where the analyser knows them.',
   thin: [
     'Its word list grows from a seed of about 1,900 lexemes to about 52,000 once the full lexicon has loaded; before that, a word outside the seed gets a marked guess or nothing.',

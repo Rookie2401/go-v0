@@ -41,4 +41,17 @@ describe.skipIf(!present)('hand corrections', () => {
     expect(c?.notes?.pinned).toBe('yes');
     expect(first(other, otherForm)?.notes?.pinned, other).toBeUndefined();
   });
+
+  // the audit of a7fbdf90: sentences a pin must leave alone
+  it.each([
+    ['아이 옷이 너무 컸어요.', '컸어요'],
+    ['아이 신발이 컸어요.', '컸어요'],
+    ['아이 목소리가 컸어요.', '컸어요'],
+    ['아이가 있는 집은 컸어요.', '컸어요'],
+    ['천천히 걸어 주세요.', '걸어'],
+    ['같이 걸어 주세요.', '걸어'],
+    ['길을 걸어 두세 시간 갔어요.', '걸어'],
+  ] as const)('%s: %s is not pinned', (sentence, form) => {
+    expect(first(sentence, form)?.notes?.pinned).toBeUndefined();
+  });
 });

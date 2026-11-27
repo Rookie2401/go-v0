@@ -15,7 +15,7 @@
  * Sentence-level reordering is not done here (korean/sentence.ts).
  */
 import type { AnalysisCandidate, AnalysisOrigin, AnalyzedToken, PartOfSpeech, RawToken, WordPart } from '../../core';
-import { VOWELS, isHangulSyllable, koNormalize, originalSpan, scriptOf, syllablesOf } from './hangul';
+import { FINALS, VOWELS, decompose, isHangulSyllable, koNormalize, originalSpan, scriptOf, syllablesOf } from './hangul';
 import {
   type KoLexEntry, KO_PREDICATE_TAGS, koBareLemma, koEntryLemma, koHomonymSetKey, koLexiconGeneration, koSharedPos, lookupKoreanStem,
 } from './index-store';
@@ -336,6 +336,10 @@ const isExist = (stem: string): boolean => /[있없밌]$/u.test(stem) || stem ==
  *  is put before a same-spelled predicate form whatever the counts, and only these decide a split against a whole word by the counts. */
 const KO_CORE_PARTICLE_IDS: ReadonlySet<string> = new Set(['subject', 'object', 'topic', 'also', 'of', 'to', 'at', 'at-short', 'and', 'only', 'by', 'to-person', 'to-person-hante', 'to-person-hon', 'from', 'until']);
 
+/** Rule 2 (round fourteen): at token level a RARE rival of another headword is set aside below the credit floor (see finish()). The
+ *  owner may reverse it: switch it off here. The second clause (a common rival dwarfed twenty times) is measured only, not on. */
+export const KO_RARE_RIVAL_RULE = { on: true, dwarfed20: false };
+
 let orderSeq = 0;
 function baseScore(entry: KoLexEntry | undefined, stemSyl: number, nMorph: number, violations: number): number {
   return Math.log10(1 + (entry?.n ?? 0)) + 0.3 * stemSyl - 0.35 * nMorph + (violations ? 0 : 0.5);
@@ -404,8 +408,29 @@ function predicateReadings(c: Ctx, stem: string, entry: KoLexEntry, sourceId: st
   return out;
 }
 
-function nominalReadings(c: Ctx, prefixUnits: number, stemKey: string, entry: KoLexEntry, sourceId: string, origin: AnalysisOrigin): Reading[] {
-  const q = c.units[prefixUnits - 1].j1;
+/** Rule 1 (round fourteen), THE CONTRACTED COPULA: a vowel-final nominal + the copula not written + an ending whose first consonant joins the
+ *  nominal's last syllable (ㅂ니다, ㅂ니까, ㅂ시다, ㄴ데, ㄴ데요, ㄴ가, ㄴ지 …): the copula's own ending table, realised on the nominal's last
+ *  syllable, keeping only the endings that begin with that consonant (ㅂ or ㄴ) and are no adnominal (-ㄴ before a noun is 건 / 전, the fused
+ *  forms). */
+function contractedCopulaConts(c: Ctx, prefixUnits: number, stemKey: string): Tail[] {
+  const u = c.units[prefixUnits - 1];
+  const last = koSyls([...stemKey].pop() ?? '');
+  if (!last || last[0].t !== '') return [];
+  const q = u.j1 - 1;
+  const out: Tail[] = [];
+  for (const t of parseChain(c, u.j0, { kind: 'stem', syls: last, cls: 'Cop', vowelNoun: true }, { slot: 0, kind: 'C', exist: false, hon: false, fut: false })) {
+    const first = t.parts[0];
+    if (!first?.ending || first.ending.tag === 'ETM' || first.js !== q || !/^-?[ㅂㄴ]/u.test(first.text)) continue;
+    const cop: PartRec = { js: q, je: q, text: '이', lemma: KO_COPULA.lemma, pos: 'AUX', tag: 'VCP', role: 'copula 이다 (is), not written: its ending joins the last syllable of the word before', kind: 'clitic', copula: true };
+    out.push({ ...t, hostEnd: q, parts: [cop, ...t.parts], copulaDrop: true });
+  }
+  return out;
+}
+
+function nominalReadings(c: Ctx, prefixUnits: number, stemKey: string, entry: KoLexEntry, sourceId: string, origin: AnalysisOrigin, contracted = false): Reading[] {
+  // contracted: the copula is not written and its ending's first consonant is the final of the nominal's last syllable (겁니다 = 거 + 이 +
+  // -ㅂ니다): the nominal ends one letter before its syllable does
+  const q = contracted ? c.units[prefixUnits - 1].j1 - 1 : c.units[prefixUnits - 1].j1;
   const tag = entry.tag;
   if (tag.startsWith('X') && tag !== 'XR') return [];
   const bound = (entry as { bound?: boolean }).bound ?? (tag === 'NP' && KO_BOUND_CONTRACTIONS.has(entry.lemma));
@@ -413,7 +438,8 @@ function nominalReadings(c: Ctx, prefixUnits: number, stemKey: string, entry: Ko
   const isHanja = !isHangulSyllable(stemKey[0]);
   const soundOverride = isHanja ? soundOfWord(entry.lemma) : undefined;
   let conts: Tail[];
-  if (tag === 'XR') conts = nounCont(c, q, { allowCopula: false, lightNoun: stemKey, rootOnly: true });
+  if (contracted) conts = ['NNG', 'NNB', 'NP'].includes(tag) ? contractedCopulaConts(c, prefixUnits, stemKey) : [];
+  else if (tag === 'XR') conts = nounCont(c, q, { allowCopula: false, lightNoun: stemKey, rootOnly: true });
   else if (tag === 'MM' || tag === 'IC') conts = q === c.K.length ? [{ hostEnd: q, parts: [], violations: 0, contracted: false, copulaDrop: false, spacing: false }] : [];
   else if (tag === 'MAJ') conts = q === c.K.length ? [{ hostEnd: q, parts: [], violations: 0, contracted: false, copulaDrop: false, spacing: false }] : nounCont(c, q, { allowCopula: false, magOnly: true }).filter((t) => t.parts.length === 1 && t.parts[0].particle?.id === 'polite');
   else if (tag === 'MAG') conts = nounCont(c, q, { allowCopula: false, magOnly: true, soundOverride });
@@ -438,6 +464,7 @@ function nominalReadings(c: Ctx, prefixUnits: number, stemKey: string, entry: Ko
     let score = baseScore(entry, prefixUnits, t.parts.length + 1, t.violations);
     if (t.copulaDrop) score -= 0.2;
     const notes: Record<string, string | string[]> = isHanja ? { hanja: stemKey } : {};
+    if (contracted) notes.contractedCopula = 'yes';
     if (bound) score -= 1.5; // the fused reading (저 + 의) is the learner's item
     if (!t.parts.length && CLOSED_TAGS.has(tag) && !bound) { score += 1.2; notes.context = 'a closed-class word written alone: commoner than a predicate form of the same spelling'; }
     if (light) {
@@ -999,6 +1026,30 @@ function rankAdjust(readings: Reading[]): void {
       r.notes.context = 'a rarer row of another class of the same word, after the commoner one';
     }
   }
+  // ROUND FOURTEEN, RULE 1: a contracted-copula reading (거 + 이 + -ㅂ니다 = 겁니다), and the copula left out before -니까 (거 + 이 + -니까 =
+  // 거니까), is a live reading when the nominal is a counted word that the counts do not dwarf: no predicate reading of the same form, or
+  // the nominal's count at least a quarter of the commonest such predicate's (거 107 / 걸다 30: live, and first; 저 58 / 절다: live). Then the
+  // two are ordered by the counts and both stay creditable, for the sentence to decide. Otherwise it stays below the credit floor (가 10 /
+  // 가다 815, 하 55 / 하다 4576, 사 20 / 살다, 오 2 / 오다: 갑니다, 합니다, 삽니다, 옵니다 stay their verbs alone).
+  {
+    const dropCop = (r: Reading) => !r.unconfirmed && ['NNG', 'NNB', 'NP'].includes(r.stemTag) && r.parts.some((p) => p.copula && p.je <= p.js) &&
+      (r.notes.contractedCopula !== undefined || r.parts.some((p) => p.ending?.id === 'because'));
+    const preds = readings.filter((o) => isPred(o) && o.stemTag !== 'VX' && !o.unconfirmed);
+    const pN = Math.max(0, ...preds.map((o) => o.entry?.n ?? 0));
+    const topPred = preds.reduce<Reading | undefined>((a, b) => (!a || b.cap > a.cap || (b.cap === a.cap && b.score > a.score) ? b : a), undefined);
+    for (const r of readings) {
+      if (!dropCop(r)) continue;
+      const nN = r.entry?.n ?? 0;
+      const live = preds.length ? nN > 0 && 4 * nN >= pN : !!r.entry;
+      if (!live) { r.cap = Math.min(r.cap, CAP.floor); r.notes.credit = 'not a live rival'; continue; }
+      r.notes.liveCopula = 'yes';
+      r.cap = CAP.full;
+      // the verb of the same form stays creditable too, even with no count (접니다: 절다 "to limp"; 다리를 접니다 is the sentence's to decide)
+      for (const o of preds) if (o.stemTag !== 'VA' || o.entry?.n) o.notes.liveWhole = 'yes';
+      if (topPred) r.score = nN >= pN ? Math.max(r.score, topPred.score + 0.05) : Math.min(r.score, topPred.score - 0.05);
+      r.notes.context = 'the copula not written: its ending joins the word before';
+    }
+  }
   // FINAL ROUND, (M-a) A COUNTER + PARTICLE needs a numeral before it, which a token alone never has: a common noun of the same spelling
   // and the same particles, counted above the faint level (more than 2: so not 번 "occasion" 2 beside 번 "times"), reads first, and the
   // counter stays a live rival for the sentence layer's numeral + counter frame (개도 → 개 "dog" + 도, then 개 "item"; 두 개도 → the counter).
@@ -1213,7 +1264,7 @@ function finish(c: Ctx, readings: Reading[]): AnalysisCandidate[] {
   const top = list[0]?.r;
   if (top && (top.sourceId === KO_SOURCE_IDS.closed || top.notes.fused !== undefined)) {
     for (const x of list.slice(1)) {
-      const dropped = x.r.parts.some((p) => p.copula && p.je <= p.js) && [...x.r.stemKey].length === 1;
+      const dropped = x.r.parts.some((p) => p.copula && p.je <= p.js) && [...x.r.stemKey].length === 1 && !x.r.notes.liveCopula;
       const rare = x.morph.SpeechLevel === 'Hage' || x.morph.SpeechLevel === 'Hao';
       if (dropped || rare) x.r.cap = Math.min(x.r.cap, 0.7);
     }
@@ -1227,12 +1278,41 @@ function finish(c: Ctx, readings: Reading[]): AnalysisCandidate[] {
     for (const x of list.slice(1)) if ((rareRow(x.r) || faint(x.r)) && !x.r.notes.liveWhole) { x.r.cap = Math.min(x.r.cap, CAP.floor); x.r.notes.rare = 'not seen in the counts'; }
     list = [list[0], ...list.slice(1).sort(order)];
   }
+  // ROUND FOURTEEN, RULE 2 (switch: KO_RARE_RIVAL_RULE): A RARE RIVAL IS NO LIVE RIVAL, for two kinds of pair only:
+  //   (i) two PREDICATES of different headwords spelling the same form WITH THE SAME ENDING, not an adnominal (not 들러: 들다 + -러 / 들르다 + -어; not 갈, 가는, 사는: the object before them decides): the rarer is set aside below the credit floor when the first
+  //       reading's count is at least four times its own and its own is under 30 (주세요: 주다 916 / 줄다 20; 갈게요, 가세요: 가다 / 갈다 14;
+  //       길어요: 길다 / 긷다 1);
+  //   (ii) a listed WHOLE word with no count at all against a counted first reading of the same letters (이게, 그게 NP; 누가 "Luke"; 목이).
+  // Never: a listed word that has a count (알 "egg" beside 알다; 가지, 가게, 정도, 회의 against a verb + ending); a noun + particle against a
+  // predicate; the leader's own headword; rule 1's copula + verb pair (the verb stays creditable however rare: 접니다, 겁니다).
+  // The measured second clause (dwarfed20, off) would also set aside any counted rival of another headword the first reading dwarfs twenty
+  // times (가요 "song" 32 beside 가다 815).
+  if (KO_RARE_RIVAL_RULE.on && list.length > 1 && !list[0].r.unconfirmed) {
+    const lead = list[0].r;
+    const leadN = lead.entry?.n ?? 0;
+    const corePair = (a: Reading, b: Reading) => {
+      const nounCore = (r: Reading) => ['NNG', 'NNB', 'NP', 'NR', 'NNP'].includes(r.stemTag) && r.parts.length >= 2 && r.parts.slice(1).every((p) => !!p.particle && KO_CORE_PARTICLE_IDS.has(p.particle.id));
+      return (nounCore(a) && KO_PREDICATE_TAGS.has(b.stemTag)) || (nounCore(b) && KO_PREDICATE_TAGS.has(a.stemTag));
+    };
+    // rule 1's pair: a live contracted copula and a verb of the same form (겁니다: 거 / 걸다; 접니다: 저 / 절다) both stay creditable
+    const copulaPair = (a: Reading, b: Reading) => (!!a.notes.liveCopula && KO_PREDICATE_TAGS.has(b.stemTag)) || (!!b.notes.liveCopula && KO_PREDICATE_TAGS.has(a.stemTag));
+    if (leadN > 0) for (const x of list.slice(1)) {
+      const r = x.r;
+      if (r.unconfirmed || r.cap <= CAP.floor || koBareLemma(r.lemma) === koBareLemma(lead.lemma) || corePair(lead, r) || copulaPair(lead, r)) continue;
+      const n = r.sourceId === KO_SOURCE_IDS.closed ? Infinity : r.entry?.n ?? 0;
+      const lastEnding = (x: Reading) => [...x.parts].reverse().find((p) => p.ending)?.ending?.id;
+      const predPair = KO_PREDICATE_TAGS.has(lead.stemTag) && KO_PREDICATE_TAGS.has(r.stemTag) && lastEnding(lead) === lastEnding(r) && ![...r.parts].reverse().find((p) => p.ending)?.ending?.tag?.startsWith('ETM') && leadN >= 4 * n && n < 30;
+      const uncountedWhole = r.parts.length === 1 && !KO_PREDICATE_TAGS.has(r.stemTag) && !!r.entry && r.sourceId !== KO_SOURCE_IDS.closed && n === 0;
+      if (predPair || uncountedWhole || (KO_RARE_RIVAL_RULE.dwarfed20 && leadN >= 20 * n)) { r.cap = CAP.floor; r.notes.credit = 'a rare rival'; }
+    }
+    list = [list[0], ...list.slice(1).sort(order)];
+  }
   if (list.length > 1) {
     const undecided = new Set(list.filter((x) => x.r.notes.homonym === 'undecided').map((x) => `${x.r.lemma}|${x.r.pos}`));
     for (const x of list.slice(1)) {
       const r = x.r;
       const numberedAfterUndecided = !!r.entry?.hom && r.entry.set === 'balanced' && r.notes.homonym !== 'undecided' && undecided.has(`${koBareLemma(r.lemma)}|${r.pos}`);
-      const droppedCopula = r.parts.some((p) => p.copula && p.je <= p.js);
+      const droppedCopula = r.parts.some((p) => p.copula && p.je <= p.js) && !r.notes.liveCopula;
       const shortName = r.stemTag === 'NNP' && [...r.stemKey].length === 1 && !r.notes.liveWhole; // a surname kept live by the final round stays
       // an auxiliary reading is a rival only after a connective form, which the sentence layer sees (it raises the one it promotes)
       const auxRival = r.stemTag === 'VX' && list[0].r.stemTag !== 'VX';
@@ -1378,6 +1458,13 @@ function analyzeUncached(surface: string, ctx: { prevKey?: string; prevIsLatinOr
       else if (plainUnits && c.units.slice(0, plainUnits).map((u) => u.ch).join('') === s) readings.push(...nominalReadings(c, plainUnits, s, h.entry, KO_SOURCE_IDS.lexicon, 'dictionary'));
     }
     for (const e of KO_CLOSED_PREDICATES.get(s) ?? []) readings.push(...predicateReadings(c, s, e, KO_SOURCE_IDS.closed, 'hand', ctx, true));
+  }
+  for (let n = 1; n <= c.units.length; n++) {
+    const d = isHangulSyllable(c.units[n - 1].ch) ? decompose(c.units[n - 1].ch) : undefined;
+    if (!d || (FINALS[d.t] !== 'ㅂ' && FINALS[d.t] !== 'ㄴ') || c.units[n - 1].j1 - c.units[n - 1].j0 !== 3) continue;
+    const open = String.fromCharCode(c.units[n - 1].ch.charCodeAt(0) - d.t);
+    const s = c.units.slice(0, n - 1).map((u) => u.ch).join('') + open;
+    for (const h of lookupKoreanStem(s)) if (h.entry.lemma === s && ['NNG', 'NNB', 'NP'].includes(h.entry.tag)) readings.push(...nominalReadings(c, n, s, h.entry, KO_SOURCE_IDS.lexicon, 'dictionary', true));
   }
   for (const e of KO_CONJUNCTIVE_ADVERBS) if (c.key === e.lemma || c.key === e.lemma + '요') readings.push(...nominalReadings(c, [...e.lemma].length, e.lemma, e, KO_SOURCE_IDS.closed, 'hand'));
   readings.push(...fusedReadings(c));

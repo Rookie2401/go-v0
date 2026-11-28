@@ -117,23 +117,36 @@ export function repositoryLookup(api: {
   units?(unitIds: string[]): Promise<{ ok: true; data: { units: Record<string, RepositoryUnit>; missing: string[] } } | { ok: false }>;
 }): UnitLookup {
   const primed = new Map<string, { at: number; unit: RepositoryUnit | undefined }>();
+  // Ids a batch answered as unknown stay unknown for the rest of that pass (until clearPrime, the next prime, or the TTL): a German candidate is
+  // not a stored unit, the pass asks for it more than once (deck intake, then the session), and each later ask cost a GET /units/<id> that answered 404.
+  const unknown = new Map<string, number>();
+  const inflight = new Map<string, Promise<RepositoryUnit | undefined>>();
   const lookup: UnitLookup = async (unitId) => {
     const hit = primed.get(unitId);
     if (hit) { primed.delete(unitId); if (Date.now() - hit.at < PRIMED_TTL_MS) return hit.unit; }
-    try {
-      const r = await api.unit(unitId);
-      return r.ok ? r.data : undefined;
-    } catch {
-      return undefined;
-    }
+    const since = unknown.get(unitId);
+    if (since !== undefined) { if (Date.now() - since < PRIMED_TTL_MS) return undefined; unknown.delete(unitId); }
+    const pending = inflight.get(unitId);
+    if (pending) return pending;
+    const ask = (async (): Promise<RepositoryUnit | undefined> => {
+      try {
+        const r = await api.unit(unitId);
+        return r.ok ? r.data : undefined;
+      } catch {
+        return undefined;
+      }
+    })();
+    inflight.set(unitId, ask);
+    try { return await ask; } finally { inflight.delete(unitId); }
   };
   const many = api.units;
   if (many) {
-    lookup.clearPrime = () => primed.clear();
+    lookup.clearPrime = () => { primed.clear(); unknown.clear(); };
     lookup.prime = async (unitIds) => {
       // A prime call starts a new one-shot facts pass. Discard unused values
       // from an earlier pass so another session cannot consume them as current.
       primed.clear();
+      unknown.clear();
       const wanted = [...new Set(unitIds)];
       const chunks: string[][] = [];
       for (let i = 0; i < wanted.length; i += UNIT_BATCH_SIZE) chunks.push(wanted.slice(i, i + UNIT_BATCH_SIZE));
@@ -153,7 +166,7 @@ export function repositoryLookup(api: {
       // only after every bounded batch wave finishes, so early waves cannot expire
       // during a large but slow prime. The caller clears it in its operation finally.
       const at = Date.now();
-      for (const [id, unit] of fetched) primed.set(id, { at, unit });
+      for (const [id, unit] of fetched) { primed.set(id, { at, unit }); if (!unit) unknown.set(id, at); }
     };
   }
   return lookup;

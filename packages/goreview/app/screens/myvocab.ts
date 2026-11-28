@@ -26,6 +26,8 @@ import { MAX_SNAPSHOT_WORDS, readSnapshot } from '../snapshot';
 import type { View } from './view';
 import { getUiPrefs, patchUiPrefs } from './uiprefs';
 
+/** Shown in place of a meaning when the language pack has none for the word. */
+const NO_MEANING = 'no meaning found';
 const PAGE = 80;
 /** The lemmas the pack's analysis gave each form, per storage area (one per running app), learner and language, for as long as the app is open: a reload folds at once. */
 const FORM_LEMMAS = new WeakMap<object, Map<string, Map<string, FormLemma[]>>>();
@@ -128,7 +130,8 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
 
   function rowView(r: VocabRow): HTMLElement {
     const known = glossed.get(r.unitId);
-    const gloss = h('span', { class: 'vocab-gloss', 'data-gloss': r.unitId }, known ?? '');
+    // a word the pack looked up and found no meaning for (a word the deck gate holds, a spelling the dictionary lacks) says so, instead of a blank
+    const gloss = h('span', { class: known === null ? 'vocab-gloss vocab-gloss-none' : 'vocab-gloss', 'data-gloss': r.unitId }, known === null ? NO_MEANING : known ?? '');
     const present = inDeck(r);
     const selected = selectedUnits.has(r.unitId);
     const open = asking === r.unitId;
@@ -200,9 +203,9 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
           }
         } catch { text = null; }
         glossed.set(r.unitId, text);
-        if (text && view.alive()) {
+        if (view.alive()) {
           const slot = [...list.querySelectorAll<HTMLElement>('[data-gloss]')].find((x) => x.getAttribute('data-gloss') === r.unitId);
-          if (slot) slot.textContent = text;
+          if (slot) { slot.textContent = text ?? NO_MEANING; if (!text) slot.classList.add('vocab-gloss-none'); }
         }
       }
     };

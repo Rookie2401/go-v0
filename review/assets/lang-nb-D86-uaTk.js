@@ -1,0 +1,1 @@
+import{t as e}from"./lang-norwegian-CQQLov7M.js";var t=e(`nb`);export{t as nbAdapter};

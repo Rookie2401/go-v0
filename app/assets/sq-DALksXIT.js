@@ -1,0 +1,1 @@
+import{R as e}from"./index-Do7tq4HZ.js";export{e as adapter};

@@ -5,15 +5,15 @@
   "releaseEligible": true,
   "buildMode": "release",
   "git": {
-    "commit": "7a8ced800996ef84bc297a7cf4e86dbb0b162528",
-    "tree": "95da954c9e0f415227344d8cad6c6cc9e0feb8d5",
+    "commit": "5f001d20c4f15a62b639c8c62638813045a93ceb",
+    "tree": "687fcafd6710db26f6697d2e1b12afe10cf99f01",
     "dirty": false
   },
-  "sourceManifestSha256": "5dec0df18fc6ae6838f5bd7363dfde6965d5a81675e8fa9d692ed5b03a033732",
+  "sourceManifestSha256": "ea13a2ecd3d4979bed1c566592dd1bf3d9f06ae8543107d96e83cd169027b018",
   "sourceFiles": [
     {
       "path": "THIRD-PARTY-NOTICES.md",
-      "sha256": "52a60a3639038af3918d3609e0ad913ba10b20e6490e254ceb990de80b6ae28c"
+      "sha256": "a7f444352f3b9bebb2907f7443fd07c69a74582039986827d5c771974e1323c4"
     },
     {
       "path": "docs/legal/PRIVACY-POLICY.md",
@@ -29,7 +29,7 @@
     },
     {
       "path": "package.json",
-      "sha256": "d0a90441817235edc08c70c9cae9bb50c3a801e2fdd644d068445fc8aad5eb44"
+      "sha256": "c6bd8b0a6c0dc5e3b95fb3d4a1679a9a37866cf8faa9d69ca5a83479b8e6afa7"
     },
     {
       "path": "packages/biblia-ios/package-lock.json",
@@ -205,11 +205,11 @@
     },
     {
       "path": "packages/golisten/src/deviceTags.ts",
-      "sha256": "530ba07fc188448cd89fd22505c7fba677f64598fb21e2ce4c045ec22d835c10"
+      "sha256": "453d515142d774f3ea25dc14de62db199b8b277a4f6700a8697372f91a66da83"
     },
     {
       "path": "packages/golisten/src/environment.ts",
-      "sha256": "27ea10c97ef5261601199c766c2f87ba84bdc623085bda93d32a47a3327509bc"
+      "sha256": "73f79d2bbc94fcba6860a509863549ad0d2448fbe93d573cee4ca44da78a6d00"
     },
     {
       "path": "packages/golisten/src/golisten.ts",
@@ -241,7 +241,7 @@
     },
     {
       "path": "packages/golisten/src/providers/device.ts",
-      "sha256": "120fddd2e7e574a9d0dd1e7657a10ce574403b2e67d941e0dc60e9e721544f79"
+      "sha256": "3d39e9a8ca65839ad0d8eb5e77dbb5e5b52f783c35487af93dd83d1eef625be0"
     },
     {
       "path": "packages/golisten/src/providers/recorded.ts",
@@ -249,15 +249,15 @@
     },
     {
       "path": "packages/golisten/src/providers/remote.ts",
-      "sha256": "a4eef87f2c307e1580c1ac081a497506ca4fb6a20365b8f116e5771a4feb0bcf"
+      "sha256": "6048aeacdd11b1fd0b11d41eabe7b4bfa6d79852e054e9d4c528aeb0b213a8b7"
     },
     {
       "path": "packages/golisten/src/providers/types.ts",
-      "sha256": "a38fd1373b712a7e93bfa048697f853e4da02e5a4d342b6c06037f9e94956f30"
+      "sha256": "6fb3c6e70e7e1be177da23d3162f274b2518f6fca10a26a768dfed64a61b92c0"
     },
     {
       "path": "packages/golisten/src/registry.ts",
-      "sha256": "e29d427355132ea476349f9e0126fe242a311ce52db558b90f51a6307dbd6a5c"
+      "sha256": "b7fbb381c54646bcf22f96030c50ae875f8e7e06e0b15b069f45b081972013b2"
     },
     {
       "path": "packages/golisten/src/resolve.ts",
@@ -389,7 +389,7 @@
     },
     {
       "path": "packages/goreview/app/alphabetDeck.ts",
-      "sha256": "5f7167b278cb211a6eec60689d7792e3ff609477e2b1201bfba414b26876ccb4"
+      "sha256": "607e05aae3352fa2f0a5f9f601f2679b33711504e843d5cb0309da276c2af210"
     },
     {
       "path": "packages/goreview/app/alphabetLetters.thhi.ts",
@@ -397,7 +397,7 @@
     },
     {
       "path": "packages/goreview/app/alphabetLetters.ts",
-      "sha256": "fa2fde9226a0adf87ad2443e5030341f9e55393c4f19e7a808303b6cb6509677"
+      "sha256": "a1275e14508a4f6f72e10762a0ab7f308508368f599de8e6e50f36f11aef4847"
     },
     {
       "path": "packages/goreview/app/alphabetPage.ts",
@@ -433,11 +433,11 @@
     },
     {
       "path": "packages/goreview/app/deckModel.ts",
-      "sha256": "0c6e0ea371ce301bef64d266050e605cc02eaf4456fd01d023fa0f88197b8040"
+      "sha256": "162f3f3af6ffc4f22f44be58272c437b25b8e26fa40defcb26b5329b42d3e39b"
     },
     {
       "path": "packages/goreview/app/dom.ts",
-      "sha256": "0ba4830f2dc909d6d434f91a4b5f1bf8193e537f8a5f2b4d80498b0619712182"
+      "sha256": "175f6e44098e0754e90b21657f0dfaaaa9d15a08202fd37bb1ca823a3ea49722"
     },
     {
       "path": "packages/goreview/app/engine.ts",
@@ -453,7 +453,7 @@
     },
     {
       "path": "packages/goreview/app/format.ts",
-      "sha256": "9d28acdf50bb44345e07120c94f38eb7bc22371c804ccb3ba83fd01e9fe8a9df"
+      "sha256": "433d3530ce4c532cf57ed543b2c4e136dc6f4ecc3d166b4bb21f3d32f4f30a79"
     },
     {
       "path": "packages/goreview/app/freshness.ts",
@@ -481,7 +481,7 @@
     },
     {
       "path": "packages/goreview/app/leanBuiltins.ts",
-      "sha256": "b2c340c9a76c15a6f8b063650e749d6f5884f15471ec0b9e1b40ece91156b0f3"
+      "sha256": "773ce8af616bd9fd5aa37a95a18520daaa08aae12a7f6d9ef40c8b4d10c53d4e"
     },
     {
       "path": "packages/goreview/app/legal.ts",
@@ -513,7 +513,7 @@
     },
     {
       "path": "packages/goreview/app/packFacts.ts",
-      "sha256": "3012d1a60efd03b4821d68527d93236a62b8a215782520e0d93419ab080f101a"
+      "sha256": "abc3780b50f560e35979cdd296d2fd636d10d25f3a2e98a88098d8f22a1ed2a7"
     },
     {
       "path": "packages/goreview/app/photos/athens.webp",
@@ -593,7 +593,7 @@
     },
     {
       "path": "packages/goreview/app/public/sw.js",
-      "sha256": "6a3fdcbacf0757929434d256764eeafb32bbe41350b2545e8f7cf12a9eed290d"
+      "sha256": "9b084144f16704135743012903b3db70fad00bf7bbc2ffa04ed2375c553b7087"
     },
     {
       "path": "packages/goreview/app/recoveredCandidates.ts",
@@ -641,7 +641,7 @@
     },
     {
       "path": "packages/goreview/app/screens/itemParsing.ts",
-      "sha256": "662590e668293ecccc1fca42286a9321a010635ebdcebe5136365b520aa3c219"
+      "sha256": "db3bfece58a8c2d17f8215440562058e23fbf683cab8cbabba903dd6fe5a3d19"
     },
     {
       "path": "packages/goreview/app/screens/languages.ts",
@@ -657,7 +657,7 @@
     },
     {
       "path": "packages/goreview/app/screens/myvocab.ts",
-      "sha256": "644afde7f107e8803080f1c8c90e64a3b21e57a8386d0b517dba53539d1809ba"
+      "sha256": "dd2944de55429a62e621ba69327397d67ac9d8060fa4284d4a9123ebba5859e2"
     },
     {
       "path": "packages/goreview/app/screens/prefs.ts",
@@ -677,7 +677,7 @@
     },
     {
       "path": "packages/goreview/app/screens/session.ts",
-      "sha256": "c2b77696f036b7e2e80025d49717720a5f3c034880a12540fcddb6706bcce8c0"
+      "sha256": "1086a21871af6b2572376f9beec683721fcbfa3d7dab9893151e36f4d730037b"
     },
     {
       "path": "packages/goreview/app/screens/settings.ts",
@@ -741,7 +741,7 @@
     },
     {
       "path": "packages/goreview/app/screens/vocabulary.ts",
-      "sha256": "1c5f46d93b261e45c5d1e90e882241ea8746d3e08f866b7808a167cd6d00be32"
+      "sha256": "479e21b8c787ca238b078137378447a779a590ec31f05dad775c39ff683228f1"
     },
     {
       "path": "packages/goreview/app/scripts/make-icons.mjs",
@@ -781,11 +781,11 @@
     },
     {
       "path": "packages/goreview/app/styles.css",
-      "sha256": "47633cf849aa64f74fd1fe0a6a35fff39273a1bf50a60e93a66fd71fce0b2d36"
+      "sha256": "23132d51542ea38759327a0b500500b3d0d7bb88265cbc45ed52e0622a7d12d8"
     },
     {
       "path": "packages/goreview/app/tellEngine.ts",
-      "sha256": "1c702d56641546fb25398ea70e1a0559143041e8592fb50b8f79e10aeb8465cf"
+      "sha256": "fc3ab8ef93e8e822d8200f744e0a83579c772449e6f5b0d057e0477dd3b6dc61"
     },
     {
       "path": "packages/goreview/app/version.ts",
@@ -793,7 +793,7 @@
     },
     {
       "path": "packages/goreview/app/vite.config.ts",
-      "sha256": "19343252b9b378923e3db03ef84f224c2e2419c5adf277dc44c049b024c7b277"
+      "sha256": "f23a58dd194abbe00fb9f93ea2de2b887afaa3740944d845dc498b1dbc5094d9"
     },
     {
       "path": "packages/goreview/app/workspace.ts",
@@ -809,11 +809,11 @@
     },
     {
       "path": "packages/goreview/src/exercises/audio-to-meaning.ts",
-      "sha256": "4cbd739f63f86c7fd746f99ad389a76fc5252942b9880002bb3ae6bea25c193e"
+      "sha256": "0fd6c14a252911b97018329e2fa5d1593b08bb109b9a63484b6c83fc01ebdd0f"
     },
     {
       "path": "packages/goreview/src/exercises/audio-transcription.ts",
-      "sha256": "5b89d01962feb6683d23fc3a8effbbfedc038028a6f87571096ae8d9398f451f"
+      "sha256": "5145b1dc27d605ed8f04f87ea8cbc9a320d073e2c290b7f50b83024bb1fdd829"
     },
     {
       "path": "packages/goreview/src/exercises/builders.ts",
@@ -825,7 +825,7 @@
     },
     {
       "path": "packages/goreview/src/exercises/grammar-application.ts",
-      "sha256": "e3ffb9cd5268d1edbd0582840f02d0bd46228d68a12ff31b2d2979b9e1d159b8"
+      "sha256": "3ce77a0120ec8b407c7e1ccde5be9f7c32e784d19681f0154d631a3b016fc10d"
     },
     {
       "path": "packages/goreview/src/exercises/index.ts",
@@ -833,11 +833,11 @@
     },
     {
       "path": "packages/goreview/src/exercises/meaning-to-form.ts",
-      "sha256": "4499b9a36d1f0417c31682e4b3708df26b677ee26553e6a6e705298302d92879"
+      "sha256": "4a9c69a8e0d455c3437cac208af0e27f9290441119e5f128655ee0ed9f6911c6"
     },
     {
       "path": "packages/goreview/src/exercises/morphological-identification.ts",
-      "sha256": "af5ad089d0f5d83cd06827ffbf351a5dfe8f6476e5fa0a77e8492c5f6d0a58ba"
+      "sha256": "1f5dc30e0ff9c85d126124e8699e79193af3bca223a3df9f7a54386b2b5d909d"
     },
     {
       "path": "packages/goreview/src/exercises/phrase-comprehension.ts",
@@ -849,11 +849,11 @@
     },
     {
       "path": "packages/goreview/src/exercises/sentence-completion.ts",
-      "sha256": "f99c456d636d54cff866c26055c158421bafa8c2e7c31c3aa2c197cdc0af4249"
+      "sha256": "a7878ad1164a89cbba4cf672d76849b0f3980eaa17c545105e80f92193459e7a"
     },
     {
       "path": "packages/goreview/src/exercises/shared.ts",
-      "sha256": "1ae1f1480093b27df8a3966f7181449771976fc1a1ae467e221639ca4512c105"
+      "sha256": "f85e6e72d965471071710f6215890b8415ca702fb3d1694c826eef5b2e5ee36b"
     },
     {
       "path": "packages/goreview/src/exercises/validate.ts",
@@ -861,15 +861,19 @@
     },
     {
       "path": "packages/goreview/src/exercises/written-recognition.ts",
-      "sha256": "cb4bf35539d69e9a0fc3bd3c141c4d6388c98e27853738c0f792df6317b703ba"
+      "sha256": "e4dc64ff4523a981a049c18ae77c494c018920d1c516a3bbe41aee75543b4113"
     },
     {
       "path": "packages/goreview/src/facts/deck-gate.ts",
-      "sha256": "c90f7c9e337f64961f3b076f8d8bb4b77969c667fc1f5458fa528a6c31c8c8ae"
+      "sha256": "2e2ec574f08b3f11dc7f18dc26942c3d6695eac493257fbfea5743269877e165"
+    },
+    {
+      "path": "packages/goreview/src/facts/deck-holds.ts",
+      "sha256": "f57030c999087677ce16a9e95a7de3a984f2f5287a24dbd9125a456dee7a3d8d"
     },
     {
       "path": "packages/goreview/src/facts/deck-known-limits.ts",
-      "sha256": "47b569b99d02045a3bb13ad6794950d271a45bfd9a1d3c5d05ba6b47026f8765"
+      "sha256": "073683130ccb3f225864b519d8a327d264337c29088d595696b18579b94e1ded"
     },
     {
       "path": "packages/goreview/src/facts/deck-lead-senses.ts",
@@ -881,15 +885,15 @@
     },
     {
       "path": "packages/goreview/src/facts/paradigm-table.ts",
-      "sha256": "c8ac750a0696d415eaf3f841db5cf220aadb03ee83054ae939010889397f6154"
+      "sha256": "f8b13ea8a690001a68f1298a2237ac4c5dea0181fadf8b8794de6429b0259b9a"
     },
     {
       "path": "packages/goreview/src/facts/provider.ts",
-      "sha256": "f7cdc248fdb434ae35dca7671e69bb2bbfd705ebd7868d7eea59716f067ea3e0"
+      "sha256": "8bc457dd6c86be9c085178459b575e9ff24e68eaa1f4528d3c659028237f1fac"
     },
     {
       "path": "packages/goreview/src/facts/review-facts.ts",
-      "sha256": "b128c8db7677fe0cbfe45cffb8770b2778427140505796536ecf68ea79b6155c"
+      "sha256": "c550aff35f5d9b2a324b67417796868533d6d66b314b5968837e830ec2a4c0f9"
     },
     {
       "path": "packages/goreview/src/grading/grade.ts",
@@ -901,7 +905,7 @@
     },
     {
       "path": "packages/goreview/src/grading/normalize.ts",
-      "sha256": "820a78018b1b8ece6d892658ce12129256865f47a7f38a7f0ced0ce9b52f9ef7"
+      "sha256": "b4f0a4a4a4194a1dafcfc2d653bb129ed68a735c444c16152521bf2289d20924"
     },
     {
       "path": "packages/goreview/src/history/history.ts",
@@ -1109,7 +1113,7 @@
     },
     {
       "path": "packages/gotell/src/index.ts",
-      "sha256": "2906b0b97044436113eca345f1ae7c7e2af7c34c776e1afa73c2fdf1b4720f89"
+      "sha256": "ec8414f17f24fc30251623e22e3d93a843c0223f29d6d89f9a87d996a0e37a10"
     },
     {
       "path": "packages/gotell/src/privacy/index.ts",
@@ -1133,7 +1137,7 @@
     },
     {
       "path": "packages/gotell/src/prompts/guidance.ts",
-      "sha256": "51029ec7143bd27758cfa049a835b66b888524e387eedfb5db36eb7c2345645b"
+      "sha256": "f99ee2091077741dfd0476bc966e528cce49b668a84c810deede0f96ccb8ba84"
     },
     {
       "path": "packages/gotell/src/prompts/index.ts",
@@ -1221,11 +1225,15 @@
     },
     {
       "path": "packages/language-packs/src/alphabet-sprint/ids.ts",
-      "sha256": "4a60ff840f7a491f62ece5d01087a884270a9bbaa5bdfdb44f179dbf3cc35887"
+      "sha256": "a68e436457a7b793da33a502dcba1be133c8edc8adac3cd2afe49946aa55479d"
     },
     {
       "path": "packages/language-packs/src/alphabet-sprint/knowledge.ts",
       "sha256": "db6818aa112130262985a79c7a8b3f740e866c997a5f57d223d39084ef67b56c"
+    },
+    {
+      "path": "packages/language-packs/src/alphabet-sprint/letters-ko.ts",
+      "sha256": "097eb227d32d073ce1ee7f2f1dafb36436b1345b3c652435d871569e483b8dec"
     },
     {
       "path": "packages/language-packs/src/alphabet-sprint/letters-thhi.ts",
@@ -1234,6 +1242,10 @@
     {
       "path": "packages/language-packs/src/alphabet-sprint/plan.ts",
       "sha256": "4ca8eb8eab8f9d6c3fdb84c2c16c8055afeb5b828ba5e9f71fb50c4bd829a3a7"
+    },
+    {
+      "path": "packages/language-packs/src/alphabet-sprint/profiles/ar.ts",
+      "sha256": "9764e4e384eb12c1ef8f073832f000921c4e626f6f9bfd59dbaea45ba257b85e"
     },
     {
       "path": "packages/language-packs/src/alphabet-sprint/profiles/arc.ts",
@@ -1269,7 +1281,11 @@
     },
     {
       "path": "packages/language-packs/src/alphabet-sprint/profiles/index.ts",
-      "sha256": "ed2d0da0618b068dfeaf9e4e929473b1c3a48b07f04e22cf54c7f0cd64bfe73f"
+      "sha256": "64687021d99314f00bf68474a1cbfc538fbe8567e99087218d54004216263443"
+    },
+    {
+      "path": "packages/language-packs/src/alphabet-sprint/profiles/ko.ts",
+      "sha256": "065240ac45d51e6974dac47c35066f294234254c9f0060e404880b01e19bf31b"
     },
     {
       "path": "packages/language-packs/src/alphabet-sprint/profiles/la.ts",
@@ -1305,7 +1321,11 @@
     },
     {
       "path": "packages/language-packs/src/alphabet-sprint/select.ts",
-      "sha256": "f4d18f2b2385eca3692b059b933ea62309cde250e285a7e205ce54309660a786"
+      "sha256": "1640ee4106e9372c7fcadcb0fea55eadbeb602ba6b1bb9c18cf9ecef9526b425"
+    },
+    {
+      "path": "packages/language-packs/src/alphabet-sprint/words/ar.ts",
+      "sha256": "e3de880184f12af961ab65a1b65263db00c73f869494282261153649f8a6b0ad"
     },
     {
       "path": "packages/language-packs/src/alphabet-sprint/words/arc.ts",
@@ -1338,6 +1358,10 @@
     {
       "path": "packages/language-packs/src/alphabet-sprint/words/hi.ts",
       "sha256": "53a90b00da32cc11d1b8ed4e2a461676b280b5b2c042cfee691ca6ed71b19c2d"
+    },
+    {
+      "path": "packages/language-packs/src/alphabet-sprint/words/ko.ts",
+      "sha256": "500cd7c563490f3d1288de157fa419b74bb83905f9a1b26109f4757776f72fae"
     },
     {
       "path": "packages/language-packs/src/alphabet-sprint/words/la.ts",
@@ -1373,19 +1397,27 @@
     },
     {
       "path": "packages/language-packs/src/catalogue.ts",
-      "sha256": "fc63c9855d78f45e24aebf7832f58a0b0a988d57311eb1592c2000929c46fb1a"
+      "sha256": "fe31218c8a493b1e6f675a0cf4ff782cd1c7ef3d2626e4a6ea66cc87ff1f0dd4"
     },
     {
       "path": "packages/language-packs/src/evidence.ts",
-      "sha256": "d2e4ededd18e011ca7b0f9adb7b0d42ec1bdecf59d6bce8e25618bf95d6bdb3f"
+      "sha256": "d2c672913befedaae95204b31a142e3bc41663ec8c326e79045ce38e114a1b9d"
     },
     {
       "path": "packages/language-packs/src/index.ts",
-      "sha256": "ae7aaed77f9575d16268b284bc6bd2518728f80f3680999772f6f105c0cfa296"
+      "sha256": "b764ea56e5a04149e39b987e5002ba40c906039f1745ebdeb9077450be73fa7b"
     },
     {
       "path": "packages/language-packs/src/manifest.ts",
       "sha256": "c9c19668505ccfe02038d508e83e51d30a4d778a41039d35604199f57bd926f5"
+    },
+    {
+      "path": "packages/language-packs/src/packs/ar-grammar.ts",
+      "sha256": "4b42cea457d3f311f524ccf986c13e25b0306ade0765a5e015dcb31d7a0bd6ff"
+    },
+    {
+      "path": "packages/language-packs/src/packs/ar.ts",
+      "sha256": "76d1d6e85aced37b249a18f4c27a41e8d2738bf7e8d69f40db3811af47bf9a94"
     },
     {
       "path": "packages/language-packs/src/packs/arc.ts",
@@ -1418,6 +1450,14 @@
     {
       "path": "packages/language-packs/src/packs/hi.ts",
       "sha256": "9404c5e5902355c3809c538c3556b611273edc81fc933c31e688a6c1fa8e83bd"
+    },
+    {
+      "path": "packages/language-packs/src/packs/ko-grammar.ts",
+      "sha256": "7d0066e7757f9896fe653cb2f310a96b6cb56c23073138eb0f12134fd3524a08"
+    },
+    {
+      "path": "packages/language-packs/src/packs/ko.ts",
+      "sha256": "5a08f70171ad60cc697de71e085bd5b0dc4cae5b2e692c20a8dd424142a8f62d"
     },
     {
       "path": "packages/language-packs/src/packs/la.ts",
@@ -1453,11 +1493,15 @@
     },
     {
       "path": "packages/language-packs/src/registry.ts",
-      "sha256": "175dfa272f6227a242e979061905b0884cc169cc25d16215e8219546f197d035"
+      "sha256": "272d34dd847d26a08755fadcf91e3dcc235e95d03e8b4b2f53dda4d8caffbf14"
     },
     {
       "path": "packages/language-packs/src/runtime.ts",
-      "sha256": "94e467c5b432d4b0eefd4cedddf5c751ccfc2e474806ad5f1cfa59af7151a96d"
+      "sha256": "a1b5933cc1c6b03a57831b07b8557294acbe40c6fa3ab042abaa3729e877dc3e"
+    },
+    {
+      "path": "packages/language-packs/src/tutorial/ar.ts",
+      "sha256": "79b86b64a389d8f4af444367a6c91aab818872620c3d352c1788cb75302603fd"
     },
     {
       "path": "packages/language-packs/src/tutorial/arc.ts",
@@ -1489,7 +1533,11 @@
     },
     {
       "path": "packages/language-packs/src/tutorial/index.ts",
-      "sha256": "342575c3b4f0c1d5f2cc3164adcafe674eab828b6cf3288d89d73ff4e125d03e"
+      "sha256": "f29012e906dab3bc6c368dbab5ce73bf8c7212b0c043e56e4cc8cde1ad658920"
+    },
+    {
+      "path": "packages/language-packs/src/tutorial/ko.ts",
+      "sha256": "869cce6a29590d9b3a793ed73b6e30a42246ad62ff2b4066d9aadbbceef1cd2d"
     },
     {
       "path": "packages/language-packs/src/tutorial/la.ts",
@@ -1525,7 +1573,7 @@
     },
     {
       "path": "packages/repository-contract/src/index.ts",
-      "sha256": "2993d30352c68b8047b8dc41a1b1ba4f475ed5596bed1011c03c3622f7ff7636"
+      "sha256": "952216e58df2a4f71f58f88300d81cf98b467a5d3037eea92639adbbddba7ec8"
     },
     {
       "path": "packages/repository-contract/src/knowledge-levels.ts",
@@ -1534,6 +1582,10 @@
     {
       "path": "packages/repository-contract/src/learner.ts",
       "sha256": "9830f3c96d65f1516985b23d98d6d6cd80db2a54a46f535a235c1f17cb601480"
+    },
+    {
+      "path": "packages/repository-contract/src/lemma-display.ts",
+      "sha256": "39907b440a14c9cb02d7cb4e5b8c74b7d75569aac3f8eba328e2e8a9ebae5254"
     },
     {
       "path": "packages/repository-contract/src/payloads.ts",
@@ -1561,11 +1613,11 @@
     },
     {
       "path": "packages/repository-contract/src/units.ts",
-      "sha256": "774baa3cec6188efba381ebc6a615abaf9fe5fe8cc9e226faec616b575b92140"
+      "sha256": "8df7a82a8d8e4ab75b91a00ad360ac5e3c72ed6045efb126481b2f395072e765"
     },
     {
       "path": "packages/repository-contract/src/varieties.ts",
-      "sha256": "67ec969597d6fa880e96542d4aa49ce8a5514b25b66690bf7f84985ffcb27009"
+      "sha256": "81bbd523d63f1c5735546f92733ca37fcdf20cbfe98ba54acd5f852bf6f7bdb9"
     },
     {
       "path": "packages/repository-engine/src/candidates.ts",
@@ -1834,6 +1886,726 @@
     {
       "path": "packages/shared-fonts/eb-garamond-latin-600.woff2",
       "sha256": "6a195b7e4f518d53813581f415d7956e02049dd2762b4b9a3af80d56b4257e28"
+    },
+    {
+      "path": "public/lexicon/ar/standard/621.json.gz",
+      "sha256": "c232e1bec01fd4c87374c78154954614ea583505a206e75e250c617cca73624c"
+    },
+    {
+      "path": "public/lexicon/ar/standard/627-624.json.gz",
+      "sha256": "f6bf85b794d04dddf928adfe82387dc58b58c78b2aa88ba4184b1ba2cfae8854"
+    },
+    {
+      "path": "public/lexicon/ar/standard/627-626.json.gz",
+      "sha256": "56a7caa082f043ccf8479efd2cd03024fbd90c9dae4259fbabd7ee6c2dd2672e"
+    },
+    {
+      "path": "public/lexicon/ar/standard/627-627.json.gz",
+      "sha256": "4e734d5cf884d94d6439e9f0aab307d79d105800394135a9e50b98a9fc1725e2"
+    },
+    {
+      "path": "public/lexicon/ar/standard/627-628.json.gz",
+      "sha256": "fd8c45fc5b65d42d30e01969e1283eeb889b571157f2b22f00b3415ac7a2d622"
+    },
+    {
+      "path": "public/lexicon/ar/standard/627-62a.json.gz",
+      "sha256": "712ca406b70735372aa777a125e1400bc5516bb5b81b4161d4954379888987e7"
+    },
+    {
+      "path": "public/lexicon/ar/standard/627-62b.json.gz",
+      "sha256": "fbe1c12c0a7cf60164a41f2724ad9a035af3d6bc41a63e13daafdaf04cf27834"
+    },
+    {
+      "path": "public/lexicon/ar/standard/627-62c.json.gz",
+      "sha256": "c8bb71c8a35b79592326d6df29442d2c201fb10b5522552b649cd6b626ea703a"
+    },
+    {
+      "path": "public/lexicon/ar/standard/627-62d.json.gz",
+      "sha256": "faed1eee8de87f2ae34a3ab829ccdabbd7871506244a06ff308192e3fd096fe3"
+    },
+    {
+      "path": "public/lexicon/ar/standard/627-62e.json.gz",
+      "sha256": "6e44f00ef95f926bf9780ef0bd4da5306ccb8a3d617d407cbdbf0f2410dc22cc"
+    },
+    {
+      "path": "public/lexicon/ar/standard/627-62f.json.gz",
+      "sha256": "626141dde220cccd3bbd817da0d97bec93e99f22d75598bedcb3b754ed151f2a"
+    },
+    {
+      "path": "public/lexicon/ar/standard/627-630.json.gz",
+      "sha256": "04ea8c7b673fd81a4bb45758478c26e2f0b32e45fad86fb7acc4483bc474acfa"
+    },
+    {
+      "path": "public/lexicon/ar/standard/627-631.json.gz",
+      "sha256": "1362079b7fc572867821a56bac094664d486640775ff4199cd3f11553819944b"
+    },
+    {
+      "path": "public/lexicon/ar/standard/627-632.json.gz",
+      "sha256": "bf2682fa09b87e6cbcdad7ad62c495da9a10cd28aa5c3cafffd54fb616283809"
+    },
+    {
+      "path": "public/lexicon/ar/standard/627-633.json.gz",
+      "sha256": "3d5063ec7e04aede06a42c2a15a49a0fe32f15a7135f3a5d02e78d824727f4b9"
+    },
+    {
+      "path": "public/lexicon/ar/standard/627-634.json.gz",
+      "sha256": "17491ce064ee7c440a461e907b63dba9ca3d33fedca4320f5a4ad95c7d51c441"
+    },
+    {
+      "path": "public/lexicon/ar/standard/627-635.json.gz",
+      "sha256": "9287a9a7c71b57b9efe0b4e57001bbf64ff2d859f1d8ce72a3c9f3709cf1c0bd"
+    },
+    {
+      "path": "public/lexicon/ar/standard/627-636.json.gz",
+      "sha256": "8a899c983badc530666f5952837c370abb86d0047a0904e35690f2808504bd15"
+    },
+    {
+      "path": "public/lexicon/ar/standard/627-637.json.gz",
+      "sha256": "5ef34fc047622c93bac2c37cb9cec6a5927cf5f03ed55b53a914359ce86fef7e"
+    },
+    {
+      "path": "public/lexicon/ar/standard/627-638.json.gz",
+      "sha256": "a3a78274012788d347ac85a34bc0bb723b2ab05b138005523522dbfebc0a20d6"
+    },
+    {
+      "path": "public/lexicon/ar/standard/627-639.json.gz",
+      "sha256": "ba2dc928b4b5e4392a8bee58295ec732b3737d8592f5e79f78d8d8408aa7c011"
+    },
+    {
+      "path": "public/lexicon/ar/standard/627-63a.json.gz",
+      "sha256": "098cf1394cf535cb6bde237b7b74c2e44f25d7a60cc30877494ed9f9b0b557ab"
+    },
+    {
+      "path": "public/lexicon/ar/standard/627-641.json.gz",
+      "sha256": "29fb95c70b6025f241f23d13e566a912ee80cb419d7a93c8362125080a7efd57"
+    },
+    {
+      "path": "public/lexicon/ar/standard/627-642.json.gz",
+      "sha256": "3e1d264fc15a624d03db0859d36fbc9cc3949570a0c1d850241f7f91c4cd5ca7"
+    },
+    {
+      "path": "public/lexicon/ar/standard/627-643.json.gz",
+      "sha256": "32c0999e8d789ea142aa3c33eb630d66de5a4ec6b5ff260e42d3397becfb6f02"
+    },
+    {
+      "path": "public/lexicon/ar/standard/627-644.json.gz",
+      "sha256": "19e3ad05a3d16326f9fedfbdfe179e4b13b8fcd340f77be9a20b3d31a0480ec2"
+    },
+    {
+      "path": "public/lexicon/ar/standard/627-645.json.gz",
+      "sha256": "b5bc2a23fcf6b7fdd0b5eca118f21d89735b35e888fe20bd4b5093f45f8a04db"
+    },
+    {
+      "path": "public/lexicon/ar/standard/627-646.json.gz",
+      "sha256": "c30f5f712f9e2e665eb9299f76f47301de867a154bb028aab25e1cd99f380f06"
+    },
+    {
+      "path": "public/lexicon/ar/standard/627-647.json.gz",
+      "sha256": "1e92b3b24381852786962c7b19a673236461016f06316d512e11c8a8a16eb438"
+    },
+    {
+      "path": "public/lexicon/ar/standard/627-648.json.gz",
+      "sha256": "7976f927aae49c30ec1ca310f88fed46c4fb62fe4beeb13f26d2bb23d285d649"
+    },
+    {
+      "path": "public/lexicon/ar/standard/627-64a.json.gz",
+      "sha256": "bc200edd7428bfce9f342e2c8922115d194c311d63af4f86d791a9882f248a81"
+    },
+    {
+      "path": "public/lexicon/ar/standard/627.json.gz",
+      "sha256": "49a4097411be3b53b537b06bacef6d89c106c0c4706ea7d3d78dc1b74e60da83"
+    },
+    {
+      "path": "public/lexicon/ar/standard/628.json.gz",
+      "sha256": "6b53bb11716b143e0104da1ae85fe191c41fa4099d0a4abe3943704f6a343071"
+    },
+    {
+      "path": "public/lexicon/ar/standard/62a-624.json.gz",
+      "sha256": "6f989478f227d6b821327317a5447c6eda36a16940c382a9311670bc58bf9bbb"
+    },
+    {
+      "path": "public/lexicon/ar/standard/62a-626.json.gz",
+      "sha256": "4c54dd5c1d419db6b70dda5f0f23f2431492953d9b12bff5aad89dc7c7c167b4"
+    },
+    {
+      "path": "public/lexicon/ar/standard/62a-627.json.gz",
+      "sha256": "19e98741737780e56651f6d72c037c0bc26ef94c2245d316a7dfcc8a4c1aa855"
+    },
+    {
+      "path": "public/lexicon/ar/standard/62a-628.json.gz",
+      "sha256": "17a821c76d8d86878885850b4691e39d16500ed07e9e0646e51ab0244f4f008e"
+    },
+    {
+      "path": "public/lexicon/ar/standard/62a-62a.json.gz",
+      "sha256": "451a7fc569a1f5e405588e24a0fe3b485505b6ffe435216f17f513da37556a41"
+    },
+    {
+      "path": "public/lexicon/ar/standard/62a-62b.json.gz",
+      "sha256": "b6fb22855318eed2e33dabe1fd613164f25c24742421c2a306d79e76e1635ed3"
+    },
+    {
+      "path": "public/lexicon/ar/standard/62a-62c.json.gz",
+      "sha256": "cacd2f4a800d72b71efe111816f83142bed052febc56be1d86f564824ef5ba65"
+    },
+    {
+      "path": "public/lexicon/ar/standard/62a-62d.json.gz",
+      "sha256": "20bd4b94d372d2dc41ae60cd4a696e4b48880185c9420ca296560d6e32e2488f"
+    },
+    {
+      "path": "public/lexicon/ar/standard/62a-62e.json.gz",
+      "sha256": "0fa51a3f4db62f6afb412850acacc61d9760c1738764938bfab4a8b0665e5dde"
+    },
+    {
+      "path": "public/lexicon/ar/standard/62a-62f.json.gz",
+      "sha256": "a6a9281b1968512115a8887e95380a8692601fc47d016759e07e285e2fa47f65"
+    },
+    {
+      "path": "public/lexicon/ar/standard/62a-630.json.gz",
+      "sha256": "4aeef50404dd430c64d64053b88ea7b1aafe9373565ee8dafd5ee54482782537"
+    },
+    {
+      "path": "public/lexicon/ar/standard/62a-631.json.gz",
+      "sha256": "de59443b1b241c8948c1fe5dc11016cd30413a69d2e634b3307501a0c3bc6cfd"
+    },
+    {
+      "path": "public/lexicon/ar/standard/62a-632.json.gz",
+      "sha256": "5b2c9743f4f224bf40ee33377142227ad259b023132e7e67868fc0039304e271"
+    },
+    {
+      "path": "public/lexicon/ar/standard/62a-633.json.gz",
+      "sha256": "edcb9b257780de164c6959dd4e27ad51ff443c0ac50932d629e738a358f4e722"
+    },
+    {
+      "path": "public/lexicon/ar/standard/62a-634.json.gz",
+      "sha256": "d1318f7d337fec4ae8db4e540dcde3f53eb05574de6e2f6e6a7c6b3553d5465c"
+    },
+    {
+      "path": "public/lexicon/ar/standard/62a-635.json.gz",
+      "sha256": "aef187f6f8aea57d1b59a0d3046ccf4c7cf49fb3c78ee8022b0f421d4992a2ff"
+    },
+    {
+      "path": "public/lexicon/ar/standard/62a-636.json.gz",
+      "sha256": "6b68189ce0ebede3c65fd0e1085835aeae48e5f3959f4ce6f0d7780030c7a313"
+    },
+    {
+      "path": "public/lexicon/ar/standard/62a-637.json.gz",
+      "sha256": "e8c5b8d2cae5deff146898b3ee6672f7d168ab97464ab76728d0df20a562ec73"
+    },
+    {
+      "path": "public/lexicon/ar/standard/62a-638.json.gz",
+      "sha256": "c07a8fd5e5f6f5003c8961efd595878c834071b7c9c34385e840c49b7f6c8435"
+    },
+    {
+      "path": "public/lexicon/ar/standard/62a-639.json.gz",
+      "sha256": "f642f0607b393817160159a4af82f16416c41fd91b3d18a66dec7c6e70227ce8"
+    },
+    {
+      "path": "public/lexicon/ar/standard/62a-63a.json.gz",
+      "sha256": "e50ef4ff5d464f5d35058f3c903b4d7e5724a216e875993bbda6fea499f0a8f4"
+    },
+    {
+      "path": "public/lexicon/ar/standard/62a-641.json.gz",
+      "sha256": "d2a8bfbd518de37d21eb3196c99bd60a38edbcaf783cce57855c464bf9e16e79"
+    },
+    {
+      "path": "public/lexicon/ar/standard/62a-642.json.gz",
+      "sha256": "7c687369c0a98c5cbff449175191081fafc7abad43d6642cbc30ad463b7aa69a"
+    },
+    {
+      "path": "public/lexicon/ar/standard/62a-643.json.gz",
+      "sha256": "71a7174e9f769be5e9fc89f8fbc6a66745a711bfa2b308be4f07f0ad8af95012"
+    },
+    {
+      "path": "public/lexicon/ar/standard/62a-644.json.gz",
+      "sha256": "1be17c4aa2c5aa8556a45fcf69b7803af1e50a744c88f8c1b062a943e27dd93c"
+    },
+    {
+      "path": "public/lexicon/ar/standard/62a-645.json.gz",
+      "sha256": "a8645bf1a68dda32bc8db376c2530f0494bba210c1b6d9adf40a6eefaf0dd5e7"
+    },
+    {
+      "path": "public/lexicon/ar/standard/62a-646.json.gz",
+      "sha256": "e10a32ba4c05a810ce73c42435c5fb4a832e5b5b2b0b83b53fb7aae999d607b9"
+    },
+    {
+      "path": "public/lexicon/ar/standard/62a-647.json.gz",
+      "sha256": "fa681046ad0f321de22cba2e002a56c91e9b25609ca1a86baaba36391c261566"
+    },
+    {
+      "path": "public/lexicon/ar/standard/62a-648.json.gz",
+      "sha256": "e4dca1544843f9d1ec70558f8a7e12d7fa6d5bc6309881e54c3131a1e626cb0a"
+    },
+    {
+      "path": "public/lexicon/ar/standard/62a-64a.json.gz",
+      "sha256": "a473541855ed0b46bf19b99902a5610a57eb0eed93d677d4d5987168aa13390d"
+    },
+    {
+      "path": "public/lexicon/ar/standard/62a.json.gz",
+      "sha256": "d7681396a29facee525684e881fc6413d69bbfa54297a73a2b635614e2e8a77c"
+    },
+    {
+      "path": "public/lexicon/ar/standard/62b.json.gz",
+      "sha256": "6385c2a5702bce00334c8ca05f736a60c1766cbe94ed3dccadabf460d5fe194d"
+    },
+    {
+      "path": "public/lexicon/ar/standard/62c.json.gz",
+      "sha256": "fe5b63375d57c576b34ad1231b81cedcbfd3038f41a64a45be41c45f4d0088d1"
+    },
+    {
+      "path": "public/lexicon/ar/standard/62d.json.gz",
+      "sha256": "95198ff578cef1003fdeebcf4779bae333d99cfe72ea7117e05e47f2883bd8ce"
+    },
+    {
+      "path": "public/lexicon/ar/standard/62e.json.gz",
+      "sha256": "78a9758a511d4224a1a315b194ca9569175a86355b4e72fdd8122d15b655e8da"
+    },
+    {
+      "path": "public/lexicon/ar/standard/62f.json.gz",
+      "sha256": "8e5e985dd3aa0b7cbd137e785e1b4e48c3af19c18b3952ff4bd99127e6174b66"
+    },
+    {
+      "path": "public/lexicon/ar/standard/630.json.gz",
+      "sha256": "dbd25d8e5f7288a8fa1a7fbe6ab90476ed39e316b03f0c4744fabca0a1c65407"
+    },
+    {
+      "path": "public/lexicon/ar/standard/631.json.gz",
+      "sha256": "c421ac5a015ecefde3f863a730afac80ea406cb4bfc9bdb10113a6f674f67090"
+    },
+    {
+      "path": "public/lexicon/ar/standard/632.json.gz",
+      "sha256": "aafd5a61f1c92003708ebc2908884d6881125df285de1c9cd9d98ea82d03fb6b"
+    },
+    {
+      "path": "public/lexicon/ar/standard/633.json.gz",
+      "sha256": "729e353ec42e913b204b2f0eb6fbb9b7127168ab35ba68deffc8606d85eed380"
+    },
+    {
+      "path": "public/lexicon/ar/standard/634.json.gz",
+      "sha256": "ecc998f2ae42f267b1e69cbac22529f6ae65642300744cf75a015152adec6824"
+    },
+    {
+      "path": "public/lexicon/ar/standard/635.json.gz",
+      "sha256": "59e414f284b3856106fbe25eea35daed2c276d5ec066b5b6fef8a50b6e9b770e"
+    },
+    {
+      "path": "public/lexicon/ar/standard/636.json.gz",
+      "sha256": "4d1c581cf7eb03627295debe730c8ffb8fe731528ac2dcd83d2667ff1f5815d9"
+    },
+    {
+      "path": "public/lexicon/ar/standard/637.json.gz",
+      "sha256": "94a5ae6dfbf643526d92c66e47e3332dfba72db6a26cf68f9ea881608a5e20c3"
+    },
+    {
+      "path": "public/lexicon/ar/standard/638.json.gz",
+      "sha256": "9a6ef4037eaad825ca3ee16241255f626c8f951fcd1bf7fe94accf51cc7c9636"
+    },
+    {
+      "path": "public/lexicon/ar/standard/639.json.gz",
+      "sha256": "cc243d183c16e094e824c2d3f2816cb63a3cd69aa0fec6e0d7b2cede0a3db010"
+    },
+    {
+      "path": "public/lexicon/ar/standard/63a.json.gz",
+      "sha256": "5b613cdc8ce675b31fabdbe7b33f8b82e7bbe2625df61aec8f133d5577a529d3"
+    },
+    {
+      "path": "public/lexicon/ar/standard/641.json.gz",
+      "sha256": "4bb5e9f384e9ed1bb1468c86cf0d1a4d5c2163dbb3b5ecbc0c94eca3f2fe94c8"
+    },
+    {
+      "path": "public/lexicon/ar/standard/642.json.gz",
+      "sha256": "49dc08cb22989dee68d7c310bf5066fb6b38cd0241828a6213d0734a7bd77475"
+    },
+    {
+      "path": "public/lexicon/ar/standard/643.json.gz",
+      "sha256": "d794455f03c753133ca0d6a8cfad153c307ca388cac70c4a88d9609891bbb7ab"
+    },
+    {
+      "path": "public/lexicon/ar/standard/644.json.gz",
+      "sha256": "4b2e6d53c6acc856ea0853ca8338b69d1ea51177c008fc4303d7e95e68da74b7"
+    },
+    {
+      "path": "public/lexicon/ar/standard/645-624.json.gz",
+      "sha256": "ea82a3fbdb2eb2bebcef0788aeff6ea2be298628759d4ebfab760a7aeace8510"
+    },
+    {
+      "path": "public/lexicon/ar/standard/645-626.json.gz",
+      "sha256": "9e33d48683199d0c9c47b65605ab9cd1199501f903dc696370639ccb62e2e470"
+    },
+    {
+      "path": "public/lexicon/ar/standard/645-627.json.gz",
+      "sha256": "b49c9060a879e1c0bfe2d260ed1421b2e80664d86e28b4a759ecc2d40d7b97da"
+    },
+    {
+      "path": "public/lexicon/ar/standard/645-628.json.gz",
+      "sha256": "1093bf6dcc7cead5776c04211b3ab49cf5bfb017a3db8099eb66fc0ee7695484"
+    },
+    {
+      "path": "public/lexicon/ar/standard/645-62a.json.gz",
+      "sha256": "0e677bce6443be57f475af6d9f79fe00f10f31fa2360087eb31c87fc16086abc"
+    },
+    {
+      "path": "public/lexicon/ar/standard/645-62b.json.gz",
+      "sha256": "53415f32d1dabf273406dc2bf62e87a82c7c85792ebbf3ceeb8a58707289a4bf"
+    },
+    {
+      "path": "public/lexicon/ar/standard/645-62c.json.gz",
+      "sha256": "4cbee111c24eaf086003f11cb619537898fefe9eb7d633452409ff020d1a9b0f"
+    },
+    {
+      "path": "public/lexicon/ar/standard/645-62d.json.gz",
+      "sha256": "859c4802f39284fe46e557910259101f1fc5bcf98f77e5473e91de343b28d70c"
+    },
+    {
+      "path": "public/lexicon/ar/standard/645-62e.json.gz",
+      "sha256": "03dbf0f43ccdb304898d11584c95dc5f8338df8e63f0725fe96a520f66640771"
+    },
+    {
+      "path": "public/lexicon/ar/standard/645-62f.json.gz",
+      "sha256": "c268da0a9fc4edb730dd0d3d5931d1724a9e504a76659a12846379bb4f449d25"
+    },
+    {
+      "path": "public/lexicon/ar/standard/645-630.json.gz",
+      "sha256": "610affb37d4f280830f9897f0e0b33f107960fd810c97ad3082e3c1b677cbc20"
+    },
+    {
+      "path": "public/lexicon/ar/standard/645-631.json.gz",
+      "sha256": "46acabfd5c3c2811ea70023a80ee78d3f0f9dbbff12e07ef3ae674e3b4ccad93"
+    },
+    {
+      "path": "public/lexicon/ar/standard/645-632.json.gz",
+      "sha256": "06ee42a6d4fd687ec65057d5acfbbf594ccbf840c574c6d0fafdc713473c1da8"
+    },
+    {
+      "path": "public/lexicon/ar/standard/645-633.json.gz",
+      "sha256": "e81964b0d00dc3f66ea508fa8e6a70b61a95d088587a68f3c7db10c699c9a039"
+    },
+    {
+      "path": "public/lexicon/ar/standard/645-634.json.gz",
+      "sha256": "d9b548ed6fb3575397a3e8ceefe92b448245be70a50b8c6dfe44e0139e0aa8fb"
+    },
+    {
+      "path": "public/lexicon/ar/standard/645-635.json.gz",
+      "sha256": "4835216ff3262081163fc59751e019f3a73c966c76116b540876debe1e454a4e"
+    },
+    {
+      "path": "public/lexicon/ar/standard/645-636.json.gz",
+      "sha256": "0ea1bc5784f368f6f5f480bb3a11f35d5d629968d45ef811b19d8d6eaf60e37a"
+    },
+    {
+      "path": "public/lexicon/ar/standard/645-637.json.gz",
+      "sha256": "95965f0cf8871a12e16ca395da7be3090ae735511c7962f9aeb9d81f0e3bc2e7"
+    },
+    {
+      "path": "public/lexicon/ar/standard/645-638.json.gz",
+      "sha256": "2d2d4421fe5f1c1558967521f761d04189388b337dc94afe9d51c95d6644e263"
+    },
+    {
+      "path": "public/lexicon/ar/standard/645-639.json.gz",
+      "sha256": "a140f9e71c21ba08366710e7653a6f2f4f5d6fb50e5cf5e42d315683f12eac0d"
+    },
+    {
+      "path": "public/lexicon/ar/standard/645-63a.json.gz",
+      "sha256": "13f4c2388b321cd248b64a6d951770f70a8a6945766457258d09d7598829c4a4"
+    },
+    {
+      "path": "public/lexicon/ar/standard/645-641.json.gz",
+      "sha256": "0ada2c9ff1dce8fda2a8b2e5f7dd1138c11f20cdac0379d58607804d1aa9d726"
+    },
+    {
+      "path": "public/lexicon/ar/standard/645-642.json.gz",
+      "sha256": "f165c49af50e5880cdde7d3904e2f13f07611cffbe586ce5d504f52ab7501969"
+    },
+    {
+      "path": "public/lexicon/ar/standard/645-643.json.gz",
+      "sha256": "cc36a543be243f60405b79f42f655f63b0af6972dcd1e2e066c13e9b300c5244"
+    },
+    {
+      "path": "public/lexicon/ar/standard/645-644.json.gz",
+      "sha256": "93b729c54fb5a76008b07f91580322562028876e38712601a4c2f253b624c173"
+    },
+    {
+      "path": "public/lexicon/ar/standard/645-645.json.gz",
+      "sha256": "0135e22f15686746d0d8fc9ba78f8a4629b31cbf18a95a2f916caaa6dc4aa103"
+    },
+    {
+      "path": "public/lexicon/ar/standard/645-646.json.gz",
+      "sha256": "84e15e66646b9d4621aa3ecbf260e7f37c6f9df510930cfb60195164da818032"
+    },
+    {
+      "path": "public/lexicon/ar/standard/645-647.json.gz",
+      "sha256": "e71aad4625cb5e9008b8c30e29df1408f96649fac88ba7b061e232f6b5c4741a"
+    },
+    {
+      "path": "public/lexicon/ar/standard/645-648.json.gz",
+      "sha256": "b70f7021a677510b7cafd2fdfd8f2540fa22cc9fd990026e6bee34c85cea6b64"
+    },
+    {
+      "path": "public/lexicon/ar/standard/645-64a.json.gz",
+      "sha256": "c6fefbc9becbaf935a71e7ac85c8bffa4856b2ebb207b3a7ba4cb7420873755d"
+    },
+    {
+      "path": "public/lexicon/ar/standard/645.json.gz",
+      "sha256": "ef6aef44a85c711bec3f27f07655ef02b932524e218c46d1d05039877f49a73f"
+    },
+    {
+      "path": "public/lexicon/ar/standard/646-624.json.gz",
+      "sha256": "d081d3b347cb0bb15d15fca42431d8e2ef7d22aa3f70b5f4d3331a68ec65515f"
+    },
+    {
+      "path": "public/lexicon/ar/standard/646-626.json.gz",
+      "sha256": "88c21b4cb438bc60253119ec9b2798cccbf5e3a96cc400a352d91ca2b20b0ceb"
+    },
+    {
+      "path": "public/lexicon/ar/standard/646-627.json.gz",
+      "sha256": "e12f1974dcee8383fe34c35b534324247115e37f41c94992f9ea7eb45b46924a"
+    },
+    {
+      "path": "public/lexicon/ar/standard/646-628.json.gz",
+      "sha256": "811e6187e44806cd52f20e84300333db85463eb94af453cb28879931a7fb6ee6"
+    },
+    {
+      "path": "public/lexicon/ar/standard/646-62a.json.gz",
+      "sha256": "038475c58d9faaf0b6a591385e5225b111f094916c37c616c850916543b33665"
+    },
+    {
+      "path": "public/lexicon/ar/standard/646-62b.json.gz",
+      "sha256": "2cfbabbdd56b8c1456989c4035018cd1013297be4b647dfe31bf3829376291f6"
+    },
+    {
+      "path": "public/lexicon/ar/standard/646-62c.json.gz",
+      "sha256": "296767f31dce909c93d91d6792048bf7456aa8bbed3ac177bcb3b4edcbe91e2b"
+    },
+    {
+      "path": "public/lexicon/ar/standard/646-62d.json.gz",
+      "sha256": "731f34a125844e0e442363877a29604d75a2bce88af5cc4a32c5857d591e0348"
+    },
+    {
+      "path": "public/lexicon/ar/standard/646-62e.json.gz",
+      "sha256": "5bac8cf2b6e6f91775cc4cf6abc0a7e1d3ec6f5ff4599d0509b02b64c87aa7d1"
+    },
+    {
+      "path": "public/lexicon/ar/standard/646-62f.json.gz",
+      "sha256": "b3abebc6503a06bb688086b765a39b1bb40284be787b4cfc27a346fa8cb9b75f"
+    },
+    {
+      "path": "public/lexicon/ar/standard/646-630.json.gz",
+      "sha256": "0b5b6cfa299c1efe4d9e3eb052248e52eed58157afc37bf237e97d46f2e8018e"
+    },
+    {
+      "path": "public/lexicon/ar/standard/646-631.json.gz",
+      "sha256": "95bce74a510c63a21e4c3411b02b6208fa46695914811e0f2f999ff4a30b9bb4"
+    },
+    {
+      "path": "public/lexicon/ar/standard/646-632.json.gz",
+      "sha256": "06e4c16be342892a3f31b9d8c75c68c3b1f865977abad385ddb691c5eada2644"
+    },
+    {
+      "path": "public/lexicon/ar/standard/646-633.json.gz",
+      "sha256": "7386a68ce60201ec1059a567d7cf2fb8984d7abd85db05f52e663e797e3d439d"
+    },
+    {
+      "path": "public/lexicon/ar/standard/646-634.json.gz",
+      "sha256": "e0d40a444c342c0b4460d230330fe198f93cac54ddf153ff5cc1045bf99840b2"
+    },
+    {
+      "path": "public/lexicon/ar/standard/646-635.json.gz",
+      "sha256": "5a83debb09c5cc2e4ef3c9f69d20893e13785522d37c0dd397422c88578374ba"
+    },
+    {
+      "path": "public/lexicon/ar/standard/646-636.json.gz",
+      "sha256": "36ea943a64e88784aef0b28784fd146ed76fd953dec587eafe6cbb3a8745f435"
+    },
+    {
+      "path": "public/lexicon/ar/standard/646-637.json.gz",
+      "sha256": "a89c4d8b42d134834abfb1acea2a3d90a2091de7579afbe4e0306775a12c5d66"
+    },
+    {
+      "path": "public/lexicon/ar/standard/646-638.json.gz",
+      "sha256": "3c37fd05771ad62d12e5bcc0195338524c4c10b07d9da83000ff6efa570bef4b"
+    },
+    {
+      "path": "public/lexicon/ar/standard/646-639.json.gz",
+      "sha256": "07bfc92d000e00dec6326c47904660cbe572ea1241e1c84012d9a39ca82f6cd9"
+    },
+    {
+      "path": "public/lexicon/ar/standard/646-63a.json.gz",
+      "sha256": "de1785b596c12fbae33b0fbf3c6f0078c0e525e27aceb307e29dc789c4a96262"
+    },
+    {
+      "path": "public/lexicon/ar/standard/646-641.json.gz",
+      "sha256": "d685fc6c5da1518d4b52df852ca9e43b3f794e4939f2a5d542ac11511e21c53f"
+    },
+    {
+      "path": "public/lexicon/ar/standard/646-642.json.gz",
+      "sha256": "f57907010083d4a22f8f27c2712f6cd850b1ee25d9f90daaa22a14140ab0854a"
+    },
+    {
+      "path": "public/lexicon/ar/standard/646-643.json.gz",
+      "sha256": "47ed310d0ce168224c01e2cbd208060a6239f51e8702f423100d4c0c4078bf2e"
+    },
+    {
+      "path": "public/lexicon/ar/standard/646-644.json.gz",
+      "sha256": "9a7b662e048626901a0801c87731ecf13e1e463f099a98800d3d7f12c5d60372"
+    },
+    {
+      "path": "public/lexicon/ar/standard/646-645.json.gz",
+      "sha256": "991567a1906c8c172bd1e5b0f0034f9858105990b0e069582d5ef8a8474948a7"
+    },
+    {
+      "path": "public/lexicon/ar/standard/646-646.json.gz",
+      "sha256": "164246d2a45e96f27af5df09b9eb5ab0e8ee743cd5018d9dae4bff63573a7349"
+    },
+    {
+      "path": "public/lexicon/ar/standard/646-647.json.gz",
+      "sha256": "66e3fea31e035eccf5c2af4eb5fa496f70514d3e71fc546ac1d902db8052d1ac"
+    },
+    {
+      "path": "public/lexicon/ar/standard/646-648.json.gz",
+      "sha256": "40d710e53275b44bac5635dae6aef8025ca1a64146be554b9d2b3e23789dbd52"
+    },
+    {
+      "path": "public/lexicon/ar/standard/646-64a.json.gz",
+      "sha256": "2b7fc30d61b5aa2dc29e11eedfa7e2ac5279b40d54499985f6d2f4f2229edeb6"
+    },
+    {
+      "path": "public/lexicon/ar/standard/646.json.gz",
+      "sha256": "d3ca1040e587aae3055a280a2e7368704e4651d48df63c9061e51ccae3d16421"
+    },
+    {
+      "path": "public/lexicon/ar/standard/647.json.gz",
+      "sha256": "910e2fc71d699efe96342e5702893ad4599f742f23e122f3b0b1db2772cdaf66"
+    },
+    {
+      "path": "public/lexicon/ar/standard/648.json.gz",
+      "sha256": "d84faf314a0eaaf8a843762c5106e9543b1aefa5fe0be0bda651d6d07ca56bd4"
+    },
+    {
+      "path": "public/lexicon/ar/standard/64a-624.json.gz",
+      "sha256": "5d0b236577c0d0cf62ed019d2d28bddc54657a1d60e0a5d42b36b42ef238e109"
+    },
+    {
+      "path": "public/lexicon/ar/standard/64a-626.json.gz",
+      "sha256": "c32a9b4395ff091f7fb6ca90acb0c0b056447a48a6cd586ea0198a4ea888ab92"
+    },
+    {
+      "path": "public/lexicon/ar/standard/64a-627.json.gz",
+      "sha256": "319cf2397efd3fdde074c78306526ad42efe4053bec7c23ed1da755db38980b1"
+    },
+    {
+      "path": "public/lexicon/ar/standard/64a-628.json.gz",
+      "sha256": "48c17b779c777ec52330bbdab83271788bb6cfb3987d564925f2a6a97c6837e7"
+    },
+    {
+      "path": "public/lexicon/ar/standard/64a-62a.json.gz",
+      "sha256": "7ed6549219d0492a2fa51c860ddbe17cbbe5a9d1ecd894b71cc1d35f83ad034e"
+    },
+    {
+      "path": "public/lexicon/ar/standard/64a-62b.json.gz",
+      "sha256": "734ff4f68f9c23091b4fdc9b34715f233cbdccdc6b5ee9bb0a12bc7ba594ecd0"
+    },
+    {
+      "path": "public/lexicon/ar/standard/64a-62c.json.gz",
+      "sha256": "b098b86221faccefd31c636ccf6f75cfa647ff2dc16ea0353757a6d579822916"
+    },
+    {
+      "path": "public/lexicon/ar/standard/64a-62d.json.gz",
+      "sha256": "415d4a521789abe6259e73c453d45bbc30ad86740ba9f0a73af7418e98bf81cb"
+    },
+    {
+      "path": "public/lexicon/ar/standard/64a-62e.json.gz",
+      "sha256": "4813f4f3cb2d9240a744a0bbc912fbac54fe87f7c1fa84ebc55881551d9d72a7"
+    },
+    {
+      "path": "public/lexicon/ar/standard/64a-62f.json.gz",
+      "sha256": "b1b4258757e19e02e0c1707da58fc886daef7aeb41a7ea367a897e8f774db774"
+    },
+    {
+      "path": "public/lexicon/ar/standard/64a-630.json.gz",
+      "sha256": "51d06634ce7784e719ad0ba17d7a00c68deda381911083948bf97e97e37f775b"
+    },
+    {
+      "path": "public/lexicon/ar/standard/64a-631.json.gz",
+      "sha256": "8347a5750d99851ac2549b6952b9f4af5f6eaa8f8e850b6390e2d291a65d6d99"
+    },
+    {
+      "path": "public/lexicon/ar/standard/64a-632.json.gz",
+      "sha256": "f7177a45eadea645868c390bd1b122b6b738996fe28a98d1f220f8473a23719c"
+    },
+    {
+      "path": "public/lexicon/ar/standard/64a-633.json.gz",
+      "sha256": "aa1650378bc90b769d2bd0f843bcecb2d5c9723f5948ae2cec197e6b79a09a6f"
+    },
+    {
+      "path": "public/lexicon/ar/standard/64a-634.json.gz",
+      "sha256": "2a9ee627458701f02f5f89b4d6dfd04ff5b2107d2ef4782d20a02a2601c65c12"
+    },
+    {
+      "path": "public/lexicon/ar/standard/64a-635.json.gz",
+      "sha256": "c08d800e5a74303fefe7dedbd7e3b908914dd0ec6d60dc6cf757824a80a6a4c5"
+    },
+    {
+      "path": "public/lexicon/ar/standard/64a-636.json.gz",
+      "sha256": "4599193c895e49d4e5e58c704f709dab74be4a6e1f6695dde726d7a5c56ec5b1"
+    },
+    {
+      "path": "public/lexicon/ar/standard/64a-637.json.gz",
+      "sha256": "f01a72193e02991094ea0698faf223e7ec9137e0ffa7b1cf2138cc85e40ec62f"
+    },
+    {
+      "path": "public/lexicon/ar/standard/64a-638.json.gz",
+      "sha256": "8f00e167eaca68a4720b3f34994406ee4ed95208f6756799e905325364ff2c1c"
+    },
+    {
+      "path": "public/lexicon/ar/standard/64a-639.json.gz",
+      "sha256": "e3a64c1b65189b771ab628602db5966184478395c0e047a46bb451150ae96d0f"
+    },
+    {
+      "path": "public/lexicon/ar/standard/64a-63a.json.gz",
+      "sha256": "8365b0a18303b54e03fabe1aec7c1b634f00e78f4dd583575cb2a6b4df07e3ed"
+    },
+    {
+      "path": "public/lexicon/ar/standard/64a-641.json.gz",
+      "sha256": "c9ba5c04b0b752409c15c9c4f1050bee8461db754c5c137745d683403bb06124"
+    },
+    {
+      "path": "public/lexicon/ar/standard/64a-642.json.gz",
+      "sha256": "ea3a60a93e2ab1f36151e9dec0d87f206646b3313f87a038af3799aebd51da70"
+    },
+    {
+      "path": "public/lexicon/ar/standard/64a-643.json.gz",
+      "sha256": "2211bec8b512f9f2902270467b7439799fcaa5f84c5ab94447c76b29bf767564"
+    },
+    {
+      "path": "public/lexicon/ar/standard/64a-644.json.gz",
+      "sha256": "c3e0ec86da3ab33708f5999069e15a7d5b9f03b2cee56f253e9ef69a21c8be8e"
+    },
+    {
+      "path": "public/lexicon/ar/standard/64a-645.json.gz",
+      "sha256": "58c7280a00bf27573098ca102d4dd9eb0ea0661a0d21e6215b7d7ec6eea4f64d"
+    },
+    {
+      "path": "public/lexicon/ar/standard/64a-646.json.gz",
+      "sha256": "f4e16373602fa5559236d6789e94dab24e1edc51b414fa57230ba41f84225d5d"
+    },
+    {
+      "path": "public/lexicon/ar/standard/64a-647.json.gz",
+      "sha256": "106573dc4835f67ce041ea92e78e96e48671f69e9de56bf90259e6c8fcb193a4"
+    },
+    {
+      "path": "public/lexicon/ar/standard/64a-648.json.gz",
+      "sha256": "d3bbccab83554110a767acbbba9a5235bde862a90e04f0015b392ac00b340f5e"
+    },
+    {
+      "path": "public/lexicon/ar/standard/64a-64a.json.gz",
+      "sha256": "fe2c3f979648cff2dad6318cda7aa15ca10af962d99cd770ffdaf488cb7e8cba"
+    },
+    {
+      "path": "public/lexicon/ar/standard/64a.json.gz",
+      "sha256": "60eb0600a3603b9156181e25e2f87399362a60f0dbae0a692df9bdb7628691d7"
+    },
+    {
+      "path": "public/lexicon/ar/standard/manifest.json",
+      "sha256": "7c648e5ed9f66dad6b1f7d008b87cedb52729be393eb22301bb004e749bc6b43"
     },
     {
       "path": "public/lexicon/el/ancient/_.json.gz",
@@ -2770,6 +3542,114 @@
     {
       "path": "public/lexicon/he/modern/ת.json.gz",
       "sha256": "f5b81ed8b2ac5d3c709e8c3fdfc8b9393ed77ec148c8ba146220463637f615ca"
+    },
+    {
+      "path": "public/lexicon/ko/standard/H4.json.gz",
+      "sha256": "eb056be2fad982694cc1df04624344d8a1ea848ef224eec090d63f5643c294a2"
+    },
+    {
+      "path": "public/lexicon/ko/standard/H5.json.gz",
+      "sha256": "3e42943d6176c1b3d36684d831aa888213d57e5437527bd552c35e8707ac1263"
+    },
+    {
+      "path": "public/lexicon/ko/standard/H6.json.gz",
+      "sha256": "c9ef712e64c5bc5e985e816caabe416c1f2d4a1f3526939031faaff254a8dcdb"
+    },
+    {
+      "path": "public/lexicon/ko/standard/H7.json.gz",
+      "sha256": "dd8987ebd6a1a6aa3bab0e775ebb665061a5ad3704d330c1ad7911e36e88bdab"
+    },
+    {
+      "path": "public/lexicon/ko/standard/H8.json.gz",
+      "sha256": "883cde4ce85cb34452e19eae2a3c9b6ac4684cbb82a29a0990fd82d5092d3f5a"
+    },
+    {
+      "path": "public/lexicon/ko/standard/H9.json.gz",
+      "sha256": "b190477c779e9f0f4b65ff819b5ded5b53d0d1f355ea0621f4dcc7927a31832c"
+    },
+    {
+      "path": "public/lexicon/ko/standard/_.json.gz",
+      "sha256": "3e48ced05479f67381f942c7b417a59f254aac10205e869587aeb8a0eabb418f"
+    },
+    {
+      "path": "public/lexicon/ko/standard/manifest.json",
+      "sha256": "65594778382564b7cf95c6281c90eb34c048796cd4162a335cefffe7ad4dfefd"
+    },
+    {
+      "path": "public/lexicon/ko/standard/ㄱ.json.gz",
+      "sha256": "41445a974ff883f7f93072ac7851779d0d0c7954fde80c2ba93fe70259286649"
+    },
+    {
+      "path": "public/lexicon/ko/standard/ㄲ.json.gz",
+      "sha256": "82335fd8900fe8067c8f6b89f2e45c6cfe6e6870326aaf1cc8642468bbdb5b86"
+    },
+    {
+      "path": "public/lexicon/ko/standard/ㄴ.json.gz",
+      "sha256": "19f4741148fabfc589da6aedb097b6cc4601530bb4e8c6201d466bcacc09de16"
+    },
+    {
+      "path": "public/lexicon/ko/standard/ㄷ.json.gz",
+      "sha256": "a8e916839230c000be71c82f1eed1a51e17984f33c6307fc4e976544dd242667"
+    },
+    {
+      "path": "public/lexicon/ko/standard/ㄸ.json.gz",
+      "sha256": "c5bf6522734a1d09d2ce1663eadb00e0f8d4213a2447481fdc710cf9ab8668f8"
+    },
+    {
+      "path": "public/lexicon/ko/standard/ㄹ.json.gz",
+      "sha256": "2699bfcef35cf69635119601cad42cd0a993ce1cf5fa172311b41e0b7c4734e4"
+    },
+    {
+      "path": "public/lexicon/ko/standard/ㅁ.json.gz",
+      "sha256": "fee3e89e8c4c3f2db18928f714f0aacfeee95bf55d981b2515e3c6bf7c3463d0"
+    },
+    {
+      "path": "public/lexicon/ko/standard/ㅂ.json.gz",
+      "sha256": "209f0734e8365c5537b42ef2a166c7f3b9ca448ffe8c7b8cd8d9be27d01523ec"
+    },
+    {
+      "path": "public/lexicon/ko/standard/ㅃ.json.gz",
+      "sha256": "0c8dba4b2b372dac3bdd5ee7a5499eccca622e45afdc6e013005c7ef745db6c3"
+    },
+    {
+      "path": "public/lexicon/ko/standard/ㅅ.json.gz",
+      "sha256": "0f8f65e0120d2954eee36acc780c038d51827d84f75beb1c8fcd63195e1d0095"
+    },
+    {
+      "path": "public/lexicon/ko/standard/ㅆ.json.gz",
+      "sha256": "6167487d4c376a8b12250803eae8f4e3c11a0792f881527c12dea35d5bcdb6d0"
+    },
+    {
+      "path": "public/lexicon/ko/standard/ㅇ.json.gz",
+      "sha256": "51535fb997c752dca635bf169dd40a4b97286cf75707ca20f809747fd4da926d"
+    },
+    {
+      "path": "public/lexicon/ko/standard/ㅈ.json.gz",
+      "sha256": "dff2e290d52187d213d413fe948cda0419a8f985fc19f8805c0fda80d6699ca0"
+    },
+    {
+      "path": "public/lexicon/ko/standard/ㅉ.json.gz",
+      "sha256": "0cb10439fc7761a80a4560c4af05a49c72ca724a812ba3946c0cd19b6e27a87b"
+    },
+    {
+      "path": "public/lexicon/ko/standard/ㅊ.json.gz",
+      "sha256": "52ccbc3e16ffe0fe8a3faf72b740e650998a304eee2e43efba279ddc7ef137fe"
+    },
+    {
+      "path": "public/lexicon/ko/standard/ㅋ.json.gz",
+      "sha256": "db1fc13ccc179ca52c7568099ac0e04cba26ad3e20100d9c7f953a533c8dd693"
+    },
+    {
+      "path": "public/lexicon/ko/standard/ㅌ.json.gz",
+      "sha256": "4cbaf7b7f6ceaf31736928141f99ef0fa205be25bdecf28184091716c6ae87b2"
+    },
+    {
+      "path": "public/lexicon/ko/standard/ㅍ.json.gz",
+      "sha256": "4f0113535cd7b89badf8e4e005d96596f06e406231779e308efa3047699ebe12"
+    },
+    {
+      "path": "public/lexicon/ko/standard/ㅎ.json.gz",
+      "sha256": "b1e51cab57afa89f1e8c1a4561cbea067485e64167cab2c706d5032c39f8cb97"
     },
     {
       "path": "public/lexicon/ru/standard/manifest.json",
@@ -4649,7 +5529,7 @@
     },
     {
       "path": "scripts/goreview-release.mjs",
-      "sha256": "60f1bead7d4b643a6596aaff78a6ac5edd582369cdba26da7a410df75b2611cb"
+      "sha256": "2d26e22f7d4c954286876f2652ebb7c1a6b49bc7d21b8dce35980426c17c9607"
     },
     {
       "path": "scripts/vite.config.ts",
@@ -4818,6 +5698,142 @@
     {
       "path": "src/adapters/albanian/version.ts",
       "sha256": "fccdb03f3416c18956bae6dc387c3554668ef08363ae1d8b44ba753271f6171b"
+    },
+    {
+      "path": "src/adapters/ar.ts",
+      "sha256": "4912270e533eaf589d664290e2a801202ec4d8e5110fe9e4701dcb963f6482e8"
+    },
+    {
+      "path": "src/adapters/arabic/analyze.ts",
+      "sha256": "d174d162c4b7e16e231c24260722088f7d043579b2d107384a52683026da0b1e"
+    },
+    {
+      "path": "src/adapters/arabic/answer-exclusions.json",
+      "sha256": "9dd83f0913a0c2c3a6db2c02bb24bb21886ac13289efd1583a12cc3cf716d309"
+    },
+    {
+      "path": "src/adapters/arabic/answers.ts",
+      "sha256": "0f2c98ce51b18ef879aae1ee096781a10120185f9e02f8aba453a6185ff3376c"
+    },
+    {
+      "path": "src/adapters/arabic/clitics.ts",
+      "sha256": "92ecaeb317ad662a40ed295e626e4fe0c7b37d9d7e9bf371fe0aecb94bb27d5d"
+    },
+    {
+      "path": "src/adapters/arabic/closed.ts",
+      "sha256": "f4b1b0d5667f6371781499204d4e26f553062ad119000e408f84fe54b9f70488"
+    },
+    {
+      "path": "src/adapters/arabic/constructions.ts",
+      "sha256": "b6f352217f821ad4166d41f4a50b9ef3174e9a56d930559686e931147674278e"
+    },
+    {
+      "path": "src/adapters/arabic/deck.ts",
+      "sha256": "4de746ddc9d752df97aed9a2b8e0619ed1acaa146deb2d06eba50976fcb20e7f"
+    },
+    {
+      "path": "src/adapters/arabic/describe.ts",
+      "sha256": "3333630b59d8d35eb75c2a82f122f64e4898352da40444446054548c9edb03c1"
+    },
+    {
+      "path": "src/adapters/arabic/dialect.ts",
+      "sha256": "c0736046ee3a72a8d03a6b860cd60edd54d0b08b3b5d8d9a2c9b373380ef63c8"
+    },
+    {
+      "path": "src/adapters/arabic/generated/core.ts",
+      "sha256": "ff3193bb44550cc919e494134746aeed224f19a2f8b8653c060239e929f6cd27"
+    },
+    {
+      "path": "src/adapters/arabic/generated/deck-limits.ts",
+      "sha256": "3bc77a67d1970b7148b1ea73e18bca62ace52a95e0491dd2436123d170df5868"
+    },
+    {
+      "path": "src/adapters/arabic/generated/phrases.ts",
+      "sha256": "ab35e6e3ee97647f18e125b6f4b89dd1af9bccc4d56e239f29acf84196fe53f4"
+    },
+    {
+      "path": "src/adapters/arabic/generated/preferences.ts",
+      "sha256": "afa2193ed9383e0bef988e1ac98a7ac97a8f5d28c680d27452a68424df29c126"
+    },
+    {
+      "path": "src/adapters/arabic/government.ts",
+      "sha256": "2dfadeff262606de6a9c64b8892b48ef270a1a44a4f99c8455cef35e9a785dd4"
+    },
+    {
+      "path": "src/adapters/arabic/guess.ts",
+      "sha256": "25e676454b833c3548ace09780f07b9536ec5dd274a3796f4692e9199782a5ce"
+    },
+    {
+      "path": "src/adapters/arabic/identities.json",
+      "sha256": "927328b16ebd329c302d504b4a357f6fde90505cd3644cde4d62319a30a1a0f3"
+    },
+    {
+      "path": "src/adapters/arabic/identities.ts",
+      "sha256": "c76b602e970155aae1172360826602bce82a80fcc0c9b1f112b7a2120f7bf503"
+    },
+    {
+      "path": "src/adapters/arabic/index-store.ts",
+      "sha256": "f7920edfe7f82be989003dff4756b9b379c9834caabd5a069c420091b4cea2b6"
+    },
+    {
+      "path": "src/adapters/arabic/numbers.ts",
+      "sha256": "aa1d36abcc713ecaa6e1f410f8bff01c54831f4a626abd57296096eee202d345"
+    },
+    {
+      "path": "src/adapters/arabic/paradigm.ts",
+      "sha256": "c02bde32d8510aa17180efb3db7ad1ec80da598e916d0361c5786cc57be9684d"
+    },
+    {
+      "path": "src/adapters/arabic/phrases.ts",
+      "sha256": "e1505b9e85ff54c55596337abbca10e2e2c677f40e7f8df30d3308ee41fb7b44"
+    },
+    {
+      "path": "src/adapters/arabic/preferences-reviewed.json",
+      "sha256": "f118cf0f4f7fe3dd3be148e2fe607eded87f64bc32e1921fdf0168068195f2aa"
+    },
+    {
+      "path": "src/adapters/arabic/production.ts",
+      "sha256": "fa32aa262142644c9e602ad45863a1b8bac29a6cd605de0fb163ed7998258c80"
+    },
+    {
+      "path": "src/adapters/arabic/pronunciation.ts",
+      "sha256": "d2bb83071fde45410dcaeb455fadfa4744dce2592d5221b57508c2c754a4cd88"
+    },
+    {
+      "path": "src/adapters/arabic/roots.ts",
+      "sha256": "0e94403642bbb46f64f427213c66f967831c250b4bcfddb80311b70a2083b270"
+    },
+    {
+      "path": "src/adapters/arabic/sentence.ts",
+      "sha256": "5adfc8386efa930d42cb84d50334e95cbad6f185115eb53108ee349d70eaaf87"
+    },
+    {
+      "path": "src/adapters/arabic/shards.ts",
+      "sha256": "34b29449e66c79daa15879ae914aec2875656feeb4ff410c87d5c540ea623d9f"
+    },
+    {
+      "path": "src/adapters/arabic/speech.ts",
+      "sha256": "c68d988f6f3f35116197b1eb436793ee9212a47673cadf1f844dd32886e0727f"
+    },
+    {
+      "path": "src/adapters/arabic/syntax.ts",
+      "sha256": "c25b144c6b812bcc29424d63a35ace53f98ea88075f5a10b310b0eb883767bc7"
+    },
+    {
+      "path": "src/adapters/arabic/tags.ts",
+      "sha256": "34a5a407af6c0c8fa878c4094924c1bac89cbc8507af958ea8c95c8839f0051d"
+    },
+    {
+      "path": "src/adapters/arabic/text.ts",
+      "sha256": "021bfd5c61a0ab2433ad4b2d5d4d55c8df069cb63b8bcb8ae8d2218c6d6f7038"
+    },
+    {
+      "path": "src/adapters/arabic/translit.ts",
+      "sha256": "9404340f6fda5f846ea150a4042cf4ed43e62903f9f7dca926e7a810b6d8f719"
+    },
+    {
+      "path": "src/adapters/arabic/version.ts",
+      "sha256": "cec7fce05c632326cf3de5b8d9c7d40913b5c8f822c1c1731158ed7b3add3179"
     },
     {
       "path": "src/adapters/aramaic/meta.ts",
@@ -5480,6 +6496,110 @@
       "sha256": "abcd9f4ffa48fe9821031cb9f9f962c591efd66d7d5a894371331daa67ac6928"
     },
     {
+      "path": "src/adapters/ko.ts",
+      "sha256": "d3d27a25f00a9631e128dcc4b478b43c161c0570b44be4b59f177bb4bad66f2a"
+    },
+    {
+      "path": "src/adapters/korean/analyze.ts",
+      "sha256": "5d5479d8d42f37434dc25a05c2f3337b75547b62ebb1a2bf51e7a79e28798432"
+    },
+    {
+      "path": "src/adapters/korean/conjugate.ts",
+      "sha256": "6a1b8cc1c9665c79eebfd306bf793619ed4d388af80760dd4e163704d524d449"
+    },
+    {
+      "path": "src/adapters/korean/constructions.ts",
+      "sha256": "e6845dd22e3922e5ece7db6317d61f45d7376a2fe4aa8b93dc02d0c137bff4c8"
+    },
+    {
+      "path": "src/adapters/korean/describe.ts",
+      "sha256": "49e86a8ee5201f88d23daae10aa9952afa709487f0baf92e84103552b5f5feae"
+    },
+    {
+      "path": "src/adapters/korean/endings.ts",
+      "sha256": "dc3442927b357ae439aa2011a16a855aa8a63820eea15f1f8ebcc377663647c5"
+    },
+    {
+      "path": "src/adapters/korean/generated/core.ts",
+      "sha256": "d3c10886f9296f7074ee560145bd75e409a94e8e0650353f1c391b213f2dc9a8"
+    },
+    {
+      "path": "src/adapters/korean/generated/known-limits.ts",
+      "sha256": "1f9046b78634a6f32578af2cceb04afdde4e99ba311c3edddf5ce687becf5135"
+    },
+    {
+      "path": "src/adapters/korean/hangul.ts",
+      "sha256": "3dbea531346100aa3cecad4f7accae4bd3ac2dde39487266a3c3648ea6229b3c"
+    },
+    {
+      "path": "src/adapters/korean/index-store.ts",
+      "sha256": "857835bcc86a4b343e9f50468932a71cf60668949ccb31e4c85ec75b30aeb609"
+    },
+    {
+      "path": "src/adapters/korean/paradigm.ts",
+      "sha256": "792d61eb5b8b968eb9163060c55a52629b3a5420a9269c5f62bdf510b9315cfc"
+    },
+    {
+      "path": "src/adapters/korean/particles.ts",
+      "sha256": "947a292d1576c1ba12167c16418ffe219a710f513234aaf09a59c5ddde44f817"
+    },
+    {
+      "path": "src/adapters/korean/phrases.ts",
+      "sha256": "b3e218d12f7083777f421e4ea6cc8d72eb0310527c08fa5034f0c4c8646687bf"
+    },
+    {
+      "path": "src/adapters/korean/pins.ts",
+      "sha256": "01eea2171cf35bfa34a163f4bbcc971149e7f3b64e0a81e8d4e61bfbf9a8e974"
+    },
+    {
+      "path": "src/adapters/korean/production.ts",
+      "sha256": "d29dc24fcd0abec9d02c37b805f85ca93982f24c706db4ef270b3893e4f92c5d"
+    },
+    {
+      "path": "src/adapters/korean/pronunciation.ts",
+      "sha256": "ac42a506e98f79d8bf50c15c62be2f531dccdf0c404c33821075ef52df28b401"
+    },
+    {
+      "path": "src/adapters/korean/review-gate.ts",
+      "sha256": "ae8d2e81bea3e30c6ed942d0f0ba9b93e1f3e9f868b389199689d54be73b7c6f"
+    },
+    {
+      "path": "src/adapters/korean/sentence.ts",
+      "sha256": "88a586faf1e0c4d5832a5a108c85845725c40d1175c32cf4a3aead12cf5225f0"
+    },
+    {
+      "path": "src/adapters/korean/shards.ts",
+      "sha256": "fbb87cf47c206172ba703901bf5cbcbf3790dec95720693c1ea273b0d725b7cd"
+    },
+    {
+      "path": "src/adapters/korean/speech.ts",
+      "sha256": "f9ff82afaeadd46e3d373724ccffd4c8c71936bcc861d4acceacf7d37917a72b"
+    },
+    {
+      "path": "src/adapters/korean/stems.ts",
+      "sha256": "78a3d51b9c8658faaeb3632158ea5df63fb428ffd2265f9d9158ae646f5691ba"
+    },
+    {
+      "path": "src/adapters/korean/syntax.ts",
+      "sha256": "9470a7ae643828626c29b0027ed2bfff9d8e922ca83c2c8184ec31f1be712c58"
+    },
+    {
+      "path": "src/adapters/korean/tags.ts",
+      "sha256": "fe49e63959e774cc3bbf9fde42f0f287a4ba5e2e1e57249c44473be84490135a"
+    },
+    {
+      "path": "src/adapters/korean/text.ts",
+      "sha256": "ad4725bd612ef64b2373d93951872af9caf576827736393c4b773ddcb294b4eb"
+    },
+    {
+      "path": "src/adapters/korean/translit.ts",
+      "sha256": "1460540f0ec39143ab034c81250bdfdf407e2626415fc0d189469889e8e04569"
+    },
+    {
+      "path": "src/adapters/korean/version.ts",
+      "sha256": "2da52d5841925538dd90289fc0a564fe337aef2bf3475dc06e7f966052eb329a"
+    },
+    {
       "path": "src/adapters/la.ts",
       "sha256": "55c156d35272179eabf10ccee53a72675eb3e3ef0a1a62d9a6fd885a69aa00ea"
     },
@@ -6045,7 +7165,7 @@
     },
     {
       "path": "src/core/adapters.ts",
-      "sha256": "66899f0eb034c51194199a4734be4bc2542f148f511f1218f3da2010590fd268"
+      "sha256": "353185e106f7d4dca9c8abfa378419cb69a8b1756268adc86e9e1ad163b278bd"
     },
     {
       "path": "src/core/english-verb.ts",
@@ -6054,6 +7174,10 @@
     {
       "path": "src/core/paradigm.ts",
       "sha256": "48de6a67cec1bed86a69857b0f013a8acb068745d6ad3ac250d95e8423bf47c0"
+    },
+    {
+      "path": "src/core/review-gate.ts",
+      "sha256": "e7bdc11ec6c732106309e5d17e6d04768f9324afc679b9e88671b1c5af96e829"
     },
     {
       "path": "src/core/review-meaning.ts",
@@ -6065,7 +7189,7 @@
     },
     {
       "path": "src/core/word-analysis.ts",
-      "sha256": "4d26308ef77e0cec97cc26eea5d47d81e8a98268e788e084b5466b42ec44f6c3"
+      "sha256": "1ee38bdee528b1c35a28fb60a3b8cfd8b4e7bff11a0676da161200d36cb5766b"
     },
     {
       "path": "src/dict/build.ts",
@@ -6077,7 +7201,7 @@
     },
     {
       "path": "src/dict/forms.ts",
-      "sha256": "3c8cf59804b4e5d710abc7ba7da5a99514cbfcc5c0207c3f47501acee925aea3"
+      "sha256": "b2be7593fbbe85191cb9ef44e0669a5c9af7fdb09d13794616143c41bdfde6ef"
     },
     {
       "path": "src/dict/frequency.ts",
@@ -6085,7 +7209,7 @@
     },
     {
       "path": "src/dict/full-format.ts",
-      "sha256": "514ababe23d5834f41d284bace2f2e0cc9cbfbe5d04b67042b14f8e94fadfac0"
+      "sha256": "1a3ecee9888a0b36b718b29b1792f17ab4baa7038c2d1e8bcbb6417ec7f58c2f"
     },
     {
       "path": "src/dict/full.ts",
@@ -6109,7 +7233,7 @@
     },
     {
       "path": "src/dict/map.ts",
-      "sha256": "a72855bdb4c77eec2544bbf309575b698e671d99a958347546360d2cf3ec00f2"
+      "sha256": "e0847a0070a362c55ae748266cab9a9df7bc277dd233425bce165ef6b35326ae"
     },
     {
       "path": "src/dict/sharded.ts",
@@ -6126,6 +7250,186 @@
     "packages/shared-fonts/eb-garamond-latin-400-italic.woff2",
     "packages/shared-fonts/eb-garamond-latin-400.woff2",
     "packages/shared-fonts/eb-garamond-latin-600.woff2",
+    "public/lexicon/ar/standard/621.json.gz",
+    "public/lexicon/ar/standard/627-624.json.gz",
+    "public/lexicon/ar/standard/627-626.json.gz",
+    "public/lexicon/ar/standard/627-627.json.gz",
+    "public/lexicon/ar/standard/627-628.json.gz",
+    "public/lexicon/ar/standard/627-62a.json.gz",
+    "public/lexicon/ar/standard/627-62b.json.gz",
+    "public/lexicon/ar/standard/627-62c.json.gz",
+    "public/lexicon/ar/standard/627-62d.json.gz",
+    "public/lexicon/ar/standard/627-62e.json.gz",
+    "public/lexicon/ar/standard/627-62f.json.gz",
+    "public/lexicon/ar/standard/627-630.json.gz",
+    "public/lexicon/ar/standard/627-631.json.gz",
+    "public/lexicon/ar/standard/627-632.json.gz",
+    "public/lexicon/ar/standard/627-633.json.gz",
+    "public/lexicon/ar/standard/627-634.json.gz",
+    "public/lexicon/ar/standard/627-635.json.gz",
+    "public/lexicon/ar/standard/627-636.json.gz",
+    "public/lexicon/ar/standard/627-637.json.gz",
+    "public/lexicon/ar/standard/627-638.json.gz",
+    "public/lexicon/ar/standard/627-639.json.gz",
+    "public/lexicon/ar/standard/627-63a.json.gz",
+    "public/lexicon/ar/standard/627-641.json.gz",
+    "public/lexicon/ar/standard/627-642.json.gz",
+    "public/lexicon/ar/standard/627-643.json.gz",
+    "public/lexicon/ar/standard/627-644.json.gz",
+    "public/lexicon/ar/standard/627-645.json.gz",
+    "public/lexicon/ar/standard/627-646.json.gz",
+    "public/lexicon/ar/standard/627-647.json.gz",
+    "public/lexicon/ar/standard/627-648.json.gz",
+    "public/lexicon/ar/standard/627-64a.json.gz",
+    "public/lexicon/ar/standard/627.json.gz",
+    "public/lexicon/ar/standard/628.json.gz",
+    "public/lexicon/ar/standard/62a-624.json.gz",
+    "public/lexicon/ar/standard/62a-626.json.gz",
+    "public/lexicon/ar/standard/62a-627.json.gz",
+    "public/lexicon/ar/standard/62a-628.json.gz",
+    "public/lexicon/ar/standard/62a-62a.json.gz",
+    "public/lexicon/ar/standard/62a-62b.json.gz",
+    "public/lexicon/ar/standard/62a-62c.json.gz",
+    "public/lexicon/ar/standard/62a-62d.json.gz",
+    "public/lexicon/ar/standard/62a-62e.json.gz",
+    "public/lexicon/ar/standard/62a-62f.json.gz",
+    "public/lexicon/ar/standard/62a-630.json.gz",
+    "public/lexicon/ar/standard/62a-631.json.gz",
+    "public/lexicon/ar/standard/62a-632.json.gz",
+    "public/lexicon/ar/standard/62a-633.json.gz",
+    "public/lexicon/ar/standard/62a-634.json.gz",
+    "public/lexicon/ar/standard/62a-635.json.gz",
+    "public/lexicon/ar/standard/62a-636.json.gz",
+    "public/lexicon/ar/standard/62a-637.json.gz",
+    "public/lexicon/ar/standard/62a-638.json.gz",
+    "public/lexicon/ar/standard/62a-639.json.gz",
+    "public/lexicon/ar/standard/62a-63a.json.gz",
+    "public/lexicon/ar/standard/62a-641.json.gz",
+    "public/lexicon/ar/standard/62a-642.json.gz",
+    "public/lexicon/ar/standard/62a-643.json.gz",
+    "public/lexicon/ar/standard/62a-644.json.gz",
+    "public/lexicon/ar/standard/62a-645.json.gz",
+    "public/lexicon/ar/standard/62a-646.json.gz",
+    "public/lexicon/ar/standard/62a-647.json.gz",
+    "public/lexicon/ar/standard/62a-648.json.gz",
+    "public/lexicon/ar/standard/62a-64a.json.gz",
+    "public/lexicon/ar/standard/62a.json.gz",
+    "public/lexicon/ar/standard/62b.json.gz",
+    "public/lexicon/ar/standard/62c.json.gz",
+    "public/lexicon/ar/standard/62d.json.gz",
+    "public/lexicon/ar/standard/62e.json.gz",
+    "public/lexicon/ar/standard/62f.json.gz",
+    "public/lexicon/ar/standard/630.json.gz",
+    "public/lexicon/ar/standard/631.json.gz",
+    "public/lexicon/ar/standard/632.json.gz",
+    "public/lexicon/ar/standard/633.json.gz",
+    "public/lexicon/ar/standard/634.json.gz",
+    "public/lexicon/ar/standard/635.json.gz",
+    "public/lexicon/ar/standard/636.json.gz",
+    "public/lexicon/ar/standard/637.json.gz",
+    "public/lexicon/ar/standard/638.json.gz",
+    "public/lexicon/ar/standard/639.json.gz",
+    "public/lexicon/ar/standard/63a.json.gz",
+    "public/lexicon/ar/standard/641.json.gz",
+    "public/lexicon/ar/standard/642.json.gz",
+    "public/lexicon/ar/standard/643.json.gz",
+    "public/lexicon/ar/standard/644.json.gz",
+    "public/lexicon/ar/standard/645-624.json.gz",
+    "public/lexicon/ar/standard/645-626.json.gz",
+    "public/lexicon/ar/standard/645-627.json.gz",
+    "public/lexicon/ar/standard/645-628.json.gz",
+    "public/lexicon/ar/standard/645-62a.json.gz",
+    "public/lexicon/ar/standard/645-62b.json.gz",
+    "public/lexicon/ar/standard/645-62c.json.gz",
+    "public/lexicon/ar/standard/645-62d.json.gz",
+    "public/lexicon/ar/standard/645-62e.json.gz",
+    "public/lexicon/ar/standard/645-62f.json.gz",
+    "public/lexicon/ar/standard/645-630.json.gz",
+    "public/lexicon/ar/standard/645-631.json.gz",
+    "public/lexicon/ar/standard/645-632.json.gz",
+    "public/lexicon/ar/standard/645-633.json.gz",
+    "public/lexicon/ar/standard/645-634.json.gz",
+    "public/lexicon/ar/standard/645-635.json.gz",
+    "public/lexicon/ar/standard/645-636.json.gz",
+    "public/lexicon/ar/standard/645-637.json.gz",
+    "public/lexicon/ar/standard/645-638.json.gz",
+    "public/lexicon/ar/standard/645-639.json.gz",
+    "public/lexicon/ar/standard/645-63a.json.gz",
+    "public/lexicon/ar/standard/645-641.json.gz",
+    "public/lexicon/ar/standard/645-642.json.gz",
+    "public/lexicon/ar/standard/645-643.json.gz",
+    "public/lexicon/ar/standard/645-644.json.gz",
+    "public/lexicon/ar/standard/645-645.json.gz",
+    "public/lexicon/ar/standard/645-646.json.gz",
+    "public/lexicon/ar/standard/645-647.json.gz",
+    "public/lexicon/ar/standard/645-648.json.gz",
+    "public/lexicon/ar/standard/645-64a.json.gz",
+    "public/lexicon/ar/standard/645.json.gz",
+    "public/lexicon/ar/standard/646-624.json.gz",
+    "public/lexicon/ar/standard/646-626.json.gz",
+    "public/lexicon/ar/standard/646-627.json.gz",
+    "public/lexicon/ar/standard/646-628.json.gz",
+    "public/lexicon/ar/standard/646-62a.json.gz",
+    "public/lexicon/ar/standard/646-62b.json.gz",
+    "public/lexicon/ar/standard/646-62c.json.gz",
+    "public/lexicon/ar/standard/646-62d.json.gz",
+    "public/lexicon/ar/standard/646-62e.json.gz",
+    "public/lexicon/ar/standard/646-62f.json.gz",
+    "public/lexicon/ar/standard/646-630.json.gz",
+    "public/lexicon/ar/standard/646-631.json.gz",
+    "public/lexicon/ar/standard/646-632.json.gz",
+    "public/lexicon/ar/standard/646-633.json.gz",
+    "public/lexicon/ar/standard/646-634.json.gz",
+    "public/lexicon/ar/standard/646-635.json.gz",
+    "public/lexicon/ar/standard/646-636.json.gz",
+    "public/lexicon/ar/standard/646-637.json.gz",
+    "public/lexicon/ar/standard/646-638.json.gz",
+    "public/lexicon/ar/standard/646-639.json.gz",
+    "public/lexicon/ar/standard/646-63a.json.gz",
+    "public/lexicon/ar/standard/646-641.json.gz",
+    "public/lexicon/ar/standard/646-642.json.gz",
+    "public/lexicon/ar/standard/646-643.json.gz",
+    "public/lexicon/ar/standard/646-644.json.gz",
+    "public/lexicon/ar/standard/646-645.json.gz",
+    "public/lexicon/ar/standard/646-646.json.gz",
+    "public/lexicon/ar/standard/646-647.json.gz",
+    "public/lexicon/ar/standard/646-648.json.gz",
+    "public/lexicon/ar/standard/646-64a.json.gz",
+    "public/lexicon/ar/standard/646.json.gz",
+    "public/lexicon/ar/standard/647.json.gz",
+    "public/lexicon/ar/standard/648.json.gz",
+    "public/lexicon/ar/standard/64a-624.json.gz",
+    "public/lexicon/ar/standard/64a-626.json.gz",
+    "public/lexicon/ar/standard/64a-627.json.gz",
+    "public/lexicon/ar/standard/64a-628.json.gz",
+    "public/lexicon/ar/standard/64a-62a.json.gz",
+    "public/lexicon/ar/standard/64a-62b.json.gz",
+    "public/lexicon/ar/standard/64a-62c.json.gz",
+    "public/lexicon/ar/standard/64a-62d.json.gz",
+    "public/lexicon/ar/standard/64a-62e.json.gz",
+    "public/lexicon/ar/standard/64a-62f.json.gz",
+    "public/lexicon/ar/standard/64a-630.json.gz",
+    "public/lexicon/ar/standard/64a-631.json.gz",
+    "public/lexicon/ar/standard/64a-632.json.gz",
+    "public/lexicon/ar/standard/64a-633.json.gz",
+    "public/lexicon/ar/standard/64a-634.json.gz",
+    "public/lexicon/ar/standard/64a-635.json.gz",
+    "public/lexicon/ar/standard/64a-636.json.gz",
+    "public/lexicon/ar/standard/64a-637.json.gz",
+    "public/lexicon/ar/standard/64a-638.json.gz",
+    "public/lexicon/ar/standard/64a-639.json.gz",
+    "public/lexicon/ar/standard/64a-63a.json.gz",
+    "public/lexicon/ar/standard/64a-641.json.gz",
+    "public/lexicon/ar/standard/64a-642.json.gz",
+    "public/lexicon/ar/standard/64a-643.json.gz",
+    "public/lexicon/ar/standard/64a-644.json.gz",
+    "public/lexicon/ar/standard/64a-645.json.gz",
+    "public/lexicon/ar/standard/64a-646.json.gz",
+    "public/lexicon/ar/standard/64a-647.json.gz",
+    "public/lexicon/ar/standard/64a-648.json.gz",
+    "public/lexicon/ar/standard/64a-64a.json.gz",
+    "public/lexicon/ar/standard/64a.json.gz",
+    "public/lexicon/ar/standard/manifest.json",
     "public/lexicon/el/ancient/_.json.gz",
     "public/lexicon/el/ancient/manifest.json",
     "public/lexicon/el/ancient/α.json.gz",
@@ -6360,6 +7664,33 @@
     "public/lexicon/he/modern/ר.json.gz",
     "public/lexicon/he/modern/ש.json.gz",
     "public/lexicon/he/modern/ת.json.gz",
+    "public/lexicon/ko/standard/H4.json.gz",
+    "public/lexicon/ko/standard/H5.json.gz",
+    "public/lexicon/ko/standard/H6.json.gz",
+    "public/lexicon/ko/standard/H7.json.gz",
+    "public/lexicon/ko/standard/H8.json.gz",
+    "public/lexicon/ko/standard/H9.json.gz",
+    "public/lexicon/ko/standard/_.json.gz",
+    "public/lexicon/ko/standard/manifest.json",
+    "public/lexicon/ko/standard/ㄱ.json.gz",
+    "public/lexicon/ko/standard/ㄲ.json.gz",
+    "public/lexicon/ko/standard/ㄴ.json.gz",
+    "public/lexicon/ko/standard/ㄷ.json.gz",
+    "public/lexicon/ko/standard/ㄸ.json.gz",
+    "public/lexicon/ko/standard/ㄹ.json.gz",
+    "public/lexicon/ko/standard/ㅁ.json.gz",
+    "public/lexicon/ko/standard/ㅂ.json.gz",
+    "public/lexicon/ko/standard/ㅃ.json.gz",
+    "public/lexicon/ko/standard/ㅅ.json.gz",
+    "public/lexicon/ko/standard/ㅆ.json.gz",
+    "public/lexicon/ko/standard/ㅇ.json.gz",
+    "public/lexicon/ko/standard/ㅈ.json.gz",
+    "public/lexicon/ko/standard/ㅉ.json.gz",
+    "public/lexicon/ko/standard/ㅊ.json.gz",
+    "public/lexicon/ko/standard/ㅋ.json.gz",
+    "public/lexicon/ko/standard/ㅌ.json.gz",
+    "public/lexicon/ko/standard/ㅍ.json.gz",
+    "public/lexicon/ko/standard/ㅎ.json.gz",
     "public/lexicon/ru/standard/manifest.json",
     "public/lexicon/ru/standard/а.json.gz",
     "public/lexicon/ru/standard/аа.json.gz",
@@ -6955,6 +8286,7 @@
     "packages/goreview/src/exercises/validate.ts",
     "packages/goreview/src/exercises/written-recognition.ts",
     "packages/goreview/src/facts/deck-gate.ts",
+    "packages/goreview/src/facts/deck-holds.ts",
     "packages/goreview/src/facts/deck-known-limits.ts",
     "packages/goreview/src/facts/deck-lead-senses.ts",
     "packages/goreview/src/facts/index.ts",
@@ -7032,8 +8364,10 @@
     "packages/language-packs/src/adapterLoadError.ts",
     "packages/language-packs/src/alphabet-sprint/ids.ts",
     "packages/language-packs/src/alphabet-sprint/knowledge.ts",
+    "packages/language-packs/src/alphabet-sprint/letters-ko.ts",
     "packages/language-packs/src/alphabet-sprint/letters-thhi.ts",
     "packages/language-packs/src/alphabet-sprint/plan.ts",
+    "packages/language-packs/src/alphabet-sprint/profiles/ar.ts",
     "packages/language-packs/src/alphabet-sprint/profiles/arc.ts",
     "packages/language-packs/src/alphabet-sprint/profiles/de.ts",
     "packages/language-packs/src/alphabet-sprint/profiles/el.ts",
@@ -7043,6 +8377,7 @@
     "packages/language-packs/src/alphabet-sprint/profiles/hebrew-script.ts",
     "packages/language-packs/src/alphabet-sprint/profiles/hi.ts",
     "packages/language-packs/src/alphabet-sprint/profiles/index.ts",
+    "packages/language-packs/src/alphabet-sprint/profiles/ko.ts",
     "packages/language-packs/src/alphabet-sprint/profiles/la.ts",
     "packages/language-packs/src/alphabet-sprint/profiles/nb.ts",
     "packages/language-packs/src/alphabet-sprint/profiles/nn.ts",
@@ -7052,6 +8387,7 @@
     "packages/language-packs/src/alphabet-sprint/profiles/th.ts",
     "packages/language-packs/src/alphabet-sprint/segment.ts",
     "packages/language-packs/src/alphabet-sprint/select.ts",
+    "packages/language-packs/src/alphabet-sprint/words/ar.ts",
     "packages/language-packs/src/alphabet-sprint/words/arc.ts",
     "packages/language-packs/src/alphabet-sprint/words/de.ts",
     "packages/language-packs/src/alphabet-sprint/words/el-classical.ts",
@@ -7060,6 +8396,7 @@
     "packages/language-packs/src/alphabet-sprint/words/fr.ts",
     "packages/language-packs/src/alphabet-sprint/words/he.ts",
     "packages/language-packs/src/alphabet-sprint/words/hi.ts",
+    "packages/language-packs/src/alphabet-sprint/words/ko.ts",
     "packages/language-packs/src/alphabet-sprint/words/la.ts",
     "packages/language-packs/src/alphabet-sprint/words/nb.ts",
     "packages/language-packs/src/alphabet-sprint/words/nn.ts",
@@ -7072,6 +8409,8 @@
     "packages/language-packs/src/evidence.ts",
     "packages/language-packs/src/index.ts",
     "packages/language-packs/src/manifest.ts",
+    "packages/language-packs/src/packs/ar-grammar.ts",
+    "packages/language-packs/src/packs/ar.ts",
     "packages/language-packs/src/packs/arc.ts",
     "packages/language-packs/src/packs/de.ts",
     "packages/language-packs/src/packs/el.ts",
@@ -7080,6 +8419,8 @@
     "packages/language-packs/src/packs/fr.ts",
     "packages/language-packs/src/packs/he.ts",
     "packages/language-packs/src/packs/hi.ts",
+    "packages/language-packs/src/packs/ko-grammar.ts",
+    "packages/language-packs/src/packs/ko.ts",
     "packages/language-packs/src/packs/la.ts",
     "packages/language-packs/src/packs/nb.ts",
     "packages/language-packs/src/packs/nn.ts",
@@ -7090,6 +8431,7 @@
     "packages/language-packs/src/packs/th.ts",
     "packages/language-packs/src/registry.ts",
     "packages/language-packs/src/runtime.ts",
+    "packages/language-packs/src/tutorial/ar.ts",
     "packages/language-packs/src/tutorial/arc.ts",
     "packages/language-packs/src/tutorial/de.ts",
     "packages/language-packs/src/tutorial/el.ts",
@@ -7098,6 +8440,7 @@
     "packages/language-packs/src/tutorial/he.ts",
     "packages/language-packs/src/tutorial/hi.ts",
     "packages/language-packs/src/tutorial/index.ts",
+    "packages/language-packs/src/tutorial/ko.ts",
     "packages/language-packs/src/tutorial/la.ts",
     "packages/language-packs/src/tutorial/nb.ts",
     "packages/language-packs/src/tutorial/nn.ts",
@@ -7108,6 +8451,7 @@
     "packages/repository-contract/src/index.ts",
     "packages/repository-contract/src/knowledge-levels.ts",
     "packages/repository-contract/src/learner.ts",
+    "packages/repository-contract/src/lemma-display.ts",
     "packages/repository-contract/src/payloads.ts",
     "packages/repository-contract/src/review-classification.ts",
     "packages/repository-contract/src/review-corrections.ts",
@@ -7184,6 +8528,40 @@
     "src/adapters/albanian/types.ts",
     "src/adapters/albanian/varieties.ts",
     "src/adapters/albanian/version.ts",
+    "src/adapters/ar.ts",
+    "src/adapters/arabic/analyze.ts",
+    "src/adapters/arabic/answer-exclusions.json",
+    "src/adapters/arabic/answers.ts",
+    "src/adapters/arabic/clitics.ts",
+    "src/adapters/arabic/closed.ts",
+    "src/adapters/arabic/constructions.ts",
+    "src/adapters/arabic/deck.ts",
+    "src/adapters/arabic/describe.ts",
+    "src/adapters/arabic/dialect.ts",
+    "src/adapters/arabic/generated/core.ts",
+    "src/adapters/arabic/generated/deck-limits.ts",
+    "src/adapters/arabic/generated/phrases.ts",
+    "src/adapters/arabic/generated/preferences.ts",
+    "src/adapters/arabic/government.ts",
+    "src/adapters/arabic/guess.ts",
+    "src/adapters/arabic/identities.json",
+    "src/adapters/arabic/identities.ts",
+    "src/adapters/arabic/index-store.ts",
+    "src/adapters/arabic/numbers.ts",
+    "src/adapters/arabic/paradigm.ts",
+    "src/adapters/arabic/phrases.ts",
+    "src/adapters/arabic/preferences-reviewed.json",
+    "src/adapters/arabic/production.ts",
+    "src/adapters/arabic/pronunciation.ts",
+    "src/adapters/arabic/roots.ts",
+    "src/adapters/arabic/sentence.ts",
+    "src/adapters/arabic/shards.ts",
+    "src/adapters/arabic/speech.ts",
+    "src/adapters/arabic/syntax.ts",
+    "src/adapters/arabic/tags.ts",
+    "src/adapters/arabic/text.ts",
+    "src/adapters/arabic/translit.ts",
+    "src/adapters/arabic/version.ts",
     "src/adapters/aramaic/meta.ts",
     "src/adapters/aramaic/seed.ts",
     "src/adapters/arc.ts",
@@ -7349,6 +8727,32 @@
     "src/adapters/hindi/translit.ts",
     "src/adapters/hindi/varieties.ts",
     "src/adapters/hindi/verb-group.ts",
+    "src/adapters/ko.ts",
+    "src/adapters/korean/analyze.ts",
+    "src/adapters/korean/conjugate.ts",
+    "src/adapters/korean/constructions.ts",
+    "src/adapters/korean/describe.ts",
+    "src/adapters/korean/endings.ts",
+    "src/adapters/korean/generated/core.ts",
+    "src/adapters/korean/generated/known-limits.ts",
+    "src/adapters/korean/hangul.ts",
+    "src/adapters/korean/index-store.ts",
+    "src/adapters/korean/paradigm.ts",
+    "src/adapters/korean/particles.ts",
+    "src/adapters/korean/phrases.ts",
+    "src/adapters/korean/pins.ts",
+    "src/adapters/korean/production.ts",
+    "src/adapters/korean/pronunciation.ts",
+    "src/adapters/korean/review-gate.ts",
+    "src/adapters/korean/sentence.ts",
+    "src/adapters/korean/shards.ts",
+    "src/adapters/korean/speech.ts",
+    "src/adapters/korean/stems.ts",
+    "src/adapters/korean/syntax.ts",
+    "src/adapters/korean/tags.ts",
+    "src/adapters/korean/text.ts",
+    "src/adapters/korean/translit.ts",
+    "src/adapters/korean/version.ts",
     "src/adapters/la.ts",
     "src/adapters/latin/agreement.ts",
     "src/adapters/latin/closed-data.ts",
@@ -7493,6 +8897,7 @@
     "src/core/adapters.ts",
     "src/core/english-verb.ts",
     "src/core/paradigm.ts",
+    "src/core/review-gate.ts",
     "src/core/review-meaning.ts",
     "src/core/syntax.ts",
     "src/core/word-analysis.ts",
@@ -7543,7 +8948,7 @@
     "algorithm": "FSRS-6.0",
     "sha256": "4968e995b7b7c3356cf843fc73c6f75cd5f2e1595315bde7caec9d2dd10bb287"
   },
-  "artifactManifestSha256": "2efa509a9ae634a1ab2554772fa08958e47ed0207fc339246cadbe49b2984bc2",
+  "artifactManifestSha256": "14b939d9884771325c599c7d472f6de36c6596d9f8c79b099608a171254e6731",
   "artifactFiles": [
     {
       "path": "EB-Garamond-OFL.txt",
@@ -7551,7 +8956,11 @@
     },
     {
       "path": "THIRD-PARTY-NOTICES.md",
-      "sha256": "52a60a3639038af3918d3609e0ad913ba10b20e6490e254ceb990de80b6ae28c"
+      "sha256": "a7f444352f3b9bebb2907f7443fd07c69a74582039986827d5c771974e1323c4"
+    },
+    {
+      "path": "assets/ar-B1Iqjo3L.js",
+      "sha256": "197a613127dbb8f6767384b94287989e2ca7238c92e251d197fb2bc1a005f761"
     },
     {
       "path": "assets/arc-DZc9asID.js",
@@ -7634,12 +9043,16 @@
       "sha256": "d1940ad0216fb0cf1d4a01b60892734106d2e4ae35e21cfb695a57f04936a60d"
     },
     {
-      "path": "assets/index-bNfNFQWk.js",
-      "sha256": "32f31b480660912ba383e71047cc909bbfc2d40dc9f06ce575ab484459347307"
+      "path": "assets/index-D0pyPgnH.js",
+      "sha256": "d9ef829a93469b548027a6d45809861be535bec9e07e209f762822f5a77dd463"
     },
     {
       "path": "assets/jerusalem-YWyJNBCG.webp",
       "sha256": "36c704fc57e2be69ac10118ef36f476414184c11e2613fa998fd54f6205bf02c"
+    },
+    {
+      "path": "assets/ko-B1j9ajJN.js",
+      "sha256": "52cc7cb206fe58b416a4d8b98daf00c98cf625e053df0b45e6a86e636da893e8"
     },
     {
       "path": "assets/la-CwaQG1iI.js",
@@ -7650,24 +9063,32 @@
       "sha256": "3c89569476ea4d404faff5a14440b0cb581fdd7a07e475ecf81bfbda6794ba47"
     },
     {
+      "path": "assets/lang-ar-DyFpvlQx.js",
+      "sha256": "41559bf66e7b877da17287d16b8e65b09e1cbe1c848aa6c4740f0998733e4f1e"
+    },
+    {
+      "path": "assets/lang-arabic-DskV609w.js",
+      "sha256": "ea9efdeaa609cd2b43d417422b33cd96158ceb3851059548900cff5c01c865f6"
+    },
+    {
       "path": "assets/lang-aramaic-B5WkUau3.js",
       "sha256": "c7324768bd26c74911f4d583d18cc3d0f62fcbbc14da15668ef4b4cb855bb868"
     },
     {
-      "path": "assets/lang-de-BPU-vMRH.js",
-      "sha256": "d7bf77cc991951a3996ae30f81d0cb205f24de794479263ace206c61f2ef3979"
+      "path": "assets/lang-de-CJd0Wun_.js",
+      "sha256": "2f34f8f747178036202e6046cc52ef88e1b58d004c4fc017eea99703707883d3"
     },
     {
-      "path": "assets/lang-el-BWB4q_sB.js",
-      "sha256": "b71134fd2c89665be92dc6ff6313c01c5b5e1fa2fcee8e5ed0beb0b0a06d2f63"
+      "path": "assets/lang-el-BESIXzw-.js",
+      "sha256": "e0dffe58c64eea82215dcdb945c623f904fc92e2501424bf2dda9a7c57c52b50"
     },
     {
-      "path": "assets/lang-es-hov62ngZ.js",
-      "sha256": "e19bb4479038caedd1782075c79069fd44ea8fab73fbb460b82e127e6f67f6cf"
+      "path": "assets/lang-es-CExEasAo.js",
+      "sha256": "62474e4dded1ad1b73ca9bc01228c5f51b4d06e105448410ee62c78377307389"
     },
     {
-      "path": "assets/lang-fr-BqT5f7K-.js",
-      "sha256": "a7e047058058f06f8820ae07143a1257cc7fda84235f621eed475e6f8cf39e7e"
+      "path": "assets/lang-fr-D5BBwdRD.js",
+      "sha256": "f46982375840314d15a2c5c340c750bf3f64652b075ef4d506e70fb4f30a5440"
     },
     {
       "path": "assets/lang-french-CIGjcOcX.js",
@@ -7678,8 +9099,8 @@
       "sha256": "cacf110d70dd5bd5150466097d9412286d6cc2dbbbb96f617ea9a5754af36c82"
     },
     {
-      "path": "assets/lang-he-CjhwNGd2.js",
-      "sha256": "ce0e3c094ac6a86d6609f179294cc1f21f64623ec64fceae55c5c919d7138df5"
+      "path": "assets/lang-he-CcM5P5gT.js",
+      "sha256": "ff129ce340fde979f6241ef0e9a60e8bc52ced4388f5c6852626ac10a911c93f"
     },
     {
       "path": "assets/lang-hebrew-Bsnip4qd.js",
@@ -7690,16 +9111,24 @@
       "sha256": "fa0a59464851c6d94c25e39cd9a1706bede329c8f8b6d856911a5a63912048a0"
     },
     {
-      "path": "assets/lang-hi-BfBhGnXq.js",
-      "sha256": "49931664ef4b4134cee646bbb4fe00a26bff198e90de9269330448c62301e890"
+      "path": "assets/lang-hi-S6yPCoC6.js",
+      "sha256": "3184b03720f8d5bdd49cfe9af321ae585f53d693b2c2c849a9d6a0853c4eccd3"
     },
     {
       "path": "assets/lang-hindi-DyM6_O99.js",
       "sha256": "1c7e6f34552d45229be3030177ba78df56300e64ccadf5f6e454c34b24b54548"
     },
     {
-      "path": "assets/lang-la-DsSjeVGn.js",
-      "sha256": "1b77a02fb7a897ab4ce959230371c2ac2bbdf623686f4ca94506bda2d980e794"
+      "path": "assets/lang-ko-CnOJLJzR.js",
+      "sha256": "f080bc7f00d18f2f984da076efd22fa4b9767efa9f63c72cba5e7eff2c09d9b5"
+    },
+    {
+      "path": "assets/lang-korean-C85yTfln.js",
+      "sha256": "a124dd65e4bf88d023a69e582510a6e612a2d4bba7a2c479795d625ef50e3055"
+    },
+    {
+      "path": "assets/lang-la-DPAIDDq4.js",
+      "sha256": "b043b25d0c0d4607eef0ce63ab0013f3ea9b44d8a45ccd9bbc253aef40feaea5"
     },
     {
       "path": "assets/lang-latin-BIDFCMcr.js",
@@ -7718,24 +9147,24 @@
       "sha256": "8ad39fe26f99b8746c6f6c847dc570015912211c130a986d9126f9db25d08d26"
     },
     {
-      "path": "assets/lang-nb-BKSRnCkU.js",
-      "sha256": "8c49f58a05647f1364ec74a5cff5032ebc1c035dc59876d26f425c606f6eeddd"
+      "path": "assets/lang-nb-D86-uaTk.js",
+      "sha256": "1d5a08c6e712aad5f88dc5a452f889b2c3643853a060179433a58170b46cc096"
     },
     {
-      "path": "assets/lang-nn-y303sFH_.js",
-      "sha256": "36a4032735da2e44200e881e6cefcb03edbb08f7840e13f69cfa1c1051812b5e"
+      "path": "assets/lang-nn-CWUzWx4w.js",
+      "sha256": "e1d34ad1fadb7610b40ac5b9728b9f688a44640d2f12d76314e36d05b289a797"
     },
     {
-      "path": "assets/lang-norwegian-Cngt901A.js",
-      "sha256": "0426a4bf4d4e51418ffcf88c19d9df0c14439dacb1296a79c59c49385e9c7f15"
+      "path": "assets/lang-norwegian-CQQLov7M.js",
+      "sha256": "51dd95f65656e279a23b61f6e337d104b924f2e4864c1dc89a5fd5421854e582"
     },
     {
-      "path": "assets/lang-ru-D19wosAs.js",
-      "sha256": "7686fa09bc347fd5449c9103e19e4408760af328bfa0c5b6e0c21227bd234d7a"
+      "path": "assets/lang-ru-CpZR7bSt.js",
+      "sha256": "724811f7e86dd546696172620d68c42b6d4d966fa6e7a7bf8e91d061d0dfd48c"
     },
     {
-      "path": "assets/lang-sq-DjW9It82.js",
-      "sha256": "b76266871886095d2b8e106ac15f3ccd531679a152cdde589b4f2c8f923fe15e"
+      "path": "assets/lang-sq-DaI6NNSC.js",
+      "sha256": "69d8e3b52e3e3455dfefa115cba5232eabac6c47933649f407658e38e5ffab92"
     },
     {
       "path": "assets/lang-th-PKk-XJpB.js",
@@ -7746,8 +9175,8 @@
       "sha256": "56a6f2a93f2a6677a715110c74adb6220e068ef34cd5c5e7d13072c9b9e84484"
     },
     {
-      "path": "assets/languageChoices-BqkhgjO2.js",
-      "sha256": "25893e72c9732d28ca6c6b5bba458799ad07a072de3a62f8f1bd47e8bff34620"
+      "path": "assets/languageChoices-DoHYJA8s.js",
+      "sha256": "c0339fcce9cb9748fcdedec55e6bd1f27589ce3103b837ad7187e009b7ba10c1"
     },
     {
       "path": "assets/nb-DD4vZ02j.js",
@@ -7766,8 +9195,8 @@
       "sha256": "a53db013a29facfd504a69b9936a9f51738fb4db1a7cc7d6f7e013c3ecea1026"
     },
     {
-      "path": "assets/registry-CdOpFOiE.js",
-      "sha256": "1e8598f9b00be3e7ee505f7e59c73b2b7bfaf5b96e48b6a8e0ad96247e1510a1"
+      "path": "assets/registry-C-ZNsZR3.js",
+      "sha256": "223174b519c96afef6de272ee3bf52e5c112a7b9af689e7dff3926d8be2d24de"
     },
     {
       "path": "assets/rolldown-runtime-DK3Fl9T5.js",
@@ -7798,20 +9227,20 @@
       "sha256": "158dc559c11e245f247ef28c686c11fe16b92d4602c0bd0ed7304408d284fe65"
     },
     {
-      "path": "assets/src-BdSvOU29.js",
-      "sha256": "7d37cb6dd9575c320e8532462dd9bc68e937a9562503803aa3f842eab6460938"
+      "path": "assets/src-BhmRQ92X.js",
+      "sha256": "aeca1c4f40e20e9177c12ccc4deb1b7c2f36bb7b12ee25fd846c85b228a540a5"
     },
     {
-      "path": "assets/style-BYagmCNE.css",
-      "sha256": "b16d6ebbbb56edc2713e59a44ab0c67832a0703ba129c276b47c8dcfe2057e28"
+      "path": "assets/style-DWNNuukK.css",
+      "sha256": "95ddaa44ce5876aa823fc952659de06a99f3b90ce7f849b74bf55139e57536de"
     },
     {
       "path": "assets/syntax-CGmPxLTF.js",
       "sha256": "80fa8b92d9c1653a1a67c61db2bc76d90a4008a8368a2a9b7eae8aa043fc4cea"
     },
     {
-      "path": "assets/th-B1PkpJLm.js",
-      "sha256": "b79b1a9bcf46160c29b522ec392e99990ba0293146cde21d5ed548350faa2c92"
+      "path": "assets/th-DwPYZjMv.js",
+      "sha256": "1c451eee67c3c9089ecbdb867577017f623c9104e7cf6ef55d4e9856ff3790a2"
     },
     {
       "path": "assets/valle-de-angeles-BxOTzEvC.webp",
@@ -7851,7 +9280,727 @@
     },
     {
       "path": "index.html",
-      "sha256": "192e765a8dbc0509c039c765daea3169face9d4d43ada2cdd46736d192a961f1"
+      "sha256": "ad652189f867e43f1744faf5984493f1aefcf175c57c1c4d2dea9c1bc857a6f2"
+    },
+    {
+      "path": "lexicon/ar/standard/621.json.gz",
+      "sha256": "c232e1bec01fd4c87374c78154954614ea583505a206e75e250c617cca73624c"
+    },
+    {
+      "path": "lexicon/ar/standard/627-624.json.gz",
+      "sha256": "f6bf85b794d04dddf928adfe82387dc58b58c78b2aa88ba4184b1ba2cfae8854"
+    },
+    {
+      "path": "lexicon/ar/standard/627-626.json.gz",
+      "sha256": "56a7caa082f043ccf8479efd2cd03024fbd90c9dae4259fbabd7ee6c2dd2672e"
+    },
+    {
+      "path": "lexicon/ar/standard/627-627.json.gz",
+      "sha256": "4e734d5cf884d94d6439e9f0aab307d79d105800394135a9e50b98a9fc1725e2"
+    },
+    {
+      "path": "lexicon/ar/standard/627-628.json.gz",
+      "sha256": "fd8c45fc5b65d42d30e01969e1283eeb889b571157f2b22f00b3415ac7a2d622"
+    },
+    {
+      "path": "lexicon/ar/standard/627-62a.json.gz",
+      "sha256": "712ca406b70735372aa777a125e1400bc5516bb5b81b4161d4954379888987e7"
+    },
+    {
+      "path": "lexicon/ar/standard/627-62b.json.gz",
+      "sha256": "fbe1c12c0a7cf60164a41f2724ad9a035af3d6bc41a63e13daafdaf04cf27834"
+    },
+    {
+      "path": "lexicon/ar/standard/627-62c.json.gz",
+      "sha256": "c8bb71c8a35b79592326d6df29442d2c201fb10b5522552b649cd6b626ea703a"
+    },
+    {
+      "path": "lexicon/ar/standard/627-62d.json.gz",
+      "sha256": "faed1eee8de87f2ae34a3ab829ccdabbd7871506244a06ff308192e3fd096fe3"
+    },
+    {
+      "path": "lexicon/ar/standard/627-62e.json.gz",
+      "sha256": "6e44f00ef95f926bf9780ef0bd4da5306ccb8a3d617d407cbdbf0f2410dc22cc"
+    },
+    {
+      "path": "lexicon/ar/standard/627-62f.json.gz",
+      "sha256": "626141dde220cccd3bbd817da0d97bec93e99f22d75598bedcb3b754ed151f2a"
+    },
+    {
+      "path": "lexicon/ar/standard/627-630.json.gz",
+      "sha256": "04ea8c7b673fd81a4bb45758478c26e2f0b32e45fad86fb7acc4483bc474acfa"
+    },
+    {
+      "path": "lexicon/ar/standard/627-631.json.gz",
+      "sha256": "1362079b7fc572867821a56bac094664d486640775ff4199cd3f11553819944b"
+    },
+    {
+      "path": "lexicon/ar/standard/627-632.json.gz",
+      "sha256": "bf2682fa09b87e6cbcdad7ad62c495da9a10cd28aa5c3cafffd54fb616283809"
+    },
+    {
+      "path": "lexicon/ar/standard/627-633.json.gz",
+      "sha256": "3d5063ec7e04aede06a42c2a15a49a0fe32f15a7135f3a5d02e78d824727f4b9"
+    },
+    {
+      "path": "lexicon/ar/standard/627-634.json.gz",
+      "sha256": "17491ce064ee7c440a461e907b63dba9ca3d33fedca4320f5a4ad95c7d51c441"
+    },
+    {
+      "path": "lexicon/ar/standard/627-635.json.gz",
+      "sha256": "9287a9a7c71b57b9efe0b4e57001bbf64ff2d859f1d8ce72a3c9f3709cf1c0bd"
+    },
+    {
+      "path": "lexicon/ar/standard/627-636.json.gz",
+      "sha256": "8a899c983badc530666f5952837c370abb86d0047a0904e35690f2808504bd15"
+    },
+    {
+      "path": "lexicon/ar/standard/627-637.json.gz",
+      "sha256": "5ef34fc047622c93bac2c37cb9cec6a5927cf5f03ed55b53a914359ce86fef7e"
+    },
+    {
+      "path": "lexicon/ar/standard/627-638.json.gz",
+      "sha256": "a3a78274012788d347ac85a34bc0bb723b2ab05b138005523522dbfebc0a20d6"
+    },
+    {
+      "path": "lexicon/ar/standard/627-639.json.gz",
+      "sha256": "ba2dc928b4b5e4392a8bee58295ec732b3737d8592f5e79f78d8d8408aa7c011"
+    },
+    {
+      "path": "lexicon/ar/standard/627-63a.json.gz",
+      "sha256": "098cf1394cf535cb6bde237b7b74c2e44f25d7a60cc30877494ed9f9b0b557ab"
+    },
+    {
+      "path": "lexicon/ar/standard/627-641.json.gz",
+      "sha256": "29fb95c70b6025f241f23d13e566a912ee80cb419d7a93c8362125080a7efd57"
+    },
+    {
+      "path": "lexicon/ar/standard/627-642.json.gz",
+      "sha256": "3e1d264fc15a624d03db0859d36fbc9cc3949570a0c1d850241f7f91c4cd5ca7"
+    },
+    {
+      "path": "lexicon/ar/standard/627-643.json.gz",
+      "sha256": "32c0999e8d789ea142aa3c33eb630d66de5a4ec6b5ff260e42d3397becfb6f02"
+    },
+    {
+      "path": "lexicon/ar/standard/627-644.json.gz",
+      "sha256": "19e3ad05a3d16326f9fedfbdfe179e4b13b8fcd340f77be9a20b3d31a0480ec2"
+    },
+    {
+      "path": "lexicon/ar/standard/627-645.json.gz",
+      "sha256": "b5bc2a23fcf6b7fdd0b5eca118f21d89735b35e888fe20bd4b5093f45f8a04db"
+    },
+    {
+      "path": "lexicon/ar/standard/627-646.json.gz",
+      "sha256": "c30f5f712f9e2e665eb9299f76f47301de867a154bb028aab25e1cd99f380f06"
+    },
+    {
+      "path": "lexicon/ar/standard/627-647.json.gz",
+      "sha256": "1e92b3b24381852786962c7b19a673236461016f06316d512e11c8a8a16eb438"
+    },
+    {
+      "path": "lexicon/ar/standard/627-648.json.gz",
+      "sha256": "7976f927aae49c30ec1ca310f88fed46c4fb62fe4beeb13f26d2bb23d285d649"
+    },
+    {
+      "path": "lexicon/ar/standard/627-64a.json.gz",
+      "sha256": "bc200edd7428bfce9f342e2c8922115d194c311d63af4f86d791a9882f248a81"
+    },
+    {
+      "path": "lexicon/ar/standard/627.json.gz",
+      "sha256": "49a4097411be3b53b537b06bacef6d89c106c0c4706ea7d3d78dc1b74e60da83"
+    },
+    {
+      "path": "lexicon/ar/standard/628.json.gz",
+      "sha256": "6b53bb11716b143e0104da1ae85fe191c41fa4099d0a4abe3943704f6a343071"
+    },
+    {
+      "path": "lexicon/ar/standard/62a-624.json.gz",
+      "sha256": "6f989478f227d6b821327317a5447c6eda36a16940c382a9311670bc58bf9bbb"
+    },
+    {
+      "path": "lexicon/ar/standard/62a-626.json.gz",
+      "sha256": "4c54dd5c1d419db6b70dda5f0f23f2431492953d9b12bff5aad89dc7c7c167b4"
+    },
+    {
+      "path": "lexicon/ar/standard/62a-627.json.gz",
+      "sha256": "19e98741737780e56651f6d72c037c0bc26ef94c2245d316a7dfcc8a4c1aa855"
+    },
+    {
+      "path": "lexicon/ar/standard/62a-628.json.gz",
+      "sha256": "17a821c76d8d86878885850b4691e39d16500ed07e9e0646e51ab0244f4f008e"
+    },
+    {
+      "path": "lexicon/ar/standard/62a-62a.json.gz",
+      "sha256": "451a7fc569a1f5e405588e24a0fe3b485505b6ffe435216f17f513da37556a41"
+    },
+    {
+      "path": "lexicon/ar/standard/62a-62b.json.gz",
+      "sha256": "b6fb22855318eed2e33dabe1fd613164f25c24742421c2a306d79e76e1635ed3"
+    },
+    {
+      "path": "lexicon/ar/standard/62a-62c.json.gz",
+      "sha256": "cacd2f4a800d72b71efe111816f83142bed052febc56be1d86f564824ef5ba65"
+    },
+    {
+      "path": "lexicon/ar/standard/62a-62d.json.gz",
+      "sha256": "20bd4b94d372d2dc41ae60cd4a696e4b48880185c9420ca296560d6e32e2488f"
+    },
+    {
+      "path": "lexicon/ar/standard/62a-62e.json.gz",
+      "sha256": "0fa51a3f4db62f6afb412850acacc61d9760c1738764938bfab4a8b0665e5dde"
+    },
+    {
+      "path": "lexicon/ar/standard/62a-62f.json.gz",
+      "sha256": "a6a9281b1968512115a8887e95380a8692601fc47d016759e07e285e2fa47f65"
+    },
+    {
+      "path": "lexicon/ar/standard/62a-630.json.gz",
+      "sha256": "4aeef50404dd430c64d64053b88ea7b1aafe9373565ee8dafd5ee54482782537"
+    },
+    {
+      "path": "lexicon/ar/standard/62a-631.json.gz",
+      "sha256": "de59443b1b241c8948c1fe5dc11016cd30413a69d2e634b3307501a0c3bc6cfd"
+    },
+    {
+      "path": "lexicon/ar/standard/62a-632.json.gz",
+      "sha256": "5b2c9743f4f224bf40ee33377142227ad259b023132e7e67868fc0039304e271"
+    },
+    {
+      "path": "lexicon/ar/standard/62a-633.json.gz",
+      "sha256": "edcb9b257780de164c6959dd4e27ad51ff443c0ac50932d629e738a358f4e722"
+    },
+    {
+      "path": "lexicon/ar/standard/62a-634.json.gz",
+      "sha256": "d1318f7d337fec4ae8db4e540dcde3f53eb05574de6e2f6e6a7c6b3553d5465c"
+    },
+    {
+      "path": "lexicon/ar/standard/62a-635.json.gz",
+      "sha256": "aef187f6f8aea57d1b59a0d3046ccf4c7cf49fb3c78ee8022b0f421d4992a2ff"
+    },
+    {
+      "path": "lexicon/ar/standard/62a-636.json.gz",
+      "sha256": "6b68189ce0ebede3c65fd0e1085835aeae48e5f3959f4ce6f0d7780030c7a313"
+    },
+    {
+      "path": "lexicon/ar/standard/62a-637.json.gz",
+      "sha256": "e8c5b8d2cae5deff146898b3ee6672f7d168ab97464ab76728d0df20a562ec73"
+    },
+    {
+      "path": "lexicon/ar/standard/62a-638.json.gz",
+      "sha256": "c07a8fd5e5f6f5003c8961efd595878c834071b7c9c34385e840c49b7f6c8435"
+    },
+    {
+      "path": "lexicon/ar/standard/62a-639.json.gz",
+      "sha256": "f642f0607b393817160159a4af82f16416c41fd91b3d18a66dec7c6e70227ce8"
+    },
+    {
+      "path": "lexicon/ar/standard/62a-63a.json.gz",
+      "sha256": "e50ef4ff5d464f5d35058f3c903b4d7e5724a216e875993bbda6fea499f0a8f4"
+    },
+    {
+      "path": "lexicon/ar/standard/62a-641.json.gz",
+      "sha256": "d2a8bfbd518de37d21eb3196c99bd60a38edbcaf783cce57855c464bf9e16e79"
+    },
+    {
+      "path": "lexicon/ar/standard/62a-642.json.gz",
+      "sha256": "7c687369c0a98c5cbff449175191081fafc7abad43d6642cbc30ad463b7aa69a"
+    },
+    {
+      "path": "lexicon/ar/standard/62a-643.json.gz",
+      "sha256": "71a7174e9f769be5e9fc89f8fbc6a66745a711bfa2b308be4f07f0ad8af95012"
+    },
+    {
+      "path": "lexicon/ar/standard/62a-644.json.gz",
+      "sha256": "1be17c4aa2c5aa8556a45fcf69b7803af1e50a744c88f8c1b062a943e27dd93c"
+    },
+    {
+      "path": "lexicon/ar/standard/62a-645.json.gz",
+      "sha256": "a8645bf1a68dda32bc8db376c2530f0494bba210c1b6d9adf40a6eefaf0dd5e7"
+    },
+    {
+      "path": "lexicon/ar/standard/62a-646.json.gz",
+      "sha256": "e10a32ba4c05a810ce73c42435c5fb4a832e5b5b2b0b83b53fb7aae999d607b9"
+    },
+    {
+      "path": "lexicon/ar/standard/62a-647.json.gz",
+      "sha256": "fa681046ad0f321de22cba2e002a56c91e9b25609ca1a86baaba36391c261566"
+    },
+    {
+      "path": "lexicon/ar/standard/62a-648.json.gz",
+      "sha256": "e4dca1544843f9d1ec70558f8a7e12d7fa6d5bc6309881e54c3131a1e626cb0a"
+    },
+    {
+      "path": "lexicon/ar/standard/62a-64a.json.gz",
+      "sha256": "a473541855ed0b46bf19b99902a5610a57eb0eed93d677d4d5987168aa13390d"
+    },
+    {
+      "path": "lexicon/ar/standard/62a.json.gz",
+      "sha256": "d7681396a29facee525684e881fc6413d69bbfa54297a73a2b635614e2e8a77c"
+    },
+    {
+      "path": "lexicon/ar/standard/62b.json.gz",
+      "sha256": "6385c2a5702bce00334c8ca05f736a60c1766cbe94ed3dccadabf460d5fe194d"
+    },
+    {
+      "path": "lexicon/ar/standard/62c.json.gz",
+      "sha256": "fe5b63375d57c576b34ad1231b81cedcbfd3038f41a64a45be41c45f4d0088d1"
+    },
+    {
+      "path": "lexicon/ar/standard/62d.json.gz",
+      "sha256": "95198ff578cef1003fdeebcf4779bae333d99cfe72ea7117e05e47f2883bd8ce"
+    },
+    {
+      "path": "lexicon/ar/standard/62e.json.gz",
+      "sha256": "78a9758a511d4224a1a315b194ca9569175a86355b4e72fdd8122d15b655e8da"
+    },
+    {
+      "path": "lexicon/ar/standard/62f.json.gz",
+      "sha256": "8e5e985dd3aa0b7cbd137e785e1b4e48c3af19c18b3952ff4bd99127e6174b66"
+    },
+    {
+      "path": "lexicon/ar/standard/630.json.gz",
+      "sha256": "dbd25d8e5f7288a8fa1a7fbe6ab90476ed39e316b03f0c4744fabca0a1c65407"
+    },
+    {
+      "path": "lexicon/ar/standard/631.json.gz",
+      "sha256": "c421ac5a015ecefde3f863a730afac80ea406cb4bfc9bdb10113a6f674f67090"
+    },
+    {
+      "path": "lexicon/ar/standard/632.json.gz",
+      "sha256": "aafd5a61f1c92003708ebc2908884d6881125df285de1c9cd9d98ea82d03fb6b"
+    },
+    {
+      "path": "lexicon/ar/standard/633.json.gz",
+      "sha256": "729e353ec42e913b204b2f0eb6fbb9b7127168ab35ba68deffc8606d85eed380"
+    },
+    {
+      "path": "lexicon/ar/standard/634.json.gz",
+      "sha256": "ecc998f2ae42f267b1e69cbac22529f6ae65642300744cf75a015152adec6824"
+    },
+    {
+      "path": "lexicon/ar/standard/635.json.gz",
+      "sha256": "59e414f284b3856106fbe25eea35daed2c276d5ec066b5b6fef8a50b6e9b770e"
+    },
+    {
+      "path": "lexicon/ar/standard/636.json.gz",
+      "sha256": "4d1c581cf7eb03627295debe730c8ffb8fe731528ac2dcd83d2667ff1f5815d9"
+    },
+    {
+      "path": "lexicon/ar/standard/637.json.gz",
+      "sha256": "94a5ae6dfbf643526d92c66e47e3332dfba72db6a26cf68f9ea881608a5e20c3"
+    },
+    {
+      "path": "lexicon/ar/standard/638.json.gz",
+      "sha256": "9a6ef4037eaad825ca3ee16241255f626c8f951fcd1bf7fe94accf51cc7c9636"
+    },
+    {
+      "path": "lexicon/ar/standard/639.json.gz",
+      "sha256": "cc243d183c16e094e824c2d3f2816cb63a3cd69aa0fec6e0d7b2cede0a3db010"
+    },
+    {
+      "path": "lexicon/ar/standard/63a.json.gz",
+      "sha256": "5b613cdc8ce675b31fabdbe7b33f8b82e7bbe2625df61aec8f133d5577a529d3"
+    },
+    {
+      "path": "lexicon/ar/standard/641.json.gz",
+      "sha256": "4bb5e9f384e9ed1bb1468c86cf0d1a4d5c2163dbb3b5ecbc0c94eca3f2fe94c8"
+    },
+    {
+      "path": "lexicon/ar/standard/642.json.gz",
+      "sha256": "49dc08cb22989dee68d7c310bf5066fb6b38cd0241828a6213d0734a7bd77475"
+    },
+    {
+      "path": "lexicon/ar/standard/643.json.gz",
+      "sha256": "d794455f03c753133ca0d6a8cfad153c307ca388cac70c4a88d9609891bbb7ab"
+    },
+    {
+      "path": "lexicon/ar/standard/644.json.gz",
+      "sha256": "4b2e6d53c6acc856ea0853ca8338b69d1ea51177c008fc4303d7e95e68da74b7"
+    },
+    {
+      "path": "lexicon/ar/standard/645-624.json.gz",
+      "sha256": "ea82a3fbdb2eb2bebcef0788aeff6ea2be298628759d4ebfab760a7aeace8510"
+    },
+    {
+      "path": "lexicon/ar/standard/645-626.json.gz",
+      "sha256": "9e33d48683199d0c9c47b65605ab9cd1199501f903dc696370639ccb62e2e470"
+    },
+    {
+      "path": "lexicon/ar/standard/645-627.json.gz",
+      "sha256": "b49c9060a879e1c0bfe2d260ed1421b2e80664d86e28b4a759ecc2d40d7b97da"
+    },
+    {
+      "path": "lexicon/ar/standard/645-628.json.gz",
+      "sha256": "1093bf6dcc7cead5776c04211b3ab49cf5bfb017a3db8099eb66fc0ee7695484"
+    },
+    {
+      "path": "lexicon/ar/standard/645-62a.json.gz",
+      "sha256": "0e677bce6443be57f475af6d9f79fe00f10f31fa2360087eb31c87fc16086abc"
+    },
+    {
+      "path": "lexicon/ar/standard/645-62b.json.gz",
+      "sha256": "53415f32d1dabf273406dc2bf62e87a82c7c85792ebbf3ceeb8a58707289a4bf"
+    },
+    {
+      "path": "lexicon/ar/standard/645-62c.json.gz",
+      "sha256": "4cbee111c24eaf086003f11cb619537898fefe9eb7d633452409ff020d1a9b0f"
+    },
+    {
+      "path": "lexicon/ar/standard/645-62d.json.gz",
+      "sha256": "859c4802f39284fe46e557910259101f1fc5bcf98f77e5473e91de343b28d70c"
+    },
+    {
+      "path": "lexicon/ar/standard/645-62e.json.gz",
+      "sha256": "03dbf0f43ccdb304898d11584c95dc5f8338df8e63f0725fe96a520f66640771"
+    },
+    {
+      "path": "lexicon/ar/standard/645-62f.json.gz",
+      "sha256": "c268da0a9fc4edb730dd0d3d5931d1724a9e504a76659a12846379bb4f449d25"
+    },
+    {
+      "path": "lexicon/ar/standard/645-630.json.gz",
+      "sha256": "610affb37d4f280830f9897f0e0b33f107960fd810c97ad3082e3c1b677cbc20"
+    },
+    {
+      "path": "lexicon/ar/standard/645-631.json.gz",
+      "sha256": "46acabfd5c3c2811ea70023a80ee78d3f0f9dbbff12e07ef3ae674e3b4ccad93"
+    },
+    {
+      "path": "lexicon/ar/standard/645-632.json.gz",
+      "sha256": "06ee42a6d4fd687ec65057d5acfbbf594ccbf840c574c6d0fafdc713473c1da8"
+    },
+    {
+      "path": "lexicon/ar/standard/645-633.json.gz",
+      "sha256": "e81964b0d00dc3f66ea508fa8e6a70b61a95d088587a68f3c7db10c699c9a039"
+    },
+    {
+      "path": "lexicon/ar/standard/645-634.json.gz",
+      "sha256": "d9b548ed6fb3575397a3e8ceefe92b448245be70a50b8c6dfe44e0139e0aa8fb"
+    },
+    {
+      "path": "lexicon/ar/standard/645-635.json.gz",
+      "sha256": "4835216ff3262081163fc59751e019f3a73c966c76116b540876debe1e454a4e"
+    },
+    {
+      "path": "lexicon/ar/standard/645-636.json.gz",
+      "sha256": "0ea1bc5784f368f6f5f480bb3a11f35d5d629968d45ef811b19d8d6eaf60e37a"
+    },
+    {
+      "path": "lexicon/ar/standard/645-637.json.gz",
+      "sha256": "95965f0cf8871a12e16ca395da7be3090ae735511c7962f9aeb9d81f0e3bc2e7"
+    },
+    {
+      "path": "lexicon/ar/standard/645-638.json.gz",
+      "sha256": "2d2d4421fe5f1c1558967521f761d04189388b337dc94afe9d51c95d6644e263"
+    },
+    {
+      "path": "lexicon/ar/standard/645-639.json.gz",
+      "sha256": "a140f9e71c21ba08366710e7653a6f2f4f5d6fb50e5cf5e42d315683f12eac0d"
+    },
+    {
+      "path": "lexicon/ar/standard/645-63a.json.gz",
+      "sha256": "13f4c2388b321cd248b64a6d951770f70a8a6945766457258d09d7598829c4a4"
+    },
+    {
+      "path": "lexicon/ar/standard/645-641.json.gz",
+      "sha256": "0ada2c9ff1dce8fda2a8b2e5f7dd1138c11f20cdac0379d58607804d1aa9d726"
+    },
+    {
+      "path": "lexicon/ar/standard/645-642.json.gz",
+      "sha256": "f165c49af50e5880cdde7d3904e2f13f07611cffbe586ce5d504f52ab7501969"
+    },
+    {
+      "path": "lexicon/ar/standard/645-643.json.gz",
+      "sha256": "cc36a543be243f60405b79f42f655f63b0af6972dcd1e2e066c13e9b300c5244"
+    },
+    {
+      "path": "lexicon/ar/standard/645-644.json.gz",
+      "sha256": "93b729c54fb5a76008b07f91580322562028876e38712601a4c2f253b624c173"
+    },
+    {
+      "path": "lexicon/ar/standard/645-645.json.gz",
+      "sha256": "0135e22f15686746d0d8fc9ba78f8a4629b31cbf18a95a2f916caaa6dc4aa103"
+    },
+    {
+      "path": "lexicon/ar/standard/645-646.json.gz",
+      "sha256": "84e15e66646b9d4621aa3ecbf260e7f37c6f9df510930cfb60195164da818032"
+    },
+    {
+      "path": "lexicon/ar/standard/645-647.json.gz",
+      "sha256": "e71aad4625cb5e9008b8c30e29df1408f96649fac88ba7b061e232f6b5c4741a"
+    },
+    {
+      "path": "lexicon/ar/standard/645-648.json.gz",
+      "sha256": "b70f7021a677510b7cafd2fdfd8f2540fa22cc9fd990026e6bee34c85cea6b64"
+    },
+    {
+      "path": "lexicon/ar/standard/645-64a.json.gz",
+      "sha256": "c6fefbc9becbaf935a71e7ac85c8bffa4856b2ebb207b3a7ba4cb7420873755d"
+    },
+    {
+      "path": "lexicon/ar/standard/645.json.gz",
+      "sha256": "ef6aef44a85c711bec3f27f07655ef02b932524e218c46d1d05039877f49a73f"
+    },
+    {
+      "path": "lexicon/ar/standard/646-624.json.gz",
+      "sha256": "d081d3b347cb0bb15d15fca42431d8e2ef7d22aa3f70b5f4d3331a68ec65515f"
+    },
+    {
+      "path": "lexicon/ar/standard/646-626.json.gz",
+      "sha256": "88c21b4cb438bc60253119ec9b2798cccbf5e3a96cc400a352d91ca2b20b0ceb"
+    },
+    {
+      "path": "lexicon/ar/standard/646-627.json.gz",
+      "sha256": "e12f1974dcee8383fe34c35b534324247115e37f41c94992f9ea7eb45b46924a"
+    },
+    {
+      "path": "lexicon/ar/standard/646-628.json.gz",
+      "sha256": "811e6187e44806cd52f20e84300333db85463eb94af453cb28879931a7fb6ee6"
+    },
+    {
+      "path": "lexicon/ar/standard/646-62a.json.gz",
+      "sha256": "038475c58d9faaf0b6a591385e5225b111f094916c37c616c850916543b33665"
+    },
+    {
+      "path": "lexicon/ar/standard/646-62b.json.gz",
+      "sha256": "2cfbabbdd56b8c1456989c4035018cd1013297be4b647dfe31bf3829376291f6"
+    },
+    {
+      "path": "lexicon/ar/standard/646-62c.json.gz",
+      "sha256": "296767f31dce909c93d91d6792048bf7456aa8bbed3ac177bcb3b4edcbe91e2b"
+    },
+    {
+      "path": "lexicon/ar/standard/646-62d.json.gz",
+      "sha256": "731f34a125844e0e442363877a29604d75a2bce88af5cc4a32c5857d591e0348"
+    },
+    {
+      "path": "lexicon/ar/standard/646-62e.json.gz",
+      "sha256": "5bac8cf2b6e6f91775cc4cf6abc0a7e1d3ec6f5ff4599d0509b02b64c87aa7d1"
+    },
+    {
+      "path": "lexicon/ar/standard/646-62f.json.gz",
+      "sha256": "b3abebc6503a06bb688086b765a39b1bb40284be787b4cfc27a346fa8cb9b75f"
+    },
+    {
+      "path": "lexicon/ar/standard/646-630.json.gz",
+      "sha256": "0b5b6cfa299c1efe4d9e3eb052248e52eed58157afc37bf237e97d46f2e8018e"
+    },
+    {
+      "path": "lexicon/ar/standard/646-631.json.gz",
+      "sha256": "95bce74a510c63a21e4c3411b02b6208fa46695914811e0f2f999ff4a30b9bb4"
+    },
+    {
+      "path": "lexicon/ar/standard/646-632.json.gz",
+      "sha256": "06e4c16be342892a3f31b9d8c75c68c3b1f865977abad385ddb691c5eada2644"
+    },
+    {
+      "path": "lexicon/ar/standard/646-633.json.gz",
+      "sha256": "7386a68ce60201ec1059a567d7cf2fb8984d7abd85db05f52e663e797e3d439d"
+    },
+    {
+      "path": "lexicon/ar/standard/646-634.json.gz",
+      "sha256": "e0d40a444c342c0b4460d230330fe198f93cac54ddf153ff5cc1045bf99840b2"
+    },
+    {
+      "path": "lexicon/ar/standard/646-635.json.gz",
+      "sha256": "5a83debb09c5cc2e4ef3c9f69d20893e13785522d37c0dd397422c88578374ba"
+    },
+    {
+      "path": "lexicon/ar/standard/646-636.json.gz",
+      "sha256": "36ea943a64e88784aef0b28784fd146ed76fd953dec587eafe6cbb3a8745f435"
+    },
+    {
+      "path": "lexicon/ar/standard/646-637.json.gz",
+      "sha256": "a89c4d8b42d134834abfb1acea2a3d90a2091de7579afbe4e0306775a12c5d66"
+    },
+    {
+      "path": "lexicon/ar/standard/646-638.json.gz",
+      "sha256": "3c37fd05771ad62d12e5bcc0195338524c4c10b07d9da83000ff6efa570bef4b"
+    },
+    {
+      "path": "lexicon/ar/standard/646-639.json.gz",
+      "sha256": "07bfc92d000e00dec6326c47904660cbe572ea1241e1c84012d9a39ca82f6cd9"
+    },
+    {
+      "path": "lexicon/ar/standard/646-63a.json.gz",
+      "sha256": "de1785b596c12fbae33b0fbf3c6f0078c0e525e27aceb307e29dc789c4a96262"
+    },
+    {
+      "path": "lexicon/ar/standard/646-641.json.gz",
+      "sha256": "d685fc6c5da1518d4b52df852ca9e43b3f794e4939f2a5d542ac11511e21c53f"
+    },
+    {
+      "path": "lexicon/ar/standard/646-642.json.gz",
+      "sha256": "f57907010083d4a22f8f27c2712f6cd850b1ee25d9f90daaa22a14140ab0854a"
+    },
+    {
+      "path": "lexicon/ar/standard/646-643.json.gz",
+      "sha256": "47ed310d0ce168224c01e2cbd208060a6239f51e8702f423100d4c0c4078bf2e"
+    },
+    {
+      "path": "lexicon/ar/standard/646-644.json.gz",
+      "sha256": "9a7b662e048626901a0801c87731ecf13e1e463f099a98800d3d7f12c5d60372"
+    },
+    {
+      "path": "lexicon/ar/standard/646-645.json.gz",
+      "sha256": "991567a1906c8c172bd1e5b0f0034f9858105990b0e069582d5ef8a8474948a7"
+    },
+    {
+      "path": "lexicon/ar/standard/646-646.json.gz",
+      "sha256": "164246d2a45e96f27af5df09b9eb5ab0e8ee743cd5018d9dae4bff63573a7349"
+    },
+    {
+      "path": "lexicon/ar/standard/646-647.json.gz",
+      "sha256": "66e3fea31e035eccf5c2af4eb5fa496f70514d3e71fc546ac1d902db8052d1ac"
+    },
+    {
+      "path": "lexicon/ar/standard/646-648.json.gz",
+      "sha256": "40d710e53275b44bac5635dae6aef8025ca1a64146be554b9d2b3e23789dbd52"
+    },
+    {
+      "path": "lexicon/ar/standard/646-64a.json.gz",
+      "sha256": "2b7fc30d61b5aa2dc29e11eedfa7e2ac5279b40d54499985f6d2f4f2229edeb6"
+    },
+    {
+      "path": "lexicon/ar/standard/646.json.gz",
+      "sha256": "d3ca1040e587aae3055a280a2e7368704e4651d48df63c9061e51ccae3d16421"
+    },
+    {
+      "path": "lexicon/ar/standard/647.json.gz",
+      "sha256": "910e2fc71d699efe96342e5702893ad4599f742f23e122f3b0b1db2772cdaf66"
+    },
+    {
+      "path": "lexicon/ar/standard/648.json.gz",
+      "sha256": "d84faf314a0eaaf8a843762c5106e9543b1aefa5fe0be0bda651d6d07ca56bd4"
+    },
+    {
+      "path": "lexicon/ar/standard/64a-624.json.gz",
+      "sha256": "5d0b236577c0d0cf62ed019d2d28bddc54657a1d60e0a5d42b36b42ef238e109"
+    },
+    {
+      "path": "lexicon/ar/standard/64a-626.json.gz",
+      "sha256": "c32a9b4395ff091f7fb6ca90acb0c0b056447a48a6cd586ea0198a4ea888ab92"
+    },
+    {
+      "path": "lexicon/ar/standard/64a-627.json.gz",
+      "sha256": "319cf2397efd3fdde074c78306526ad42efe4053bec7c23ed1da755db38980b1"
+    },
+    {
+      "path": "lexicon/ar/standard/64a-628.json.gz",
+      "sha256": "48c17b779c777ec52330bbdab83271788bb6cfb3987d564925f2a6a97c6837e7"
+    },
+    {
+      "path": "lexicon/ar/standard/64a-62a.json.gz",
+      "sha256": "7ed6549219d0492a2fa51c860ddbe17cbbe5a9d1ecd894b71cc1d35f83ad034e"
+    },
+    {
+      "path": "lexicon/ar/standard/64a-62b.json.gz",
+      "sha256": "734ff4f68f9c23091b4fdc9b34715f233cbdccdc6b5ee9bb0a12bc7ba594ecd0"
+    },
+    {
+      "path": "lexicon/ar/standard/64a-62c.json.gz",
+      "sha256": "b098b86221faccefd31c636ccf6f75cfa647ff2dc16ea0353757a6d579822916"
+    },
+    {
+      "path": "lexicon/ar/standard/64a-62d.json.gz",
+      "sha256": "415d4a521789abe6259e73c453d45bbc30ad86740ba9f0a73af7418e98bf81cb"
+    },
+    {
+      "path": "lexicon/ar/standard/64a-62e.json.gz",
+      "sha256": "4813f4f3cb2d9240a744a0bbc912fbac54fe87f7c1fa84ebc55881551d9d72a7"
+    },
+    {
+      "path": "lexicon/ar/standard/64a-62f.json.gz",
+      "sha256": "b1b4258757e19e02e0c1707da58fc886daef7aeb41a7ea367a897e8f774db774"
+    },
+    {
+      "path": "lexicon/ar/standard/64a-630.json.gz",
+      "sha256": "51d06634ce7784e719ad0ba17d7a00c68deda381911083948bf97e97e37f775b"
+    },
+    {
+      "path": "lexicon/ar/standard/64a-631.json.gz",
+      "sha256": "8347a5750d99851ac2549b6952b9f4af5f6eaa8f8e850b6390e2d291a65d6d99"
+    },
+    {
+      "path": "lexicon/ar/standard/64a-632.json.gz",
+      "sha256": "f7177a45eadea645868c390bd1b122b6b738996fe28a98d1f220f8473a23719c"
+    },
+    {
+      "path": "lexicon/ar/standard/64a-633.json.gz",
+      "sha256": "aa1650378bc90b769d2bd0f843bcecb2d5c9723f5948ae2cec197e6b79a09a6f"
+    },
+    {
+      "path": "lexicon/ar/standard/64a-634.json.gz",
+      "sha256": "2a9ee627458701f02f5f89b4d6dfd04ff5b2107d2ef4782d20a02a2601c65c12"
+    },
+    {
+      "path": "lexicon/ar/standard/64a-635.json.gz",
+      "sha256": "c08d800e5a74303fefe7dedbd7e3b908914dd0ec6d60dc6cf757824a80a6a4c5"
+    },
+    {
+      "path": "lexicon/ar/standard/64a-636.json.gz",
+      "sha256": "4599193c895e49d4e5e58c704f709dab74be4a6e1f6695dde726d7a5c56ec5b1"
+    },
+    {
+      "path": "lexicon/ar/standard/64a-637.json.gz",
+      "sha256": "f01a72193e02991094ea0698faf223e7ec9137e0ffa7b1cf2138cc85e40ec62f"
+    },
+    {
+      "path": "lexicon/ar/standard/64a-638.json.gz",
+      "sha256": "8f00e167eaca68a4720b3f34994406ee4ed95208f6756799e905325364ff2c1c"
+    },
+    {
+      "path": "lexicon/ar/standard/64a-639.json.gz",
+      "sha256": "e3a64c1b65189b771ab628602db5966184478395c0e047a46bb451150ae96d0f"
+    },
+    {
+      "path": "lexicon/ar/standard/64a-63a.json.gz",
+      "sha256": "8365b0a18303b54e03fabe1aec7c1b634f00e78f4dd583575cb2a6b4df07e3ed"
+    },
+    {
+      "path": "lexicon/ar/standard/64a-641.json.gz",
+      "sha256": "c9ba5c04b0b752409c15c9c4f1050bee8461db754c5c137745d683403bb06124"
+    },
+    {
+      "path": "lexicon/ar/standard/64a-642.json.gz",
+      "sha256": "ea3a60a93e2ab1f36151e9dec0d87f206646b3313f87a038af3799aebd51da70"
+    },
+    {
+      "path": "lexicon/ar/standard/64a-643.json.gz",
+      "sha256": "2211bec8b512f9f2902270467b7439799fcaa5f84c5ab94447c76b29bf767564"
+    },
+    {
+      "path": "lexicon/ar/standard/64a-644.json.gz",
+      "sha256": "c3e0ec86da3ab33708f5999069e15a7d5b9f03b2cee56f253e9ef69a21c8be8e"
+    },
+    {
+      "path": "lexicon/ar/standard/64a-645.json.gz",
+      "sha256": "58c7280a00bf27573098ca102d4dd9eb0ea0661a0d21e6215b7d7ec6eea4f64d"
+    },
+    {
+      "path": "lexicon/ar/standard/64a-646.json.gz",
+      "sha256": "f4e16373602fa5559236d6789e94dab24e1edc51b414fa57230ba41f84225d5d"
+    },
+    {
+      "path": "lexicon/ar/standard/64a-647.json.gz",
+      "sha256": "106573dc4835f67ce041ea92e78e96e48671f69e9de56bf90259e6c8fcb193a4"
+    },
+    {
+      "path": "lexicon/ar/standard/64a-648.json.gz",
+      "sha256": "d3bbccab83554110a767acbbba9a5235bde862a90e04f0015b392ac00b340f5e"
+    },
+    {
+      "path": "lexicon/ar/standard/64a-64a.json.gz",
+      "sha256": "fe2c3f979648cff2dad6318cda7aa15ca10af962d99cd770ffdaf488cb7e8cba"
+    },
+    {
+      "path": "lexicon/ar/standard/64a.json.gz",
+      "sha256": "60eb0600a3603b9156181e25e2f87399362a60f0dbae0a692df9bdb7628691d7"
+    },
+    {
+      "path": "lexicon/ar/standard/manifest.json",
+      "sha256": "7c648e5ed9f66dad6b1f7d008b87cedb52729be393eb22301bb004e749bc6b43"
     },
     {
       "path": "lexicon/el/ancient/_.json.gz",
@@ -8788,6 +10937,114 @@
     {
       "path": "lexicon/he/modern/ת.json.gz",
       "sha256": "f5b81ed8b2ac5d3c709e8c3fdfc8b9393ed77ec148c8ba146220463637f615ca"
+    },
+    {
+      "path": "lexicon/ko/standard/H4.json.gz",
+      "sha256": "eb056be2fad982694cc1df04624344d8a1ea848ef224eec090d63f5643c294a2"
+    },
+    {
+      "path": "lexicon/ko/standard/H5.json.gz",
+      "sha256": "3e42943d6176c1b3d36684d831aa888213d57e5437527bd552c35e8707ac1263"
+    },
+    {
+      "path": "lexicon/ko/standard/H6.json.gz",
+      "sha256": "c9ef712e64c5bc5e985e816caabe416c1f2d4a1f3526939031faaff254a8dcdb"
+    },
+    {
+      "path": "lexicon/ko/standard/H7.json.gz",
+      "sha256": "dd8987ebd6a1a6aa3bab0e775ebb665061a5ad3704d330c1ad7911e36e88bdab"
+    },
+    {
+      "path": "lexicon/ko/standard/H8.json.gz",
+      "sha256": "883cde4ce85cb34452e19eae2a3c9b6ac4684cbb82a29a0990fd82d5092d3f5a"
+    },
+    {
+      "path": "lexicon/ko/standard/H9.json.gz",
+      "sha256": "b190477c779e9f0f4b65ff819b5ded5b53d0d1f355ea0621f4dcc7927a31832c"
+    },
+    {
+      "path": "lexicon/ko/standard/_.json.gz",
+      "sha256": "3e48ced05479f67381f942c7b417a59f254aac10205e869587aeb8a0eabb418f"
+    },
+    {
+      "path": "lexicon/ko/standard/manifest.json",
+      "sha256": "65594778382564b7cf95c6281c90eb34c048796cd4162a335cefffe7ad4dfefd"
+    },
+    {
+      "path": "lexicon/ko/standard/ㄱ.json.gz",
+      "sha256": "41445a974ff883f7f93072ac7851779d0d0c7954fde80c2ba93fe70259286649"
+    },
+    {
+      "path": "lexicon/ko/standard/ㄲ.json.gz",
+      "sha256": "82335fd8900fe8067c8f6b89f2e45c6cfe6e6870326aaf1cc8642468bbdb5b86"
+    },
+    {
+      "path": "lexicon/ko/standard/ㄴ.json.gz",
+      "sha256": "19f4741148fabfc589da6aedb097b6cc4601530bb4e8c6201d466bcacc09de16"
+    },
+    {
+      "path": "lexicon/ko/standard/ㄷ.json.gz",
+      "sha256": "a8e916839230c000be71c82f1eed1a51e17984f33c6307fc4e976544dd242667"
+    },
+    {
+      "path": "lexicon/ko/standard/ㄸ.json.gz",
+      "sha256": "c5bf6522734a1d09d2ce1663eadb00e0f8d4213a2447481fdc710cf9ab8668f8"
+    },
+    {
+      "path": "lexicon/ko/standard/ㄹ.json.gz",
+      "sha256": "2699bfcef35cf69635119601cad42cd0a993ce1cf5fa172311b41e0b7c4734e4"
+    },
+    {
+      "path": "lexicon/ko/standard/ㅁ.json.gz",
+      "sha256": "fee3e89e8c4c3f2db18928f714f0aacfeee95bf55d981b2515e3c6bf7c3463d0"
+    },
+    {
+      "path": "lexicon/ko/standard/ㅂ.json.gz",
+      "sha256": "209f0734e8365c5537b42ef2a166c7f3b9ca448ffe8c7b8cd8d9be27d01523ec"
+    },
+    {
+      "path": "lexicon/ko/standard/ㅃ.json.gz",
+      "sha256": "0c8dba4b2b372dac3bdd5ee7a5499eccca622e45afdc6e013005c7ef745db6c3"
+    },
+    {
+      "path": "lexicon/ko/standard/ㅅ.json.gz",
+      "sha256": "0f8f65e0120d2954eee36acc780c038d51827d84f75beb1c8fcd63195e1d0095"
+    },
+    {
+      "path": "lexicon/ko/standard/ㅆ.json.gz",
+      "sha256": "6167487d4c376a8b12250803eae8f4e3c11a0792f881527c12dea35d5bcdb6d0"
+    },
+    {
+      "path": "lexicon/ko/standard/ㅇ.json.gz",
+      "sha256": "51535fb997c752dca635bf169dd40a4b97286cf75707ca20f809747fd4da926d"
+    },
+    {
+      "path": "lexicon/ko/standard/ㅈ.json.gz",
+      "sha256": "dff2e290d52187d213d413fe948cda0419a8f985fc19f8805c0fda80d6699ca0"
+    },
+    {
+      "path": "lexicon/ko/standard/ㅉ.json.gz",
+      "sha256": "0cb10439fc7761a80a4560c4af05a49c72ca724a812ba3946c0cd19b6e27a87b"
+    },
+    {
+      "path": "lexicon/ko/standard/ㅊ.json.gz",
+      "sha256": "52ccbc3e16ffe0fe8a3faf72b740e650998a304eee2e43efba279ddc7ef137fe"
+    },
+    {
+      "path": "lexicon/ko/standard/ㅋ.json.gz",
+      "sha256": "db1fc13ccc179ca52c7568099ac0e04cba26ad3e20100d9c7f953a533c8dd693"
+    },
+    {
+      "path": "lexicon/ko/standard/ㅌ.json.gz",
+      "sha256": "4cbaf7b7f6ceaf31736928141f99ef0fa205be25bdecf28184091716c6ae87b2"
+    },
+    {
+      "path": "lexicon/ko/standard/ㅍ.json.gz",
+      "sha256": "4f0113535cd7b89badf8e4e005d96596f06e406231779e308efa3047699ebe12"
+    },
+    {
+      "path": "lexicon/ko/standard/ㅎ.json.gz",
+      "sha256": "b1e51cab57afa89f1e8c1a4561cbea067485e64167cab2c706d5032c39f8cb97"
     },
     {
       "path": "lexicon/ru/standard/manifest.json",
@@ -10667,7 +12924,7 @@
     },
     {
       "path": "sw.js",
-      "sha256": "19391033786b2f40fae483f4737955823aa6c7f64222006cd4d9bb88d56dfbb4"
+      "sha256": "041702a80ec45a125899581e859d2601100148e47028fd85dd971477e2d2b6c3"
     }
   ]
 }

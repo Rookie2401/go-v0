@@ -5,7 +5,7 @@
  *                Served cache-first (the cached index and its hashed assets are one consistent version); a new build installs
  *                beside it and WAITS: the page offers "Update ready - reload" and only then sends SKIP_WAITING.
  *   config.json  the kept copy at once, refreshed from the network for the next start (the network only when nothing is kept).
- *   dict/        the dictionary shards are NOT precached (hundreds of MB): cached on demand in "goreview-dict-v1", capped. The hosted
+ *   dict/        the dictionary shards are NOT precached (hundreds of MB): cached on demand in DICT_CACHE ("goreview-dict-v2" since 2026-11-27, when the Russian and French full shards were republished gzipped; activation deletes an older one), capped. The hosted
  *                edition reads them from BESIDE the app (config.json assetBaseUrl "../", so one dictionary tree serves every app of the site):
  *                that folder is outside this worker's scope, and its dict/ files are kept all the same (the third token below names it;
  *                until 2026-11-11 they were passed by, so the hosted app had no dictionary without a connection).
@@ -20,11 +20,12 @@
  */
 'use strict';
 
-var BUILD_ID = '0cba8a2fc1fe';
+var BUILD_ID = '129aeed47072';
 var PRECACHE = [
   "./",
   "./EB-Garamond-OFL.txt",
   "./THIRD-PARTY-NOTICES.md",
+  "./assets/ar-B1Iqjo3L.js",
   "./assets/arc-DZc9asID.js",
   "./assets/athens-CGnxwDV8.webp",
   "./assets/bangkok-r3GWRAT9.webp",
@@ -45,15 +46,16 @@ var PRECACHE = [
   "./assets/he-CDT9jrOs.js",
   "./assets/hebrew-script-CnsZhqS-.js",
   "./assets/hi-DahJF875.js",
-  "./assets/index-bNfNFQWk.js",
+  "./assets/index-D0pyPgnH.js",
   "./assets/jerusalem-YWyJNBCG.webp",
+  "./assets/ko-B1j9ajJN.js",
   "./assets/la-CwaQG1iI.js",
-  "./assets/languageChoices-BqkhgjO2.js",
+  "./assets/languageChoices-DoHYJA8s.js",
   "./assets/nb-DD4vZ02j.js",
   "./assets/nn-BFIvrq7f.js",
   "./assets/norwegian-CE2nWb77.js",
   "./assets/oslo-CP39LCLT.webp",
-  "./assets/registry-CdOpFOiE.js",
+  "./assets/registry-C-ZNsZR3.js",
   "./assets/rolldown-runtime-DK3Fl9T5.js",
   "./assets/roman-forum-BwyPrRQO.webp",
   "./assets/rothenburg-vv8nBX67.webp",
@@ -61,10 +63,10 @@ var PRECACHE = [
   "./assets/segment-Bq1cMtpn.js",
   "./assets/shared-f3Tn5VdE.js",
   "./assets/sq-BV_-FP7T.js",
-  "./assets/src-BdSvOU29.js",
-  "./assets/style-BYagmCNE.css",
+  "./assets/src-BhmRQ92X.js",
+  "./assets/style-DWNNuukK.css",
   "./assets/syntax-CGmPxLTF.js",
-  "./assets/th-B1PkpJLm.js",
+  "./assets/th-DwPYZjMv.js",
   "./assets/valle-de-angeles-BxOTzEvC.webp",
   "./assets/varanasi-D-p-TlCF.webp",
   "./config.json",
@@ -82,40 +84,52 @@ var LANG_CHUNKS = {
   "albanian": [
     "./assets/lang-albanian-BE5vTq3L.js"
   ],
+  "ar": [
+    "./assets/lang-ar-DyFpvlQx.js"
+  ],
+  "arabic": [
+    "./assets/lang-arabic-DskV609w.js"
+  ],
   "aramaic": [
     "./assets/lang-aramaic-B5WkUau3.js"
   ],
   "de": [
-    "./assets/lang-de-BPU-vMRH.js"
+    "./assets/lang-de-CJd0Wun_.js"
   ],
   "el": [
-    "./assets/lang-el-BWB4q_sB.js"
+    "./assets/lang-el-BESIXzw-.js"
   ],
   "es": [
-    "./assets/lang-es-hov62ngZ.js"
+    "./assets/lang-es-CExEasAo.js"
   ],
   "fr": [
-    "./assets/lang-fr-BqT5f7K-.js"
+    "./assets/lang-fr-D5BBwdRD.js"
   ],
   "french": [
     "./assets/lang-french-CIGjcOcX.js",
     "./assets/lang-french-LVX0gXcx.js"
   ],
   "he": [
-    "./assets/lang-he-CjhwNGd2.js"
+    "./assets/lang-he-CcM5P5gT.js"
   ],
   "hebrew": [
     "./assets/lang-hebrew-Bsnip4qd.js",
     "./assets/lang-hebrew-apRjTzMX.js"
   ],
   "hi": [
-    "./assets/lang-hi-BfBhGnXq.js"
+    "./assets/lang-hi-S6yPCoC6.js"
   ],
   "hindi": [
     "./assets/lang-hindi-DyM6_O99.js"
   ],
+  "ko": [
+    "./assets/lang-ko-CnOJLJzR.js"
+  ],
+  "korean": [
+    "./assets/lang-korean-C85yTfln.js"
+  ],
   "la": [
-    "./assets/lang-la-DsSjeVGn.js"
+    "./assets/lang-la-DPAIDDq4.js"
   ],
   "latin": [
     "./assets/lang-latin-BIDFCMcr.js",
@@ -124,19 +138,19 @@ var LANG_CHUNKS = {
     "./assets/lang-latin-DuUtURpr.js"
   ],
   "nb": [
-    "./assets/lang-nb-BKSRnCkU.js"
+    "./assets/lang-nb-D86-uaTk.js"
   ],
   "nn": [
-    "./assets/lang-nn-y303sFH_.js"
+    "./assets/lang-nn-CWUzWx4w.js"
   ],
   "norwegian": [
-    "./assets/lang-norwegian-Cngt901A.js"
+    "./assets/lang-norwegian-CQQLov7M.js"
   ],
   "ru": [
-    "./assets/lang-ru-D19wosAs.js"
+    "./assets/lang-ru-CpZR7bSt.js"
   ],
   "sq": [
-    "./assets/lang-sq-DjW9It82.js"
+    "./assets/lang-sq-DaI6NNSC.js"
   ],
   "th": [
     "./assets/lang-th-PKk-XJpB.js"
@@ -148,7 +162,7 @@ var LANG_CHUNKS = {
 
 var SHELL_PREFIX = 'goreview-shell-';
 var SHELL_CACHE = SHELL_PREFIX + BUILD_ID;
-var DICT_CACHE = 'goreview-dict-v1';
+var DICT_CACHE = 'goreview-dict-v2'; // v1 -> v2 2026-11-27: dict/ru and dict/fr full shards became f-xx.json.gz, so a cached v1 manifest named files that are gone
 var LEXICON_PREFIX = 'goreview-lexicon-';
 var LEXICON_CACHE = LEXICON_PREFIX + BUILD_ID;
 var LANG_PREFIX = 'goreview-lang-';
@@ -237,7 +251,7 @@ self.addEventListener('activate', function (event) {
   event.waitUntil(
     caches.keys().then(function (keys) {
       return Promise.all(keys.filter(function (k) {
-        return (k.indexOf(SHELL_PREFIX) === 0 && k !== SHELL_CACHE) || (k.indexOf(LEXICON_PREFIX) === 0 && k !== LEXICON_CACHE) || (k.indexOf(LANG_PREFIX) === 0 && k !== LANG_CACHE);
+        return (k.indexOf(SHELL_PREFIX) === 0 && k !== SHELL_CACHE) || (k.indexOf(LEXICON_PREFIX) === 0 && k !== LEXICON_CACHE) || (k.indexOf(LANG_PREFIX) === 0 && k !== LANG_CACHE) || (k.indexOf('goreview-dict-') === 0 && k !== DICT_CACHE);
       }).map(function (k) { return caches.delete(k); }));
     }).then(function () { return self.clients.claim(); })
   );

@@ -170,8 +170,8 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View, param
     // Vocabulary is a separate inventory view, not an admission input. A cold
     // home must be able to paint the justified deck before its paged count loads.
     const vocab = snapRows;
-    const deck = await planCurrentDeck(ctx, model, holdOut, vocab, 'current');
-    const review = await planCurrentDeck(ctx, model, holdOut, vocab, 'review');
+    const deck = await planCurrentDeck(ctx, model, holdOut, vocab, 'current', { askableOnly: true });
+    const review = await planCurrentDeck(ctx, model, holdOut, vocab, 'review', { askableOnly: true });
     armNextDueRefresh(model);
     // the learner's words are the ones they picked: Seen to Automatic, never a word only met in passing (the owner, 2026-11-14)
     const words = vocab.length ? vocabCount(vocab) : listedKnowledgeCount(model.knowledge);

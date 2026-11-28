@@ -213,8 +213,36 @@ export async function loadVocabSafe(ctx: AppContext, languageId: string): Promis
   try { return await loadVocab(ctx, languageId); } catch { return undefined; }
 }
 /** Only justified scheduler/intake work is offered. Catalog membership never fills a batch. */
-export async function planCurrentDeck(ctx: AppContext, model: ReviewModel, holdOut: ReadonlySet<string> = new Set(), vocab?: readonly VocabRow[], part: DeckPart = 'all'): Promise<CurrentDeck> {
-  const planned = scheduledPlan(ctx, model, holdOut, part);
+/**
+ * A plan counts only the cards the session will ask. A card whose word the deck gate holds back (or whose facts cannot build its exercise) is
+ * not counted or listed: the Current Deck tile said 10 while the session asked 7 to 9 (2026-11-27). The check is the engine's own readiness, the
+ * one the session's builder would meet; a check that failed for a reason that may pass later (retryable) keeps the card.
+ */
+async function withoutUnbuildable(ctx: AppContext, model: ReviewModel, planned: SessionPlan): Promise<SessionPlan> {
+  if (model.provisional || !planned.items.length || !ctx.engine.exerciseReadiness) return planned;
+  let api: Awaited<ReturnType<AppContext['api']>>['api'];
+  try { api = (await ctx.api()).api; } catch { return planned; }
+  const verdicts = await Promise.all(planned.items.map(async (p) => {
+    if (p.family.startsWith('audio-')) return true; // audio is checked by the session's own availability rules
+    // a new word the model admitted as test-now was already checked with this same readiness when the model was prepared (workspace prepareAdmissions)
+    if (p.isNew && model.outcomes.some(o => o.unitId === p.item.unitId && o.decision === 'test-now')) return true;
+    try {
+      const r = await ctx.engine.exerciseReadiness!({ unitId: p.item.unitId, unitKind: p.item.unitKind, languageId: model.identity.languageId,
+        ...(p.item.varietyId ? { varietyId: p.item.varietyId } : {}), dimension: p.item.dimension, family: p.family, api, now: model.now });
+      return r.available || r.retryable !== false || !r.sessionSkips;
+    } catch { return true; }
+  }));
+  if (verdicts.every(Boolean)) return planned;
+  const dropped = planned.items.filter((_, i) => !verdicts[i]);
+  return { ...planned, items: planned.items.filter((_, i) => verdicts[i]),
+    skipped: [...planned.skipped, ...dropped.map(d => ({ itemId: d.item.itemId, why: 'GoLearn is not sure of this word yet, so it is not asked', code: 'facts-unavailable' as const }))],
+    ...(planned.availableWork ? { availableWork: { questions: Math.max(0, planned.availableWork.questions - dropped.length), newQuestions: Math.max(0, planned.availableWork.newQuestions - dropped.filter(d => d.isNew).length) } } : {}),
+    newCount: planned.newCount - dropped.filter(d => d.isNew).length };
+}
+export async function planCurrentDeck(ctx: AppContext, model: ReviewModel, holdOut: ReadonlySet<string> = new Set(), vocab?: readonly VocabRow[], part: DeckPart = 'all', opts: { askableOnly?: boolean } = {}): Promise<CurrentDeck> {
+  const scheduled = scheduledPlan(ctx, model, holdOut, part);
+  // only the home's tiles ask for this: a session still plans the card, skips it when its exercise cannot be built, and lists it in the summary
+  const planned = opts.askableOnly ? await withoutUnbuildable(ctx, model, scheduled) : scheduled;
   const items = (model.schedulerIssue ? [] : planned.items).map(p => ({ ...p, schedulingCardExists: !!knownItem(model, p.item),
     origin: knownItem(model, p.item) ? 'scheduled' as const : 'intake' as const,
     // deck fill stays explicit early practice (a success keeps the schedule); every other item is automatic work

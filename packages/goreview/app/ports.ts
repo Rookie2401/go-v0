@@ -201,7 +201,8 @@ export interface ExerciseReadinessRequest {
   dimension: import('../src/types').AssessmentDimension; family: import('../src/types').ExerciseFamily;
   api: RepositoryApi; now: string;
 }
-export interface ExerciseReadiness { available: boolean; reason?: string; retryable?: boolean }
+/** `sessionSkips`: a session would skip this card for the same reason (the deck gate holds the word, or its builder refuses the facts). */
+export interface ExerciseReadiness { available: boolean; reason?: string; retryable?: boolean; sessionSkips?: boolean }
 
 // ───────────────────────────── audio ─────────────────────────────
 

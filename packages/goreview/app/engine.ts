@@ -225,17 +225,17 @@ export function createReviewEngine(opts: EngineOptions): ReviewEngine {
         return { available: false, reason: 'The current facts belong to another word or language.', retryable: true };
       // a unit the deck gate holds (src/facts/deck-gate.ts) says why in its own sentence
       const hold = (facts as { reviewHold?: { reason?: string } }).reviewHold?.reason;
-      if (facts.status === 'requires-review' && hold) return { available: false, reason: hold, retryable: false };
+      if (facts.status === 'requires-review' && hold) return { available: false, reason: hold, retryable: false, sessionSkips: true };
       if (facts.status === 'invalidated' || facts.status === 'conflicted' || facts.status === 'requires-review')
         return { available: false, reason: 'The source reading is invalidated, conflicted, or awaiting review.', retryable: false };
       const builder = resolveBuilder(opts.builders, request.family);
-      if (!builder) return { available: false, reason: `No builder is available for ${request.family}.`, retryable: false };
+      if (!builder) return { available: false, reason: `No builder is available for ${request.family}.`, retryable: false, sessionSkips: true };
       const target = { unitId: request.unitId, unitKind: request.unitKind, languageId: request.languageId, dimension: request.dimension, ...(request.varietyId ? { varietyId: request.varietyId } : {}) };
       const context = { now: request.now, random: () => 0 };
       const canBuild = builder.canBuild(target, facts, context);
       const built = await builder.build(target, facts, context);
       if ('unavailable' in built) return { available: false, reason: built.reason, retryable: false };
-      if (!canBuild) return { available: false, reason: 'The exercise builder rejected the current source facts.', retryable: false };
+      if (!canBuild) return { available: false, reason: 'The exercise builder rejected the current source facts.', retryable: false, sessionSkips: true };
       const validation = validateExercise(built);
       if (!built.eligibility.eligible || !built.validation.ok || !validation.ok)
         return { available: false, reason: 'The source material did not pass exercise validation.', retryable: false };

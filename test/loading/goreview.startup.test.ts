@@ -132,7 +132,9 @@ describe('GoReview start-up: analyses are identical to the full registry\'s', ()
     }
     if (record) fs.writeFileSync(GOLDEN, JSON.stringify(golden, null, 1) + '\n');
     expect(Object.keys(golden).sort()).toEqual([...LANGS].sort());
-  });
+    // Every language's adapter is loaded twice (on demand and through the full registry). With Korean and Arabic (2026-11-27) this
+    // takes about 39 s on the release PC, the same on master and on later commits, so the default 20 s made it pass or fail by load.
+  }, 180_000);
 });
 
 describe('GoReview start-up: a language chunk that cannot be fetched', () => {

@@ -156,7 +156,7 @@ export function createApp(root: HTMLElement, deps: Deps): AppHandle {
     void ctx.state.getSession().then((session) => {
       if (destroyed || painted !== route) return;
       const label = session ? `Account: synced as ${session.email}` : 'Account: on this device only. Sign in to keep your progress across devices (optional)';
-      accountLink.setAttribute('href', session ? '#/settings' : '#/signin');
+      accountLink.href = session ? '#/settings' : '#/signin'; // a fixed in-app route, never data
       accountLink.setAttribute('data-state', session ? 'synced' : 'device');
       accountLink.setAttribute('aria-label', label);
       accountLink.title = label;

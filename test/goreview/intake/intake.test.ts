@@ -464,3 +464,16 @@ describe('gatherCandidates', () => {
     expect(calls.knowledge).toEqual([]);
   });
 });
+
+describe('decideIntake: a held word is explained in plain words', () => {
+  it('a requires-review reading says it was not added, gives the hold\'s own reason, and uses no developer wording', () => {
+    const held = { ...facts('form:sq:librin', { status: 'requires-review' }), reviewHold: { kind: 'meaning-unreviewed', reason: 'The word list gives no meaning for this spelling.' } } as UnitFacts;
+    const o = decideIntake(intakeInput({ facts: held }));
+    expect(o.decision).toBe('needs-validation');
+    expect(o.reasons[0]).toBe('Not added to review: The word list gives no meaning for this spelling.');
+    const plain = decideIntake(intakeInput({ facts: facts('form:sq:librin', { status: 'requires-review' }) }));
+    expect(plain.reasons[0]).toMatch(/^Not added to review: GoLearn isn't sure/);
+    expect(plain.reasons[0]).toMatch(/not your fault/);
+    expect(`${o.reasons} ${plain.reasons}`).not.toMatch(/fetched analysis|requires review before/);
+  });
+});

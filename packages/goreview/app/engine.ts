@@ -289,7 +289,7 @@ export function createReviewEngine(opts: EngineOptions): ReviewEngine {
           return {unavailable:'The current facts are invalidated or conflicted; they cannot be used for study or repair.'};
         const target={unitId:item.unitId,unitKind:item.unitKind,languageId:item.languageId,dimension:item.dimension,...(item.varietyId?{varietyId:item.varietyId}:{})};
         const context={now:request.now,random:()=>0,...(audio?{audio}:{})};
-        if(!builder.canBuild(target,facts,context))return {unavailable:'Current facts cannot build a valid exercise for this skill.'};
+        if(!builder.canBuild(target,facts,context))return {unavailable:"This question can't be built for this word yet, because GoLearn isn't sure of its meaning here. That is not your fault."};
         const exercise=await builder.build(target,facts,context);
         if('unavailable' in exercise)return {unavailable:exercise.reason};
         if(exercise.prompt.audio)prepared.add(exercise.prompt.audio);

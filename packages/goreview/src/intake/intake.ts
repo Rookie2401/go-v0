@@ -175,7 +175,9 @@ export function decideIntake(input: IntakeInput): IntakeOutcome {
     return makeDecision(candidate, 'needs-validation', [`the available facts are for variety ${facts.unit.varietyId}, not the selected variety ${preferences.varietyId}`]);
   }
   if (facts && facts.status === 'requires-review') {
-    return makeDecision(candidate, 'needs-validation', ['the fetched analysis requires review before it can support an exercise']);
+    // the held reading's own sentence (the deck gate's reviewHold.reason) when it has one: it says in plain words why this word is not quizzed
+    const own = (facts as { reviewHold?: { reason?: string } }).reviewHold?.reason;
+    return makeDecision(candidate, 'needs-validation', [own?.trim() ? `Not added to review: ${own.trim()}` : "Not added to review: GoLearn isn't sure what this word means here, so it won't quiz you on it. That is not your fault."]);
   }
   if (facts) {
     const validation = provenanceOf(facts.unit.provenance).validation;

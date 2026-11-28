@@ -297,7 +297,7 @@ export async function renderDetails(el: HTMLElement, ctx: AppContext, view: View
 
 const DECISION_LABEL: Record<IntakeOutcome['decision'], string> = {
   'test-now': 'practice candidate', 'test-later': 'practice later', 'already-covered': 'already covered', redundant: 'not needed',
-  'too-uncertain': 'not ready yet', 'needs-validation': 'needs better word facts', 'low-priority': 'lower candidate rank',
+  'too-uncertain': 'not ready yet', 'needs-validation': 'not added to review', 'low-priority': 'lower candidate rank',
 };
 const decisionLabel = (d: IntakeOutcome['decision'], o?: IntakeOutcome): string => (o && isNotExamined(o) ? 'not yet checked' : DECISION_LABEL[d]);
 

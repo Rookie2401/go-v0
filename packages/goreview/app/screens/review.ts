@@ -271,7 +271,13 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View, param
     const setAside = new Set([...held, ...before.plan.items.filter((p) => p.isNew).map((p) => p.item.unitId)]);
     const fresh = await planFreshDeck(ctx, current, setAside);
     if (!fresh.plan.items.some((p) => p.isNew)) {
-      setStatus(status, 'No other new words are ready right now. Your Current Deck stays as it is.', 'info');
+      // say why, in the details page's own terms: the words it lists as waiting may all be in the Current Deck already, or past today's allowance
+      const waiting = current.outcomes.filter((o) => o.proposed && (o.decision === 'test-now' || o.decision === 'test-later'));
+      const inCurrent = waiting.filter((o) => setAside.has(o.unitId)).length;
+      const allowanceUsed = fresh.plan.skipped.some((s) => s.code === 'new-budget-exhausted' || s.code === 'daily-allowance-exhausted');
+      const why = waiting.length && inCurrent === waiting.length ? ` The ${waiting.length === 1 ? 'word' : `${waiting.length} words`} waiting ${waiting.length === 1 ? 'is' : 'are'} already in your Current Deck.`
+        : allowanceUsed ? " Today's new-word allowance is used." : '';
+      setStatus(status, `No other new words are ready right now.${why} Your Current Deck stays as it is.`, 'info');
       return;
     }
     if (resumeId && !(await endSavedSession(ctx, resumeId))) { setStatus(status, 'The deck in progress could not be ended.', 'error'); return; }

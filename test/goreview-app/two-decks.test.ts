@@ -83,7 +83,14 @@ describe('the two decks on the GoReview home', () => {
     expect(before).toBeGreaterThan(0); // the two words are the whole Current Deck: there is no other set to draw
     click(rig.q('#start-new'));
     await until(() => /No other new words are ready/.test(rig.q('#review-home .status').textContent ?? ''), 'the message');
-    expect(rig.app.current()).toBe('review');
+    // the message and the details page agree: the words the details list are the Current Deck's own
+    expect(rig.q('#review-home .status').textContent).toContain('already in your Current Deck');
+    await rig.go('review/details');
+    await until(() => !!rig.root.querySelector('#candidates-summary'), 'the candidates summary');
+    expect(rig.q('#candidates-summary').textContent).toMatch(/in the Current Deck now/);
+    expect(rig.q('#candidates-summary').textContent).toContain('New deck draws only words that are not already in the Current Deck');
+    await rig.go('review');
+        expect(rig.app.current()).toBe('review');
     expect(cards(rig, 'start-session')).toBe(before);
     const key = decksKey('L1', 'sq');
     expect(((await rig.area.get(key))[key] as { holdOut?: string[] } | undefined)?.holdOut ?? []).toEqual([]);

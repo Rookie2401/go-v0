@@ -221,6 +221,13 @@ export async function renderDetails(el: HTMLElement, ctx: AppContext, view: View
     sec.append(p('These words may be useful to practice. Candidate rank compares them, then the session plan checks available word facts, your practice goals, time and new-word allowance. A high rank does not promise a place. Scheduled review cards are shown separately.'));
     sec.append(h('p', { id: 'vocabulary-recording-note' }, 'Recorded words and practice cards are separate. ', h('a', { href: '#/vocabulary' }, 'View your recorded words'), '. Words may need more reliable analysis or an answer key before they can become practice cards.'));
     if (m.candidateNote) sec.append(p(m.candidateNote, m.candidateSource === 'none' ? 'error' : 'muted'));
+    // the count under "Practice candidates" is every word that could be practised, not the words still free for a New deck
+    const practicable = m.outcomes.filter((o) => (o.decision === 'test-now' || o.decision === 'test-later') && o.proposed);
+    if (practicable.length) {
+      const inPlan = practicable.filter((o) => plan.items.some((item) => item.item.itemId === itemIdFor(o.unitId, o.proposed!.dimension, o.candidate.varietyId))).length;
+      const waiting = practicable.length - inPlan;
+      sec.append(h('p', { class: 'muted', id: 'candidates-summary' }, `${practicable.length} ${practicable.length === 1 ? 'word' : 'words'} could be practised: ${inPlan} ${inPlan === 1 ? 'is' : 'are'} in the Current Deck now${waiting ? ` and ${waiting} ${waiting === 1 ? 'is' : 'are'} waiting for a later deck (the deck is full, or today's new-word allowance is used)` : ''}. New deck draws only words that are not already in the Current Deck.`));
+    }
     if (!m.outcomes.length) { sec.append(p(m.candidateSource === 'none' ? 'No candidates are available.' : 'The Repository has no new candidates for you right now.', 'muted')); return sec; }
     const group = (title: string, items: IntakeOutcome[], open: boolean): void => {
       if (!items.length) return;
